@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C4CBF6ED-952A-418E-AE53-D40B3C00A73C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataProvInventario</RootNamespace>
+    <AssemblyName>DataProvInventario</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DtoLib">
+      <HintPath>..\..\..\..\Proyectos FoxSystem\CompraVentaService\ServiceInventario\bin\Debug\DtoLib.dll</HintPath>
+    </Reference>
+    <Reference Include="DtoLibInventario">
+      <HintPath>..\..\..\..\Proyectos FoxSystem\CompraVentaService\ServiceInventario\bin\Debug\DtoLibInventario.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceInventario">
+      <HintPath>..\..\..\..\Proyectos FoxSystem\CompraVentaService\ServiceInventario\bin\Debug\ServiceInventario.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\Analisis.cs" />
+    <Compile Include="Data\Auditoria.cs" />
+    <Compile Include="Data\Concepto.cs" />
+    <Compile Include="Data\Configuracion.cs" />
+    <Compile Include="Data\Costo.cs" />
+    <Compile Include="Data\DataProv.cs" />
+    <Compile Include="Data\Departamento.cs" />
+    <Compile Include="Data\Deposito.cs" />
+    <Compile Include="Data\EmpaqueMedida.cs" />
+    <Compile Include="Data\Grupo.cs" />
+    <Compile Include="Data\Kardex.cs" />
+    <Compile Include="Data\Marca.cs" />
+    <Compile Include="Data\Movimiento.cs" />
+    <Compile Include="Data\Permisos.cs" />
+    <Compile Include="Data\Precio.cs" />
+    <Compile Include="Data\Producto.cs" />
+    <Compile Include="Data\Proveedor.cs" />
+    <Compile Include="Data\Reportes.cs" />
+    <Compile Include="Data\Sistema.cs" />
+    <Compile Include="Data\Sucursal.cs" />
+    <Compile Include="Data\TasaImpuesto.cs" />
+    <Compile Include="Data\Tool.cs" />
+    <Compile Include="Data\Usuario.cs" />
+    <Compile Include="Data\Visor.cs" />
+    <Compile Include="InfraEstructura\IAnalisis.cs" />
+    <Compile Include="InfraEstructura\IAuditoria.cs" />
+    <Compile Include="InfraEstructura\IConcepto.cs" />
+    <Compile Include="InfraEstructura\IConfiguracion.cs" />
+    <Compile Include="InfraEstructura\ICosto.cs" />
+    <Compile Include="InfraEstructura\IData.cs" />
+    <Compile Include="InfraEstructura\IDepartamento.cs" />
+    <Compile Include="InfraEstructura\IDeposito.cs" />
+    <Compile Include="InfraEstructura\IEmpaqueMedida.cs" />
+    <Compile Include="InfraEstructura\IGrupo.cs" />
+    <Compile Include="InfraEstructura\IKardex.cs" />
+    <Compile Include="InfraEstructura\IMarca.cs" />
+    <Compile Include="InfraEstructura\IMovimiento.cs" />
+    <Compile Include="InfraEstructura\IPermisos.cs" />
+    <Compile Include="InfraEstructura\IPrecio.cs" />
+    <Compile Include="InfraEstructura\IProducto.cs" />
+    <Compile Include="InfraEstructura\IProveedor.cs" />
+    <Compile Include="InfraEstructura\IReportes.cs" />
+    <Compile Include="InfraEstructura\ISistema.cs" />
+    <Compile Include="InfraEstructura\ISucursal.cs" />
+    <Compile Include="InfraEstructura\ITasaImpuesto.cs" />
+    <Compile Include="InfraEstructura\ITool.cs" />
+    <Compile Include="InfraEstructura\IUsuario.cs" />
+    <Compile Include="InfraEstructura\IVisor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OOB\OOB.csproj">
+      <Project>{475de6c2-1fd6-4789-932f-640b61eadca4}</Project>
+      <Name>OOB</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

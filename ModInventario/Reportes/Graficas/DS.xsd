@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DS" targetNamespace="http://tempuri.org/DS.xsd" xmlns:mstns="http://tempuri.org/DS.xsd" xmlns="http://tempuri.org/DS.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DS" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DS" msprop:Generator_UserDSName="DS">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Top20" msprop:Generator_TableClassName="Top20DataTable" msprop:Generator_TableVarName="tableTop20" msprop:Generator_TablePropName="Top20" msprop:Generator_RowDeletingName="Top20RowDeleting" msprop:Generator_RowChangingName="Top20RowChanging" msprop:Generator_RowEvHandlerName="Top20RowChangeEventHandler" msprop:Generator_RowDeletedName="Top20RowDeleted" msprop:Generator_UserTableName="Top20" msprop:Generator_RowChangedName="Top20RowChanged" msprop:Generator_RowEvArgName="Top20RowChangeEvent" msprop:Generator_RowClassName="Top20Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="nombrePrd" msprop:Generator_ColumnVarNameInTable="columnnombrePrd" msprop:Generator_ColumnPropNameInRow="nombrePrd" msprop:Generator_ColumnPropNameInTable="nombrePrdColumn" msprop:Generator_UserColumnName="nombrePrd" type="xs:string" minOccurs="0" />
+              <xs:element name="codigoPrd" msprop:Generator_ColumnVarNameInTable="columncodigoPrd" msprop:Generator_ColumnPropNameInRow="codigoPrd" msprop:Generator_ColumnPropNameInTable="codigoPrdColumn" msprop:Generator_UserColumnName="codigoPrd" type="xs:string" minOccurs="0" />
+              <xs:element name="cntUnd" msprop:Generator_ColumnVarNameInTable="columncntUnd" msprop:Generator_ColumnPropNameInRow="cntUnd" msprop:Generator_ColumnPropNameInTable="cntUndColumn" msprop:Generator_UserColumnName="cntUnd" type="xs:string" minOccurs="0" />
+              <xs:element name="cntDoc" msprop:Generator_ColumnVarNameInTable="columncntDoc" msprop:Generator_ColumnPropNameInRow="cntDoc" msprop:Generator_ColumnPropNameInTable="cntDocColumn" msprop:Generator_UserColumnName="cntDoc" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

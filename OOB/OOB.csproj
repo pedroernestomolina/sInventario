@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{475DE6C2-1FD6-4789-932F-640B61EADCA4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OOB</RootNamespace>
+    <AssemblyName>OOB</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Enumerados.cs" />
+    <Compile Include="LibInventario\Analisis\Detallado\Ficha.cs" />
+    <Compile Include="LibInventario\Analisis\Detallado\Filtro.cs" />
+    <Compile Include="LibInventario\Analisis\Enumerados.cs" />
+    <Compile Include="LibInventario\Analisis\Existencia\Ficha.cs" />
+    <Compile Include="LibInventario\Analisis\Existencia\Filtro.cs" />
+    <Compile Include="LibInventario\Analisis\General\Ficha.cs" />
+    <Compile Include="LibInventario\Analisis\General\Filtro.cs" />
+    <Compile Include="LibInventario\Auditoria\Buscar\Ficha.cs" />
+    <Compile Include="LibInventario\Auditoria\Entidad\Ficha.cs" />
+    <Compile Include="LibInventario\Concepto\Agregar.cs" />
+    <Compile Include="LibInventario\Concepto\Editar.cs" />
+    <Compile Include="LibInventario\Concepto\Ficha.cs" />
+    <Compile Include="LibInventario\Configuracion\BusquedaPredeterminada\Editar\Ficha.cs" />
+    <Compile Include="LibInventario\Configuracion\CostoEdad\Editar\Ficha.cs" />
+    <Compile Include="LibInventario\Configuracion\DepositoPreDeterminado\Ficha.cs" />
+    <Compile Include="LibInventario\Configuracion\DepositoPreDeterminado\Item.cs" />
+    <Compile Include="LibInventario\Configuracion\Enumerados.cs" />
+    <Compile Include="LibInventario\Configuracion\MetodoCalculoUtilidad\CapturarData\Ficha.cs" />
+    <Compile Include="LibInventario\Configuracion\MetodoCalculoUtilidad\Editar\Ficha.cs" />
+    <Compile Include="LibInventario\Configuracion\MetodoCalculoUtilidad\Editar\FichaPrecio.cs" />
+    <Compile Include="LibInventario\Configuracion\MetodoCalculoUtilidad\Editar\Precio.cs" />
+    <Compile Include="LibInventario\Configuracion\PreferenciaPrecio\Editar\Ficha.cs" />
+    <Compile Include="LibInventario\Configuracion\RedondeoPrecio\Editar\Ficha.cs" />
+    <Compile Include="LibInventario\Costo\Editar\Ficha.cs" />
+    <Compile Include="LibInventario\Costo\Editar\FichaHistorica.cs" />
+    <Compile Include="LibInventario\Costo\Editar\FichaPrecio.cs" />
+    <Compile Include="LibInventario\Costo\Enumerados.cs" />
+    <Compile Include="LibInventario\Costo\Historico\Data.cs" />
+    <Compile Include="LibInventario\Costo\Historico\Ficha.cs" />
+    <Compile Include="LibInventario\Costo\Historico\Filtro.cs" />
+    <Compile Include="LibInventario\Departamento\Agregar.cs" />
+    <Compile Include="LibInventario\Departamento\Editar.cs" />
+    <Compile Include="LibInventario\Departamento\Ficha.cs" />
+    <Compile Include="LibInventario\Deposito\Ficha.cs" />
+    <Compile Include="LibInventario\EmpaqueMedida\Agregar.cs" />
+    <Compile Include="LibInventario\EmpaqueMedida\Editar.cs" />
+    <Compile Include="LibInventario\EmpaqueMedida\Ficha.cs" />
+    <Compile Include="LibInventario\Empresa\Data\Ficha.cs" />
+    <Compile Include="LibInventario\Grupo\Agregar.cs" />
+    <Compile Include="LibInventario\Grupo\Editar.cs" />
+    <Compile Include="LibInventario\Grupo\Ficha.cs" />
+    <Compile Include="LibInventario\Kardex\Enumerados.cs" />
+    <Compile Include="LibInventario\Kardex\Movimiento\Detalle\Data.cs" />
+    <Compile Include="LibInventario\Kardex\Movimiento\Detalle\Ficha.cs" />
+    <Compile Include="LibInventario\Kardex\Movimiento\Detalle\Filtro.cs" />
+    <Compile Include="LibInventario\Kardex\Movimiento\Filtro.cs" />
+    <Compile Include="LibInventario\Kardex\Movimiento\Resumen\Data.cs" />
+    <Compile Include="LibInventario\Kardex\Movimiento\Resumen\Ficha.cs" />
+    <Compile Include="LibInventario\Kardex\Movimiento\Resumen\Filtro.cs" />
+    <Compile Include="LibInventario\Marca\Agregar.cs" />
+    <Compile Include="LibInventario\Marca\Editar.cs" />
+    <Compile Include="LibInventario\Marca\Ficha.cs" />
+    <Compile Include="LibInventario\Movimiento\AjusteInvCero\Capture\Data.cs" />
+    <Compile Include="LibInventario\Movimiento\AjusteInvCero\Capture\Ficha.cs" />
+    <Compile Include="LibInventario\Movimiento\AjusteInvCero\Capture\Filtro.cs" />
+    <Compile Include="LibInventario\Movimiento\AjusteInvCero\Insertar\Ficha.cs" />
+    <Compile Include="LibInventario\Movimiento\AjusteInvCero\Insertar\FichaMov.cs" />
+    <Compile Include="LibInventario\Movimiento\AjusteInvCero\Insertar\FichaMovDeposito.cs" />
+    <Compile Include="LibInventario\Movimiento\AjusteInvCero\Insertar\FichaMovDetalle.cs" />
+    <Compile Include="LibInventario\Movimiento\AjusteInvCero\Insertar\FichaMovKardex.cs" />
+    <Compile Include="LibInventario\Movimiento\Ajuste\Insertar\Ficha.cs" />
+    <Compile Include="LibInventario\Movimiento\Ajuste\Insertar\FichaMov.cs" />
+    <Compile Include="LibInventario\Movimiento\Ajuste\Insertar\FichaMovDeposito.cs" />
+    <Compile Include="LibInventario\Movimiento\Ajuste\Insertar\FichaMovDetalle.cs" />
+    <Compile Include="LibInventario\Movimiento\Ajuste\Insertar\FichaMovKardex.cs" />
+    <Compile Include="LibInventario\Movimiento\Anular\Ajuste\Ficha.cs" />
+    <Compile Include="LibInventario\Movimiento\Anular\Cargo\Ficha.cs" />
+    <Compile Include="LibInventario\Movimiento\Anular\Descargo\Ficha.cs" />
+    <Compile Include="LibInventario\Movimiento\Anular\FichaBase.cs" />
+    <Compile Include="LibInventario\Movimiento\Anular\Traslado\Ficha.cs" />
+    <Compile Include="LibInventario\Movimiento\Cargo\Insertar\Ficha.cs" />
+    <Compile Include="LibInventario\Movimiento\Cargo\Insertar\FichaMov.cs" />
+    <Compile Include="LibInventario\Movimiento\Cargo\Insertar\FichaMovDeposito.cs" />
+    <Compile Include="LibInventario\Movimiento\Cargo\Insertar\FichaMovDetalle.cs" />
+    <Compile Include="LibInventario\Movimiento\Cargo\Insertar\FichaMovKardex.cs" />
+    <Compile Include="LibInventario\Movimiento\Cargo\Insertar\FichaPrdCosto.cs" />
+    <Compile Include="LibInventario\Movimiento\Cargo\Insertar\FichaPrdCostoHistorico.cs" />
+    <Compile Include="LibInventario\Movimiento\Cargo\Insertar\FichaPrdPrecio.cs" />
+    <Compile Include="LibInventario\Movimiento\Cargo\Insertar\FichaPrdPrecioHistorico.cs" />
+    <Compile Include="LibInventario\Movimiento\Cargo\Insertar\FichaPrdPrecioMargen.cs" />
+    <Compile Include="LibInventario\Movimiento\Cargo\Insertar\FichaPrecio.cs" />
+    <Compile Include="LibInventario\Movimiento\Cargo\Insertar\FichaPrecioMargen.cs" />
+    <Compile Include="LibInventario\Movimiento\DesCargo\Insertar\Ficha.cs" />
+    <Compile Include="LibInventario\Movimiento\DesCargo\Insertar\FichaMov.cs" />
+    <Compile Include="LibInventario\Movimiento\DesCargo\Insertar\FichaMovDeposito.cs" />
+    <Compile Include="LibInventario\Movimiento\DesCargo\Insertar\FichaMovDetalle.cs" />
+    <Compile Include="LibInventario\Movimiento\DesCargo\Insertar\FichaMovKardex.cs" />
+    <Compile Include="LibInventario\Movimiento\enumerados.cs" />
+    <Compile Include="LibInventario\Movimiento\Insertar\BaseFichaMov.cs" />
+    <Compile Include="LibInventario\Movimiento\Insertar\BaseFichaMovDeposito.cs" />
+    <Compile Include="LibInventario\Movimiento\Insertar\BaseFichaMovDetalle.cs" />
+    <Compile Include="LibInventario\Movimiento\Insertar\BaseFichaMovKardex.cs" />
+    <Compile Include="LibInventario\Movimiento\Lista\Ficha.cs" />
+    <Compile Include="LibInventario\Movimiento\Lista\Filtro.cs" />
+    <Compile Include="LibInventario\Movimiento\Traslado\Capturar\ProductoPorDebajoNivelMinimo\Ficha.cs" />
+    <Compile Include="LibInventario\Movimiento\Traslado\Capturar\ProductoPorDebajoNivelMinimo\Filtro.cs" />
+    <Compile Include="LibInventario\Movimiento\Traslado\Consultar\Filtro.cs" />
+    <Compile Include="LibInventario\Movimiento\Traslado\Consultar\ProductoPorDebajoNivelMinimo.cs" />
+    <Compile Include="LibInventario\Movimiento\Traslado\Insertar\Ficha.cs" />
+    <Compile Include="LibInventario\Movimiento\Traslado\Insertar\FichaMov.cs" />
+    <Compile Include="LibInventario\Movimiento\Traslado\Insertar\FichaMovDeposito.cs" />
+    <Compile Include="LibInventario\Movimiento\Traslado\Insertar\FichaMovDetalle.cs" />
+    <Compile Include="LibInventario\Movimiento\Traslado\Insertar\FichaMovKardex.cs" />
+    <Compile Include="LibInventario\Movimiento\Ver\Detalle.cs" />
+    <Compile Include="LibInventario\Movimiento\Ver\Ficha.cs" />
+    <Compile Include="LibInventario\Permiso\Enumerados.cs" />
+    <Compile Include="LibInventario\Permiso\Ficha.cs" />
+    <Compile Include="LibInventario\Precio\Editar\Ficha.cs" />
+    <Compile Include="LibInventario\Precio\Editar\FichaHistorica.cs" />
+    <Compile Include="LibInventario\Precio\Editar\FichaPrecio.cs" />
+    <Compile Include="LibInventario\Precio\Historico\Data.cs" />
+    <Compile Include="LibInventario\Precio\Historico\Ficha.cs" />
+    <Compile Include="LibInventario\Precio\Historico\Filtro.cs" />
+    <Compile Include="LibInventario\Precio\PrecioCosto\Ficha.cs" />
+    <Compile Include="LibInventario\Producto\AdmDivisa\Ficha.cs" />
+    <Compile Include="LibInventario\Producto\Agregar\Ficha.cs" />
+    <Compile Include="LibInventario\Producto\Agregar\FichaCodAlterno.cs" />
+    <Compile Include="LibInventario\Producto\Categoria\Ficha.cs" />
+    <Compile Include="LibInventario\Producto\ClasificacionAbc\Ficha.cs" />
+    <Compile Include="LibInventario\Producto\Data\CodAlterno.cs" />
+    <Compile Include="LibInventario\Producto\Data\Costo.cs" />
+    <Compile Include="LibInventario\Producto\Data\Deposito.cs" />
+    <Compile Include="LibInventario\Producto\Data\Existencia.cs" />
+    <Compile Include="LibInventario\Producto\Data\Extra.cs" />
+    <Compile Include="LibInventario\Producto\Data\Ficha.cs" />
+    <Compile Include="LibInventario\Producto\Data\Identificacion.cs" />
+    <Compile Include="LibInventario\Producto\Data\Imagen.cs" />
+    <Compile Include="LibInventario\Producto\Data\Precio.cs" />
+    <Compile Include="LibInventario\Producto\Data\Proveedor\Detalle.cs" />
+    <Compile Include="LibInventario\Producto\Data\Proveedor\Ficha.cs" />
+    <Compile Include="LibInventario\Producto\Depositos\Asignar\DepAsignar.cs" />
+    <Compile Include="LibInventario\Producto\Depositos\Asignar\DepRemover.cs" />
+    <Compile Include="LibInventario\Producto\Depositos\Asignar\Ficha.cs" />
+    <Compile Include="LibInventario\Producto\Depositos\Editar\Ficha.cs" />
+    <Compile Include="LibInventario\Producto\Depositos\Lista\Deposito.cs" />
+    <Compile Include="LibInventario\Producto\Depositos\Lista\Ficha.cs" />
+    <Compile Include="LibInventario\Producto\Depositos\Ver\Ficha.cs" />
+    <Compile Include="LibInventario\Producto\Depositos\Ver\Filtro.cs" />
+    <Compile Include="LibInventario\Producto\Editar\Actualizar\Ficha.cs" />
+    <Compile Include="LibInventario\Producto\Editar\Actualizar\FichaCodigoAlterno.cs" />
+    <Compile Include="LibInventario\Producto\Editar\Actualizar\FichaPrecio.cs" />
+    <Compile Include="LibInventario\Producto\Editar\Obtener\Ficha.cs" />
+    <Compile Include="LibInventario\Producto\Editar\Obtener\FichaAlterno.cs" />
+    <Compile Include="LibInventario\Producto\Enumerados.cs" />
+    <Compile Include="LibInventario\Producto\Estatus\Actual\Ficha.cs" />
+    <Compile Include="LibInventario\Producto\Estatus\Lista\Ficha.cs" />
+    <Compile Include="LibInventario\Producto\Filtro.cs" />
+    <Compile Include="LibInventario\Producto\Oferta\Ficha.cs" />
+    <Compile Include="LibInventario\Producto\Origen\Ficha.cs" />
+    <Compile Include="LibInventario\Producto\Pesado\Ficha.cs" />
+    <Compile Include="LibInventario\Producto\Plu\Lista\Ficha.cs" />
+    <Compile Include="LibInventario\Proveedor\Enumerados.cs" />
+    <Compile Include="LibInventario\Proveedor\Lista\Ficha.cs" />
+    <Compile Include="LibInventario\Proveedor\Lista\Filtro.cs" />
+    <Compile Include="LibInventario\Reportes\CompraVentaAlmacen\Ficha.cs" />
+    <Compile Include="LibInventario\Reportes\CompraVentaAlmacen\FichaAlmacen.cs" />
+    <Compile Include="LibInventario\Reportes\CompraVentaAlmacen\FichaCompra.cs" />
+    <Compile Include="LibInventario\Reportes\CompraVentaAlmacen\FichaVenta.cs" />
+    <Compile Include="LibInventario\Reportes\CompraVentaAlmacen\Filtro.cs" />
+    <Compile Include="LibInventario\Reportes\DepositoResumen\Ficha.cs" />
+    <Compile Include="LibInventario\Reportes\enumerados.cs" />
+    <Compile Include="LibInventario\Reportes\KardexResumen\Ficha.cs" />
+    <Compile Include="LibInventario\Reportes\Kardex\Existencia.cs" />
+    <Compile Include="LibInventario\Reportes\Kardex\Ficha.cs" />
+    <Compile Include="LibInventario\Reportes\Kardex\Filtro.cs" />
+    <Compile Include="LibInventario\Reportes\Kardex\Mov.cs" />
+    <Compile Include="LibInventario\Reportes\MaestroExistencia\Ficha.cs" />
+    <Compile Include="LibInventario\Reportes\MaestroExistencia\Filtro.cs" />
+    <Compile Include="LibInventario\Reportes\MaestroInventario\Ficha.cs" />
+    <Compile Include="LibInventario\Reportes\MaestroInventario\Filtro.cs" />
+    <Compile Include="LibInventario\Reportes\MaestroPrecio\Ficha.cs" />
+    <Compile Include="LibInventario\Reportes\MaestroPrecio\Filtro.cs" />
+    <Compile Include="LibInventario\Reportes\MaestroProducto\Ficha.cs" />
+    <Compile Include="LibInventario\Reportes\MaestroProducto\Filtro.cs" />
+    <Compile Include="LibInventario\Reportes\NivelMinimo\Ficha.cs" />
+    <Compile Include="LibInventario\Reportes\NivelMinimo\Filtro.cs" />
+    <Compile Include="LibInventario\Reportes\Top20\Ficha.cs" />
+    <Compile Include="LibInventario\Reportes\Top20\Filtro.cs" />
+    <Compile Include="LibInventario\Reportes\Valorizacion\Ficha.cs" />
+    <Compile Include="LibInventario\Reportes\Valorizacion\Filtro.cs" />
+    <Compile Include="LibInventario\Sistema\TipoDocumento\Entidad\Ficha.cs" />
+    <Compile Include="LibInventario\Sistema\TipoDocumento\enumerados.cs" />
+    <Compile Include="LibInventario\Sucursal\Ficha.cs" />
+    <Compile Include="LibInventario\TasaImpuesto\Ficha.cs" />
+    <Compile Include="LibInventario\Tool\AjusteNivelMinimoMaximoProducto\Ajustar\Ficha.cs" />
+    <Compile Include="LibInventario\Tool\AjusteNivelMinimoMaximoProducto\Capturar\Ficha.cs" />
+    <Compile Include="LibInventario\Tool\AjusteNivelMinimoMaximoProducto\Capturar\Filtro.cs" />
+    <Compile Include="LibInventario\Usuario\ActualizarSesion\Ficha.cs" />
+    <Compile Include="LibInventario\Usuario\Buscar\Ficha.cs" />
+    <Compile Include="LibInventario\Usuario\Ficha.cs" />
+    <Compile Include="LibInventario\Visor\Ajuste\Ficha.cs" />
+    <Compile Include="LibInventario\Visor\Ajuste\FichaDetalle.cs" />
+    <Compile Include="LibInventario\Visor\Ajuste\Filtro.cs" />
+    <Compile Include="LibInventario\Visor\CostoEdad\Ficha.cs" />
+    <Compile Include="LibInventario\Visor\CostoEdad\FichaDetalle.cs" />
+    <Compile Include="LibInventario\Visor\CostoEdad\Filtro.cs" />
+    <Compile Include="LibInventario\Visor\CostoExistencia\Ficha.cs" />
+    <Compile Include="LibInventario\Visor\CostoExistencia\Filtro.cs" />
+    <Compile Include="LibInventario\Visor\Existencia\Enumerados.cs" />
+    <Compile Include="LibInventario\Visor\Existencia\Ficha.cs" />
+    <Compile Include="LibInventario\Visor\Existencia\Filtro.cs" />
+    <Compile Include="LibInventario\Visor\Precio\Ficha.cs" />
+    <Compile Include="LibInventario\Visor\Precio\Filtro.cs" />
+    <Compile Include="LibInventario\Visor\Traslado\Ficha.cs" />
+    <Compile Include="LibInventario\Visor\Traslado\Filtro.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resultado.cs" />
+    <Compile Include="ResultadoAuto.cs" />
+    <Compile Include="ResultadoEntidad.cs" />
+    <Compile Include="ResultadoId.cs" />
+    <Compile Include="ResultadoLista.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

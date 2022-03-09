@@ -172,7 +172,6 @@ namespace ModInventario
         {
             MovimientoDesCargo();
         }
-
         private void MovimientoDesCargo()
         {
             _controlador.MovimientoDesCargo();

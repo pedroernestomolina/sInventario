@@ -339,16 +339,14 @@ namespace ModInventario
                 Helpers.Msg.Error(r00.Mensaje);
                 return;
             }
-
             if (_seguridad.Verificar(r00.Entidad))
             {
-                var ctr = new Movimiento.Descargo.Gestion();
-                ctr.Inicializa();
-
-                _gestionMov.Inicializa();
-                _gestionMov.setGestion(ctr);
-                _gestionMov.Inicia();
-                _gestionMov.Finaliza();
+                //var ctr = new Movimiento.Descargo.Gestion();
+                //ctr.Inicializa();
+                //_gestionMov.Inicializa();
+                //_gestionMov.setGestion(ctr);
+                //_gestionMov.Inicia();
+                //_gestionMov.Finaliza();
             }
         }
 

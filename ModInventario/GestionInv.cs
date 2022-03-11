@@ -330,26 +330,7 @@ namespace ModInventario
                 _gestionMov.Finaliza();
             }
         }
-
-        public void MovimientoDesCargo()
-        {
-            var r00 = Sistema.MyData.Permiso_MovimientoDescargoInventario(Sistema.UsuarioP.autoGru);
-            if (r00.Result == OOB.Enumerados.EnumResult.isError) 
-            {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-            if (_seguridad.Verificar(r00.Entidad))
-            {
-                //var ctr = new Movimiento.Descargo.Gestion();
-                //ctr.Inicializa();
-                //_gestionMov.Inicializa();
-                //_gestionMov.setGestion(ctr);
-                //_gestionMov.Inicia();
-                //_gestionMov.Finaliza();
-            }
-        }
-
+    
         public void MovimientoTraslado()
         {
             var r00 = Sistema.MyData.Permiso_MovimientoTrasladoInventario(Sistema.UsuarioP.autoGru);
@@ -752,6 +733,47 @@ namespace ModInventario
                 _gestionMovInv.setGestion(_gMovAjusteInvCero);
                 _gestionMovInv.Inicia();
                 _gestionMovInv.Finaliza();
+            }
+        }
+
+        public void MovimientoDesCargo()
+        {
+            ModInventario.MovimientoInvTipo.IGestionTipo _gMovTipo;
+            ModInventario.MovimientoInvTipo.ILista _gMovTipoLista;
+            ModInventario.MovimientoInvTipo.ITipo _gMovTipoDescargo;
+            ModInventario.MovimientoInvTipo.Descargo.Captura.ICaptura _gCapturaMovDescargo;
+
+            _gMovTipoLista = new ModInventario.MovimientoInvTipo.Lista();
+            _gCapturaMovDescargo = new ModInventario.MovimientoInvTipo.Descargo.Captura.Gestion();
+            _gMovTipoDescargo = new ModInventario.MovimientoInvTipo.Descargo.Gestion(
+                _gfiltroConcepto,
+                _gfiltroSucursal,
+                _gCapturaMovDescargo);
+            _gMovTipo = new ModInventario.MovimientoInvTipo.Gestion(
+                _gMovTipoLista,
+                _gAdmSelPrd);
+
+            var r00 = Sistema.MyData.Permiso_MovimientoDescargoInventario(Sistema.UsuarioP.autoGru);
+            if (r00.Result == OOB.Enumerados.EnumResult.isError)
+            {
+                Helpers.Msg.Error(r00.Mensaje);
+                return;
+            }
+            if (_seguridad.Verificar(r00.Entidad))
+            {
+                _gMovTipoDescargo.Inicializa();
+                _gMovTipo.Inicializa();
+                _gMovTipo.setTipoMov(_gMovTipoDescargo);
+                _gMovTipo.Inicia();
+                _gMovTipo.Finaliza();
+
+
+                //var ctr = new Movimiento.Descargo.Gestion();
+                //ctr.Inicializa();
+                //_gestionMov.Inicializa();
+                //_gestionMov.setGestion(ctr);
+                //_gestionMov.Inicia();
+                //_gestionMov.Finaliza();
             }
         }
 

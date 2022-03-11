@@ -340,57 +340,29 @@
     <Compile Include="MaestrosInv\UnidadEmpaque\Editar\Gestion.cs" />
     <Compile Include="MaestrosInv\UnidadEmpaque\Gestion.cs" />
     <Compile Include="MaestrosInv\UnidadEmpaque\IAgregarEditar.cs" />
-    <Compile Include="Maestros\Concepto\AgregarEditar.cs" />
-    <Compile Include="Maestros\Concepto\AgregarEditarFrm.cs">
+    <Compile Include="MovimientoInvTipo\data.cs" />
+    <Compile Include="MovimientoInvTipo\dataItem.cs" />
+    <Compile Include="MovimientoInvTipo\Descargo\Captura\EntradaFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Maestros\Concepto\AgregarEditarFrm.Designer.cs">
-      <DependentUpon>AgregarEditarFrm.cs</DependentUpon>
+    <Compile Include="MovimientoInvTipo\Descargo\Captura\EntradaFrm.Designer.cs">
+      <DependentUpon>EntradaFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Maestros\Concepto\Gestion.cs" />
-    <Compile Include="Maestros\data.cs" />
-    <Compile Include="Maestros\Departamento\AgregarEditar.cs" />
-    <Compile Include="Maestros\Departamento\AgregarEditarFrm.cs">
+    <Compile Include="MovimientoInvTipo\Descargo\Gestion.cs" />
+    <Compile Include="MovimientoInvTipo\Descargo\MovFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Maestros\Departamento\AgregarEditarFrm.Designer.cs">
-      <DependentUpon>AgregarEditarFrm.cs</DependentUpon>
+    <Compile Include="MovimientoInvTipo\Descargo\MovFrm.Designer.cs">
+      <DependentUpon>MovFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Maestros\Departamento\Gestion.cs" />
-    <Compile Include="Maestros\EmpaqueMedida\AgregarEditar.cs" />
-    <Compile Include="Maestros\EmpaqueMedida\AgregarEditarFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Maestros\EmpaqueMedida\AgregarEditarFrm.Designer.cs">
-      <DependentUpon>AgregarEditarFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Maestros\EmpaqueMedida\Gestion.cs" />
-    <Compile Include="Maestros\Gestion.cs" />
-    <Compile Include="Maestros\GestionLista.cs" />
-    <Compile Include="Maestros\Grupo\AgregarEditar.cs" />
-    <Compile Include="Maestros\Grupo\AgregarEditarFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Maestros\Grupo\AgregarEditarFrm.Designer.cs">
-      <DependentUpon>AgregarEditarFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Maestros\Grupo\Gestion.cs" />
-    <Compile Include="Maestros\IGestion.cs" />
-    <Compile Include="Maestros\IGestionLista.cs" />
-    <Compile Include="Maestros\MaestroFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Maestros\MaestroFrm.Designer.cs">
-      <DependentUpon>MaestroFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Maestros\Marca\AgregarEditar.cs" />
-    <Compile Include="Maestros\Marca\AgregarEditarFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Maestros\Marca\AgregarEditarFrm.Designer.cs">
-      <DependentUpon>AgregarEditarFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Maestros\Marca\Gestion.cs" />
+    <Compile Include="MovimientoInvTipo\Descargo\Captura\Gestion.cs" />
+    <Compile Include="MovimientoInvTipo\Descargo\Captura\IMovmiento.cs" />
+    <Compile Include="MovimientoInvTipo\enumerados.cs" />
+    <Compile Include="MovimientoInvTipo\Gestion.cs" />
+    <Compile Include="MovimientoInvTipo\IGestionTipo.cs" />
+    <Compile Include="MovimientoInvTipo\ILista.cs" />
+    <Compile Include="MovimientoInvTipo\ITipo.cs" />
+    <Compile Include="MovimientoInvTipo\Lista.cs" />
     <Compile Include="MovimientoInv\AjusteInvCero\Gestion.cs" />
     <Compile Include="MovimientoInv\AjusteInvCero\GestionItem.cs" />
     <Compile Include="MovimientoInv\AjusteInvCero\Iitem.cs" />
@@ -405,13 +377,8 @@
     <Compile Include="MovimientoInv\IGestionMov.cs" />
     <Compile Include="MovimientoInv\IMov.cs" />
     <Compile Include="MovimientoInv\PorTipo\Descargo\Gestion.cs" />
-    <Compile Include="MovimientoInv\PorTipo\GestionMov.cs" />
-    <Compile Include="MovimientoInv\PorTipo\MvFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MovimientoInv\PorTipo\MvFrm.Designer.cs">
-      <DependentUpon>MvFrm.cs</DependentUpon>
-    </Compile>
+    <Compile Include="MovimientoInv\PorTipo\GestionTipo.cs" />
+    <Compile Include="MovimientoInv\PorTipo\IGestionTipo.cs" />
     <Compile Include="Movimiento\Ajuste\EntradaFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -878,17 +845,14 @@
     <EmbeddedResource Include="Kardex\Movimiento\KardexFrm.resx">
       <DependentUpon>KardexFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Maestros\Concepto\AgregarEditarFrm.resx">
-      <DependentUpon>AgregarEditarFrm.cs</DependentUpon>
+    <EmbeddedResource Include="MovimientoInvTipo\Descargo\Captura\EntradaFrm.resx">
+      <DependentUpon>EntradaFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Maestros\Departamento\AgregarEditarFrm.resx">
-      <DependentUpon>AgregarEditarFrm.cs</DependentUpon>
+    <EmbeddedResource Include="MovimientoInvTipo\Descargo\MovFrm.resx">
+      <DependentUpon>MovFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Maestros\EmpaqueMedida\AgregarEditarFrm.resx">
-      <DependentUpon>AgregarEditarFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Maestros\MaestroFrm.resx">
-      <DependentUpon>MaestroFrm.cs</DependentUpon>
+    <EmbeddedResource Include="MovimientoInv\AjusteInvCero\MvFrm.resx">
+      <DependentUpon>MvFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Movimiento\Ajuste\EntradaFrm.resx">
       <DependentUpon>EntradaFrm.cs</DependentUpon>
@@ -1247,6 +1211,7 @@
       <Name>OOB</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

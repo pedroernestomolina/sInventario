@@ -26,9 +26,12 @@ namespace DataProvInventario.InfraEstructura
         OOB.ResultadoEntidad<OOB.LibInventario.Movimiento.AjusteInvCero.Capture.Ficha> Producto_Movimiento_AjusteInventarioCero_Capture(OOB.LibInventario.Movimiento.AjusteInvCero.Capture.Filtro filtro);
         OOB.ResultadoAuto Producto_Movimiento_AjusteInventarioCero_Insertar(OOB.LibInventario.Movimiento.AjusteInvCero.Insertar.Ficha ficha);
 
-        //
 
-        OOB.ResultadoLista<OOB.LibInventario.Movimiento.Traslado.Capturar.ProductoPorDebajoNivelMinimo.Ficha> Capturar_ProductosPorDebajoNivelMinimo(OOB.LibInventario.Movimiento.Traslado.Capturar.ProductoPorDebajoNivelMinimo.Filtro filtro);
+        // CAPTURAR DATA RELACIONADO AL PRODUCTO PARA REALIZAR DICHO MOVIMIENTO
+        OOB.ResultadoLista<OOB.LibInventario.Movimiento.Traslado.Capturar.ProductoPorDebajoNivelMinimo.Ficha> 
+            Capturar_ProductosPorDebajoNivelMinimo(OOB.LibInventario.Movimiento.Traslado.Capturar.ProductoPorDebajoNivelMinimo.Filtro filtro);
+        OOB.ResultadoEntidad<OOB.LibInventario.Movimiento.DesCargo.CapturaMov.Ficha> 
+            Producto_Movimiento_Descargo_CaptureMov(OOB.LibInventario.Movimiento.DesCargo.CapturaMov.Filtro filtro);
 
     }
 

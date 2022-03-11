@@ -1234,6 +1234,52 @@ namespace DataProvInventario.Data
             return rt;
         }
 
+
+        //
+        public OOB.ResultadoEntidad<OOB.LibInventario.Movimiento.DesCargo.CapturaMov.Ficha> Producto_Movimiento_Descargo_CaptureMov(OOB.LibInventario.Movimiento.DesCargo.CapturaMov.Filtro filtro)
+        {
+            var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Movimiento.DesCargo.CapturaMov.Ficha>();
+
+            var filtroDto = new DtoLibInventario.Movimiento.DesCargo.CapturaMov.Filtro()
+            {
+                idDeposito = filtro.idDeposito,
+                idProducto = filtro.idProducto,
+            };
+            var r01 = MyData.Producto_Movimiento_Descargo_Capture(filtroDto);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                rt.Mensaje = r01.Mensaje;
+                rt.Result = OOB.Enumerados.EnumResult.isError;
+                return rt;
+            }
+            var s = r01.Entidad.data;
+            var ent = new OOB.LibInventario.Movimiento.DesCargo.CapturaMov.Data()
+            {
+                autoDepart = s.autoDepart,
+                autoGrupo = s.autoGrupo,
+                autoPrd = s.autoPrd,
+                catPrd = s.catPrd,
+                codigoPrd = s.codigoPrd,
+                contEmp = s.contEmp,
+                costo = s.costo,
+                costoUnd = s.costoUnd,
+                decimales = s.decimales,
+                exFisica = s.exFisica,
+                nombreEmp = s.nombreEmp,
+                nombrePrd = s.nombrePrd,
+                autoTasa = s.autoTasa,
+                costoDivisa = s.costoDivisa,
+                descTasa = s.descTasa,
+                estatusDivisa = s.estatusDivisa,
+                valorTasa = s.valorTasa,
+            };
+            rt.Entidad = new OOB.LibInventario.Movimiento.DesCargo.CapturaMov.Ficha()
+            {
+                data = ent,
+            };
+            return rt;
+        }
+
     }
 
 }

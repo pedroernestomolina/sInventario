@@ -122,6 +122,9 @@
     <Compile Include="LibInventario\Movimiento\Cargo\Insertar\FichaPrdPrecioMargen.cs" />
     <Compile Include="LibInventario\Movimiento\Cargo\Insertar\FichaPrecio.cs" />
     <Compile Include="LibInventario\Movimiento\Cargo\Insertar\FichaPrecioMargen.cs" />
+    <Compile Include="LibInventario\Movimiento\DesCargo\CapturaMov\Data.cs" />
+    <Compile Include="LibInventario\Movimiento\DesCargo\CapturaMov\Ficha.cs" />
+    <Compile Include="LibInventario\Movimiento\DesCargo\CapturaMov\Filtro.cs" />
     <Compile Include="LibInventario\Movimiento\DesCargo\Insertar\Ficha.cs" />
     <Compile Include="LibInventario\Movimiento\DesCargo\Insertar\FichaMov.cs" />
     <Compile Include="LibInventario\Movimiento\DesCargo\Insertar\FichaMovDeposito.cs" />
@@ -252,6 +255,7 @@
     <Compile Include="ResultadoId.cs" />
     <Compile Include="ResultadoLista.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

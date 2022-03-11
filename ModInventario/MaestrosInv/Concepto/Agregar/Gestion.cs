@@ -107,7 +107,7 @@ namespace ModInventario.MaestrosInv.Concepto.Agregar
             var xmsg = "Abandonar Cambios ?";
             var msg = MessageBox.Show(xmsg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (msg == DialogResult.Yes)
-                _abandonarIsOk = true; ;
+                _abandonarIsOk = true;
         }
 
         public void setCodigo(string p)

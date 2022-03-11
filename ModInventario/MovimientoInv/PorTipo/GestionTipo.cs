@@ -8,10 +8,19 @@ using System.Threading.Tasks;
 namespace ModInventario.MovimientoInv.PorTipo
 {
 
-    public class GestionMov : ModInventario.MovimientoInv.GestionMov
+    public class GestionTipo : IGestionTipo
     {
 
-        public GestionMov()
+        public GestionTipo()
+        {
+        }
+
+
+        public void Inicializa()
+        {
+        }
+
+        public void Inicia()
         {
         }
 

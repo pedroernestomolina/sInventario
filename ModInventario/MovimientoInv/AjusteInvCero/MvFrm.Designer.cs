@@ -99,15 +99,15 @@
             this.L_ITEMS = new System.Windows.Forms.Label();
             this.panel37 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel38 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel43 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.BT_CAPTURAR_APLICAR = new System.Windows.Forms.Button();
             this.panel40 = new System.Windows.Forms.Panel();
             this.DGV_DETALLE = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.panel38 = new System.Windows.Forms.Panel();
-            this.panel18 = new System.Windows.Forms.Panel();
-            this.BT_CAPTURAR_APLICAR = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -155,12 +155,12 @@
             this.panel31.SuspendLayout();
             this.panel37.SuspendLayout();
             this.tableLayoutPanel14.SuspendLayout();
+            this.panel38.SuspendLayout();
             this.panel43.SuspendLayout();
             this.tableLayoutPanel18.SuspendLayout();
+            this.panel18.SuspendLayout();
             this.panel40.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_DETALLE)).BeginInit();
-            this.panel38.SuspendLayout();
-            this.panel18.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -1077,6 +1077,30 @@
             this.tableLayoutPanel14.Size = new System.Drawing.Size(983, 60);
             this.tableLayoutPanel14.TabIndex = 0;
             // 
+            // panel38
+            // 
+            this.panel38.BackColor = System.Drawing.Color.White;
+            this.panel38.Controls.Add(this.label3);
+            this.panel38.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel38.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel38.Location = new System.Drawing.Point(1, 1);
+            this.panel38.Margin = new System.Windows.Forms.Padding(1);
+            this.panel38.Name = "panel38";
+            this.panel38.Padding = new System.Windows.Forms.Padding(2);
+            this.panel38.Size = new System.Drawing.Size(698, 58);
+            this.panel38.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(2, 2);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(694, 54);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Lista de Productos A Actualizar Inventario A Cero(0)";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
             // panel43
             // 
             this.panel43.Controls.Add(this.tableLayoutPanel18);
@@ -1108,41 +1132,6 @@
             this.tableLayoutPanel18.Size = new System.Drawing.Size(283, 60);
             this.tableLayoutPanel18.TabIndex = 0;
             // 
-            // panel40
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.panel40, 2);
-            this.panel40.Controls.Add(this.DGV_DETALLE);
-            this.panel40.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel40.Location = new System.Drawing.Point(2, 196);
-            this.panel40.Margin = new System.Windows.Forms.Padding(1);
-            this.panel40.Name = "panel40";
-            this.panel40.Padding = new System.Windows.Forms.Padding(2);
-            this.panel40.Size = new System.Drawing.Size(983, 355);
-            this.panel40.TabIndex = 2;
-            // 
-            // DGV_DETALLE
-            // 
-            this.DGV_DETALLE.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_DETALLE.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DGV_DETALLE.Location = new System.Drawing.Point(2, 2);
-            this.DGV_DETALLE.Name = "DGV_DETALLE";
-            this.DGV_DETALLE.Size = new System.Drawing.Size(979, 351);
-            this.DGV_DETALLE.TabIndex = 0;
-            this.DGV_DETALLE.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DGV_DETALLE_CellFormatting);
-            // 
-            // panel38
-            // 
-            this.panel38.BackColor = System.Drawing.Color.White;
-            this.panel38.Controls.Add(this.label3);
-            this.panel38.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel38.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel38.Location = new System.Drawing.Point(1, 1);
-            this.panel38.Margin = new System.Windows.Forms.Padding(1);
-            this.panel38.Name = "panel38";
-            this.panel38.Padding = new System.Windows.Forms.Padding(2);
-            this.panel38.Size = new System.Drawing.Size(698, 58);
-            this.panel38.TabIndex = 0;
-            // 
             // panel18
             // 
             this.tableLayoutPanel18.SetColumnSpan(this.panel18, 5);
@@ -1168,16 +1157,27 @@
             this.BT_CAPTURAR_APLICAR.UseVisualStyleBackColor = true;
             this.BT_CAPTURAR_APLICAR.Click += new System.EventHandler(this.BT_CAPTURAR_APLICAR_Click);
             // 
-            // label3
+            // panel40
             // 
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(2, 2);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(694, 54);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Lista de Productos A Actualizar Inventario A Cero(0)";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.tableLayoutPanel1.SetColumnSpan(this.panel40, 2);
+            this.panel40.Controls.Add(this.DGV_DETALLE);
+            this.panel40.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel40.Location = new System.Drawing.Point(2, 196);
+            this.panel40.Margin = new System.Windows.Forms.Padding(1);
+            this.panel40.Name = "panel40";
+            this.panel40.Padding = new System.Windows.Forms.Padding(2);
+            this.panel40.Size = new System.Drawing.Size(983, 355);
+            this.panel40.TabIndex = 2;
+            // 
+            // DGV_DETALLE
+            // 
+            this.DGV_DETALLE.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_DETALLE.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DGV_DETALLE.Location = new System.Drawing.Point(2, 2);
+            this.DGV_DETALLE.Name = "DGV_DETALLE";
+            this.DGV_DETALLE.Size = new System.Drawing.Size(979, 351);
+            this.DGV_DETALLE.TabIndex = 0;
+            this.DGV_DETALLE.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DGV_DETALLE_CellFormatting);
             // 
             // MvFrm
             // 
@@ -1243,12 +1243,12 @@
             this.panel31.ResumeLayout(false);
             this.panel37.ResumeLayout(false);
             this.tableLayoutPanel14.ResumeLayout(false);
+            this.panel38.ResumeLayout(false);
             this.panel43.ResumeLayout(false);
             this.tableLayoutPanel18.ResumeLayout(false);
+            this.panel18.ResumeLayout(false);
             this.panel40.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_DETALLE)).EndInit();
-            this.panel38.ResumeLayout(false);
-            this.panel18.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

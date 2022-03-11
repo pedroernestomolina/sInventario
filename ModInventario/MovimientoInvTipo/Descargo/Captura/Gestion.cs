@@ -81,14 +81,6 @@ namespace ModInventario.MovimientoInvTipo.Descargo.Captura
 
         private bool CargarData()
         {
-            var r01 = Sistema.MyData.Configuracion_TasaCambioActual();
-            if (r01.Result == OOB.Enumerados.EnumResult.isError) 
-            {
-                Helpers.Msg.Error(r01.Mensaje);
-                return false;
-            }
-            _item.setTasaCambio(r01.Entidad);
-
             var lst= new List<ficha>();
             lst.Add(new ficha("1", "", "POR EMPQ/COMPRA"));
             lst.Add(new ficha("2", "", "POR UNIDAD"));
@@ -146,6 +138,11 @@ namespace ModInventario.MovimientoInvTipo.Descargo.Captura
             _gEmpaque.Limpiar();
             _gEmpaque.setFicha(ItemActual.EmpaqueFicha.id);
             _item = ItemActual;
+        }
+
+        public void setTasaCambio(decimal tasaCambio)
+        {
+            _item.setTasaCambio(tasaCambio);
         }
 
     }

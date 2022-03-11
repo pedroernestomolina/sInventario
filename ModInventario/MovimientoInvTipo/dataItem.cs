@@ -22,6 +22,9 @@ namespace ModInventario.MovimientoInvTipo
 
 
         public int Id { get; set; }
+        public data Data{ get { return _data; } }
+
+
         public decimal InfTasaCambio { get { return _tasaCambio; } }
         public string InfProductoDesc { get { return _data.InfProductoDesc; } }
         public string InfProductoEmpaCompra { get { return _data.InfProductoEmpaCompra; } }
@@ -31,7 +34,8 @@ namespace ModInventario.MovimientoInvTipo
         public decimal InfExistenciaActual { get { return _data.InfExistenciaActual; } }
         public bool InfProductoEsDivisa { get { return _data.InfProductoEsDivisa; } }
 
-
+        public decimal CostoNacional { get { return _data.costo; } }
+        public decimal CostoUndNacional { get { return _data.costoUnd; } }
         public ficha EmpaqueFicha { get { return _empaque; } }
         public string CodigoPrd { get { return _data.codigoPrd; } }
         public string DescripcionPrd { get { return _data.nombrePrd; } }
@@ -64,6 +68,7 @@ namespace ModInventario.MovimientoInvTipo
                 return rt; ; 
             } 
         }
+        public bool MovPorUnidad { get { return _empaque.id == "2" ? true : false; } }
 
 
         public dataItem() 
@@ -131,7 +136,13 @@ namespace ModInventario.MovimientoInvTipo
         private void Calcular()
         {
             _importe = _costo * _cantidad;
-            _cantidadUnd = _cantidad * _data.contEmp;
+            var cont=1;
+            if (_empaque != null)
+            {
+                if (_empaque.id == "1")
+                    cont = _data.contEmp;
+            }
+            _cantidadUnd = _cantidad * cont;
         }
 
     }

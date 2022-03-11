@@ -746,9 +746,8 @@ namespace ModInventario
             _gMovTipoLista = new ModInventario.MovimientoInvTipo.Lista();
             _gCapturaMovDescargo = new ModInventario.MovimientoInvTipo.Descargo.Captura.Gestion();
             _gMovTipoDescargo = new ModInventario.MovimientoInvTipo.Descargo.Gestion(
-                _gfiltroConcepto,
-                _gfiltroSucursal,
-                _gCapturaMovDescargo);
+                _gCapturaMovDescargo, 
+                _callMaestro);
             _gMovTipo = new ModInventario.MovimientoInvTipo.Gestion(
                 _gMovTipoLista,
                 _gAdmSelPrd);

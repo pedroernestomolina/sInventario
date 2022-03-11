@@ -48,6 +48,7 @@ namespace ModInventario.MovimientoInvTipo.Descargo.Captura
 
 
         void setItemEditar(dataItem ItemActual);
+        void setTasaCambio(decimal _tasaCambio);
 
     }
 

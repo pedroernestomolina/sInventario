@@ -28,6 +28,7 @@ namespace OOB.LibInventario.Movimiento.DesCargo.CapturaMov
         public string autoTasa { get; set; }
         public string descTasa { get; set; }
         public decimal valorTasa { get; set; }
+        public string fechaUltActualizacionCosto { get; set; }
         public bool esAdmDivisa { get { return estatusDivisa.Trim() == "1" ? true : false; } }
         public decimal costoDivisaUnd { get { return Math.Round(costoDivisa / contEmp, 2, MidpointRounding.AwayFromZero); } }
 
@@ -51,6 +52,7 @@ namespace OOB.LibInventario.Movimiento.DesCargo.CapturaMov
             autoTasa = "";
             descTasa = "";
             valorTasa = 0m;
+            fechaUltActualizacionCosto = "";
         }
 
     }

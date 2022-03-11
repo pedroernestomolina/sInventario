@@ -216,6 +216,7 @@ namespace ModInventario.MovimientoInvTipo.Descargo
             CB_DEP_ORIGEN.SelectedValue = _controlador.DepOrigenGetID;
             DGV_DETALLE.Refresh();
             _modoInicio = false;
+            IrFocoBusqueda();
         }
 
 
@@ -369,29 +370,23 @@ namespace ModInventario.MovimientoInvTipo.Descargo
         }
         private void Procesar()
         {
-            //_controlador.Procesar();
-            //if (_controlador.IsCerrarOk) 
-            //{
-            //    _controlador.Limpiar();
-
-            //    DGV_DETALLE.DataSource = null;
-            //    DGV_DETALLE.Rows.Clear();
-            //    Limpiar();
-            //    DGV_DETALLE.DataSource = _controlador.DetalleSource;
-            //    TB_AUTORIZADO_POR.Focus();
-
-            //    //Salir();
-            //}
+            _controlador.Procesar();
+            if (_controlador.ProcesarDocIsOk)
+            {
+                Limpiar();
+                ActualizarImporte();
+            }
         }
 
         private void L_CONCEPTO_Click(object sender, EventArgs e)
         {
             MaestroConcepto();
+            CB_CONCEPTO.SelectedIndex = -1;
         }
 
         private void MaestroConcepto()
         {
-            //_controlador.MaestroConcepto();
+            _controlador.ConceptoMaestro();
         }
 
         private void BT_PENDIENTE_Click(object sender, EventArgs e)
@@ -401,7 +396,7 @@ namespace ModInventario.MovimientoInvTipo.Descargo
         private void MvFrm_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
-            if (_controlador.ProcesarIsOk || _controlador.AbandonarIsOk)
+            if (_controlador.AbandonarIsOk)
             {
                 e.Cancel = false;
             }

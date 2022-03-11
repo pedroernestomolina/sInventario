@@ -13,7 +13,7 @@ namespace ModInventario.MovimientoInvTipo
     public interface IGestionTipo: IGestion
     {
 
-        bool ProcesarIsOk { get; }
+        bool ProcesarDocIsOk { get; }
         bool AbandonarIsOk { get; }
         string TipoMovimiento { get; }
         BindingSource ConceptoSource { get; }
@@ -61,6 +61,8 @@ namespace ModInventario.MovimientoInvTipo
         void EditarItem();
         void EliminarItem();
         void Limpiar();
+        void Procesar();
+        void ConceptoMaestro();
 
     }
 

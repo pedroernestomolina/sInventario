@@ -25,7 +25,6 @@ namespace ModInventario.MovimientoInvTipo
 
 
         public string TipoMovimiento { get { return _gTipo.TipoMovimiento; } }
-        public bool ProcesarIsOk { get { return false; } }
         public bool AbandonarIsOk { get { return _abandonarIsOk; } }
         public BindingSource ConceptoSource { get { return _gTipo.ConceptoSource; } }
         public BindingSource SucursalSource { get { return _gTipo.SucursalSource; } }
@@ -48,7 +47,7 @@ namespace ModInventario.MovimientoInvTipo
         public int CntItems { get { return _gLista.CntItem; } }
         public bool EliminarIsOk { get { return _eliminarIsOk; } }
         public bool EditarIsOk { get { return _editarIsOk; } }
-
+        public bool ProcesarDocIsOk { get { return _gTipo.ProcesarDocIsOk; } }
 
 
         public Gestion(
@@ -246,6 +245,31 @@ namespace ModInventario.MovimientoInvTipo
                     _gLista.setItemAgregar(item);
                     _editarIsOk = true;
                 }
+            }
+        }
+
+
+        public void ConceptoMaestro()
+        {
+            _gTipo.ConceptoMaestro();
+        }
+
+
+        public void Procesar()
+        {
+            if (_gLista.CntItem == 0) 
+            {
+                Helpers.Msg.Alerta("NO HAY ITEMS QUE PROCESAR");
+                return;
+            }
+
+            _gTipo.ProcesarDoc(_gLista.Items, TotalImporte);
+            if (_gTipo.ProcesarDocIsOk)
+            {
+                var IdDocGenerado = _gTipo.IdDocumentoGenerado;
+                _gTipo.Limpiar();
+                _gLista.Limpiar();
+                Helpers.VisualizarDocumento.CargarVisualizarDocumento(IdDocGenerado);
             }
         }
 

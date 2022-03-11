@@ -1253,6 +1253,17 @@ namespace DataProvInventario.Data
                 return rt;
             }
             var s = r01.Entidad.data;
+            var _fechaNula=new DateTime(2000,01,01);
+            var _fechaUltActCosto = "";
+            if (s.fechaUltActCosto == _fechaNula)
+            {
+                _fechaUltActCosto = "";
+            }
+            else 
+            {
+                _fechaUltActCosto = s.fechaUltActCosto.ToShortDateString();
+            }
+
             var ent = new OOB.LibInventario.Movimiento.DesCargo.CapturaMov.Data()
             {
                 autoDepart = s.autoDepart,
@@ -1272,6 +1283,7 @@ namespace DataProvInventario.Data
                 descTasa = s.descTasa,
                 estatusDivisa = s.estatusDivisa,
                 valorTasa = s.valorTasa,
+                fechaUltActualizacionCosto = _fechaUltActCosto,
             };
             rt.Entidad = new OOB.LibInventario.Movimiento.DesCargo.CapturaMov.Ficha()
             {

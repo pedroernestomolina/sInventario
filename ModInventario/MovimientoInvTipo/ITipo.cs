@@ -38,12 +38,16 @@ namespace ModInventario.MovimientoInvTipo
 
 
         void BuscarIdPrd(string p);
+        void EditarItem(dataItem ItemActual);
 
 
+        void ConceptoMaestro();
         void Limpiar();
 
 
-        void EditarItem(dataItem ItemActual);
+        void ProcesarDoc(List<dataItem> list, decimal TotalImporte);
+        bool ProcesarDocIsOk { get; }
+        string IdDocumentoGenerado { get; }
 
     }
 

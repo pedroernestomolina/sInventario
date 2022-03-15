@@ -29,13 +29,14 @@ namespace ModInventario.MovimientoInvTipo
         public BindingSource ConceptoSource { get { return _gTipo.ConceptoSource; } }
         public BindingSource SucursalSource { get { return _gTipo.SucursalSource; } }
         public BindingSource DepOrigenSource{ get { return _gTipo.DepOrigenSource; } }
-        public BindingSource DepDestinoSource { get { return null; } }
+        public BindingSource DepDestinoSource { get { return _gTipo.DepDestinoSource; } }
         public string Motivo { get { return _gTipo.Motivo; } }
         public string AutorizadoPor { get { return _gTipo.AutorizadoPor; } }
         public DateTime FechaSistema { get { return _fechaSistema; } }
         public string ConceptoGetId { get { return _gTipo.ConceptoGetId; } }
         public string SucursalGetId { get { return _gTipo.SucursalGetId; } }
         public string DepOrigenGetID { get { return _gTipo.DepOrigenGetID; } }
+        public string DepDestinoGetID { get { return _gTipo.DepDestinoGetID; } }
         public bool HabilitarCambio { get { return _gLista.CntItem==0; } }
         public enumerados.enumMetBusquedaPrd MetBusqPrd { get { return (enumerados.enumMetBusquedaPrd)_gBusqPrd.MetBusqueda; } }
         public bool BusquedaIsOk { get { return _busquedaIsOk; } }
@@ -157,6 +158,10 @@ namespace ModInventario.MovimientoInvTipo
         public void setDepOrigen(string id)
         {
             _gTipo.setDepOrigen(id);
+        }
+        public void setDepDestino(string id)
+        {
+            _gTipo.setDepDestino(id);
         }
 
 

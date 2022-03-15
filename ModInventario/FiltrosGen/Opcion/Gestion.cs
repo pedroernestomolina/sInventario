@@ -47,9 +47,12 @@ namespace ModInventario.FiltrosGen.Opcion
         public void setData(List<ficha> dat)
         {
             _lst.Clear();
-            foreach (var rg in dat)
+            if (dat != null) 
             {
-                _lst.Add(rg);
+                foreach (var rg in dat)
+                {
+                    _lst.Add(rg);
+                }
             }
             _bs.DataSource = _lst;
             _bs.CurrencyManager.Refresh();

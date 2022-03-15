@@ -110,6 +110,11 @@
     <Compile Include="LibInventario\Movimiento\Anular\Descargo\Ficha.cs" />
     <Compile Include="LibInventario\Movimiento\Anular\FichaBase.cs" />
     <Compile Include="LibInventario\Movimiento\Anular\Traslado\Ficha.cs" />
+    <Compile Include="LibInventario\Movimiento\CapturaMov\BaseData.cs" />
+    <Compile Include="LibInventario\Movimiento\CapturaMov\BaseFiltro.cs" />
+    <Compile Include="LibInventario\Movimiento\Cargo\CapturaMov\Data.cs" />
+    <Compile Include="LibInventario\Movimiento\Cargo\CapturaMov\Ficha.cs" />
+    <Compile Include="LibInventario\Movimiento\Cargo\CapturaMov\Filtro.cs" />
     <Compile Include="LibInventario\Movimiento\Cargo\Insertar\Ficha.cs" />
     <Compile Include="LibInventario\Movimiento\Cargo\Insertar\FichaMov.cs" />
     <Compile Include="LibInventario\Movimiento\Cargo\Insertar\FichaMovDeposito.cs" />
@@ -137,6 +142,9 @@
     <Compile Include="LibInventario\Movimiento\Insertar\BaseFichaMovKardex.cs" />
     <Compile Include="LibInventario\Movimiento\Lista\Ficha.cs" />
     <Compile Include="LibInventario\Movimiento\Lista\Filtro.cs" />
+    <Compile Include="LibInventario\Movimiento\Traslado\CapturaMov\Data.cs" />
+    <Compile Include="LibInventario\Movimiento\Traslado\CapturaMov\Ficha.cs" />
+    <Compile Include="LibInventario\Movimiento\Traslado\CapturaMov\Filtro.cs" />
     <Compile Include="LibInventario\Movimiento\Traslado\Capturar\ProductoPorDebajoNivelMinimo\Ficha.cs" />
     <Compile Include="LibInventario\Movimiento\Traslado\Capturar\ProductoPorDebajoNivelMinimo\Filtro.cs" />
     <Compile Include="LibInventario\Movimiento\Traslado\Consultar\Filtro.cs" />

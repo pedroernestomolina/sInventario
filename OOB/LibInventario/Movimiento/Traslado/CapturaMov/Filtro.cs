@@ -5,16 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace OOB.LibInventario.Movimiento.DesCargo.CapturaMov
+namespace OOB.LibInventario.Movimiento.Traslado.CapturaMov
 {
 
     public class Filtro: Movimiento.CapturaMov.BaseFiltro
     {
 
+        public string IdDepDestino { get; set; }
+
+
         public Filtro() 
         {
             idProducto = "";
             idDeposito = "";
+            IdDepDestino = "";
         }
 
     }

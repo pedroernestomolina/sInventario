@@ -23,6 +23,7 @@ namespace ModInventario.MovimientoInvTipo
         string ConceptoGetId { get; }
         string SucursalGetId { get; }
         string DepOrigenGetID { get; }
+        string DepDestinoGetID { get; }
         string Motivo { get; }
         string AutorizadoPor { get; }
         DateTime FechaSistema { get; }
@@ -48,6 +49,7 @@ namespace ModInventario.MovimientoInvTipo
         void setSucursal(string id);
         void setConcepto(string id);
         void setDepOrigen(string id);
+        void setDepDestino(string p);
 
 
         void setCadenaBusqueda(string p);

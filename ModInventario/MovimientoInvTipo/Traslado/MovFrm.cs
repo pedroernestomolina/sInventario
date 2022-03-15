@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace ModInventario.MovimientoInvTipo.Descargo
+namespace ModInventario.MovimientoInvTipo.Traslado
 {
     public partial class MovFrm : Form
     {
@@ -122,6 +122,9 @@ namespace ModInventario.MovimientoInvTipo.Descargo
 
             CB_DEP_ORIGEN.DisplayMember = "desc";
             CB_DEP_ORIGEN.ValueMember = "id";
+
+            CB_DEP_DESTINO.DisplayMember = "desc";
+            CB_DEP_DESTINO.ValueMember = "id";
         }
 
         public void setControlador(IGestionTipo ctr)
@@ -154,9 +157,11 @@ namespace ModInventario.MovimientoInvTipo.Descargo
             CB_CONCEPTO.DataSource = _controlador.ConceptoSource;
             CB_SUCURSAL.DataSource = _controlador.SucursalSource;
             CB_DEP_ORIGEN.DataSource = _controlador.DepOrigenSource;
+            CB_DEP_DESTINO.DataSource = _controlador.DepDestinoSource;
             CB_CONCEPTO.SelectedValue = _controlador.ConceptoGetId;
             CB_SUCURSAL.SelectedValue = _controlador.SucursalGetId;
             CB_DEP_ORIGEN.SelectedValue = _controlador.DepOrigenGetID;
+            CB_DEP_DESTINO.SelectedValue = _controlador.DepDestinoGetID;
             _modoInicio = false;
             switch (_controlador.MetBusqPrd)
             {
@@ -172,21 +177,6 @@ namespace ModInventario.MovimientoInvTipo.Descargo
             }
             ActualizarImporte();
             IrFocoBusqueda();
-
-
-            //switch (_controlador.EnumTipoMovimiento)
-            //{
-            //    case enumerados.enumTipoMovimiento.Cargo:
-            //        P_TIPO_MOVIMIENTO.BackColor = Color.Green;
-            //        break;
-            //    case enumerados.enumTipoMovimiento.Descargo:
-            //        P_TIPO_MOVIMIENTO.BackColor = Color.Red;
-            //        break;
-            //    case enumerados.enumTipoMovimiento.Traslado:
-            //    case enumerados.enumTipoMovimiento.Ajuste:
-            //        P_TIPO_MOVIMIENTO.BackColor = Color.Orange;
-            //        break;
-            //}
         }
 
 
@@ -215,6 +205,7 @@ namespace ModInventario.MovimientoInvTipo.Descargo
             CB_CONCEPTO.SelectedValue = _controlador.ConceptoGetId;
             CB_SUCURSAL.SelectedValue = _controlador.SucursalGetId;
             CB_DEP_ORIGEN.SelectedValue = _controlador.DepOrigenGetID;
+            CB_DEP_DESTINO.SelectedValue = _controlador.DepDestinoGetID;
             DGV_DETALLE.Refresh();
             _modoInicio = false;
             IrFocoBusqueda();
@@ -272,6 +263,26 @@ namespace ModInventario.MovimientoInvTipo.Descargo
             {
                 _modoInicio = true;
                 CB_DEP_ORIGEN.SelectedValue = _controlador.DepOrigenGetID;
+                _modoInicio = false;
+            }
+        }
+        private void CB_DEP_DESTINO_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_modoInicio)
+                return;
+
+            if (_controlador.HabilitarCambio)
+            {
+                _controlador.setDepDestino("");
+                if (CB_DEP_DESTINO.SelectedIndex != -1)
+                {
+                    _controlador.setDepDestino(CB_DEP_DESTINO.SelectedValue.ToString());
+                }
+            }
+            else
+            {
+                _modoInicio = true;
+                CB_DEP_DESTINO.SelectedValue = _controlador.DepDestinoGetID;
                 _modoInicio = false;
             }
         }

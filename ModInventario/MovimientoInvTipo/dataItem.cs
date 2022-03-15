@@ -34,8 +34,6 @@ namespace ModInventario.MovimientoInvTipo
         public decimal InfExistenciaActual { get { return _data.InfExistenciaActual; } }
         public bool InfProductoEsDivisa { get { return _data.InfProductoEsDivisa; } }
 
-        public decimal CostoNacional { get { return _data.costo; } }
-        public decimal CostoUndNacional { get { return _data.costoUnd; } }
         public ficha EmpaqueFicha { get { return _empaque; } }
         public string CodigoPrd { get { return _data.codigoPrd; } }
         public string DescripcionPrd { get { return _data.nombrePrd; } }
@@ -69,6 +67,28 @@ namespace ModInventario.MovimientoInvTipo
             } 
         }
         public bool MovPorUnidad { get { return _empaque.id == "2" ? true : false; } }
+        public decimal CostoNacional 
+        {
+            get 
+            {
+                var rt = _costo;
+                if (EsAdmDivisa)
+                    rt *= _tasaCambio;
+                rt = Math.Round(rt, 2, MidpointRounding.AwayFromZero);
+                return rt;
+            } 
+        }
+        public decimal CostoUndNacional 
+        { 
+            get 
+            {
+                var rt = _costoUnd;
+                if (EsAdmDivisa)
+                    rt *= _tasaCambio;
+                rt = Math.Round(rt, 2, MidpointRounding.AwayFromZero);
+                return rt;
+            } 
+        }
 
 
         public dataItem() 
@@ -140,9 +160,12 @@ namespace ModInventario.MovimientoInvTipo
             if (_empaque != null)
             {
                 if (_empaque.id == "1")
+                {
                     cont = _data.contEmp;
+                }
             }
             _cantidadUnd = _cantidad * cont;
+            _costoUnd = _costo / cont ;
         }
 
     }

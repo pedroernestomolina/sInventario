@@ -340,6 +340,21 @@
     <Compile Include="MaestrosInv\UnidadEmpaque\Editar\Gestion.cs" />
     <Compile Include="MaestrosInv\UnidadEmpaque\Gestion.cs" />
     <Compile Include="MaestrosInv\UnidadEmpaque\IAgregarEditar.cs" />
+    <Compile Include="MovimientoInvTipo\Cargo\Captura\EntradaFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MovimientoInvTipo\Cargo\Captura\EntradaFrm.Designer.cs">
+      <DependentUpon>EntradaFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MovimientoInvTipo\Cargo\Captura\Gestion.cs" />
+    <Compile Include="MovimientoInvTipo\Cargo\Captura\IMovmiento.cs" />
+    <Compile Include="MovimientoInvTipo\Cargo\Gestion.cs" />
+    <Compile Include="MovimientoInvTipo\Cargo\MovFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MovimientoInvTipo\Cargo\MovFrm.Designer.cs">
+      <DependentUpon>MovFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MovimientoInvTipo\data.cs" />
     <Compile Include="MovimientoInvTipo\dataItem.cs" />
     <Compile Include="MovimientoInvTipo\Descargo\Captura\EntradaFrm.cs">
@@ -362,7 +377,23 @@
     <Compile Include="MovimientoInvTipo\IGestionTipo.cs" />
     <Compile Include="MovimientoInvTipo\ILista.cs" />
     <Compile Include="MovimientoInvTipo\ITipo.cs" />
+    <Compile Include="MovimientoInvTipo\ITipoxDev.cs" />
     <Compile Include="MovimientoInvTipo\Lista.cs" />
+    <Compile Include="MovimientoInvTipo\Traslado\Captura\EntradaFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MovimientoInvTipo\Traslado\Captura\EntradaFrm.Designer.cs">
+      <DependentUpon>EntradaFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MovimientoInvTipo\Traslado\Captura\Gestion.cs" />
+    <Compile Include="MovimientoInvTipo\Traslado\Captura\IMovmiento.cs" />
+    <Compile Include="MovimientoInvTipo\Traslado\Gestion.cs" />
+    <Compile Include="MovimientoInvTipo\Traslado\MovFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MovimientoInvTipo\Traslado\MovFrm.Designer.cs">
+      <DependentUpon>MovFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MovimientoInv\AjusteInvCero\Gestion.cs" />
     <Compile Include="MovimientoInv\AjusteInvCero\GestionItem.cs" />
     <Compile Include="MovimientoInv\AjusteInvCero\Iitem.cs" />
@@ -845,10 +876,22 @@
     <EmbeddedResource Include="Kardex\Movimiento\KardexFrm.resx">
       <DependentUpon>KardexFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MovimientoInvTipo\Cargo\Captura\EntradaFrm.resx">
+      <DependentUpon>EntradaFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MovimientoInvTipo\Cargo\MovFrm.resx">
+      <DependentUpon>MovFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MovimientoInvTipo\Descargo\Captura\EntradaFrm.resx">
       <DependentUpon>EntradaFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MovimientoInvTipo\Descargo\MovFrm.resx">
+      <DependentUpon>MovFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MovimientoInvTipo\Traslado\Captura\EntradaFrm.resx">
+      <DependentUpon>EntradaFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MovimientoInvTipo\Traslado\MovFrm.resx">
       <DependentUpon>MovFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MovimientoInv\AjusteInvCero\MvFrm.resx">

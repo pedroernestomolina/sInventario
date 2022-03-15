@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace ModInventario.MovimientoInvTipo.Descargo
+namespace ModInventario.MovimientoInvTipo.Cargo
 {
     public partial class MovFrm : Form
     {

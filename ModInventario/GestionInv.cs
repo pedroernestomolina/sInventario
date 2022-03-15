@@ -92,6 +92,14 @@ namespace ModInventario
         private MaestrosInv.IMaestro _gMaestro;
         private Helpers.Maestros.ICallMaestros _callMaestro;
         //
+        private ModInventario.MovimientoInvTipo.IGestionTipo _gMovTipo;
+        private ModInventario.MovimientoInvTipo.ILista _gMovTipoLista;
+        private ModInventario.MovimientoInvTipo.ITipo _gMovTipoDescargo;
+        private ModInventario.MovimientoInvTipo.Descargo.Captura.ICaptura _gCapturaMovDescargo;
+        private ModInventario.MovimientoInvTipo.ITipo _gMovTipoCargo;
+        private ModInventario.MovimientoInvTipo.Cargo.Captura.ICaptura _gCapturaMovCargo;
+        private ModInventario.MovimientoInvTipo.ITipoxDev _gMovTipoTraslado;
+        private ModInventario.MovimientoInvTipo.Traslado.Captura.ICaptura _gCapturaMovTraslado;
 
 
         public string Version { get { return "Ver. " + Application.ProductVersion; } }
@@ -224,7 +232,28 @@ namespace ModInventario
                 _gMtMarca,
                 _gMtUnidadEmpq,
                 _seguridad);
+            // MOV INVENTARIO
+            _gMovTipoLista = new ModInventario.MovimientoInvTipo.Lista();
+            _gMovTipo = new ModInventario.MovimientoInvTipo.Gestion(
+                _gMovTipoLista,
+                _gAdmSelPrd);
+            //MOV DESCARGO INVENTARIO
+            _gCapturaMovDescargo = new ModInventario.MovimientoInvTipo.Descargo.Captura.Gestion();
+            _gMovTipoDescargo = new ModInventario.MovimientoInvTipo.Descargo.Gestion(
+                _gCapturaMovDescargo,
+                _callMaestro);
+            //MOV CARGO INVENTARIO
+            _gCapturaMovCargo = new ModInventario.MovimientoInvTipo.Cargo.Captura.Gestion();
+            _gMovTipoCargo = new ModInventario.MovimientoInvTipo.Cargo.Gestion(
+                _gCapturaMovCargo,
+                _callMaestro);
+            //MOV TRASLADO INVENTARIO
+            _gCapturaMovTraslado= new ModInventario.MovimientoInvTipo.Traslado.Captura.Gestion();
+            _gMovTipoTraslado = new ModInventario.MovimientoInvTipo.Traslado.Gestion(
+                _gCapturaMovTraslado,
+                _callMaestro);
             //
+
 
             _gestionBusqueda = new Buscar.Gestion(
                 _gFiltroAdmProducto, 
@@ -307,47 +336,6 @@ namespace ModInventario
             if (_gestionBusqueda.HayItemSeleccionado)
             {
                 MessageBox.Show(_gestionBusqueda.Item.Producto);
-            }
-        }
-
-        public void MovimientoCargo()
-        {
-            var r00 = Sistema.MyData.Permiso_MovimientoCargoInventario(Sistema.UsuarioP.autoGru);
-            if (r00.Result == OOB.Enumerados.EnumResult.isError) 
-            {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-
-            if (_seguridad.Verificar(r00.Entidad))
-            {
-                var ctr = new Movimiento.Cargo.Gestion();
-                ctr.Inicializa();
-
-                _gestionMov.Inicializa();
-                _gestionMov.setGestion(ctr);
-                _gestionMov.Inicia();
-                _gestionMov.Finaliza();
-            }
-        }
-    
-        public void MovimientoTraslado()
-        {
-            var r00 = Sistema.MyData.Permiso_MovimientoTrasladoInventario(Sistema.UsuarioP.autoGru);
-            if (r00.Result == OOB.Enumerados.EnumResult.isError) 
-            {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-            if (_seguridad.Verificar(r00.Entidad))
-            {
-                var ctr = new Movimiento.Traslado.Gestion();
-                ctr.Inicializa();
-
-                _gestionMov.Inicializa();
-                _gestionMov.setGestion(ctr);
-                _gestionMov.Inicia();
-                _gestionMov.Finaliza();
             }
         }
 
@@ -650,28 +638,6 @@ namespace ModInventario
             }
         }
 
-        public void TrasladoPorDevolucion()
-        {
-            var r00 = Sistema.MyData.Permiso_MovimientoTrasladoPorDevolucion(Sistema.UsuarioP.autoGru);
-            if (r00.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-            if (_seguridad.Verificar(r00.Entidad))
-            {
-                var ctr= new Movimiento.TrasladoDevolucion.Gestion();
-                ctr.Inicializa();
-                ctr.setConcepto("0000000034");
-
-                _gestionMov.Inicializa();
-                _gestionMov.setGestion(ctr);
-                _gestionMov.setHabilitarConcepto(false);
-                _gestionMov.Inicia();
-                _gestionMov.Finaliza();
-            }
-        }
-
         public void VisorPrecios()
         {
             _gestionVisorPrecio.Inicializa();
@@ -738,20 +704,6 @@ namespace ModInventario
 
         public void MovimientoDesCargo()
         {
-            ModInventario.MovimientoInvTipo.IGestionTipo _gMovTipo;
-            ModInventario.MovimientoInvTipo.ILista _gMovTipoLista;
-            ModInventario.MovimientoInvTipo.ITipo _gMovTipoDescargo;
-            ModInventario.MovimientoInvTipo.Descargo.Captura.ICaptura _gCapturaMovDescargo;
-
-            _gMovTipoLista = new ModInventario.MovimientoInvTipo.Lista();
-            _gCapturaMovDescargo = new ModInventario.MovimientoInvTipo.Descargo.Captura.Gestion();
-            _gMovTipoDescargo = new ModInventario.MovimientoInvTipo.Descargo.Gestion(
-                _gCapturaMovDescargo, 
-                _callMaestro);
-            _gMovTipo = new ModInventario.MovimientoInvTipo.Gestion(
-                _gMovTipoLista,
-                _gAdmSelPrd);
-
             var r00 = Sistema.MyData.Permiso_MovimientoDescargoInventario(Sistema.UsuarioP.autoGru);
             if (r00.Result == OOB.Enumerados.EnumResult.isError)
             {
@@ -765,16 +717,76 @@ namespace ModInventario
                 _gMovTipo.setTipoMov(_gMovTipoDescargo);
                 _gMovTipo.Inicia();
                 _gMovTipo.Finaliza();
+            }
+        }
+
+        public void MovimientoCargo()
+        {
+            var r00 = Sistema.MyData.Permiso_MovimientoCargoInventario(Sistema.UsuarioP.autoGru);
+            if (r00.Result == OOB.Enumerados.EnumResult.isError)
+            {
+                Helpers.Msg.Error(r00.Mensaje);
+                return;
+            }
+
+            if (_seguridad.Verificar(r00.Entidad))
+            {
+                _gMovTipoCargo.Inicializa();
+                _gMovTipo.Inicializa();
+                _gMovTipo.setTipoMov(_gMovTipoCargo);
+                _gMovTipo.Inicia();
+                _gMovTipo.Finaliza();
+            }
+        }
+
+        public void MovimientoTraslado()
+        {
+            var r00 = Sistema.MyData.Permiso_MovimientoTrasladoInventario(Sistema.UsuarioP.autoGru);
+            if (r00.Result == OOB.Enumerados.EnumResult.isError)
+            {
+                Helpers.Msg.Error(r00.Mensaje);
+                return;
+            }
+            if (_seguridad.Verificar(r00.Entidad))
+            {
+                _gMovTipoTraslado.Inicializa();
+                _gMovTipoTraslado.setActivarPorDevolucion(false);
+                _gMovTipo.Inicializa();
+                _gMovTipo.setTipoMov(_gMovTipoTraslado);
+                _gMovTipo.Inicia();
+                _gMovTipo.Finaliza();
+            }
+        }
+
+        public void TrasladoPorDevolucion()
+        {
+            var r00 = Sistema.MyData.Permiso_MovimientoTrasladoPorDevolucion(Sistema.UsuarioP.autoGru);
+            if (r00.Result == OOB.Enumerados.EnumResult.isError)
+            {
+                Helpers.Msg.Error(r00.Mensaje);
+                return;
+            }
+            if (_seguridad.Verificar(r00.Entidad))
+            {
+                _gMovTipoTraslado.Inicializa();
+                _gMovTipoTraslado.setActivarPorDevolucion(true);
+                _gMovTipo.Inicializa();
+                _gMovTipo.setTipoMov(_gMovTipoTraslado);
+                _gMovTipo.Inicia();
+                _gMovTipo.Finaliza();
 
 
-                //var ctr = new Movimiento.Descargo.Gestion();
+                //var ctr = new Movimiento.TrasladoDevolucion.Gestion();
                 //ctr.Inicializa();
+                //ctr.setConcepto("0000000034");
                 //_gestionMov.Inicializa();
                 //_gestionMov.setGestion(ctr);
+                //_gestionMov.setHabilitarConcepto(false);
                 //_gestionMov.Inicia();
                 //_gestionMov.Finaliza();
             }
         }
+
 
     }
 

@@ -5,11 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace OOB.LibInventario.Movimiento.DesCargo.CapturaMov
+namespace OOB.LibInventario.Movimiento.Cargo.CapturaMov
 {
 
     public class Data:Movimiento.CapturaMov.BaseData
     {
+
 
         public Data()
         {

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace OOB.LibInventario.Movimiento.DesCargo.CapturaMov
+namespace OOB.LibInventario.Movimiento.Cargo.CapturaMov
 {
 
     public class Filtro: Movimiento.CapturaMov.BaseFiltro

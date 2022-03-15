@@ -17,11 +17,13 @@ namespace ModInventario.MovimientoInvTipo
         BindingSource ConceptoSource { get; }
         BindingSource SucursalSource { get; }
         BindingSource DepOrigenSource { get; }
+        BindingSource DepDestinoSource { get; }
         string AutorizadoPor { get; }
         string Motivo { get; }
         string ConceptoGetId { get; }
         string SucursalGetId { get; }
         string DepOrigenGetID { get; }
+        string DepDestinoGetID { get; }
         dataItem ItemAgregar { get;  }
 
 
@@ -35,6 +37,7 @@ namespace ModInventario.MovimientoInvTipo
         void setSucursal(string id);
         void setConcepto(string id);
         void setDepOrigen(string id);
+        void setDepDestino(string id);
 
 
         void BuscarIdPrd(string p);
@@ -48,6 +51,7 @@ namespace ModInventario.MovimientoInvTipo
         void ProcesarDoc(List<dataItem> list, decimal TotalImporte);
         bool ProcesarDocIsOk { get; }
         string IdDocumentoGenerado { get; }
+
 
     }
 

@@ -162,7 +162,6 @@ namespace ModInventario
         {
             MovimientoCargo();
         }
-
         private void MovimientoCargo()
         {
             _controlador.MovimientoCargo();
@@ -181,7 +180,6 @@ namespace ModInventario
         {
             MovimientoTraslado();
         }
-
         private void MovimientoTraslado()
         {
             _controlador.MovimientoTraslado();
@@ -411,7 +409,6 @@ namespace ModInventario
         {
             TrasladoPorDevolucion();
         }
-
         private void TrasladoPorDevolucion()
         {
             _controlador.TrasladoPorDevolucion();

@@ -54,6 +54,9 @@
     <Compile Include="LibInventario\Concepto\Ficha.cs" />
     <Compile Include="LibInventario\Configuracion\BusquedaPredeterminada\Editar\Ficha.cs" />
     <Compile Include="LibInventario\Configuracion\CostoEdad\Editar\Ficha.cs" />
+    <Compile Include="LibInventario\Configuracion\DepositoConceptoDevMerc\BaseFicha.cs" />
+    <Compile Include="LibInventario\Configuracion\DepositoConceptoDevMerc\Captura\Ficha.cs" />
+    <Compile Include="LibInventario\Configuracion\DepositoConceptoDevMerc\Editar\Ficha.cs" />
     <Compile Include="LibInventario\Configuracion\DepositoPreDeterminado\Ficha.cs" />
     <Compile Include="LibInventario\Configuracion\DepositoPreDeterminado\Item.cs" />
     <Compile Include="LibInventario\Configuracion\Enumerados.cs" />

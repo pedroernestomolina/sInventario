@@ -1181,6 +1181,9 @@ namespace DataProvInventario.Data
                             fechaUltActualizacion = s.fechaUltActualizacion.Date,
                             tasaIva = s.tasaIva,
                             tasaIvaNombre = s.tasaIvaNombre,
+                            //
+                            autoTasa = s.tasaAuto,
+                            costo = s.costo,
                         };
                     }).ToList();
                 }

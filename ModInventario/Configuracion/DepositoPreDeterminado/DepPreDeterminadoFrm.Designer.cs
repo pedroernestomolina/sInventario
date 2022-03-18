@@ -160,6 +160,7 @@
             // 
             // label1
             // 
+            this.label1.BackColor = System.Drawing.Color.Orange;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(2, 2);

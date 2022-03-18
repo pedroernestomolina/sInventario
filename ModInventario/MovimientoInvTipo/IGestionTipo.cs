@@ -66,6 +66,19 @@ namespace ModInventario.MovimientoInvTipo
         void Procesar();
         void ConceptoMaestro();
 
+
+        void CapturarDataAplicarAjusteInvCero();
+        bool CapturarDataAplicarAjusteInvCeroIsOk { get; }
+
+
+        BindingSource DepartamentoSource { get; }
+        string DepartamentoGetId { get; }
+        void setDepartamento(string id);
+
+
+        void CapturarProductosConNivelMinimo();
+        bool CapturarProductosConNivelMinimoIsOk { get; }
+
     }
 
 }

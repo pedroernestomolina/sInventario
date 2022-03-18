@@ -26,7 +26,7 @@ namespace ModInventario.MovimientoInvTipo.Descargo
         private ModInventario.FiltrosGen.IOpcion _gSucursal;
         private ModInventario.FiltrosGen.IOpcion _gDepOrigen;
         private Helpers.Maestros.ICallMaestros _gMaestro;
-        private Captura.ICaptura _gCapturaMov;
+        private ICaptura _gCapturaMov;
 
 
         public string TipoMovimiento { get { return "DESCARGO"; } }
@@ -47,7 +47,7 @@ namespace ModInventario.MovimientoInvTipo.Descargo
 
 
         public Gestion(
-            Captura.ICaptura ctrCapturaMov,
+            ICaptura ctrCapturaMov,
             Helpers.Maestros.ICallMaestros ctrMaestro)
         {
             _gCapturaMov = ctrCapturaMov;
@@ -452,6 +452,26 @@ namespace ModInventario.MovimientoInvTipo.Descargo
 
             return true;
         }
+
+
+        public bool CapturarDataAplicarAjusteInvCeroIsOk { get { return false; } }
+        public List<dataItem> ListaItemAplicarAjusteInvCero { get { return null; } }
+        public void CapturarDataAplicarAjusteInvCero()
+        {
+        }
+
+        public BindingSource DepatamentoSource { get { return null; } }
+        public string DepartamentoGetId { get { return ""; } }
+        public void setDepartamento(string id)
+        {
+        }
+
+        public bool CapturarProductosConNivelMinimoIsOk { get { return false; } }
+        public List<dataItem> ListaItemNivelMinimo { get { return null; } }
+        public void CapturarProductosConNivelMinimo()
+        {
+        }
+
 
     }
 

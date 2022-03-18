@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace ModInventario.MovimientoInvTipo.Cargo
+namespace ModInventario.MovimientoInvTipo.Ajuste
 {
     
     public class Gestion: ITipo
@@ -26,10 +26,10 @@ namespace ModInventario.MovimientoInvTipo.Cargo
         private ModInventario.FiltrosGen.IOpcion _gSucursal;
         private ModInventario.FiltrosGen.IOpcion _gDepOrigen;
         private Helpers.Maestros.ICallMaestros _gMaestro;
-        private ICaptura _gCapturaMov;
+        private ICapturaMovAjuste _gCapturaMov;
 
 
-        public string TipoMovimiento { get { return "CARGO"; } }
+        public string TipoMovimiento { get { return "AJUSTE INVENTARIO"; } }
         public bool IsOk { get { return _isOk; } }
         public BindingSource ConceptoSource { get { return _gConcepto.Source; } }
         public BindingSource SucursalSource { get { return _gSucursal.Source; } }
@@ -47,7 +47,7 @@ namespace ModInventario.MovimientoInvTipo.Cargo
 
 
         public Gestion(
-            ICaptura ctrCapturaMov,
+            ICapturaMovAjuste ctrCapturaMov,
             Helpers.Maestros.ICallMaestros ctrMaestro)
         {
             _gCapturaMov = ctrCapturaMov;
@@ -292,7 +292,7 @@ namespace ModInventario.MovimientoInvTipo.Cargo
 
         private void RegistrarDoc(List<dataItem> list, decimal totalImporte)
         {
-            var r00 = Sistema.MyData.Sistema_TipoDocumento_GetFichaByTipo(OOB.LibInventario.Sistema.TipoDocumento.enumerados.enumTipoDocumento.CARGO);
+            var r00 = Sistema.MyData.Sistema_TipoDocumento_GetFichaByTipo(OOB.LibInventario.Sistema.TipoDocumento.enumerados.enumTipoDocumento.AJUSTE);
             if (r00.Result == OOB.Enumerados.EnumResult.isError)
             {
                 Helpers.Msg.Error(r00.Mensaje);
@@ -300,7 +300,7 @@ namespace ModInventario.MovimientoInvTipo.Cargo
             }
             var _docTipo = r00.Entidad;
             var _mDivisa = Math.Round(totalImporte / _tasaCambio, 2, MidpointRounding.AwayFromZero);
-            var movOOB = new OOB.LibInventario.Movimiento.Cargo.Insertar.FichaMov()
+            var movOOB = new OOB.LibInventario.Movimiento.Ajuste.Insertar.FichaMov()
             {
                 autoConcepto = _gConcepto.Item.id,
                 autoDepositoDestino = _gDepOrigen.Item.id,
@@ -333,7 +333,7 @@ namespace ModInventario.MovimientoInvTipo.Cargo
 
             var detOOB = list.Select(s =>
             {
-                var rg = new OOB.LibInventario.Movimiento.Cargo.Insertar.FichaMovDetalle()
+                var rg = new OOB.LibInventario.Movimiento.Ajuste.Insertar.FichaMovDetalle()
                 {
                     autoDepartamento = s.Data.autoDepart,
                     autoGrupo = s.Data.autoGrupo,
@@ -351,20 +351,20 @@ namespace ModInventario.MovimientoInvTipo.Cargo
                     estatusAnulado = "0",
                     estatusUnidad = s.MovPorUnidad ? "1" : "0",
                     nombreProducto = s.Data.nombrePrd,
-                    signo = _docTipo.signo,
+                    signo = s.Signo,
                     tipo = _docTipo.codigo,
-                    total = s.ImporteNacional,
+                    total = Math.Abs(s.ImporteNacional),
                 };
                 return rg;
             }).ToList();
 
             var gr3 = list.GroupBy
                 (g => new { g.Data.autoPrd, g.Data.nombrePrd }).
-                Select(g2 => new { id = g2.Key.autoPrd, desc = g2.Key.nombrePrd, cnt = g2.Sum(s => s.CntUnd) }).
+                Select(g2 => new { id = g2.Key.autoPrd, desc = g2.Key.nombrePrd, cnt = g2.Sum(s => s.CntUnd*s.Signo) }).
                 ToList();
             var depOOB = gr3.Select(s =>
             {
-                var rg = new OOB.LibInventario.Movimiento.Cargo.Insertar.FichaMovDeposito()
+                var rg = new OOB.LibInventario.Movimiento.Ajuste.Insertar.FichaMovDeposito()
                 {
                     autoDeposito = _gDepOrigen.Item.id,
                     autoProducto = s.id,
@@ -377,7 +377,7 @@ namespace ModInventario.MovimientoInvTipo.Cargo
 
             var KardexOOB = list.Select(s =>
             {
-                var rg = new OOB.LibInventario.Movimiento.Cargo.Insertar.FichaMovKardex()
+                var rg = new OOB.LibInventario.Movimiento.Ajuste.Insertar.FichaMovKardex()
                 {
                     autoConcepto = _gConcepto.Item.id,
                     autoDeposito = _gDepOrigen.Item.id,
@@ -398,20 +398,20 @@ namespace ModInventario.MovimientoInvTipo.Cargo
                     nota = "",
                     precioUnd = 0.0m,
                     siglasMov =_docTipo.siglas,
-                    signoMov = _docTipo.signo,
-                    total = s.ImporteNacional,
+                    signoMov = s.Signo,
+                    total = Math.Abs(s.ImporteNacional),
                 };
                 return rg;
             }).ToList();
 
-            var ficha = new OOB.LibInventario.Movimiento.Cargo.Insertar.Ficha()
+            var ficha = new OOB.LibInventario.Movimiento.Ajuste.Insertar.Ficha()
             {
                 mov = movOOB,
                 movDeposito = depOOB,
                 movDetalles = detOOB,
                 movKardex = KardexOOB,
             };
-            var r01 = Sistema.MyData.Producto_Movimiento_Cargo_Insertar(ficha);
+            var r01 = Sistema.MyData.Producto_Movimiento_Ajuste_Insertar(ficha);
             if (r01.Result == OOB.Enumerados.EnumResult.isError)
             {
                 Helpers.Msg.Error(r01.Mensaje);

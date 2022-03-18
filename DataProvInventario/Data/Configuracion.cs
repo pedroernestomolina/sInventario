@@ -377,6 +377,49 @@ namespace DataProvInventario.Data
             return rt;
         }
 
+
+        public OOB.ResultadoEntidad<OOB.LibInventario.Configuracion.DepositoConceptoDevMerc.Captura.Ficha> 
+            Configuracion_DepositoConceptoPreDeterminadoDevolucionMercancia()
+        {
+            var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Configuracion.DepositoConceptoDevMerc.Captura.Ficha>();
+
+            var r01 = MyData.Configuracion_DepositoConceptoPreDeterminadoParaDevolucion();
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                rt.Mensaje = r01.Mensaje;
+                rt.Result = OOB.Enumerados.EnumResult.isError;
+                return rt;
+            }
+            var s= r01.Entidad;
+            var rg = new OOB.LibInventario.Configuracion.DepositoConceptoDevMerc.Captura.Ficha()
+            {
+                IdConcepto = s.IdConcepto,
+                IdDeposito = s.IdDeposito,
+            };
+            rt.Entidad= rg;
+
+            return rt;
+        }
+        public OOB.Resultado Configuracion_SetDepositoConceptoPreDeterminadoDevolucionMercancia(OOB.LibInventario.Configuracion.DepositoConceptoDevMerc.Editar.Ficha ficha)
+        {
+            var rt = new OOB.Resultado();
+
+            var fichaDTO = new DtoLibInventario.Configuracion.DepositoConceptoDev.Editar.Ficha()
+            {
+                IdConcepto = ficha.IdConcepto,
+                IdDeposito = ficha.IdDeposito,
+            };
+            var r01 = MyData.Configuracion_SetDepositoConceptoPreDeterminadoParaDevolucion (fichaDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                rt.Mensaje = r01.Mensaje;
+                rt.Result = OOB.Enumerados.EnumResult.isError;
+                return rt;
+            }
+
+            return rt;
+        }
+
     }
 
 }

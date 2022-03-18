@@ -30,6 +30,12 @@ namespace DataProvInventario.InfraEstructura
         OOB.ResultadoLista<OOB.LibInventario.Configuracion.MetodoCalculoUtilidad.CapturarData.Ficha> Configuracion_MetodoCalculoUtilidad_CapturarData();
         OOB.ResultadoEntidad<bool> Configuracion_HabilitarPrecio_5_ParaVentaMayorPos();
 
+        //
+        OOB.ResultadoEntidad<OOB.LibInventario.Configuracion.DepositoConceptoDevMerc.Captura.Ficha> 
+            Configuracion_DepositoConceptoPreDeterminadoDevolucionMercancia();
+        OOB.Resultado Configuracion_SetDepositoConceptoPreDeterminadoDevolucionMercancia(
+            OOB.LibInventario.Configuracion.DepositoConceptoDevMerc.Editar.Ficha ficha);
+
     }
 
 }

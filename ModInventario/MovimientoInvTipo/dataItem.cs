@@ -18,7 +18,9 @@ namespace ModInventario.MovimientoInvTipo
         private decimal _costo;
         private decimal _costoUnd;
         private decimal _importe;
+        private int _signo;
         private ficha _empaque;
+        private ficha _tipoMov;
 
 
         public int Id { get; set; }
@@ -34,7 +36,12 @@ namespace ModInventario.MovimientoInvTipo
         public decimal InfExistenciaActual { get { return _data.InfExistenciaActual; } }
         public bool InfProductoEsDivisa { get { return _data.InfProductoEsDivisa; } }
 
+        public ficha TipoMovFicha { get { return _tipoMov; } }
         public ficha EmpaqueFicha { get { return _empaque; } }
+
+
+        public string TipoMovimiento { get { return _tipoMov.desc; } }
+        public int Signo { get { return _signo; } }
         public string CodigoPrd { get { return _data.codigoPrd; } }
         public string DescripcionPrd { get { return _data.nombrePrd; } }
         public bool EsAdmDivisa { get { return _data.esAdmDivisa; } }
@@ -47,7 +54,7 @@ namespace ModInventario.MovimientoInvTipo
         { 
             get 
             {
-                var rt = _importe;
+                var rt = _importe * _signo;
                 if (_data.esAdmDivisa)
                 {
                     rt *= _tasaCambio;
@@ -101,7 +108,9 @@ namespace ModInventario.MovimientoInvTipo
             _costo = 0m;
             _costoUnd = 0m;
             _importe = 0m;
+            _signo = 1;
             _empaque = null;
+            _tipoMov = null;
         }
 
 
@@ -152,6 +161,20 @@ namespace ModInventario.MovimientoInvTipo
             }
             Calcular();
         }
+        public void setTipoMov(ficha ficha)
+        {
+            _tipoMov = ficha;
+            if (ficha != null)
+            {
+                _signo = 1;
+                if (ficha.id == "2") 
+                {
+                    _signo = -1;
+                }
+            }
+            Calcular();
+        }
+
 
         private void Calcular()
         {

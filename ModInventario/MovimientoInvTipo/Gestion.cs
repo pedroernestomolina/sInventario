@@ -30,6 +30,7 @@ namespace ModInventario.MovimientoInvTipo
         public BindingSource SucursalSource { get { return _gTipo.SucursalSource; } }
         public BindingSource DepOrigenSource{ get { return _gTipo.DepOrigenSource; } }
         public BindingSource DepDestinoSource { get { return _gTipo.DepDestinoSource; } }
+        public BindingSource DepartamentoSource { get { return _gTipo.DepatamentoSource; } }
         public string Motivo { get { return _gTipo.Motivo; } }
         public string AutorizadoPor { get { return _gTipo.AutorizadoPor; } }
         public DateTime FechaSistema { get { return _fechaSistema; } }
@@ -37,6 +38,7 @@ namespace ModInventario.MovimientoInvTipo
         public string SucursalGetId { get { return _gTipo.SucursalGetId; } }
         public string DepOrigenGetID { get { return _gTipo.DepOrigenGetID; } }
         public string DepDestinoGetID { get { return _gTipo.DepDestinoGetID; } }
+        public string DepartamentoGetId { get { return _gTipo.DepartamentoGetId; } }
         public bool HabilitarCambio { get { return _gLista.CntItem==0; } }
         public enumerados.enumMetBusquedaPrd MetBusqPrd { get { return (enumerados.enumMetBusquedaPrd)_gBusqPrd.MetBusqueda; } }
         public bool BusquedaIsOk { get { return _busquedaIsOk; } }
@@ -163,6 +165,10 @@ namespace ModInventario.MovimientoInvTipo
         {
             _gTipo.setDepDestino(id);
         }
+        public void setDepartamento(string id)
+        {
+            _gTipo.setDepartamento(id);
+        }
 
 
         public void setCadenaBusqueda(string p)
@@ -276,6 +282,34 @@ namespace ModInventario.MovimientoInvTipo
                 _gLista.Limpiar();
                 Helpers.VisualizarDocumento.CargarVisualizarDocumento(IdDocGenerado);
             }
+        }
+
+
+        public void CapturarDataAplicarAjusteInvCero()
+        {
+            _gTipo.CapturarDataAplicarAjusteInvCero();
+            if (_gTipo.CapturarDataAplicarAjusteInvCeroIsOk)
+            {
+               _gLista.setListaAgregar(_gTipo.ListaItemAplicarAjusteInvCero);
+            }
+        }
+        public bool CapturarDataAplicarAjusteInvCeroIsOk
+        {
+            get { return _gTipo.CapturarDataAplicarAjusteInvCeroIsOk; }
+        }
+
+
+        public void CapturarProductosConNivelMinimo()
+        {
+            _gTipo.CapturarProductosConNivelMinimo();
+            if (_gTipo.CapturarProductosConNivelMinimoIsOk)
+            {
+                _gLista.setListaAgregar(_gTipo.ListaItemNivelMinimo);
+            }
+        }
+        public bool CapturarProductosConNivelMinimoIsOk
+        {
+            get { return _gTipo.CapturarProductosConNivelMinimoIsOk; }
         }
 
     }

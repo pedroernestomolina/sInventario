@@ -29,7 +29,7 @@ namespace ModInventario.MovimientoInvTipo.Traslado
         private ModInventario.FiltrosGen.IOpcion _gDepOrigen;
         private ModInventario.FiltrosGen.IOpcion _gDepDestino;
         private Helpers.Maestros.ICallMaestros _gMaestro;
-        private Captura.ICaptura _gCapturaMov;
+        private ICaptura _gCapturaMov;
 
 
         public string TipoMovimiento { get { return _tipoMovimiento; } }
@@ -50,7 +50,7 @@ namespace ModInventario.MovimientoInvTipo.Traslado
 
 
         public Gestion(
-            Captura.ICaptura ctrCapturaMov,
+            ICaptura ctrCapturaMov,
             Helpers.Maestros.ICallMaestros ctrMaestro)
         {
             _gCapturaMov = ctrCapturaMov;
@@ -99,33 +99,69 @@ namespace ModInventario.MovimientoInvTipo.Traslado
 
         public bool CargarData()
         {
-            if (!_activarPorDevolucion)
+            var Id_Deposito_Devolucion = "";
+            var Id_Concepto_Devolucion = "";
+
+            if (_activarPorDevolucion)
             {
-                var r01 = Sistema.MyData.Concepto_GetLista();
-                if (r01.Result == OOB.Enumerados.EnumResult.isError)
+                var r11 = Sistema.MyData.Configuracion_DepositoConceptoPreDeterminadoDevolucionMercancia();
+                if (r11.Result == OOB.Enumerados.EnumResult.isError)
                 {
-                    Helpers.Msg.Error(r01.Mensaje);
+                    Helpers.Msg.Error(r11.Mensaje);
+                    return false;
+                }
+                Id_Concepto_Devolucion = r11.Entidad.IdConcepto;
+                Id_Deposito_Devolucion = r11.Entidad.IdDeposito;
+
+                var r22 = Sistema.MyData.Concepto_GetFicha(Id_Concepto_Devolucion);
+                if (r22.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r22.Mensaje);
+                    return false;
+                }
+                var rg = r22.Entidad;
+                var _lConcepto = new List<ficha>();
+                _lConcepto.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
+                _gConcepto.setData(_lConcepto);
+
+                var r33 = Sistema.MyData.Deposito_GetFicha(Id_Deposito_Devolucion);
+                if (r33.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r33.Mensaje);
+                    return false;
+                }
+                var rg2 = r33.Entidad;
+                var lst = new List<ficha>();
+                lst.Add(new ficha(rg2.auto, rg2.codigo, rg2.nombre));
+                _gDepDestino.setData(lst);
+            }
+            else
+            {
+                var r11 = Sistema.MyData.Concepto_GetLista();
+                if (r11.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r11.Mensaje);
                     return false;
                 }
                 var _lConcepto = new List<ficha>();
-                foreach (var rg in r01.Lista.OrderBy(o => o.nombre).ToList())
+                foreach (var rg in r11.Lista.OrderBy(o => o.nombre).ToList())
                 {
                     _lConcepto.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
                 }
                 _gConcepto.setData(_lConcepto);
-            }
-            else 
-            {
-                var r01 = Sistema.MyData.Concepto_GetFicha("0000000034");
-                if (r01.Result == OOB.Enumerados.EnumResult.isError)
+
+                var r22 = Sistema.MyData.Deposito_GetLista();
+                if (r22.Result == OOB.Enumerados.EnumResult.isError)
                 {
-                    Helpers.Msg.Error(r01.Mensaje);
+                    Helpers.Msg.Error(r22.Mensaje);
                     return false;
                 }
-                var rg = r01.Entidad;
-                var _lConcepto = new List<ficha>();
-                _lConcepto.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
-                _gConcepto.setData(_lConcepto);
+                var lst = new List<ficha>();
+                foreach (var rg in r22.Lista.OrderBy(o => o.nombre).ToList())
+                {
+                    lst.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
+                }
+                _gDepDestino.setData(lst);
             }
 
             var r02 = Sistema.MyData.Sucursal_GetLista();
@@ -143,41 +179,12 @@ namespace ModInventario.MovimientoInvTipo.Traslado
             _gDepOrigen.setData(null);
 
             var r03 = Sistema.MyData.Configuracion_TasaCambioActual();
-            if (r02.Result == OOB.Enumerados.EnumResult.isError)
+            if (r03.Result == OOB.Enumerados.EnumResult.isError)
             {
-                Helpers.Msg.Error(r02.Mensaje);
+                Helpers.Msg.Error(r03.Mensaje);
                 return false;
             }
             _tasaCambio = r03.Entidad;
-
-            if (!_activarPorDevolucion)
-            {
-                var r04 = Sistema.MyData.Deposito_GetLista();
-                if (r04.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r04.Mensaje);
-                    return false;
-                }
-                var lst = new List<ficha>();
-                foreach (var rg in r04.Lista.OrderBy(o => o.nombre).ToList())
-                {
-                    lst.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
-                }
-                _gDepDestino.setData(lst);
-            }
-            else 
-            {
-                var r04 = Sistema.MyData.Deposito_GetFicha("0000000020");
-                if (r04.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r04.Mensaje);
-                    return false;
-                }
-                var rg = r04.Entidad;
-                var lst = new List<ficha>();
-                lst.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
-                _gDepDestino.setData(lst);
-            }
 
             return true;
         }
@@ -556,6 +563,27 @@ namespace ModInventario.MovimientoInvTipo.Traslado
             _activarPorDevolucion = p;
             if (_activarPorDevolucion)
                 _tipoMovimiento = "TRASLADO x DEVOLUCIÓN";
+        }
+
+
+        public bool CapturarDataAplicarAjusteInvCeroIsOk { get { return false; } }
+        public List<dataItem> ListaItemAplicarAjusteInvCero { get { return null; } }
+        public void CapturarDataAplicarAjusteInvCero()
+        {
+        }
+
+
+        public BindingSource DepatamentoSource { get { return null; } }
+        public string DepartamentoGetId { get { return ""; } }
+        public void setDepartamento(string id)
+        {
+        }
+
+
+        public bool CapturarProductosConNivelMinimoIsOk { get { return false; } }
+        public List<dataItem> ListaItemNivelMinimo { get { return null; } }
+        public void CapturarProductosConNivelMinimo()
+        {
         }
 
     }

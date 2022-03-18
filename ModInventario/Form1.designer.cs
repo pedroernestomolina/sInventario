@@ -74,6 +74,7 @@
             this.controlDeMovimientosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_Movimiento_Control_Cargo = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_Movimiento_Control_DesCargo = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.TSM_Movimiento_Control_Traslado = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_Movimiento_Control_Traslado_Devolucion = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO = new System.Windows.Forms.ToolStripMenuItem();
@@ -109,6 +110,7 @@
             this.TSM_CONFIGURACION_REDONDEO_PRECIOS = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_CONFIGURACION_COSTO_EDAD = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_CONFIGURACION_DEPOSITOS_PRE_DETERMINADOS = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -124,7 +126,6 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -189,11 +190,11 @@
             // 
             this.panel2.Controls.Add(this.BT_SALIR);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(704, 1);
+            this.panel2.Location = new System.Drawing.Point(701, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(1);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(2);
-            this.panel2.Size = new System.Drawing.Size(179, 52);
+            this.panel2.Size = new System.Drawing.Size(182, 52);
             this.panel2.TabIndex = 0;
             // 
             // BT_SALIR
@@ -204,7 +205,7 @@
             this.BT_SALIR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.BT_SALIR.Location = new System.Drawing.Point(2, 2);
             this.BT_SALIR.Name = "BT_SALIR";
-            this.BT_SALIR.Size = new System.Drawing.Size(175, 48);
+            this.BT_SALIR.Size = new System.Drawing.Size(178, 48);
             this.BT_SALIR.TabIndex = 0;
             this.BT_SALIR.Text = "Salir";
             this.BT_SALIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -219,7 +220,7 @@
             this.panel7.Margin = new System.Windows.Forms.Padding(1);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(2);
-            this.panel7.Size = new System.Drawing.Size(373, 52);
+            this.panel7.Size = new System.Drawing.Size(371, 52);
             this.panel7.TabIndex = 1;
             // 
             // tableLayoutPanel6
@@ -238,7 +239,7 @@
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(369, 48);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(367, 48);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // panel13
@@ -249,7 +250,7 @@
             this.panel13.Margin = new System.Windows.Forms.Padding(1);
             this.panel13.Name = "panel13";
             this.panel13.Padding = new System.Windows.Forms.Padding(2);
-            this.panel13.Size = new System.Drawing.Size(86, 22);
+            this.panel13.Size = new System.Drawing.Size(85, 22);
             this.panel13.TabIndex = 2;
             // 
             // label5
@@ -259,7 +260,7 @@
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(2, 2);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(82, 18);
+            this.label5.Size = new System.Drawing.Size(81, 18);
             this.label5.TabIndex = 4;
             this.label5.Text = "Fecha:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -268,11 +269,11 @@
             // 
             this.panel14.Controls.Add(this.L_FECHA);
             this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel14.Location = new System.Drawing.Point(89, 1);
+            this.panel14.Location = new System.Drawing.Point(88, 1);
             this.panel14.Margin = new System.Windows.Forms.Padding(1);
             this.panel14.Name = "panel14";
             this.panel14.Padding = new System.Windows.Forms.Padding(2);
-            this.panel14.Size = new System.Drawing.Size(279, 22);
+            this.panel14.Size = new System.Drawing.Size(278, 22);
             this.panel14.TabIndex = 3;
             // 
             // L_FECHA
@@ -282,7 +283,7 @@
             this.L_FECHA.ForeColor = System.Drawing.Color.Yellow;
             this.L_FECHA.Location = new System.Drawing.Point(2, 2);
             this.L_FECHA.Name = "L_FECHA";
-            this.L_FECHA.Size = new System.Drawing.Size(275, 18);
+            this.L_FECHA.Size = new System.Drawing.Size(274, 18);
             this.L_FECHA.TabIndex = 5;
             this.L_FECHA.Text = "Hoy";
             this.L_FECHA.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -295,7 +296,7 @@
             this.panel15.Margin = new System.Windows.Forms.Padding(1);
             this.panel15.Name = "panel15";
             this.panel15.Padding = new System.Windows.Forms.Padding(2);
-            this.panel15.Size = new System.Drawing.Size(86, 22);
+            this.panel15.Size = new System.Drawing.Size(85, 22);
             this.panel15.TabIndex = 2;
             // 
             // label3
@@ -305,7 +306,7 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(2, 2);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 18);
+            this.label3.Size = new System.Drawing.Size(81, 18);
             this.label3.TabIndex = 3;
             this.label3.Text = "Ruta BD:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -314,11 +315,11 @@
             // 
             this.panel16.Controls.Add(this.L_HOST);
             this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel16.Location = new System.Drawing.Point(89, 25);
+            this.panel16.Location = new System.Drawing.Point(88, 25);
             this.panel16.Margin = new System.Windows.Forms.Padding(1);
             this.panel16.Name = "panel16";
             this.panel16.Padding = new System.Windows.Forms.Padding(2);
-            this.panel16.Size = new System.Drawing.Size(279, 22);
+            this.panel16.Size = new System.Drawing.Size(278, 22);
             this.panel16.TabIndex = 4;
             // 
             // L_HOST
@@ -328,7 +329,7 @@
             this.L_HOST.ForeColor = System.Drawing.Color.Yellow;
             this.L_HOST.Location = new System.Drawing.Point(2, 2);
             this.L_HOST.Name = "L_HOST";
-            this.L_HOST.Size = new System.Drawing.Size(275, 18);
+            this.L_HOST.Size = new System.Drawing.Size(274, 18);
             this.L_HOST.TabIndex = 4;
             this.L_HOST.Text = "label2";
             this.L_HOST.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -337,7 +338,7 @@
             // 
             this.panel17.Controls.Add(this.tableLayoutPanel7);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(376, 1);
+            this.panel17.Location = new System.Drawing.Point(374, 1);
             this.panel17.Margin = new System.Windows.Forms.Padding(1);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(200, 52);
@@ -409,11 +410,11 @@
             // 
             this.panel20.Controls.Add(this.tableLayoutPanel8);
             this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel20.Location = new System.Drawing.Point(578, 1);
+            this.panel20.Location = new System.Drawing.Point(576, 1);
             this.panel20.Margin = new System.Windows.Forms.Padding(1);
             this.panel20.Name = "panel20";
             this.panel20.Padding = new System.Windows.Forms.Padding(2);
-            this.panel20.Size = new System.Drawing.Size(124, 52);
+            this.panel20.Size = new System.Drawing.Size(123, 52);
             this.panel20.TabIndex = 3;
             // 
             // tableLayoutPanel8
@@ -429,7 +430,7 @@
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(120, 48);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(119, 48);
             this.tableLayoutPanel8.TabIndex = 0;
             // 
             // panel21
@@ -440,7 +441,7 @@
             this.panel21.Margin = new System.Windows.Forms.Padding(1);
             this.panel21.Name = "panel21";
             this.panel21.Padding = new System.Windows.Forms.Padding(2);
-            this.panel21.Size = new System.Drawing.Size(80, 46);
+            this.panel21.Size = new System.Drawing.Size(79, 46);
             this.panel21.TabIndex = 0;
             // 
             // L_HORA
@@ -450,7 +451,7 @@
             this.L_HORA.ForeColor = System.Drawing.Color.Black;
             this.L_HORA.Location = new System.Drawing.Point(2, 2);
             this.L_HORA.Name = "L_HORA";
-            this.L_HORA.Size = new System.Drawing.Size(76, 42);
+            this.L_HORA.Size = new System.Drawing.Size(75, 42);
             this.L_HORA.TabIndex = 6;
             this.L_HORA.Text = "Hoy";
             this.L_HORA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -642,6 +643,11 @@
             this.TSM_Movimiento_Control_DesCargo.Size = new System.Drawing.Size(203, 22);
             this.TSM_Movimiento_Control_DesCargo.Text = "Descargo";
             this.TSM_Movimiento_Control_DesCargo.Click += new System.EventHandler(this.TSM_Movimiento_Control_DesCargo_Click);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(200, 6);
             // 
             // TSM_Movimiento_Control_Traslado
             // 
@@ -885,7 +891,8 @@
             this.TSM_CONFIGURACION_REGISTRO_PRECIOS,
             this.TSM_CONFIGURACION_REDONDEO_PRECIOS,
             this.TSM_CONFIGURACION_COSTO_EDAD,
-            this.TSM_CONFIGURACION_DEPOSITOS_PRE_DETERMINADOS});
+            this.TSM_CONFIGURACION_DEPOSITOS_PRE_DETERMINADOS,
+            this.toolStripMenuItem6});
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
             this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.configuraciónToolStripMenuItem.Text = "Configuración";
@@ -894,7 +901,7 @@
             // 
             this.TSM_CONFIGURACION_BUSQUEDA_PREDETERMINADA.Image = global::ModInventario.Properties.Resources.bt_configuracion;
             this.TSM_CONFIGURACION_BUSQUEDA_PREDETERMINADA.Name = "TSM_CONFIGURACION_BUSQUEDA_PREDETERMINADA";
-            this.TSM_CONFIGURACION_BUSQUEDA_PREDETERMINADA.Size = new System.Drawing.Size(323, 22);
+            this.TSM_CONFIGURACION_BUSQUEDA_PREDETERMINADA.Size = new System.Drawing.Size(462, 22);
             this.TSM_CONFIGURACION_BUSQUEDA_PREDETERMINADA.Text = "Indicar Busqueda Predeterminada del Producto";
             this.TSM_CONFIGURACION_BUSQUEDA_PREDETERMINADA.Click += new System.EventHandler(this.TSM_CONFIGURACION_BUSQUEDA_PREDETERMINADA_Click);
             // 
@@ -902,7 +909,7 @@
             // 
             this.TSM_CONFIGURACION_METODO_CALC_UTILIDAD.Image = ((System.Drawing.Image)(resources.GetObject("TSM_CONFIGURACION_METODO_CALC_UTILIDAD.Image")));
             this.TSM_CONFIGURACION_METODO_CALC_UTILIDAD.Name = "TSM_CONFIGURACION_METODO_CALC_UTILIDAD";
-            this.TSM_CONFIGURACION_METODO_CALC_UTILIDAD.Size = new System.Drawing.Size(323, 22);
+            this.TSM_CONFIGURACION_METODO_CALC_UTILIDAD.Size = new System.Drawing.Size(462, 22);
             this.TSM_CONFIGURACION_METODO_CALC_UTILIDAD.Text = "Indicar Método Cálculo Utilidad";
             this.TSM_CONFIGURACION_METODO_CALC_UTILIDAD.Click += new System.EventHandler(this.TSM_CONFIGURACION_METODO_CALC_UTILIDAD_Click);
             // 
@@ -910,7 +917,7 @@
             // 
             this.TSM_CONFIGURACION_REGISTRO_PRECIOS.Image = ((System.Drawing.Image)(resources.GetObject("TSM_CONFIGURACION_REGISTRO_PRECIOS.Image")));
             this.TSM_CONFIGURACION_REGISTRO_PRECIOS.Name = "TSM_CONFIGURACION_REGISTRO_PRECIOS";
-            this.TSM_CONFIGURACION_REGISTRO_PRECIOS.Size = new System.Drawing.Size(323, 22);
+            this.TSM_CONFIGURACION_REGISTRO_PRECIOS.Size = new System.Drawing.Size(462, 22);
             this.TSM_CONFIGURACION_REGISTRO_PRECIOS.Text = "Indicar Preferencia Registro Precio ";
             this.TSM_CONFIGURACION_REGISTRO_PRECIOS.Click += new System.EventHandler(this.TSM_CONFIGURACION_REGISTRO_PRECIOS_Click);
             // 
@@ -918,7 +925,7 @@
             // 
             this.TSM_CONFIGURACION_REDONDEO_PRECIOS.Image = ((System.Drawing.Image)(resources.GetObject("TSM_CONFIGURACION_REDONDEO_PRECIOS.Image")));
             this.TSM_CONFIGURACION_REDONDEO_PRECIOS.Name = "TSM_CONFIGURACION_REDONDEO_PRECIOS";
-            this.TSM_CONFIGURACION_REDONDEO_PRECIOS.Size = new System.Drawing.Size(323, 22);
+            this.TSM_CONFIGURACION_REDONDEO_PRECIOS.Size = new System.Drawing.Size(462, 22);
             this.TSM_CONFIGURACION_REDONDEO_PRECIOS.Text = "Indicar Redondeo Precios";
             this.TSM_CONFIGURACION_REDONDEO_PRECIOS.Click += new System.EventHandler(this.TSM_CONFIGURACION_REDONDEO_PRECIOS_Click);
             // 
@@ -926,7 +933,7 @@
             // 
             this.TSM_CONFIGURACION_COSTO_EDAD.Image = ((System.Drawing.Image)(resources.GetObject("TSM_CONFIGURACION_COSTO_EDAD.Image")));
             this.TSM_CONFIGURACION_COSTO_EDAD.Name = "TSM_CONFIGURACION_COSTO_EDAD";
-            this.TSM_CONFIGURACION_COSTO_EDAD.Size = new System.Drawing.Size(323, 22);
+            this.TSM_CONFIGURACION_COSTO_EDAD.Size = new System.Drawing.Size(462, 22);
             this.TSM_CONFIGURACION_COSTO_EDAD.Text = "Indicar Costo Edad Del Producto";
             this.TSM_CONFIGURACION_COSTO_EDAD.Click += new System.EventHandler(this.TSM_CONFIGURACION_COSTO_EDAD_Click);
             // 
@@ -934,9 +941,17 @@
             // 
             this.TSM_CONFIGURACION_DEPOSITOS_PRE_DETERMINADOS.Image = global::ModInventario.Properties.Resources.bt_configuracion;
             this.TSM_CONFIGURACION_DEPOSITOS_PRE_DETERMINADOS.Name = "TSM_CONFIGURACION_DEPOSITOS_PRE_DETERMINADOS";
-            this.TSM_CONFIGURACION_DEPOSITOS_PRE_DETERMINADOS.Size = new System.Drawing.Size(323, 22);
+            this.TSM_CONFIGURACION_DEPOSITOS_PRE_DETERMINADOS.Size = new System.Drawing.Size(462, 22);
             this.TSM_CONFIGURACION_DEPOSITOS_PRE_DETERMINADOS.Text = "Indicar Depositos Pre Determinados a Registrar";
             this.TSM_CONFIGURACION_DEPOSITOS_PRE_DETERMINADOS.Click += new System.EventHandler(this.TSM_CONFIGURACION_DEPOSITOS_PRE_DETERMINADOS_Click);
+            // 
+            // toolStripMenuItem6
+            // 
+            this.toolStripMenuItem6.Image = global::ModInventario.Properties.Resources.bt_configuracion;
+            this.toolStripMenuItem6.Name = "toolStripMenuItem6";
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(462, 22);
+            this.toolStripMenuItem6.Text = "Indicar Depósito / Concepto Pre Determinado Para Devolución Mercancia";
+            this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
             // 
             // panel3
             // 
@@ -1132,11 +1147,6 @@
             this.panel10.Size = new System.Drawing.Size(246, 350);
             this.panel10.TabIndex = 0;
             // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(200, 6);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1281,6 +1291,7 @@
         private System.Windows.Forms.ToolStripMenuItem TSM_AJUSTE_CERO;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
     }
 }
 

@@ -278,7 +278,7 @@ namespace ModInventario.Movimiento.TrasladoEntreSucursal
                 CB_DEP_DESTINO.Enabled = true;
                 CB_DEPARTAMENTO.Enabled = true;
                 L_DEPARTAMENTO.Enabled = true;
-                BT_CARGAR_DATA.Enabled = true;
+                BT_PRODUCTOS_NIVEL_MINIMO.Enabled = true;
             }
             else 
                 TB_CADENA_BUSQ.Focus();
@@ -351,7 +351,7 @@ namespace ModInventario.Movimiento.TrasladoEntreSucursal
                 CB_DEP_DESTINO.Enabled = false;
                 CB_DEPARTAMENTO.Enabled = false;
                 L_DEPARTAMENTO.Enabled = false;
-                BT_CARGAR_DATA.Enabled = false;
+                BT_PRODUCTOS_NIVEL_MINIMO.Enabled = false;
             }
         }
 
@@ -437,7 +437,7 @@ namespace ModInventario.Movimiento.TrasladoEntreSucursal
                 CB_DEP_DESTINO.Enabled = true;
                 CB_DEPARTAMENTO.Enabled = true;
                 L_DEPARTAMENTO.Enabled = true;
-                BT_CARGAR_DATA.Enabled = true;
+                BT_PRODUCTOS_NIVEL_MINIMO.Enabled = true;
             }
         }
 

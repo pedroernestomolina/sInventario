@@ -106,6 +106,7 @@
             this.BT_SALIR.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.BT_SALIR.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BT_SALIR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_SALIR.Image = global::ModInventario.Properties.Resources.bt_salida_2;
             this.BT_SALIR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.BT_SALIR.Location = new System.Drawing.Point(2, 2);
             this.BT_SALIR.Name = "BT_SALIR";
@@ -179,6 +180,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.BackgroundImage = global::ModInventario.Properties.Resources.bt_alerta;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(2, 2);
@@ -278,6 +280,7 @@
             // 
             this.BT_ACEPTAR.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BT_ACEPTAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_ACEPTAR.Image = global::ModInventario.Properties.Resources.bt_ok_3;
             this.BT_ACEPTAR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.BT_ACEPTAR.Location = new System.Drawing.Point(2, 2);
             this.BT_ACEPTAR.Name = "BT_ACEPTAR";

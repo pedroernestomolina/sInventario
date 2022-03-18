@@ -48,6 +48,17 @@ namespace ModInventario.MovimientoInvTipo
             item.Id = mx;
             _bl.Add(item);
         }
+        public void setListaAgregar(List<dataItem> list)
+        {
+            _bl.Clear();
+            var mx = 0;
+            foreach (var rg in list)
+            {
+                mx += 1;
+                rg.Id = mx;
+                _bl.Add(rg);
+            }
+        }
         public void setItemEliminar(int idItem)
         {
             var ent = _bl.FirstOrDefault(f => f.Id == idItem);

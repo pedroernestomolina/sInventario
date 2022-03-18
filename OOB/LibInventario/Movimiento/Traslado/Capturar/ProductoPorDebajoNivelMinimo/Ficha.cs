@@ -48,6 +48,9 @@ namespace OOB.LibInventario.Movimiento.Traslado.Capturar.ProductoPorDebajoNivelM
         public bool AdmDivisa { get { return estatusDivisa == "1"; } }
         public decimal cntUndReponer { get { return nivelOptimo - exFisica; } }
         public decimal costoDivisaUnd { get { return costoDivisa / empCompraCont; } }
+        //
+        public string autoTasa { get; set; }
+        public decimal costo { get; set; }
 
 
         public Ficha()
@@ -85,6 +88,9 @@ namespace OOB.LibInventario.Movimiento.Traslado.Capturar.ProductoPorDebajoNivelM
             fechaUltActualizacion = new DateTime(2000, 01, 01).Date;
             tasaIva = 0.0m;
             tasaIvaNombre = "";
+            //
+            autoTasa = "";
+            costo = 0m;
         }
 
     }

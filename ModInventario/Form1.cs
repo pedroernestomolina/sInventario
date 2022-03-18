@@ -74,7 +74,6 @@ namespace ModInventario
         {
             Movimientos_TrasladoEntreSucursal_PorExistenca_DebajoMinimo();
         }
-
         private void Movimientos_TrasladoEntreSucursal_PorExistenca_DebajoMinimo()
         {
             _controlador.TrasladoMercanciaEntreSucursalPorNivelMinimo();
@@ -229,7 +228,6 @@ namespace ModInventario
         {
             MovimientoAjuste();
         }
-
         private void MovimientoAjuste()
         {
             _controlador.MovimientoAjuste();
@@ -438,7 +436,6 @@ namespace ModInventario
         {
             Conf_DepositosPreDeterminadosRegistrar();
         }
-
         private void Conf_DepositosPreDeterminadosRegistrar()
         {
             _controlador.Conf_DepositosPreDeterminadosRegistrar();
@@ -448,10 +445,18 @@ namespace ModInventario
         {
             AjusteInvCero();
         }
-
         private void AjusteInvCero()
         {
             _controlador.AjusteInvCero();
+        }
+
+        private void toolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+            DepositoConceptoDevMercancia();
+        }
+        private void DepositoConceptoDevMercancia()
+        {
+            _controlador.Conf_DepositoConceptoDevMercancia();
         }
 
     }

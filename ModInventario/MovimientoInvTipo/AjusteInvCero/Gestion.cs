@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace ModInventario.MovimientoInvTipo.Cargo
+namespace ModInventario.MovimientoInvTipo.AjusteInvCero
 {
     
-    public class Gestion: ITipo
+    public class Gestion: ITipoSeguridad
     {
 
         private bool _isOk;
@@ -20,16 +20,20 @@ namespace ModInventario.MovimientoInvTipo.Cargo
         private bool _procesarDocIsOk;
         private string _idDocumentoGenerado;
         private decimal _tasaCambio;
+        private bool _capturarDataAplicarAjusteInvCeroIsOk;
+        private List<dataItem> _lItems;
 
 
         private ModInventario.FiltrosGen.IOpcion _gConcepto;
         private ModInventario.FiltrosGen.IOpcion _gSucursal;
         private ModInventario.FiltrosGen.IOpcion _gDepOrigen;
         private Helpers.Maestros.ICallMaestros _gMaestro;
-        private ICaptura _gCapturaMov;
+        private ICapturaMovAjuste _gCapturaMov;
+        private SeguridadSist.ISeguridad _gSecurity;
+        private SeguridadSist.IModo _gModoSecurity;
 
 
-        public string TipoMovimiento { get { return "CARGO"; } }
+        public string TipoMovimiento { get { return "AJUSTE INVENTARIO A CERO"; } }
         public bool IsOk { get { return _isOk; } }
         public BindingSource ConceptoSource { get { return _gConcepto.Source; } }
         public BindingSource SucursalSource { get { return _gSucursal.Source; } }
@@ -44,14 +48,17 @@ namespace ModInventario.MovimientoInvTipo.Cargo
         public dataItem ItemAgregar { get { return _itemAgregar; } }
         public bool ProcesarDocIsOk { get { return _procesarDocIsOk; } }
         public string IdDocumentoGenerado { get { return _idDocumentoGenerado; } }
+        public bool CapturarDataAplicarAjusteInvCeroIsOk { get { return _capturarDataAplicarAjusteInvCeroIsOk; } }
+        public List<dataItem> ListaItemAplicarAjusteInvCero { get { return _lItems; } }
 
 
         public Gestion(
-            ICaptura ctrCapturaMov,
-            Helpers.Maestros.ICallMaestros ctrMaestro)
+            Helpers.Maestros.ICallMaestros ctrMaestro,
+            SeguridadSist.ISeguridad seguridad)
         {
-            _gCapturaMov = ctrCapturaMov;
+            _gCapturaMov = null;
             _gMaestro = ctrMaestro;
+            _gSecurity = seguridad;
             _gConcepto = new ModInventario.FiltrosGen.Opcion.Gestion();
             _gSucursal = new ModInventario.FiltrosGen.Opcion.Gestion();
             _gDepOrigen = new ModInventario.FiltrosGen.Opcion.Gestion();
@@ -62,6 +69,8 @@ namespace ModInventario.MovimientoInvTipo.Cargo
             _motivo = "";
             _idDocumentoGenerado = "";
             _tasaCambio = 0m;
+            _capturarDataAplicarAjusteInvCeroIsOk = false;
+            _lItems = new List<dataItem>();
         }
 
 
@@ -77,6 +86,8 @@ namespace ModInventario.MovimientoInvTipo.Cargo
             _motivo = "";
             _idDocumentoGenerado = "";
             _tasaCambio = 0m;
+            _capturarDataAplicarAjusteInvCeroIsOk = false; ;
+            _lItems.Clear();
         }
 
         MovFrm frm;
@@ -173,62 +184,6 @@ namespace ModInventario.MovimientoInvTipo.Cargo
 
         public void BuscarIdPrd(string id)
         {
-            _isOk = false;
-            _itemAgregar = null;
-            if (_gSucursal.Item == null)
-            {
-                Helpers.Msg.Alerta("CAMPO [ SUCURSAL ] NO SELECCIONADA");
-                return;
-            }
-            if (_gDepOrigen.Item == null) 
-            {
-                Helpers.Msg.Alerta("CAMPO [ DEPOSITO ] NO SELECCIONADA");
-                return;
-            }
-
-            var filtroOOB = new OOB.LibInventario.Movimiento.Cargo.CapturaMov.Filtro()
-            {
-                idDeposito = _gDepOrigen.GetId,
-                idProducto = id,
-            };
-            var r01 = Sistema.MyData.Producto_Movimiento_Cargo_CaptureMov(filtroOOB);
-            if (r01.Result == OOB.Enumerados.EnumResult.isError) 
-            {
-                Helpers.Msg.Error(r01.Mensaje);
-                return;
-            }
-            var r = r01.Entidad.data;
-            var dat = new data()
-            {
-                autoDepart = r.autoDepart,
-                autoGrupo = r.autoGrupo,
-                autoPrd = r.autoPrd,
-                autoTasa = r.autoTasa,
-                catPrd = r.catPrd,
-                codigoPrd = r.codigoPrd,
-                contEmp = r.contEmp,
-                costo = r.costo,
-                costoDivisa = r.costoDivisa,
-                costoDivisaUnd = r.costoDivisaUnd,
-                costoUnd = r.costoUnd,
-                decimales = r.decimales,
-                descTasa = r.descTasa,
-                esAdmDivisa = r.esAdmDivisa,
-                exFisica = r.exFisica,
-                nombreEmp = r.nombreEmp,
-                nombrePrd = r.nombrePrd,
-                valorTasa = r.valorTasa,
-                fechaUltimaActCosto = r.fechaUltActualizacionCosto,
-            };
-            _gCapturaMov.Inicializa();
-            _gCapturaMov.setData(dat);
-            _gCapturaMov.setTasaCambio(_tasaCambio);
-            _gCapturaMov.Inicia();
-            if (_gCapturaMov.IsOk) 
-            {
-                _itemAgregar = _gCapturaMov.DataItem;
-                _isOk = true;
-            }
         }
 
         public void Limpiar()
@@ -245,14 +200,6 @@ namespace ModInventario.MovimientoInvTipo.Cargo
 
         public void EditarItem(dataItem ItemActual)
         {
-            _gCapturaMov.Inicializa();
-            _gCapturaMov.setItemEditar(ItemActual);
-            _gCapturaMov.Inicia();
-            if (_gCapturaMov.IsOk)
-            {
-                _itemAgregar = _gCapturaMov.DataItem;
-                _isOk = true;
-            }
         }
 
 
@@ -285,14 +232,30 @@ namespace ModInventario.MovimientoInvTipo.Cargo
                 var msg = MessageBox.Show(xmsg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
                 if (msg == DialogResult.Yes)
                 {
-                    RegistrarDoc(list, totalImporte);
+                    if (VerificarUsuario())
+                    {
+                        xmsg = "Seguro de Ajustar el Déposito a Cero(0) ?";
+                        msg = MessageBox.Show(xmsg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                        if (msg == DialogResult.Yes)
+                        {
+                            RegistrarDoc(list, totalImporte);
+                        }
+                    }
                 }
             }
         }
 
+        private bool VerificarUsuario()
+        {
+            _gSecurity.setGestionTipo(_gModoSecurity);
+            _gSecurity.Inicializa();
+            _gSecurity.Inicia();
+            return _gSecurity.IsOk;
+        }
+
         private void RegistrarDoc(List<dataItem> list, decimal totalImporte)
         {
-            var r00 = Sistema.MyData.Sistema_TipoDocumento_GetFichaByTipo(OOB.LibInventario.Sistema.TipoDocumento.enumerados.enumTipoDocumento.CARGO);
+            var r00 = Sistema.MyData.Sistema_TipoDocumento_GetFichaByTipo(OOB.LibInventario.Sistema.TipoDocumento.enumerados.enumTipoDocumento.AJUSTE);
             if (r00.Result == OOB.Enumerados.EnumResult.isError)
             {
                 Helpers.Msg.Error(r00.Mensaje);
@@ -300,7 +263,7 @@ namespace ModInventario.MovimientoInvTipo.Cargo
             }
             var _docTipo = r00.Entidad;
             var _mDivisa = Math.Round(totalImporte / _tasaCambio, 2, MidpointRounding.AwayFromZero);
-            var movOOB = new OOB.LibInventario.Movimiento.Cargo.Insertar.FichaMov()
+            var movOOB = new OOB.LibInventario.Movimiento.AjusteInvCero.Insertar.FichaMov()
             {
                 autoConcepto = _gConcepto.Item.id,
                 autoDepositoDestino = _gDepOrigen.Item.id,
@@ -333,7 +296,7 @@ namespace ModInventario.MovimientoInvTipo.Cargo
 
             var detOOB = list.Select(s =>
             {
-                var rg = new OOB.LibInventario.Movimiento.Cargo.Insertar.FichaMovDetalle()
+                var rg = new OOB.LibInventario.Movimiento.AjusteInvCero.Insertar.FichaMovDetalle()
                 {
                     autoDepartamento = s.Data.autoDepart,
                     autoGrupo = s.Data.autoGrupo,
@@ -351,33 +314,33 @@ namespace ModInventario.MovimientoInvTipo.Cargo
                     estatusAnulado = "0",
                     estatusUnidad = s.MovPorUnidad ? "1" : "0",
                     nombreProducto = s.Data.nombrePrd,
-                    signo = _docTipo.signo,
+                    signo = s.Signo,
                     tipo = _docTipo.codigo,
-                    total = s.ImporteNacional,
+                    total = Math.Abs(s.ImporteNacional),
                 };
                 return rg;
             }).ToList();
 
             var gr3 = list.GroupBy
                 (g => new { g.Data.autoPrd, g.Data.nombrePrd }).
-                Select(g2 => new { id = g2.Key.autoPrd, desc = g2.Key.nombrePrd, cnt = g2.Sum(s => s.CntUnd) }).
+                Select(g2 => new { id = g2.Key.autoPrd, desc = g2.Key.nombrePrd, cnt = g2.Sum(s => s.CntUnd*s.Signo) }).
                 ToList();
             var depOOB = gr3.Select(s =>
             {
-                var rg = new OOB.LibInventario.Movimiento.Cargo.Insertar.FichaMovDeposito()
+                var rg = new OOB.LibInventario.Movimiento.AjusteInvCero.Insertar.FichaMovDeposito()
                 {
                     autoDeposito = _gDepOrigen.Item.id,
                     autoProducto = s.id,
                     nombreProducto = s.desc,
                     cantidadUnd = s.cnt,
-                    nombreDeposito = _gDepOrigen.Item.desc,
+                    nombreDeposito = _gDepOrigen.Item.desc, 
                 };
                 return rg;
             }).ToList();
 
             var KardexOOB = list.Select(s =>
             {
-                var rg = new OOB.LibInventario.Movimiento.Cargo.Insertar.FichaMovKardex()
+                var rg = new OOB.LibInventario.Movimiento.AjusteInvCero.Insertar.FichaMovKardex()
                 {
                     autoConcepto = _gConcepto.Item.id,
                     autoDeposito = _gDepOrigen.Item.id,
@@ -398,20 +361,20 @@ namespace ModInventario.MovimientoInvTipo.Cargo
                     nota = "",
                     precioUnd = 0.0m,
                     siglasMov =_docTipo.siglas,
-                    signoMov = _docTipo.signo,
-                    total = s.ImporteNacional,
+                    signoMov = s.Signo,
+                    total = Math.Abs(s.ImporteNacional), 
                 };
                 return rg;
             }).ToList();
 
-            var ficha = new OOB.LibInventario.Movimiento.Cargo.Insertar.Ficha()
+            var ficha = new OOB.LibInventario.Movimiento.AjusteInvCero.Insertar.Ficha()
             {
                 mov = movOOB,
                 movDeposito = depOOB,
                 movDetalles = detOOB,
                 movKardex = KardexOOB,
             };
-            var r01 = Sistema.MyData.Producto_Movimiento_Cargo_Insertar(ficha);
+            var r01 = Sistema.MyData.Producto_Movimiento_AjusteInventarioCero_Insertar(ficha);
             if (r01.Result == OOB.Enumerados.EnumResult.isError)
             {
                 Helpers.Msg.Error(r01.Mensaje);
@@ -452,13 +415,84 @@ namespace ModInventario.MovimientoInvTipo.Cargo
 
             return true;
         }
+        
 
-
-        public bool CapturarDataAplicarAjusteInvCeroIsOk { get { return false; } }
-        public List<dataItem> ListaItemAplicarAjusteInvCero { get { return null; } }
         public void CapturarDataAplicarAjusteInvCero()
         {
+            _capturarDataAplicarAjusteInvCeroIsOk = false;
+            if (_gSucursal.Item == null)
+            {
+                Helpers.Msg.Alerta("CAMPO [ SUCURSAL ] NO SELECCIONADA");
+                return;
+            }
+            if (_gDepOrigen.Item == null)
+            {
+                Helpers.Msg.Alerta("CAMPO [ DEPOSITO ] NO SELECCIONADO");
+                return;
+            }
+            CapturarInv();
         }
+
+        private void CapturarInv()
+        {
+            _lItems.Clear();
+            var filtroOOB = new OOB.LibInventario.Movimiento.AjusteInvCero.Capture.Filtro()
+            {
+                idDeposito = _gDepOrigen.GetId,
+            };
+            var r01 = Sistema.MyData.Producto_Movimiento_AjusteInventarioCero_Capture(filtroOOB);
+            if (r01.Result == OOB.Enumerados.EnumResult.isError)
+            {
+                Helpers.Msg.Error(r01.Mensaje);
+                return;
+            }
+            foreach (var r in r01.Entidad.data.OrderBy(o=>o.nombrePrd).ToList())
+            {
+                var dat = new data()
+                {
+                    autoDepart = r.autoDepart,
+                    autoGrupo = r.autoGrupo,
+                    autoPrd = r.autoPrd,
+                    autoTasa = r.autoTasa,
+                    catPrd = r.catPrd,
+                    codigoPrd = r.codigoPrd,
+                    contEmp = r.contEmp,
+                    costo = r.costo,
+                    costoDivisa = r.costoDivisa,
+                    costoDivisaUnd = r.costoDivisaUnd,
+                    costoUnd = r.costoUnd,
+                    decimales = r.decimales,
+                    descTasa = r.descTasa,
+                    esAdmDivisa = r.esAdmDivisa,
+                    exFisica = r.exFisica,
+                    nombreEmp = r.nombreEmp,
+                    nombrePrd = r.nombrePrd,
+                    valorTasa = r.valorTasa,
+                    fechaUltimaActCosto = "",
+                };
+                var _item = new dataItem();
+                _item.setFicha(dat);
+                if (r.exFisica > 0)
+                {
+                    _item.setTipoMov(new ficha("2", "", "DESCARGO"));
+                }
+                else 
+                {
+                    _item.setTipoMov(new ficha("1", "", "CARGO"));
+                }
+                _item.setEmpaque(new ficha("2", "", "POR UNIDAD"));
+                _item.setCantidad(Math.Abs(r.exFisica));
+                _item.setTasaCambio(_tasaCambio);
+                _lItems.Add(_item);
+            }
+            _capturarDataAplicarAjusteInvCeroIsOk = true;
+        }
+
+        public void setModoSeguridad(SeguridadSist.IModo securityModo)
+        {
+            _gModoSecurity = securityModo;
+        }
+
 
         public BindingSource DepatamentoSource { get { return null; } }
         public string DepartamentoGetId { get { return ""; } }

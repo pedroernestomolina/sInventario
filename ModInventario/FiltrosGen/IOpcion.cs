@@ -14,6 +14,7 @@ namespace ModInventario.FiltrosGen
         System.Windows.Forms.BindingSource Source { get; }
         string GetId { get; }
         ficha Item { get; }
+        bool ItemsCargadosIsOk { get; }
 
 
         void setData(List<ficha> lst);

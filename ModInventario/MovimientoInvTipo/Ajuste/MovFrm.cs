@@ -397,6 +397,7 @@ namespace ModInventario.MovimientoInvTipo.Ajuste
             {
                 Limpiar();
                 ActualizarImporte();
+                _controlador.NuevoDocumento();
             }
         }
 

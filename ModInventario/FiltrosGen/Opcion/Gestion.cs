@@ -28,6 +28,7 @@ namespace ModInventario.FiltrosGen.Opcion
         }
         public BindingSource Source { get { return _bs; } }
         public ficha Item { get { return _item; } }
+        public bool ItemsCargadosIsOk { get { return _lst.Count > 0; } }
 
 
         public Gestion()

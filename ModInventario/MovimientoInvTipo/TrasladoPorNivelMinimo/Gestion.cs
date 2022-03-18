@@ -288,6 +288,7 @@ namespace ModInventario.MovimientoInvTipo.TrasladoPorNivelMinimo
 
         public void EditarItem(dataItem ItemActual)
         {
+            _isOk = false;
             _gCapturaMov.Inicializa();
             _gCapturaMov.setItemEditar(ItemActual);
             _gCapturaMov.Inicia();
@@ -570,7 +571,6 @@ namespace ModInventario.MovimientoInvTipo.TrasladoPorNivelMinimo
             _lItems.Clear();
             foreach (var r in rt3.Lista.OrderBy(o => o.nombrePrd).ToList())
             {
-                var cnt= r.nivelOptimo - r.exFisica;
                 var admDivisa = r.estatusDivisa.Trim() == "1" ? true : false;
                 var fechaUltActCosto = "";
                 if (r.fechaUltActualizacion > fechaNula) 
@@ -593,12 +593,25 @@ namespace ModInventario.MovimientoInvTipo.TrasladoPorNivelMinimo
                     decimales = r.decimales,
                     descTasa = r.tasaIvaNombre,
                     esAdmDivisa = admDivisa,
-                    exFisica = r.exFisica,
+                    exFisica = r.exFisicaOrigen,
                     nombreEmp = r.empCompra,
                     nombrePrd = r.nombrePrd,
                     valorTasa = r.tasaIva,
                     fechaUltimaActCosto = fechaUltActCosto,
+                    nivelMinimoDepDestino=r.nivelMinimo,
+                    nivelOptimoDepDestino=r.nivelOptimo,
+                    exFisicaDepDestino=r.exFisica,
                 };
+                var cnt = 0m;
+                if (dat.exFisica > 0)
+                {
+                    cnt = dat.exFisica;
+                    if (dat.exFisica >= dat.InfCntReponerDepDestino)
+                    {
+                        cnt = dat.InfCntReponerDepDestino;
+                    }
+                }
+
                 var _item = new dataItem();
                 _item.setFicha(dat);
                 _item.setEmpaque(new ficha("2", "", "POR UNIDAD"));
@@ -608,6 +621,17 @@ namespace ModInventario.MovimientoInvTipo.TrasladoPorNivelMinimo
                 _capturarProductosConNivelMinimoIsOk = true;
             }
 
+        }
+
+
+        public void NuevoDocumento()
+        {
+            _isOk = false;
+            _itemAgregar = null;
+            _procesarDocIsOk = false;
+            _autorizado = "";
+            _motivo = "";
+            _idDocumentoGenerado = "";
         }
 
     }

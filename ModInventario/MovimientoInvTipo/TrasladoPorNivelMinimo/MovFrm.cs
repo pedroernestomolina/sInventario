@@ -57,59 +57,64 @@ namespace ModInventario.MovimientoInvTipo.TrasladoPorNivelMinimo
             c2.DefaultCellStyle.Font = f1;
 
             var c21 = new DataGridViewTextBoxColumn();
-            c21.DataPropertyName = "Minimo";
-            c21.HeaderText = "Minimo";
+            c21.DataPropertyName = "InfNivelMinimoDepDestino";
+            c21.HeaderText = "Nivel Mínimo";
             c21.Visible = true;
             c21.Width = 70;
             c21.HeaderCell.Style.Font = f;
             c21.DefaultCellStyle.Font = f1;
             c21.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            c21.DefaultCellStyle.Format = "n1";
 
             var c22 = new DataGridViewTextBoxColumn();
-            c22.DataPropertyName = "Optimo";
-            c22.HeaderText = "Optimo";
+            c22.DataPropertyName = "InfNivelOptimoDepDestino";
+            c22.HeaderText = "Nivel Optimo";
             c22.Visible = true;
             c22.Width = 70;
             c22.HeaderCell.Style.Font = f;
             c22.DefaultCellStyle.Font = f1;
             c22.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            c22.DefaultCellStyle.Format = "n1";
 
             var c23 = new DataGridViewTextBoxColumn();
-            c23.DataPropertyName = "ExDestino";
+            c23.DataPropertyName = "InfExFisicaDepDestino";
             c23.HeaderText = "Ex/Dest";
             c23.Visible = true;
             c23.Width = 70;
             c23.HeaderCell.Style.Font = f;
             c23.DefaultCellStyle.Font = f1;
             c23.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            c23.DefaultCellStyle.Format = "n1";
 
             var c24 = new DataGridViewTextBoxColumn();
-            c24.DataPropertyName = "Reponer";
-            c24.HeaderText = "Reponer";
+            c24.DataPropertyName = "InfCntReponerDepDestino";
+            c24.HeaderText = "Cant Reponer";
             c24.Visible = true;
             c24.Width = 70;
             c24.HeaderCell.Style.Font = f;
-            c24.DefaultCellStyle.Font = f1;
+            c24.DefaultCellStyle.Font = f;
             c24.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            c24.DefaultCellStyle.Format = "n1";
 
             var c25 = new DataGridViewTextBoxColumn();
-            c25.DataPropertyName = "ExOrigen";
+            c25.DataPropertyName = "InfExistenciaActual";
             c25.HeaderText = "Ex/Origen";
             c25.Visible = true;
             c25.Width = 70;
             c25.HeaderCell.Style.Font = f;
             c25.DefaultCellStyle.Font = f1;
             c25.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
+            c25.DefaultCellStyle.Format = "n1";
 
             var c3 = new DataGridViewTextBoxColumn();
             c3.DataPropertyName = "Cantidad";
-            c3.HeaderText = "Cant";
+            c3.HeaderText = "Cant Regist";
             c3.Visible = true;
             c3.Width = 70;
             c3.HeaderCell.Style.Font = f;
-            c3.DefaultCellStyle.Font = f1;
+            c3.DefaultCellStyle.Font = f;
             c3.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            c3.DefaultCellStyle.Format = "n1";
 
             var c4 = new DataGridViewTextBoxColumn();
             c4.DataPropertyName = "Empaque";
@@ -268,10 +273,19 @@ namespace ModInventario.MovimientoInvTipo.TrasladoPorNivelMinimo
             if (_modoInicio)
                 return;
 
-            _controlador.setDepOrigen("");
-            if (CB_ORIGEN.SelectedIndex != -1)
+            if (_controlador.HabilitarCambio)
             {
-                _controlador.setDepOrigen(CB_ORIGEN.SelectedValue.ToString());
+                _controlador.setDepOrigen("");
+                if (CB_ORIGEN.SelectedIndex != -1)
+                {
+                    _controlador.setDepOrigen(CB_ORIGEN.SelectedValue.ToString());
+                }
+            }
+            else 
+            {
+                _modoInicio = true;
+                CB_ORIGEN.SelectedValue = _controlador.DepOrigenGetID;
+                _modoInicio = false;
             }
         }
         private void CB_DESTINO_SelectedIndexChanged(object sender, EventArgs e)
@@ -279,10 +293,19 @@ namespace ModInventario.MovimientoInvTipo.TrasladoPorNivelMinimo
             if (_modoInicio)
                 return;
 
-            _controlador.setDepDestino("");
-            if (CB_DESTINO.SelectedIndex != -1)
+            if (_controlador.HabilitarCambio)
             {
-                _controlador.setDepDestino(CB_DESTINO.SelectedValue.ToString());
+                _controlador.setDepDestino("");
+                if (CB_DESTINO.SelectedIndex != -1)
+                {
+                    _controlador.setDepDestino(CB_DESTINO.SelectedValue.ToString());
+                }
+            }
+            else 
+            {
+                _modoInicio = true;
+                CB_DESTINO.SelectedValue = _controlador.DepDestinoGetID;
+                _modoInicio = false;
             }
         }
         private void CB_CONCEPTO_SelectedIndexChanged(object sender, EventArgs e)
@@ -301,10 +324,19 @@ namespace ModInventario.MovimientoInvTipo.TrasladoPorNivelMinimo
             if (_modoInicio)
                 return;
 
-            _controlador.setDepartamento("");
-            if (CB_DEPARTAMENTO.SelectedIndex != -1)
+            if (_controlador.HabilitarCambio)
             {
-                _controlador.setDepartamento(CB_DEPARTAMENTO.SelectedValue.ToString());
+                _controlador.setDepartamento("");
+                if (CB_DEPARTAMENTO.SelectedIndex != -1)
+                {
+                    _controlador.setDepartamento(CB_DEPARTAMENTO.SelectedValue.ToString());
+                }
+            }
+            else 
+            {
+                _modoInicio = true;
+                CB_DEPARTAMENTO.SelectedValue = _controlador.DepartamentoGetId;
+                _modoInicio = false;
             }
         }
         private void TB_AUTORIZADO_POR_Leave(object sender, EventArgs e)
@@ -408,6 +440,7 @@ namespace ModInventario.MovimientoInvTipo.TrasladoPorNivelMinimo
             {
                 Limpiar();
                 ActualizarImporte();
+                _controlador.NuevoDocumento();
             }
         }
 
@@ -448,6 +481,19 @@ namespace ModInventario.MovimientoInvTipo.TrasladoPorNivelMinimo
         {
             _controlador.CapturarProductosConNivelMinimo();
             if (_controlador.CapturarProductosConNivelMinimoIsOk)
+            {
+                ActualizarImporte();
+            }
+        }
+
+        private void BT_ELIMINAR_EXISTENCIA_CERO_Click(object sender, EventArgs e)
+        {
+            EliminarExistenciaNoDisponible();
+        }
+        private void EliminarExistenciaNoDisponible()
+        {
+            _controlador.EliminarExistenciaNoDisponible();
+            if (_controlador.EliminarExistenciaNoDisponibleIsOk) 
             {
                 ActualizarImporte();
             }

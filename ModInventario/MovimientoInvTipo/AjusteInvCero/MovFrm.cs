@@ -346,6 +346,7 @@ namespace ModInventario.MovimientoInvTipo.AjusteInvCero
             {
                 Limpiar();
                 ActualizarImporte();
+                _controlador.NuevoDocumento();
             }
         }
 

@@ -81,12 +81,16 @@ namespace ModInventario.MovimientoInvTipo.Traslado.Captura
 
         private bool CargarData()
         {
-            var lst= new List<ficha>();
+            CargarDataEmpaque();
+            return true;
+        }
+
+        private void CargarDataEmpaque()
+        {
+            var lst = new List<ficha>();
             lst.Add(new ficha("1", "", "POR EMPQ/COMPRA"));
             lst.Add(new ficha("2", "", "POR UNIDAD"));
             _gEmpaque.setData(lst);
-
-            return true;
         }
 
         public void AbandonarFicha()
@@ -135,6 +139,10 @@ namespace ModInventario.MovimientoInvTipo.Traslado.Captura
 
         public void setItemEditar(dataItem ItemActual)
         {
+            if (!_gEmpaque.ItemsCargadosIsOk)
+            {
+                CargarDataEmpaque();
+            }
             _gEmpaque.Limpiar();
             _gEmpaque.setFicha(ItemActual.EmpaqueFicha.id);
             _item = ItemActual;

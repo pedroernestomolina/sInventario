@@ -387,6 +387,7 @@ namespace ModInventario.MovimientoInvTipo.Traslado
             {
                 Limpiar();
                 ActualizarImporte();
+                _controlador.NuevoDocumento();
             }
         }
 

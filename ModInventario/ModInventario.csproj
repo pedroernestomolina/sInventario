@@ -1210,6 +1210,7 @@
     <Content Include="Imagenes\bt_configuracion.png" />
     <Content Include="Imagenes\bt_consulta.png" />
     <Content Include="Imagenes\bt_costo.png" />
+    <Content Include="Imagenes\bt_dashboard.png" />
     <Content Include="Imagenes\bt_documento.png" />
     <Content Include="Imagenes\bt_dollar.png" />
     <Content Include="Imagenes\bt_editar_32.png" />
@@ -1271,6 +1272,7 @@
     <Content Include="Imagenes\TOOLS.ico" />
     <Content Include="Imagenes\transferencia.png" />
     <Content Include="Imagenes\warehouse.png" />
+    <None Include="Resources\bt_dashboard.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataProvInventario\DataProvInventario.csproj">

@@ -30,6 +30,10 @@ namespace ModInventario.MovimientoInvTipo
         public bool esAdmDivisa { get ;set; }
         public decimal costoDivisaUnd { get; set; }
         public string fechaUltimaActCosto { get; set; }
+        //
+        public decimal nivelMinimoDepDestino { get; set; }
+        public decimal nivelOptimoDepDestino { get; set; }
+        public decimal exFisicaDepDestino { get; set; }
 
 
         public string InfProductoDesc 
@@ -66,7 +70,11 @@ namespace ModInventario.MovimientoInvTipo
         public string InfProductoFechaUltActCosto { get { return fechaUltimaActCosto; } }
         public decimal InfExistenciaActual { get { return exFisica; } }
         public bool InfProductoEsDivisa { get { return esAdmDivisa; } }
-
+        //
+        public decimal InfNivelMinimoDepDestino { get { return nivelMinimoDepDestino; } }
+        public decimal InfNivelOptimoDepDestino { get { return nivelOptimoDepDestino; } }
+        public decimal InfExFisicaDepDestino { get { return exFisicaDepDestino; } }
+        public decimal InfCntReponerDepDestino { get { return nivelOptimoDepDestino - exFisicaDepDestino; } }
 
 
         public data()
@@ -90,6 +98,10 @@ namespace ModInventario.MovimientoInvTipo
             esAdmDivisa = false;
             costoDivisaUnd = 0m;
             fechaUltimaActCosto = "";
+            //
+            nivelMinimoDepDestino = 0m;
+            nivelOptimoDepDestino = 0m;
+            exFisicaDepDestino = 0m;
         }
 
     }

@@ -78,6 +78,11 @@ namespace ModInventario.MovimientoInvTipo
 
         void CapturarProductosConNivelMinimo();
         bool CapturarProductosConNivelMinimoIsOk { get; }
+        void EliminarExistenciaNoDisponible();
+        bool EliminarExistenciaNoDisponibleIsOk { get; }
+
+
+        void NuevoDocumento();
 
     }
 

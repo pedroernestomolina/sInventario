@@ -312,6 +312,7 @@ namespace ModInventario.MovimientoInvTipo.Traslado
 
         public void EditarItem(dataItem ItemActual)
         {
+            _isOk = false;
             _gCapturaMov.Inicializa();
             _gCapturaMov.setItemEditar(ItemActual);
             _gCapturaMov.Inicia();
@@ -584,6 +585,18 @@ namespace ModInventario.MovimientoInvTipo.Traslado
         public List<dataItem> ListaItemNivelMinimo { get { return null; } }
         public void CapturarProductosConNivelMinimo()
         {
+        }
+
+
+
+        public void NuevoDocumento()
+        {
+            _isOk = false;
+            _itemAgregar = null;
+            _procesarDocIsOk = false;
+            _autorizado = "";
+            _motivo = "";
+            _idDocumentoGenerado = "";
         }
 
     }

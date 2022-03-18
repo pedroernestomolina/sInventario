@@ -245,6 +245,7 @@ namespace ModInventario.MovimientoInvTipo.Descargo
 
         public void EditarItem(dataItem ItemActual)
         {
+            _isOk = false;
             _gCapturaMov.Inicializa();
             _gCapturaMov.setItemEditar(ItemActual);
             _gCapturaMov.Inicia();
@@ -472,6 +473,16 @@ namespace ModInventario.MovimientoInvTipo.Descargo
         {
         }
 
+
+        public void NuevoDocumento()
+        {
+            _isOk = false;
+            _itemAgregar = null;
+            _procesarDocIsOk = false;
+            _autorizado = "";
+            _motivo = "";
+            _idDocumentoGenerado = "";
+        }
 
     }
 

@@ -35,6 +35,12 @@ namespace ModInventario.MovimientoInvTipo
         public string InfProductoFechaUltActCosto { get { return _data.InfProductoFechaUltActCosto; } }
         public decimal InfExistenciaActual { get { return _data.InfExistenciaActual; } }
         public bool InfProductoEsDivisa { get { return _data.InfProductoEsDivisa; } }
+        //
+        public decimal InfNivelMinimoDepDestino { get { return _data.InfNivelMinimoDepDestino; } }
+        public decimal InfNivelOptimoDepDestino { get { return _data.InfNivelOptimoDepDestino ; } }
+        public decimal InfExFisicaDepDestino { get { return _data.InfExFisicaDepDestino; } }
+        public decimal InfCntReponerDepDestino { get { return _data.InfCntReponerDepDestino; } }
+
 
         public ficha TipoMovFicha { get { return _tipoMov; } }
         public ficha EmpaqueFicha { get { return _empaque; } }

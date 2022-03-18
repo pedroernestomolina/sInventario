@@ -23,8 +23,12 @@ namespace ModInventario.MovimientoInvTipo
         void setItemAgregar(dataItem item);
         void setItemEliminar(int idItem);
         void setListaAgregar(List<dataItem> list);
+        void setActualizarItem(int idItemEditar, dataItem dataItem);
+        void setEliminarExistenciaNoDisponible();
         void Limpiar();
 
+
+        bool EncuentraItemPrd(string p);
     }
 
 }

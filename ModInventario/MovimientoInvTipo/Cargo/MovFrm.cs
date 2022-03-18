@@ -376,6 +376,7 @@ namespace ModInventario.MovimientoInvTipo.Cargo
             {
                 Limpiar();
                 ActualizarImporte();
+                _controlador.NuevoDocumento();
             }
         }
 

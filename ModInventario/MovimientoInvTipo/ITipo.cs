@@ -67,6 +67,9 @@ namespace ModInventario.MovimientoInvTipo
         bool CapturarProductosConNivelMinimoIsOk { get; }
         List<dataItem> ListaItemNivelMinimo { get;  }
 
+
+        void NuevoDocumento();
+
     }
 
 }

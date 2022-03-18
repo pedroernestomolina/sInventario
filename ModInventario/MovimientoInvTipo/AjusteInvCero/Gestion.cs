@@ -506,6 +506,17 @@ namespace ModInventario.MovimientoInvTipo.AjusteInvCero
         {
         }
 
+
+        public void NuevoDocumento()
+        {
+            _isOk = false;
+            _itemAgregar = null;
+            _procesarDocIsOk = false;
+            _autorizado = "";
+            _motivo = "";
+            _idDocumentoGenerado = "";
+        }
+
     }
 
 }

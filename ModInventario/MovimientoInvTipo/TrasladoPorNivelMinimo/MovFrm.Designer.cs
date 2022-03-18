@@ -1196,7 +1196,7 @@
             this.tableLayoutPanel15.ColumnCount = 3;
             this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 261F));
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 422F));
             this.tableLayoutPanel15.Controls.Add(this.panel41, 0, 0);
             this.tableLayoutPanel15.Controls.Add(this.panel39, 0, 0);
             this.tableLayoutPanel15.Controls.Add(this.panel50, 2, 0);
@@ -1425,9 +1425,10 @@
             // 
             // tableLayoutPanel19
             // 
-            this.tableLayoutPanel19.ColumnCount = 2;
-            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel19.ColumnCount = 3;
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanel19.Controls.Add(this.panel53, 1, 0);
             this.tableLayoutPanel19.Controls.Add(this.panel52, 0, 0);
             this.tableLayoutPanel19.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1443,23 +1444,23 @@
             // 
             this.panel53.Controls.Add(this.BT_GRAFICA);
             this.panel53.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel53.Location = new System.Drawing.Point(336, 0);
+            this.panel53.Location = new System.Drawing.Point(189, 0);
             this.panel53.Margin = new System.Windows.Forms.Padding(0);
             this.panel53.Name = "panel53";
             this.panel53.Padding = new System.Windows.Forms.Padding(2);
-            this.panel53.Size = new System.Drawing.Size(84, 58);
+            this.panel53.Size = new System.Drawing.Size(63, 58);
             this.panel53.TabIndex = 1;
             // 
             // BT_GRAFICA
             // 
-            this.BT_GRAFICA.BackgroundImage = global::ModInventario.Properties.Resources.bt_grafico;
+            this.BT_GRAFICA.BackgroundImage = global::ModInventario.Properties.Resources.bt_dashboard;
             this.BT_GRAFICA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.BT_GRAFICA.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BT_GRAFICA.FlatAppearance.BorderSize = 0;
             this.BT_GRAFICA.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BT_GRAFICA.Location = new System.Drawing.Point(2, 2);
             this.BT_GRAFICA.Name = "BT_GRAFICA";
-            this.BT_GRAFICA.Size = new System.Drawing.Size(80, 54);
+            this.BT_GRAFICA.Size = new System.Drawing.Size(59, 54);
             this.BT_GRAFICA.TabIndex = 7;
             this.toolTip1.SetToolTip(this.BT_GRAFICA, "Análisis Ventas ");
             this.BT_GRAFICA.UseVisualStyleBackColor = true;
@@ -1472,7 +1473,7 @@
             this.panel52.Margin = new System.Windows.Forms.Padding(0);
             this.panel52.Name = "panel52";
             this.panel52.Padding = new System.Windows.Forms.Padding(2);
-            this.panel52.Size = new System.Drawing.Size(336, 58);
+            this.panel52.Size = new System.Drawing.Size(189, 58);
             this.panel52.TabIndex = 0;
             // 
             // BT_PRODUCTOS_NIVEL_MINIMO
@@ -1481,7 +1482,7 @@
             this.BT_PRODUCTOS_NIVEL_MINIMO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BT_PRODUCTOS_NIVEL_MINIMO.Location = new System.Drawing.Point(2, 2);
             this.BT_PRODUCTOS_NIVEL_MINIMO.Name = "BT_PRODUCTOS_NIVEL_MINIMO";
-            this.BT_PRODUCTOS_NIVEL_MINIMO.Size = new System.Drawing.Size(332, 54);
+            this.BT_PRODUCTOS_NIVEL_MINIMO.Size = new System.Drawing.Size(185, 54);
             this.BT_PRODUCTOS_NIVEL_MINIMO.TabIndex = 3;
             this.BT_PRODUCTOS_NIVEL_MINIMO.Text = "Productos Con Nivel Mínimo ";
             this.BT_PRODUCTOS_NIVEL_MINIMO.UseVisualStyleBackColor = true;
@@ -1620,6 +1621,7 @@
             this.BT_ELIMINAR_EXISTENCIA_CERO.TabIndex = 6;
             this.toolTip1.SetToolTip(this.BT_ELIMINAR_EXISTENCIA_CERO, "Quitar Items Donde Existencia Depósito Principal Esté En Cero (0)");
             this.BT_ELIMINAR_EXISTENCIA_CERO.UseVisualStyleBackColor = true;
+            this.BT_ELIMINAR_EXISTENCIA_CERO.Click += new System.EventHandler(this.BT_ELIMINAR_EXISTENCIA_CERO_Click);
             // 
             // panel40
             // 

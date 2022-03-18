@@ -19,6 +19,7 @@ namespace ModInventario.MovimientoInvTipo
         private bool _limpiarIsOk;
         private bool _eliminarIsOk;
         private bool _editarIsOk;
+        private bool _eliminarExistenciaNoDisponibleIsOk;
         private ITipo _gTipo;
         private ILista _gLista;
         private ModInventario.FiltrosGen.IAdmSelecciona _gBusqPrd;
@@ -64,6 +65,7 @@ namespace ModInventario.MovimientoInvTipo
             _limpiarIsOk = false;
             _eliminarIsOk = false;
             _editarIsOk = false;
+            _eliminarExistenciaNoDisponibleIsOk = false;
         }
 
 
@@ -76,6 +78,7 @@ namespace ModInventario.MovimientoInvTipo
             _limpiarIsOk = false;
             _eliminarIsOk = false;
             _editarIsOk = false;
+            _eliminarExistenciaNoDisponibleIsOk=false;
         }
 
         public void Inicia()
@@ -203,12 +206,24 @@ namespace ModInventario.MovimientoInvTipo
             _busquedaIsOk = false;
             if (_gBusqPrd.ItemSeleccionadoIsOk)
             {
-                _gTipo.BuscarIdPrd(_gBusqPrd.ItemSeleccionado.id);
-                if (_gTipo.IsOk)
+                var _agregar = true;
+                if (_gLista.EncuentraItemPrd(_gBusqPrd.ItemSeleccionado.id))
                 {
-                    _busquedaIsOk = true;
-                    dataItem item = _gTipo.ItemAgregar;
-                    _gLista.setItemAgregar(item);
+                    var xmsg = "Producto Ya Aparece Registrado En La Lista, "+ Environment.NewLine +"Deseas Agregar Uno Nuevo ?";
+                    var msg = MessageBox.Show(xmsg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                    if (msg == DialogResult.No)
+                    {
+                        _agregar = false;
+                    }
+                }
+                if (_agregar)
+                {
+                    _gTipo.BuscarIdPrd(_gBusqPrd.ItemSeleccionado.id);
+                    if (_gTipo.IsOk)
+                    {
+                        _busquedaIsOk = true;
+                        _gLista.setItemAgregar(_gTipo.ItemAgregar);
+                    }
                 }
             }
         }
@@ -251,9 +266,7 @@ namespace ModInventario.MovimientoInvTipo
                 _gTipo.EditarItem(ItemActual);
                 if (_gTipo.IsOk)
                 {
-                    _gLista.setItemEliminar(idItemEditar);
-                    dataItem item = _gTipo.ItemAgregar;
-                    _gLista.setItemAgregar(item);
+                    _gLista.setActualizarItem(idItemEditar, _gTipo.ItemAgregar);
                     _editarIsOk = true;
                 }
             }
@@ -301,6 +314,12 @@ namespace ModInventario.MovimientoInvTipo
 
         public void CapturarProductosConNivelMinimo()
         {
+            if (!HabilitarCambio)
+            {
+                Helpers.Msg.Alerta("EXISTEN ITEMS YA DESPLEGADOS");
+                return;
+            }
+
             _gTipo.CapturarProductosConNivelMinimo();
             if (_gTipo.CapturarProductosConNivelMinimoIsOk)
             {
@@ -310,6 +329,22 @@ namespace ModInventario.MovimientoInvTipo
         public bool CapturarProductosConNivelMinimoIsOk
         {
             get { return _gTipo.CapturarProductosConNivelMinimoIsOk; }
+        }
+        public void EliminarExistenciaNoDisponible()
+        {
+            _eliminarExistenciaNoDisponibleIsOk = false;
+            _gLista.setEliminarExistenciaNoDisponible();
+            _eliminarExistenciaNoDisponibleIsOk=true;
+        }
+        public bool EliminarExistenciaNoDisponibleIsOk
+        {
+            get { return _eliminarExistenciaNoDisponibleIsOk; }
+        }
+
+
+        public void NuevoDocumento()
+        {
+            _gTipo.NuevoDocumento();
         }
 
     }

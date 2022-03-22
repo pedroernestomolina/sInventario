@@ -70,6 +70,10 @@ namespace ModInventario.MovimientoInvTipo
 
         void NuevoDocumento();
 
+
+        void DejarEnPendiente(List<dataItem> list, decimal TotalImporte);
+        bool DejarEnPendienteIsOk { get; }
+
     }
 
 }

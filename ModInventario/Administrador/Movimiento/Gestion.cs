@@ -22,7 +22,6 @@ namespace ModInventario.Administrador.Movimiento
         public string Titulo { get { return "Administrador De Documentos de Inventario"; } }
         public BindingSource Source { get { return _gestionListaDetalle.Source; } }
         public string Items { get { return _gestionListaDetalle.Items; }}
-        public DateTime? Filtro_Hasta { get; set; }
         public BindingSource SucursalSource { get { return _gFiltro.Sucursal.Source; } }
         public BindingSource TipoDocSource { get { return _gFiltro.TipoDoc.Source; } }
         public string SucursalID { get { return _gFiltro.Sucursal.GetId; } }
@@ -185,7 +184,6 @@ namespace ModInventario.Administrador.Movimiento
                     Helpers.Msg.Error(rt1.Mensaje);
                     return;
                 }
-                //_gestionListaDetalle.setLista(rt1.Lista.Take(rt0.Entidad).ToList());
                 var lst = rt1.Lista.OrderByDescending(o => o.fecha).ThenByDescending(o => o.docNro).Take(rt0.Entidad).ToList();
                 _gestionListaDetalle.setLista(lst);
             }
@@ -200,8 +198,6 @@ namespace ModInventario.Administrador.Movimiento
         {
             _gFiltro.LimpiarFiltros();
             _limpiarFiltrosIsOk = true;
-
-            Filtro_Hasta = DateTime.Now;
         }
 
         public void LimpiarData()
@@ -221,7 +217,6 @@ namespace ModInventario.Administrador.Movimiento
 
         public void Filtros()
         {
-            _gFiltro.Inicializa();
             _gFiltro.Inicia();
         }
 

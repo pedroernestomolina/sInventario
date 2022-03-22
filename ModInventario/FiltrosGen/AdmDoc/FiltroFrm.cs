@@ -50,6 +50,7 @@ namespace ModInventario.FiltrosGen.AdmDoc
             CB_CONCEPTO.SelectedValue = _controlador.ConceptoID;
             CB_ESTATUS.SelectedValue = _controlador.EstatusID;
             TB_PRODUCTO.Text = _controlador.DescProductoAFiltrar;
+            P_PRODUCTO.Enabled = !_controlador.ProductoSeleccioandoIsOk;
             _modoInicializa = false;
         }
 

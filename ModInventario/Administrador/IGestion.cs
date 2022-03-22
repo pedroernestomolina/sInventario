@@ -16,7 +16,6 @@ namespace ModInventario.Administrador
         string Titulo { get; }
         BindingSource Source { get;  }
         string Items { get; }
-        DateTime? Filtro_Hasta { get; set; }
         BindingSource SucursalSource { get; }
         BindingSource TipoDocSource { get; }
         string SucursalID { get; }

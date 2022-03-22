@@ -24,6 +24,7 @@ namespace ModInventario.MovimientoInvTipo.TrasladoPorNivelMinimo
         private OOB.LibInventario.Sucursal.Ficha _sucDestino;
         private List<dataItem> _lItems;
         private bool _capturarProductosConNivelMinimoIsOk;
+        private bool _dejarEnPendienteIsOk;
 
 
         private ModInventario.FiltrosGen.IOpcion _gConcepto;
@@ -74,6 +75,7 @@ namespace ModInventario.MovimientoInvTipo.TrasladoPorNivelMinimo
             _capturarProductosConNivelMinimoIsOk = false;
             _sucOrigen = null;
             _sucDestino = null;
+            _dejarEnPendienteIsOk=false;
         }
 
 
@@ -94,6 +96,7 @@ namespace ModInventario.MovimientoInvTipo.TrasladoPorNivelMinimo
             _capturarProductosConNivelMinimoIsOk = false;
             _sucOrigen = null;
             _sucDestino = null;
+            _dejarEnPendienteIsOk = false;
         }
 
         MovFrm frm;
@@ -632,7 +635,99 @@ namespace ModInventario.MovimientoInvTipo.TrasladoPorNivelMinimo
             _autorizado = "";
             _motivo = "";
             _idDocumentoGenerado = "";
+            _dejarEnPendienteIsOk=false;
         }
+
+
+        public bool DejarEnPendienteIsOk { get { return _dejarEnPendienteIsOk; } }
+        public void DejarEnPendiente(List<dataItem> list, decimal totalImporte)
+        {
+            _dejarEnPendienteIsOk = false;
+            if (ValidarDoc())
+            {
+                var xmsg = "Dejar Cambios En Pendiente ?";
+                var msg = MessageBox.Show(xmsg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (msg == DialogResult.Yes)
+                {
+                    RegistrarPendiente(list, totalImporte);
+                }
+            }
+        }
+        private void RegistrarPendiente(List<dataItem> list, decimal totalImporte)
+        {
+            var r00 = Sistema.MyData.Sistema_TipoDocumento_GetFichaByTipo(OOB.LibInventario.Sistema.TipoDocumento.enumerados.enumTipoDocumento.TRASLADO);
+            if (r00.Result == OOB.Enumerados.EnumResult.isError)
+            {
+                Helpers.Msg.Error(r00.Mensaje);
+                return;
+            }
+            var _docTipo = r00.Entidad;
+            var _mDivisa = Math.Round(totalImporte / _tasaCambio, 2, MidpointRounding.AwayFromZero);
+            var movOOB = new OOB.LibInventario.Transito.Movimiento.Agregar.Mov()
+            {
+                autoriza = _autorizado,
+                cntRenglones = list.Count,
+                codigoMov = _docTipo.codigo,
+                descConcepto = _gConcepto.Item.desc,
+                descDepDestino = "",
+                descDepOrigen = "",
+                descMov = _docTipo.nombre,
+                descSucDestino = _sucDestino.nombre,
+                descSucOrigen = _sucOrigen.nombre,
+                descUsuario = Sistema.UsuarioP.nombreUsu,
+                estacionEquipo = "",
+                factorCambio = _tasaCambio,
+                idConcepto = _gConcepto.Item.id,
+                idDeOrigen = "",
+                idDepDestino = "",
+                idSucDestino = _sucDestino.auto,
+                idSucOrigen = _sucOrigen.auto,
+                monto = totalImporte,
+                montoDivisa = _mDivisa,
+                motivo = _motivo,
+                tipoMov = "3",
+            };
+
+            //var detOOB = list.Select(s =>
+            //{
+            //    var rg = new OOB.LibInventario.Movimiento.Traslado.Insertar.FichaMovDetalle()
+            //    {
+            //        autoDepartamento = s.Data.autoDepart,
+            //        autoGrupo = s.Data.autoGrupo,
+            //        autoProducto = s.Data.autoPrd,
+            //        cantidad = s.Cantidad,
+            //        cantidadBono = 0,
+            //        cantidadUnd = s.CntUnd,
+            //        categoria = s.Data.catPrd,
+            //        codigoProducto = s.Data.codigoPrd,
+            //        contEmpaque = s.Data.contEmp,
+            //        costoCompra = s.CostoNacional,
+            //        costoUnd = s.CostoUndNacional,
+            //        decimales = s.Data.decimales,
+            //        empaque = s.Data.nombreEmp,
+            //        estatusAnulado = "0",
+            //        estatusUnidad = s.MovPorUnidad ? "1" : "0",
+            //        nombreProducto = s.Data.nombrePrd,
+            //        signo = _docTipo.signo,
+            //        tipo = _docTipo.codigo,
+            //        total = s.ImporteNacional,
+            //    };
+            //    return rg;
+            //}).ToList();
+
+            var ficha = new OOB.LibInventario.Transito.Movimiento.Agregar.Ficha()
+            {
+                mov = movOOB,
+            };
+            var r01 = Sistema.MyData.Transito_Movimiento_Agregar(ficha);
+            if (r01.Result == OOB.Enumerados.EnumResult.isError)
+            {
+                Helpers.Msg.Error(r01.Mensaje);
+                return;
+            }
+            _dejarEnPendienteIsOk = true;
+        }
+
 
     }
 

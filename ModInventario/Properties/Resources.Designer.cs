@@ -103,6 +103,16 @@ namespace ModInventario.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bt_abrir_pendiente {
+            get {
+                object obj = ResourceManager.GetObject("bt_abrir_pendiente", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bt_alerta {
             get {
                 object obj = ResourceManager.GetObject("bt_alerta", resourceCulture);
@@ -516,6 +526,16 @@ namespace ModInventario.Properties {
         internal static System.Drawing.Bitmap bt_ok_3 {
             get {
                 object obj = ResourceManager.GetObject("bt_ok_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bt_pendiente {
+            get {
+                object obj = ResourceManager.GetObject("bt_pendiente", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

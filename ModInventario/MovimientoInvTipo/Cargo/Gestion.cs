@@ -484,6 +484,12 @@ namespace ModInventario.MovimientoInvTipo.Cargo
             _idDocumentoGenerado = "";
         }
 
+
+        public bool DejarEnPendienteIsOk { get { return false; } }
+        public void DejarEnPendiente(List<dataItem> list, decimal TotalImporte)
+        {
+        }
+
     }
 
 }

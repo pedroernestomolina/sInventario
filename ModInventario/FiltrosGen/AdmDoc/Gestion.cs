@@ -61,8 +61,8 @@ namespace ModInventario.FiltrosGen.AdmDoc
             _gProducto = buscarPrd;
             _gSucursal= sucursal;
             _gTipoDoc= tipoDoc;
-            _gDesde = desde;
-            _gHasta = hasta;
+            _gDesde = new FiltrosGen.Fecha.Gestion();
+            _gHasta = new FiltrosGen.Fecha.Gestion(); 
         }
 
 

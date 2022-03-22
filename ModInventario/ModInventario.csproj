@@ -430,79 +430,6 @@
     <Compile Include="MovimientoInvTipo\Traslado\MovFrm.Designer.cs">
       <DependentUpon>MovFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Movimiento\Ajuste\EntradaFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Movimiento\Ajuste\EntradaFrm.Designer.cs">
-      <DependentUpon>EntradaFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Movimiento\Ajuste\Entrada\Gestion.cs" />
-    <Compile Include="Movimiento\Ajuste\Gestion.cs" />
-    <Compile Include="Movimiento\Ajuste\GestionDetalle.cs" />
-    <Compile Include="Movimiento\Cargo\EntradaFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Movimiento\Cargo\EntradaFrm.Designer.cs">
-      <DependentUpon>EntradaFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Movimiento\Cargo\Entrada\Gestion.cs" />
-    <Compile Include="Movimiento\Cargo\Gestion.cs" />
-    <Compile Include="Movimiento\Cargo\GestionDetalle.cs" />
-    <Compile Include="Movimiento\data.cs" />
-    <Compile Include="Movimiento\dataDetalle.cs" />
-    <Compile Include="Movimiento\Descargo\EntradaFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Movimiento\Descargo\EntradaFrm.Designer.cs">
-      <DependentUpon>EntradaFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Movimiento\Descargo\Entrada\Gestion.cs" />
-    <Compile Include="Movimiento\Descargo\Gestion.cs" />
-    <Compile Include="Movimiento\Descargo\GestionDetalle.cs" />
-    <Compile Include="Movimiento\enumerados.cs" />
-    <Compile Include="Movimiento\ficha.cs" />
-    <Compile Include="Movimiento\Gestion.cs" />
-    <Compile Include="Movimiento\IGestion.cs" />
-    <Compile Include="Movimiento\item.cs" />
-    <Compile Include="Movimiento\MvFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Movimiento\MvFrm.Designer.cs">
-      <DependentUpon>MvFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Movimiento\TrasladoDevolucion\EntradaFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Movimiento\TrasladoDevolucion\EntradaFrm.Designer.cs">
-      <DependentUpon>EntradaFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Movimiento\TrasladoDevolucion\Entrada\Gestion.cs" />
-    <Compile Include="Movimiento\TrasladoDevolucion\Gestion.cs" />
-    <Compile Include="Movimiento\TrasladoDevolucion\GestionDetalle.cs" />
-    <Compile Include="Movimiento\TrasladoEntreSucursal\EntradaFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Movimiento\TrasladoEntreSucursal\EntradaFrm.Designer.cs">
-      <DependentUpon>EntradaFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Movimiento\TrasladoEntreSucursal\Entrada\Gestion.cs" />
-    <Compile Include="Movimiento\TrasladoEntreSucursal\Gestion.cs" />
-    <Compile Include="Movimiento\TrasladoEntreSucursal\GestionDetalle.cs" />
-    <Compile Include="Movimiento\TrasladoEntreSucursal\MovimientoFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Movimiento\TrasladoEntreSucursal\MovimientoFrm.Designer.cs">
-      <DependentUpon>MovimientoFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Movimiento\Traslado\EntradaFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Movimiento\Traslado\EntradaFrm.Designer.cs">
-      <DependentUpon>EntradaFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Movimiento\Traslado\Entrada\Gestion.cs" />
-    <Compile Include="Movimiento\Traslado\Gestion.cs" />
-    <Compile Include="Movimiento\Traslado\GestionDetalle.cs" />
     <Compile Include="Producto\AgregarEditar\AgregarEditarFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -929,30 +856,6 @@
     <EmbeddedResource Include="MovimientoInvTipo\Traslado\MovFrm.resx">
       <DependentUpon>MovFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Movimiento\Ajuste\EntradaFrm.resx">
-      <DependentUpon>EntradaFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Movimiento\Cargo\EntradaFrm.resx">
-      <DependentUpon>EntradaFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Movimiento\Descargo\EntradaFrm.resx">
-      <DependentUpon>EntradaFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Movimiento\MvFrm.resx">
-      <DependentUpon>MvFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Movimiento\TrasladoDevolucion\EntradaFrm.resx">
-      <DependentUpon>EntradaFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Movimiento\TrasladoEntreSucursal\EntradaFrm.resx">
-      <DependentUpon>EntradaFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Movimiento\TrasladoEntreSucursal\MovimientoFrm.resx">
-      <DependentUpon>MovimientoFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Movimiento\Traslado\EntradaFrm.resx">
-      <DependentUpon>EntradaFrm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Producto\AgregarEditar\AgregarEditarFrm.resx">
       <DependentUpon>AgregarEditarFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1201,6 +1104,7 @@
     <Content Include="Imagenes\automatizacion.jpg" />
     <Content Include="Imagenes\automatizacion_2.jpg" />
     <Content Include="Imagenes\bt_abrir_doc.png" />
+    <Content Include="Imagenes\bt_abrir_pendiente.png" />
     <Content Include="Imagenes\bt_alerta.png" />
     <Content Include="Imagenes\bt_anular.png" />
     <Content Include="Imagenes\bt_asignar.png" />
@@ -1243,6 +1147,7 @@
     <Content Include="Imagenes\bt_notificacion.png" />
     <Content Include="Imagenes\bt_ok_2.png" />
     <Content Include="Imagenes\bt_ok_3.png" />
+    <Content Include="Imagenes\bt_pendiente.png" />
     <Content Include="Imagenes\bt_price.png" />
     <Content Include="Imagenes\bt_proceso.png" />
     <Content Include="Imagenes\bt_proveedor.png" />
@@ -1272,6 +1177,8 @@
     <Content Include="Imagenes\TOOLS.ico" />
     <Content Include="Imagenes\transferencia.png" />
     <Content Include="Imagenes\warehouse.png" />
+    <None Include="Resources\bt_abrir_pendiente.png" />
+    <None Include="Resources\bt_pendiente.png" />
     <None Include="Resources\bt_dashboard.png" />
   </ItemGroup>
   <ItemGroup>

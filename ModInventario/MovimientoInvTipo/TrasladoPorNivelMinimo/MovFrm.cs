@@ -499,6 +499,21 @@ namespace ModInventario.MovimientoInvTipo.TrasladoPorNivelMinimo
             }
         }
 
+        private void BT_DEJAR_PENDIENTE_Click(object sender, EventArgs e)
+        {
+            DejarEnPendiente();
+        }
+        private void DejarEnPendiente()
+        {
+            _controlador.DejarEnPendiente();
+            if (_controlador.DejarEnPendienteIsOk)
+            {
+                Limpiar();
+                ActualizarImporte();
+                _controlador.NuevoDocumento();
+            }
+        }
+
     }
 
 }

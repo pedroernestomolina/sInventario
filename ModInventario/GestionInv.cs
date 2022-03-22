@@ -13,7 +13,6 @@ namespace ModInventario
     {
 
         private Buscar.Gestion _gestionBusqueda;
-        private Movimiento.Gestion _gestionMov;
         private Visor.Existencia.Gestion _gestionVisorExistencia;
         private Visor.CostoEdad.Gestion _gestionVisorCostoEdad;
         private Visor.Traslado.Gestion _gestionVisorTraslado;
@@ -274,10 +273,6 @@ namespace ModInventario
                 _gFiltroAdmProducto, 
                 _seguridad, 
                 _callMaestro);
-            _gestionMov = new Movimiento.Gestion(
-                _gAdmSelPrd,
-                _callMaestro);
-
 
 
             _gestionVisorExistencia = new Visor.Existencia.Gestion();

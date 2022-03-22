@@ -588,7 +588,6 @@ namespace ModInventario.MovimientoInvTipo.Traslado
         }
 
 
-
         public void NuevoDocumento()
         {
             _isOk = false;
@@ -598,6 +597,13 @@ namespace ModInventario.MovimientoInvTipo.Traslado
             _motivo = "";
             _idDocumentoGenerado = "";
         }
+
+
+        public bool DejarEnPendienteIsOk { get { return false; } }
+        public void DejarEnPendiente(List<dataItem> list, decimal TotalImporte)
+        {
+        }
+
 
     }
 

@@ -70,6 +70,7 @@
     <Compile Include="Data\Sucursal.cs" />
     <Compile Include="Data\TasaImpuesto.cs" />
     <Compile Include="Data\Tool.cs" />
+    <Compile Include="Data\MovTransito.cs" />
     <Compile Include="Data\Usuario.cs" />
     <Compile Include="Data\Visor.cs" />
     <Compile Include="InfraEstructura\IAnalisis.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="InfraEstructura\IKardex.cs" />
     <Compile Include="InfraEstructura\IMarca.cs" />
     <Compile Include="InfraEstructura\IMovimiento.cs" />
+    <Compile Include="InfraEstructura\IMovTransito.cs" />
     <Compile Include="InfraEstructura\IPermisos.cs" />
     <Compile Include="InfraEstructura\IPrecio.cs" />
     <Compile Include="InfraEstructura\IProducto.cs" />

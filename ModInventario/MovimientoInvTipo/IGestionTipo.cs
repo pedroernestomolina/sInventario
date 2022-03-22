@@ -84,6 +84,10 @@ namespace ModInventario.MovimientoInvTipo
 
         void NuevoDocumento();
 
+
+        bool DejarEnPendienteIsOk { get; }
+        void DejarEnPendiente();
+
     }
 
 }

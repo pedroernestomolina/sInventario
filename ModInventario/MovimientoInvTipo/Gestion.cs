@@ -254,6 +254,7 @@ namespace ModInventario.MovimientoInvTipo
                 _limpiarIsOk = true;
                 _gTipo.Limpiar();
                 _gLista.Limpiar();
+                NuevoDocumento();
             }
         }
 
@@ -345,6 +346,28 @@ namespace ModInventario.MovimientoInvTipo
         public void NuevoDocumento()
         {
             _gTipo.NuevoDocumento();
+        }
+
+
+
+        public void DejarEnPendiente()
+        {
+            if (_gLista.CntItem == 0)
+            {
+                Helpers.Msg.Alerta("NO HAY ITEMS QUE PROCESAR");
+                return;
+            }
+
+            _gTipo.DejarEnPendiente(_gLista.Items, TotalImporte);
+            if (_gTipo.DejarEnPendienteIsOk)
+            {
+                _gTipo.Limpiar();
+                _gLista.Limpiar();
+            }
+        }
+        public bool DejarEnPendienteIsOk
+        {
+            get { return _gTipo.DejarEnPendienteIsOk; }
         }
 
     }

@@ -5,11 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace OOB.LibInventario.Transito.Movimiento.Agregar
+namespace OOB.LibInventario.Transito.Movimiento.Entidad
 {
     
     public class Ficha
     {
+
 
         public Mov mov { get; set; }
         public List<Detalle> detalles { get; set; }

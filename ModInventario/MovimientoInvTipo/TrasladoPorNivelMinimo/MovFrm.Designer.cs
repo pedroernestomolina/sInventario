@@ -37,6 +37,12 @@
             this.BT_PROCESAR = new System.Windows.Forms.Button();
             this.panel54 = new System.Windows.Forms.Panel();
             this.BT_DEJAR_PENDIENTE = new System.Windows.Forms.Button();
+            this.panel55 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel20 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel56 = new System.Windows.Forms.Panel();
+            this.L_ITEMS_PEND = new System.Windows.Forms.Label();
+            this.panel57 = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.panel32 = new System.Windows.Forms.Panel();
@@ -147,6 +153,10 @@
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel54.SuspendLayout();
+            this.panel55.SuspendLayout();
+            this.tableLayoutPanel20.SuspendLayout();
+            this.panel56.SuspendLayout();
+            this.panel57.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
             this.panel32.SuspendLayout();
@@ -240,6 +250,7 @@
             this.tableLayoutPanel2.Controls.Add(this.panel4, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel3, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.panel54, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.panel55, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(1);
@@ -324,6 +335,78 @@
             this.BT_DEJAR_PENDIENTE.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.BT_DEJAR_PENDIENTE.UseVisualStyleBackColor = true;
             this.BT_DEJAR_PENDIENTE.Click += new System.EventHandler(this.BT_DEJAR_PENDIENTE_Click);
+            // 
+            // panel55
+            // 
+            this.panel55.Controls.Add(this.tableLayoutPanel20);
+            this.panel55.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel55.Location = new System.Drawing.Point(1, 1);
+            this.panel55.Margin = new System.Windows.Forms.Padding(1);
+            this.panel55.Name = "panel55";
+            this.panel55.Size = new System.Drawing.Size(230, 48);
+            this.panel55.TabIndex = 3;
+            // 
+            // tableLayoutPanel20
+            // 
+            this.tableLayoutPanel20.ColumnCount = 2;
+            this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel20.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 85F));
+            this.tableLayoutPanel20.Controls.Add(this.panel56, 0, 0);
+            this.tableLayoutPanel20.Controls.Add(this.panel57, 1, 0);
+            this.tableLayoutPanel20.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel20.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel20.Name = "tableLayoutPanel20";
+            this.tableLayoutPanel20.RowCount = 2;
+            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel20.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel20.Size = new System.Drawing.Size(230, 48);
+            this.tableLayoutPanel20.TabIndex = 0;
+            // 
+            // panel56
+            // 
+            this.panel56.Controls.Add(this.L_ITEMS_PEND);
+            this.panel56.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel56.Location = new System.Drawing.Point(1, 1);
+            this.panel56.Margin = new System.Windows.Forms.Padding(1);
+            this.panel56.Name = "panel56";
+            this.panel56.Padding = new System.Windows.Forms.Padding(2);
+            this.panel56.Size = new System.Drawing.Size(32, 22);
+            this.panel56.TabIndex = 0;
+            // 
+            // L_ITEMS_PEND
+            // 
+            this.L_ITEMS_PEND.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_ITEMS_PEND.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_ITEMS_PEND.ForeColor = System.Drawing.Color.Navy;
+            this.L_ITEMS_PEND.Location = new System.Drawing.Point(2, 2);
+            this.L_ITEMS_PEND.Name = "L_ITEMS_PEND";
+            this.L_ITEMS_PEND.Size = new System.Drawing.Size(28, 18);
+            this.L_ITEMS_PEND.TabIndex = 0;
+            this.L_ITEMS_PEND.Text = "XX";
+            this.L_ITEMS_PEND.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel57
+            // 
+            this.panel57.Controls.Add(this.label12);
+            this.panel57.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel57.Location = new System.Drawing.Point(35, 1);
+            this.panel57.Margin = new System.Windows.Forms.Padding(1);
+            this.panel57.Name = "panel57";
+            this.panel57.Padding = new System.Windows.Forms.Padding(2);
+            this.panel57.Size = new System.Drawing.Size(194, 22);
+            this.panel57.TabIndex = 1;
+            // 
+            // label12
+            // 
+            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Navy;
+            this.label12.Location = new System.Drawing.Point(2, 2);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(190, 18);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "Movimientos Pendientes";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel1
             // 
@@ -425,7 +508,7 @@
             this.BT_PENDIENTE.Name = "BT_PENDIENTE";
             this.BT_PENDIENTE.Size = new System.Drawing.Size(36, 29);
             this.BT_PENDIENTE.TabIndex = 1;
-            this.toolTip1.SetToolTip(this.BT_PENDIENTE, "Guardar Cambios ");
+            this.toolTip1.SetToolTip(this.BT_PENDIENTE, "Lista Movimientos Pendientes");
             this.BT_PENDIENTE.UseVisualStyleBackColor = true;
             this.BT_PENDIENTE.Click += new System.EventHandler(this.BT_PENDIENTE_Click);
             // 
@@ -1693,6 +1776,10 @@
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel54.ResumeLayout(false);
+            this.panel55.ResumeLayout(false);
+            this.tableLayoutPanel20.ResumeLayout(false);
+            this.panel56.ResumeLayout(false);
+            this.panel57.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel12.ResumeLayout(false);
             this.panel32.ResumeLayout(false);
@@ -1885,6 +1972,12 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel54;
         private System.Windows.Forms.Button BT_DEJAR_PENDIENTE;
+        private System.Windows.Forms.Panel panel55;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel20;
+        private System.Windows.Forms.Panel panel56;
+        private System.Windows.Forms.Panel panel57;
+        private System.Windows.Forms.Label L_ITEMS_PEND;
+        private System.Windows.Forms.Label label12;
 
     }
 }

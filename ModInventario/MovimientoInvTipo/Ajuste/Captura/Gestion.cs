@@ -8,12 +8,13 @@ using System.Windows.Forms;
 
 namespace ModInventario.MovimientoInvTipo.Ajuste.Captura
 {
-    
-    public class Gestion: ICapturaMovAjuste
+
+    public class Gestion : ICapturaMovAjuste
     {
 
         private bool _procesarIsOk;
         private bool _abandonarIsOk;
+        private bool _cargarDataIsOk;
         private dataItem _item;
         private FiltrosGen.IOpcion _gEmpaque;
         private FiltrosGen.IOpcion _gTipoMov;
@@ -44,13 +45,14 @@ namespace ModInventario.MovimientoInvTipo.Ajuste.Captura
         public decimal Importe { get { return _item.Importe; } }
         public decimal Cantidad { get { return _item.Cantidad; } }
         public decimal Costo { get { return _item.Costo; } }
-        
 
-        public Gestion() 
+
+        public Gestion()
         {
             _procesarIsOk = false;
             _abandonarIsOk = false;
-            _gEmpaque= new FiltrosGen.Opcion.Gestion();
+            _cargarDataIsOk = false;
+            _gEmpaque = new FiltrosGen.Opcion.Gestion();
             _gTipoMov = new FiltrosGen.Opcion.Gestion();
         }
 
@@ -66,6 +68,8 @@ namespace ModInventario.MovimientoInvTipo.Ajuste.Captura
             _item = null;
             _procesarIsOk = false;
             _abandonarIsOk = false;
+            _cargarDataIsOk =false;
+
             _gEmpaque.Inicializa();
             _gTipoMov.Inicializa();
         }
@@ -86,7 +90,7 @@ namespace ModInventario.MovimientoInvTipo.Ajuste.Captura
 
         private bool CargarData()
         {
-            var lst= new List<ficha>();
+            var lst = new List<ficha>();
             lst.Add(new ficha("1", "", "POR EMPQ/COMPRA"));
             lst.Add(new ficha("2", "", "POR UNIDAD"));
             _gEmpaque.setData(lst);
@@ -96,6 +100,7 @@ namespace ModInventario.MovimientoInvTipo.Ajuste.Captura
             lst2.Add(new ficha("2", "", "DESCARGO"));
             _gTipoMov.setData(lst2);
 
+            _cargarDataIsOk = true;
             return true;
         }
 
@@ -112,7 +117,7 @@ namespace ModInventario.MovimientoInvTipo.Ajuste.Captura
 
         public void Procesar()
         {
-            if (Importe <= 0m) 
+            if (Importe <= 0m)
             {
                 Helpers.Msg.Alerta("MONTO MOVIMIENTO INCORRECTO");
                 return;
@@ -150,6 +155,19 @@ namespace ModInventario.MovimientoInvTipo.Ajuste.Captura
 
         public void setItemEditar(dataItem ItemActual)
         {
+            if (!_cargarDataIsOk)
+            {
+                var lst = new List<ficha>();
+                lst.Add(new ficha("1", "", "POR EMPQ/COMPRA"));
+                lst.Add(new ficha("2", "", "POR UNIDAD"));
+                _gEmpaque.setData(lst);
+
+                var lst2 = new List<ficha>();
+                lst2.Add(new ficha("1", "", "CARGO"));
+                lst2.Add(new ficha("2", "", "DESCARGO"));
+                _gTipoMov.setData(lst2);
+            }
+
             _gEmpaque.Limpiar();
             _gEmpaque.setFicha(ItemActual.EmpaqueFicha.id);
             _gTipoMov.Limpiar();

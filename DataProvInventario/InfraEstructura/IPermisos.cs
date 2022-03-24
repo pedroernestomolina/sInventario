@@ -72,6 +72,8 @@ namespace DataProvInventario.InfraEstructura
 
         OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha> Permiso_ConfiguracionSistema(string autoGrupoUsuario);
 
+        OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha> Permiso_Movimiento_Traslado_Procesar(string autoGrupoUsuario);
+
     }
 
 }

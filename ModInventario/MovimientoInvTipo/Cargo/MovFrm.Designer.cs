@@ -41,8 +41,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel33 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel36 = new System.Windows.Forms.Panel();
-            this.BT_PENDIENTE = new System.Windows.Forms.Button();
             this.panel35 = new System.Windows.Forms.Panel();
             this.BT_LIMPIAR = new System.Windows.Forms.Button();
             this.panel34 = new System.Windows.Forms.Panel();
@@ -135,7 +133,6 @@
             this.panel32.SuspendLayout();
             this.panel33.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
-            this.panel36.SuspendLayout();
             this.panel35.SuspendLayout();
             this.panel5.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -339,9 +336,8 @@
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel13.Controls.Add(this.panel36, 2, 0);
-            this.tableLayoutPanel13.Controls.Add(this.panel35, 1, 0);
-            this.tableLayoutPanel13.Controls.Add(this.panel34, 0, 0);
+            this.tableLayoutPanel13.Controls.Add(this.panel35, 2, 0);
+            this.tableLayoutPanel13.Controls.Add(this.panel34, 1, 0);
             this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel13.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel13.Margin = new System.Windows.Forms.Padding(0);
@@ -351,41 +347,15 @@
             this.tableLayoutPanel13.Size = new System.Drawing.Size(94, 33);
             this.tableLayoutPanel13.TabIndex = 0;
             // 
-            // panel36
-            // 
-            this.panel36.Controls.Add(this.BT_PENDIENTE);
-            this.panel36.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel36.Location = new System.Drawing.Point(62, 0);
-            this.panel36.Margin = new System.Windows.Forms.Padding(0);
-            this.panel36.Name = "panel36";
-            this.panel36.Padding = new System.Windows.Forms.Padding(2);
-            this.panel36.Size = new System.Drawing.Size(32, 33);
-            this.panel36.TabIndex = 2;
-            // 
-            // BT_PENDIENTE
-            // 
-            this.BT_PENDIENTE.BackgroundImage = global::ModInventario.Properties.Resources.bt_guardar;
-            this.BT_PENDIENTE.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.BT_PENDIENTE.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BT_PENDIENTE.FlatAppearance.BorderSize = 0;
-            this.BT_PENDIENTE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BT_PENDIENTE.Location = new System.Drawing.Point(2, 2);
-            this.BT_PENDIENTE.Name = "BT_PENDIENTE";
-            this.BT_PENDIENTE.Size = new System.Drawing.Size(28, 29);
-            this.BT_PENDIENTE.TabIndex = 1;
-            this.toolTip1.SetToolTip(this.BT_PENDIENTE, "Guardar Cambios ");
-            this.BT_PENDIENTE.UseVisualStyleBackColor = true;
-            this.BT_PENDIENTE.Click += new System.EventHandler(this.BT_PENDIENTE_Click);
-            // 
             // panel35
             // 
             this.panel35.Controls.Add(this.BT_LIMPIAR);
             this.panel35.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel35.Location = new System.Drawing.Point(31, 0);
+            this.panel35.Location = new System.Drawing.Point(62, 0);
             this.panel35.Margin = new System.Windows.Forms.Padding(0);
             this.panel35.Name = "panel35";
             this.panel35.Padding = new System.Windows.Forms.Padding(2);
-            this.panel35.Size = new System.Drawing.Size(31, 33);
+            this.panel35.Size = new System.Drawing.Size(32, 33);
             this.panel35.TabIndex = 1;
             // 
             // BT_LIMPIAR
@@ -397,7 +367,7 @@
             this.BT_LIMPIAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BT_LIMPIAR.Location = new System.Drawing.Point(2, 2);
             this.BT_LIMPIAR.Name = "BT_LIMPIAR";
-            this.BT_LIMPIAR.Size = new System.Drawing.Size(27, 29);
+            this.BT_LIMPIAR.Size = new System.Drawing.Size(28, 29);
             this.BT_LIMPIAR.TabIndex = 1;
             this.toolTip1.SetToolTip(this.BT_LIMPIAR, "Limpiar Cambios Efectuados");
             this.BT_LIMPIAR.UseVisualStyleBackColor = true;
@@ -406,7 +376,7 @@
             // panel34
             // 
             this.panel34.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel34.Location = new System.Drawing.Point(0, 0);
+            this.panel34.Location = new System.Drawing.Point(31, 0);
             this.panel34.Margin = new System.Windows.Forms.Padding(0);
             this.panel34.Name = "panel34";
             this.panel34.Padding = new System.Windows.Forms.Padding(2);
@@ -1465,7 +1435,6 @@
             this.panel32.ResumeLayout(false);
             this.panel33.ResumeLayout(false);
             this.tableLayoutPanel13.ResumeLayout(false);
-            this.panel36.ResumeLayout(false);
             this.panel35.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -1591,10 +1560,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel33;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
-        private System.Windows.Forms.Panel panel36;
         private System.Windows.Forms.Panel panel35;
         private System.Windows.Forms.Panel panel34;
-        private System.Windows.Forms.Button BT_PENDIENTE;
         private System.Windows.Forms.Button BT_LIMPIAR;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Panel panel37;

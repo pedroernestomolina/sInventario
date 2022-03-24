@@ -108,6 +108,8 @@ namespace ModInventario
         private ModInventario.MovimientoInvTipo.ITipoSeguridad _gMovTipoAjusteInvCero;
         //
         private Configuracion.DepositoConceptoDevMercancia.IConfiguracion _gCnfDepositoConceptoDev;
+        // 
+        private MovimientoInvTipo.Transito.ITransito _gTransitoMov;
 
 
         public string Version { get { return "Ver. " + Application.ProductVersion; } }
@@ -231,6 +233,8 @@ namespace ModInventario
                 _gMtMarca,
                 _gMtUnidadEmpq,
                 _seguridad);
+            // MOV TRANSITO
+            _gTransitoMov = new MovimientoInvTipo.Transito.Gestion();
             // MOV INVENTARIO
             _gMovTipoLista = new ModInventario.MovimientoInvTipo.Lista();
             _gMovTipo = new ModInventario.MovimientoInvTipo.Gestion(
@@ -250,16 +254,22 @@ namespace ModInventario
             _gCapturaMovTraslado= new ModInventario.MovimientoInvTipo.Traslado.Captura.Gestion();
             _gMovTipoTraslado = new ModInventario.MovimientoInvTipo.Traslado.Gestion(
                 _gCapturaMovTraslado,
-                _callMaestro);
+                _callMaestro, 
+                _gTransitoMov,
+                _seguridad);
             //
             _gMovTipoTraslPorNIvelMinimo = new ModInventario.MovimientoInvTipo.TrasladoPorNivelMinimo.Gestion(
                 _gCapturaMovTraslado,
-                _callMaestro);
+                _callMaestro, 
+                _gTransitoMov, 
+                _seguridad);
             //MOV AJUSTE INVENTARIO
             _gCapturaMovAjuste= new ModInventario.MovimientoInvTipo.Ajuste.Captura.Gestion();
             _gMovTipoAjuste = new ModInventario.MovimientoInvTipo.Ajuste.Gestion(
                 _gCapturaMovAjuste,
-                _callMaestro);
+                _callMaestro,
+                _gTransitoMov, 
+                _seguridad);
             //MOV AJUSTE INVENTARIO CERO
             _gMovTipoAjusteInvCero = new ModInventario.MovimientoInvTipo.AjusteInvCero.Gestion(
                 _callMaestro,

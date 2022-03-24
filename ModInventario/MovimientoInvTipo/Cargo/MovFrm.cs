@@ -172,21 +172,6 @@ namespace ModInventario.MovimientoInvTipo.Cargo
             }
             ActualizarImporte();
             IrFocoBusqueda();
-
-
-            //switch (_controlador.EnumTipoMovimiento)
-            //{
-            //    case enumerados.enumTipoMovimiento.Cargo:
-            //        P_TIPO_MOVIMIENTO.BackColor = Color.Green;
-            //        break;
-            //    case enumerados.enumTipoMovimiento.Descargo:
-            //        P_TIPO_MOVIMIENTO.BackColor = Color.Red;
-            //        break;
-            //    case enumerados.enumTipoMovimiento.Traslado:
-            //    case enumerados.enumTipoMovimiento.Ajuste:
-            //        P_TIPO_MOVIMIENTO.BackColor = Color.Orange;
-            //        break;
-            //}
         }
 
 

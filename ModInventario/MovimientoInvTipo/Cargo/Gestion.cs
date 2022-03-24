@@ -485,8 +485,22 @@ namespace ModInventario.MovimientoInvTipo.Cargo
         }
 
 
+
+        public bool ItemTransitoIsOk { get { return false; } }
+        public int ItemTransitoId { get { return -1; } }
+        public int DocPendientes { get { return 0; } }
         public bool DejarEnPendienteIsOk { get { return false; } }
         public void DejarEnPendiente(List<dataItem> list, decimal TotalImporte)
+        {
+        }
+        public void ListaDocPendientes()
+        {
+        }
+        public List<dataItem> LoadTransito()
+        {
+            return null;
+        }
+        public void AnularTransito()
         {
         }
 

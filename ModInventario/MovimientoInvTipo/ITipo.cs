@@ -71,8 +71,14 @@ namespace ModInventario.MovimientoInvTipo
         void NuevoDocumento();
 
 
-        void DejarEnPendiente(List<dataItem> list, decimal TotalImporte);
         bool DejarEnPendienteIsOk { get; }
+        int DocPendientes { get; }
+        bool ItemTransitoIsOk { get; }
+        int ItemTransitoId { get; }
+        void DejarEnPendiente(List<dataItem> list, decimal TotalImporte);
+        void ListaDocPendientes();
+        List<dataItem> LoadTransito();
+        void AnularTransito();
 
     }
 

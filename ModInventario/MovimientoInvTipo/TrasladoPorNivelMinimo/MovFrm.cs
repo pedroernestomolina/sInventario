@@ -360,6 +360,7 @@ namespace ModInventario.MovimientoInvTipo.TrasladoPorNivelMinimo
         {
             L_MONTO.Text = _controlador.TotalImporte.ToString("n2");
             L_ITEMS.Text = "Total Items: " + Environment.NewLine + _controlador.CntItems.ToString();
+            L_ITEMS_PEND.Text = _controlador.DocPendientes.ToString();
         }
 
         private void RB_BUSCAR_POR_CODIGO_CheckedChanged(object sender, EventArgs e)
@@ -457,6 +458,32 @@ namespace ModInventario.MovimientoInvTipo.TrasladoPorNivelMinimo
 
         private void BT_PENDIENTE_Click(object sender, EventArgs e)
         {
+            ListaDocPendiente();
+        }
+        private void ListaDocPendiente()
+        {
+            _controlador.ListaDocPendientes();
+            if (_controlador.ListaDocPendientesIsOk) 
+            {
+                ActualizarFicha();
+                ActualizarImporte();
+            }
+        }
+
+        private void ActualizarFicha()
+        {
+            _modoInicio = true;
+            TB_MOTIVO.Text = _controlador.Motivo;
+            TB_AUTORIZADO_POR.Text = _controlador.AutorizadoPor;
+            CB_ORIGEN.DataSource = _controlador.DepOrigenSource;
+            CB_DESTINO.DataSource = _controlador.DepDestinoSource;
+            CB_CONCEPTO.DataSource = _controlador.ConceptoSource;
+            CB_DEPARTAMENTO.DataSource = _controlador.DepartamentoSource;
+            CB_ORIGEN.SelectedValue = _controlador.DepOrigenGetID;
+            CB_DESTINO.SelectedValue = _controlador.DepDestinoGetID;
+            CB_CONCEPTO.SelectedValue = _controlador.ConceptoGetId;
+            CB_DEPARTAMENTO.SelectedValue = _controlador.DepartamentoGetId;
+            _modoInicio = false;
         }
 
         private void MvFrm_FormClosing(object sender, FormClosingEventArgs e)
@@ -509,8 +536,8 @@ namespace ModInventario.MovimientoInvTipo.TrasladoPorNivelMinimo
             if (_controlador.DejarEnPendienteIsOk)
             {
                 Limpiar();
-                ActualizarImporte();
                 _controlador.NuevoDocumento();
+                ActualizarImporte();
             }
         }
 

@@ -307,6 +307,19 @@ namespace ModInventario.MovimientoInvTipo.Traslado
         {
             L_MONTO.Text = _controlador.TotalImporte.ToString("n2");
             L_ITEMS.Text = "Total Items: " + Environment.NewLine + _controlador.CntItems.ToString();
+            L_ITEMS_PEND.Text = _controlador.DocPendientes.ToString();
+        }
+        private void ActualizarFicha()
+        {
+            _modoInicio = true;
+            TB_MOTIVO.Text = _controlador.Motivo;
+            TB_AUTORIZADO_POR.Text = _controlador.AutorizadoPor;
+            DTP_FECHA.Value = _controlador.FechaSistema;
+            CB_CONCEPTO.SelectedValue = _controlador.ConceptoGetId;
+            CB_SUCURSAL.SelectedValue = _controlador.SucursalGetId;
+            CB_DEP_ORIGEN.SelectedValue = _controlador.DepOrigenGetID;
+            CB_DEP_DESTINO.SelectedValue = _controlador.DepDestinoGetID;
+            _modoInicio = false;
         }
 
         private void RB_BUSCAR_POR_CODIGO_CheckedChanged(object sender, EventArgs e)
@@ -404,6 +417,16 @@ namespace ModInventario.MovimientoInvTipo.Traslado
 
         private void BT_PENDIENTE_Click(object sender, EventArgs e)
         {
+            ListaDocPendiente();
+        }
+        private void ListaDocPendiente()
+        {
+            _controlador.ListaDocPendientes();
+            if (_controlador.ListaDocPendientesIsOk)
+            {
+                ActualizarFicha();
+                ActualizarImporte();
+            }
         }
 
         private void MvFrm_FormClosing(object sender, FormClosingEventArgs e)
@@ -420,6 +443,21 @@ namespace ModInventario.MovimientoInvTipo.Traslado
             this.Close();
         }
 
+        private void BT_DEJAR_PENDIENTE_Click(object sender, EventArgs e)
+        {
+            DejarEnPendiente();
+        }
+        private void DejarEnPendiente()
+        {
+            _controlador.DejarEnPendiente();
+            if (_controlador.DejarEnPendienteIsOk)
+            {
+                Limpiar();
+                _controlador.NuevoDocumento();
+                ActualizarImporte();
+            }
+        }
+     
     }
 
 }

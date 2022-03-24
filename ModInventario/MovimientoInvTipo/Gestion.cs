@@ -349,7 +349,9 @@ namespace ModInventario.MovimientoInvTipo
         }
 
 
-
+        public bool DejarEnPendienteIsOk { get { return _gTipo.DejarEnPendienteIsOk; } }
+        public int DocPendientes { get { return _gTipo.DocPendientes; } }
+        public bool ListaDocPendientesIsOk { get { return _gTipo.ItemTransitoIsOk; } }
         public void DejarEnPendiente()
         {
             if (_gLista.CntItem == 0)
@@ -357,7 +359,6 @@ namespace ModInventario.MovimientoInvTipo
                 Helpers.Msg.Alerta("NO HAY ITEMS QUE PROCESAR");
                 return;
             }
-
             _gTipo.DejarEnPendiente(_gLista.Items, TotalImporte);
             if (_gTipo.DejarEnPendienteIsOk)
             {
@@ -365,9 +366,19 @@ namespace ModInventario.MovimientoInvTipo
                 _gLista.Limpiar();
             }
         }
-        public bool DejarEnPendienteIsOk
+        public void ListaDocPendientes()
         {
-            get { return _gTipo.DejarEnPendienteIsOk; }
+            _gTipo.ListaDocPendientes();
+            if (_gTipo.ItemTransitoIsOk) 
+            {
+                if (_gLista.CntItem > 0)
+                {
+                    Helpers.Msg.Alerta("HAY ITEMS CARGADOS EN EL MOVIMIENTO ACTUAL");
+                    return;
+                }
+                _gLista.setListaAgregar(_gTipo.LoadTransito());
+                _gTipo.AnularTransito();
+            };
         }
 
     }

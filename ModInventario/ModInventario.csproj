@@ -268,6 +268,8 @@
     </Compile>
     <Compile Include="IGestion.cs" />
     <Compile Include="IGestionRep.cs" />
+    <Compile Include="IListaSeleccion.cs" />
+    <Compile Include="INotificarSeleccion.cs" />
     <Compile Include="ISeguridadAccesoSistema.cs" />
     <Compile Include="Kardex\Detalle\data.cs" />
     <Compile Include="Kardex\Detalle\DetalleFrm.cs">
@@ -409,6 +411,15 @@
     <Compile Include="MovimientoInvTipo\ITipoSeguridad.cs" />
     <Compile Include="MovimientoInvTipo\ITipoxDev.cs" />
     <Compile Include="MovimientoInvTipo\Lista.cs" />
+    <Compile Include="MovimientoInvTipo\Transito\data.cs" />
+    <Compile Include="MovimientoInvTipo\Transito\Gestion.cs" />
+    <Compile Include="MovimientoInvTipo\Transito\ITransito.cs" />
+    <Compile Include="MovimientoInvTipo\Transito\ListaSelFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MovimientoInvTipo\Transito\ListaSelFrm.Designer.cs">
+      <DependentUpon>ListaSelFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MovimientoInvTipo\TrasladoPorNivelMinimo\Gestion.cs" />
     <Compile Include="MovimientoInvTipo\TrasladoPorNivelMinimo\MovFrm.cs">
       <SubType>Form</SubType>
@@ -846,6 +857,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MovimientoInvTipo\Descargo\MovFrm.resx">
       <DependentUpon>MovFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MovimientoInvTipo\Transito\ListaSelFrm.resx">
+      <DependentUpon>ListaSelFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MovimientoInvTipo\TrasladoPorNivelMinimo\MovFrm.resx">
       <DependentUpon>MovFrm.cs</DependentUpon>

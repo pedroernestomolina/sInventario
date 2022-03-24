@@ -241,8 +241,13 @@
     <Compile Include="LibInventario\Tool\AjusteNivelMinimoMaximoProducto\Ajustar\Ficha.cs" />
     <Compile Include="LibInventario\Tool\AjusteNivelMinimoMaximoProducto\Capturar\Ficha.cs" />
     <Compile Include="LibInventario\Tool\AjusteNivelMinimoMaximoProducto\Capturar\Filtro.cs" />
+    <Compile Include="LibInventario\Transito\Movimiento\Agregar\Detalle.cs" />
     <Compile Include="LibInventario\Transito\Movimiento\Agregar\Ficha.cs" />
     <Compile Include="LibInventario\Transito\Movimiento\Agregar\Mov.cs" />
+    <Compile Include="LibInventario\Transito\Movimiento\Entidad\Detalle.cs" />
+    <Compile Include="LibInventario\Transito\Movimiento\Entidad\Ficha.cs" />
+    <Compile Include="LibInventario\Transito\Movimiento\Entidad\Mov.cs" />
+    <Compile Include="LibInventario\Transito\Movimiento\Lista\Filtro.cs" />
     <Compile Include="LibInventario\Usuario\ActualizarSesion\Ficha.cs" />
     <Compile Include="LibInventario\Usuario\Buscar\Ficha.cs" />
     <Compile Include="LibInventario\Usuario\Ficha.cs" />

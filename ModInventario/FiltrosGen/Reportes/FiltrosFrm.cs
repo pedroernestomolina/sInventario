@@ -159,7 +159,7 @@ namespace ModInventario.FiltrosGen.Reportes
 
         private void CB_IMPUESTO_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_modoInicializar) 
+            if (_modoInicializar)
                 return;
 
             _controlador.setTasaIva("");
@@ -245,25 +245,6 @@ namespace ModInventario.FiltrosGen.Reportes
             _controlador.setHasta(DTP_HASTA.Value.Date);
         }
 
-          private void Salir()
-        {
-            this.Close();
-        }
-
-        private void BT_SALIR_Click(object sender, EventArgs e)
-        {
-            ProcesarFiltros();
-        }
-
-        private void ProcesarFiltros()
-        {
-            _controlador.ProcesarFiltros();
-            if (_controlador.ProcesarIsOk) 
-            {
-                Salir();
-            }
-        }
-
         private void BT_LIMPIAR_Click(object sender, EventArgs e)
         {
             LimpiarFiltros();
@@ -282,9 +263,9 @@ namespace ModInventario.FiltrosGen.Reportes
                 CB_ADMDIVISA.SelectedIndex = -1;
                 CB_SUCURSAL.SelectedIndex = -1;
                 CB_CATEGORIA.SelectedIndex = -1;
-                CB_ORIGEN.SelectedIndex=-1;
-                CB_IMPUESTO.SelectedIndex=-1;
-                CB_ESTATUS.SelectedIndex=-1;
+                CB_ORIGEN.SelectedIndex = -1;
+                CB_IMPUESTO.SelectedIndex = -1;
+                CB_ESTATUS.SelectedIndex = -1;
                 CB_GRUPO.SelectedIndex = -1;
                 CB_MARCA.SelectedIndex = -1;
                 DTP_DESDE.Value = DateTime.Now.Date;
@@ -396,12 +377,39 @@ namespace ModInventario.FiltrosGen.Reportes
         private void FiltrosFrm_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
-            if (_controlador.ProcesarIsOk) 
+            if (_controlador.ProcesarIsOk || _controlador.AbandonarIsOk)
             {
                 e.Cancel = false;
             }
         }
-    
+
+        private void BT_PROCESAR_Click(object sender, EventArgs e)
+        {
+            ProcesarFiltros();
+        }
+        private void ProcesarFiltros()
+        {
+            _controlador.ProcesarFiltros();
+            if (_controlador.ProcesarIsOk)
+            {
+                Salir();
+            }
+        }
+
+        private void BT_SALIR_Click(object sender, EventArgs e)
+        {
+            _controlador.Abandonar();
+            if (_controlador.AbandonarIsOk)
+            {
+                Salir();
+            }
+        }
+
+        private void Salir()
+        {
+            this.Close();
+        }
+
     }
 
 }

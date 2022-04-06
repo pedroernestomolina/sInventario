@@ -14,6 +14,7 @@ namespace ModInventario.FiltrosGen.Reportes
 
         private data _data;
         private bool _limpiarFiltrosIsOK;
+        private bool _abandonarIsOk;
         private bool _procesarIsOk;
         private bool _validarData;
         private ModInventario.Reportes.Filtros.IFiltros _filtros;
@@ -58,6 +59,7 @@ namespace ModInventario.FiltrosGen.Reportes
         public DateTime Desde { get { return _gDesde.GetFecha; } }
         public DateTime Hasta { get { return _gHasta.GetFecha; } }
         public bool LimpiarFiltrosIsOK { get { return _limpiarFiltrosIsOK; } }
+        public bool AbandonarIsOk { get { return _abandonarIsOk; } }
         public bool ProcesarIsOk { get { return _procesarIsOk; } }
         public bool FiltrosIsOK { get { return _procesarIsOk; } }
         public data dataFiltrar { get { return _data; } }
@@ -68,6 +70,7 @@ namespace ModInventario.FiltrosGen.Reportes
             IFecha desde, IFecha hasta)
         {
             _validarData = true;
+            _abandonarIsOk = false;
             _procesarIsOk = false;
             _limpiarFiltrosIsOK = false;
             _data = new data();
@@ -344,6 +347,7 @@ namespace ModInventario.FiltrosGen.Reportes
 
         private void limpiar()
         {
+            _abandonarIsOk = false;
             _procesarIsOk = false;
             _gDeposito.Inicializa();
             _gMarca.Inicializa();
@@ -389,6 +393,17 @@ namespace ModInventario.FiltrosGen.Reportes
                 _procesarIsOk = _data.IsOk();
             else
                 _procesarIsOk = true;
+        }
+
+        public void Abandonar()
+        {
+            _abandonarIsOk = false;
+            var xmsg="Abandonar Filtros Cargados ?";
+            var msg = MessageBox.Show(xmsg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (msg == DialogResult.Yes)
+            {
+                _abandonarIsOk = true;
+            }
         }
 
     }

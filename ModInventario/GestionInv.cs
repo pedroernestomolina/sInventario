@@ -112,7 +112,7 @@ namespace ModInventario
         private MovimientoInvTipo.Transito.ITransito _gTransitoMov;
 
 
-        public string Version { get { return "Ver. " + Application.ProductVersion; } }
+        public string Version { get { return "Ver. 2 - " + Application.ProductVersion; } }
         public string Host { get { return Sistema._Instancia + "/" + Sistema._BaseDatos; } }
         public string Usuario
         {

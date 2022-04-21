@@ -42,6 +42,7 @@ namespace ModInventario.Administrador
         void setFechaDesdeEstatusOff();
         void setFechaHasta(DateTime dateTime);
         void setFechaHastaEstatusOff();
+        void Visualizar();
 
     }
 

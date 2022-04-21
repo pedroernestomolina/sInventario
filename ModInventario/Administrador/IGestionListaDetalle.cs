@@ -25,6 +25,7 @@ namespace ModInventario.Administrador
         void VerAnulacion();
         void setGestionAuditoria(Auditoria.Visualizar.Gestion _gestionAuditoria);
         void Inicializa();
+        void VisualizarItem();
 
     }
 

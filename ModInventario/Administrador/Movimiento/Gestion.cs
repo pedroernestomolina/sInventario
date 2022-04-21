@@ -256,6 +256,12 @@ namespace ModInventario.Administrador.Movimiento
             _gFiltro.FechaHasta.setEstatusOff();
         }
 
+
+        public void Visualizar()
+        {
+            _gestionListaDetalle.VisualizarItem();
+        }
+
     }
 
 }

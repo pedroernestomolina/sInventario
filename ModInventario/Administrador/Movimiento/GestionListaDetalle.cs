@@ -427,6 +427,21 @@ namespace ModInventario.Administrador.Movimiento
             _gestionAuditoria = gestion;
         }
 
+        public void VisualizarItem()
+        {
+            if (Item != null)
+            {
+                if (Item.IsAnulado)
+                {
+                    VerAnulacion();
+                }
+                else 
+                {
+                    VisualizarDocumento();
+                }
+            }
+        }
+
     }
 
 }

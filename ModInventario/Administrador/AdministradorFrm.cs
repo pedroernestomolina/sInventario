@@ -207,6 +207,8 @@ namespace ModInventario.Administrador
             CB_TIPO_DOC.DataSource = _controlador.TipoDocSource;
             DTP_DESDE.Value = _controlador.FechaDesde;
             DTP_HASTA.Value = _controlador.FechaHasta;
+            DTP_DESDE.Checked = true;
+            DTP_HASTA.Checked = true;
             CB_SUCURSAL.SelectedValue = _controlador.SucursalID;
             CB_TIPO_DOC.SelectedValue= _controlador.TipoDocID;
             _modoInicializar = false;
@@ -388,14 +390,19 @@ namespace ModInventario.Administrador
             {
                 if (e.ColumnIndex >= 0)
                 {
-                    VerAnulacion();
+                    Visualizar();
                 }
             }
         }
 
+        private void Visualizar()
+        {
+            _controlador.Visualizar();
+        }
+
         private void VerAnulacion()
         {
-            _controlador.VerAnulacion();
+            //_controlador.VerAnulacion();
         }
 
     }

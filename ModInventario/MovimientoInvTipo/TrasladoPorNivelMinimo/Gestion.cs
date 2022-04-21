@@ -273,6 +273,12 @@ namespace ModInventario.MovimientoInvTipo.TrasladoPorNivelMinimo
                 Helpers.Msg.Error(r01.Mensaje);
                 return;
             }
+            if (r01.Entidad.data.exFisica <= 0.0m)
+            {
+                Helpers.Msg.Error("Producto No Posee Existencia Disponible Para [ TRASLADO ]");
+                return;
+            }
+
             var r = r01.Entidad.data;
             var dat = new data()
             {

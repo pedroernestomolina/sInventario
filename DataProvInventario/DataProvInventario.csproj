@@ -30,14 +30,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DtoLib">
-      <HintPath>..\..\..\..\Proyectos FoxSystem\CompraVentaService\ServiceInventario\bin\Debug\DtoLib.dll</HintPath>
+    <Reference Include="DtoLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\BackEnd\bInventario\ServiceInventario\bin\Debug\DtoLib.dll</HintPath>
     </Reference>
-    <Reference Include="DtoLibInventario">
-      <HintPath>..\..\..\..\Proyectos FoxSystem\CompraVentaService\ServiceInventario\bin\Debug\DtoLibInventario.dll</HintPath>
+    <Reference Include="DtoLibInventario, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\BackEnd\bInventario\ServiceInventario\bin\Debug\DtoLibInventario.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceInventario">
-      <HintPath>..\..\..\..\Proyectos FoxSystem\CompraVentaService\ServiceInventario\bin\Debug\ServiceInventario.dll</HintPath>
+    <Reference Include="ServiceInventario, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\BackEnd\bInventario\ServiceInventario\bin\Debug\ServiceInventario.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

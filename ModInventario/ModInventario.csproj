@@ -92,6 +92,18 @@
     <Compile Include="Administrador\Tomas\TomasFrm.Designer.cs">
       <DependentUpon>TomasFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdmMovPend\AdmMovPend.cs" />
+    <Compile Include="AdmMovPend\AdmMovPendFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdmMovPend\AdmMovPendFrm.Designer.cs">
+      <DependentUpon>AdmMovPendFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdmMovPend\dataItem.cs" />
+    <Compile Include="AdmMovPend\IAdmMovPend.cs" />
+    <Compile Include="AdmMovPend\IListaAdmMovPend.cs" />
+    <Compile Include="IListaAdm.cs" />
+    <Compile Include="AdmMovPend\Lista.cs" />
     <Compile Include="Analisis\Detallado\AnalisisFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -259,6 +271,7 @@
     <Compile Include="Helpers\Seguridad.cs" />
     <Compile Include="Helpers\Utilitis.cs" />
     <Compile Include="Helpers\VisualizarDocumento.cs" />
+    <Compile Include="IAdministrador.cs" />
     <Compile Include="Identificacion\Gestion.cs" />
     <Compile Include="Identificacion\IdentificacionFrm.cs">
       <SubType>Form</SubType>
@@ -670,6 +683,12 @@
       <DependentUpon>DS.xsd</DependentUpon>
     </Compile>
     <Compile Include="Reportes\Movimientos\gestionRep.cs" />
+    <Compile Include="Reportes\MovPend\DS_MOVPEND.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_MOVPEND.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\MovPend\gestionRep.cs" />
     <Compile Include="Reportes\ReporteFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -776,6 +795,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Administrador\Tomas\TomasFrm.resx">
       <DependentUpon>TomasFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdmMovPend\AdmMovPendFrm.resx">
+      <DependentUpon>AdmMovPendFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Analisis\Detallado\AnalisisFrm.resx">
       <DependentUpon>AnalisisFrm.cs</DependentUpon>
@@ -983,6 +1005,9 @@
     <EmbeddedResource Include="Reportes\Movimientos\Movimientos.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\MovPend\MovPend.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReporteFrm.resx">
       <DependentUpon>ReporteFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1094,6 +1119,17 @@
     </None>
     <None Include="Reportes\Movimientos\DS.xss">
       <DependentUpon>DS.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\MovPend\DS_MOVPEND.xsc">
+      <DependentUpon>DS_MOVPEND.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\MovPend\DS_MOVPEND.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_MOVPEND.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\MovPend\DS_MOVPEND.xss">
+      <DependentUpon>DS_MOVPEND.xsd</DependentUpon>
     </None>
     <None Include="Reportes\Visor\DSVisor.xsc">
       <DependentUpon>DSVisor.xsd</DependentUpon>

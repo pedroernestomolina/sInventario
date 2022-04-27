@@ -64,6 +64,7 @@
     <Compile Include="Data\Kardex.cs" />
     <Compile Include="Data\Marca.cs" />
     <Compile Include="Data\Movimiento.cs" />
+    <Compile Include="Data\MovPendiente.cs" />
     <Compile Include="Data\Permisos.cs" />
     <Compile Include="Data\Precio.cs" />
     <Compile Include="Data\Producto.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="InfraEstructura\IKardex.cs" />
     <Compile Include="InfraEstructura\IMarca.cs" />
     <Compile Include="InfraEstructura\IMovimiento.cs" />
+    <Compile Include="InfraEstructura\IMovPendiente.cs" />
     <Compile Include="InfraEstructura\IMovTransito.cs" />
     <Compile Include="InfraEstructura\IPermisos.cs" />
     <Compile Include="InfraEstructura\IPrecio.cs" />

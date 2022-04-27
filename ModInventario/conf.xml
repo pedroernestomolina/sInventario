@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Configuracion>
   <Servidor>
-    <Instancia>10.10.100.82</Instancia>
-    <Catalogo>0002</Catalogo>
+    <Instancia>localhost</Instancia>
+    <Catalogo>pita</Catalogo>
     <Usuario></Usuario>
   </Servidor>
 </Configuracion>

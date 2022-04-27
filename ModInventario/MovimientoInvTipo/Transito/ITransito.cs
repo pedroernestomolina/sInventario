@@ -14,6 +14,7 @@ namespace ModInventario.MovimientoInvTipo.Transito
         data ItemSeleccionado { get; }
         void setLista(List<data> list);
         void Limpiar();
+        void CargarDoc(int idMovPend);
 
     }
 

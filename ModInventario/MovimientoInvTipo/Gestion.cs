@@ -117,11 +117,11 @@ namespace ModInventario.MovimientoInvTipo
                     _gBusqPrd.setMetBusqByReferencia();
                     break;
             }
-
             if (_gTipo.CargarData()) 
             {
                 return true;
             }
+
             return false;
         }
 
@@ -379,6 +379,50 @@ namespace ModInventario.MovimientoInvTipo
                 _gLista.setListaAgregar(_gTipo.LoadTransito());
                 _gTipo.AnularTransito();
             };
+        }
+
+        public void CargarDocumentoPend(int idMovPend)
+        {
+            _gTipo.CargarDocPendiente(idMovPend);
+            if (_gTipo.ItemTransitoIsOk)
+            {
+                if (_gLista.CntItem > 0)
+                {
+                    Helpers.Msg.Alerta("HAY ITEMS CARGADOS EN EL MOVIMIENTO ACTUAL");
+                    return;
+                }
+                _gLista.setListaAgregar(_gTipo.LoadTransito());
+                _gTipo.AnularTransito();
+            };
+        }
+
+        public void IniciaConPendiente(int idMov)
+        {
+            if (CargarData())
+            {
+                var lst = _gTipo.LoadTransito(idMov);
+                if (lst != null) 
+                {
+                    _gLista.setListaAgregar(lst);
+                    _gTipo.AnularTransito(idMov);
+                    _gTipo.Inicia(this);
+                }
+            }
+        }
+
+        public string GetIdDepOrigen { get { return _gTipo.GetIdDepOrigen; } }
+        public string GetIdDepDestino { get { return _gTipo.GetIdDepDestino; } }
+        public void setActivarBusquedaParaTraslado()
+        {
+            _gBusqPrd.setActivarBusquedaParaTraslado();
+        }
+        public void setActivarDepOrigen(string id)
+        {
+            _gBusqPrd.setActivarDepOrigen(id);
+        }
+        public void setActivarDepDestino(string id)
+        {
+            _gBusqPrd.setActivarDepDestino(id);
         }
 
     }

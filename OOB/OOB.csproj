@@ -159,6 +159,8 @@
     <Compile Include="LibInventario\Movimiento\Traslado\Insertar\FichaMovKardex.cs" />
     <Compile Include="LibInventario\Movimiento\Ver\Detalle.cs" />
     <Compile Include="LibInventario\Movimiento\Ver\Ficha.cs" />
+    <Compile Include="LibInventario\MovPend\Entidad\Ficha.cs" />
+    <Compile Include="LibInventario\MovPend\Lista\Filtro.cs" />
     <Compile Include="LibInventario\Permiso\Enumerados.cs" />
     <Compile Include="LibInventario\Permiso\Ficha.cs" />
     <Compile Include="LibInventario\Precio\Editar\Ficha.cs" />

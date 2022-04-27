@@ -824,9 +824,75 @@ namespace ModInventario.MovimientoInvTipo.Traslado
         }
         public List<dataItem> LoadTransito()
         {
+            return LoadTransito(_gDocPend.ItemSeleccionado.id);
+            //var _lst = new List<dataItem>();
+
+            //var r01 = Sistema.MyData.Transito_Movimiento_GetById(_gDocPend.ItemSeleccionado.id);
+            //if (r01.Result == OOB.Enumerados.EnumResult.isError)
+            //{
+            //    Helpers.Msg.Error(r01.Mensaje);
+            //    return _lst;
+            //}
+
+            //var mov = r01.Entidad.mov;
+            //setAutorizadoPor(mov.autoriza);
+            //setMotivo(mov.motivo);
+            //setConcepto(mov.idConcepto);
+            //setSucursal(mov.idSucOrigen);
+            //setDepOrigen(mov.idDeOrigen);
+            //setDepDestino(mov.idDepDestino);
+            //foreach (var r in r01.Entidad.detalles.OrderBy(o => o.nombreProd).ToList())
+            //{
+            //    var dat = new data()
+            //    {
+            //        autoDepart = r.autoDepart,
+            //        autoGrupo = r.autoGrupo,
+            //        autoPrd = r.autoProd,
+            //        autoTasa = r.autoTasa,
+            //        catPrd = r.categoriaProd,
+            //        codigoPrd = r.codigoProd,
+            //        contEmp = r.contEmpaque,
+            //        costo = r.costo,
+            //        costoDivisa = r.costoDivisa,
+            //        costoDivisaUnd = r.costoDivisaUnd,
+            //        costoUnd = r.costoUnd,
+            //        decimales = r.decimales,
+            //        descTasa = r.descTasa,
+            //        esAdmDivisa = r.esAdmDivisa == "1" ? true : false,
+            //        exFisica = r.exFisica,
+            //        nombreEmp = r.descEmpaque,
+            //        nombrePrd = r.nombreProd,
+            //        valorTasa = r.valorTasa,
+            //        fechaUltimaActCosto = r.fechaUltActCosto,
+            //        exFisicaDepDestino = r.exFisicaDestino,
+            //        nivelMinimoDepDestino = r.nivelMinimo,
+            //        nivelOptimoDepDestino = r.nivelOptimo,
+            //    };
+            //    var _item = new dataItem();
+            //    _item.setFicha(dat);
+            //    _item.setCantidad(r.cantSolicitada);
+            //    if (r.empaqueIdSolicitado == "2")
+            //    {
+            //        _item.setEmpaque(new ficha("2", "", "POR UNIDAD"));
+            //    }
+            //    else
+            //    {
+            //        _item.setEmpaque(new ficha("1", "", "POR EMPQ/COMPRA"));
+            //    }
+            //    _item.setTasaCambio(_tasaCambio);
+            //    _lst.Add(_item);
+            //}
+            //return _lst;
+        }
+        public void AnularTransito()
+        {
+            AnularTransito(_gDocPend.ItemSeleccionado.id);
+        }
+        public List<dataItem> LoadTransito(int idMovPend)
+        {
             var _lst = new List<dataItem>();
 
-            var r01 = Sistema.MyData.Transito_Movimiento_GetById(_gDocPend.ItemSeleccionado.id);
+            var r01 = Sistema.MyData.Transito_Movimiento_GetById(idMovPend);
             if (r01.Result == OOB.Enumerados.EnumResult.isError)
             {
                 Helpers.Msg.Error(r01.Mensaje);
@@ -883,9 +949,13 @@ namespace ModInventario.MovimientoInvTipo.Traslado
             }
             return _lst;
         }
-        public void AnularTransito()
+        public void CargarDocPendiente(int idMovPend)
         {
-            var r01 = Sistema.MyData.Transito_Movimiento_AnularById(_gDocPend.ItemSeleccionado.id);
+            _gDocPend.CargarDoc(idMovPend);
+        }
+        public void AnularTransito(int idMov)
+        {
+            var r01 = Sistema.MyData.Transito_Movimiento_AnularById(idMov);
             if (r01.Result == OOB.Enumerados.EnumResult.isError)
             {
                 Helpers.Msg.Error(r01.Mensaje);
@@ -909,6 +979,9 @@ namespace ModInventario.MovimientoInvTipo.Traslado
             }
             _cntDocPend = r03.Entidad;
         }
+
+        public string GetIdDepOrigen { get { return _gDepOrigen.GetId; } }
+        public string GetIdDepDestino { get { return _gDepDestino.GetId; } }
 
     }
 

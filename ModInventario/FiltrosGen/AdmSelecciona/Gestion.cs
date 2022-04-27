@@ -16,6 +16,9 @@ namespace ModInventario.FiltrosGen.AdmSelecciona
 
         private IAdmProducto _gAdmPrd;
         private Buscar.INotificarSeleccion _gSelNotifica;
+        private bool _activarBusquedaParaTraslado ;
+        private string _idDepOrigen;
+        private string _idDepDestino;
 
 
         public bool ItemSeleccionadoIsOk { get { return _gSelNotifica.ItemSeleccionadoIsOk; } }
@@ -26,6 +29,9 @@ namespace ModInventario.FiltrosGen.AdmSelecciona
 
         public Gestion(IAdmProducto admPrd, Buscar.INotificarSeleccion selNotifica)
         {
+            _activarBusquedaParaTraslado = false;
+            _idDepOrigen = "";
+            _idDepDestino = "";
             _gAdmPrd = admPrd;
             _gSelNotifica = selNotifica;
         }
@@ -33,6 +39,9 @@ namespace ModInventario.FiltrosGen.AdmSelecciona
 
         public void Inicializa()
         {
+            _activarBusquedaParaTraslado = false;
+            _idDepOrigen = "";
+            _idDepDestino = "";
             _gAdmPrd.Inicializa();
             _gSelNotifica.Inicializa();
         }
@@ -135,6 +144,10 @@ namespace ModInventario.FiltrosGen.AdmSelecciona
                 if (data.PrecioMayor.id == "1")
                     _filtros.precioMayorHabilitado = true;
             }
+            _filtros.activarBusquedaParaMovTraslado = _activarBusquedaParaTraslado;
+            _filtros.autoDepOrigen = _idDepOrigen;
+            _filtros.autoDepDestino = _idDepDestino;
+            
             RealizarBusqueda(_filtros);
         }
 
@@ -185,7 +198,18 @@ namespace ModInventario.FiltrosGen.AdmSelecciona
         {
             _gAdmPrd.setMetBusqByReferencia();
         }
-
+        public void setActivarBusquedaParaTraslado()
+        {
+            _activarBusquedaParaTraslado = true;
+        }
+        public void setActivarDepOrigen(string id)
+        {
+            _idDepOrigen = id;
+        }
+        public void setActivarDepDestino(string id)
+        {
+            _idDepDestino = id;
+        }
 
     }
 

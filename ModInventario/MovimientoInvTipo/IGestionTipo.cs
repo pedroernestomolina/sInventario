@@ -58,6 +58,7 @@ namespace ModInventario.MovimientoInvTipo
         void setMetBusqCodigo();
 
 
+
         void BuscarProducto();
         void FiltrarBusqPrd();
         void EditarItem();
@@ -90,6 +91,15 @@ namespace ModInventario.MovimientoInvTipo
         void DejarEnPendiente();
         void ListaDocPendientes();
         bool ListaDocPendientesIsOk { get; }
+        void CargarDocumentoPend(int idMovPend);
+        void IniciaConPendiente(int p);
+
+
+        string GetIdDepOrigen { get; }
+        string GetIdDepDestino { get; }
+        void setActivarBusquedaParaTraslado();
+        void setActivarDepOrigen(string id);
+        void setActivarDepDestino(string id);
 
     }
 

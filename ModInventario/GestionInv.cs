@@ -110,6 +110,9 @@ namespace ModInventario
         private Configuracion.DepositoConceptoDevMercancia.IConfiguracion _gCnfDepositoConceptoDev;
         // 
         private MovimientoInvTipo.Transito.ITransito _gTransitoMov;
+        //
+        private AdmMovPend.IAdmMovPend _gAdmMovPend;
+        private AdmMovPend.IListaAdmMovPend _gListaAdmMovPend;
 
 
         public string Version { get { return "Ver. 2 - " + Application.ProductVersion; } }
@@ -277,13 +280,17 @@ namespace ModInventario
             //
             _gCnfDepositoConceptoDev = new ModInventario.Configuracion.DepositoConceptoDevMercancia.Gestion();
             //
+            _gListaAdmMovPend = new AdmMovPend.Lista();
+            _gAdmMovPend = new AdmMovPend.AdmMovPend(
+                _gListaAdmMovPend, 
+                _gMovTipo, 
+                _seguridad);
 
 
             _gestionBusqueda = new Buscar.Gestion(
                 _gFiltroAdmProducto, 
                 _seguridad, 
                 _callMaestro);
-
 
             _gestionVisorExistencia = new Visor.Existencia.Gestion();
             _gestionVisorCostoEdad = new Visor.CostoEdad.Gestion();
@@ -806,14 +813,16 @@ namespace ModInventario
                 _gMovTipo.setTipoMov(_gMovTipoTraslPorNIvelMinimo);
                 _gMovTipo.Inicia();
                 _gMovTipo.Finaliza();
-
-                //var ctr = new Movimiento.TrasladoEntreSucursal.Gestion(_gAdmSelPrd);
-                //ctr.Inicializa();
-                //_gestionMov.Inicializa();
-                //_gestionMov.setGestion(ctr);
-                //_gestionMov.Inicia2();
-                //_gestionMov.Finaliza();
             }
+        }
+
+        public void AdministradorMovPendiente()
+        {
+            _gAdmMovPend.Inicializa();
+            _gAdmMovPend.setMovTrasladoxNivel(_gMovTipoTraslPorNIvelMinimo);
+            _gAdmMovPend.setMovTraslado(_gMovTipoTraslado);
+            _gAdmMovPend.setMovAjuste(_gMovTipoAjuste);
+            _gAdmMovPend.Inicia();
         }
 
     }

@@ -536,6 +536,20 @@ namespace ModInventario.MovimientoInvTipo.AjusteInvCero
         public void AnularTransito()
         {
         }
+        public List<dataItem> LoadTransito(int idMovPend)
+        {
+            return null;
+        }
+        public void CargarDocPendiente(int idMovPend)
+        {
+        }
+        public void AnularTransito(int idMov)
+        {
+        }
+
+
+        public string GetIdDepOrigen { get { return _gDepOrigen.GetId; } }
+        public string GetIdDepDestino { get { return _gDepOrigen.GetId; } }
 
     }
 

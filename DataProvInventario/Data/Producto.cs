@@ -12,7 +12,8 @@ namespace DataProvInventario.Data
     public partial class DataProv: IData
     {
 
-        public OOB.ResultadoLista<OOB.LibInventario.Producto.Data.Ficha> Producto_GetLista(OOB.LibInventario.Producto.Filtro filtro)
+        public OOB.ResultadoLista<OOB.LibInventario.Producto.Data.Ficha>
+            Producto_GetLista(OOB.LibInventario.Producto.Filtro filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Producto.Data.Ficha>();
 
@@ -36,6 +37,9 @@ namespace DataProvInventario.Data
                 catalogo = (DtoLibInventario.Producto.Enumerados.EnumCatalogo)filtro.catalogo,
                 existencia = (DtoLibInventario.Producto.Filtro.Existencia)filtro.existencia,
                 precioMayorHabilitado = filtro.precioMayorHabilitado,
+                activarBusquedaPorTrasalado = filtro.activarBusquedaParaMovTraslado,
+                autoDepOrigen = filtro.autoDepOrigen,
+                autoDepDestino = filtro.autoDepDestino,
             };
             var r01 = MyData.Producto_GetLista(filtroDto);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)

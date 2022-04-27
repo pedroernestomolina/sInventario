@@ -459,6 +459,15 @@ namespace ModInventario
             _controlador.Conf_DepositoConceptoDevMercancia();
         }
 
+        private void TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE_Click(object sender, EventArgs e)
+        {
+            AdministradorMovPendiente();
+        }
+        private void AdministradorMovPendiente()
+        {
+            _controlador.AdministradorMovPendiente();
+        }
+
     }
 
 }

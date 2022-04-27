@@ -27,6 +27,9 @@ namespace ModInventario.FiltrosGen
         void setMetBusqByCodigo();
         void setMetBusqByNombre();
         void setMetBusqByReferencia();
+        void setActivarBusquedaParaTraslado();
+        void setActivarDepOrigen(string id);
+        void setActivarDepDestino(string id);
 
     }
 

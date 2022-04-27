@@ -392,6 +392,9 @@ namespace ModInventario.MovimientoInvTipo.TrasladoPorNivelMinimo
         }
         private void BuscarProducto()
         {
+            _controlador.setActivarBusquedaParaTraslado();
+            _controlador.setActivarDepOrigen(_controlador.GetIdDepOrigen);
+            _controlador.setActivarDepDestino(_controlador.GetIdDepDestino);
             _controlador.BuscarProducto();
             ActualizarImporte();
             TB_CADENA_BUSQ.Text = "";

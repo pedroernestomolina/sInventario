@@ -121,6 +121,27 @@ namespace ModInventario.MovimientoInvTipo.Transito
             _bs.DataSource = _lst;
             _itemSeleccionado = null;
         }
+        public void CargarDoc(int idMovPend)
+        {
+            var r01 = Sistema.MyData.Transito_Movimiento_GetById(idMovPend);
+            if (r01.Result == OOB.Enumerados.EnumResult.isError)
+            {
+                Helpers.Msg.Error(r01.Mensaje);
+                return;
+            }
+            var rg = r01.Entidad.mov;
+            var nr = new data()
+            {
+                id = rg.id,
+                fecha = rg.fecha,
+                renglones = rg.cntRenglones,
+                monto = rg.monto,
+                montoDivisa = rg.montoDivisa,
+                Origen = rg.descSucOrigen + ", " + rg.descDepOrigen,
+                Destino = rg.descSucDestino + ", " + rg.descDepDestino,
+            };
+            _itemSeleccionado = nr;
+        }
 
     }
 

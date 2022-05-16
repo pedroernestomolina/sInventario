@@ -163,6 +163,7 @@
     <Compile Include="LibInventario\MovPend\Lista\Filtro.cs" />
     <Compile Include="LibInventario\Permiso\Enumerados.cs" />
     <Compile Include="LibInventario\Permiso\Ficha.cs" />
+    <Compile Include="LibInventario\PrecioCosto\Entidad\Ficha.cs" />
     <Compile Include="LibInventario\Precio\Editar\Ficha.cs" />
     <Compile Include="LibInventario\Precio\Editar\FichaHistorica.cs" />
     <Compile Include="LibInventario\Precio\Editar\FichaPrecio.cs" />

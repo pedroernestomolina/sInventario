@@ -90,6 +90,8 @@ namespace ModInventario.Producto.VisualizarFicha
             L_DIAS_EMPAQUE_PRD.Text = _controlador.DiasEmpaquePrd.ToString();
             DGV.DataSource = _controlador.SourceCodAlterno;
             L_ESTATUS_INACTIVO.Visible = _controlador.IsInactivo;
+            L_EMP_INV.Text = _controlador.EmpaqueInv;
+            L_CONT_EMP_INV.Text = _controlador.ContEmpInv.ToString();
         }
 
     }

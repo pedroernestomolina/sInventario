@@ -574,6 +574,17 @@
     <Compile Include="Producto\Precio\Historico\HistoricoPrecioFrm.Designer.cs">
       <DependentUpon>HistoricoPrecioFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Producto\Precio\ModoSucursal\Editar\data.cs" />
+    <Compile Include="Producto\Precio\ModoSucursal\Editar\dataPrecio.cs" />
+    <Compile Include="Producto\Precio\ModoSucursal\Editar\dataProducto.cs" />
+    <Compile Include="Producto\Precio\ModoSucursal\Editar\Editar.cs" />
+    <Compile Include="Producto\Precio\ModoSucursal\Editar\PrecioEditarFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Producto\Precio\ModoSucursal\Editar\PrecioEditarFrm.Designer.cs">
+      <DependentUpon>PrecioEditarFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Producto\Precio\ModoSucursal\Editar\IEditar.cs" />
     <Compile Include="Producto\Precio\Ver\data.cs" />
     <Compile Include="Producto\Precio\Ver\Gestion.cs" />
     <Compile Include="Producto\Precio\Ver\VerFrm.cs">
@@ -934,6 +945,9 @@
     <EmbeddedResource Include="Producto\Precio\Historico\HistoricoPrecioFrm.resx">
       <DependentUpon>HistoricoPrecioFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Producto\Precio\ModoSucursal\Editar\PrecioEditarFrm.resx">
+      <DependentUpon>PrecioEditarFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Producto\Precio\Ver\VerFrm.resx">
       <DependentUpon>VerFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1149,6 +1163,7 @@
   <ItemGroup>
     <Content Include="conf.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Imagenes\administrador.png" />
     <Content Include="Imagenes\automatizacion.jpg" />

@@ -49,6 +49,24 @@ namespace OOB.LibInventario.Producto.Data
         public Decimal PDivisaNetoMay_1 { get { return Neto(PDivisaFullMay_1, identidad.tasaIva); } }
         public Decimal PDivisaNetoMay_2 { get { return Neto(PDivisaFullMay_2, identidad.tasaIva); } }
 
+        public decimal exUnd { get { return ExistenciaTotal; } }
+        public string exEmpCompra 
+        {
+            get 
+            {
+                var rt = 0m;
+                var ndec = "0";
+                if (identidad.contenidoCompra > 0m) 
+                {
+                    rt = ExistenciaTotal / identidad.contenidoCompra;
+                }
+                if ((rt-(long)rt)>0)
+                {
+                    ndec = "2";
+                }
+                return rt.ToString("n"+ndec);
+            }
+        }
 
         public Decimal CostoUndActual 
         { 
@@ -61,6 +79,19 @@ namespace OOB.LibInventario.Producto.Data
                 return rt;
             } 
         }
+
+        public Decimal CostoCompra 
+        {
+            get
+            {
+                var rt = 0.0m;
+                rt = Costo;
+                if (identidad.AdmPorDivisa == Enumerados.EnumAdministradorPorDivisa.Si)
+                    rt = CostoDivisa;
+                return rt;
+            }
+        }
+
 
 
         public string AutoId { get { return identidad.auto; } }
@@ -140,6 +171,47 @@ namespace OOB.LibInventario.Producto.Data
             var rt = 0.0m;
             rt = precio / ((tasa / 100) + 1);
             return rt;
+        }
+
+
+        public string GetEtiqueta_InvEmpCompra { get { return "Emp" + Environment.NewLine + "(COMPRA/" + identidad.contenidoCompra.ToString() + ")"; } }
+        public string GetEtiqueta_InvEmpInv { get { return "Emp" + Environment.NewLine + "(INV/" + identidad.contEmpInv.ToString() + ")"; } }
+        public string GetEtiqueta_InvEmpUnd { get { return "Emp" + Environment.NewLine + "(UNIDAD/" + 1.ToString() + ")"; } }
+        public int GetEx_InvEmpCompra 
+        { 
+            get 
+            {
+                var rt = 0;
+                if (identidad.contenidoCompra > 0) 
+                {
+                    rt = (int)(ExistenciaTotal / identidad.contenidoCompra);
+                }
+                return rt; 
+            }
+        }
+        public int GetEx_InvEmpInv
+        {
+            get 
+            {
+                var rt = 0;
+                rt = (int) (ExistenciaTotal - (GetEx_InvEmpCompra * identidad.contenidoCompra));
+                if (identidad.contEmpInv > 0)
+                {
+                    rt = (int)rt / identidad.contEmpInv;
+                }
+                return rt;
+            } 
+        }
+        public int GetEx_InvEmpUnd
+        {
+            get
+            {
+                var rt = 0;
+                rt = GetEx_InvEmpCompra * identidad.contenidoCompra;
+                rt += GetEx_InvEmpInv * identidad.contEmpInv;
+                rt = (int)(ExistenciaTotal - rt);
+                return rt;
+            }
         }
 
     }

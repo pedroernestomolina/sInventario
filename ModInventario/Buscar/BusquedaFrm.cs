@@ -29,6 +29,7 @@ namespace ModInventario.Buscar
         {
             var f = new Font("Serif", 8, FontStyle.Bold);
             var f1 = new Font("Serif", 8, FontStyle.Regular);
+            var f2 = new Font("Serif", 7, FontStyle.Regular);
 
             DGV.AllowUserToAddRows = false;
             DGV.AllowUserToDeleteRows = false;
@@ -45,7 +46,7 @@ namespace ModInventario.Buscar
             c1.HeaderText = "Nombre";
             c1.Visible = true;
             c1.HeaderCell.Style.Font = f;
-            c1.DefaultCellStyle.Font = f1;
+            c1.DefaultCellStyle.Font = f2;
             c1.MinimumWidth = 180;
             c1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
@@ -53,7 +54,7 @@ namespace ModInventario.Buscar
             c2.DataPropertyName = "CodigoPrd";
             c2.HeaderText = "Codigo";
             c2.Visible = true;
-            c2.Width = 120;
+            c2.Width = 100;
             c2.HeaderCell.Style.Font = f;
             c2.DefaultCellStyle.Font = f1;
 
@@ -61,11 +62,12 @@ namespace ModInventario.Buscar
             c3.Name = "VEstatus";
             c3.HeaderText = "*";
             c3.Visible = true;
-            c3.Width = 60;
+            c3.Width = 50;
             c3.HeaderCell.Style.Font = f;
             c3.DefaultCellStyle.Font = f;
             c3.DefaultCellStyle.BackColor = Color.Green;
             c3.DefaultCellStyle.ForeColor= Color.White;
+            c3.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             //var c3 = new DataGridViewTextBoxColumn();
             //c3.DataPropertyName = "Estatus";
@@ -83,29 +85,53 @@ namespace ModInventario.Buscar
             c4.Width = 0;
 
             var c5= new DataGridViewTextBoxColumn();
-            c5.DataPropertyName = "ExistenciaTotalDesc";
-            c5.HeaderText = "Exist/Und";
+            c5.DataPropertyName = "exEmpCompra";
+            c5.HeaderText = "E/Comp";
             c5.Visible = true;
-            c5.Width = 80;
+            c5.Width = 70;
             c5.HeaderCell.Style.Font = f;
             c5.DefaultCellStyle.Font = f1;
-            c5.DefaultCellStyle.Format = "n1";
+            c5.DefaultCellStyle.Format = "n2";
             c5.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            c5.ToolTipText = "EXISTENCIA POR EMPAQUE DE COMPRA";
+
+            var c5b = new DataGridViewTextBoxColumn();
+            c5b.DataPropertyName = "exUnd";
+            c5b.HeaderText = "E/Und";
+            c5b.Visible = true;
+            c5b.Width = 70;
+            c5b.HeaderCell.Style.Font = f;
+            c5b.DefaultCellStyle.Font = f1;
+            c5b.DefaultCellStyle.Format = "n2";
+            c5b.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             var c6 = new DataGridViewTextBoxColumn();
-            c6.DataPropertyName = "CostoUndActual";
-            c6.HeaderText = "Costo/Und";
+            c6.DataPropertyName = "CostoCompra";
+            c6.HeaderText = "C/Comp";
             c6.Visible = true;
-            c6.Width = 80;
+            c6.Width = 70;
             c6.HeaderCell.Style.Font = f;
             c6.DefaultCellStyle.Font = f1;
             c6.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             c6.DefaultCellStyle.Format = "n2";
 
+            var c6b = new DataGridViewTextBoxColumn();
+            c6b.DataPropertyName = "CostoUndActual";
+            c6b.HeaderText = "C/Comp";
+            c6b.Visible = true;
+            c6b.Width = 70;
+            c6b.HeaderCell.Style.Font = f;
+            c6b.DefaultCellStyle.Font = f1;
+            c6b.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            c6b.DefaultCellStyle.Format = "n2";
+
+
             DGV.Columns.Add(c2);
             DGV.Columns.Add(c1);
             DGV.Columns.Add(c5);
             DGV.Columns.Add(c6);
+            DGV.Columns.Add(c5b);
+            DGV.Columns.Add(c6b);
             DGV.Columns.Add(c3);
             DGV.Columns.Add(c4);
         }
@@ -115,22 +141,22 @@ namespace ModInventario.Buscar
             foreach (DataGridViewRow row in DGV.Rows)
             {
                 var xcolor = Color.Green;
-                var xestatus = "Activo";
+                var xestatus = "OK";
 
                 if (row.Cells["Estatus"].Value.ToString() == "Activo") 
                 {
                     xcolor = Color.Green;
-                    xestatus = "Activo";
+                    xestatus = "OK";
                 }
                 if (row.Cells["Estatus"].Value.ToString() == "Suspendido")
                 {
                     xcolor = Color.Orange;
-                    xestatus = "Suspendido";
+                    xestatus = "SUSP";
                 }
                 if (row.Cells["Estatus"].Value.ToString() == "Inactivo")
                 {
                     xcolor = Color.Red;
-                    xestatus = "Inactivo";
+                    xestatus = "INAC";
                 }
                 row.Cells["VEstatus"].Style.BackColor = xcolor;
                 row.Cells["VEstatus"].Value= xestatus;
@@ -185,7 +211,6 @@ namespace ModInventario.Buscar
         {
             Buscar();
         }
-
         private void Buscar()
         {
             _controlador.Buscar();
@@ -220,30 +245,38 @@ namespace ModInventario.Buscar
             L_FECHA_ALTA.Text = _controlador.Item.FechaAlta.ToShortDateString();
             L_FECHA_ACT.Text= _controlador.Item.FechaUltimaActualizacion;
 
-            if (_controlador.Item.identidad.AdmPorDivisa == OOB.LibInventario.Producto.Enumerados.EnumAdministradorPorDivisa.Si)
-            {
-                L_CostoUnd.Text = _controlador.Item.CostoDivisaUnd.ToString("n2");
-                PN_1.Text = _controlador.Item.PDivisaNeto_1.ToString("n2");
-                PN_2.Text = _controlador.Item.PDivisaNeto_2.ToString("n2");
-                PN_3.Text = _controlador.Item.PDivisaNeto_3.ToString("n2");
-                PN_4.Text = _controlador.Item.PDivisaNeto_4.ToString("n2");
-                PN_5.Text = _controlador.Item.PDivisaNeto_5.ToString("n2");
-                PN_MAY_1.Text = _controlador.Item.PDivisaNetoMay_1.ToString("n2");
-                PN_MAY_2.Text = _controlador.Item.PDivisaNetoMay_2.ToString("n2");
-            }
-            else
-            {
-                L_CostoUnd.Text = _controlador.Item.CostoUnidad.ToString("n2");
-                PN_1.Text = _controlador.Item.PNeto_1.ToString("n2");
-                PN_2.Text = _controlador.Item.PNeto_2.ToString("n2");
-                PN_3.Text = _controlador.Item.PNeto_3.ToString("n2");
-                PN_4.Text = _controlador.Item.PNeto_4.ToString("n2");
-                PN_5.Text = _controlador.Item.PNeto_5.ToString("n2");
-                PN_MAY_1.Text = _controlador.Item.PNetoMay_1.ToString("n2");
-                PN_MAY_2.Text = _controlador.Item.PNetoMay_2.ToString("n2");
-            }
-            L_CON_MAY_1.Text = _controlador.Item.ContenidoEmpMay_1.ToString();
-            L_CON_MAY_2.Text = _controlador.Item.ContenidoEmpMay_2.ToString();
+            L_ET_INV_EMP_COMPRA.Text = _controlador.ET_INV_EMP_COMPRA;
+            L_ET_INV_EMP_INV.Text = _controlador.ET_INV_EMP_INV;
+            L_ET_INV_EMP_UND.Text = _controlador.ET_INV_EMP_UND;
+            L_INV_EMP_COMPRA.Text = _controlador.INV_EMP_COMPRA.ToString();
+            L_INV_EMP_INV.Text = _controlador.INV_EMP_INV.ToString();
+            L_INV_EMP_UND.Text = _controlador.INV_EMP_UND.ToString();
+
+
+            //if (_controlador.Item.identidad.AdmPorDivisa == OOB.LibInventario.Producto.Enumerados.EnumAdministradorPorDivisa.Si)
+            //{
+            //    L_CostoUnd.Text = _controlador.Item.CostoDivisaUnd.ToString("n2");
+            //    PN_1.Text = _controlador.Item.PDivisaNeto_1.ToString("n2");
+            //    PN_2.Text = _controlador.Item.PDivisaNeto_2.ToString("n2");
+            //    PN_3.Text = _controlador.Item.PDivisaNeto_3.ToString("n2");
+            //    PN_4.Text = _controlador.Item.PDivisaNeto_4.ToString("n2");
+            //    PN_5.Text = _controlador.Item.PDivisaNeto_5.ToString("n2");
+            //    PN_MAY_1.Text = _controlador.Item.PDivisaNetoMay_1.ToString("n2");
+            //    PN_MAY_2.Text = _controlador.Item.PDivisaNetoMay_2.ToString("n2");
+            //}
+            //else
+            //{
+            //    L_CostoUnd.Text = _controlador.Item.CostoUnidad.ToString("n2");
+            //    PN_1.Text = _controlador.Item.PNeto_1.ToString("n2");
+            //    PN_2.Text = _controlador.Item.PNeto_2.ToString("n2");
+            //    PN_3.Text = _controlador.Item.PNeto_3.ToString("n2");
+            //    PN_4.Text = _controlador.Item.PNeto_4.ToString("n2");
+            //    PN_5.Text = _controlador.Item.PNeto_5.ToString("n2");
+            //    PN_MAY_1.Text = _controlador.Item.PNetoMay_1.ToString("n2");
+            //    PN_MAY_2.Text = _controlador.Item.PNetoMay_2.ToString("n2");
+            //}
+            //L_CON_MAY_1.Text = _controlador.Item.ContenidoEmpMay_1.ToString();
+            //L_CON_MAY_2.Text = _controlador.Item.ContenidoEmpMay_2.ToString();
         }
 
         private void LimpiarEtiquetas()
@@ -264,16 +297,24 @@ namespace ModInventario.Buscar
             L_OFERTA.Text = "";
             L_FECHA_ALTA.Text="";
             L_FECHA_ACT.Text = "";
-            L_CostoUnd.Text = "0";
-            PN_1.Text = "0";
-            PN_2.Text = "0";
-            PN_3.Text = "0";
-            PN_4.Text = "0";
-            PN_5.Text = "0";
-            PN_MAY_1.Text = "0";
-            PN_MAY_2.Text = "0";
-            L_CON_MAY_1.Text = "";
-            L_CON_MAY_2.Text = "";
+            L_ET_INV_EMP_COMPRA.Text = "";
+            L_ET_INV_EMP_INV.Text = "";
+            L_ET_INV_EMP_UND.Text = "";
+            L_INV_EMP_COMPRA.Text = "";
+            L_INV_EMP_INV.Text = "";
+            L_INV_EMP_UND.Text = ""; 
+
+
+            //L_CostoUnd.Text = "0";
+            //PN_1.Text = "0";
+            //PN_2.Text = "0";
+            //PN_3.Text = "0";
+            //PN_4.Text = "0";
+            //PN_5.Text = "0";
+            //PN_MAY_1.Text = "0";
+            //PN_MAY_2.Text = "0";
+            //L_CON_MAY_1.Text = "";
+            //L_CON_MAY_2.Text = "";
         }
 
         private void BT_FILTRAR_Click(object sender, EventArgs e)
@@ -304,7 +345,6 @@ namespace ModInventario.Buscar
                 VisualizarItem();
             }
         }
-
         private void VisualizarItem()
         {
             _controlador.VisualizarItem();
@@ -343,7 +383,6 @@ namespace ModInventario.Buscar
         {
             VerPrecios();
         }
-
         private void VerPrecios()
         {
             _controlador.VerPrecios();
@@ -354,7 +393,6 @@ namespace ModInventario.Buscar
         {
             Limpiar();
         }
-
         private void Limpiar()
         {
             _controlador.Limpiar();
@@ -367,7 +405,6 @@ namespace ModInventario.Buscar
         {
             EditarPrecio();
         }
-
         private void EditarPrecio()
         {
             _controlador.EditarPrecio();
@@ -463,7 +500,6 @@ namespace ModInventario.Buscar
         {
             EditarFicha();
         }
-
         private void EditarFicha()
         {
             _controlador.EditarFicha();
@@ -474,7 +510,6 @@ namespace ModInventario.Buscar
         {
             AgregarFicha();
         }
-
         private void AgregarFicha()
         {
             _controlador.AgregarFicha();

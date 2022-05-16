@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 
 namespace ModInventario.Producto.AgregarEditar
@@ -18,7 +19,6 @@ namespace ModInventario.Producto.AgregarEditar
         System.Windows.Forms.BindingSource Marcas { get; }
         System.Windows.Forms.BindingSource Impuesto { get; }
         System.Windows.Forms.BindingSource Origen { get; }
-        System.Windows.Forms.BindingSource EmpCompra { get; }
         System.Windows.Forms.BindingSource Divisa { get; }
         System.Windows.Forms.BindingSource Categoria { get; }
         System.Windows.Forms.BindingSource Clasificacion { get; }
@@ -30,12 +30,10 @@ namespace ModInventario.Producto.AgregarEditar
         string NombreProducto { get; set; }
         string ModeloProducto { get; set; }
         string ReferenciaProducto { get; set; }
-        int ContEmpProducto { get; set; }
         string AutoDepartamento { get; set; }
         string AutoGrupo { get; set; }
         string AutoMarca { get; set; }
         string AutoImpuesto { get; set; }
-        string AutoEmpCompra { get; set; }
         string IdOrigen { get; set; }
         string IdCategoria { get; set; }
         string IdClasificacionAbc { get; set; }
@@ -64,6 +62,32 @@ namespace ModInventario.Producto.AgregarEditar
         bool IsAgregarEditarOk { get; }
         string AutoProductoAgregado { get; }
         string Titulo { get; }
+
+
+        void Inicializa();
+
+
+        BindingSource GetEmpInvSource { get; }
+        string GetEmpInvId { get; }
+        BindingSource GetEmpCompraSource { get; }
+        string GetEmpCompraId { get;  }
+        void setEmpCompra(string id);
+        void setEmpInv(string id);
+        void setContEmpCompra(int cont);
+        void setContEmpInv(int cont);
+        int GetContEmpCompra { get; }
+        int GetContEmpInv { get; }
+
+
+        bool AbandonarIsOk { get; }
+        bool ProcesarIsOk { get; }
+        void AbandonarFicha();
+
+        bool HabilitarEditarCodigo { get; }
+
+
+        bool EditarCodigoIsOk { get; }
+        void EditarCodigo();
 
     }
 

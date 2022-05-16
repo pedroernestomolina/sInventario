@@ -290,7 +290,9 @@ namespace ModInventario
             _gestionBusqueda = new Buscar.Gestion(
                 _gFiltroAdmProducto, 
                 _seguridad, 
-                _callMaestro);
+                _callMaestro,
+                _gSecurity, 
+                _gSecurityModoUsuario);
 
             _gestionVisorExistencia = new Visor.Existencia.Gestion();
             _gestionVisorCostoEdad = new Visor.CostoEdad.Gestion();

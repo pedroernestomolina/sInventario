@@ -11,9 +11,14 @@ namespace DataProvInventario.InfraEstructura
     public interface IPrecio
     {
 
-        OOB.ResultadoEntidad<OOB.LibInventario.Precio.Historico.Ficha> HistoricoPrecio_GetLista(OOB.LibInventario.Precio.Historico.Filtro filtro);
-        OOB.ResultadoEntidad<OOB.LibInventario.Precio.PrecioCosto.Ficha> PrecioCosto_GetFicha(string autoPrd);
-        OOB.Resultado PrecioProducto_Actualizar(OOB.LibInventario.Precio.Editar.Ficha ficha);
+        OOB.ResultadoEntidad<OOB.LibInventario.Precio.Historico.Ficha> 
+            HistoricoPrecio_GetLista(OOB.LibInventario.Precio.Historico.Filtro filtro);
+        OOB.ResultadoEntidad<OOB.LibInventario.Precio.PrecioCosto.Ficha> 
+            PrecioCosto_GetFicha(string autoPrd);
+        OOB.Resultado 
+            PrecioProducto_Actualizar(OOB.LibInventario.Precio.Editar.Ficha ficha);
+        OOB.ResultadoEntidad<OOB.LibInventario.PrecioCosto.Entidad.Ficha>
+            PrecioCosto_GetData(string autoPrd);
 
     }
 

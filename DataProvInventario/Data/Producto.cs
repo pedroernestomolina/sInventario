@@ -90,6 +90,7 @@ namespace DataProvInventario.Data
                         id.descripcion = s.descripcion;
                         id.empaqueCompra =s.empaque;
                         id.contenidoCompra =s.contenido;
+                        id.contEmpInv = s.contEmpInv;
                         id.Decimales = s.decimales;
                         id.departamento=s.departamento;
                         id.grupo = s.grupo;
@@ -621,7 +622,8 @@ namespace DataProvInventario.Data
             return rt;
         }
 
-        public OOB.ResultadoEntidad<OOB.LibInventario.Producto.Editar.Obtener.Ficha> Producto_Editar_GetFicha(string autoPrd)
+        public OOB.ResultadoEntidad<OOB.LibInventario.Producto.Editar.Obtener.Ficha> 
+            Producto_Editar_GetFicha(string autoPrd)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Producto.Editar.Obtener.Ficha>();
 
@@ -644,25 +646,23 @@ namespace DataProvInventario.Data
                 nr.autoMarca = e.autoMarca;
                 nr.autoEmpCompra = e.autoEmpCompra;
                 nr.autoTasaImpuesto = e.autoTasaImpuesto;
-
                 nr.codigo = e.codigo;
                 nr.nombre = e.nombre;
                 nr.descripcion = e.descripcion;
                 nr.modelo = e.modelo;
                 nr.referencia = e.referencia;
                 nr.contenidoCompra = e.contenidoCompra;
-
                 nr.imagen = e.imagen;
                 nr.esPesado = (OOB.LibInventario.Producto.Enumerados.EnumPesado) e.esPesado;
                 nr.plu = e.plu;
                 nr.diasEmpaque = e.diasEmpaque;
-
                 nr.origen= (OOB.LibInventario.Producto.Enumerados.EnumOrigen) e.origen;
                 nr.categoria= (OOB.LibInventario.Producto.Enumerados.EnumCategoria) e.categoria;
                 nr.AdmPorDivisa= (OOB.LibInventario.Producto.Enumerados.EnumAdministradorPorDivisa)  e.AdmPorDivisa;
                 nr.Clasificacion= (OOB.LibInventario.Producto.Enumerados.EnumClasificacionABC) e.Clasificacion;
                 nr.activarCatalogo = (OOB.LibInventario.Producto.Enumerados.EnumCatalogo)e.activarCatalogo;
-
+                nr.autoEmpInv = e.autoEmpInv;
+                nr.contEmpInv = e.contEmpInv;
                 foreach (var rg in e.CodigosAlterno)
                 {
                     codigosAlt.Add(new OOB.LibInventario.Producto.Editar.Obtener.FichaAlterno() { Codigo = rg.Codigo });
@@ -674,8 +674,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.Resultado Producto_Editar_Actualizar(OOB.LibInventario.Producto.Editar.Actualizar.Ficha ficha)
+        public OOB.Resultado 
+            Producto_Editar_Actualizar(OOB.LibInventario.Producto.Editar.Actualizar.Ficha ficha)
         {
             var rt = new OOB.Resultado();
 
@@ -685,12 +685,14 @@ namespace DataProvInventario.Data
                 abc = ficha.abc,
                 autoDepartamento = ficha.autoDepartamento,
                 autoEmpCompra = ficha.autoEmpCompra,
+                autoEmpInv=ficha.autoEmpInv,
                 autoGrupo = ficha.autoGrupo,
                 autoMarca = ficha.autoMarca,
                 autoTasaImpuesto = ficha.autoTasaImpuesto,
                 categoria = ficha.categoria,
                 codigo = ficha.codigo,
                 contenidoCompra = ficha.contenidoCompra,
+                contenidoInv=ficha.contenidoInv,
                 descripcion = ficha.descripcion,
                 estatusDivisa = ficha.estatusDivisa,
                 modelo = ficha.modelo,
@@ -704,47 +706,46 @@ namespace DataProvInventario.Data
                 estatusCatalogo=ficha.estatusCatalogo,
                 tasaImpuesto=ficha.tasaImpuesto,
             };
-            if (ficha.precio_1 != null) 
-            {
-                fichaDTO.precio_1 = new DtoLibInventario.Producto.Editar.Actualizar.FichaPrecio()
-                {
-                    divisaFull = ficha.precio_1.divisaFull,
-                    neto = ficha.precio_1.neto,
-                };
-            }
-            if (ficha.precio_2 != null)
-            {
-                fichaDTO.precio_2 = new DtoLibInventario.Producto.Editar.Actualizar.FichaPrecio()
-                {
-                    divisaFull = ficha.precio_2.divisaFull,
-                    neto = ficha.precio_2.neto,
-                };
-            }
-            if (ficha.precio_3 != null)
-            {
-                fichaDTO.precio_3 = new DtoLibInventario.Producto.Editar.Actualizar.FichaPrecio()
-                {
-                    divisaFull = ficha.precio_3.divisaFull,
-                    neto = ficha.precio_3.neto,
-                };
-            }
-            if (ficha.precio_4 != null)
-            {
-                fichaDTO.precio_4 = new DtoLibInventario.Producto.Editar.Actualizar.FichaPrecio()
-                {
-                    divisaFull = ficha.precio_4.divisaFull,
-                    neto = ficha.precio_4.neto,
-                };
-            }
-            if (ficha.precio_5 != null)
-            {
-                fichaDTO.precio_5 = new DtoLibInventario.Producto.Editar.Actualizar.FichaPrecio()
-                {
-                    divisaFull = ficha.precio_5.divisaFull,
-                    neto = ficha.precio_5.neto,
-                };
-            }
-
+            //if (ficha.precio_1 != null) 
+            //{
+            //    fichaDTO.precio_1 = new DtoLibInventario.Producto.Editar.Actualizar.FichaPrecio()
+            //    {
+            //        divisaFull = ficha.precio_1.divisaFull,
+            //        neto = ficha.precio_1.neto,
+            //    };
+            //}
+            //if (ficha.precio_2 != null)
+            //{
+            //    fichaDTO.precio_2 = new DtoLibInventario.Producto.Editar.Actualizar.FichaPrecio()
+            //    {
+            //        divisaFull = ficha.precio_2.divisaFull,
+            //        neto = ficha.precio_2.neto,
+            //    };
+            //}
+            //if (ficha.precio_3 != null)
+            //{
+            //    fichaDTO.precio_3 = new DtoLibInventario.Producto.Editar.Actualizar.FichaPrecio()
+            //    {
+            //        divisaFull = ficha.precio_3.divisaFull,
+            //        neto = ficha.precio_3.neto,
+            //    };
+            //}
+            //if (ficha.precio_4 != null)
+            //{
+            //    fichaDTO.precio_4 = new DtoLibInventario.Producto.Editar.Actualizar.FichaPrecio()
+            //    {
+            //        divisaFull = ficha.precio_4.divisaFull,
+            //        neto = ficha.precio_4.neto,
+            //    };
+            //}
+            //if (ficha.precio_5 != null)
+            //{
+            //    fichaDTO.precio_5 = new DtoLibInventario.Producto.Editar.Actualizar.FichaPrecio()
+            //    {
+            //        divisaFull = ficha.precio_5.divisaFull,
+            //        neto = ficha.precio_5.neto,
+            //    };
+            //}
             var codAlterno = new List<DtoLibInventario.Producto.Editar.Actualizar.FichaCodAlterno>();
             foreach (var rg in ficha.codigosAlterno) 
             {
@@ -762,8 +763,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoAuto Producto_Nuevo_Agregar(OOB.LibInventario.Producto.Agregar.Ficha ficha)
+        public OOB.ResultadoAuto 
+            Producto_Nuevo_Agregar(OOB.LibInventario.Producto.Agregar.Ficha ficha)
         {
             var rt = new OOB.ResultadoAuto();
 
@@ -786,11 +787,13 @@ namespace DataProvInventario.Data
                 referencia = ficha.referencia,
                 estatus = ficha.estatus,
                 tasa = ficha.tasa,
-                imagen=ficha.imagen,
+                imagen = ficha.imagen,
                 diasEmpaque = ficha.diasEmpaque,
                 esPesado = ficha.esPesado,
                 plu = ficha.plu,
-                estatusCatalogo=ficha.estatusCatalogo,
+                estatusCatalogo = ficha.estatusCatalogo,
+                autoEmpInv = ficha.autoEmpInv,
+                contEmpInv = ficha.contEmpInv,
             };
             var codAlterno = new List<DtoLibInventario.Producto.Agregar.FichaCodAlterno>();
             foreach (var rg in ficha.codigosAlterno)
@@ -1016,7 +1019,8 @@ namespace DataProvInventario.Data
             return rt;
         }
 
-        public OOB.ResultadoEntidad<OOB.LibInventario.Producto.Data.Identificacion> Producto_GetIdentificacion(string autoPrd)
+        public OOB.ResultadoEntidad<OOB.LibInventario.Producto.Data.Identificacion> 
+            Producto_GetIdentificacion(string autoPrd)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Producto.Data.Identificacion>();
 
@@ -1067,6 +1071,8 @@ namespace DataProvInventario.Data
                     estatusPesado = s.estatusPesado,
                     plu = s.plu,
                     diasEmpaque = s.diasEmpaque,
+                    empInv=s.empInventario,
+                    contEmpInv=s.contEmpInv,
                     codAlterno = s.codAlterno.Select(ss =>
                     {
                         var nr = new OOB.LibInventario.Producto.Data.CodAlterno()

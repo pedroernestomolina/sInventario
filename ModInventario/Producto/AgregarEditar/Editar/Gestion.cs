@@ -34,9 +34,6 @@ namespace ModInventario.Producto.AgregarEditar.Editar
         private List<OOB.LibInventario.Producto.Origen.Ficha> origen;
         private BindingList<OOB.LibInventario.Producto.Origen.Ficha> blOrigen;
         private BindingSource bsOrigen;
-        private List<OOB.LibInventario.EmpaqueMedida.Ficha> empCompra;
-        private BindingList<OOB.LibInventario.EmpaqueMedida.Ficha> blEmpCompra;
-        private BindingSource bsEmpCompra;
         private List<OOB.LibInventario.Producto.AdmDivisa.Ficha> divisa;
         private BindingList<OOB.LibInventario.Producto.AdmDivisa.Ficha> blDivisa;
         private BindingSource bsDivisa;
@@ -50,6 +47,16 @@ namespace ModInventario.Producto.AgregarEditar.Editar
         private Plu.Gestion _gestionPlu;
         private CodAlterno.Gestion _gestionCodAlterno;
 
+
+        //
+        private FiltrosGen.IOpcion _gEmpInv;
+        private FiltrosGen.IOpcion _gEmpCompra;
+        private SeguridadSist.ISeguridad _gSecurity;
+        private SeguridadSist.Usuario.IModoUsuario _gModoSecurity;
+        private bool _abandonarIsOk;
+        private bool _procesarIsOk;
+        private bool _editarCodigoIsOk;
+        
 
         public string Titulo
         {
@@ -79,11 +86,6 @@ namespace ModInventario.Producto.AgregarEditar.Editar
         public BindingSource Origen
         {
             get { return bsOrigen; }
-        }
-
-        public BindingSource EmpCompra
-        {
-            get { return bsEmpCompra; }
         }
 
         public BindingSource Divisa
@@ -166,18 +168,6 @@ namespace ModInventario.Producto.AgregarEditar.Editar
             }
         }
 
-        public int ContEmpProducto
-        {
-            get
-            {
-                return miData.ContEmpProducto;
-            }
-            set
-            {
-                miData.ContEmpProducto = value;
-            }
-        }
-
         public string AutoDepartamento
         {
             get
@@ -247,18 +237,6 @@ namespace ModInventario.Producto.AgregarEditar.Editar
             set
             {
                 miData.IdCategoria=value;
-            }
-        }
-
-        public string AutoEmpCompra
-        {
-            get
-            {
-                return miData.AutoEmpCompra;
-            }
-            set
-            {
-                miData.AutoEmpCompra=value;
             }
         }
 
@@ -362,6 +340,8 @@ namespace ModInventario.Producto.AgregarEditar.Editar
         {
             _gestionPlu = new Producto.Plu.Gestion();
             _gestionCodAlterno = new CodAlterno.Gestion();
+            _gEmpCompra = new FiltrosGen.Opcion.Gestion();
+            _gEmpInv = new FiltrosGen.Opcion.Gestion();
 
             _isCerrarHabilitado = false;
             _autoProductoAgregado="";
@@ -392,11 +372,6 @@ namespace ModInventario.Producto.AgregarEditar.Editar
             blOrigen= new BindingList<OOB.LibInventario.Producto.Origen.Ficha>(origen);
             bsOrigen= new BindingSource();
             bsOrigen.DataSource = blOrigen;
-
-            empCompra = new List<OOB.LibInventario.EmpaqueMedida.Ficha>();
-            blEmpCompra= new BindingList<OOB.LibInventario.EmpaqueMedida.Ficha>(empCompra);
-            bsEmpCompra = new BindingSource();
-            bsEmpCompra.DataSource = blEmpCompra;
 
             divisa= new List<OOB.LibInventario.Producto.AdmDivisa.Ficha>();
             blDivisa= new BindingList<OOB.LibInventario.Producto.AdmDivisa.Ficha>(divisa);
@@ -473,15 +448,22 @@ namespace ModInventario.Producto.AgregarEditar.Editar
             origen.AddRange(r06.Lista.OrderBy(o => o.Descripcion).ToList());
             bsOrigen.CurrencyManager.Refresh();
 
+            //
             var r07 = Sistema.MyData.EmpaqueMedida_GetLista ();
             if (r07.Result == OOB.Enumerados.EnumResult.isError)
             {
                 Helpers.Msg.Error(r07.Mensaje);
                 return false;
             }
-            blEmpCompra.Clear();
-            empCompra.AddRange(r07.Lista.OrderBy(o => o.nombre).ToList());
-            bsEmpCompra.CurrencyManager.Refresh();
+            var lData = new List<ficha>();
+            foreach (var rg in r07.Lista.OrderBy(o => o.nombre).ToList())
+            {
+                var nr = new ficha(rg.auto, "", rg.nombre);
+                lData.Add(nr);
+            }
+            _gEmpCompra.setData(lData);
+            _gEmpInv.setData(lData);
+
 
             var r08 = Sistema.MyData.Producto_AdmDivisa_Lista ();
             if (r08.Result == OOB.Enumerados.EnumResult.isError)
@@ -511,6 +493,8 @@ namespace ModInventario.Producto.AgregarEditar.Editar
             }
             autoTasaActualPrd = r0A.Entidad.autoTasaImpuesto;
             miData.setFicha(r0A.Entidad);
+            setEmpCompra(r0A.Entidad.autoEmpCompra);
+            setEmpInv(r0A.Entidad.autoEmpInv);
 
             _gestionCodAlterno.CargarData(r0A.Entidad.CodigosAlterno);
 
@@ -519,8 +503,9 @@ namespace ModInventario.Producto.AgregarEditar.Editar
 
         public void Procesar()
         {
-            var msg = "Procesar Cambios ?";
-            var rt = MessageBox.Show(msg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            _procesarIsOk = false;
+            var xmsg = "Procesar Cambios ?";
+            var rt = MessageBox.Show(xmsg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (rt == DialogResult.Yes)
             {
                 _isCerrarHabilitado = Guardar();
@@ -559,12 +544,14 @@ namespace ModInventario.Producto.AgregarEditar.Editar
             {
                 auto = autoPrd,
                 autoDepartamento = miData.AutoDepartamento,
-                autoEmpCompra = miData.AutoEmpCompra,
+                autoEmpCompra = miData.EmpCompra.id,
+                autoEmpInv= miData.EmpInv.id,
                 autoGrupo = miData.AutoGrupo,
                 autoMarca = miData.AutoMarca,
                 autoTasaImpuesto = miData.AutoImpuesto,
                 codigo = miData.Codigo,
                 contenidoCompra = miData.ContEmpProducto,
+                contenidoInv = miData.ContEmpInv,
                 descripcion = miData.Descripcion,
                 modelo = miData.ModeloProducto,
                 nombre = miData.NombreProducto,
@@ -581,117 +568,117 @@ namespace ModInventario.Producto.AgregarEditar.Editar
                 tasaImpuesto= entImpuesto.tasa,
             };
 
-            if (autoTasaActualPrd != miData.AutoImpuesto) 
-            {
-                var xr1 = Sistema.MyData.PrecioCosto_GetFicha(autoPrd);
-                if (xr1.Result == OOB.Enumerados.EnumResult.isError) 
-                {
-                    Helpers.Msg.Error(xr1.Mensaje);
-                    return false;
-                }
-                var xr2 = Sistema.MyData.Configuracion_TasaCambioActual();
-                if (xr2.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(xr2.Mensaje);
-                    return false;
-                }
-                var xr3 = Sistema.MyData.TasaImpuesto_GetLista();
-                if (xr3.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(xr3.Mensaje);
-                    return false;
-                }
-                var xr4 = Sistema.MyData.Configuracion_PreferenciaRegistroPrecio();
-                if (xr4.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(xr4.Mensaje);
-                    return false;
-                }
+            //if (autoTasaActualPrd != miData.AutoImpuesto) 
+            //{
+            //    var xr1 = Sistema.MyData.PrecioCosto_GetFicha(autoPrd);
+            //    if (xr1.Result == OOB.Enumerados.EnumResult.isError) 
+            //    {
+            //        Helpers.Msg.Error(xr1.Mensaje);
+            //        return false;
+            //    }
+            //    var xr2 = Sistema.MyData.Configuracion_TasaCambioActual();
+            //    if (xr2.Result == OOB.Enumerados.EnumResult.isError)
+            //    {
+            //        Helpers.Msg.Error(xr2.Mensaje);
+            //        return false;
+            //    }
+            //    var xr3 = Sistema.MyData.TasaImpuesto_GetLista();
+            //    if (xr3.Result == OOB.Enumerados.EnumResult.isError)
+            //    {
+            //        Helpers.Msg.Error(xr3.Mensaje);
+            //        return false;
+            //    }
+            //    var xr4 = Sistema.MyData.Configuracion_PreferenciaRegistroPrecio();
+            //    if (xr4.Result == OOB.Enumerados.EnumResult.isError)
+            //    {
+            //        Helpers.Msg.Error(xr4.Mensaje);
+            //        return false;
+            //    }
 
-                var xtasa = 0.0m;
-                var tasa = xr3.Lista.FirstOrDefault(f => f.auto == miData.AutoImpuesto);
-                if (tasa != null)
-                    xtasa = tasa.tasa;
-                var factor = xr2.Entidad;
+            //    var xtasa = 0.0m;
+            //    var tasa = xr3.Lista.FirstOrDefault(f => f.auto == miData.AutoImpuesto);
+            //    if (tasa != null)
+            //        xtasa = tasa.tasa;
+            //    var factor = xr2.Entidad;
 
-                var p = new precio();
-                if (miData.EsAdmDivisa)
-                {
-                    p.Calculo_AdmDivisa(factor, xtasa, xr1.Entidad.precioFullDivisa1, xr1.Entidad.precioNetoDivisa1, xr4.Entidad);
-                    var precio1 = new OOB.LibInventario.Producto.Editar.Actualizar.FichaPrecio()
-                    {
-                        divisaFull =   p.divisaFull,
-                        neto = p.neto,
-                    };
-                    p.Calculo_AdmDivisa(factor, xtasa, xr1.Entidad.precioFullDivisa2, xr1.Entidad.precioNetoDivisa2, xr4.Entidad);
-                    var precio2 = new OOB.LibInventario.Producto.Editar.Actualizar.FichaPrecio()
-                    {
-                        divisaFull = p.divisaFull,
-                        neto = p.neto,
-                    };
-                    p.Calculo_AdmDivisa(factor, xtasa, xr1.Entidad.precioFullDivisa3, xr1.Entidad.precioNetoDivisa3, xr4.Entidad);
-                    var precio3 = new OOB.LibInventario.Producto.Editar.Actualizar.FichaPrecio()
-                    {
-                        divisaFull = p.divisaFull,
-                        neto = p.neto,
-                    };
-                    p.Calculo_AdmDivisa(factor, xtasa, xr1.Entidad.precioFullDivisa4, xr1.Entidad.precioNetoDivisa4, xr4.Entidad);
-                    var precio4 = new OOB.LibInventario.Producto.Editar.Actualizar.FichaPrecio()
-                    {
-                        divisaFull = p.divisaFull,
-                        neto = p.neto,
-                    };
-                    p.Calculo_AdmDivisa(factor, xtasa, xr1.Entidad.precioFullDivisa5, xr1.Entidad.precioNetoDivisa5, xr4.Entidad);
-                    var precio5 = new OOB.LibInventario.Producto.Editar.Actualizar.FichaPrecio()
-                    {
-                        divisaFull = p.divisaFull,
-                        neto = p.neto,
-                    };
-                    ficha.precio_1 = precio1;
-                    ficha.precio_2 = precio2;
-                    ficha.precio_3 = precio3;
-                    ficha.precio_4 = precio4;
-                    ficha.precio_5 = precio5;
-                }
-                else 
-                {
-                    p.Calculo_NoAdmDivisa(factor, xtasa, xr1.Entidad.precioFull1, xr1.Entidad.precioNeto1, xr4.Entidad);
-                    var precio1 = new OOB.LibInventario.Producto.Editar.Actualizar.FichaPrecio()
-                    {
-                        divisaFull = p.divisaFull,
-                        neto = p.neto,
-                    };
-                    p.Calculo_NoAdmDivisa(factor, xtasa, xr1.Entidad.precioFull2, xr1.Entidad.precioNeto2, xr4.Entidad);
-                    var precio2 = new OOB.LibInventario.Producto.Editar.Actualizar.FichaPrecio()
-                    {
-                        divisaFull = p.divisaFull,
-                        neto = p.neto,
-                    };
-                    p.Calculo_NoAdmDivisa(factor, xtasa, xr1.Entidad.precioFull3, xr1.Entidad.precioNeto3, xr4.Entidad);
-                    var precio3 = new OOB.LibInventario.Producto.Editar.Actualizar.FichaPrecio()
-                    {
-                        divisaFull = p.divisaFull,
-                        neto = p.neto,
-                    };
-                    p.Calculo_NoAdmDivisa(factor, xtasa, xr1.Entidad.precioFull4, xr1.Entidad.precioNeto4, xr4.Entidad);
-                    var precio4 = new OOB.LibInventario.Producto.Editar.Actualizar.FichaPrecio()
-                    {
-                        divisaFull = p.divisaFull,
-                        neto = p.neto,
-                    };
-                    p.Calculo_NoAdmDivisa(factor, xtasa, xr1.Entidad.precioFull5, xr1.Entidad.precioNeto5, xr4.Entidad);
-                    var precio5 = new OOB.LibInventario.Producto.Editar.Actualizar.FichaPrecio()
-                    {
-                        divisaFull = p.divisaFull,
-                        neto = p.neto,
-                    };
-                    ficha.precio_1 = precio1;
-                    ficha.precio_2 = precio2;
-                    ficha.precio_3 = precio3;
-                    ficha.precio_4 = precio4;
-                    ficha.precio_5 = precio5;
-                }
-            }
+            //    var p = new precio();
+            //    if (miData.EsAdmDivisa)
+            //    {
+            //        p.Calculo_AdmDivisa(factor, xtasa, xr1.Entidad.precioFullDivisa1, xr1.Entidad.precioNetoDivisa1, xr4.Entidad);
+            //        var precio1 = new OOB.LibInventario.Producto.Editar.Actualizar.FichaPrecio()
+            //        {
+            //            divisaFull =   p.divisaFull,
+            //            neto = p.neto,
+            //        };
+            //        p.Calculo_AdmDivisa(factor, xtasa, xr1.Entidad.precioFullDivisa2, xr1.Entidad.precioNetoDivisa2, xr4.Entidad);
+            //        var precio2 = new OOB.LibInventario.Producto.Editar.Actualizar.FichaPrecio()
+            //        {
+            //            divisaFull = p.divisaFull,
+            //            neto = p.neto,
+            //        };
+            //        p.Calculo_AdmDivisa(factor, xtasa, xr1.Entidad.precioFullDivisa3, xr1.Entidad.precioNetoDivisa3, xr4.Entidad);
+            //        var precio3 = new OOB.LibInventario.Producto.Editar.Actualizar.FichaPrecio()
+            //        {
+            //            divisaFull = p.divisaFull,
+            //            neto = p.neto,
+            //        };
+            //        p.Calculo_AdmDivisa(factor, xtasa, xr1.Entidad.precioFullDivisa4, xr1.Entidad.precioNetoDivisa4, xr4.Entidad);
+            //        var precio4 = new OOB.LibInventario.Producto.Editar.Actualizar.FichaPrecio()
+            //        {
+            //            divisaFull = p.divisaFull,
+            //            neto = p.neto,
+            //        };
+            //        p.Calculo_AdmDivisa(factor, xtasa, xr1.Entidad.precioFullDivisa5, xr1.Entidad.precioNetoDivisa5, xr4.Entidad);
+            //        var precio5 = new OOB.LibInventario.Producto.Editar.Actualizar.FichaPrecio()
+            //        {
+            //            divisaFull = p.divisaFull,
+            //            neto = p.neto,
+            //        };
+            //        ficha.precio_1 = precio1;
+            //        ficha.precio_2 = precio2;
+            //        ficha.precio_3 = precio3;
+            //        ficha.precio_4 = precio4;
+            //        ficha.precio_5 = precio5;
+            //    }
+            //    else 
+            //    {
+            //        p.Calculo_NoAdmDivisa(factor, xtasa, xr1.Entidad.precioFull1, xr1.Entidad.precioNeto1, xr4.Entidad);
+            //        var precio1 = new OOB.LibInventario.Producto.Editar.Actualizar.FichaPrecio()
+            //        {
+            //            divisaFull = p.divisaFull,
+            //            neto = p.neto,
+            //        };
+            //        p.Calculo_NoAdmDivisa(factor, xtasa, xr1.Entidad.precioFull2, xr1.Entidad.precioNeto2, xr4.Entidad);
+            //        var precio2 = new OOB.LibInventario.Producto.Editar.Actualizar.FichaPrecio()
+            //        {
+            //            divisaFull = p.divisaFull,
+            //            neto = p.neto,
+            //        };
+            //        p.Calculo_NoAdmDivisa(factor, xtasa, xr1.Entidad.precioFull3, xr1.Entidad.precioNeto3, xr4.Entidad);
+            //        var precio3 = new OOB.LibInventario.Producto.Editar.Actualizar.FichaPrecio()
+            //        {
+            //            divisaFull = p.divisaFull,
+            //            neto = p.neto,
+            //        };
+            //        p.Calculo_NoAdmDivisa(factor, xtasa, xr1.Entidad.precioFull4, xr1.Entidad.precioNeto4, xr4.Entidad);
+            //        var precio4 = new OOB.LibInventario.Producto.Editar.Actualizar.FichaPrecio()
+            //        {
+            //            divisaFull = p.divisaFull,
+            //            neto = p.neto,
+            //        };
+            //        p.Calculo_NoAdmDivisa(factor, xtasa, xr1.Entidad.precioFull5, xr1.Entidad.precioNeto5, xr4.Entidad);
+            //        var precio5 = new OOB.LibInventario.Producto.Editar.Actualizar.FichaPrecio()
+            //        {
+            //            divisaFull = p.divisaFull,
+            //            neto = p.neto,
+            //        };
+            //        ficha.precio_1 = precio1;
+            //        ficha.precio_2 = precio2;
+            //        ficha.precio_3 = precio3;
+            //        ficha.precio_4 = precio4;
+            //        ficha.precio_5 = precio5;
+            //    }
+            //}
 
             var codAlterno = new List<OOB.LibInventario.Producto.Editar.Actualizar.FichaCodigoAlterno>();
             foreach (var rg in _gestionCodAlterno.ListaCodigos)
@@ -706,7 +693,7 @@ namespace ModInventario.Producto.AgregarEditar.Editar
                 Helpers.Msg.Error(r01.Mensaje);
                 return false;
             }
-
+            _procesarIsOk = true;
             _isAgregarEditarOk = true;
             Helpers.Msg.EditarOk();
             return rt;
@@ -804,6 +791,82 @@ namespace ModInventario.Producto.AgregarEditar.Editar
         public BindingSource SourceCodAlterno
         {
             get {  return _gestionCodAlterno.Source; }
+        }
+
+
+        public void Inicializa()
+        {
+            _abandonarIsOk = false;
+            _procesarIsOk = false;
+            _editarCodigoIsOk=false;
+            _gEmpInv.Inicializa();
+            _gEmpCompra.Inicializa();
+        }
+
+
+        public BindingSource GetEmpInvSource { get { return _gEmpInv.Source; } }
+        public string GetEmpInvId { get { return _gEmpInv.GetId; } }
+        public BindingSource GetEmpCompraSource { get { return _gEmpCompra.Source; } }
+        public string GetEmpCompraId { get { return _gEmpCompra.GetId; } }
+        public int GetContEmpCompra { get { return miData.ContEmpProducto; } }
+        public int GetContEmpInv { get { return miData.ContEmpInv; } }
+        public void setEmpCompra(string id)
+        {
+            _gEmpCompra.setFicha(id);
+            miData.setEmpCompra(_gEmpCompra.Item);
+        }
+        public void setEmpInv(string id)
+        {
+            _gEmpInv.setFicha(id);
+            miData.setEmpInv(_gEmpInv.Item);
+        }
+        public void setContEmpCompra(int cont)
+        {
+            miData.setContEmpCompra(cont);
+        }
+        public void setContEmpInv(int cont)
+        {
+            miData.setContEmpInv(cont);
+        }
+
+
+        public bool AbandonarIsOk { get { return _abandonarIsOk; } }
+        public bool ProcesarIsOk { get { return _procesarIsOk; } }
+        public void AbandonarFicha()
+        {
+            _abandonarIsOk = false;
+            var xmsg = "Abandonar Cambios Realizados ?";
+            var msg = MessageBox.Show(xmsg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (msg == DialogResult.Yes) 
+            {
+                _abandonarIsOk = true;
+            }
+        }
+
+        public bool HabilitarEditarCodigo { get { return false; } }
+        public bool EditarCodigoIsOk { get { return _editarCodigoIsOk; } }
+        public void EditarCodigo()
+        {
+            _editarCodigoIsOk=VerificarUsuario();
+        }
+
+
+        public void setSeguridad(SeguridadSist.ISeguridad seguridad)
+        {
+            _gSecurity = seguridad;
+        }
+        public void setModoSeguridad(SeguridadSist.Usuario.IModoUsuario securityModo)
+        {
+            _gModoSecurity = securityModo;
+        }
+        private bool VerificarUsuario()
+        {
+            _gModoSecurity.Inicializa();
+            _gModoSecurity.setUsuarioValidar(SeguridadSist.Usuario.enumerados.enumTipo.Administrador);
+            _gSecurity.setGestionTipo(_gModoSecurity);
+            _gSecurity.Inicializa();
+            _gSecurity.Inicia();
+            return _gSecurity.IsOk;
         }
 
     }

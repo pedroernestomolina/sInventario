@@ -27,7 +27,6 @@ namespace ModInventario.Producto.AgregarEditar
         public BindingSource Marcas { get { return miGestion.Marcas; } }
         public BindingSource Impuesto { get { return miGestion.Impuesto; } }
         public BindingSource Origen { get { return miGestion.Origen; } }
-        public BindingSource EmpCompra { get { return miGestion.EmpCompra; } }
         public BindingSource Divisa { get { return miGestion.Divisa; } }
         public BindingSource Categoria { get { return miGestion.Categoria; } }
         public BindingSource Clasificacion { get { return miGestion.Clasificacion; } }
@@ -39,7 +38,6 @@ namespace ModInventario.Producto.AgregarEditar
         public string NombreProducto { get { return miGestion.NombreProducto; } set { miGestion.NombreProducto = value; } }
         public string ModeloProducto { get { return miGestion.ModeloProducto; } set { miGestion.ModeloProducto = value; } }
         public string ReferenciaProducto { get { return miGestion.ReferenciaProducto; } set { miGestion.ReferenciaProducto = value; } }
-        public int ContEmpProducto { get { return miGestion.ContEmpProducto; } set { miGestion.ContEmpProducto = value; } }
         public byte[] Imagen { get { return miGestion.Imagen; } set { miGestion.Imagen = value; } }
         public bool Pesado { get { return miGestion.Pesado; } set { miGestion.Pesado = value; } }
         public bool ActivarCatlogo { get { return miGestion.ActivarCatlogo; } set { miGestion.ActivarCatlogo = value; } }
@@ -54,7 +52,6 @@ namespace ModInventario.Producto.AgregarEditar
         public string IdCategoria { get { return miGestion.IdCategoria; } set { miGestion.IdCategoria = value; } }
         public string IdClasificacionAbc { get { return miGestion.IdClasificacionAbc; } set { miGestion.IdClasificacionAbc = value; } }
         public string IdDivisa { get { return miGestion.IdDivisa; } set { miGestion.IdDivisa = value; } }
-        public string AutoEmpCompra { get { return miGestion.AutoEmpCompra; } set { miGestion.AutoEmpCompra = value; } }
         public string CodigoAlterno { get { return miGestion.CodigoAlterno; } set { miGestion.CodigoAlterno = value; } }
 
 
@@ -146,6 +143,53 @@ namespace ModInventario.Producto.AgregarEditar
         public void EliminarCodigoAlterno()
         {
             miGestion.EliminarCodigoAlterno(); 
+        }
+
+
+        public void Inicializa()
+        {
+            miGestion.Inicializa();
+        }
+
+
+        public BindingSource GetEmpCompraSource { get { return miGestion.GetEmpCompraSource; } }
+        public string GetEmpCompraId { get { return miGestion.GetEmpCompraId; } }
+        public BindingSource GetEmpInvSource { get { return miGestion.GetEmpInvSource; } }
+        public string GetEmpInvId { get { return miGestion.GetEmpInvId; } }
+        public int GetContEmpCompra { get { return miGestion.GetContEmpCompra; } }
+        public int GetContEmpInv { get { return miGestion.GetContEmpInv; } }
+        public void setEmpCompra(string id)
+        {
+            miGestion.setEmpCompra(id);
+        }
+        public void setEmpInv(string id)
+        {
+            miGestion.setEmpInv(id);
+        }
+        public void setContEmpCompra(int cont)
+        {
+            miGestion.setContEmpCompra(cont);
+        }
+        public void setContEmpInv(int cont)
+        {
+            miGestion.setContEmpInv(cont);
+        }
+
+
+        public bool AbandonarIsOk { get { return miGestion.AbandonarIsOk; } }
+        public bool ProcesarIsOk { get { return miGestion.ProcesarIsOk; } }
+        public void AbandonarFicha()
+        {
+            miGestion.AbandonarFicha();
+        }
+
+        public bool HabilitarEditarCodigo { get { return miGestion.HabilitarEditarCodigo; } }
+
+
+        public bool EditarCodigoIsOk { get { return miGestion.EditarCodigoIsOk; } }
+        public void EditarCodigo()
+        {
+            miGestion.EditarCodigo();
         }
 
     }

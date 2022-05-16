@@ -31,9 +31,6 @@ namespace ModInventario.Producto.AgregarEditar.Agregar
         private List<OOB.LibInventario.Producto.Origen.Ficha> origen;
         private BindingList<OOB.LibInventario.Producto.Origen.Ficha> blOrigen;
         private BindingSource bsOrigen;
-        private List<OOB.LibInventario.EmpaqueMedida.Ficha> empCompra;
-        private BindingList<OOB.LibInventario.EmpaqueMedida.Ficha> blEmpCompra;
-        private BindingSource bsEmpCompra;
         private List<OOB.LibInventario.Producto.AdmDivisa.Ficha> divisa;
         private BindingList<OOB.LibInventario.Producto.AdmDivisa.Ficha> blDivisa;
         private BindingSource bsDivisa;
@@ -47,6 +44,12 @@ namespace ModInventario.Producto.AgregarEditar.Agregar
         private Plu.Gestion _gestionPlu;
         private CodAlterno.Gestion _gestionCodAlterno;
 
+        //
+        private FiltrosGen.IOpcion _gEmpInv;
+        private FiltrosGen.IOpcion _gEmpCompra;
+        private bool _abandonarIsOk;
+        private bool _procesarIsOk;
+
 
         public string Titulo { get { return "Agregar Ficha"; } }
         public BindingSource Departamentos { get { return bsDepart; } }
@@ -54,7 +57,6 @@ namespace ModInventario.Producto.AgregarEditar.Agregar
         public BindingSource Marcas { get { return bsMarca; } }
         public BindingSource Impuesto { get { return bsImpuesto; } }
         public BindingSource Origen { get { return bsOrigen; } }
-        public BindingSource EmpCompra { get { return bsEmpCompra; } }
         public BindingSource Divisa { get { return bsDivisa; } }
         public BindingSource Categoria { get { return bsCategoria; } }
         public BindingSource Clasificacion { get { return bsClasificacion; } }
@@ -64,14 +66,12 @@ namespace ModInventario.Producto.AgregarEditar.Agregar
         public string NombreProducto{get{return miData.NombreProducto;}set{miData.NombreProducto = value;}}
         public string ModeloProducto { get { return miData.ModeloProducto; } set { miData.ModeloProducto = value; } }
         public string ReferenciaProducto { get { return miData.ReferenciaProducto; } set { miData.ReferenciaProducto = value; } }
-        public int ContEmpProducto { get { return miData.ContEmpProducto; } set { miData.ContEmpProducto = value; } }
         public string AutoDepartamento { get { return miData.AutoDepartamento; } set { miData.AutoDepartamento = value; } }
         public string AutoGrupo { get { return miData.AutoGrupo; } set { miData.AutoGrupo = value; } }
         public string AutoMarca { get { return miData.AutoMarca; } set { miData.AutoMarca = value; } }
         public string AutoImpuesto { get { return miData.AutoImpuesto; } set { miData.AutoImpuesto = value; } }
         public string IdOrigen { get { return miData.IdOrigen; } set { miData.IdOrigen = value; } }
         public string IdCategoria { get { return miData.IdCategoria; } set { miData.IdCategoria = value; } }
-        public string AutoEmpCompra { get { return miData.AutoEmpCompra; } set { miData.AutoEmpCompra = value; } }
         public string IdClasificacionAbc { get { return miData.IdClasificacionAbc; } set { miData.IdClasificacionAbc = value; } }
         public string IdDivisa { get { return miData.IdDivisa; } set { miData.IdDivisa = value; } }
         public byte[] Imagen { get { return miData.Imagen; } set { miData.Imagen = value; } }
@@ -87,6 +87,8 @@ namespace ModInventario.Producto.AgregarEditar.Agregar
         {
             _gestionPlu = new Producto.Plu.Gestion();
             _gestionCodAlterno = new CodAlterno.Gestion();
+            _gEmpInv = new FiltrosGen.Opcion.Gestion();
+            _gEmpCompra = new FiltrosGen.Opcion.Gestion();
 
             CodigoAlterno = "";
             _isAgregarEditarOk = false;
@@ -118,11 +120,6 @@ namespace ModInventario.Producto.AgregarEditar.Agregar
             blOrigen= new BindingList<OOB.LibInventario.Producto.Origen.Ficha>(origen);
             bsOrigen= new BindingSource();
             bsOrigen.DataSource = blOrigen;
-
-            empCompra = new List<OOB.LibInventario.EmpaqueMedida.Ficha>();
-            blEmpCompra= new BindingList<OOB.LibInventario.EmpaqueMedida.Ficha>(empCompra);
-            bsEmpCompra = new BindingSource();
-            bsEmpCompra.DataSource = blEmpCompra;
 
             divisa= new List<OOB.LibInventario.Producto.AdmDivisa.Ficha>();
             blDivisa= new BindingList<OOB.LibInventario.Producto.AdmDivisa.Ficha>(divisa);
@@ -197,15 +194,22 @@ namespace ModInventario.Producto.AgregarEditar.Agregar
             origen.AddRange(r06.Lista.OrderBy(o => o.Descripcion).ToList());
             bsOrigen.CurrencyManager.Refresh();
 
+
             var r07 = Sistema.MyData.EmpaqueMedida_GetLista ();
             if (r07.Result == OOB.Enumerados.EnumResult.isError)
             {
                 Helpers.Msg.Error(r07.Mensaje);
                 return false;
             }
-            blEmpCompra.Clear();
-            empCompra.AddRange(r07.Lista.OrderBy(o => o.nombre).ToList());
-            bsEmpCompra.CurrencyManager.Refresh();
+            var lData = new List<ficha>();
+            foreach (var rg in r07.Lista.OrderBy(o => o.nombre).ToList())
+            {
+                var nr = new ficha(rg.auto, "", rg.nombre);
+                lData.Add(nr);
+            }
+            _gEmpCompra.setData(lData);
+            _gEmpInv.setData(lData);
+
 
             var r08 = Sistema.MyData.Producto_AdmDivisa_Lista ();
             if (r08.Result == OOB.Enumerados.EnumResult.isError)
@@ -229,18 +233,17 @@ namespace ModInventario.Producto.AgregarEditar.Agregar
 
             miData.Limpiar();
             miData.setFicha("0000000001", "0000000001", "0000000001", 
-                empCompra.First(f=>f.nombre.Trim()=="UNIDAD").auto, 
                 impuesto.First(f=>f.nombre.Trim()=="IVA").auto, 
                 origen.First(f => f.Descripcion.Trim() == "Nacional").Id,
                 categoria.First(f => f.Descripcion.Trim() == "Producto Terminado").Id,
                 clasificacion.First(f => f.Descripcion.Trim() == "D").Id,
                 divisa.First(f => f.Descripcion.Trim() == "No").Id);
-
             return rt;
         }
 
         public void Procesar()
         {
+            _procesarIsOk = false;
             var msg = "Procesar Cambios ?";
             var rt = MessageBox.Show(msg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (rt == DialogResult.Yes)
@@ -282,12 +285,14 @@ namespace ModInventario.Producto.AgregarEditar.Agregar
             var ficha = new OOB.LibInventario.Producto.Agregar.Ficha()
             {
                 autoDepartamento = miData.AutoDepartamento,
-                autoEmpCompra = miData.AutoEmpCompra,
+                autoEmpCompra = miData.EmpCompra.id,
+                autoEmpInv = miData.EmpInv.id,
                 autoGrupo = miData.AutoGrupo,
                 autoMarca = miData.AutoMarca,
                 autoTasaImpuesto = miData.AutoImpuesto,
                 codigo = miData.Codigo,
                 contenidoCompra = miData.ContEmpProducto,
+                contEmpInv = miData.ContEmpInv,
                 descripcion = miData.Descripcion,
                 modelo = miData.ModeloProducto,
                 nombre = miData.NombreProducto,
@@ -310,14 +315,13 @@ namespace ModInventario.Producto.AgregarEditar.Agregar
                 codAlterno.Add(new OOB.LibInventario.Producto.Agregar.FichaCodAlterno() { Codigo = rg.codigo });
             }
             ficha.codigosAlterno = codAlterno;
-
             var r01 = Sistema.MyData.Producto_Nuevo_Agregar(ficha);
             if (r01.Result == OOB.Enumerados.EnumResult.isError) 
             {
                 Helpers.Msg.Error(r01.Mensaje);
                 return false;
             }
-
+            _procesarIsOk = true;
             _isAgregarEditarOk = true;
             _autoProductoAgregado = r01.Auto;
             return rt;
@@ -412,6 +416,62 @@ namespace ModInventario.Producto.AgregarEditar.Agregar
         public void EliminarCodigoAlterno()
         {
             _gestionCodAlterno.Eliminar();
+        }
+
+
+        public void Inicializa()
+        {
+            _abandonarIsOk = false;
+            _procesarIsOk = false;
+            _gEmpCompra.Inicializa();
+            _gEmpInv.Inicializa();
+        }
+
+
+        public BindingSource GetEmpInvSource { get { return _gEmpInv.Source; } }
+        public string GetEmpInvId { get { return _gEmpInv.GetId; } }
+        public BindingSource GetEmpCompraSource { get { return _gEmpCompra.Source; } }
+        public string GetEmpCompraId { get { return _gEmpCompra.GetId; } }
+        public int GetContEmpCompra { get { return miData.ContEmpProducto; } }
+        public int GetContEmpInv { get { return miData.ContEmpInv; } }
+        public void setEmpCompra(string id)
+        {
+            _gEmpCompra.setFicha(id);
+            miData.setEmpCompra(_gEmpCompra.Item);
+        }
+        public void setEmpInv(string id)
+        {
+            _gEmpInv.setFicha(id);
+            miData.setEmpInv(_gEmpInv.Item);
+        }
+        public void setContEmpCompra(int cont)
+        {
+            miData.setContEmpCompra(cont);
+        }
+        public void setContEmpInv(int cont)
+        {
+            miData.setContEmpInv(cont);
+        }
+
+
+        public bool AbandonarIsOk { get { return _abandonarIsOk; } }
+        public bool ProcesarIsOk { get { return _procesarIsOk; } }
+        public void AbandonarFicha()
+        {
+            _abandonarIsOk = false;
+            var xmsg = "Abandonar Cambios Realizados ?";
+            var msg = MessageBox.Show(xmsg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (msg == DialogResult.Yes)
+            {
+                _abandonarIsOk = true;
+            }
+        }
+
+
+        public bool HabilitarEditarCodigo { get { return true; } }
+        public bool EditarCodigoIsOk { get { return true; } }
+        public void EditarCodigo()
+        {
         }
 
     }

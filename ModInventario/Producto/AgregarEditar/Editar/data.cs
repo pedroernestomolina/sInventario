@@ -11,17 +11,21 @@ namespace ModInventario.Producto.AgregarEditar.Editar
     public class data
     {
 
+        private int _contEmpCompra;
+        private int _contEmpInv;
+        private ficha _empCompra;
+        private ficha _empInv;
+
+
         public string Codigo { get; set; }
         public string Descripcion { get; set; }
         public string NombreProducto { get; set; }
         public string ReferenciaProducto { get; set; }
         public string ModeloProducto { get; set; }
-        public int ContEmpProducto { get; set; }
         public string AutoDepartamento { get; set; }
         public string AutoGrupo { get; set; }
         public string AutoMarca { get; set; }
         public string AutoImpuesto { get; set; }
-        public string AutoEmpCompra { get; set; }
         public string IdOrigen { get; set; }
         public string IdCategoria { get; set; }
         public string IdClasificacionAbc { get; set; }
@@ -39,6 +43,12 @@ namespace ModInventario.Producto.AgregarEditar.Editar
             }
         }
 
+        //
+        public int ContEmpProducto { get { return _contEmpCompra; } }
+        public int ContEmpInv { get { return _contEmpInv; } }
+        public ficha EmpCompra { get { return _empCompra; } }
+        public ficha EmpInv { get { return _empInv; } }
+
 
         public data()
         {
@@ -48,17 +58,18 @@ namespace ModInventario.Producto.AgregarEditar.Editar
 
         public void setFicha(OOB.LibInventario.Producto.Editar.Obtener.Ficha ficha)
         {
+            setContEmpCompra(ficha.contenidoCompra);
+            setContEmpInv(ficha.contEmpInv);
+
             Codigo = ficha.codigo;
             Descripcion = ficha.descripcion;
             NombreProducto = ficha.nombre;
             ModeloProducto = ficha.modelo;
             ReferenciaProducto = ficha.referencia;
-            ContEmpProducto = ficha.contenidoCompra;
             AutoDepartamento = ficha.autoDepartamento;
             AutoGrupo = ficha.autoGrupo;
             AutoMarca = ficha.autoMarca;
             AutoImpuesto = ficha.autoTasaImpuesto;
-            AutoEmpCompra = ficha.autoEmpCompra;
             IdOrigen = ((int)ficha.origen).ToString();
             IdCategoria = ((int)ficha.categoria).ToString();
             IdClasificacionAbc=((int)ficha.Clasificacion).ToString();
@@ -72,17 +83,20 @@ namespace ModInventario.Producto.AgregarEditar.Editar
 
         public void Limpiar()
         {
+            _contEmpCompra = 1;
+            _contEmpInv = 1;
+            _empCompra = null;
+            _empInv = null;
+
             Codigo = "";
             Descripcion = "";
             NombreProducto = "";
             ModeloProducto = "";
             ReferenciaProducto = "";
-            ContEmpProducto = 1;
             AutoDepartamento = "";
             AutoGrupo = "";
             AutoMarca = "";
             AutoImpuesto = "";
-            AutoEmpCompra = "";
             IdOrigen = "";
             IdCategoria = "";
             IdClasificacionAbc = "";
@@ -209,11 +223,28 @@ namespace ModInventario.Producto.AgregarEditar.Editar
                 return false;
             }
 
-            if (AutoEmpCompra.Trim() == "")
+
+            if (EmpCompra == null)
             {
                 Helpers.Msg.Error("CAMPO [ EMPAQUE COMPRA ] DEBE SER LLENADO");
                 return false;
             }
+            if (ContEmpProducto<=0)
+            {
+                Helpers.Msg.Error("CAMPO [ CONTENIDO EMPAQUE COMPRA ] INCORRECTO");
+                return false;
+            }
+            if (EmpInv == null)
+            {
+                Helpers.Msg.Error("CAMPO [ EMPAQUE INVENTARIO ] DEBE SER LLENADO");
+                return false;
+            }
+            if (ContEmpInv <= 0)
+            {
+                Helpers.Msg.Error("CAMPO [ CONTENIDO EMPAQUE INVENTARIO ] INCORRECTO");
+                return false;
+            }
+
 
             if (AutoImpuesto.Trim() == "")
             {
@@ -255,6 +286,24 @@ namespace ModInventario.Producto.AgregarEditar.Editar
             }
 
             return rt;
+        }
+
+
+        public void setContEmpCompra(int cont)
+        {
+            _contEmpCompra = cont;
+        }
+        public void setContEmpInv(int cont)
+        {
+            _contEmpInv = cont;
+        }
+        public void setEmpCompra(ficha ent)
+        {
+            _empCompra = ent;
+        }
+        public void setEmpInv(ficha ent)
+        {
+            _empInv = ent;
         }
 
     }

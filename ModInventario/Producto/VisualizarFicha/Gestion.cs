@@ -39,6 +39,8 @@ namespace ModInventario.Producto.VisualizarFicha
         public int DiasEmpaquePrd { get { return _producto.diasEmpaque; } }
         public BindingSource SourceCodAlterno { get { return _bsCodAlterno; } }
         public bool IsInactivo { get { return _producto.IsInactivo; } }
+        public string EmpaqueInv { get { return _producto.empInv; } }
+        public int ContEmpInv { get { return _producto.contEmpInv; } }
 
 
         public Gestion()

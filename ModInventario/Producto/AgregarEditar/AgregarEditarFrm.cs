@@ -73,9 +73,6 @@ namespace ModInventario.Producto.AgregarEditar
             CB_ORIGEN.DisplayMember = "Descripcion";
             CB_ORIGEN.ValueMember = "id";
 
-            CB_EMPAQUE_COMPRA.DisplayMember = "Nombre";
-            CB_EMPAQUE_COMPRA.ValueMember = "auto";
-
             CB_DIVISA.DisplayMember = "Descripcion";
             CB_DIVISA.ValueMember = "id";
 
@@ -84,6 +81,12 @@ namespace ModInventario.Producto.AgregarEditar
 
             CB_CLASIFICACION_ABC.DisplayMember = "Descripcion";
             CB_CLASIFICACION_ABC.ValueMember = "id";
+
+            //
+            CB_EMPAQUE_COMPRA.DisplayMember = "desc";
+            CB_EMPAQUE_COMPRA.ValueMember = "id";
+            CB_EMPAQUE_INV.DisplayMember = "desc";
+            CB_EMPAQUE_INV.ValueMember = "id";
         }
 
 
@@ -92,26 +95,6 @@ namespace ModInventario.Producto.AgregarEditar
             _controlador = ctr;
         }
 
-        private void BT_SALIR_Click(object sender, EventArgs e)
-        {
-            Salir();
-        }
-
-        private void Salir()
-        {
-            TB_CODIGO.Focus();
-            this.Close();
-        }
-
-        private void BT_PROCESAR_Click(object sender, EventArgs e)
-        {
-            Procesar();
-        }
-
-        private void Procesar()
-        {
-            _controlador.Procesar();
-        }
 
         bool inicializarData = false;
         private void AgregarEditarFrm_Load(object sender, EventArgs e)
@@ -121,6 +104,11 @@ namespace ModInventario.Producto.AgregarEditar
 
             inicializarData = true;
 
+            //
+            BT_EDITAR_CODIGO.Visible = !_controlador.HabilitarEditarCodigo;
+            TB_CODIGO.Enabled = _controlador.HabilitarEditarCodigo;
+            //
+
             DGV.DataSource = _controlador.SourceCodAlterno;
             L_TITULO.Text = _controlador.Titulo;
             CB_DEPARTAMENTO.DataSource = _controlador.Departamentos;
@@ -128,7 +116,6 @@ namespace ModInventario.Producto.AgregarEditar
             CB_MARCA.DataSource = _controlador.Marcas;
             CB_IMPUESTO.DataSource = _controlador.Impuesto;
             CB_ORIGEN.DataSource = _controlador.Origen;
-            CB_EMPAQUE_COMPRA.DataSource = _controlador.EmpCompra;
             CB_DIVISA.DataSource = _controlador.Divisa;
             CB_CATEGORIA.DataSource = _controlador.Categoria;
             CB_CLASIFICACION_ABC.DataSource = _controlador.Clasificacion;
@@ -138,7 +125,6 @@ namespace ModInventario.Producto.AgregarEditar
             TB_NOMBRE.Text = _controlador.NombreProducto;
             TB_MODELO.Text = _controlador.ModeloProducto;
             TB_REFERENCIA.Text = _controlador.ReferenciaProducto;
-            TB_CONTENIDO.Text = _controlador.ContEmpProducto.ToString();
 
             CB_DEPARTAMENTO.SelectedValue = _controlador.AutoDepartamento;
             CB_GRUPO.SelectedValue = _controlador.AutoGrupo;
@@ -148,7 +134,16 @@ namespace ModInventario.Producto.AgregarEditar
             CB_CATEGORIA.SelectedValue = _controlador.IdCategoria;
             CB_CLASIFICACION_ABC.SelectedValue = _controlador.IdClasificacionAbc;
             CB_DIVISA.SelectedValue = _controlador.IdDivisa;
-            CB_EMPAQUE_COMPRA.SelectedValue = _controlador.AutoEmpCompra;
+
+            //
+            CB_EMPAQUE_COMPRA.DataSource = _controlador.GetEmpCompraSource;
+            CB_EMPAQUE_INV.DataSource = _controlador.GetEmpInvSource;
+            CB_EMPAQUE_COMPRA.SelectedValue = _controlador.GetEmpCompraId;
+            CB_EMPAQUE_INV.SelectedValue = _controlador.GetEmpInvId;
+            TB_CONTENIDO.Text = _controlador.GetContEmpCompra.ToString();
+            TB_CONTENIDO_INV.Text = _controlador.GetContEmpInv.ToString();
+            //
+
 
             PB_IMAGEN.Image = PB_IMAGEN.InitialImage;
             if (_controlador.Imagen.Length > 0) 
@@ -171,14 +166,11 @@ namespace ModInventario.Producto.AgregarEditar
 
         private void AgregarEditarFrm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!_controlador.IsCerrarHabilitado)
+            e.Cancel = true;
+            if (_controlador.AbandonarIsOk || _controlador.ProcesarIsOk)
             {
-                if (!_controlador.AbandonarDocumento())
-                {
-                    e.Cancel = true;
-                }
+                e.Cancel = false;
             }
-
         }
 
         private void Ctr_KeyDown(object sender, KeyEventArgs e)
@@ -287,15 +279,27 @@ namespace ModInventario.Producto.AgregarEditar
             }
         }
 
+
+        //
         private void CB_EMPAQUE_COMPRA_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (inicializarData) return;
-            _controlador.AutoEmpCompra = "";
+            _controlador.setEmpCompra("");
             if (CB_EMPAQUE_COMPRA.SelectedIndex != -1)
             {
-                _controlador.AutoEmpCompra = CB_EMPAQUE_COMPRA.SelectedValue.ToString();
+                _controlador.setEmpCompra(CB_EMPAQUE_COMPRA.SelectedValue.ToString());
             }
         }
+        private void CB_EMPAQUE_INV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (inicializarData) return;
+            _controlador.setEmpInv("");
+            if (CB_EMPAQUE_INV.SelectedIndex != -1)
+            {
+                _controlador.setEmpInv(CB_EMPAQUE_INV.SelectedValue.ToString());
+            }
+        }
+
 
         private void TB_MODELO_Leave(object sender, EventArgs e)
         {
@@ -309,15 +313,24 @@ namespace ModInventario.Producto.AgregarEditar
             _controlador.ReferenciaProducto = TB_REFERENCIA.Text;
         }
 
+
         private void TB_CONTENIDO_Validating(object sender, CancelEventArgs e)
         {
             e.Cancel = int.Parse(TB_CONTENIDO.Text) <= 0;
         }
-
         private void TB_CONTENIDO_Leave(object sender, EventArgs e)
         {
-            _controlador.ContEmpProducto = int.Parse(TB_CONTENIDO.Text);  
+            _controlador.setContEmpCompra(int.Parse(TB_CONTENIDO.Text));  
         }
+        private void TB_CONTENIDO_INV_Leave(object sender, EventArgs e)
+        {
+            _controlador.setContEmpInv(int.Parse(TB_CONTENIDO_INV.Text));
+        }
+        private void TB_CONTENIDO_INV_Validating(object sender, CancelEventArgs e)
+        {
+            e.Cancel = int.Parse(TB_CONTENIDO_INV.Text) <= 0;
+        }
+
 
         private void TB_PLU_Leave(object sender, EventArgs e)
         {
@@ -495,6 +508,52 @@ namespace ModInventario.Producto.AgregarEditar
             if (!inicializarData)
             {
                 _controlador.ActivarCatlogo = CHB_CATALOGO.Checked;
+            }
+        }
+
+
+        private void BT_SALIR_Click(object sender, EventArgs e)
+        {
+            AbandonarFicha();
+        }
+        private void AbandonarFicha()
+        {
+            _controlador.AbandonarFicha();
+            if (_controlador.AbandonarIsOk)
+            {
+                Salir();
+            }
+        }
+
+        private void BT_PROCESAR_Click(object sender, EventArgs e)
+        {
+            Procesar();
+        }
+        private void Procesar()
+        {
+            _controlador.Procesar();
+            if (_controlador.ProcesarIsOk)
+            {
+                Salir();
+            }
+        }
+
+        private void Salir()
+        {
+            TB_CODIGO.Focus();
+            this.Close();
+        }
+
+        private void BT_EDITAR_CODIGO_Click(object sender, EventArgs e)
+        {
+            EditarCodigo();
+        }
+        private void EditarCodigo()
+        {
+            _controlador.EditarCodigo();
+            if (_controlador.EditarCodigoIsOk)
+            {
+                TB_CODIGO.Enabled = true;
             }
         }
 

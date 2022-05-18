@@ -22,7 +22,18 @@ namespace ModInventario.SeguridadSist.Usuario
             {
                 var rt = "";
                 if (_usuarioValidar != enumerados.enumTipo.SinDefinir)
-                    rt = _usuarioValidar == enumerados.enumTipo.Actual ? "Clave Usuario ACTUAL" : "Clave Usuario ADMINISTRADOR";
+                    switch (_usuarioValidar)
+                    { 
+                        case enumerados.enumTipo.Actual :
+                            rt = "Clave Usuario ACTUAL";
+                            break;
+                        case enumerados.enumTipo.Administrador:
+                            rt = "Clave Usuario ADMINISTRADOR";
+                            break;
+                        case enumerados.enumTipo.GrupoAdministrador:
+                            rt = "Clave Usuario QUE PERTENEZCA AL GRUPO ADMINISTRADOR";
+                            break;
+                    }
                 return rt;
             }
         }
@@ -54,9 +65,32 @@ namespace ModInventario.SeguridadSist.Usuario
                 return false;
             }
             if (_usuarioValidar == enumerados.enumTipo.Actual)
+            {
                 idUsuario = Sistema.UsuarioP.autoUsu;
+            }
             if (_usuarioValidar == enumerados.enumTipo.Administrador)
+            {
                 idUsuario = Sistema.ID_USUARIO_ADMINISTRADOR;
+            }
+            if (_usuarioValidar == enumerados.enumTipo.GrupoAdministrador)
+            {
+                var rt1 = Sistema.MyData.Usuario_GetId_ByClaveUsuGrupoAdm(_clave);
+                if (rt1.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(rt1.Mensaje);
+                    return false;
+                }
+                if (rt1.Entidad == "")
+                {
+                    Helpers.Msg.Error("CLAVE NO REGISTRADA PARA NINGUN USUARIO TIPO ADMINISTRADOR, VERIFIQUE POR FAVOR");
+                    return false;
+                }
+                else 
+                {
+                    return true;
+                }
+            }
+
             var r01 = Sistema.MyData.Usuario_GetClave_ById(idUsuario);
             if (r01.Result == OOB.Enumerados.EnumResult.isError)
             {

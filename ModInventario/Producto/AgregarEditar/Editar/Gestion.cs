@@ -862,7 +862,7 @@ namespace ModInventario.Producto.AgregarEditar.Editar
         private bool VerificarUsuario()
         {
             _gModoSecurity.Inicializa();
-            _gModoSecurity.setUsuarioValidar(SeguridadSist.Usuario.enumerados.enumTipo.Administrador);
+            _gModoSecurity.setUsuarioValidar(SeguridadSist.Usuario.enumerados.enumTipo.GrupoAdministrador);
             _gSecurity.setGestionTipo(_gModoSecurity);
             _gSecurity.Inicializa();
             _gSecurity.Inicia();

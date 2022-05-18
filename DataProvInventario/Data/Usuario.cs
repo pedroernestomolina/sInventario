@@ -89,11 +89,28 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.ResultadoEntidad<string> Usuario_GetClave_ById(string idUsuario)
+        public OOB.ResultadoEntidad<string> 
+            Usuario_GetClave_ById(string idUsuario)
         {
             var rt = new OOB.ResultadoEntidad<string>();
 
             var r01 = MyData.Usuario_GetClave_ById(idUsuario);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                rt.Mensaje = r01.Mensaje;
+                rt.Result = OOB.Enumerados.EnumResult.isError;
+                return rt;
+            }
+            rt.Entidad = r01.Entidad;
+
+            return rt;
+        }
+        public OOB.ResultadoEntidad<string>
+            Usuario_GetId_ByClaveUsuGrupoAdm(string clave)
+        {
+            var rt = new OOB.ResultadoEntidad<string>();
+
+            var r01 = MyData.Usuario_GetId_ByClaveUsuGrupoAdm(clave);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
                 rt.Mensaje = r01.Mensaje;

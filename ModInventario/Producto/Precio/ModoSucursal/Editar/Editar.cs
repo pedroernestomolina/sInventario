@@ -34,6 +34,14 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         private FiltrosGen.IOpcion _gEmpD2;
         private FiltrosGen.IOpcion _gEmpD3;
         private FiltrosGen.IOpcion _gEmpD4;
+        //
+        private FiltrosGen.IOpcion _gEmpTipo_1;
+        private int _contEmpTipo_1;
+        private FiltrosGen.IOpcion _gEmpTipo_2;
+        private int _contEmpTipo_2;
+        private FiltrosGen.IOpcion _gEmpTipo_3;
+        private int _contEmpTipo_3;
+        //
         private dataPrecio _precio1;
         private dataPrecio _precio2;
         private dataPrecio _precio3;
@@ -70,6 +78,13 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
             _gEmpD2 = new FiltrosGen.Opcion.Gestion();
             _gEmpD3 = new FiltrosGen.Opcion.Gestion();
             _gEmpD4 = new FiltrosGen.Opcion.Gestion();
+            //
+            _gEmpTipo_1 = new FiltrosGen.Opcion.Gestion();
+            _contEmpTipo_1=1;
+            _gEmpTipo_2 = new FiltrosGen.Opcion.Gestion();
+            _contEmpTipo_2 = 1;
+            _gEmpTipo_3 = new FiltrosGen.Opcion.Gestion();
+            _contEmpTipo_3 = 1;
             //
             _isAbandonarIsOk = false;
             _isProcesarIsOk = false;
@@ -144,6 +159,13 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
             _precioD3.Inicializa();
             _precioD4.Inicializa();
             //
+            _gEmpTipo_1.Inicializa();
+            _contEmpTipo_1 = 1;
+            _gEmpTipo_2.Inicializa();
+            _contEmpTipo_2 = 1;
+            _gEmpTipo_3.Inicializa();
+            _contEmpTipo_3 = 1;
+            //
             _dataPrd.Inicializa();
         }
         PrecioEditarFrm frm;
@@ -215,10 +237,10 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
             var pneto_M3 = prd.pNeto_M3;
             var pneto_M4 = prd.pNeto_M4;
             //
-            var pneto_D1 = prd.pNeto_M1;
-            var pneto_D2 = prd.pNeto_M2;
-            var pneto_D3 = prd.pNeto_M3;
-            var pneto_D4 = prd.pNeto_M4;
+            var pneto_D1 = prd.pNeto_D1;
+            var pneto_D2 = prd.pNeto_D2;
+            var pneto_D3 = prd.pNeto_D3;
+            var pneto_D4 = prd.pNeto_D4;
             if (prd.EsAdmDivisa) 
             {
                 admDivisa = "SI";
@@ -233,10 +255,10 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
                 pneto_M3 = CalculaNeto(prd.pfd_M3, prd.tasaIva);
                 pneto_M4 = CalculaNeto(prd.pfd_M4, prd.tasaIva);
                 //
-                pneto_D1 = CalculaNeto(prd.pfd_M1, prd.tasaIva);
-                pneto_D2 = CalculaNeto(prd.pfd_M2, prd.tasaIva);
-                pneto_D3 = CalculaNeto(prd.pfd_M3, prd.tasaIva);
-                pneto_D4 = CalculaNeto(prd.pfd_M4, prd.tasaIva);
+                pneto_D1 = CalculaNeto(prd.pfd_D1, prd.tasaIva);
+                pneto_D2 = CalculaNeto(prd.pfd_D2, prd.tasaIva);
+                pneto_D3 = CalculaNeto(prd.pfd_D3, prd.tasaIva);
+                pneto_D4 = CalculaNeto(prd.pfd_D4, prd.tasaIva);
             }
 
             _dataPrd.setCodigo(prd.codigo);
@@ -284,7 +306,11 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
             _gEmpD2.setData(lst);
             _gEmpD3.setData(lst);
             _gEmpD4.setData(lst);
-
+            //
+            _gEmpTipo_1.setData(lst);
+            _gEmpTipo_2.setData(lst);
+            _gEmpTipo_3.setData(lst);
+            //
             _precio1.setContenido(prd.cont_1);
             _precio1.setUtilidadActual(prd.utilidad_1 );
             _precio1.setCostoEmpCompra(costo);
@@ -386,8 +412,8 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
             _gEmpM4.setFicha(prd.autoEmp_M4);
 
 
-            _precioD1.setContenido(prd.cont_M1);
-            _precioD1.setUtilidadActual(prd.utilidad_M1);
+            _precioD1.setContenido(prd.cont_D1);
+            _precioD1.setUtilidadActual(prd.utilidad_D1);
             _precioD1.setCostoEmpCompra(costo);
             _precioD1.setContEmpCompra(prd.contEmpCompra);
             _precioD1.setAdmDivisa(prd.EsAdmDivisa);
@@ -395,10 +421,10 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
             _precioD1.setTasaIva(prd.tasaIva);
             _precioD1.setMetodoCalculoUtilidad(_metodoCalculo);
             _precioD1.setNeto(pneto_D1);
-            _gEmpD1.setFicha(prd.autoEmp_M1);
+            _gEmpD1.setFicha(prd.autoEmp_D1);
 
-            _precioD2.setContenido(prd.cont_M2);
-            _precioD2.setUtilidadActual(prd.utilidad_M2);
+            _precioD2.setContenido(prd.cont_D2);
+            _precioD2.setUtilidadActual(prd.utilidad_D2);
             _precioD2.setCostoEmpCompra(costo);
             _precioD2.setContEmpCompra(prd.contEmpCompra);
             _precioD2.setAdmDivisa(prd.EsAdmDivisa);
@@ -406,10 +432,10 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
             _precioD2.setTasaIva(prd.tasaIva);
             _precioD2.setMetodoCalculoUtilidad(_metodoCalculo);
             _precioD2.setNeto(pneto_D2);
-            _gEmpD2.setFicha(prd.autoEmp_M2);
+            _gEmpD2.setFicha(prd.autoEmp_D2);
 
-            _precioD3.setContenido(prd.cont_M3);
-            _precioD3.setUtilidadActual(prd.utilidad_M3);
+            _precioD3.setContenido(prd.cont_D3);
+            _precioD3.setUtilidadActual(prd.utilidad_D3);
             _precioD3.setCostoEmpCompra(costo);
             _precioD3.setContEmpCompra(prd.contEmpCompra);
             _precioD3.setAdmDivisa(prd.EsAdmDivisa);
@@ -417,10 +443,10 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
             _precioD3.setTasaIva(prd.tasaIva);
             _precioD3.setMetodoCalculoUtilidad(_metodoCalculo);
             _precioD3.setNeto(pneto_D3);
-            _gEmpD3.setFicha(prd.autoEmp_M3);
+            _gEmpD3.setFicha(prd.autoEmp_D3);
 
-            _precioD4.setContenido(prd.cont_M4);
-            _precioD4.setUtilidadActual(prd.utilidad_M4);
+            _precioD4.setContenido(prd.cont_D4);
+            _precioD4.setUtilidadActual(prd.utilidad_D4);
             _precioD4.setCostoEmpCompra(costo);
             _precioD4.setContEmpCompra(prd.contEmpCompra);
             _precioD4.setAdmDivisa(prd.EsAdmDivisa);
@@ -428,7 +454,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
             _precioD4.setTasaIva(prd.tasaIva);
             _precioD4.setMetodoCalculoUtilidad(_metodoCalculo);
             _precioD4.setNeto(pneto_D4);
-            _gEmpD4.setFicha(prd.autoEmp_M4);
+            _gEmpD4.setFicha(prd.autoEmp_D4);
 
 
             var r05 = Sistema.MyData.Configuracion_ForzarRedondeoPrecioVenta();
@@ -1429,6 +1455,14 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         public decimal GetPFD4 { get { return _precioD4.Full; } }
         public decimal GetUtActualD4 { get { return _precioD4.UtilidadActual; } }
         public bool ERR_D4 { get { return _precioD4.IsError; } }
+
+
+        public BindingSource GetEmpTipo_1_Source { get { return _gEmpTipo_1.Source; } }
+        public int GetContEmpTipo_1 { get { return _contEmpTipo_1; } }
+        public BindingSource GetEmpTipo_2_Source { get { return _gEmpTipo_2.Source; } }
+        public int GetContEmpTipo_2 { get { return _contEmpTipo_2; } }
+        public BindingSource GetEmpTipo_3_Source { get { return _gEmpTipo_3.Source; } }
+        public int GetContEmpTipo_3 { get { return _contEmpTipo_3; } }
 
     }
 

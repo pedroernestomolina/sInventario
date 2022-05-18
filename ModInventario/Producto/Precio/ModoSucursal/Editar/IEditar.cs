@@ -245,6 +245,14 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         decimal GetUtActualD4 { get; }
         bool ERR_D4 { get; }
 
+
+        BindingSource GetEmpTipo_1_Source { get; }
+        int GetContEmpTipo_1 { get; }
+        BindingSource GetEmpTipo_2_Source { get; }
+        int GetContEmpTipo_2 { get; }
+        BindingSource GetEmpTipo_3_Source { get; }
+        int GetContEmpTipo_3 { get; }
+
     }
 
 }

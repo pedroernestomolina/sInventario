@@ -11,9 +11,7 @@ namespace ModInventario.SeguridadSist.Usuario
     public class enumerados
     {
 
-
-        public enum enumTipo { SinDefinir = -1, Actual = 1, Administrador };
-
+        public enum enumTipo { SinDefinir = -1, Actual = 1, Administrador, GrupoAdministrador };
 
     }
 

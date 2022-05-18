@@ -55,6 +55,13 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
             CB_EMP_D3.ValueMember = "id";
             CB_EMP_D4.DisplayMember = "desc";
             CB_EMP_D4.ValueMember = "id";
+            //
+            CB_EMP_TIPO_1.DisplayMember = "desc";
+            CB_EMP_TIPO_1.ValueMember = "id";
+            CB_EMP_TIPO_2.DisplayMember = "desc";
+            CB_EMP_TIPO_2.ValueMember = "id";
+            CB_EMP_TIPO_3.DisplayMember = "desc";
+            CB_EMP_TIPO_3.ValueMember = "id";
         }
 
         public void setControlador(IEditar ctr)
@@ -95,6 +102,19 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
             L_PRECIO_D2.Text = _controlador.GetDescPrecio2;
             L_PRECIO_D3.Text = _controlador.GetDescPrecio3;
             L_PRECIO_D4.Text = _controlador.GetDescPrecio4;
+
+
+            //
+            CB_EMP_TIPO_1.DataSource = _controlador.GetEmpTipo_1_Source;
+            CB_EMP_TIPO_1.SelectedIndex = -1;
+            TB_CONT_EMP_TIPO_1.Text = _controlador.GetContEmpTipo_1.ToString();
+            CB_EMP_TIPO_2.DataSource = _controlador.GetEmpTipo_2_Source;
+            CB_EMP_TIPO_2.SelectedIndex = -1;
+            TB_CONT_EMP_TIPO_2.Text = _controlador.GetContEmpTipo_2.ToString();
+            CB_EMP_TIPO_3.DataSource = _controlador.GetEmpTipo_3_Source;
+            CB_EMP_TIPO_3.SelectedIndex = -1;
+            TB_CONT_EMP_TIPO_3.Text = _controlador.GetContEmpTipo_3.ToString();
+            //
 
            
             CB_EMP_1.DataSource = _controlador.GetEmp1_Source;
@@ -1555,6 +1575,160 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
             {
                 errorProvider1.SetError(TB_PF_D4, "");
             }
+        }
+
+        private void CB_EMP_TIPO_1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_modoInicializar == true)
+            { return; }
+            if (CB_EMP_TIPO_1.SelectedIndex != -1)
+            {
+                var idx=CB_EMP_TIPO_1.SelectedIndex;
+                CB_EMP_1.SelectedIndex = idx;
+                CB_EMP_2.SelectedIndex = idx;
+                CB_EMP_3.SelectedIndex = idx;
+                CB_EMP_4.SelectedIndex = idx;
+                CB_EMP_5.SelectedIndex = idx;
+            }
+        }
+        private void TB_CONT_EMP_TIPO_1_Leave(object sender, EventArgs e)
+        {
+            if (_modoInicializar)
+            {
+                return;
+            }
+            var cont = int.Parse(TB_CONT_EMP_TIPO_1.Text);
+            _controlador.setContEmp_1(cont);
+            _controlador.setContEmp_2(cont);
+            _controlador.setContEmp_3(cont);
+            _controlador.setContEmp_4(cont);
+            _controlador.setContEmp_5(cont);
+
+
+            _modoInicializar = true;
+            TB_CONT_1.Text = _controlador.GetCont1.ToString();
+            TB_UT_1.Text = _controlador.GetUt1.ToString("N2").Replace(".", "");
+            TB_PN_1.Text = _controlador.GetPN1.ToString("N2").Replace(".", "");
+            TB_PF_1.Text = _controlador.GetPF1.ToString("N2").Replace(".", "");
+
+            TB_CONT_2.Text = _controlador.GetCont2.ToString();
+            TB_UT_2.Text = _controlador.GetUt2.ToString("N2").Replace(".", "");
+            TB_PN_2.Text = _controlador.GetPN2.ToString("N2").Replace(".", "");
+            TB_PF_2.Text = _controlador.GetPF2.ToString("N2").Replace(".", "");
+
+            TB_CONT_3.Text = _controlador.GetCont3.ToString();
+            TB_UT_3.Text = _controlador.GetUt3.ToString("N2").Replace(".", "");
+            TB_PN_3.Text = _controlador.GetPN3.ToString("N2").Replace(".", "");
+            TB_PF_3.Text = _controlador.GetPF3.ToString("N2").Replace(".", "");
+
+            TB_CONT_4.Text = _controlador.GetCont4.ToString();
+            TB_UT_4.Text = _controlador.GetUt4.ToString("N2").Replace(".", "");
+            TB_PN_4.Text = _controlador.GetPN4.ToString("N2").Replace(".", "");
+            TB_PF_4.Text = _controlador.GetPF4.ToString("N2").Replace(".", "");
+
+            TB_CONT_5.Text = _controlador.GetCont5.ToString();
+            TB_UT_5.Text = _controlador.GetUt5.ToString("N2").Replace(".", "");
+            TB_PN_5.Text = _controlador.GetPN5.ToString("N2").Replace(".", "");
+            TB_PF_5.Text = _controlador.GetPF5.ToString("N2").Replace(".", "");
+            _modoInicializar = false;
+        }
+
+        private void CB_EMP_TIPO_2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_modoInicializar == true)
+            { return; }
+            if (CB_EMP_TIPO_2.SelectedIndex != -1)
+            {
+                var idx = CB_EMP_TIPO_2.SelectedIndex;
+                CB_EMP_M1.SelectedIndex = idx;
+                CB_EMP_M2.SelectedIndex = idx;
+                CB_EMP_M3.SelectedIndex = idx;
+                CB_EMP_M4.SelectedIndex = idx;
+            }
+        }
+        private void TB_CONT_EMP_TIPO_2_Leave(object sender, EventArgs e)
+        {
+            if (_modoInicializar)
+            {
+                return;
+            }
+            var cont = int.Parse(TB_CONT_EMP_TIPO_2.Text);
+            _controlador.setContEmp_M1(cont);
+            _controlador.setContEmp_M2(cont);
+            _controlador.setContEmp_M3(cont);
+            _controlador.setContEmp_M4(cont);
+
+
+            _modoInicializar = true;
+            TB_CONT_M1.Text = _controlador.GetContM1.ToString();
+            TB_UT_M1.Text = _controlador.GetUtM1.ToString("N2").Replace(".", "");
+            TB_PN_M1.Text = _controlador.GetPNM1.ToString("N2").Replace(".", "");
+            TB_PF_M1.Text = _controlador.GetPFM1.ToString("N2").Replace(".", "");
+
+            TB_CONT_M2.Text = _controlador.GetContM2.ToString();
+            TB_UT_M2.Text = _controlador.GetUtM2.ToString("N2").Replace(".", "");
+            TB_PN_M2.Text = _controlador.GetPNM2.ToString("N2").Replace(".", "");
+            TB_PF_M2.Text = _controlador.GetPFM2.ToString("N2").Replace(".", "");
+
+            TB_CONT_M3.Text = _controlador.GetContM3.ToString();
+            TB_UT_M3.Text = _controlador.GetUtM3.ToString("N2").Replace(".", "");
+            TB_PN_M3.Text = _controlador.GetPNM3.ToString("N2").Replace(".", "");
+            TB_PF_M3.Text = _controlador.GetPFM3.ToString("N2").Replace(".", "");
+
+            TB_CONT_M4.Text = _controlador.GetContM4.ToString();
+            TB_UT_M4.Text = _controlador.GetUtM4.ToString("N2").Replace(".", "");
+            TB_PN_M4.Text = _controlador.GetPNM4.ToString("N2").Replace(".", "");
+            TB_PF_M4.Text = _controlador.GetPFM4.ToString("N2").Replace(".", "");
+            _modoInicializar = false;
+        }
+
+        private void CB_EMP_TIPO_3_Leave(object sender, EventArgs e)
+        {
+            if (_modoInicializar == true)
+            { return; }
+            if (CB_EMP_TIPO_3.SelectedIndex != -1)
+            {
+                var idx = CB_EMP_TIPO_3.SelectedIndex;
+                CB_EMP_D1.SelectedIndex = idx;
+                CB_EMP_D2.SelectedIndex = idx;
+                CB_EMP_D3.SelectedIndex = idx;
+                CB_EMP_D4.SelectedIndex = idx;
+            }
+        }
+        private void TB_CONT_EMP_TIPO_3_Leave(object sender, EventArgs e)
+        {
+            if (_modoInicializar)
+            {
+                return;
+            }
+            var cont = int.Parse(TB_CONT_EMP_TIPO_3.Text);
+            _controlador.setContEmp_D1(cont);
+            _controlador.setContEmp_D2(cont);
+            _controlador.setContEmp_D3(cont);
+            _controlador.setContEmp_D4(cont);
+
+
+            _modoInicializar = true;
+            TB_CONT_D1.Text = _controlador.GetContD1.ToString();
+            TB_UT_D1.Text = _controlador.GetUtD1.ToString("N2").Replace(".", "");
+            TB_PN_D1.Text = _controlador.GetPND1.ToString("N2").Replace(".", "");
+            TB_PF_D1.Text = _controlador.GetPFD1.ToString("N2").Replace(".", "");
+
+            TB_CONT_D2.Text = _controlador.GetContD2.ToString();
+            TB_UT_D2.Text = _controlador.GetUtD2.ToString("N2").Replace(".", "");
+            TB_PN_D2.Text = _controlador.GetPND2.ToString("N2").Replace(".", "");
+            TB_PF_D2.Text = _controlador.GetPFD2.ToString("N2").Replace(".", "");
+
+            TB_CONT_D3.Text = _controlador.GetContD3.ToString();
+            TB_UT_D3.Text = _controlador.GetUtD3.ToString("N2").Replace(".", "");
+            TB_PN_D3.Text = _controlador.GetPND3.ToString("N2").Replace(".", "");
+            TB_PF_D3.Text = _controlador.GetPFD3.ToString("N2").Replace(".", "");
+
+            TB_CONT_D4.Text = _controlador.GetContD4.ToString();
+            TB_UT_D4.Text = _controlador.GetUtD4.ToString("N2").Replace(".", "");
+            TB_PN_D4.Text = _controlador.GetPND4.ToString("N2").Replace(".", "");
+            TB_PF_D4.Text = _controlador.GetPFD4.ToString("N2").Replace(".", "");
+            _modoInicializar = false;
         }
     
     }

@@ -535,6 +535,7 @@
     </Compile>
     <Compile Include="Producto\Estatus\Gestion.cs" />
     <Compile Include="Producto\Imagen\Gestion.cs" />
+    <Compile Include="Producto\Imagen\IImagen.cs" />
     <Compile Include="Producto\Imagen\ImgFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -602,6 +603,7 @@
       <DependentUpon>ProveedoresFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Producto\QR\Gestion.cs" />
+    <Compile Include="Producto\QR\IQR.cs" />
     <Compile Include="Producto\QR\QRFrm.cs">
       <SubType>Form</SubType>
     </Compile>

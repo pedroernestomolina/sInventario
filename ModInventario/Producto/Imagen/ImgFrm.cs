@@ -24,22 +24,18 @@ namespace ModInventario.Producto.Imagen
             InitializeComponent();
         }
 
-        internal void setControlador(Gestion ctr)
+        public void setControlador(Gestion ctr)
         {
             _controlador = ctr;
-
         }
 
         private void ImgFrm_Load(object sender, EventArgs e)
         {
             L_PRODUCTO.Text = _controlador.Producto;
             PB_IMAGEN.Image = PB_IMAGEN.InitialImage;
-            if (_controlador.Imagen.Length > 0)
+            if (_controlador.Imagen !=null)
             {
-                using (var ms = new MemoryStream(_controlador.Imagen))
-                {
-                    PB_IMAGEN.Image = Image.FromStream(ms);
-                }
+                PB_IMAGEN.Image = _controlador.Imagen;
             }
         }
 

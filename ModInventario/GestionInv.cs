@@ -113,6 +113,9 @@ namespace ModInventario
         //
         private AdmMovPend.IAdmMovPend _gAdmMovPend;
         private AdmMovPend.IListaAdmMovPend _gListaAdmMovPend;
+        //
+        private Producto.QR.IQR _gQR;
+        private Producto.Imagen.IImagen _gImagen;
 
 
         public string Version { get { return "Ver. 2 - " + Application.ProductVersion; } }
@@ -285,6 +288,9 @@ namespace ModInventario
                 _gListaAdmMovPend, 
                 _gMovTipo, 
                 _seguridad);
+            //
+            _gQR = new Producto.QR.Gestion();
+            _gImagen = new Producto.Imagen.Gestion();
 
 
             _gestionBusqueda = new Buscar.Gestion(
@@ -292,7 +298,9 @@ namespace ModInventario
                 _seguridad, 
                 _callMaestro,
                 _gSecurity, 
-                _gSecurityModoUsuario);
+                _gSecurityModoUsuario,
+                _gQR, 
+                _gImagen);
 
             _gestionVisorExistencia = new Visor.Existencia.Gestion();
             _gestionVisorCostoEdad = new Visor.CostoEdad.Gestion();

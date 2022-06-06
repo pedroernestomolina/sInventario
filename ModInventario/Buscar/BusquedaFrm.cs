@@ -459,7 +459,6 @@ namespace ModInventario.Buscar
         {
             GenerarQR();
         }
-
         private void GenerarQR()
         {
             _controlador.GenerarQR();
@@ -531,7 +530,6 @@ namespace ModInventario.Buscar
         {
             GetImagen();
         }
-
         private void GetImagen()
         {
             _controlador.GetImagen();

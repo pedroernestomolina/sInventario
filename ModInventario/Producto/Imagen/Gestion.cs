@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,31 +10,30 @@ using System.Threading.Tasks;
 namespace ModInventario.Producto.Imagen
 {
     
-    public class Gestion
+    public class Gestion: IImagen
     {
 
 
-        private string autoPrd;
-        private string producto;
-        private byte[] imagen;
+        private string _autoPrd;
+        private string _producto;
+        private Image _imagen;
 
 
-        public byte[] Imagen { get { return imagen; } }
-        public string Producto { get { return producto; } }
+        public string Producto { get { return _producto; } }
+        public Image Imagen { get { return _imagen; } }
 
 
         public Gestion()
         {
-            autoPrd = "";
-            producto = "";
-            imagen = new byte[] { };
+            _autoPrd = "";
+            _producto = "";
+            _imagen = null;
         }
 
 
         ImgFrm frm;
         public void Inicia()
         {
-            Limpiar();
             if (CargarData())
             {
                 if (frm == null)
@@ -48,27 +49,34 @@ namespace ModInventario.Producto.Imagen
         {
             var rt = true;
 
-            var r01 = Sistema.MyData.Producto_GetImagen(autoPrd);
+            var r01 = Sistema.MyData.Producto_GetImagen(_autoPrd);
             if (r01.Result == OOB.Enumerados.EnumResult.isError)
             {
                 Helpers.Msg.Error(r01.Mensaje);
                 return false;
             }
-            imagen = r01.Entidad.imagen;
-            producto = r01.Entidad.codigo+Environment.NewLine+r01.Entidad.descripcion;
+            _producto = r01.Entidad.codigo+Environment.NewLine+r01.Entidad.descripcion;
+            if (r01.Entidad.imagen.Length > 0)
+            {
+                using (var ms = new MemoryStream(r01.Entidad.imagen))
+                {
+                    _imagen = Image.FromStream(ms);
+                }
+            }
 
             return rt;
         }
 
-        private void Limpiar()
-        {
-            producto = "";
-            imagen = new byte[] { };
-        }
-
         public void setFicha(string auto) 
         {
-            autoPrd = auto;
+            _autoPrd = auto;
+        }
+
+        public void Inicializa()
+        {
+            _autoPrd = "";
+            _producto = "";
+            _imagen = null;
         }
 
     }

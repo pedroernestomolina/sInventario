@@ -1,6 +1,4 @@
-﻿using Gma.QrCodeNet.Encoding;
-using Gma.QrCodeNet.Encoding.Windows.Render;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,28 +31,16 @@ namespace ModInventario.Producto.QR
 
         private void QRFrm_Load(object sender, EventArgs e)
         {
-            var url = _controlador.Url;
-
-            QrEncoder qrencoder = new QrEncoder( ErrorCorrectionLevel.H );
-            QrCode qrcode = new QrCode();
-            //"http://192.168.100.10/info.php?auto="+_controlador.AutoPrd
-            qrencoder.TryEncode(url, out qrcode);
-            GraphicsRenderer render = new GraphicsRenderer(new FixedCodeSize(400, QuietZoneModules.Zero), Brushes.Black, Brushes.White);
-            MemoryStream ms = new MemoryStream();
-            render.WriteToStream(qrcode.Matrix, System.Drawing.Imaging.ImageFormat.Png, ms);
-            var imagenTemporal = new Bitmap(ms);
-            var image = new Bitmap(imagenTemporal, new Size(new Point(280, 280)));
-            P_RESULTADO.BackgroundImage = image;
-
-
+            printDialog1.Document = printDocument1;
             L_PRODUCTO.Text = _controlador.Producto;
             PB_IMAGEN.Image = PB_IMAGEN.InitialImage;
-            if (_controlador.Imagen.Length > 0)
+            if (_controlador.ImagenProducto != null)
             {
-                using (var mss = new MemoryStream(_controlador.Imagen))
-                {
-                    PB_IMAGEN.Image = Image.FromStream(mss);
-                }
+                PB_IMAGEN.Image = _controlador.ImagenProducto; 
+            }
+            if (_controlador.ImageQR != null)
+            {
+                P_RESULTADO.BackgroundImage = _controlador.ImageQR;
             }
         }
 
@@ -62,10 +48,23 @@ namespace ModInventario.Producto.QR
         {
             Salir();
         }
-
         private void Salir()
         {
             this.Close();
+        }
+
+        private void BT_IMPRIMIR_Click(object sender, EventArgs e)
+        {
+            ImprimirQR();
+        }
+        private void ImprimirQR()
+        {
+            printDocument1.Print();
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            _controlador.ImprimirQR(e);
         }
 
     }

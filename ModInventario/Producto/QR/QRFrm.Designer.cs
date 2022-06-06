@@ -33,7 +33,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.BT_SALIR = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BT_IMPRIMIR = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.P_RESULTADO = new System.Windows.Forms.Panel();
@@ -43,6 +43,8 @@
             this.PB_IMAGEN = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.L_PRODUCTO = new System.Windows.Forms.Label();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -116,7 +118,7 @@
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.button1);
+            this.panel7.Controls.Add(this.BT_IMPRIMIR);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(324, 2);
             this.panel7.Margin = new System.Windows.Forms.Padding(1);
@@ -125,20 +127,21 @@
             this.panel7.Size = new System.Drawing.Size(159, 42);
             this.panel7.TabIndex = 2;
             // 
-            // button1
+            // BT_IMPRIMIR
             // 
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::ModInventario.Properties.Resources.bt_imprimir_2;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button1.Location = new System.Drawing.Point(2, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(155, 38);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Imprimir";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button1.UseVisualStyleBackColor = true;
+            this.BT_IMPRIMIR.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.BT_IMPRIMIR.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_IMPRIMIR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_IMPRIMIR.Image = global::ModInventario.Properties.Resources.bt_imprimir_2;
+            this.BT_IMPRIMIR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.BT_IMPRIMIR.Location = new System.Drawing.Point(2, 2);
+            this.BT_IMPRIMIR.Name = "BT_IMPRIMIR";
+            this.BT_IMPRIMIR.Size = new System.Drawing.Size(155, 38);
+            this.BT_IMPRIMIR.TabIndex = 1;
+            this.BT_IMPRIMIR.Text = "Imprimir";
+            this.BT_IMPRIMIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.BT_IMPRIMIR.UseVisualStyleBackColor = true;
+            this.BT_IMPRIMIR.Click += new System.EventHandler(this.BT_IMPRIMIR_Click);
             // 
             // panel3
             // 
@@ -169,6 +172,7 @@
             // 
             // P_RESULTADO
             // 
+            this.P_RESULTADO.BackgroundImage = global::ModInventario.Properties.Resources.sinImagen;
             this.P_RESULTADO.Location = new System.Drawing.Point(3, 33);
             this.P_RESULTADO.Name = "P_RESULTADO";
             this.P_RESULTADO.Size = new System.Drawing.Size(280, 280);
@@ -249,6 +253,14 @@
             this.L_PRODUCTO.Text = "Movimentos A:";
             this.L_PRODUCTO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // printDialog1
+            // 
+            this.printDialog1.UseEXDialog = true;
+            // 
             // QRFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -292,6 +304,8 @@
         private System.Windows.Forms.PictureBox PB_IMAGEN;
         private System.Windows.Forms.Label L_PRODUCTO;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BT_IMPRIMIR;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.PrintDialog printDialog1;
     }
 }

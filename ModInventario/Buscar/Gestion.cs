@@ -22,7 +22,6 @@ namespace ModInventario.Buscar
         private Producto.Costo.Historico.Gestion _gestionHistoricoCosto;
         private Producto.Costo.Ver.Gestion _gestionPrdCosto;
         private Producto.Costo.Editar.Gestion _gestionEditarCosto;
-        private Producto.QR.Gestion _gestionQR;
         private Producto.Deposito.Asignar.Gestion _gestionDeposito;
         private Producto.AgregarEditar.Gestion _gestionEditarFicha;
         private Producto.AgregarEditar.Gestion _gestionAgregarFicha;
@@ -38,6 +37,9 @@ namespace ModInventario.Buscar
         private Producto.Precio.ModoSucursal.Editar.IEditar _gEditarPrecio;
         private SeguridadSist.ISeguridad _gSeguridadUsu;
         private SeguridadSist.Usuario.IModoUsuario _gSeguridadModoUsu;
+        //private Producto.QR.Gestion _gestionQR;
+        private Producto.QR.IQR _gQR;
+        private Producto.Imagen.IImagen _gImagen;
 
 
         public object Source { get { return _gestionLista.Source; } }
@@ -52,12 +54,18 @@ namespace ModInventario.Buscar
             ISeguridadAccesoSistema ctrSeguridad,
             Helpers.Maestros.ICallMaestros ctrMaestros,
             SeguridadSist.ISeguridad _seguridadUsu,
-            SeguridadSist.Usuario.IModoUsuario seguridadModo)
+            SeguridadSist.Usuario.IModoUsuario seguridadModo,
+            Producto.QR.IQR _qr,
+            Producto.Imagen.IImagen _imagen
+            )
         {
             _gAccesoSistema = ctrSeguridad;
             _gFiltrarProducto = ctrFiltrarProducto;
             _gSeguridadUsu = _seguridadUsu;
             _gSeguridadModoUsu= seguridadModo;
+            _gQR = _qr;
+            _gImagen = _imagen;
+
             //
             _gestionLista = new GestionLista();
             _gestionLista.CambioItemActual+=_gestionLista_CambioItemActual;
@@ -68,7 +76,6 @@ namespace ModInventario.Buscar
             _gestionHistoricoCosto= new Producto.Costo.Historico.Gestion();
             _gestionPrdCosto = new Producto.Costo.Ver.Gestion();
             _gestionEditarCosto = new Producto.Costo.Editar.Gestion();
-            _gestionQR = new Producto.QR.Gestion();
             _gestionDeposito = new Producto.Deposito.Asignar.Gestion();
 
             //
@@ -359,15 +366,6 @@ namespace ModInventario.Buscar
             }
         }
 
-        public void GenerarQR()
-        {
-            if (Item != null)
-            {
-                _gestionQR.setFicha(Item.identidad.auto);
-                _gestionQR.Inicia();
-            }
-        }
-
         public void AsignarDeposito()
         {
             if (Item != null)
@@ -524,24 +522,6 @@ namespace ModInventario.Buscar
             }
         }
 
-        public void GetImagen()
-        {
-            if (Item != null)
-            {
-                var r00 = Sistema.MyData.Permiso_CambiarImagenDelProducto(Sistema.UsuarioP.autoGru);
-                if (r00.Result == OOB.Enumerados.EnumResult.isError) 
-                {
-                    Helpers.Msg.Error(r00.Mensaje);
-                    return;
-                }
-                if (_gAccesoSistema.Verificar(r00.Entidad))
-                {
-                    _gestionImagen.setFicha(Item.identidad.auto);
-                    _gestionImagen.Inicia();
-                }
-            }
-        }
-
         public void Proveedores()
         {
             if (Item != null)
@@ -631,6 +611,37 @@ namespace ModInventario.Buscar
         public int INV_EMP_COMPRA { get { return Item.GetEx_InvEmpCompra; } }
         public int INV_EMP_INV { get { return Item.GetEx_InvEmpInv; } }
         public int INV_EMP_UND { get { return Item.GetEx_InvEmpUnd; } }
+
+
+        public void GenerarQR()
+        {
+            if (Item != null)
+            {
+                _gQR.Inicializa();
+                _gQR.setFicha(Item.identidad.auto);
+                _gQR.Inicia();
+            }
+        }
+
+        public void GetImagen()
+        {
+            if (Item != null)
+            {
+                var r00 = Sistema.MyData.Permiso_CambiarImagenDelProducto(Sistema.UsuarioP.autoGru);
+                if (r00.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r00.Mensaje);
+                    return;
+                }
+                if (_gAccesoSistema.Verificar(r00.Entidad))
+                {
+                    _gImagen.Inicializa();
+                    _gImagen.setFicha(Item.identidad.auto);
+                    _gImagen.Inicia();
+                }
+            }
+        }
+
 
     }
 

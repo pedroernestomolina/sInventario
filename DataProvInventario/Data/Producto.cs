@@ -1090,7 +1090,8 @@ namespace DataProvInventario.Data
             return rt;
         }
 
-        public OOB.ResultadoEntidad<OOB.LibInventario.Producto.Data.Proveedor.Ficha> Producto_GetProveedores(string autoPrd)
+        public OOB.ResultadoEntidad<OOB.LibInventario.Producto.Data.Proveedor.Ficha> 
+            Producto_GetProveedores(string autoPrd)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Producto.Data.Proveedor.Ficha>();
 
@@ -1138,6 +1139,56 @@ namespace DataProvInventario.Data
             }
             else
                 rt = new OOB.ResultadoEntidad<OOB.LibInventario.Producto.Data.Proveedor.Ficha>(); 
+
+            return rt;
+        }
+
+
+        public OOB.Resultado 
+            Producto_Deposito_AsignacionMasiva(OOB.LibInventario.Producto.Depositos.AsignacionMasiva.Ficha ficha)
+        {
+            var rt = new OOB.Resultado();
+
+            var fichaDto = new DtoLibInventario.Producto.Depositos.AsignacionMasiva.Ficha()
+            {
+                depositoDestino = new DtoLibInventario.Producto.Depositos.AsignacionMasiva.FichaDepositoDestino()
+                {
+                    autoDeposito = ficha.depositoDestino.autoDeposito,
+                },
+                departamentosNoIncluir = ficha.departamentosNoIncluir.Select(s =>
+                {
+                    var nr = new DtoLibInventario.Producto.Depositos.AsignacionMasiva.FichaDepartamentos()
+                    {
+                        auto = s.auto,
+                    };
+                    return nr;
+                }).ToList(),
+            };
+            var r01 = MyData.Producto_Deposito_AsignacionMasiva(fichaDto);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                rt.Mensaje = r01.Mensaje;
+                rt.Result = OOB.Enumerados.EnumResult.isError;
+                return rt;
+            }
+
+            return rt;
+        }
+
+
+        public OOB.ResultadoEntidad<string> 
+            Producto_GetId_ByCodigoBarra(string codBarra)
+        {
+            var rt = new OOB.ResultadoEntidad<string>();
+
+            var r01 = MyData.Producto_GetId_ByCodigoBarra(codBarra);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                rt.Mensaje = r01.Mensaje;
+                rt.Result = OOB.Enumerados.EnumResult.isError;
+                return rt;
+            }
+            rt.Entidad = r01.Entidad;
 
             return rt;
         }

@@ -187,6 +187,9 @@
     <Compile Include="LibInventario\Producto\Data\Precio.cs" />
     <Compile Include="LibInventario\Producto\Data\Proveedor\Detalle.cs" />
     <Compile Include="LibInventario\Producto\Data\Proveedor\Ficha.cs" />
+    <Compile Include="LibInventario\Producto\Depositos\AsignacionMasiva\Ficha.cs" />
+    <Compile Include="LibInventario\Producto\Depositos\AsignacionMasiva\FichaDepartamentos.cs" />
+    <Compile Include="LibInventario\Producto\Depositos\AsignacionMasiva\FichaDepositoDestino.cs" />
     <Compile Include="LibInventario\Producto\Depositos\Asignar\DepAsignar.cs" />
     <Compile Include="LibInventario\Producto\Depositos\Asignar\DepRemover.cs" />
     <Compile Include="LibInventario\Producto\Depositos\Asignar\Ficha.cs" />
@@ -223,6 +226,8 @@
     <Compile Include="LibInventario\Reportes\Kardex\Ficha.cs" />
     <Compile Include="LibInventario\Reportes\Kardex\Filtro.cs" />
     <Compile Include="LibInventario\Reportes\Kardex\Mov.cs" />
+    <Compile Include="LibInventario\Reportes\MaestroExistenciaInventario\Ficha.cs" />
+    <Compile Include="LibInventario\Reportes\MaestroExistenciaInventario\Filtro.cs" />
     <Compile Include="LibInventario\Reportes\MaestroExistencia\Ficha.cs" />
     <Compile Include="LibInventario\Reportes\MaestroExistencia\Filtro.cs" />
     <Compile Include="LibInventario\Reportes\MaestroInventario\Ficha.cs" />

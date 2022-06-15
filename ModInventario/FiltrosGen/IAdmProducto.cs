@@ -21,6 +21,7 @@ namespace ModInventario.FiltrosGen
         void setMetBusqByCodigo();
         void setMetBusqByNombre();
         void setMetBusqByReferencia();
+        void setMetBusqByCodigoBarra();
 
     }
 

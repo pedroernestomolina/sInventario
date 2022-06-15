@@ -283,16 +283,6 @@ namespace ModInventario
             _controlador.GraficaTop30();
         }
 
-        private void TSM_REPORTE_MAESTRO_EXISTENCIA_Click(object sender, EventArgs e)
-        {
-            ReporteMaestroExistencia();
-        }
-
-        private void ReporteMaestroExistencia()
-        {
-            _controlador.ReporteMaestroExistencia();
-        }
-
         private void TSM_REPORTE_MAESTRO_PRECIO_Click(object sender, EventArgs e)
         {
             ReporteMaestroPrecio();
@@ -466,6 +456,34 @@ namespace ModInventario
         private void AdministradorMovPendiente()
         {
             _controlador.AdministradorMovPendiente();
+        }
+
+        private void TSM_AJSUTES_ASIGNACION_MASIVA_PRODUCTOS_DEPOSITO_Click(object sender, EventArgs e)
+        {
+            AsignacionMasivaProductoDeposito();
+        }
+        private void AsignacionMasivaProductoDeposito()
+        {
+            _controlador.AsignacionMasivaProductoDeposito();
+        }
+
+
+        private void TSM_REPORTE_MAESTRO_EXISTENCIA_Click(object sender, EventArgs e)
+        {
+            ReporteMaestroExistencia();
+        }
+        private void ReporteMaestroExistencia()
+        {
+            _controlador.ReporteMaestroExistencia();
+        }
+
+        private void TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO_Click(object sender, EventArgs e)
+        {
+            ReporteMaestroExistenciaInventario();
+        }
+        private void ReporteMaestroExistenciaInventario()
+        {
+            _controlador.ReporteMaestroExistenciaInventario();
         }
 
     }

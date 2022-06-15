@@ -116,6 +116,8 @@ namespace ModInventario
         //
         private Producto.QR.IQR _gQR;
         private Producto.Imagen.IImagen _gImagen;
+        //
+        private Producto.Deposito.AsignacionMasiva.IAsignacion _gAsignacionMasiva;
 
 
         public string Version { get { return "Ver. 2 - " + Application.ProductVersion; } }
@@ -291,6 +293,8 @@ namespace ModInventario
             //
             _gQR = new Producto.QR.Gestion();
             _gImagen = new Producto.Imagen.Gestion();
+            //
+            _gAsignacionMasiva = new Producto.Deposito.AsignacionMasiva.Asignacion();
 
 
             _gestionBusqueda = new Buscar.Gestion(
@@ -833,6 +837,27 @@ namespace ModInventario
             _gAdmMovPend.setMovTraslado(_gMovTipoTraslado);
             _gAdmMovPend.setMovAjuste(_gMovTipoAjuste);
             _gAdmMovPend.Inicia();
+        }
+
+
+        public void AsignacionMasivaProductoDeposito()
+        {
+            _gAsignacionMasiva.Inicializa();
+            _gAsignacionMasiva.Inicia();
+        }
+
+        public void ReporteMaestroExistenciaInventario()
+        {
+            _gestionReporteFiltros.Inicializa();
+            _gestionReporteFiltros.setValidarData(false);
+            _gestionReporteFiltros.setGestion(new Reportes.Filtros.MaestroExistencia.Filtros());
+            _gestionReporteFiltros.Inicia();
+            if (_gestionReporteFiltros.FiltrosIsOK)
+            {
+                var rp = new Reportes.Filtros.MaestroExistenciaInventario.GestionRep();
+                rp.setFiltros(_gestionReporteFiltros.dataFiltrar);
+                rp.Generar();
+            }
         }
 
     }

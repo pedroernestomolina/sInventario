@@ -11,7 +11,7 @@ namespace ModInventario.FiltrosGen.AdmProducto
     public class data
     {
         
-        public enum enumMetBusqueda {SinDefinir=-1, PorCodigo=1, PorNombre, PorReferencia};
+        public enum enumMetBusqueda {SinDefinir=-1, PorCodigo=1, PorNombre, PorReferencia, PorCodigoBarra};
 
 
         private string _cadenaBusq ;
@@ -108,6 +108,11 @@ namespace ModInventario.FiltrosGen.AdmProducto
             Oferta = null;
             PrecioMayor = null;
             Proveedor = null;
+        }
+
+        public void setMetBusqByCodigoBarra()
+        {
+            _metBusqueda = enumMetBusqueda.PorCodigoBarra;
         }
 
     }

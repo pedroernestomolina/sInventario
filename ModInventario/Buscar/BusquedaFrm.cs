@@ -477,7 +477,6 @@ namespace ModInventario.Buscar
         {
             AsignarDeposito();
         }
-
         private void AsignarDeposito()
         {
             _controlador.AsignarDeposito();
@@ -548,6 +547,12 @@ namespace ModInventario.Buscar
         private void TB_CADENA_Leave(object sender, EventArgs e)
         {
             _controlador.setCadenaBusc(TB_CADENA.Text.Trim().ToUpper());
+        }
+
+        private void RB_BUSCAR_POR_CODIGO_BARRA_CheckedChanged(object sender, EventArgs e)
+        {
+            _controlador.setMetodoBusquedaByCodigoBarra();
+            TB_CADENA.Focus();
         }
       
     }

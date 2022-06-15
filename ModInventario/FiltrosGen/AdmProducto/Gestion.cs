@@ -438,6 +438,11 @@ namespace ModInventario.FiltrosGen.AdmProducto
             _gGrupo.Inicializa();
         }
 
+        public void setMetBusqByCodigoBarra()
+        {
+            _data.setMetBusqByCodigoBarra();
+        }
+
     }
 
 }

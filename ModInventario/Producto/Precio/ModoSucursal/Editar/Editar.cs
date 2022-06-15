@@ -559,7 +559,6 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
             {
                 _isAbandonarIsOk = true;
             }
-            
         }
 
 

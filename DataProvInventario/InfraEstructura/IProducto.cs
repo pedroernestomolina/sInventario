@@ -30,18 +30,38 @@ namespace DataProvInventario.InfraEstructura
         OOB.ResultadoAuto Producto_Nuevo_Agregar(OOB.LibInventario.Producto.Agregar.Ficha ficha);
         OOB.ResultadoEntidad<OOB.LibInventario.Producto.Estatus.Actual.Ficha> Producto_Estatus_GetFicha(string autoPrd);
 
-        OOB.ResultadoLista<OOB.LibInventario.Producto.Plu.Lista.Ficha> Producto_Plu_Lista();
-        OOB.ResultadoLista<OOB.LibInventario.Producto.Origen.Ficha> Producto_Origen_Lista();
-        OOB.ResultadoLista<OOB.LibInventario.Producto.Categoria.Ficha> Producto_Categoria_Lista();
-        OOB.ResultadoLista<OOB.LibInventario.Producto.Estatus.Lista.Ficha> Producto_Estatus_Lista();
-        OOB.ResultadoLista<OOB.LibInventario.Producto.AdmDivisa.Ficha> Producto_AdmDivisa_Lista();
-        OOB.ResultadoLista<OOB.LibInventario.Producto.Pesado.Ficha> Producto_Pesado_Lista();
-        OOB.ResultadoLista<OOB.LibInventario.Producto.Oferta.Ficha> Producto_Oferta_Lista();
-        OOB.ResultadoLista<OOB.LibInventario.Producto.ClasificacionAbc.Ficha> Producto_Clasificacion_Lista();
 
-        OOB.Resultado Producto_CambiarEstatusA_Activo(string auto);
-        OOB.Resultado Producto_CambiarEstatusA_Inactivo(string auto);
-        OOB.Resultado Producto_CambiarEstatusA_Suspendido(string auto);
+        OOB.ResultadoLista<OOB.LibInventario.Producto.Plu.Lista.Ficha> 
+            Producto_Plu_Lista();
+        OOB.ResultadoLista<OOB.LibInventario.Producto.Origen.Ficha> 
+            Producto_Origen_Lista();
+        OOB.ResultadoLista<OOB.LibInventario.Producto.Categoria.Ficha> 
+            Producto_Categoria_Lista();
+        OOB.ResultadoLista<OOB.LibInventario.Producto.Estatus.Lista.Ficha> 
+            Producto_Estatus_Lista();
+        OOB.ResultadoLista<OOB.LibInventario.Producto.AdmDivisa.Ficha> 
+            Producto_AdmDivisa_Lista();
+        OOB.ResultadoLista<OOB.LibInventario.Producto.Pesado.Ficha> 
+            Producto_Pesado_Lista();
+        OOB.ResultadoLista<OOB.LibInventario.Producto.Oferta.Ficha> 
+            Producto_Oferta_Lista();
+        OOB.ResultadoLista<OOB.LibInventario.Producto.ClasificacionAbc.Ficha> 
+            Producto_Clasificacion_Lista();
+
+
+        OOB.Resultado 
+            Producto_CambiarEstatusA_Activo(string auto);
+        OOB.Resultado 
+            Producto_CambiarEstatusA_Inactivo(string auto);
+        OOB.Resultado 
+            Producto_CambiarEstatusA_Suspendido(string auto);
+
+
+        OOB.Resultado
+            Producto_Deposito_AsignacionMasiva(OOB.LibInventario.Producto.Depositos.AsignacionMasiva.Ficha ficha);
+
+        OOB.ResultadoEntidad<string>
+            Producto_GetId_ByCodigoBarra(string codBarra);
 
     }
 

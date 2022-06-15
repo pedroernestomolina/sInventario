@@ -165,92 +165,110 @@ namespace ModInventario.Buscar
 
         private void CargarFiltros(FiltrosGen.AdmProducto.data data)
         {
-            var r00 = Sistema.MyData.Configuracion_VisualizarProductosInactivos();
-            if (r00.Result == OOB.Enumerados.EnumResult.isError)
+            if (data.MetBusqueda != FiltrosGen.AdmProducto.data.enumMetBusqueda.PorCodigoBarra)
             {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-            var _activarProductosInactivos = r00.Entidad;
+                var r00 = Sistema.MyData.Configuracion_VisualizarProductosInactivos();
+                if (r00.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r00.Mensaje);
+                    return;
+                }
+                var _activarProductosInactivos = r00.Entidad;
 
-            var _filtros = new OOB.LibInventario.Producto.Filtro();
-            _filtros.cadena = data.CadenaBusq;
-            _filtros.MetodoBusqueda = (OOB.LibInventario.Producto.Enumerados.EnumMetodoBusqueda)data.MetBusqueda;
-            if (data.Proveedor != null) _filtros.autoProveedor = data.Proveedor.id;
-            if (data.Departamento != null) _filtros.autoDepartamento = data.Departamento.id;
-            if (data.Grupo != null) _filtros.autoGrupo = data.Grupo.id;
-            if (data.Marca != null) _filtros.autoMarca = data.Marca.id;
-            if (data.Deposito != null) _filtros.autoDeposito = data.Deposito.id;
-            if (data.Categoria != null)
-            {
-                _filtros.categoria = (OOB.LibInventario.Producto.Enumerados.EnumCategoria)int.Parse(data.Categoria.id);
-            }
-            if (data.Origen != null)
-            {
-                _filtros.origen = (OOB.LibInventario.Producto.Enumerados.EnumOrigen)int.Parse(data.Origen.id);
-            }
-            if (data.TasaIva != null) _filtros.autoTasa = data.TasaIva.id;
-            if (data.Estatus != null)
-            {
-                _filtros.estatus = (OOB.LibInventario.Producto.Enumerados.EnumEstatus)int.Parse(data.Estatus.id);
-            }
-            else
-            {
-                if (!_activarProductosInactivos)
+                var _filtros = new OOB.LibInventario.Producto.Filtro();
+                _filtros.cadena = data.CadenaBusq;
+                _filtros.MetodoBusqueda = (OOB.LibInventario.Producto.Enumerados.EnumMetodoBusqueda)data.MetBusqueda;
+                if (data.Proveedor != null) _filtros.autoProveedor = data.Proveedor.id;
+                if (data.Departamento != null) _filtros.autoDepartamento = data.Departamento.id;
+                if (data.Grupo != null) _filtros.autoGrupo = data.Grupo.id;
+                if (data.Marca != null) _filtros.autoMarca = data.Marca.id;
+                if (data.Deposito != null) _filtros.autoDeposito = data.Deposito.id;
+                if (data.Categoria != null)
                 {
-                    _filtros.estatus = OOB.LibInventario.Producto.Enumerados.EnumEstatus.Activo;
+                    _filtros.categoria = (OOB.LibInventario.Producto.Enumerados.EnumCategoria)int.Parse(data.Categoria.id);
                 }
-            }
-            if (data.AdmDivisa != null)
-            {
-                _filtros.admPorDivisa = (OOB.LibInventario.Producto.Enumerados.EnumAdministradorPorDivisa)int.Parse(data.AdmDivisa.id);
-            }
-            if (data.Pesado != null)
-            {
-                _filtros.pesado = (OOB.LibInventario.Producto.Enumerados.EnumPesado)int.Parse(data.Pesado.id);
-            }
-            if (data.Oferta != null)
-            {
-                _filtros.oferta = (OOB.LibInventario.Producto.Enumerados.EnumOferta)int.Parse(data.Oferta.id);
-            }
-            if (data.Existencia != null)
-            {
-                var xd = OOB.LibInventario.Producto.Filtro.Existencia.SinDefinir;
-                switch (data.Existencia.id)
+                if (data.Origen != null)
                 {
-                    case "1":
-                        xd = OOB.LibInventario.Producto.Filtro.Existencia.MayorQueCero;
-                        break;
-                    case "2":
-                        xd = OOB.LibInventario.Producto.Filtro.Existencia.IgualCero;
-                        break;
-                    case "3":
-                        xd = OOB.LibInventario.Producto.Filtro.Existencia.MenorQueCero;
-                        break;
+                    _filtros.origen = (OOB.LibInventario.Producto.Enumerados.EnumOrigen)int.Parse(data.Origen.id);
                 }
-                _filtros.existencia = xd;
-            }
-            if (data.Catalogo != null)
-            {
-                var xd = OOB.LibInventario.Producto.Enumerados.EnumCatalogo.SnDefinir;
-                switch (data.Catalogo.id)
+                if (data.TasaIva != null) _filtros.autoTasa = data.TasaIva.id;
+                if (data.Estatus != null)
                 {
-                    case "1":
-                        xd = OOB.LibInventario.Producto.Enumerados.EnumCatalogo.No;
-                        break;
-                    case "2":
-                        xd = OOB.LibInventario.Producto.Enumerados.EnumCatalogo.Si;
-                        break;
+                    _filtros.estatus = (OOB.LibInventario.Producto.Enumerados.EnumEstatus)int.Parse(data.Estatus.id);
                 }
-                _filtros.catalogo = xd;
+                else
+                {
+                    if (!_activarProductosInactivos)
+                    {
+                        _filtros.estatus = OOB.LibInventario.Producto.Enumerados.EnumEstatus.Activo;
+                    }
+                }
+                if (data.AdmDivisa != null)
+                {
+                    _filtros.admPorDivisa = (OOB.LibInventario.Producto.Enumerados.EnumAdministradorPorDivisa)int.Parse(data.AdmDivisa.id);
+                }
+                if (data.Pesado != null)
+                {
+                    _filtros.pesado = (OOB.LibInventario.Producto.Enumerados.EnumPesado)int.Parse(data.Pesado.id);
+                }
+                if (data.Oferta != null)
+                {
+                    _filtros.oferta = (OOB.LibInventario.Producto.Enumerados.EnumOferta)int.Parse(data.Oferta.id);
+                }
+                if (data.Existencia != null)
+                {
+                    var xd = OOB.LibInventario.Producto.Filtro.Existencia.SinDefinir;
+                    switch (data.Existencia.id)
+                    {
+                        case "1":
+                            xd = OOB.LibInventario.Producto.Filtro.Existencia.MayorQueCero;
+                            break;
+                        case "2":
+                            xd = OOB.LibInventario.Producto.Filtro.Existencia.IgualCero;
+                            break;
+                        case "3":
+                            xd = OOB.LibInventario.Producto.Filtro.Existencia.MenorQueCero;
+                            break;
+                    }
+                    _filtros.existencia = xd;
+                }
+                if (data.Catalogo != null)
+                {
+                    var xd = OOB.LibInventario.Producto.Enumerados.EnumCatalogo.SnDefinir;
+                    switch (data.Catalogo.id)
+                    {
+                        case "1":
+                            xd = OOB.LibInventario.Producto.Enumerados.EnumCatalogo.No;
+                            break;
+                        case "2":
+                            xd = OOB.LibInventario.Producto.Enumerados.EnumCatalogo.Si;
+                            break;
+                    }
+                    _filtros.catalogo = xd;
+                }
+                if (data.PrecioMayor != null)
+                {
+                    if (data.PrecioMayor.id == "1")
+                        _filtros.precioMayorHabilitado = true;
+                }
+                RealizarBusqueda(_filtros);
             }
-            if (data.PrecioMayor != null)
+            else 
             {
-                if (data.PrecioMayor.id == "1")
-                    _filtros.precioMayorHabilitado = true;
+                var r00 = Sistema.MyData.Producto_GetId_ByCodigoBarra(data.CadenaBusq);
+                if (r00.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r00.Mensaje);
+                    return;
+                }
+                if (r00.Entidad.Trim() == "")
+                {
+                    return;
+                }
+                var _filtros = new OOB.LibInventario.Producto.Filtro();
+                _filtros.autoProducto = r00.Entidad;
+                RealizarBusqueda(_filtros);
             }
-
-            RealizarBusqueda(_filtros);
         }
 
         private void RealizarBusqueda(OOB.LibInventario.Producto.Filtro _filtros)
@@ -373,7 +391,6 @@ namespace ModInventario.Buscar
                 AsignarDepositosA(Item.identidad.auto);
             }
         }
-
         private void AsignarDepositosA(string autoPrd)
         {
             var r00 = Sistema.MyData.Permiso_AsignarDepositos(Sistema.UsuarioP.autoGru);
@@ -642,6 +659,10 @@ namespace ModInventario.Buscar
             }
         }
 
+        public void setMetodoBusquedaByCodigoBarra()
+        {
+            _gFiltrarProducto.setMetBusqByCodigoBarra();
+        }
 
     }
 

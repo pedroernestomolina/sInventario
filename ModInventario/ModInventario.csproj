@@ -496,6 +496,15 @@
     <Compile Include="Producto\Costo\Ver\VerFrm.Designer.cs">
       <DependentUpon>VerFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Producto\Deposito\AsignacionMasiva\Asignacion.cs" />
+    <Compile Include="Producto\Deposito\AsignacionMasiva\AsignacionMasivaFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Producto\Deposito\AsignacionMasiva\AsignacionMasivaFrm.Designer.cs">
+      <DependentUpon>AsignacionMasivaFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Producto\Deposito\AsignacionMasiva\dataDepart.cs" />
+    <Compile Include="Producto\Deposito\AsignacionMasiva\IAsignacion.cs" />
     <Compile Include="Producto\Deposito\Asignar\AsignarFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -648,13 +657,17 @@
       <DependentUpon>DS.xsd</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes\Filtros\DS.Designer.cs">
-      <DependentUpon>DS.cs</DependentUpon>
+    <Compile Include="Reportes\Filtros\DS1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS.xsd</DependentUpon>
     </Compile>
     <Compile Include="Reportes\Filtros\IFiltros.cs" />
     <Compile Include="Reportes\Filtros\KardexResumen\GestionRep.cs" />
     <Compile Include="Reportes\Filtros\Kardex\Filtros.cs" />
     <Compile Include="Reportes\Filtros\Kardex\GestionRep.cs" />
+    <Compile Include="Reportes\Filtros\MaestroExistenciaInventario\Filtros.cs" />
+    <Compile Include="Reportes\Filtros\MaestroExistenciaInventario\GestionRep.cs" />
     <Compile Include="Reportes\Filtros\MaestroExistencia\Filtros.cs" />
     <Compile Include="Reportes\Filtros\MaestroExistencia\GestionRep.cs" />
     <Compile Include="Reportes\Filtros\MaestroInventario\Filtros.cs" />
@@ -917,6 +930,9 @@
     <EmbeddedResource Include="Producto\Costo\Ver\VerFrm.resx">
       <DependentUpon>VerFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Producto\Deposito\AsignacionMasiva\AsignacionMasivaFrm.resx">
+      <DependentUpon>AsignacionMasivaFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Producto\Deposito\Asignar\AsignarFrm.resx">
       <DependentUpon>AsignarFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -989,6 +1005,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Filtros\MaestroExistencia.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Filtros\MaestroExistenciaInv.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Filtros\MaestroInventario.rdlc">

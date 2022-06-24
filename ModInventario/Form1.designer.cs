@@ -97,6 +97,7 @@
             this.TSM_REPORTE_MAESTRO_PRODUCTO = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_REPORTE_MAESTRO_INVENTARIO = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_REPORTE_MAESTRO_EXISTENCIA = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_REPORTE_MAESTRO_DEPOSITO_RESUMEN = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_REPORTE_MAESTRO_PRECIO = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_REPORTE_MAESTRO_NIVEL_MINIMO = new System.Windows.Forms.ToolStripMenuItem();
@@ -131,7 +132,6 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -196,11 +196,11 @@
             // 
             this.panel2.Controls.Add(this.BT_SALIR);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(698, 1);
+            this.panel2.Location = new System.Drawing.Point(697, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(1);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(2);
-            this.panel2.Size = new System.Drawing.Size(185, 52);
+            this.panel2.Size = new System.Drawing.Size(186, 52);
             this.panel2.TabIndex = 0;
             // 
             // BT_SALIR
@@ -211,7 +211,7 @@
             this.BT_SALIR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.BT_SALIR.Location = new System.Drawing.Point(2, 2);
             this.BT_SALIR.Name = "BT_SALIR";
-            this.BT_SALIR.Size = new System.Drawing.Size(181, 48);
+            this.BT_SALIR.Size = new System.Drawing.Size(182, 48);
             this.BT_SALIR.TabIndex = 0;
             this.BT_SALIR.Text = "Salir";
             this.BT_SALIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -226,7 +226,7 @@
             this.panel7.Margin = new System.Windows.Forms.Padding(1);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(2);
-            this.panel7.Size = new System.Drawing.Size(369, 52);
+            this.panel7.Size = new System.Drawing.Size(368, 52);
             this.panel7.TabIndex = 1;
             // 
             // tableLayoutPanel6
@@ -245,7 +245,7 @@
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(365, 48);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(364, 48);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // panel13
@@ -256,7 +256,7 @@
             this.panel13.Margin = new System.Windows.Forms.Padding(1);
             this.panel13.Name = "panel13";
             this.panel13.Padding = new System.Windows.Forms.Padding(2);
-            this.panel13.Size = new System.Drawing.Size(85, 22);
+            this.panel13.Size = new System.Drawing.Size(84, 22);
             this.panel13.TabIndex = 2;
             // 
             // label5
@@ -266,7 +266,7 @@
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(2, 2);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 18);
+            this.label5.Size = new System.Drawing.Size(80, 18);
             this.label5.TabIndex = 4;
             this.label5.Text = "Fecha:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -275,7 +275,7 @@
             // 
             this.panel14.Controls.Add(this.L_FECHA);
             this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel14.Location = new System.Drawing.Point(88, 1);
+            this.panel14.Location = new System.Drawing.Point(87, 1);
             this.panel14.Margin = new System.Windows.Forms.Padding(1);
             this.panel14.Name = "panel14";
             this.panel14.Padding = new System.Windows.Forms.Padding(2);
@@ -302,7 +302,7 @@
             this.panel15.Margin = new System.Windows.Forms.Padding(1);
             this.panel15.Name = "panel15";
             this.panel15.Padding = new System.Windows.Forms.Padding(2);
-            this.panel15.Size = new System.Drawing.Size(85, 22);
+            this.panel15.Size = new System.Drawing.Size(84, 22);
             this.panel15.TabIndex = 2;
             // 
             // label3
@@ -312,7 +312,7 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(2, 2);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 18);
+            this.label3.Size = new System.Drawing.Size(80, 18);
             this.label3.TabIndex = 3;
             this.label3.Text = "Ruta BD:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -321,7 +321,7 @@
             // 
             this.panel16.Controls.Add(this.L_HOST);
             this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel16.Location = new System.Drawing.Point(88, 25);
+            this.panel16.Location = new System.Drawing.Point(87, 25);
             this.panel16.Margin = new System.Windows.Forms.Padding(1);
             this.panel16.Name = "panel16";
             this.panel16.Padding = new System.Windows.Forms.Padding(2);
@@ -344,7 +344,7 @@
             // 
             this.panel17.Controls.Add(this.tableLayoutPanel7);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(372, 1);
+            this.panel17.Location = new System.Drawing.Point(371, 1);
             this.panel17.Margin = new System.Windows.Forms.Padding(1);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(200, 52);
@@ -416,7 +416,7 @@
             // 
             this.panel20.Controls.Add(this.tableLayoutPanel8);
             this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel20.Location = new System.Drawing.Point(574, 1);
+            this.panel20.Location = new System.Drawing.Point(573, 1);
             this.panel20.Margin = new System.Windows.Forms.Padding(1);
             this.panel20.Name = "panel20";
             this.panel20.Padding = new System.Windows.Forms.Padding(2);
@@ -839,6 +839,14 @@
             this.TSM_REPORTE_MAESTRO_EXISTENCIA.Text = "Maestro Existencia Resumen";
             this.TSM_REPORTE_MAESTRO_EXISTENCIA.Click += new System.EventHandler(this.TSM_REPORTE_MAESTRO_EXISTENCIA_Click);
             // 
+            // TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO
+            // 
+            this.TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO.Image = global::ModInventario.Properties.Resources.bt_imprimir_3;
+            this.TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO.Name = "TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO";
+            this.TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO.Size = new System.Drawing.Size(280, 22);
+            this.TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO.Text = "Maestro Existencia / Inventario";
+            this.TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO.Click += new System.EventHandler(this.TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO_Click);
+            // 
             // TSM_REPORTE_MAESTRO_DEPOSITO_RESUMEN
             // 
             this.TSM_REPORTE_MAESTRO_DEPOSITO_RESUMEN.Image = global::ModInventario.Properties.Resources.bt_imprimir_3;
@@ -1188,14 +1196,6 @@
             this.tableLayoutPanel4.SetRowSpan(this.panel10, 2);
             this.panel10.Size = new System.Drawing.Size(246, 350);
             this.panel10.TabIndex = 0;
-            // 
-            // TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO
-            // 
-            this.TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO.Image = global::ModInventario.Properties.Resources.bt_imprimir_3;
-            this.TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO.Name = "TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO";
-            this.TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO.Size = new System.Drawing.Size(280, 22);
-            this.TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO.Text = "Maestro Existencia / Inventario";
-            this.TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO.Click += new System.EventHandler(this.TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO_Click);
             // 
             // Form1
             // 

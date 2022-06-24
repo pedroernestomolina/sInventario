@@ -842,8 +842,17 @@ namespace ModInventario
 
         public void AsignacionMasivaProductoDeposito()
         {
-            _gAsignacionMasiva.Inicializa();
-            _gAsignacionMasiva.Inicia();
+            var r00 = Sistema.MyData.Permiso_AsignacionMasivaProductosDeposito(Sistema.UsuarioP.autoGru);
+            if (r00.Result == OOB.Enumerados.EnumResult.isError)
+            {
+                Helpers.Msg.Error(r00.Mensaje);
+                return;
+            }
+            if (_seguridad.Verificar(r00.Entidad))
+            {
+                _gAsignacionMasiva.Inicializa();
+                _gAsignacionMasiva.Inicia();
+            }
         }
 
         public void ReporteMaestroExistenciaInventario()

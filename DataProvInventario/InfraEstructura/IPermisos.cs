@@ -11,9 +11,14 @@ namespace DataProvInventario.InfraEstructura
     public interface IPermisos
     {
 
-        OOB.ResultadoEntidad<string> Permiso_PedirClaveAcceso_NivelMaximo();
-        OOB.ResultadoEntidad<string> Permiso_PedirClaveAcceso_NivelMedio();
-        OOB.ResultadoEntidad<string> Permiso_PedirClaveAcceso_NivelMinimo();
+
+        OOB.ResultadoEntidad<string> 
+            Permiso_PedirClaveAcceso_NivelMaximo();
+        OOB.ResultadoEntidad<string> 
+            Permiso_PedirClaveAcceso_NivelMedio();
+        OOB.ResultadoEntidad<string> 
+            Permiso_PedirClaveAcceso_NivelMinimo();
+
 
         OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha> Permiso_CrearProducto(string autoGrupoUsuario);
         OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha> Permiso_ModificarProducto(string autoGrupoUsuario);
@@ -66,13 +71,19 @@ namespace DataProvInventario.InfraEstructura
         OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha>Permiso_DefinirNivelMinimoMaximoInventario(string autoGrupoUsuario);
         OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha>Permiso_MovimientoTrasladoEntreSucursales_PorExistenciaDebajoDelMinimo(string autoGrupoUsuario);
 
-        OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha>Permiso_Reportes(string autoGrupoUsuario);
-        OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha>Permiso_Visor(string autoGrupoUsuario);
-        OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha>Permiso_Estadistica(string autoGrupoUsuario);
 
-        OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha> Permiso_ConfiguracionSistema(string autoGrupoUsuario);
-
-        OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha> Permiso_Movimiento_Traslado_Procesar(string autoGrupoUsuario);
+        OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha>
+            Permiso_Reportes(string autoGrupoUsuario);
+        OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha>
+            Permiso_Visor(string autoGrupoUsuario);
+        OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha>
+            Permiso_Estadistica(string autoGrupoUsuario);
+        OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha> 
+            Permiso_ConfiguracionSistema(string autoGrupoUsuario);
+        OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha> 
+            Permiso_Movimiento_Traslado_Procesar(string autoGrupoUsuario);
+        OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha>
+            Permiso_AsignacionMasivaProductosDeposito(string autoGrupoUsuario);
 
     }
 

@@ -974,7 +974,9 @@ namespace DataProvInventario.Data
             return rt;
         }
 
-        public OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha> Permiso_Reportes(string autoGrupoUsuario)
+
+        public OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha> 
+            Permiso_Reportes(string autoGrupoUsuario)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha>();
 
@@ -996,8 +998,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha> Permiso_Visor(string autoGrupoUsuario)
+        public OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha> 
+            Permiso_Visor(string autoGrupoUsuario)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha>();
 
@@ -1019,8 +1021,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha> Permiso_Estadistica(string autoGrupoUsuario)
+        public OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha> 
+            Permiso_Estadistica(string autoGrupoUsuario)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha>();
 
@@ -1042,9 +1044,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-
-        public OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha> Permiso_ConfiguracionSistema(string autoGrupoUsuario)
+        public OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha> 
+            Permiso_ConfiguracionSistema(string autoGrupoUsuario)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha>();
 
@@ -1066,13 +1067,35 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-
-        public OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha> Permiso_Movimiento_Traslado_Procesar(string autoGrupoUsuario)
+        public OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha> 
+            Permiso_Movimiento_Traslado_Procesar(string autoGrupoUsuario)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha>();
 
             var r01 = MyData.Permiso_MovimientoTraslado_Procesar(autoGrupoUsuario);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                rt.Mensaje = r01.Mensaje;
+                rt.Result = OOB.Enumerados.EnumResult.isError;
+                return rt;
+            }
+
+            var s = r01.Entidad;
+            var nr = new OOB.LibInventario.Permiso.Ficha()
+            {
+                IsHabilitado = s.IsHabilitado,
+                NivelSeguridad = (OOB.LibInventario.Permiso.Enumerados.EnumNivelSeguridad)s.NivelSeguridad,
+            };
+            rt.Entidad = nr;
+
+            return rt;
+        }
+        public OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha> 
+            Permiso_AsignacionMasivaProductosDeposito(string autoGrupoUsuario)
+        {
+            var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha>();
+
+            var r01 = MyData.Permiso_AsignacionMasivaProductosDeposito(autoGrupoUsuario);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
                 rt.Mensaje = r01.Mensaje;

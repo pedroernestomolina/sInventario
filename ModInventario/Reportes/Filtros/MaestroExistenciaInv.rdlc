@@ -23,7 +23,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.6cm</Height>
+              <Height>1.02333cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -34,8 +34,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>deposito</Value>
-                              <Style />
+                              <Value>DEPOSITO</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -68,8 +71,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>e Emp Compra</Value>
-                              <Style />
+                              <Value>Ex/ Emp Compra</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -102,8 +108,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>e Emp Inv</Value>
-                              <Style />
+                              <Value>Ex/ Emp Invent</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -136,8 +145,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>e Emp Und</Value>
-                              <Style />
+                              <Value>Ex / Emp Unidad</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -170,8 +182,11 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>e Fisica</Value>
-                              <Style />
+                              <Value>Ex/Fisica</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
@@ -398,8 +413,11 @@
                       <Paragraph>
                         <TextRuns>
                           <TextRun>
-                            <Value>departamento</Value>
-                            <Style />
+                            <Value>DEPARTAMENTO</Value>
+                            <Style>
+                              <FontSize>8pt</FontSize>
+                              <FontWeight>Bold</FontWeight>
+                            </Style>
                           </TextRun>
                         </TextRuns>
                         <Style>
@@ -435,8 +453,11 @@
                           <Paragraph>
                             <TextRuns>
                               <TextRun>
-                                <Value>grupo</Value>
-                                <Style />
+                                <Value>GRUPO</Value>
+                                <Style>
+                                  <FontSize>8pt</FontSize>
+                                  <FontWeight>Bold</FontWeight>
+                                </Style>
                               </TextRun>
                             </TextRuns>
                             <Style>
@@ -472,8 +493,11 @@
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>nombre Prd</Value>
-                                    <Style />
+                                    <Value>PRODUCTO</Value>
+                                    <Style>
+                                      <FontSize>8pt</FontSize>
+                                      <FontWeight>Bold</FontWeight>
+                                    </Style>
                                   </TextRun>
                                 </TextRuns>
                                 <Style>
@@ -657,7 +681,7 @@
         </TablixRowHierarchy>
         <DataSetName>MaestroExistenciaInv</DataSetName>
         <Top>0.14111cm</Top>
-        <Height>1.2cm</Height>
+        <Height>1.62333cm</Height>
         <Width>26.04224cm</Width>
         <Style>
           <Border>
@@ -669,10 +693,10 @@
     <Height>2in</Height>
     <Style />
   </Body>
-  <Width>10.38294in</Width>
+  <Width>10.33086in</Width>
   <Page>
     <PageHeader>
-      <Height>2.54cm</Height>
+      <Height>3.25438cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -833,6 +857,147 @@
             <Border>
               <Style>None</Style>
             </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox106">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>MAESTRO EXISTENCIA / INVENTARIO</Value>
+                  <Style>
+                    <FontSize>14pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox106</rd:DefaultName>
+          <Top>2.33688cm</Top>
+          <Height>0.70583cm</Height>
+          <Width>10.83477cm</Width>
+          <ZIndex>5</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Line Name="Line1">
+          <Top>3.18382cm</Top>
+          <Height>0cm</Height>
+          <Width>26.04224cm</Width>
+          <ZIndex>6</ZIndex>
+          <Style>
+            <Border>
+              <Style>Solid</Style>
+            </Border>
+          </Style>
+        </Line>
+        <Textbox Name="EMPRESA_RIF">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Parameters!EMPRESA_RIF.Value</Value>
+                  <Style>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>EMPRESA_RIF</rd:DefaultName>
+          <Top>0.25224cm</Top>
+          <Height>0.53269cm</Height>
+          <Width>5.67839cm</Width>
+          <ZIndex>7</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="EMPRESA_NOMBRE">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Parameters!EMPRESA_NOMBRE.Value</Value>
+                  <Style>
+                    <FontSize>12pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style />
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>EMPRESA_NOMBRE</rd:DefaultName>
+          <Top>0.85549cm</Top>
+          <Height>0.6cm</Height>
+          <Width>13.99482cm</Width>
+          <ZIndex>8</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Filtro">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Parameters!Filtro.Value</Value>
+                  <Style>
+                    <FontSize>7pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Filtro</rd:DefaultName>
+          <Top>2.02516cm</Top>
+          <Left>11.01116cm</Left>
+          <Height>1.01755cm</Height>
+          <Width>15.03108cm</Width>
+          <ZIndex>9</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <VerticalAlign>Middle</VerticalAlign>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
             <PaddingTop>2pt</PaddingTop>

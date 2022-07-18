@@ -295,6 +295,7 @@
     <Compile Include="Kardex\Movimiento\data.cs" />
     <Compile Include="Kardex\Movimiento\detalle.cs" />
     <Compile Include="Kardex\Movimiento\Gestion.cs" />
+    <Compile Include="Kardex\Movimiento\IMov.cs" />
     <Compile Include="Kardex\Movimiento\KardexFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1182,7 +1183,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CambiosVersion.txt" />
+    <Content Include="CambiosVersion.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="conf.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>

@@ -89,6 +89,12 @@ namespace ModInventario.Producto.AgregarEditar
         bool EditarCodigoIsOk { get; }
         void EditarCodigo();
 
+
+        decimal GetPeso { get; }
+        void setPeso(decimal _peso);
+        decimal GetVolumen { get; }
+        void setVolumen(decimal _volumen);
+
     }
 
 }

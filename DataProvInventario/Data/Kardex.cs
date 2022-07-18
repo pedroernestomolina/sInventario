@@ -12,13 +12,15 @@ namespace DataProvInventario.Data
     public partial class DataProv: IData
     {
 
-        public OOB.ResultadoEntidad<OOB.LibInventario.Kardex.Movimiento.Resumen.Ficha> Producto_Kardex_Movimiento_Lista_Resumen(OOB.LibInventario.Kardex.Movimiento.Resumen.Filtro filtro)
+        public OOB.ResultadoEntidad<OOB.LibInventario.Kardex.Movimiento.Resumen.Ficha> 
+            Producto_Kardex_Movimiento_Lista_Resumen(OOB.LibInventario.Kardex.Movimiento.Resumen.Filtro filtro)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Kardex.Movimiento.Resumen.Ficha>();
 
             var filtroDTO = new DtoLibInventario.Kardex.Movimiento.Resumen.Filtro()
             {
                 autoProducto = filtro.autoProducto,
+                autoDeposito = filtro.autoDeposito,
                 ultDias = (DtoLibInventario.Kardex.Enumerados.EnumMovUltDias)filtro.ultDias,
             };
             var r01 = MyData.Producto_Kardex_Movimiento_Lista_Resumen(filtroDTO);
@@ -64,8 +66,8 @@ namespace DataProvInventario.Data
             rt.Entidad = nr;
             return rt;
         }
-
-        public OOB.ResultadoEntidad<OOB.LibInventario.Kardex.Movimiento.Detalle.Ficha> Producto_Kardex_Movimiento_Lista_Detalle(OOB.LibInventario.Kardex.Movimiento.Detalle.Filtro filtro)
+        public OOB.ResultadoEntidad<OOB.LibInventario.Kardex.Movimiento.Detalle.Ficha> 
+            Producto_Kardex_Movimiento_Lista_Detalle(OOB.LibInventario.Kardex.Movimiento.Detalle.Filtro filtro)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Kardex.Movimiento.Detalle.Ficha>();
 

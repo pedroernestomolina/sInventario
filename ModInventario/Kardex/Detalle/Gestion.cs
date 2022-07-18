@@ -52,14 +52,9 @@ namespace ModInventario.Kardex.Detalle
         }
 
 
-        public void Limpiar()
-        {
-        }
-
         DetalleFrm frm;
         public void Inicia()
         {
-            Limpiar();
             if (CargarData())
             {
                 if (frm == null)
@@ -108,6 +103,11 @@ namespace ModInventario.Kardex.Detalle
             autoProducto = autoprd;
             nDias = dias;
             detalle = item;
+        }
+
+
+        public void Inicializa()
+        {
         }
 
     }

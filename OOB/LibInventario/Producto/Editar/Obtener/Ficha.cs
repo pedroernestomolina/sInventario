@@ -35,6 +35,8 @@ namespace OOB.LibInventario.Producto.Editar.Obtener
         public Enumerados.EnumClasificacionABC Clasificacion { get; set; }
         public Enumerados.EnumCatalogo activarCatalogo { get; set; }
         public List<FichaAlterno> CodigosAlterno { get; set; }
+        public decimal peso { get; set; }
+        public decimal volumen { get; set; }
 
     }
 

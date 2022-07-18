@@ -308,6 +308,8 @@ namespace ModInventario.Producto.AgregarEditar.Agregar
                 plu = _plu,
                 diasEmpaque = _diasEmpaque,
                 estatusCatalogo=_catalogo,
+                peso=miData.GetPeso,
+                volumen=miData.GetVolumen,
             };
             var codAlterno = new List<OOB.LibInventario.Producto.Agregar.FichaCodAlterno>();
             foreach (var rg in _gestionCodAlterno.ListaCodigos) 
@@ -472,6 +474,19 @@ namespace ModInventario.Producto.AgregarEditar.Agregar
         public bool EditarCodigoIsOk { get { return true; } }
         public void EditarCodigo()
         {
+        }
+
+
+
+        public decimal GetPeso { get { return miData.GetPeso; } }
+        public void setPeso(decimal _peso)
+        {
+            miData.setPeso(_peso);
+        }
+        public decimal GetVolumen { get { return miData.GetVolumen; } }
+        public void setVolumen(decimal _volumen)
+        {
+            miData.setVolumen(_volumen);
         }
 
     }

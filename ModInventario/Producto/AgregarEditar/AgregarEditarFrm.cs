@@ -161,6 +161,11 @@ namespace ModInventario.Producto.AgregarEditar
             TB_PLU.Text = _controlador.Plu;
             TB_DIAS_EMPAQUE.Text = _controlador.DiasEmpaque.ToString();
 
+            //
+            TB_PESO.Text = _controlador.GetPeso.ToString();
+            TB_VOLUMEN.Text = _controlador.GetVolumen.ToString();
+
+
             inicializarData = false;
         }
 
@@ -555,6 +560,17 @@ namespace ModInventario.Producto.AgregarEditar
             {
                 TB_CODIGO.Enabled = true;
             }
+        }
+
+        private void TB_PESO_Leave(object sender, EventArgs e)
+        {
+            var _peso = decimal.Parse(TB_PESO.Text);
+            _controlador.setPeso(_peso);
+        }
+        private void TB_VOLUMEN_Leave(object sender, EventArgs e)
+        {
+            var _volumen = decimal.Parse(TB_VOLUMEN.Text);
+            _controlador.setVolumen(_volumen);
         }
 
     }

@@ -9,68 +9,39 @@ using System.Windows.Forms;
 namespace ModInventario.Kardex.Movimiento
 {
     
-    public class Gestion
+    public class Gestion: IMov
     {
 
 
-        private string autoPrd;
-        private OOB.LibInventario.Kardex.Enumerados.EnumMovUltDias dias;
-        private OOB.LibInventario.Kardex.Movimiento.Resumen.Ficha ficha;
+        private string _autoPrd;
+        private data _compra;
+        private data _venta;
+        private data _inventario;
         private Detalle.Gestion _gestionDetalle;
-        private data compra;
-        private data venta;
-        private data inventario;
-
-        private decimal compraFac;
-        private decimal compraNcr;
-        private decimal ventaFac;
-        private decimal ventaNcr;
-        private decimal ajuste;
-        private decimal traslado;
-        private decimal cargoDescargo;
+        private FiltrosGen.IOpcion _gDeposito;
+        private FiltrosGen.IOpcion _gDias;
+        private OOB.LibInventario.Kardex.Movimiento.Resumen.Ficha _ficha;
+        private OOB.LibInventario.Kardex.Enumerados.EnumMovUltDias _dias;
 
 
-        public BindingSource Compra { get { return compra.Source; } }
-        public BindingSource Venta{ get { return venta.Source; } }
-        public BindingSource Inventario{ get { return inventario.Source; } }
-        public string CompraFac { get { return compraFac.ToString(Decimales); } }
-        public string CompraNcr { get { return compraNcr.ToString(Decimales); } }
-        public string VentaFac { get { return ventaFac.ToString(Decimales); } }
-        public string VentaNcr { get { return ventaNcr.ToString(Decimales); } }
-        public string CargoDescgargo { get { return cargoDescargo.ToString(Decimales); }  }
-        public string Ajuste { get { return ajuste.ToString(Decimales); } }
-        public string Traslado { get { return traslado.ToString(Decimales); } }
-
-
-        public string Producto { get { return ficha.codigoProducto + Environment.NewLine + ficha.nombreProducto; } }
-        public string ExActual { get { return ficha.existenciaActual.ToString(Decimales); } }
-        public string ExFecha { get { return ficha.existenciaFecha.ToString(Decimales); } }
-        public string Fecha { get { return "Exist Al "+ficha.fecha; } }
-        public string Decimales { get { return "n" + ficha.decimales; } }
+        public string Decimales { get { return "n" + _ficha.decimales; } }
 
 
         public Gestion()
         {
+            _dias = OOB.LibInventario.Kardex.Enumerados.EnumMovUltDias.SinDefinir;
+            _compra = new data();
+            _venta= new data();
+            _inventario= new data();
             _gestionDetalle = new Detalle.Gestion();
-            compra = new data();
-            venta= new data();
-            inventario= new data();
-            Limpiar();
+            _gDeposito = new FiltrosGen.Opcion.Gestion();
+            _gDias = new FiltrosGen.Opcion.Gestion();
         }
 
-
-        public void Limpiar() 
-        {
-            dias = OOB.LibInventario.Kardex.Enumerados.EnumMovUltDias.SinDefinir;
-            compra.Limpiar();
-            venta.Limpiar();
-            inventario.Limpiar();
-        }
 
         KardexFrm frm;
         public void Inicia()
         {
-            Limpiar();
             if (CargarData())
             {
                 if (frm == null)
@@ -82,14 +53,9 @@ namespace ModInventario.Kardex.Movimiento
             }
         }
 
-        private bool CargarData()
-        {
-            return Cargar();
-        }
-
         public void setFicha(string prd)
         {
-            autoPrd = prd;
+            _autoPrd = prd;
         }
 
         public void Procesar()
@@ -100,14 +66,12 @@ namespace ModInventario.Kardex.Movimiento
         public bool Cargar() 
         {
             var rt = true;
-            cargoDescargo = 0.0m;
-            ajuste= 0.0m;
-            traslado = 0.0m;
 
             var filtro = new OOB.LibInventario.Kardex.Movimiento.Resumen.Filtro()
             {
-                autoProducto = autoPrd,
-                ultDias =  dias,
+                autoProducto = _autoPrd,
+                autoDeposito= _gDeposito.GetId,
+                ultDias =  _dias,
             };
             var r01 = Sistema.MyData.Producto_Kardex_Movimiento_Lista_Resumen(filtro);
             if (r01.Result == OOB.Enumerados.EnumResult.isError)
@@ -115,48 +79,35 @@ namespace ModInventario.Kardex.Movimiento
                 Helpers.Msg.Error(r01.Mensaje);
                 return false;
             }
-            ficha = r01.Entidad;
-            compra.setFicha(r01.Entidad.Data.Where(w => w.modulo.Trim().ToUpper() == "COMPRAS").ToList());
-            venta.setFicha(r01.Entidad.Data.Where(w => w.modulo.Trim().ToUpper() == "VENTAS").ToList());
-            inventario.setFicha(r01.Entidad.Data.Where(w => w.modulo.Trim().ToUpper() == "INVENTARIO").ToList());
+            _ficha = r01.Entidad;
+            _compra.setFicha(r01.Entidad.Data.Where(w => w.modulo.Trim().ToUpper() == "COMPRAS").ToList(), Decimales);
+            _venta.setFicha(r01.Entidad.Data.Where(w => w.modulo.Trim().ToUpper() == "VENTAS").ToList(),Decimales);
+            _inventario.setFicha(r01.Entidad.Data.Where(w => w.modulo.Trim().ToUpper() == "INVENTARIO").ToList(),Decimales);
 
-            compraFac = r01.Entidad.Data.Where(w => w.modulo.Trim().ToUpper() == "COMPRAS" && w.siglas == "FAC").Sum(s => s.cntInventario);
-            compraNcr = r01.Entidad.Data.Where(w => w.modulo.Trim().ToUpper() == "COMPRAS" && w.siglas == "NCR").Sum(s => s.cntInventario);
-
-            ventaFac = r01.Entidad.Data.Where(w => w.modulo.Trim().ToUpper() == "VENTAS" && w.siglas == "FAC").Sum(s => s.cntInventario);
-            ventaNcr = r01.Entidad.Data.Where(w => w.modulo.Trim().ToUpper() == "VENTAS" && w.siglas == "NCR").Sum(s => s.cntInventario);
-
-            cargoDescargo = r01.Entidad.Data.Where(w => w.modulo.Trim().ToUpper() == "INVENTARIO" && w.autoConcepto != "0000000007" && (w.siglas == "CAR" || w.siglas=="DES")).Sum(s => s.cntInventario);
-            ajuste= r01.Entidad.Data.Where(w => w.modulo.Trim().ToUpper() == "INVENTARIO" && w.autoConcepto == "0000000007").Sum(s => s.cntInventario);
-            traslado= r01.Entidad.Data.Where(w => w.modulo.Trim().ToUpper() == "INVENTARIO" && w.siglas == "TRA" && w.cntInventario>0).Sum(s => s.cntInventario);
             return rt;
         }
 
-        public void setDias( OOB.LibInventario.Kardex.Enumerados.EnumMovUltDias xdias)
-        {
-            dias = xdias;
-        }
-
-        public void VerDetalleCompra()
-        {
-            var item = (detalle)Compra.Current;
-            if (item != null) 
-            {
-                VerDetalle(item);
-            }
-        }
 
         private void VerDetalle(detalle item)
         {
             var dep = item.Deposito;
             var concept = item.Concepto;
-            _gestionDetalle.setFicha(autoPrd, dep, concept, dias, item);
+            _gestionDetalle.setFicha(_autoPrd, dep, concept, _dias, item);
             _gestionDetalle.Inicia();
+        }
+
+        public void VerDetalleCompra()
+        {
+            var item = (detalle)_compra.Source.Current;
+            if (item != null)
+            {
+                VerDetalle(item);
+            }
         }
 
         public void VerDetalleVenta()
         {
-            var item = (detalle)Venta.Current;
+            var item = (detalle)_venta.Source.Current;
             if (item != null)
             {
                 VerDetalle(item);
@@ -165,11 +116,98 @@ namespace ModInventario.Kardex.Movimiento
 
         public void VerDetalleInventario()
         {
-            var item = (detalle)Inventario.Current;
+            var item = (detalle)_inventario.Source.Current;
             if (item != null)
             {
                 VerDetalle(item);
             }
+        }
+
+
+        public void Inicializa()
+        {
+            _compra.Limpiar();
+            _venta.Limpiar();
+            _inventario.Limpiar();
+            _gestionDetalle.Inicializa();
+            _gDeposito.Inicializa();
+            _gDias.Inicializa();
+        }
+
+
+        public string GetProductoInfo { get { return _ficha.codigoProducto + Environment.NewLine + _ficha.nombreProducto; } }
+
+
+        public BindingSource GetCompraSource { get { return _compra.Source; } }
+        public BindingSource GetVentaSource { get { return _venta.Source; } }
+        public BindingSource GetInventarioSource { get { return _inventario.Source; } }
+
+
+        public string  GetExActual { get { return _ficha.existenciaActual.ToString(Decimales); } }
+        public string GetExFecha { get { return _ficha.existenciaFecha.ToString(Decimales); } }
+        public string  GetFecha { get { return "Exist Al " + _ficha.fecha; } }
+
+
+        public BindingSource GetDiasSource { get { return _gDias.Source; } }
+        public void setDias(string id)
+        {
+            _gDias.setFicha(id);
+            switch (_gDias.GetId)
+            {
+                case "01": _dias = OOB.LibInventario.Kardex.Enumerados.EnumMovUltDias.Hoy; break;
+                case "02": _dias = OOB.LibInventario.Kardex.Enumerados.EnumMovUltDias.Ayer; break;
+                case "03": _dias = OOB.LibInventario.Kardex.Enumerados.EnumMovUltDias._7Dias; break;
+                case "04": _dias = OOB.LibInventario.Kardex.Enumerados.EnumMovUltDias._15Dias; break;
+                case "05": _dias = OOB.LibInventario.Kardex.Enumerados.EnumMovUltDias._30Dias; break;
+                case "06": _dias = OOB.LibInventario.Kardex.Enumerados.EnumMovUltDias._45Dias; break;
+                case "07": _dias = OOB.LibInventario.Kardex.Enumerados.EnumMovUltDias._60Dias; break;
+                case "08": _dias = OOB.LibInventario.Kardex.Enumerados.EnumMovUltDias._90Dias; break;
+                case "09": _dias = OOB.LibInventario.Kardex.Enumerados.EnumMovUltDias._120Dias; break;
+                case "10": _dias = OOB.LibInventario.Kardex.Enumerados.EnumMovUltDias.Todo; break;
+            }
+        }
+
+
+        public BindingSource GetDepositoSource { get { return _gDeposito.Source; } }
+        public void setDeposito(string id)
+        {
+            _gDeposito.setFicha(id);
+        }
+
+
+        private bool CargarData()
+        {
+            var r02 = Sistema.MyData.Deposito_GetLista();
+            if (r02.Result == OOB.Enumerados.EnumResult.isError)
+            {
+                Helpers.Msg.Error(r02.Mensaje);
+                return false;
+            }
+            var lst = r02.Lista.Select(s =>
+            {
+                var nr = new ficha()
+                {
+                    codigo = s.codigo,
+                    desc = s.nombre,
+                    id = s.auto,
+                };
+                return nr;
+            });
+            _gDeposito.setData(lst.OrderBy(o => o.desc).ToList());
+            var lst2 = new List<ficha>();
+            lst2.Add(new ficha() { id = "01", codigo = "", desc = "     Hoy" });
+            lst2.Add(new ficha() { id = "02", codigo = "", desc = "    Ayer" });
+            lst2.Add(new ficha() { id = "03", codigo = "", desc = "  7 Dias " });
+            lst2.Add(new ficha() { id = "04", codigo = "", desc = " 15 Dias" });
+            lst2.Add(new ficha() { id = "05", codigo = "", desc = " 30 Dias" });
+            lst2.Add(new ficha() { id = "06", codigo = "", desc = " 45 Dias" });
+            lst2.Add(new ficha() { id = "07", codigo = "", desc = " 60 Dias" });
+            lst2.Add(new ficha() { id = "08", codigo = "", desc = " 90 Dias" });
+            lst2.Add(new ficha() { id = "09", codigo = "", desc = "120 Dias" });
+            lst2.Add(new ficha() { id = "10", codigo = "", desc = "   1 Año" });
+            _gDias.setData(lst2);
+
+            return Cargar();
         }
 
     }

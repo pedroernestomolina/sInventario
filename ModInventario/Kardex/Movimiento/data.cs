@@ -14,10 +14,10 @@ namespace ModInventario.Kardex.Movimiento
 
         private BindingSource _bs;
         private List<detalle> _detalle;
+        private string _decimales;
 
 
         public BindingSource Source { get { return _bs; } }
-        public decimal CntInv { get { return _detalle.Sum(s => s.CntInventario); } }
 
 
         public data()
@@ -28,12 +28,12 @@ namespace ModInventario.Kardex.Movimiento
         }
 
 
-        public void setFicha(List<OOB.LibInventario.Kardex.Movimiento.Resumen.Data> list)
+        public void setFicha(List<OOB.LibInventario.Kardex.Movimiento.Resumen.Data> list, string decimales)
         {
             _detalle.Clear();
             foreach (var reg in list) 
             {
-                _detalle.Add(new detalle(reg));
+                _detalle.Add(new detalle(reg, decimales));
             }
             _bs.CurrencyManager.Refresh();
         }

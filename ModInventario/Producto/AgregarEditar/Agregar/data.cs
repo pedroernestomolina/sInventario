@@ -15,6 +15,8 @@ namespace ModInventario.Producto.AgregarEditar.Agregar
         private int _contEmpInv;
         private ficha _empCompra;
         private ficha _empInv;
+        private decimal _peso;
+        private decimal _volumen;
 
 
         public string Codigo { get; set; }
@@ -56,6 +58,8 @@ namespace ModInventario.Producto.AgregarEditar.Agregar
             _contEmpInv = 1;
             _empCompra = null;
             _empInv = null;
+            _peso = 0m;
+            _volumen = 0m;
 
             Codigo = "";
             Descripcion = "";
@@ -285,6 +289,18 @@ namespace ModInventario.Producto.AgregarEditar.Agregar
         public void setEmpInv(ficha ent)
         {
             _empInv = ent;
+        }
+
+
+        public decimal GetPeso { get { return _peso; } }
+        public void setPeso(decimal peso)
+        {
+            _peso = peso;
+        }
+        public decimal GetVolumen { get { return _volumen; } }
+        public void setVolumen(decimal volumen)
+        {
+            _volumen = volumen;
         }
 
     }

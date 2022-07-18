@@ -86,7 +86,7 @@ namespace ModInventario.Buscar
 
             var c5= new DataGridViewTextBoxColumn();
             c5.DataPropertyName = "exEmpCompra";
-            c5.HeaderText = "E/Comp";
+            c5.HeaderText = "Ex/Comp";
             c5.Visible = true;
             c5.Width = 70;
             c5.HeaderCell.Style.Font = f;
@@ -97,34 +97,36 @@ namespace ModInventario.Buscar
 
             var c5b = new DataGridViewTextBoxColumn();
             c5b.DataPropertyName = "exUnd";
-            c5b.HeaderText = "E/Und";
+            c5b.HeaderText = "Ex/Und";
             c5b.Visible = true;
             c5b.Width = 70;
             c5b.HeaderCell.Style.Font = f;
             c5b.DefaultCellStyle.Font = f1;
             c5b.DefaultCellStyle.Format = "n2";
             c5b.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            c5b.ToolTipText = "EXISTENCIA POR EMPAQUE DE UNIDAD";
 
             var c6 = new DataGridViewTextBoxColumn();
             c6.DataPropertyName = "CostoCompra";
-            c6.HeaderText = "C/Comp";
+            c6.HeaderText = "Costo";
             c6.Visible = true;
             c6.Width = 70;
             c6.HeaderCell.Style.Font = f;
             c6.DefaultCellStyle.Font = f1;
             c6.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             c6.DefaultCellStyle.Format = "n2";
+            c6.ToolTipText = "COSTO POR EMPAQUE DE COMPRA";
 
             var c6b = new DataGridViewTextBoxColumn();
             c6b.DataPropertyName = "CostoUndActual";
-            c6b.HeaderText = "C/Comp";
+            c6b.HeaderText = "Costo";
             c6b.Visible = true;
             c6b.Width = 70;
             c6b.HeaderCell.Style.Font = f;
             c6b.DefaultCellStyle.Font = f1;
             c6b.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             c6b.DefaultCellStyle.Format = "n2";
-
+            c6b.ToolTipText = "COSTO POR UNIDAD";
 
             DGV.Columns.Add(c2);
             DGV.Columns.Add(c1);
@@ -487,7 +489,6 @@ namespace ModInventario.Buscar
         {
             MovKardex();
         }
-
         private void MovKardex()
         {
             _controlador.MovKardex(); 

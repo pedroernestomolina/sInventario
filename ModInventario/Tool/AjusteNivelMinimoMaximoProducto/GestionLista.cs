@@ -61,23 +61,39 @@ namespace ModInventario.Tool.AjusteNivelMinimoMaximoProducto
             if (_bs.Current != null) 
             {
                 var it =(data) _bs.Current;
-                if (it.IsEditado)
+                _gestionAjuste.Inicializa();
+                _gestionAjuste.setFicha(it);
+                _gestionAjuste.Inicia();
+                if (_gestionAjuste.ProcesarIsOk)
                 {
-                    var msg = MessageBox.Show("Eliminar Actualización Del Item?", "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-                    if (msg == DialogResult.Yes) 
-                    {
-                        _bldata.Remove(it);
-                    }
+                    it.setMinimo(_gestionAjuste.GetMinimo);
+                    it.setMaximo(_gestionAjuste.GetMaximo);
                 }
-                else
-                {
-                    _gestionAjuste.Inicia(it);
-                    if (_gestionAjuste.AjusteIsOk)
-                    {
-                        it.setMinimo(_gestionAjuste.Minimo);
-                        it.setMaximo(_gestionAjuste.Maximo);
-                    }
-                }
+
+
+                //if (it.IsEditado)
+                //{
+                //    _gestionAjuste.Inicia(it);
+                //    if (_gestionAjuste.AjusteIsOk)
+                //    {
+                //        it.setMinimo(_gestionAjuste.Minimo);
+                //        it.setMaximo(_gestionAjuste.Maximo);
+                //    }
+                //    //var msg = MessageBox.Show("Eliminar Actualización Del Item?", "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                //    //if (msg == DialogResult.Yes) 
+                //    //{
+                //    //    _bldata.Remove(it);
+                //    //}
+                //}
+                //else
+                //{
+                //    _gestionAjuste.Inicia(it);
+                //    if (_gestionAjuste.AjusteIsOk)
+                //    {
+                //        it.setMinimo(_gestionAjuste.Minimo);
+                //        it.setMaximo(_gestionAjuste.Maximo);
+                //    }
+                //}
             }
         }
 

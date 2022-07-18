@@ -663,6 +663,9 @@ namespace DataProvInventario.Data
                 nr.activarCatalogo = (OOB.LibInventario.Producto.Enumerados.EnumCatalogo)e.activarCatalogo;
                 nr.autoEmpInv = e.autoEmpInv;
                 nr.contEmpInv = e.contEmpInv;
+                nr.peso = e.peso;
+                nr.volumen = e.volumen;
+
                 foreach (var rg in e.CodigosAlterno)
                 {
                     codigosAlt.Add(new OOB.LibInventario.Producto.Editar.Obtener.FichaAlterno() { Codigo = rg.Codigo });
@@ -705,6 +708,8 @@ namespace DataProvInventario.Data
                 plu = ficha.plu,
                 estatusCatalogo=ficha.estatusCatalogo,
                 tasaImpuesto=ficha.tasaImpuesto,
+                peso=ficha.peso,
+                volumen=ficha.volumen,
             };
             //if (ficha.precio_1 != null) 
             //{
@@ -794,6 +799,8 @@ namespace DataProvInventario.Data
                 estatusCatalogo = ficha.estatusCatalogo,
                 autoEmpInv = ficha.autoEmpInv,
                 contEmpInv = ficha.contEmpInv,
+                peso = ficha.peso,
+                volumen = ficha.volumen,
             };
             var codAlterno = new List<DtoLibInventario.Producto.Agregar.FichaCodAlterno>();
             foreach (var rg in ficha.codigosAlterno)

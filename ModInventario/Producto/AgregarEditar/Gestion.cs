@@ -192,6 +192,18 @@ namespace ModInventario.Producto.AgregarEditar
             miGestion.EditarCodigo();
         }
 
+
+        public decimal GetPeso { get { return miGestion.GetPeso; } }
+        public void setPeso(decimal _peso)
+        {
+            miGestion.setPeso(_peso);
+        }
+        public decimal GetVolumen { get { return miGestion.GetVolumen; } }
+        public void setVolumen(decimal _volumen)
+        {
+            miGestion.setVolumen(_volumen);
+        }
+
     }
 
 }

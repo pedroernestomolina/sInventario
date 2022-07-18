@@ -15,6 +15,16 @@ namespace OOB.LibInventario.Kardex.Movimiento.Detalle
         public string autoConcepto { get; set; }
         public string modulo { get; set; }
 
+
+        public Filtro() 
+        {
+            autoProducto = "";
+            autoDeposito = "";
+            autoConcepto = "";
+            modulo = "";
+            ultDias = 0;
+        }
+
     }
 
 }

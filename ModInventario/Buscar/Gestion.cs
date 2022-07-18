@@ -26,7 +26,6 @@ namespace ModInventario.Buscar
         private Producto.AgregarEditar.Gestion _gestionEditarFicha;
         private Producto.AgregarEditar.Gestion _gestionAgregarFicha;
         private Producto.Estatus.Gestion _gestionEstatus;
-        private Kardex.Movimiento.Gestion _gestionKardex;
         private Producto.Imagen.Gestion _gestionImagen;
         private Producto.Proveedor.Gestion _gestionProveedor;
         private Producto.VisualizarFicha.Gestion _gestionVisualizarFicha;
@@ -37,9 +36,9 @@ namespace ModInventario.Buscar
         private Producto.Precio.ModoSucursal.Editar.IEditar _gEditarPrecio;
         private SeguridadSist.ISeguridad _gSeguridadUsu;
         private SeguridadSist.Usuario.IModoUsuario _gSeguridadModoUsu;
-        //private Producto.QR.Gestion _gestionQR;
         private Producto.QR.IQR _gQR;
         private Producto.Imagen.IImagen _gImagen;
+        private Kardex.Movimiento.IMov _gKardex;
 
 
         public object Source { get { return _gestionLista.Source; } }
@@ -89,9 +88,13 @@ namespace ModInventario.Buscar
                 new Producto.AgregarEditar.Agregar.Gestion(), 
                 ctrMaestros);
             //
+            _gKardex = new Kardex.Movimiento.Gestion();
+            //
+
+
+
 
             _gestionEstatus = new Producto.Estatus.Gestion();
-            _gestionKardex = new Kardex.Movimiento.Gestion();
             _gestionImagen = new Producto.Imagen.Gestion();
             _gestionProveedor = new Producto.Proveedor.Gestion();
             _gestionVisualizarFicha = new Producto.VisualizarFicha.Gestion();
@@ -406,15 +409,6 @@ namespace ModInventario.Buscar
             }
         }
 
-        public void MovKardex()
-        {
-            if (Item != null)
-            {
-                _gestionKardex.setFicha(Item.identidad.auto);
-                _gestionKardex.Inicia();
-            }
-        }
-
         public void EditarFicha()
         {
             if (Item != null)
@@ -663,6 +657,17 @@ namespace ModInventario.Buscar
         {
             _gFiltrarProducto.setMetBusqByCodigoBarra();
         }
+
+        public void MovKardex()
+        {
+            if (Item != null)
+            {
+                _gKardex.Inicializa();
+                _gKardex.setFicha(Item.identidad.auto);
+                _gKardex.Inicia();
+            }
+        }
+
 
     }
 

@@ -161,10 +161,6 @@ namespace ModInventario.Tool.AjusteNivelMinimoMaximoProducto
             CB_DEPOSITO.Enabled = _controlador.IsBuscarHabilitado;
             TB_CADENA.Text = "";
             DGV.Focus();
-
-            //CB_DEPARTAMENTO.Enabled = _controlador.IsBuscarHabilitado;
-            //TB_CADENA.Enabled = _controlador.IsBuscarHabilitado;
-            //BT_BUSCAR.Enabled = _controlador.IsBuscarHabilitado;
         }
 
         private void CB_DEPOSITO_SelectedIndexChanged(object sender, EventArgs e)
@@ -220,7 +216,6 @@ namespace ModInventario.Tool.AjusteNivelMinimoMaximoProducto
                 AjustarMinimoMaximo();
             }
         }
-
         private void AjustarMinimoMaximo()
         {
             _controlador.AjustarMinimoMaximo();
@@ -248,7 +243,6 @@ namespace ModInventario.Tool.AjusteNivelMinimoMaximoProducto
         {
             Salir();
         }
-
         private void Salir()
         {
             _controlador.Salir();
@@ -309,23 +303,6 @@ namespace ModInventario.Tool.AjusteNivelMinimoMaximoProducto
             }
         }
 
-        private void AjusteNivelFrm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (!_controlador.SalirIsOk) 
-            {
-                _controlador.Salir();
-                e.Cancel = !_controlador.SalirIsOk;
-            }
-        }
-
-        private void Ctr_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                this.SelectNextControl((Control)sender, true, true, true, true);
-            }
-        }
-
         private void TB_CADENA_Leave(object sender, EventArgs e)
         {
             _controlador.setCadenaBuscar(TB_CADENA.Text);
@@ -339,6 +316,23 @@ namespace ModInventario.Tool.AjusteNivelMinimoMaximoProducto
         private void LimpiarDepartamento()
         {
             CB_DEPARTAMENTO.SelectedIndex = -1;
+        }
+
+
+        private void AjusteNivelFrm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!_controlador.SalirIsOk)
+            {
+                _controlador.Salir();
+                e.Cancel = !_controlador.SalirIsOk;
+            }
+        }
+        private void Ctr_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.SelectNextControl((Control)sender, true, true, true, true);
+            }
         }
 
     }

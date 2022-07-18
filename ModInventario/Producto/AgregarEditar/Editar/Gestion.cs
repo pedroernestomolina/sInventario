@@ -566,6 +566,8 @@ namespace ModInventario.Producto.AgregarEditar.Editar
                 diasEmpaque = _diasEmpaque,
                 estatusCatalogo=_catalogo,
                 tasaImpuesto= entImpuesto.tasa,
+                peso= miData.GetPeso,
+                volumen=miData.GetVolumen,
             };
 
             //if (autoTasaActualPrd != miData.AutoImpuesto) 
@@ -867,6 +869,18 @@ namespace ModInventario.Producto.AgregarEditar.Editar
             _gSecurity.Inicializa();
             _gSecurity.Inicia();
             return _gSecurity.IsOk;
+        }
+
+
+        public decimal GetPeso { get { return miData.GetPeso; } }
+        public void setPeso(decimal _peso)
+        {
+            miData.setPeso(_peso);
+        }
+        public decimal GetVolumen { get { return miData.GetVolumen; } }
+        public void setVolumen(decimal _volumen)
+        {
+            miData.setVolumen(_volumen);
         }
 
     }

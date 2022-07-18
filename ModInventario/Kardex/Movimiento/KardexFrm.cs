@@ -16,12 +16,14 @@ namespace ModInventario.Kardex.Movimiento
     {
 
 
-        private Gestion _controlador;
+        private IMov _controlador;
 
 
         public KardexFrm()
         {
             InitializeComponent();
+            InicializaGrid();
+            InicializaCombo();
         }
 
         private void InicializaGrid()
@@ -89,7 +91,7 @@ namespace ModInventario.Kardex.Movimiento
             c4.HeaderCell.Style.Font = f;
             c4.DefaultCellStyle.Font = f1;
             c4.DefaultCellStyle.Alignment =  DataGridViewContentAlignment.MiddleRight;
-            c4.DefaultCellStyle.Format= _controlador.Decimales;
+            //c4.DefaultCellStyle.Format= _controlador.Decimales;
 
             DGV_COMPRA.Columns.Add(c2);
             DGV_COMPRA.Columns.Add(c1);
@@ -97,7 +99,6 @@ namespace ModInventario.Kardex.Movimiento
             DGV_COMPRA.Columns.Add(c3);
             DGV_COMPRA.Columns.Add(c4);
         }
-
         private void InicializaGrid_Venta()
         {
             var f = new Font("Serif", 8, FontStyle.Bold);
@@ -156,7 +157,7 @@ namespace ModInventario.Kardex.Movimiento
             c4.HeaderCell.Style.Font = f;
             c4.DefaultCellStyle.Font = f1;
             c4.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            c4.DefaultCellStyle.Format = _controlador.Decimales;
+            //c4.DefaultCellStyle.Format = _controlador.Decimales;
 
             DGV_VENTA.Columns.Add(c2);
             DGV_VENTA.Columns.Add(c1);
@@ -164,7 +165,6 @@ namespace ModInventario.Kardex.Movimiento
             DGV_VENTA.Columns.Add(c3);
             DGV_VENTA.Columns.Add(c4);
         }
-
         private void InicializaGrid_Inventario()
         {
             var f = new Font("Serif", 8, FontStyle.Bold);
@@ -223,7 +223,7 @@ namespace ModInventario.Kardex.Movimiento
             c4.HeaderCell.Style.Font = f;
             c4.DefaultCellStyle.Font = f1;
             c4.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            c4.DefaultCellStyle.Format = _controlador.Decimales;
+            //c4.DefaultCellStyle.Format = _controlador.Decimales;
 
             DGV_INV.Columns.Add(c2);
             DGV_INV.Columns.Add(c1);
@@ -231,95 +231,63 @@ namespace ModInventario.Kardex.Movimiento
             DGV_INV.Columns.Add(c3);
             DGV_INV.Columns.Add(c4);
         }
-
-
-        public void setControlador(Gestion ctr)
+        private void InicializaCombo()
         {
-            _controlador = ctr;
-            InicializaGrid();
+            CB_DEPOSITO.DisplayMember = "desc";
+            CB_DEPOSITO.ValueMember = "id";
+            CB_DIAS.DisplayMember = "desc";
+            CB_DIAS.ValueMember = "id";
         }
 
+
+        public void setControlador(IMov ctr)
+        {
+            _controlador = ctr;
+        }
+
+        private bool _modoInicializar;
         private void KardexFrm_Load(object sender, EventArgs e)
         {
+            _modoInicializar=true;
+            CB_DEPOSITO.DataSource = _controlador.GetDepositoSource;
+            CB_DEPOSITO.SelectedIndex = -1;
+            CB_DIAS.DataSource = _controlador.GetDiasSource;
             CB_DIAS.SelectedIndex = -1;
-            L_PRODUCTO.Text = _controlador.Producto;
 
-            DGV_COMPRA.DataSource = _controlador.Compra;
+            DGV_COMPRA.DataSource = _controlador.GetCompraSource;
             DGV_COMPRA.Refresh();
-
-            DGV_VENTA.DataSource = _controlador.Venta;
+            DGV_VENTA.DataSource = _controlador.GetVentaSource;
             DGV_VENTA.Refresh();
-
-            DGV_INV.DataSource = _controlador.Inventario;
+            DGV_INV.DataSource = _controlador.GetInventarioSource;
             DGV_INV.Refresh();
 
+            L_PRODUCTO.Text = _controlador.GetProductoInfo;
             ActualizarData();
             L_INVENTARIO_Click(this,System.EventArgs.Empty);
+            _modoInicializar = false;
         }
 
         private void ActualizarData()
         {
-            L_EX_ACTUAL.Text = _controlador.ExActual;
-            L_EX_FECHA.Text = _controlador.ExFecha;
-            L_FECHA.Text = _controlador.Fecha;
+            L_EX_ACTUAL.Text = _controlador.GetExActual;
+            L_EX_FECHA.Text = _controlador.GetExFecha;
+            L_FECHA.Text = _controlador.GetFecha;
         }
 
         private void BT_BUSCAR_Click(object sender, EventArgs e)
         {
             Procesar();
         }
-
         private void Procesar()
         {
             _controlador.Procesar();
             ActualizarData();
         }
 
-        private void CB_DIAS_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch (CB_DIAS.SelectedIndex) 
-            {
-                case -1:
-                    _controlador.setDias( OOB.LibInventario.Kardex.Enumerados.EnumMovUltDias.SinDefinir);
-                    break;
-                case 0:
-                    _controlador.setDias( OOB.LibInventario.Kardex.Enumerados.EnumMovUltDias.Hoy);
-                    break;
-                case 1:
-                    _controlador.setDias(OOB.LibInventario.Kardex.Enumerados.EnumMovUltDias.Ayer);
-                    break;
-                case 2:
-                    _controlador.setDias(OOB.LibInventario.Kardex.Enumerados.EnumMovUltDias._7Dias);
-                    break;
-                case 3:
-                    _controlador.setDias(OOB.LibInventario.Kardex.Enumerados.EnumMovUltDias._15Dias);
-                    break;
-                case 4:
-                    _controlador.setDias(OOB.LibInventario.Kardex.Enumerados.EnumMovUltDias._30Dias);
-                    break;
-                case 5:
-                    _controlador.setDias(OOB.LibInventario.Kardex.Enumerados.EnumMovUltDias._45Dias);
-                    break;
-                case 6:
-                    _controlador.setDias(OOB.LibInventario.Kardex.Enumerados.EnumMovUltDias._60Dias);
-                    break;
-                case 7:
-                    _controlador.setDias(OOB.LibInventario.Kardex.Enumerados.EnumMovUltDias._90Dias);
-                    break;
-                case 8:
-                    _controlador.setDias(OOB.LibInventario.Kardex.Enumerados.EnumMovUltDias._120Dias);
-                    break;
-                case 9:
-                    _controlador.setDias(OOB.LibInventario.Kardex.Enumerados.EnumMovUltDias.Todo);
-                    break;
-            }
-        }
-
         private void BT_VER_DETALLE_COMPRA_Click(object sender, EventArgs e)
         {
             VerDetalleCompra();
         }
-
         private void VerDetalleCompra()
         {
             _controlador.VerDetalleCompra();
@@ -329,7 +297,6 @@ namespace ModInventario.Kardex.Movimiento
         {
             VerDetalleVenta();
         }
-
         private void VerDetalleVenta()
         {
             _controlador.VerDetalleVenta();
@@ -339,7 +306,6 @@ namespace ModInventario.Kardex.Movimiento
         {
             VerDetalleInventario();
         }
-
         private void VerDetalleInventario()
         {
             _controlador.VerDetalleInventario();
@@ -383,6 +349,33 @@ namespace ModInventario.Kardex.Movimiento
             tableLayoutPanel3.RowStyles[0].Height = 40;
             tableLayoutPanel3.RowStyles[1].SizeType = SizeType.Absolute;
             tableLayoutPanel3.RowStyles[1].Height = 40;
+        }
+
+
+        private void CB_DIAS_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_modoInicializar)
+            {
+                return;
+            }
+            _controlador.setDias("");
+            if (CB_DIAS.SelectedIndex != -1)
+            {
+                _controlador.setDias(CB_DIAS.SelectedValue.ToString());
+            }
+        }
+
+        private void CB_DEPOSITO_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_modoInicializar)
+            {
+                return;
+            }
+            _controlador.setDeposito("");
+            if (CB_DEPOSITO.SelectedIndex != -1)
+            {
+                _controlador.setDeposito(CB_DEPOSITO.SelectedValue.ToString());
+            }
         }
 
     }

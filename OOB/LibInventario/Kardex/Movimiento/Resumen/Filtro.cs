@@ -10,6 +10,17 @@ namespace OOB.LibInventario.Kardex.Movimiento.Resumen
     
     public class Filtro: Movimiento.Filtro
     {
+
+        public string autoDeposito { get; set; }
+
+
+        public Filtro() 
+        {
+            autoProducto = "";
+            autoDeposito = "";
+            ultDias = 0;
+        }
+
     }
 
 }

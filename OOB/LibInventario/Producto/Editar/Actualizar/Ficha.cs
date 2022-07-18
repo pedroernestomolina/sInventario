@@ -38,12 +38,43 @@ namespace OOB.LibInventario.Producto.Editar.Actualizar
         public int diasEmpaque { get; set; }
         public string estatusCatalogo { get; set; }
         public List<FichaCodigoAlterno> codigosAlterno { get; set; }
+        public decimal peso { get; set; }
+        public decimal volumen { get; set; }
 
-        //public FichaPrecio precio_1 { get; set; }
-        //public FichaPrecio precio_2 { get; set; }
-        //public FichaPrecio precio_3 { get; set; }
-        //public FichaPrecio precio_4 { get; set; }
-        //public FichaPrecio precio_5 { get; set; }
+
+        public Ficha() 
+        {
+            auto = "";
+            autoDepartamento = "";
+            autoEmpCompra = "";
+            autoEmpInv = "";
+            autoGrupo = "";
+            autoMarca = "";
+            autoTasaImpuesto = "";
+
+            codigo="";
+            nombre="";
+            descripcion="";
+            modelo="";
+            referencia="";
+            contenidoCompra=1;
+            contenidoInv=1;
+            tasaImpuesto=0m;
+
+            origen="";
+            categoria="";
+            estatusDivisa="";
+            abc="";
+            esPesado="";
+            plu="";
+            diasEmpaque=0;
+            estatusCatalogo="";
+            peso=0m;
+            volumen=0m;
+            imagen=null;
+            codigosAlterno=null;
+        }
+
     }
 
 }

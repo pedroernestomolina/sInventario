@@ -633,7 +633,6 @@ namespace ModInventario
                     Helpers.Msg.Error("Parametro [ DEPOSITO ] Incorrectos, Verifique Por Favor");
                     return;
                 }
-
                 var rp = new Reportes.Filtros.Valorizacion.GestionRep();
                 rp.setFiltros(_gestionReporteFiltros.dataFiltrar);
                 rp.Generar();
@@ -867,6 +866,26 @@ namespace ModInventario
                 rp.setFiltros(_gestionReporteFiltros.dataFiltrar);
                 rp.Generar();
             }
+        }
+
+        public void ReporteResumenCostoInventario()
+        {
+            _gestionReporteFiltros.Inicializa();
+            _gestionReporteFiltros.setValidarData(false);
+            _gestionReporteFiltros.setGestion(new Reportes.Filtros.ResumenCostoInventario.Filtros());
+            _gestionReporteFiltros.Inicia();
+            if (_gestionReporteFiltros.FiltrosIsOK)
+            {
+                if (_gestionReporteFiltros.dataFiltrar.Deposito == null)
+                {
+                    Helpers.Msg.Error("Parametro [ DEPOSITO ] Incorrectos, Verifique Por Favor");
+                    return;
+                }
+                var rp = new Reportes.Filtros.ResumenCostoInventario.GestionRep();
+                rp.setFiltros(_gestionReporteFiltros.dataFiltrar);
+                rp.Generar();
+            }
+
         }
 
     }

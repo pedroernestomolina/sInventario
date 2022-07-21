@@ -35,6 +35,8 @@ namespace DataProvInventario.InfraEstructura
             Reportes_Valorizacion(OOB.LibInventario.Reportes.Valorizacion.Filtro filtro);
         OOB.ResultadoLista<OOB.LibInventario.Reportes.MaestroExistenciaInventario.Ficha> 
             Reportes_MaestroExistenciaInventario(OOB.LibInventario.Reportes.MaestroExistenciaInventario.Filtro filtro);
+        OOB.ResultadoEntidad<OOB.LibInventario.Reportes.ResumenCostoInv.Ficha>
+         Reportes_ResumenCostoInventario(OOB.LibInventario.Reportes.ResumenCostoInv.Filtro filtro);
 
     }
 

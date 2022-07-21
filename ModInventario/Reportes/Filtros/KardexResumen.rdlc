@@ -411,7 +411,7 @@
         <Top>0.17639cm</Top>
         <Left>0.17647cm</Left>
         <Height>1.2cm</Height>
-        <Width>20.09278cm</Width>
+        <Width>20.09276cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -419,7 +419,7 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>2in</Height>
+    <Height>0.69792in</Height>
     <Style />
   </Body>
   <Width>8.11254in</Width>

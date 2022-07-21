@@ -238,6 +238,12 @@
     <Compile Include="LibInventario\Reportes\MaestroProducto\Filtro.cs" />
     <Compile Include="LibInventario\Reportes\NivelMinimo\Ficha.cs" />
     <Compile Include="LibInventario\Reportes\NivelMinimo\Filtro.cs" />
+    <Compile Include="LibInventario\Reportes\ResumenCostoInv\Ficha.cs" />
+    <Compile Include="LibInventario\Reportes\ResumenCostoInv\Filtro.cs" />
+    <Compile Include="LibInventario\Reportes\ResumenCostoInv\PorCompras.cs" />
+    <Compile Include="LibInventario\Reportes\ResumenCostoInv\PorInventario.cs" />
+    <Compile Include="LibInventario\Reportes\ResumenCostoInv\PorMovInventario.cs" />
+    <Compile Include="LibInventario\Reportes\ResumenCostoInv\PorVentas.cs" />
     <Compile Include="LibInventario\Reportes\Top20\Ficha.cs" />
     <Compile Include="LibInventario\Reportes\Top20\Filtro.cs" />
     <Compile Include="LibInventario\Reportes\Valorizacion\Ficha.cs" />

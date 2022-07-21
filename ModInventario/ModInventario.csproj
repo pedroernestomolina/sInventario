@@ -681,6 +681,9 @@
     <Compile Include="Reportes\Filtros\NivelMInimo\GestionRep.cs" />
     <Compile Include="Reportes\Filtros\RelacionCompraVenta\Filtros.cs" />
     <Compile Include="Reportes\Filtros\RelacionCompraVenta\GestionRep.cs" />
+    <Compile Include="Reportes\Filtros\ResumenCostoInventario\data.cs" />
+    <Compile Include="Reportes\Filtros\ResumenCostoInventario\Filtros.cs" />
+    <Compile Include="Reportes\Filtros\ResumenCostoInventario\GestionRep.cs" />
     <Compile Include="Reportes\Filtros\Valorizacion\Filtros.cs" />
     <Compile Include="Reportes\Filtros\Valorizacion\GestionRep.cs" />
     <Compile Include="Reportes\Graficas\DS1.Designer.cs">
@@ -1024,6 +1027,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Filtros\RelacionCompraVenta.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Filtros\ResumenCostoInv.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Filtros\Valorizacion.rdlc">

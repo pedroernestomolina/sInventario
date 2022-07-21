@@ -485,6 +485,10 @@ namespace ModInventario
         {
             _controlador.ReporteMaestroExistenciaInventario();
         }
+        private void TSM_REPORTE_RESUMEN_COSTO_INVENTARIO_Click(object sender, EventArgs e)
+        {
+            _controlador.ReporteResumenCostoInventario();
+        }
 
     }
 

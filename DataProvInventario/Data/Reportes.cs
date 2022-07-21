@@ -676,6 +676,125 @@ namespace DataProvInventario.Data
 
             return rt;
         }
+        public OOB.ResultadoEntidad<OOB.LibInventario.Reportes.ResumenCostoInv.Ficha> 
+            Reportes_ResumenCostoInventario(OOB.LibInventario.Reportes.ResumenCostoInv.Filtro filtro)
+        {
+            var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Reportes.ResumenCostoInv.Ficha>();
+
+            var filtroDto = new DtoLibInventario.Reportes.ResumenCostoInv.Filtro()
+            {
+                autoDepartamento = filtro.autoDepartamento,
+                autoDeposito = filtro.autoDeposito,
+                autoGrupo = filtro.autoGrupo,
+                desde = filtro.desde,
+                hasta = filtro.hasta,
+            };
+            var r01 = MyData.Reportes_ResumenCostoInventario(filtroDto);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                rt.Mensaje = r01.Mensaje;
+                rt.Result = OOB.Enumerados.EnumResult.isError;
+                return rt;
+            }
+
+            var l_inv = new List<OOB.LibInventario.Reportes.ResumenCostoInv.PorInventario>();
+            var lst_inv = r01.Entidad.enInventario;
+            if (lst_inv != null)
+            {
+                if (lst_inv.Count > 0)
+                {
+                    l_inv = lst_inv.Select(s =>
+                    {
+                        var _ex = 0m;
+                        var _costo = 0m;
+                        if (s.exIniUnd.HasValue)
+                            _ex = s.exIniUnd.Value;
+                        if (s.costoIniEmpDivisa.HasValue)
+                            _costo = s.costoIniEmpDivisa.Value;
+
+                        return new OOB.LibInventario.Reportes.ResumenCostoInv.PorInventario()
+                        {
+                            autoPrd = s.autoPrd,
+                            codigoPrd = s.codigoPrd,
+                            contEmpPrd = s.contEmpPrd,
+                            costoIniEmpDivisa = _costo,
+                            exIniUnd = _ex,
+                            nombrePrd = s.nombrePrd,
+                        };
+                    }).ToList();
+                }
+            }
+
+            var l_movInv = new List<OOB.LibInventario.Reportes.ResumenCostoInv.PorMovInventario>();
+            var lst_movInv = r01.Entidad.enMovInv;
+            if (lst_movInv  != null)
+            {
+                if (lst_movInv.Count > 0)
+                {
+                    l_movInv = lst_movInv.Select(s =>
+                    {
+                        return new OOB.LibInventario.Reportes.ResumenCostoInv.PorMovInventario()
+                        {
+                            auto = s.auto,
+                            cntUnd = s.cntUnd,
+                            costoTotal = s.costoTotal,
+                            documento = s.documento,
+                            factor = s.factor,
+                            siglas = s.siglas,
+                        };
+                    }).ToList();
+                }
+            }
+
+            var l_compra = new List<OOB.LibInventario.Reportes.ResumenCostoInv.PorCompras>();
+            var lst_compra = r01.Entidad.enCompras;
+            if (lst_compra != null)
+            {
+                if (lst_compra.Count > 0)
+                {
+                    l_compra= lst_compra.Select(s =>
+                    {
+                        return new OOB.LibInventario.Reportes.ResumenCostoInv.PorCompras()
+                        {
+                            auto = s.auto,
+                            cntUnd = s.cntUnd,
+                            costoTotal = s.costoTotal,
+                            documento = s.documento,
+                            factor = s.factor,
+                            siglas = s.siglas,
+                        };
+                    }).ToList();
+                }
+            }
+
+            var l_venta= new List<OOB.LibInventario.Reportes.ResumenCostoInv.PorVentas>();
+            var lst_venta= r01.Entidad.enVentas;
+            if (lst_venta!= null)
+            {
+                if (lst_venta.Count > 0)
+                {
+                    l_venta = lst_venta.Select(s =>
+                    {
+                        return new OOB.LibInventario.Reportes.ResumenCostoInv.PorVentas()
+                        {
+                            auto = s.auto,
+                            cntUnd = s.cntUnd,
+                            costoDivisa = s.costoDivisa,
+                            siglas = s.siglas,
+                            ventaDivisa = s.ventaDivisa,
+                        };
+                    }).ToList();
+                }
+            }
+            rt.Entidad = new OOB.LibInventario.Reportes.ResumenCostoInv.Ficha()
+            {
+                enInventario = l_inv,
+                enMovInv= l_movInv,
+                enCompras = l_compra,
+                enVentas = l_venta,
+            };
+            return rt;
+        }
 
     }
 

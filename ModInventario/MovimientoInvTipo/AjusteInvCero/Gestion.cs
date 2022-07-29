@@ -360,9 +360,10 @@ namespace ModInventario.MovimientoInvTipo.AjusteInvCero
                     nombreDeposito = _gDepOrigen.Item.desc,
                     nota = "",
                     precioUnd = 0.0m,
-                    siglasMov =_docTipo.siglas,
+                    siglasMov = _docTipo.siglas,
                     signoMov = s.Signo,
-                    total = Math.Abs(s.ImporteNacional), 
+                    total = Math.Abs(s.ImporteNacional),
+                    factorCambio = _tasaCambio,
                 };
                 return rg;
             }).ToList();

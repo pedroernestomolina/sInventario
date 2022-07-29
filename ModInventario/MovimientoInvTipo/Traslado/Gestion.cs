@@ -519,9 +519,10 @@ namespace ModInventario.MovimientoInvTipo.Traslado
                     nombreDeposito = _gDepOrigen.Item.desc,
                     nota = "",
                     precioUnd = 0.0m,
-                    siglasMov =_docTipo.siglas,
+                    siglasMov = _docTipo.siglas,
                     signoMov = -1,
                     total = s.ImporteNacional,
+                    factorCambio = _tasaCambio,
                 };
                 return rg;
             }).ToList();
@@ -551,6 +552,7 @@ namespace ModInventario.MovimientoInvTipo.Traslado
                     siglasMov = _docTipo.siglas,
                     signoMov = 1,
                     total = s.ImporteNacional,
+                    factorCambio = _tasaCambio,
                 };
                 return rg;
             }).ToList();

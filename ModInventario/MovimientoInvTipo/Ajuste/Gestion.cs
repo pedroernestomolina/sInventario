@@ -442,6 +442,7 @@ namespace ModInventario.MovimientoInvTipo.Ajuste
                     siglasMov =_docTipo.siglas,
                     signoMov = s.Signo,
                     total = Math.Abs(s.ImporteNacional),
+                    factorCambio = _tasaCambio,
                 };
                 return rg;
             }).ToList();

@@ -13,7 +13,8 @@ namespace DataProvInventario.Data
     {
 
         //INSERTAR
-        public OOB.ResultadoAuto Producto_Movimiento_Ajuste_Insertar(OOB.LibInventario.Movimiento.Ajuste.Insertar.Ficha data)
+        public OOB.ResultadoAuto 
+            Producto_Movimiento_Ajuste_Insertar(OOB.LibInventario.Movimiento.Ajuste.Insertar.Ficha data)
         {
             var rt = new OOB.ResultadoAuto();
 
@@ -99,6 +100,7 @@ namespace DataProvInventario.Data
                     nombreConcepto = s.nombreConcepto,
                     codigoDeposito = s.codigoDeposito,
                     nombreDeposito = s.nombreDeposito,
+                    factorCambio = s.factorCambio,
                 };
                 return dt;
             }).ToList();
@@ -132,7 +134,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.ResultadoAuto Producto_Movimiento_Traslado_Insertar(OOB.LibInventario.Movimiento.Traslado.Insertar.Ficha ficha)
+        public OOB.ResultadoAuto 
+            Producto_Movimiento_Traslado_Insertar(OOB.LibInventario.Movimiento.Traslado.Insertar.Ficha ficha)
         {
             var rt = new OOB.ResultadoAuto();
 
@@ -203,7 +206,7 @@ namespace DataProvInventario.Data
                     cantidad = s.cantidad,
                     cantidadBono = s.cantidadBono,
                     cantidadUnd = s.cantidadUnd,
-                    codigoMov= s.codigoMov,
+                    codigoMov = s.codigoMov,
                     codigoSucursal = s.codigoSucursal,
                     costoUnd = s.costoUnd,
                     entidad = s.entidad,
@@ -212,12 +215,13 @@ namespace DataProvInventario.Data
                     nota = s.nota,
                     precioUnd = s.precioUnd,
                     siglasMov = s.siglasMov,
-                    signoMov= s.signoMov,
+                    signoMov = s.signoMov,
                     total = s.total,
                     codigoConcepto = s.codigoConcepto,
                     nombreConcepto = s.nombreConcepto,
                     codigoDeposito = s.codigoDeposito,
                     nombreDeposito = s.nombreDeposito,
+                    factorCambio = s.factorCambio,
                 };
                 return dt;
             }).ToList();
@@ -254,7 +258,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.ResultadoAuto Producto_Movimiento_Traslado_Devolucion_Insertar(OOB.LibInventario.Movimiento.Traslado.Insertar.Ficha ficha)
+        public OOB.ResultadoAuto 
+            Producto_Movimiento_Traslado_Devolucion_Insertar(OOB.LibInventario.Movimiento.Traslado.Insertar.Ficha ficha)
         {
             var rt = new OOB.ResultadoAuto();
 
@@ -325,7 +330,7 @@ namespace DataProvInventario.Data
                     cantidad = s.cantidad,
                     cantidadBono = s.cantidadBono,
                     cantidadUnd = s.cantidadUnd,
-                    codigoMov= s.codigoMov,
+                    codigoMov = s.codigoMov,
                     codigoSucursal = s.codigoSucursal,
                     costoUnd = s.costoUnd,
                     entidad = s.entidad,
@@ -333,13 +338,14 @@ namespace DataProvInventario.Data
                     modulo = s.modulo,
                     nota = s.nota,
                     precioUnd = s.precioUnd,
-                    siglasMov= s.siglasMov,
-                    signoMov= s.signoMov,
+                    siglasMov = s.siglasMov,
+                    signoMov = s.signoMov,
                     total = s.total,
                     codigoConcepto = s.codigoConcepto,
                     nombreConcepto = s.nombreConcepto,
                     codigoDeposito = s.codigoDeposito,
                     nombreDeposito = s.nombreDeposito,
+                    factorCambio = s.factorCambio,
                 };
                 return dt;
             }).ToList();
@@ -376,7 +382,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.ResultadoAuto Producto_Movimiento_DesCargo_Insertar(OOB.LibInventario.Movimiento.DesCargo.Insertar.Ficha ficha)
+        public OOB.ResultadoAuto 
+            Producto_Movimiento_DesCargo_Insertar(OOB.LibInventario.Movimiento.DesCargo.Insertar.Ficha ficha)
         {
             var rt = new OOB.ResultadoAuto();
 
@@ -462,6 +469,7 @@ namespace DataProvInventario.Data
                     nombreConcepto = s.nombreConcepto,
                     codigoDeposito = s.codigoDeposito,
                     nombreDeposito = s.nombreDeposito,
+                    factorCambio = s.factorCambio,
                 };
                 return dt;
             }).ToList();
@@ -496,7 +504,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.ResultadoAuto Producto_Movimiento_Cargo_Insertar(OOB.LibInventario.Movimiento.Cargo.Insertar.Ficha ficha)
+        public OOB.ResultadoAuto 
+            Producto_Movimiento_Cargo_Insertar(OOB.LibInventario.Movimiento.Cargo.Insertar.Ficha ficha)
         {
             var rt = new OOB.ResultadoAuto();
 
@@ -582,6 +591,7 @@ namespace DataProvInventario.Data
                     nombreConcepto = s.nombreConcepto,
                     codigoDeposito = s.codigoDeposito,
                     nombreDeposito = s.nombreDeposito,
+                    factorCambio = s.factorCambio,
                 };
                 return dt;
             }).ToList();
@@ -733,7 +743,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.ResultadoAuto Producto_Movimiento_AjusteInventarioCero_Insertar(OOB.LibInventario.Movimiento.AjusteInvCero.Insertar.Ficha data)
+        public OOB.ResultadoAuto 
+            Producto_Movimiento_AjusteInventarioCero_Insertar(OOB.LibInventario.Movimiento.AjusteInvCero.Insertar.Ficha data)
         {
             var rt = new OOB.ResultadoAuto();
 
@@ -819,6 +830,7 @@ namespace DataProvInventario.Data
                     nombreConcepto = s.nombreConcepto,
                     codigoDeposito = s.codigoDeposito,
                     nombreDeposito = s.nombreDeposito,
+                    factorCambio = s.factorCambio,
                 };
                 return dt;
             }).ToList();
@@ -855,7 +867,8 @@ namespace DataProvInventario.Data
 
 
         //GET
-        public OOB.ResultadoEntidad<OOB.LibInventario.Movimiento.Ver.Ficha> Producto_Movimiento_GetFicha(string autoDoc)
+        public OOB.ResultadoEntidad<OOB.LibInventario.Movimiento.Ver.Ficha>
+            Producto_Movimiento_GetFicha(string autoDoc)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Movimiento.Ver.Ficha>();
 
@@ -913,7 +926,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.ResultadoLista<OOB.LibInventario.Movimiento.Lista.Ficha> Producto_Movimiento_GetLista(OOB.LibInventario.Movimiento.Lista.Filtro filtro)
+        public OOB.ResultadoLista<OOB.LibInventario.Movimiento.Lista.Ficha>
+            Producto_Movimiento_GetLista(OOB.LibInventario.Movimiento.Lista.Filtro filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Movimiento.Lista.Ficha>();
 
@@ -970,7 +984,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.ResultadoEntidad<OOB.LibInventario.Movimiento.AjusteInvCero.Capture.Ficha> Producto_Movimiento_AjusteInventarioCero_Capture(OOB.LibInventario.Movimiento.AjusteInvCero.Capture.Filtro filtro)
+        public OOB.ResultadoEntidad<OOB.LibInventario.Movimiento.AjusteInvCero.Capture.Ficha> 
+            Producto_Movimiento_AjusteInventarioCero_Capture(OOB.LibInventario.Movimiento.AjusteInvCero.Capture.Filtro filtro)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Movimiento.AjusteInvCero.Capture.Ficha>();
 
@@ -1026,7 +1041,8 @@ namespace DataProvInventario.Data
 
 
         //ANULAR
-        public OOB.Resultado Producto_Movimiento_Cargo_Anular(OOB.LibInventario.Movimiento.Anular.Cargo.Ficha ficha)
+        public OOB.Resultado 
+            Producto_Movimiento_Cargo_Anular(OOB.LibInventario.Movimiento.Anular.Cargo.Ficha ficha)
         {
             var rt = new OOB.Resultado();
 
@@ -1050,7 +1066,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.Resultado Producto_Movimiento_Descargo_Anular(OOB.LibInventario.Movimiento.Anular.Descargo.Ficha ficha)
+        public OOB.Resultado 
+            Producto_Movimiento_Descargo_Anular(OOB.LibInventario.Movimiento.Anular.Descargo.Ficha ficha)
         {
             var rt = new OOB.Resultado();
 
@@ -1074,7 +1091,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.Resultado Producto_Movimiento_Traslado_Anular(OOB.LibInventario.Movimiento.Anular.Traslado.Ficha ficha)
+        public OOB.Resultado
+            Producto_Movimiento_Traslado_Anular(OOB.LibInventario.Movimiento.Anular.Traslado.Ficha ficha)
         {
             var rt = new OOB.Resultado();
 
@@ -1098,7 +1116,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.Resultado Producto_Movimiento_Ajuste_Anular(OOB.LibInventario.Movimiento.Anular.Ajuste.Ficha ficha)
+        public OOB.Resultado
+            Producto_Movimiento_Ajuste_Anular(OOB.LibInventario.Movimiento.Anular.Ajuste.Ficha ficha)
         {
             var rt = new OOB.Resultado();
 
@@ -1125,7 +1144,8 @@ namespace DataProvInventario.Data
 
 
         //
-        public OOB.ResultadoLista<OOB.LibInventario.Movimiento.Traslado.Capturar.ProductoPorDebajoNivelMinimo.Ficha> Capturar_ProductosPorDebajoNivelMinimo(OOB.LibInventario.Movimiento.Traslado.Capturar.ProductoPorDebajoNivelMinimo.Filtro filtro)
+        public OOB.ResultadoLista<OOB.LibInventario.Movimiento.Traslado.Capturar.ProductoPorDebajoNivelMinimo.Ficha> 
+            Capturar_ProductosPorDebajoNivelMinimo(OOB.LibInventario.Movimiento.Traslado.Capturar.ProductoPorDebajoNivelMinimo.Filtro filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Movimiento.Traslado.Capturar.ProductoPorDebajoNivelMinimo.Ficha>();
 
@@ -1192,7 +1212,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.ResultadoLista<OOB.LibInventario.Movimiento.Traslado.Consultar.ProductoPorDebajoNivelMinimo> Producto_Movimiento_Traslado_Consultar_ProductosPorDebajoNivelMinimo(OOB.LibInventario.Movimiento.Traslado.Consultar.Filtro filtro)
+        public OOB.ResultadoLista<OOB.LibInventario.Movimiento.Traslado.Consultar.ProductoPorDebajoNivelMinimo>
+            Producto_Movimiento_Traslado_Consultar_ProductosPorDebajoNivelMinimo(OOB.LibInventario.Movimiento.Traslado.Consultar.Filtro filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Movimiento.Traslado.Consultar.ProductoPorDebajoNivelMinimo>();
 

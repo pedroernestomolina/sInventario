@@ -35,6 +35,7 @@ namespace OOB.LibInventario.Movimiento.Ajuste.Insertar
             nombreConcepto = "";
             codigoDeposito = "";
             nombreDeposito = "";
+            factorCambio = 0m;
         }
 
     }

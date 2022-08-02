@@ -161,7 +161,8 @@ namespace ModInventario.FiltrosGen.Reportes
             }
             _gDivisa.setData(lDivisa);
 
-            var r04 = Sistema.MyData.Sucursal_GetLista();
+            var filtroOOb = new OOB.LibInventario.Sucursal.Filtro();
+            var r04 = Sistema.MyData.Sucursal_GetLista(filtroOOb);
             if (r04.Result == OOB.Enumerados.EnumResult.isError)
             {
                 Helpers.Msg.Error(r04.Mensaje);

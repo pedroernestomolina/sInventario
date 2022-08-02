@@ -11,8 +11,10 @@ namespace DataProvInventario.InfraEstructura
     public interface ISucursal
     {
 
-        OOB.ResultadoLista<OOB.LibInventario.Sucursal.Ficha> Sucursal_GetLista();
-        OOB.ResultadoEntidad<OOB.LibInventario.Sucursal.Ficha> Sucursal_GetFicha(string auto);
+        OOB.ResultadoLista<OOB.LibInventario.Sucursal.Ficha> 
+            Sucursal_GetLista(OOB.LibInventario.Sucursal.Filtro filtro);
+        OOB.ResultadoEntidad<OOB.LibInventario.Sucursal.Ficha> 
+            Sucursal_GetFicha(string auto);
         
     }
 

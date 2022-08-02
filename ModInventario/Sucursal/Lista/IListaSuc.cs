@@ -5,15 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModInventario
+namespace ModInventario.Sucursal.Lista
 {
     
-    public interface IGestion
+    public interface IListaSuc: IGestion, Gestion.ILista
     {
-
-        void Inicializa();
-        void Inicia();
-
     }
 
 }

@@ -12,11 +12,13 @@ namespace DataProvInventario.Data
     public partial class DataProv: IData
     {
 
-        public OOB.ResultadoLista<OOB.LibInventario.Sucursal.Ficha> Sucursal_GetLista()
+        public OOB.ResultadoLista<OOB.LibInventario.Sucursal.Ficha> 
+            Sucursal_GetLista(OOB.LibInventario.Sucursal.Filtro filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Sucursal.Ficha>();
 
-            var r01 = MyData.Sucursal_GetLista() ;
+            var filtroDTo = new DtoLibInventario.Sucursal.Filtro() { idEmpresaGrupo = filtro.idEmpresaGrupo };
+            var r01 = MyData.Sucursal_GetLista(filtroDTo);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
                 rt.Mensaje = r01.Mensaje;
@@ -44,8 +46,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoEntidad<OOB.LibInventario.Sucursal.Ficha> Sucursal_GetFicha(string auto)
+        public OOB.ResultadoEntidad<OOB.LibInventario.Sucursal.Ficha> 
+            Sucursal_GetFicha(string auto)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Sucursal.Ficha>();
 

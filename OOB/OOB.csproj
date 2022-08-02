@@ -81,6 +81,7 @@
     <Compile Include="LibInventario\EmpaqueMedida\Editar.cs" />
     <Compile Include="LibInventario\EmpaqueMedida\Ficha.cs" />
     <Compile Include="LibInventario\Empresa\Data\Ficha.cs" />
+    <Compile Include="LibInventario\Empresa\Grupo\Lista\Ficha.cs" />
     <Compile Include="LibInventario\Grupo\Agregar.cs" />
     <Compile Include="LibInventario\Grupo\Editar.cs" />
     <Compile Include="LibInventario\Grupo\Ficha.cs" />
@@ -251,6 +252,7 @@
     <Compile Include="LibInventario\Sistema\TipoDocumento\Entidad\Ficha.cs" />
     <Compile Include="LibInventario\Sistema\TipoDocumento\enumerados.cs" />
     <Compile Include="LibInventario\Sucursal\Ficha.cs" />
+    <Compile Include="LibInventario\Sucursal\Filtro.cs" />
     <Compile Include="LibInventario\TasaImpuesto\Ficha.cs" />
     <Compile Include="LibInventario\Tool\AjusteNivelMinimoMaximoProducto\Ajustar\Ficha.cs" />
     <Compile Include="LibInventario\Tool\AjusteNivelMinimoMaximoProducto\Capturar\Ficha.cs" />
@@ -268,6 +270,7 @@
     <Compile Include="LibInventario\Visor\Ajuste\Ficha.cs" />
     <Compile Include="LibInventario\Visor\Ajuste\FichaDetalle.cs" />
     <Compile Include="LibInventario\Visor\Ajuste\Filtro.cs" />
+    <Compile Include="LibInventario\Visor\BaseFiltro.cs" />
     <Compile Include="LibInventario\Visor\CostoEdad\Ficha.cs" />
     <Compile Include="LibInventario\Visor\CostoEdad\FichaDetalle.cs" />
     <Compile Include="LibInventario\Visor\CostoEdad\Filtro.cs" />
@@ -276,6 +279,8 @@
     <Compile Include="LibInventario\Visor\Existencia\Enumerados.cs" />
     <Compile Include="LibInventario\Visor\Existencia\Ficha.cs" />
     <Compile Include="LibInventario\Visor\Existencia\Filtro.cs" />
+    <Compile Include="LibInventario\Visor\PrecioAjuste\Ficha.cs" />
+    <Compile Include="LibInventario\Visor\PrecioAjuste\Filtro.cs" />
     <Compile Include="LibInventario\Visor\Precio\Ficha.cs" />
     <Compile Include="LibInventario\Visor\Precio\Filtro.cs" />
     <Compile Include="LibInventario\Visor\Traslado\Ficha.cs" />

@@ -12,7 +12,8 @@ namespace DataProvInventario.Data
     public partial class DataProv : IData
     {
 
-        public OOB.ResultadoLista<OOB.LibInventario.Visor.Existencia.Ficha> Visor_Existencia(OOB.LibInventario.Visor.Existencia.Filtro filtro)
+        public OOB.ResultadoLista<OOB.LibInventario.Visor.Existencia.Ficha> 
+            Visor_Existencia(OOB.LibInventario.Visor.Existencia.Filtro filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Visor.Existencia.Ficha>();
 
@@ -68,8 +69,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoEntidad<OOB.LibInventario.Visor.CostoEdad.Ficha> Visor_CostoEdad(OOB.LibInventario.Visor.CostoEdad.Filtro filtro)
+        public OOB.ResultadoEntidad<OOB.LibInventario.Visor.CostoEdad.Ficha> 
+            Visor_CostoEdad(OOB.LibInventario.Visor.CostoEdad.Filtro filtro)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Visor.CostoEdad.Ficha>();
 
@@ -136,8 +137,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoLista<OOB.LibInventario.Visor.Traslado.Ficha> Visor_Traslado(OOB.LibInventario.Visor.Traslado.Filtro filtro)
+        public OOB.ResultadoLista<OOB.LibInventario.Visor.Traslado.Ficha> 
+            Visor_Traslado(OOB.LibInventario.Visor.Traslado.Filtro filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Visor.Traslado.Ficha>();
 
@@ -189,8 +190,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoEntidad<OOB.LibInventario.Visor.Ajuste.Ficha> Visor_Ajuste(OOB.LibInventario.Visor.Ajuste.Filtro filtro)
+        public OOB.ResultadoEntidad<OOB.LibInventario.Visor.Ajuste.Ficha> 
+            Visor_Ajuste(OOB.LibInventario.Visor.Ajuste.Filtro filtro)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Visor.Ajuste.Ficha>();
 
@@ -248,8 +249,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoLista<OOB.LibInventario.Visor.CostoExistencia.Ficha> Visor_CostoExistencia(OOB.LibInventario.Visor.CostoExistencia.Filtro filtro)
+        public OOB.ResultadoLista<OOB.LibInventario.Visor.CostoExistencia.Ficha> 
+            Visor_CostoExistencia(OOB.LibInventario.Visor.CostoExistencia.Filtro filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Visor.CostoExistencia.Ficha>();
 
@@ -306,8 +307,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoLista<OOB.LibInventario.Visor.Precio.Ficha> Visor_Precio(OOB.LibInventario.Visor.Precio.Filtro filtro)
+        public OOB.ResultadoLista<OOB.LibInventario.Visor.Precio.Ficha> 
+            Visor_Precio(OOB.LibInventario.Visor.Precio.Filtro filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Visor.Precio.Ficha>();
 
@@ -354,6 +355,74 @@ namespace DataProvInventario.Data
                     }).ToList();
                 }
                 rt.Lista = list;
+            }
+
+            return rt;
+        }
+        public OOB.ResultadoLista<OOB.LibInventario.Visor.PrecioAjuste.Ficha> 
+            Visor_PrecioAjuste(OOB.LibInventario.Visor.PrecioAjuste.Filtro filtro)
+        {
+            var rt = new OOB.ResultadoLista<OOB.LibInventario.Visor.PrecioAjuste.Ficha>();
+
+            var filtroDto = new DtoLibInventario.Visor.PrecioAjuste.Filtro()
+            {
+                autoDepart = filtro.autoDepart,
+                autoGrupo = filtro.autoGrupo,
+                idEmpresaGrrupo = filtro.idEmpresaGrrupo,
+            };
+            var r01 = MyData.Visor_PrecioAjuste (filtroDto);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                rt.Mensaje = r01.Mensaje;
+                rt.Result = OOB.Enumerados.EnumResult.isError;
+                return rt;
+            }
+
+            var _lst = new List<OOB.LibInventario.Visor.PrecioAjuste.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    _lst = r01.Lista.Select(s =>
+                    {
+                        return new OOB.LibInventario.Visor.PrecioAjuste.Ficha()
+                        {
+                            auto = s.auto,
+                            nombre = s.nombre,
+                            contEmp1_1 = s.contEmp1_1,
+                            contEmp1_2 = s.contEmp1_2,
+                            contEmp1_3 = s.contEmp1_3,
+                            contEmp1_4 = s.contEmp1_4,
+                            contEmp1_5 = s.contEmp1_5,
+                            contEmp2_1 = s.contEmp2_1,
+                            contEmp2_2 = s.contEmp2_2,
+                            contEmp2_3 = s.contEmp2_3,
+                            contEmp2_4 = s.contEmp2_4,
+                            contEmp2_5 = s.contEmp2_5,
+                            contEmp3_1 = s.contEmp3_1,
+                            contEmp3_2 = s.contEmp3_2,
+                            contEmp3_3 = s.contEmp3_3,
+                            contEmp3_4 = s.contEmp3_4,
+                            contEmp3_5 = s.contEmp3_5,
+                            pFDivEmp1_1 = s.pFDivEmp1_1,
+                            pFDivEmp1_2 = s.pFDivEmp1_2,
+                            pFDivEmp1_3 = s.pFDivEmp1_3,
+                            pFDivEmp1_4 = s.pFDivEmp1_4,
+                            pFDivEmp1_5 = s.pFDivEmp1_5,
+                            pFDivEmp2_1 = s.pFDivEmp2_1,
+                            pFDivEmp2_2 = s.pFDivEmp2_2,
+                            pFDivEmp2_3 = s.pFDivEmp2_3,
+                            pFDivEmp2_4 = s.pFDivEmp2_4,
+                            pFDivEmp2_5 = s.pFDivEmp2_5,
+                            pFDivEmp3_1 = s.pFDivEmp3_1,
+                            pFDivEmp3_2 = s.pFDivEmp3_2,
+                            pFDivEmp3_3 = s.pFDivEmp3_3,
+                            pFDivEmp3_4 = s.pFDivEmp3_4,
+                            pFDivEmp3_5 = s.pFDivEmp3_5,
+                        };
+                    }).ToList();
+                }
+                rt.Lista = _lst;
             }
 
             return rt;

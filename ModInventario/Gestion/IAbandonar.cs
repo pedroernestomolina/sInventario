@@ -5,15 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModInventario
+namespace ModInventario.Gestion
 {
     
-    public interface IGestion
+    public interface IAbandonar
     {
-
-        void Inicializa();
-        void Inicia();
-
     }
 
 }

@@ -182,7 +182,8 @@ namespace ModInventario.MovimientoInvTipo.Traslado
                 _gDepDestino.setData(lst);
             }
 
-            var r02 = Sistema.MyData.Sucursal_GetLista();
+            var filtroOOb = new OOB.LibInventario.Sucursal.Filtro();
+            var r02 = Sistema.MyData.Sucursal_GetLista(filtroOOb);
             if (r02.Result == OOB.Enumerados.EnumResult.isError)
             {
                 Helpers.Msg.Error(r02.Mensaje);

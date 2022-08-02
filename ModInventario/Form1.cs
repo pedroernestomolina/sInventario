@@ -247,7 +247,6 @@ namespace ModInventario
         {
             VisorCostoExistencia();
         }
-
         private void VisorCostoExistencia()
         {
             _controlador.VisorCostoExistencia();
@@ -488,6 +487,19 @@ namespace ModInventario
         private void TSM_REPORTE_RESUMEN_COSTO_INVENTARIO_Click(object sender, EventArgs e)
         {
             _controlador.ReporteResumenCostoInventario();
+        }
+
+        private void rotaciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO_Click(object sender, EventArgs e)
+        {
+            VisorPrecio_AjustarProductosConExistenciaPrecioCero();
+        }
+        private void VisorPrecio_AjustarProductosConExistenciaPrecioCero()
+        {
+            _controlador.VisorPrecio_AjustarProductosConExistenciaPrecioCero();
         }
 
     }

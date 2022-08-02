@@ -68,7 +68,8 @@ namespace ModInventario.Administrador.Movimiento
         {
             var rt = true;
 
-            var rt1 = Sistema.MyData.Sucursal_GetLista();
+            var filtroOOb = new OOB.LibInventario.Sucursal.Filtro();
+            var rt1 = Sistema.MyData.Sucursal_GetLista(filtroOOb);
             if (rt1.Result == OOB.Enumerados.EnumResult.isError) 
             {
                 Helpers.Msg.Error(rt1.Mensaje);

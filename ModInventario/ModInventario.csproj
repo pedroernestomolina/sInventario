@@ -102,6 +102,8 @@
     <Compile Include="AdmMovPend\dataItem.cs" />
     <Compile Include="AdmMovPend\IAdmMovPend.cs" />
     <Compile Include="AdmMovPend\IListaAdmMovPend.cs" />
+    <Compile Include="Gestion\IAbandonar.cs" />
+    <Compile Include="Gestion\ILista.cs" />
     <Compile Include="IListaAdm.cs" />
     <Compile Include="AdmMovPend\Lista.cs" />
     <Compile Include="Analisis\Detallado\AnalisisFrm.cs">
@@ -754,6 +756,15 @@
       <DependentUpon>SeguridadFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Sistema.cs" />
+    <Compile Include="Sucursal\Lista\data.cs" />
+    <Compile Include="Sucursal\Lista\ListaSuc.cs" />
+    <Compile Include="Sucursal\Lista\IListaSuc.cs" />
+    <Compile Include="Sucursal\Lista\ListaFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sucursal\Lista\ListaFrm.Designer.cs">
+      <DependentUpon>ListaFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tool\AjusteNivelMinimoMaximoProducto\AjustarFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -802,6 +813,17 @@
       <DependentUpon>ExistenciaFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Visor\Existencia\Gestion.cs" />
+    <Compile Include="Visor\PrecioAjuste\Ajuste.cs" />
+    <Compile Include="Visor\PrecioAjuste\AjusteLista.cs" />
+    <Compile Include="Visor\PrecioAjuste\data.cs" />
+    <Compile Include="Visor\PrecioAjuste\IAjuste.cs" />
+    <Compile Include="Visor\PrecioAjuste\IAjusteLista.cs" />
+    <Compile Include="Visor\PrecioAjuste\PrecioAjusteFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Visor\PrecioAjuste\PrecioAjusteFrm.Designer.cs">
+      <DependentUpon>PrecioAjusteFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Visor\Precio\dataFiltro.cs" />
     <Compile Include="Visor\Precio\dataVista.cs" />
     <Compile Include="Visor\Precio\general.cs" />
@@ -1062,6 +1084,9 @@
     <EmbeddedResource Include="Seguridad\SeguridadFrm.resx">
       <DependentUpon>SeguridadFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Sucursal\Lista\ListaFrm.resx">
+      <DependentUpon>ListaFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Tool\AjusteNivelMinimoMaximoProducto\AjustarFrm.resx">
       <DependentUpon>AjustarFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1079,6 +1104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Visor\Existencia\ExistenciaFrm.resx">
       <DependentUpon>ExistenciaFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Visor\PrecioAjuste\PrecioAjusteFrm.resx">
+      <DependentUpon>PrecioAjusteFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Visor\Precio\PrecioFrm.resx">
       <DependentUpon>PrecioFrm.cs</DependentUpon>
@@ -1270,9 +1298,11 @@
     <Content Include="Imagenes\mobile.ico" />
     <Content Include="Imagenes\setup.png" />
     <Content Include="Imagenes\sinImagen.png" />
+    <Content Include="Imagenes\sucursal.png" />
     <Content Include="Imagenes\TOOLS.ico" />
     <Content Include="Imagenes\transferencia.png" />
     <Content Include="Imagenes\warehouse.png" />
+    <None Include="Resources\sucursal.png" />
     <None Include="Resources\bt_abrir_pendiente.png" />
     <None Include="Resources\bt_pendiente.png" />
     <None Include="Resources\bt_dashboard.png" />

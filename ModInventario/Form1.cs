@@ -401,15 +401,6 @@ namespace ModInventario
             _controlador.TrasladoPorDevolucion();
         }
 
-        private void TSM_VISOR_PRECIOS_Click(object sender, EventArgs e)
-        {
-            VisorPrecios();
-        }
-
-        private void VisorPrecios()
-        {
-            _controlador.VisorPrecios();
-        }
 
         private void TSM_REPORTE_KARDEX_RESUMEN_MOV_Click(object sender, EventArgs e)
         {

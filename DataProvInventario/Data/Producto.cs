@@ -35,8 +35,6 @@ namespace DataProvInventario.Data
                 origen = (DtoLibInventario.Producto.Enumerados.EnumOrigen)filtro.origen,
                 pesado = (DtoLibInventario.Producto.Enumerados.EnumPesado)filtro.pesado,
                 catalogo = (DtoLibInventario.Producto.Enumerados.EnumCatalogo)filtro.catalogo,
-                existencia = (DtoLibInventario.Producto.Filtro.Existencia)filtro.existencia,
-                precioMayorHabilitado = filtro.precioMayorHabilitado,
                 activarBusquedaPorTrasalado = filtro.activarBusquedaParaMovTraslado,
                 autoDepOrigen = filtro.autoDepOrigen,
                 autoDepDestino = filtro.autoDepDestino,
@@ -121,12 +119,25 @@ namespace DataProvInventario.Data
                     }).ToList();
                 }
             }
+            switch (filtro.existencia)
+            {
+                case OOB.LibInventario.Producto.Filtro.Existencia.IgualCero:
+                    list = list.Where(w => w.ExistenciaTotal == 0m).ToList();
+                    break;
+                case OOB.LibInventario.Producto.Filtro.Existencia.MayorQueCero:
+                    list = list.Where(w => w.ExistenciaTotal > 0m).ToList();
+                    break;
+                case OOB.LibInventario.Producto.Filtro.Existencia.MenorQueCero:
+                    list = list.Where(w => w.ExistenciaTotal < 0m).ToList();
+                    break;
+            }
             rt.Lista = list;
 
             return rt;
         }
 
-        public OOB.ResultadoLista<OOB.LibInventario.Producto.Origen.Ficha> Producto_Origen_Lista()
+        public OOB.ResultadoLista<OOB.LibInventario.Producto.Origen.Ficha> 
+            Producto_Origen_Lista()
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Producto.Origen.Ficha>();
 
@@ -157,8 +168,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoLista<OOB.LibInventario.Producto.Categoria.Ficha> Producto_Categoria_Lista()
+        public OOB.ResultadoLista<OOB.LibInventario.Producto.Categoria.Ficha> 
+            Producto_Categoria_Lista()
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Producto.Categoria.Ficha>();
 
@@ -189,8 +200,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoEntidad<OOB.LibInventario.Producto.Data.Existencia> Producto_GetExistencia(string autoPrd)
+        public OOB.ResultadoEntidad<OOB.LibInventario.Producto.Data.Existencia> 
+            Producto_GetExistencia(string autoPrd)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Producto.Data.Existencia>();
 
@@ -237,8 +248,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoLista<OOB.LibInventario.Producto.Estatus.Lista.Ficha> Producto_Estatus_Lista()
+        public OOB.ResultadoLista<OOB.LibInventario.Producto.Estatus.Lista.Ficha> 
+            Producto_Estatus_Lista()
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Producto.Estatus.Lista.Ficha>();
 
@@ -269,8 +280,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoLista<OOB.LibInventario.Producto.AdmDivisa.Ficha> Producto_AdmDivisa_Lista()
+        public OOB.ResultadoLista<OOB.LibInventario.Producto.AdmDivisa.Ficha> 
+            Producto_AdmDivisa_Lista()
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Producto.AdmDivisa.Ficha>();
 
@@ -301,8 +312,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoLista<OOB.LibInventario.Producto.Pesado.Ficha> Producto_Pesado_Lista()
+        public OOB.ResultadoLista<OOB.LibInventario.Producto.Pesado.Ficha> 
+            Producto_Pesado_Lista()
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Producto.Pesado.Ficha>();
 
@@ -333,8 +344,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoLista<OOB.LibInventario.Producto.Oferta.Ficha> Producto_Oferta_Lista()
+        public OOB.ResultadoLista<OOB.LibInventario.Producto.Oferta.Ficha> 
+            Producto_Oferta_Lista()
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Producto.Oferta.Ficha>();
 
@@ -365,8 +376,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoEntidad<OOB.LibInventario.Producto.Data.Precio> Producto_GetPrecio(string autoPrd)
+        public OOB.ResultadoEntidad<OOB.LibInventario.Producto.Data.Precio> 
+            Producto_GetPrecio(string autoPrd)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Producto.Data.Precio>();
 
@@ -449,8 +460,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoEntidad<OOB.LibInventario.Producto.Data.Costo> Producto_GetCosto(string autoPrd)
+        public OOB.ResultadoEntidad<OOB.LibInventario.Producto.Data.Costo> 
+            Producto_GetCosto(string autoPrd)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Producto.Data.Costo>();
 
@@ -491,8 +502,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoEntidad<OOB.LibInventario.Producto.Depositos.Lista.Ficha> Producto_GetDepositos(string autoPrd)
+        public OOB.ResultadoEntidad<OOB.LibInventario.Producto.Depositos.Lista.Ficha> 
+            Producto_GetDepositos(string autoPrd)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Producto.Depositos.Lista.Ficha>();
 
@@ -537,7 +548,8 @@ namespace DataProvInventario.Data
             return rt;
         }
 
-        public OOB.Resultado Producto_AsignarRemoverDepositos(OOB.LibInventario.Producto.Depositos.Asignar.Ficha ficha)
+        public OOB.Resultado 
+            Producto_AsignarRemoverDepositos(OOB.LibInventario.Producto.Depositos.Asignar.Ficha ficha)
         {
             var rt = new OOB.Resultado();
 
@@ -589,8 +601,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoLista<OOB.LibInventario.Producto.ClasificacionAbc.Ficha> Producto_Clasificacion_Lista()
+        public OOB.ResultadoLista<OOB.LibInventario.Producto.ClasificacionAbc.Ficha> 
+            Producto_Clasificacion_Lista()
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Producto.ClasificacionAbc.Ficha>();
 
@@ -820,8 +832,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoEntidad<OOB.LibInventario.Producto.Depositos.Ver.Ficha> Producto_GetDeposito(OOB.LibInventario.Producto.Depositos.Ver.Filtro filtro)
+        public OOB.ResultadoEntidad<OOB.LibInventario.Producto.Depositos.Ver.Ficha> 
+            Producto_GetDeposito(OOB.LibInventario.Producto.Depositos.Ver.Filtro filtro)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Producto.Depositos.Ver.Ficha>();
 
@@ -868,8 +880,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.Resultado Producto_EditarDeposito(OOB.LibInventario.Producto.Depositos.Editar.Ficha ficha)
+        public OOB.Resultado
+            Producto_EditarDeposito(OOB.LibInventario.Producto.Depositos.Editar.Ficha ficha)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Producto.Depositos.Editar.Ficha>();
 
@@ -895,8 +907,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.Resultado Producto_CambiarEstatusA_Activo(string auto)
+        public OOB.Resultado 
+            Producto_CambiarEstatusA_Activo(string auto)
         {
             var rt = new OOB.Resultado();
 
@@ -910,8 +922,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.Resultado Producto_CambiarEstatusA_Inactivo(string auto)
+        public OOB.Resultado 
+            Producto_CambiarEstatusA_Inactivo(string auto)
         {
             var rt = new OOB.Resultado();
 
@@ -925,8 +937,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.Resultado Producto_CambiarEstatusA_Suspendido(string auto)
+        public OOB.Resultado 
+            Producto_CambiarEstatusA_Suspendido(string auto)
         {
             var rt = new OOB.Resultado();
 
@@ -941,7 +953,8 @@ namespace DataProvInventario.Data
             return rt;
         }
 
-        public OOB.ResultadoEntidad<OOB.LibInventario.Producto.Estatus.Actual.Ficha> Producto_Estatus_GetFicha(string autoPrd)
+        public OOB.ResultadoEntidad<OOB.LibInventario.Producto.Estatus.Actual.Ficha> 
+            Producto_Estatus_GetFicha(string autoPrd)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Producto.Estatus.Actual.Ficha>();
 
@@ -966,8 +979,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoEntidad<OOB.LibInventario.Producto.Data.Imagen> Producto_GetImagen(string autoPrd)
+        public OOB.ResultadoEntidad<OOB.LibInventario.Producto.Data.Imagen> 
+            Producto_GetImagen(string autoPrd)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Producto.Data.Imagen >();
 
@@ -990,8 +1003,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoLista<OOB.LibInventario.Producto.Plu.Lista.Ficha> Producto_Plu_Lista()
+        public OOB.ResultadoLista<OOB.LibInventario.Producto.Plu.Lista.Ficha> 
+            Producto_Plu_Lista()
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Producto.Plu.Lista.Ficha>();
 
@@ -1096,7 +1109,6 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
         public OOB.ResultadoEntidad<OOB.LibInventario.Producto.Data.Proveedor.Ficha> 
             Producto_GetProveedores(string autoPrd)
         {
@@ -1149,8 +1161,6 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-
         public OOB.Resultado 
             Producto_Deposito_AsignacionMasiva(OOB.LibInventario.Producto.Depositos.AsignacionMasiva.Ficha ficha)
         {
@@ -1182,7 +1192,6 @@ namespace DataProvInventario.Data
             return rt;
         }
 
-
         public OOB.ResultadoEntidad<string> 
             Producto_GetId_ByCodigoBarra(string codBarra)
         {
@@ -1196,6 +1205,106 @@ namespace DataProvInventario.Data
                 return rt;
             }
             rt.Entidad = r01.Entidad;
+
+            return rt;
+        }
+        public OOB.ResultadoEntidad<OOB.LibInventario.Producto.Precio.Ficha> 
+            Producto_Precio_GetById(string idPrd)
+        {
+            var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Producto.Precio.Ficha>();
+
+            var r01 = MyData.Producto_Precio_GetById(idPrd);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                rt.Mensaje = r01.Mensaje;
+                rt.Result = OOB.Enumerados.EnumResult.isError;
+                return rt;
+            }
+            var s= r01.Entidad;
+            var ent = new OOB.LibInventario.Producto.Precio.Ficha()
+            {
+                auto = s.auto,
+                codigo = s.codigo,
+                descripcion = s.descripcion,
+                tasaIva = s.tasaIva,
+                estatusDivisa = s.estatusDivisa,
+                contEmp1_1 = s.contEmp1_1,
+                contEmp1_2 = s.contEmp1_2,
+                contEmp1_3 = s.contEmp1_3,
+                contEmp1_4 = s.contEmp1_4,
+                contEmp1_5 = s.contEmp1_5,
+                contEmp2_1 = s.contEmp2_1,
+                contEmp2_2 = s.contEmp2_2,
+                contEmp2_3 = s.contEmp2_3,
+                contEmp2_4 = s.contEmp2_4,
+                contEmp2_5 = s.contEmp2_5,
+                contEmp3_1 = s.contEmp3_1,
+                contEmp3_2 = s.contEmp3_2,
+                contEmp3_3 = s.contEmp3_3,
+                contEmp3_4 = s.contEmp3_4,
+                contEmp3_5 = s.contEmp3_5,
+                descEmp1_1 = s.descEmp1_1,
+                descEmp1_2 = s.descEmp1_2,
+                descEmp1_3 = s.descEmp1_3,
+                descEmp1_4 = s.descEmp1_4,
+                descEmp1_5 = s.descEmp1_5,
+                descEmp2_1 = s.descEmp2_1,
+                descEmp2_2 = s.descEmp2_2,
+                descEmp2_3 = s.descEmp2_3,
+                descEmp2_4 = s.descEmp2_4,
+                descEmp2_5 = s.descEmp2_5,
+                descEmp3_1 = s.descEmp3_1,
+                descEmp3_2 = s.descEmp3_2,
+                descEmp3_3 = s.descEmp3_3,
+                descEmp3_4 = s.descEmp3_4,
+                descEmp3_5 = s.descEmp3_5,
+                pfdEmp1_1 = s.pfdEmp1_1,
+                pfdEmp1_2 = s.pfdEmp1_2,
+                pfdEmp1_3 = s.pfdEmp1_3,
+                pfdEmp1_4 = s.pfdEmp1_4,
+                pfdEmp1_5 = s.pfdEmp1_5,
+                pfdEmp2_1 = s.pfdEmp2_1,
+                pfdEmp2_2 = s.pfdEmp2_2,
+                pfdEmp2_3 = s.pfdEmp2_3,
+                pfdEmp2_4 = s.pfdEmp2_4,
+                pfdEmp2_5 = s.pfdEmp2_5,
+                pfdEmp3_1 = s.pfdEmp3_1,
+                pfdEmp3_2 = s.pfdEmp3_2,
+                pfdEmp3_3 = s.pfdEmp3_3,
+                pfdEmp3_4 = s.pfdEmp3_4,
+                pfdEmp3_5 = s.pfdEmp3_5,
+                pnEmp1_1 = s.pnEmp1_1,
+                pnEmp1_2 = s.pnEmp1_2,
+                pnEmp1_3 = s.pnEmp1_3,
+                pnEmp1_4 = s.pnEmp1_4,
+                pnEmp1_5 = s.pnEmp1_5,
+                pnEmp2_1 = s.pnEmp2_1,
+                pnEmp2_2 = s.pnEmp2_2,
+                pnEmp2_3 = s.pnEmp2_3,
+                pnEmp2_4 = s.pnEmp2_4,
+                pnEmp2_5 = s.pnEmp2_5,
+                pnEmp3_1 = s.pnEmp3_1,
+                pnEmp3_2 = s.pnEmp3_2,
+                pnEmp3_3 = s.pnEmp3_3,
+                pnEmp3_4 = s.pnEmp3_4,
+                pnEmp3_5 = s.pnEmp3_5,
+                utEmp1_1 = s.utEmp1_1,
+                utEmp1_2 = s.utEmp1_2,
+                utEmp1_3 = s.utEmp1_3,
+                utEmp1_4 = s.utEmp1_4,
+                utEmp1_5 = s.utEmp1_5,
+                utEmp2_1 = s.utEmp2_1,
+                utEmp2_2 = s.utEmp2_2,
+                utEmp2_3 = s.utEmp2_3,
+                utEmp2_4 = s.utEmp2_4,
+                utEmp2_5 = s.utEmp2_5,
+                utEmp3_1 = s.utEmp3_1,
+                utEmp3_2 = s.utEmp3_2,
+                utEmp3_3 = s.utEmp3_3,
+                utEmp3_4 = s.utEmp3_4,
+                utEmp3_5 = s.utEmp3_5,
+            };
+            rt.Entidad = ent;
 
             return rt;
         }

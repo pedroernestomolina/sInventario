@@ -212,6 +212,7 @@
     <Compile Include="LibInventario\Producto\Origen\Ficha.cs" />
     <Compile Include="LibInventario\Producto\Pesado\Ficha.cs" />
     <Compile Include="LibInventario\Producto\Plu\Lista\Ficha.cs" />
+    <Compile Include="LibInventario\Producto\Precio\Ficha.cs" />
     <Compile Include="LibInventario\Proveedor\Enumerados.cs" />
     <Compile Include="LibInventario\Proveedor\Lista\Ficha.cs" />
     <Compile Include="LibInventario\Proveedor\Lista\Filtro.cs" />

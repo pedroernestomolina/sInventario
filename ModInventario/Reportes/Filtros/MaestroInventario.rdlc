@@ -344,7 +344,9 @@
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>existencia1</rd:DefaultName>
@@ -1125,6 +1127,9 @@
                 <GroupExpressions>
                   <GroupExpression>=Fields!departamento.Value</GroupExpression>
                 </GroupExpressions>
+                <PageBreak>
+                  <BreakLocation>Between</BreakLocation>
+                </PageBreak>
               </Group>
               <SortExpressions>
                 <SortExpression>
@@ -1209,6 +1214,7 @@
                           <PaddingBottom>2pt</PaddingBottom>
                         </Style>
                       </Textbox>
+                      <rd:Selected>true</rd:Selected>
                     </CellContents>
                   </TablixHeader>
                   <TablixMembers>
@@ -1275,7 +1281,7 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>2.77349in</Height>
+    <Height>1.10682in</Height>
     <Style />
   </Body>
   <Width>8.14517in</Width>

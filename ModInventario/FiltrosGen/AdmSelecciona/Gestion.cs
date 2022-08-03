@@ -139,11 +139,11 @@ namespace ModInventario.FiltrosGen.AdmSelecciona
                 }
                 _filtros.catalogo = xd;
             }
-            if (data.PrecioMayor != null)
-            {
-                if (data.PrecioMayor.id == "1")
-                    _filtros.precioMayorHabilitado = true;
-            }
+            //if (data.PrecioMayor != null)
+            //{
+            //    if (data.PrecioMayor.id == "1")
+            //        _filtros.precioMayorHabilitado = true;
+            //}
             _filtros.activarBusquedaParaMovTraslado = _activarBusquedaParaTraslado;
             _filtros.autoDepOrigen = _idDepOrigen;
             _filtros.autoDepDestino = _idDepDestino;

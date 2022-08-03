@@ -18,7 +18,6 @@ namespace ModInventario
         private Visor.Traslado.Gestion _gestionVisorTraslado;
         private Visor.Ajuste.Gestion _gestionVisorAjuste;
         private Visor.CostoExistencia.Gestion _gestionVisorCostoExistencia;
-        private Visor.Precio.Gestion _gestionVisorPrecio;
         private Administrador.Gestion _gestionAdmMov;
         private Configuracion.CostoEdad.Gestion _gestionConfCostoEdad;
         private Configuracion.RedondeoPrecio.Gestion _gestionConfRedondeoPrecio;
@@ -120,6 +119,7 @@ namespace ModInventario
         private Producto.Deposito.AsignacionMasiva.IAsignacion _gAsignacionMasiva;
         //
         private Visor.PrecioAjuste.IAjuste _gVisorPrecioAjuste;
+        private Producto.Precio.Visualizar.IVisual _gVistaPrecio;
 
 
         public string Version { get { return "Ver. 2 - " + Application.ProductVersion; } }
@@ -299,6 +299,8 @@ namespace ModInventario
             _gAsignacionMasiva = new Producto.Deposito.AsignacionMasiva.Asignacion();
             //
             _gVisorPrecioAjuste = new Visor.PrecioAjuste.Ajuste(_seguridad);
+            //
+            _gVistaPrecio = new Producto.Precio.Visualizar.Visual();
 
 
             _gestionBusqueda = new Buscar.Gestion(
@@ -308,14 +310,14 @@ namespace ModInventario
                 _gSecurity, 
                 _gSecurityModoUsuario,
                 _gQR, 
-                _gImagen);
+                _gImagen,
+                _gVistaPrecio);
 
             _gestionVisorExistencia = new Visor.Existencia.Gestion();
             _gestionVisorCostoEdad = new Visor.CostoEdad.Gestion();
             _gestionVisorTraslado = new Visor.Traslado.Gestion();
             _gestionVisorAjuste = new Visor.Ajuste.Gestion();
             _gestionVisorCostoExistencia = new Visor.CostoExistencia.Gestion();
-            _gestionVisorPrecio = new Visor.Precio.Gestion();
             _gestionAdmMov = new Administrador.Gestion();
 
             _gestionConfCostoEdad = new Configuracion.CostoEdad.Gestion();
@@ -723,14 +725,6 @@ namespace ModInventario
             {
                 _gestionVisorAjuste = new Visor.Ajuste.Gestion();
                 _gestionVisorAjuste.Inicia();
-            }
-        }
-        public void VisorPrecios()
-        {
-            if (VerificarPermisoVisor())
-            {
-                _gestionVisorPrecio.Inicializa();
-                _gestionVisorPrecio.Inicia();
             }
         }
         public void VisorPrecio_AjustarProductosConExistenciaPrecioCero()

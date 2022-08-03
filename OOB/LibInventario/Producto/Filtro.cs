@@ -31,8 +31,6 @@ namespace OOB.LibInventario.Producto
         public Enumerados.EnumCatalogo catalogo { get; set; }
         public Enumerados.EnumOferta oferta { get; set; }
         public Enumerados.EnumMetodoBusqueda MetodoBusqueda { get; set; }
-        public bool? precioMayorHabilitado { get; set; }
-        //
         public string autoDepOrigen { get; set; }
         public string autoDepDestino { get; set; }
         public bool activarBusquedaParaMovTraslado { get; set; }
@@ -62,8 +60,6 @@ namespace OOB.LibInventario.Producto
             oferta = Enumerados.EnumOferta.SnDefinir;
             MetodoBusqueda = Enumerados.EnumMetodoBusqueda.SnDefinir;
             existencia = Existencia.SinDefinir;
-            precioMayorHabilitado = null;
-            //
             activarBusquedaParaMovTraslado = false;
             autoDepOrigen = "";
             autoDepDestino = "";

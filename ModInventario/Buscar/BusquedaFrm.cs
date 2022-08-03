@@ -381,16 +381,6 @@ namespace ModInventario.Buscar
             TB_CADENA.Focus();
         }
 
-        private void BT_PRECIO_Click(object sender, EventArgs e)
-        {
-            VerPrecios();
-        }
-        private void VerPrecios()
-        {
-            _controlador.VerPrecios();
-            TB_CADENA.Focus();
-        }
-
         private void BT_LIMPIAR_Click(object sender, EventArgs e)
         {
             Limpiar();
@@ -443,17 +433,6 @@ namespace ModInventario.Buscar
         private void VerCosto()
         {
             _controlador.VerCosto();
-            TB_CADENA.Focus();
-        }
-
-        private void BT_EDITAR_COSTO_Click(object sender, EventArgs e)
-        {
-            EditarCosto();
-        }
-
-        private void EditarCosto()
-        {
-            _controlador.EditarCosto();
             TB_CADENA.Focus();
         }
 
@@ -553,6 +532,26 @@ namespace ModInventario.Buscar
         private void RB_BUSCAR_POR_CODIGO_BARRA_CheckedChanged(object sender, EventArgs e)
         {
             _controlador.setMetodoBusquedaByCodigoBarra();
+            TB_CADENA.Focus();
+        }
+
+        private void BT_PRECIO_Click(object sender, EventArgs e)
+        {
+            VerPrecios();
+        }
+        private void VerPrecios()
+        {
+            _controlador.VerPrecios();
+            TB_CADENA.Focus();
+        }
+
+        private void BT_EDITAR_COSTO_Click(object sender, EventArgs e)
+        {
+            EditarCosto();
+        }
+        private void EditarCosto()
+        {
+            _controlador.EditarCosto();
             TB_CADENA.Focus();
         }
       

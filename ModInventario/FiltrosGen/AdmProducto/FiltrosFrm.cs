@@ -52,8 +52,6 @@ namespace ModInventario.FiltrosGen.AdmProducto
             CB_EXISTENCIA.ValueMember = "id";
             CB_CATALOGO.DisplayMember = "desc";
             CB_CATALOGO.ValueMember = "id";
-            CB_PRECIO_MAYOR.DisplayMember = "desc";
-            CB_PRECIO_MAYOR.ValueMember = "id";
         }
 
         private bool _modoInicializar;
@@ -73,7 +71,6 @@ namespace ModInventario.FiltrosGen.AdmProducto
             CB_OFERTA.DataSource = _controlador.SourceOferta;
             CB_CATALOGO.DataSource = _controlador.SourceCatalogo;
             CB_EXISTENCIA.DataSource = _controlador.SourceExistencia;
-            CB_PRECIO_MAYOR.DataSource = _controlador.SourcePrecioMayor;
 
             P_PROVEEDOR.Enabled = true;
             TB_PROVEEDOR.Text = _controlador.NombreProvAFiltrar;
@@ -90,7 +87,6 @@ namespace ModInventario.FiltrosGen.AdmProducto
             CB_OFERTA.SelectedValue = _controlador.IdOferta;
             CB_EXISTENCIA.SelectedValue = _controlador.IdExistencia;
             CB_CATALOGO.SelectedValue = _controlador.IdCatalogo;
-            CB_PRECIO_MAYOR.SelectedValue = _controlador.IdPrecioMayor;
 
             if (_controlador.IdDepartamento == "")
             {
@@ -255,17 +251,6 @@ namespace ModInventario.FiltrosGen.AdmProducto
                 _controlador.setExistencia(CB_EXISTENCIA.SelectedValue.ToString());
             }
         }
-        private void CB_PRECIO_MAYOR_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (_modoInicializar)
-                return;
-
-            _controlador.setPrecioMayor("");
-            if (CB_PRECIO_MAYOR.SelectedIndex != -1)
-            {
-                _controlador.setPrecioMayor(CB_PRECIO_MAYOR.SelectedValue.ToString());
-            }
-        }
 
 
         private void BT_SALIR_Click(object sender, EventArgs e)
@@ -312,7 +297,6 @@ namespace ModInventario.FiltrosGen.AdmProducto
                 CB_OFERTA.SelectedIndex = -1;
                 CB_EXISTENCIA.SelectedIndex = -1;
                 CB_CATALOGO.SelectedIndex = -1;
-                CB_PRECIO_MAYOR.SelectedIndex = -1;
                 _modoInicializar = false;
             }
         }
@@ -371,10 +355,6 @@ namespace ModInventario.FiltrosGen.AdmProducto
         private void L_CATALOGO_Click(object sender, EventArgs e)
         {
             CB_CATALOGO.SelectedIndex = -1;
-        }
-        private void L_PRECIO_MAYOR_Click(object sender, EventArgs e)
-        {
-            CB_PRECIO_MAYOR.SelectedIndex = -1;
         }
 
         private void BT_PROVEED_BUSCAR_Click(object sender, EventArgs e)

@@ -606,6 +606,16 @@
     <Compile Include="Producto\Precio\Ver\VerFrm.Designer.cs">
       <DependentUpon>VerFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Producto\Precio\Visualizar\data.cs" />
+    <Compile Include="Producto\Precio\Visualizar\dataEmp.cs" />
+    <Compile Include="Producto\Precio\Visualizar\IVisual.cs" />
+    <Compile Include="Producto\Precio\Visualizar\Visual.cs" />
+    <Compile Include="Producto\Precio\Visualizar\VisualFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Producto\Precio\Visualizar\VisualFrm.Designer.cs">
+      <DependentUpon>VisualFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Producto\Proveedor\data.cs" />
     <Compile Include="Producto\Proveedor\Gestion.cs" />
     <Compile Include="Producto\Proveedor\ProveedoresFrm.cs">
@@ -994,6 +1004,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Producto\Precio\Ver\VerFrm.resx">
       <DependentUpon>VerFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Producto\Precio\Visualizar\VisualFrm.resx">
+      <DependentUpon>VisualFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Producto\Proveedor\ProveedoresFrm.resx">
       <DependentUpon>ProveedoresFrm.cs</DependentUpon>

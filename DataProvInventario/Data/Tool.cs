@@ -12,7 +12,8 @@ namespace DataProvInventario.Data
     public partial class DataProv: IData
     {
 
-        public OOB.ResultadoLista<OOB.LibInventario.Tool.AjusteNivelMinimoMaximoProducto.Capturar.Ficha> Tools_AjusteNivelMinimoMaximo_GetLista(OOB.LibInventario.Tool.AjusteNivelMinimoMaximoProducto.Capturar.Filtro filtro)
+        public OOB.ResultadoLista<OOB.LibInventario.Tool.AjusteNivelMinimoMaximoProducto.Capturar.Ficha> 
+            Tools_AjusteNivelMinimoMaximo_GetLista(OOB.LibInventario.Tool.AjusteNivelMinimoMaximoProducto.Capturar.Filtro filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Tool.AjusteNivelMinimoMaximoProducto.Capturar.Ficha>();
 
@@ -59,8 +60,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.Resultado Tools_AjusteNivelMinimoMaximo_Ajustar(List<OOB.LibInventario.Tool.AjusteNivelMinimoMaximoProducto.Ajustar.Ficha> lista)
+        public OOB.Resultado 
+            Tools_AjusteNivelMinimoMaximo_Ajustar(List<OOB.LibInventario.Tool.AjusteNivelMinimoMaximoProducto.Ajustar.Ficha> lista)
         {
             var rt = new OOB.Resultado();
 
@@ -81,6 +82,40 @@ namespace DataProvInventario.Data
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
                 rt.Mensaje = r01.Mensaje;
+                rt.Result = OOB.Enumerados.EnumResult.isError;
+                return rt;
+            }
+
+            return rt;
+        }
+        //
+        public OOB.Resultado 
+            Tools_CambioMasivoPrecio(OOB.LibInventario.Tool.CambioMasivoPrecio.Ficha ficha)
+        {
+            var rt = new OOB.Resultado();
+
+            var filtroDTO = new DtoLibInventario.Tool.CambioMasivoPrecio.CapturarData.Filtro()
+            {
+                codigoPrecioOrigen = ficha.codigoPrecioOrigen,
+                idDepartamento = ficha.idDepartamento,
+                idGrupo = ficha.idGrupo,
+            };
+            var r01 = MyData.Tools_CambioMasivoPrecio_GetData(filtroDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                rt.Mensaje = r01.Mensaje;
+                rt.Result = OOB.Enumerados.EnumResult.isError;
+                return rt;
+            }
+            var fichaDTO = new DtoLibInventario.Tool.CambioMasivoPrecio.ActualizarData.Ficha()
+            {
+                codPrecioDestino = ficha.codigoPrecioDestino,
+                data = r01.Lista,
+            };
+            var r02 = MyData.Tools_CambioMasivoPrecio_ActualizarData(fichaDTO);
+            if (r02.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                rt.Mensaje = r02.Mensaje;
                 rt.Result = OOB.Enumerados.EnumResult.isError;
                 return rt;
             }

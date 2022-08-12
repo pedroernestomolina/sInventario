@@ -568,6 +568,9 @@ namespace ModInventario.Producto.AgregarEditar.Editar
                 tasaImpuesto= entImpuesto.tasa,
                 peso= miData.GetPeso,
                 volumen=miData.GetVolumen,
+                alto=miData.GetAlto,
+                largo=miData.GetLargo,
+                ancho=miData.GetAncho,
             };
 
             //if (autoTasaActualPrd != miData.AutoImpuesto) 
@@ -881,6 +884,21 @@ namespace ModInventario.Producto.AgregarEditar.Editar
         public void setVolumen(decimal _volumen)
         {
             miData.setVolumen(_volumen);
+        }
+        public decimal GetAlto { get { return miData.GetAlto; } }
+        public void setAlto(decimal _alto)
+        {
+            miData.setAlto(_alto);
+        }
+        public decimal GetLargo { get { return miData.GetLargo; } }
+        public void setLargo(decimal _largo)
+        {
+            miData.setLargo(_largo);
+        }
+        public decimal GetAncho { get { return miData.GetAncho; } }
+        public void setAncho(decimal _ancho)
+        {
+            miData.setAncho(_ancho);
         }
 
     }

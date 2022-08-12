@@ -341,7 +341,11 @@ namespace ModInventario.Buscar
                         _gestionEditarCosto.Inicia();
                         if (_gestionEditarCosto.EditarCostoIsOk) 
                         {
-                            EditarPrecio();
+                            var r01 = Sistema.MyData.Configuracion_PermitirCambiarPrecioAlModificarCosto();
+                            if (r01.Entidad)
+                            {
+                                EditarPrecio();
+                            }
 
                             var filtros = new OOB.LibInventario.Producto.Filtro();
                             filtros.autoProducto = Item.identidad.auto;

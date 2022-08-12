@@ -9,37 +9,29 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace ModInventario.Configuracion.BusquedaPredeterminada
+namespace ModInventario.Configuracion.CambiarPreciosAlModificarCosto
 {
 
     public partial class ConfigurarFrm : Form
     {
 
 
-        private Gestion _controlador;
+        private IConf _controlador;
 
 
         public ConfigurarFrm()
         {
             InitializeComponent();
-
-            CB_OPCIONES.ValueMember = "auto";
-            CB_OPCIONES.DisplayMember = "descripcion";
         }
 
-        private bool isIniciar;
+        private bool _modoInicializar;
         private void ConfigurarFrm_Load(object sender, EventArgs e)
         {
-            CB_OPCIONES.DataSource = _controlador.Source;
-            isIniciar = true;
-            CB_OPCIONES.SelectedValue = _controlador.BusquedaPred.auto;
-            isIniciar = false;
+            _modoInicializar = true;
+            CHB_SI.Checked = _controlador.GetOpcion;
+            _modoInicializar = false;
         }
 
-        public void setControlador(Gestion ctr)
-        {
-            _controlador = ctr;
-        }
 
         private void TB_KeyDown(object sender, KeyEventArgs e)
         {
@@ -55,8 +47,8 @@ namespace ModInventario.Configuracion.BusquedaPredeterminada
         }
         private void Procesar()
         {
-            _controlador.Proesar();
-            if (_controlador.IsOk)
+            _controlador.ProcesarFicha ();
+            if (_controlador.ProcesarIsOk)
             {
                 Salir();
             }
@@ -64,23 +56,40 @@ namespace ModInventario.Configuracion.BusquedaPredeterminada
 
         private void BT_SALIR_Click(object sender, EventArgs e)
         {
-            Salir();
+            AbanonaFicha();
+        }
+        private void AbanonaFicha()
+        {
+            _controlador.AbandonarFicha();
+            if (_controlador.AbandonarIsOk)
+            {
+                Salir();
+            }
         }
         private void Salir()
         {
             this.Close();
         }
 
-        private void CB_OPCIONES_SelectedIndexChanged(object sender, EventArgs e)
+        public void setControlador(IConf ctr)
         {
-            if (!isIniciar)
+            _controlador = ctr;
+        }
+
+        private void ConfigurarFrm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            if (_controlador.AbandonarIsOk || _controlador.ProcesarIsOk) 
             {
-                _controlador.setBusquedaPred("");
-                if (CB_OPCIONES.SelectedIndex != -1)
-                {
-                    _controlador.setBusquedaPred(CB_OPCIONES.SelectedValue.ToString());
-                }
+                e.Cancel = false;
             }
+        }
+
+        private void CHB_SI_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_modoInicializar)
+                return;
+            _controlador.setOpcion();
         }
 
     }

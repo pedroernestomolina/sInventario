@@ -12,7 +12,8 @@ namespace DataProvInventario.Data
     public partial class DataProv: IData
     {
 
-        public OOB.ResultadoEntidad<OOB.LibInventario.Sistema.TipoDocumento.Entidad.Ficha> Sistema_TipoDocumento_GetFichaByTipo(OOB.LibInventario.Sistema.TipoDocumento.enumerados.enumTipoDocumento tipo)
+        public OOB.ResultadoEntidad<OOB.LibInventario.Sistema.TipoDocumento.Entidad.Ficha> 
+            Sistema_TipoDocumento_GetFichaByTipo(OOB.LibInventario.Sistema.TipoDocumento.enumerados.enumTipoDocumento tipo)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Sistema.TipoDocumento.Entidad.Ficha>();
 
@@ -51,6 +52,39 @@ namespace DataProvInventario.Data
                 tipo = s.tipo,
             };
             rt.Entidad = nr;
+
+            return rt;
+        }
+        public OOB.ResultadoLista<OOB.LibInventario.Sistema.HndPrecios.Lista.Ficha> 
+            Sistema_TipoPreciosDefinidos_Lista()
+        {
+            var rt = new OOB.ResultadoLista<OOB.LibInventario.Sistema.HndPrecios.Lista.Ficha>();
+
+            var r01 = MyData.Sistema_TipoPreciosDefinidos_Lista();
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                rt.Mensaje = r01.Mensaje;
+                rt.Result = OOB.Enumerados.EnumResult.isError;
+                return rt;
+            }
+            var lst = new List<OOB.LibInventario.Sistema.HndPrecios.Lista.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0) 
+                {
+                    lst = r01.Lista.Select(s =>
+                    {
+                        var nr = new OOB.LibInventario.Sistema.HndPrecios.Lista.Ficha()
+                        {
+                            descripcion = s.descripcion,
+                            codigo = s.codigo,
+                            id = s.id.ToString(),
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            rt.Lista = lst;
 
             return rt;
         }

@@ -203,7 +203,21 @@ namespace ModInventario.Producto.AgregarEditar
         {
             miGestion.setVolumen(_volumen);
         }
-
+        public decimal GetAlto{ get { return miGestion.GetAlto; } }
+        public void setAlto(decimal _alto)
+        {
+            miGestion.setAlto(_alto);
+        }
+        public decimal GetLargo { get { return miGestion.GetLargo; } }
+        public void setLargo(decimal _largo)
+        {
+            miGestion.setLargo(_largo);
+        }
+        public decimal GetAncho { get { return miGestion.GetAncho; } }
+        public void setAncho(decimal _ancho)
+        {
+            miGestion.setAncho(_ancho);
+        }
     }
 
 }

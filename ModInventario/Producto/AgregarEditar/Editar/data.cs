@@ -17,6 +17,9 @@ namespace ModInventario.Producto.AgregarEditar.Editar
         private ficha _empInv;
         private decimal _peso;
         private decimal _volumen;
+        private decimal _alto;
+        private decimal _largo;
+        private decimal _ancho;
 
 
         public string Codigo { get; set; }
@@ -64,6 +67,9 @@ namespace ModInventario.Producto.AgregarEditar.Editar
             setContEmpInv(ficha.contEmpInv);
             setPeso(ficha.peso);
             setVolumen(ficha.volumen);
+            setAlto(ficha.alto);
+            setLargo(ficha.largo);
+            setAncho(ficha.ancho);
 
             Codigo = ficha.codigo;
             Descripcion = ficha.descripcion;
@@ -93,7 +99,9 @@ namespace ModInventario.Producto.AgregarEditar.Editar
             _empInv = null;
             _peso=0m;
             _volumen = 0m;
-
+            _alto = 0m;
+            _largo = 0m;
+            _ancho = 0m;
 
             Codigo = "";
             Descripcion = "";
@@ -323,6 +331,21 @@ namespace ModInventario.Producto.AgregarEditar.Editar
         public void setVolumen(decimal volumen)
         {
             _volumen = volumen;
+        }
+        public decimal GetAlto { get { return _alto; } }
+        public  void setAlto(decimal alto)
+        {
+            _alto = alto;
+        }
+        public decimal GetLargo { get { return _largo; } }
+        public void setLargo(decimal largo)
+        {
+            _largo = largo;
+        }
+        public decimal GetAncho { get { return _ancho; } }
+        public void setAncho(decimal ancho)
+        {
+            _ancho = ancho;
         }
 
     }

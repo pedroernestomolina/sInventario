@@ -310,6 +310,9 @@ namespace ModInventario.Producto.AgregarEditar.Agregar
                 estatusCatalogo=_catalogo,
                 peso=miData.GetPeso,
                 volumen=miData.GetVolumen,
+                alto=miData.GetAlto,
+                ancho=miData.GetAncho,
+                largo=miData.GetLargo
             };
             var codAlterno = new List<OOB.LibInventario.Producto.Agregar.FichaCodAlterno>();
             foreach (var rg in _gestionCodAlterno.ListaCodigos) 
@@ -487,6 +490,21 @@ namespace ModInventario.Producto.AgregarEditar.Agregar
         public void setVolumen(decimal _volumen)
         {
             miData.setVolumen(_volumen);
+        }
+        public decimal GetAlto { get { return miData.GetAlto; } }
+        public void setAlto(decimal _alto)
+        {
+            miData.setAlto(_alto);
+        }
+        public decimal GetLargo { get { return miData.GetLargo; } }
+        public void setLargo(decimal _largo)
+        {
+            miData.setLargo(_largo);
+        }
+        public decimal GetAncho { get { return miData.GetAncho; } }
+        public void setAncho(decimal _ancho)
+        {
+            miData.setAncho(_ancho);
         }
 
     }

@@ -13,7 +13,8 @@ namespace DataProvInventario.Data
     public partial class DataProv: IData
     {
 
-        public OOB.ResultadoEntidad<OOB.LibInventario.Configuracion.Enumerados.EnumPreferenciaBusqueda> Configuracion_PreferenciaBusqueda()
+        public OOB.ResultadoEntidad<OOB.LibInventario.Configuracion.Enumerados.EnumPreferenciaBusqueda> 
+            Configuracion_PreferenciaBusqueda()
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Configuracion.Enumerados.EnumPreferenciaBusqueda>();
 
@@ -30,7 +31,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.ResultadoEntidad<OOB.LibInventario.Configuracion.Enumerados.EnumMetodoCalculoUtilidad> Configuracion_MetodoCalculoUtilidad()
+        public OOB.ResultadoEntidad<OOB.LibInventario.Configuracion.Enumerados.EnumMetodoCalculoUtilidad> 
+            Configuracion_MetodoCalculoUtilidad()
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Configuracion.Enumerados.EnumMetodoCalculoUtilidad>();
 
@@ -47,7 +49,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.ResultadoEntidad<decimal> Configuracion_TasaCambioActual()
+        public OOB.ResultadoEntidad<decimal> 
+            Configuracion_TasaCambioActual()
         {
             var rt = new OOB.ResultadoEntidad<decimal>();
 
@@ -72,7 +75,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.ResultadoEntidad<OOB.LibInventario.Configuracion.Enumerados.EnumForzarRedondeoPrecioVenta> Configuracion_ForzarRedondeoPrecioVenta()
+        public OOB.ResultadoEntidad<OOB.LibInventario.Configuracion.Enumerados.EnumForzarRedondeoPrecioVenta> 
+            Configuracion_ForzarRedondeoPrecioVenta()
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Configuracion.Enumerados.EnumForzarRedondeoPrecioVenta>();
 
@@ -89,7 +93,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.ResultadoEntidad<OOB.LibInventario.Configuracion.Enumerados.EnumPreferenciaRegistroPrecio> Configuracion_PreferenciaRegistroPrecio()
+        public OOB.ResultadoEntidad<OOB.LibInventario.Configuracion.Enumerados.EnumPreferenciaRegistroPrecio> 
+            Configuracion_PreferenciaRegistroPrecio()
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Configuracion.Enumerados.EnumPreferenciaRegistroPrecio>();
 
@@ -106,7 +111,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.ResultadoEntidad<int> Configuracion_CostoEdadProducto()
+        public OOB.ResultadoEntidad<int> 
+            Configuracion_CostoEdadProducto()
         {
             var rt = new OOB.ResultadoEntidad<int>();
 
@@ -121,7 +127,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.ResultadoEntidad<bool> Configuracion_VisualizarProductosInactivos()
+        public OOB.ResultadoEntidad<bool> 
+            Configuracion_VisualizarProductosInactivos()
         {
             var rt = new OOB.ResultadoEntidad<bool>();
 
@@ -136,7 +143,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.ResultadoEntidad<int> Configuracion_CantDocVisualizar()
+        public OOB.ResultadoEntidad<int> 
+            Configuracion_CantDocVisualizar()
         {
             var rt = new OOB.ResultadoEntidad<int>();
 
@@ -160,7 +168,8 @@ namespace DataProvInventario.Data
             return rt;
         }
 
-        public OOB.Resultado Configuracion_SetCostoEdadProducto(OOB.LibInventario.Configuracion.CostoEdad.Editar.Ficha ficha)
+        public OOB.Resultado 
+            Configuracion_SetCostoEdadProducto(OOB.LibInventario.Configuracion.CostoEdad.Editar.Ficha ficha)
         {
             var rt = new OOB.Resultado();
 
@@ -178,7 +187,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.Resultado Configuracion_SetRedondeoPrecioVenta(OOB.LibInventario.Configuracion.RedondeoPrecio.Editar.Ficha ficha)
+        public OOB.Resultado 
+            Configuracion_SetRedondeoPrecioVenta(OOB.LibInventario.Configuracion.RedondeoPrecio.Editar.Ficha ficha)
         {
             var rt = new OOB.Resultado();
 
@@ -196,7 +206,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.Resultado Configuracion_SetPreferenciaRegistroPrecio(OOB.LibInventario.Configuracion.PreferenciaPrecio.Editar.Ficha ficha)
+        public OOB.Resultado 
+            Configuracion_SetPreferenciaRegistroPrecio(OOB.LibInventario.Configuracion.PreferenciaPrecio.Editar.Ficha ficha)
         {
             var rt = new OOB.Resultado();
 
@@ -214,7 +225,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.Resultado Configuracion_SetMetodoCalculoUtilidad(OOB.LibInventario.Configuracion.MetodoCalculoUtilidad.Editar.Ficha ficha)
+        public OOB.Resultado 
+            Configuracion_SetMetodoCalculoUtilidad(OOB.LibInventario.Configuracion.MetodoCalculoUtilidad.Editar.Ficha ficha)
         {
             var rt = new OOB.Resultado();
 
@@ -265,7 +277,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.Resultado Configuracion_SetBusquedaPredeterminada(OOB.LibInventario.Configuracion.BusquedaPredeterminada.Editar.Ficha ficha)
+        public OOB.Resultado 
+            Configuracion_SetBusquedaPredeterminada(OOB.LibInventario.Configuracion.BusquedaPredeterminada.Editar.Ficha ficha)
         {
             var rt = new OOB.Resultado();
 
@@ -283,7 +296,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.Resultado Configuracion_SetDepositosPreDeterminado(OOB.LibInventario.Configuracion.DepositoPreDeterminado.Ficha ficha)
+        public OOB.Resultado 
+            Configuracion_SetDepositosPreDeterminado(OOB.LibInventario.Configuracion.DepositoPreDeterminado.Ficha ficha)
         {
             var rt = new OOB.Resultado();
 
@@ -308,7 +322,8 @@ namespace DataProvInventario.Data
             return rt;
         }
 
-        public OOB.ResultadoLista<OOB.LibInventario.Configuracion.MetodoCalculoUtilidad.CapturarData.Ficha> Configuracion_MetodoCalculoUtilidad_CapturarData()
+        public OOB.ResultadoLista<OOB.LibInventario.Configuracion.MetodoCalculoUtilidad.CapturarData.Ficha> 
+            Configuracion_MetodoCalculoUtilidad_CapturarData()
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Configuracion.MetodoCalculoUtilidad.CapturarData.Ficha>();
 
@@ -359,7 +374,8 @@ namespace DataProvInventario.Data
            
             return rt;
         }
-        public OOB.ResultadoEntidad<bool> Configuracion_HabilitarPrecio_5_ParaVentaMayorPos()
+        public OOB.ResultadoEntidad<bool> 
+            Configuracion_HabilitarPrecio_5_ParaVentaMayorPos()
         {
             var rt = new OOB.ResultadoEntidad<bool>();
 
@@ -376,8 +392,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-
+        
+        //
         public OOB.ResultadoEntidad<OOB.LibInventario.Configuracion.DepositoConceptoDevMerc.Captura.Ficha> 
             Configuracion_DepositoConceptoPreDeterminadoDevolucionMercancia()
         {
@@ -400,7 +416,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.Resultado Configuracion_SetDepositoConceptoPreDeterminadoDevolucionMercancia(OOB.LibInventario.Configuracion.DepositoConceptoDevMerc.Editar.Ficha ficha)
+        public OOB.Resultado 
+            Configuracion_SetDepositoConceptoPreDeterminadoDevolucionMercancia(OOB.LibInventario.Configuracion.DepositoConceptoDevMerc.Editar.Ficha ficha)
         {
             var rt = new OOB.Resultado();
 
@@ -410,6 +427,39 @@ namespace DataProvInventario.Data
                 IdDeposito = ficha.IdDeposito,
             };
             var r01 = MyData.Configuracion_SetDepositoConceptoPreDeterminadoParaDevolucion (fichaDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                rt.Mensaje = r01.Mensaje;
+                rt.Result = OOB.Enumerados.EnumResult.isError;
+                return rt;
+            }
+
+            return rt;
+        }
+        //
+        public OOB.ResultadoEntidad<bool> 
+            Configuracion_PermitirCambiarPrecioAlModificarCosto()
+        {
+            var rt = new OOB.ResultadoEntidad<bool>();
+
+            var r01 = MyData.Configuracion_PermitirCambiarPrecioAlModificarCosto();
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                rt.Mensaje = r01.Mensaje;
+                rt.Result = OOB.Enumerados.EnumResult.isError;
+                return rt;
+            }
+            rt.Entidad = r01.Entidad.ToString().Trim().ToUpper() == "SI";
+
+            return rt;
+        }
+        public OOB.Resultado 
+            Configuracion_SetPermitirCambiarPrecioAlModificarCosto(bool conf)
+        {
+            var rt = new OOB.Resultado();
+
+            var dat = conf ? "Si" : "No";
+            var r01 = MyData.Configuracion_SetPermitirCambiarPrecioAlModificarCosto(dat);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
                 rt.Mensaje = r01.Mensaje;

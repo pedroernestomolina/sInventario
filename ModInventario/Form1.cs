@@ -448,16 +448,6 @@ namespace ModInventario
             _controlador.AdministradorMovPendiente();
         }
 
-        private void TSM_AJSUTES_ASIGNACION_MASIVA_PRODUCTOS_DEPOSITO_Click(object sender, EventArgs e)
-        {
-            AsignacionMasivaProductoDeposito();
-        }
-        private void AsignacionMasivaProductoDeposito()
-        {
-            _controlador.AsignacionMasivaProductoDeposito();
-        }
-
-
         private void TSM_REPORTE_MAESTRO_EXISTENCIA_Click(object sender, EventArgs e)
         {
             ReporteMaestroExistencia();
@@ -491,6 +481,33 @@ namespace ModInventario
         private void VisorPrecio_AjustarProductosConExistenciaPrecioCero()
         {
             _controlador.VisorPrecio_AjustarProductosConExistenciaPrecioCero();
+        }
+
+        private void TSM_AJSUTES_ASIGNACION_MASIVA_PRODUCTOS_DEPOSITO_Click(object sender, EventArgs e)
+        {
+            AsignacionMasivaProductoDeposito();
+        }
+        private void AsignacionMasivaProductoDeposito()
+        {
+            _controlador.AsignacionMasivaProductoDeposito();
+        }
+
+        private void TSM_AJUSTES_CAMBIO_MOVIMIENTOS_PRECIOS_Click(object sender, EventArgs e)
+        {
+            CambioMovimientoPrecios();
+        }
+        private void CambioMovimientoPrecios()
+        {
+            _controlador.CambioMovimientoPrecios();
+        }
+
+        private void TSM_CONFIGURACION_PERMITIR_CAMBIAR_PRECIO_AL_MODIFICAR_COSTO_Click(object sender, EventArgs e)
+        {
+            PermitirCambiarPrecioAlModificarCosto();
+        }
+        private void PermitirCambiarPrecioAlModificarCosto()
+        {
+            _controlador.PermitirCambiarPrecioAlModificarCosto();
         }
 
     }

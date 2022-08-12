@@ -37,6 +37,9 @@ namespace OOB.LibInventario.Producto.Editar.Obtener
         public List<FichaAlterno> CodigosAlterno { get; set; }
         public decimal peso { get; set; }
         public decimal volumen { get; set; }
+        public decimal alto { get; set; }
+        public decimal largo { get; set; }
+        public decimal ancho { get; set; }
 
     }
 

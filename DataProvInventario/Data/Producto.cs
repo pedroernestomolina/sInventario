@@ -677,6 +677,9 @@ namespace DataProvInventario.Data
                 nr.contEmpInv = e.contEmpInv;
                 nr.peso = e.peso;
                 nr.volumen = e.volumen;
+                nr.alto = e.alto;
+                nr.largo = e.largo;
+                nr.ancho = e.ancho;
 
                 foreach (var rg in e.CodigosAlterno)
                 {
@@ -722,6 +725,9 @@ namespace DataProvInventario.Data
                 tasaImpuesto=ficha.tasaImpuesto,
                 peso=ficha.peso,
                 volumen=ficha.volumen,
+                alto=ficha.alto,
+                largo=ficha.largo,
+                ancho=ficha.ancho,
             };
             //if (ficha.precio_1 != null) 
             //{
@@ -813,6 +819,9 @@ namespace DataProvInventario.Data
                 contEmpInv = ficha.contEmpInv,
                 peso = ficha.peso,
                 volumen = ficha.volumen,
+                alto=ficha.alto,
+                largo=ficha.largo,
+                ancho=ficha.ancho,
             };
             var codAlterno = new List<DtoLibInventario.Producto.Agregar.FichaCodAlterno>();
             foreach (var rg in ficha.codigosAlterno)

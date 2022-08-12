@@ -102,8 +102,17 @@
     <Compile Include="AdmMovPend\dataItem.cs" />
     <Compile Include="AdmMovPend\IAdmMovPend.cs" />
     <Compile Include="AdmMovPend\IListaAdmMovPend.cs" />
+    <Compile Include="Configuracion\CambiarPreciosAlModificarCosto\Conf.cs" />
+    <Compile Include="Configuracion\CambiarPreciosAlModificarCosto\ConfigurarFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Configuracion\CambiarPreciosAlModificarCosto\ConfigurarFrm.Designer.cs">
+      <DependentUpon>ConfigurarFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Configuracion\CambiarPreciosAlModificarCosto\IConf.cs" />
     <Compile Include="Gestion\IAbandonar.cs" />
     <Compile Include="Gestion\ILista.cs" />
+    <Compile Include="Gestion\IProcesar.cs" />
     <Compile Include="IListaAdm.cs" />
     <Compile Include="AdmMovPend\Lista.cs" />
     <Compile Include="Analisis\Detallado\AnalisisFrm.cs">
@@ -791,6 +800,14 @@
     <Compile Include="Tool\AjusteNivelMinimoMaximoProducto\Gestion.cs" />
     <Compile Include="Tool\AjusteNivelMinimoMaximoProducto\GestionAjuste.cs" />
     <Compile Include="Tool\AjusteNivelMinimoMaximoProducto\GestionLista.cs" />
+    <Compile Include="Tool\CambioMasivoPrecio\Cambio.cs" />
+    <Compile Include="Tool\CambioMasivoPrecio\CambioMasivoFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tool\CambioMasivoPrecio\CambioMasivoFrm.Designer.cs">
+      <DependentUpon>CambioMasivoFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tool\CambioMasivoPrecio\ICambio.cs" />
     <Compile Include="Visor\Ajuste\AjusteFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -880,6 +897,9 @@
       <DependentUpon>BusquedaFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Configuracion\BusquedaPredeterminada\ConfigurarFrm.resx">
+      <DependentUpon>ConfigurarFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Configuracion\CambiarPreciosAlModificarCosto\ConfigurarFrm.resx">
       <DependentUpon>ConfigurarFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Configuracion\CostoEdad\ConfigurarFrm.resx">
@@ -1105,6 +1125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\AjusteNivelMinimoMaximoProducto\AjusteNivelFrm.resx">
       <DependentUpon>AjusteNivelFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tool\CambioMasivoPrecio\CambioMasivoFrm.resx">
+      <DependentUpon>CambioMasivoFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Visor\Ajuste\AjusteFrm.resx">
       <DependentUpon>AjusteFrm.cs</DependentUpon>

@@ -250,6 +250,7 @@
     <Compile Include="LibInventario\Reportes\Top20\Filtro.cs" />
     <Compile Include="LibInventario\Reportes\Valorizacion\Ficha.cs" />
     <Compile Include="LibInventario\Reportes\Valorizacion\Filtro.cs" />
+    <Compile Include="LibInventario\Sistema\HndPrecios\Lista\Ficha.cs" />
     <Compile Include="LibInventario\Sistema\TipoDocumento\Entidad\Ficha.cs" />
     <Compile Include="LibInventario\Sistema\TipoDocumento\enumerados.cs" />
     <Compile Include="LibInventario\Sucursal\Ficha.cs" />
@@ -258,6 +259,7 @@
     <Compile Include="LibInventario\Tool\AjusteNivelMinimoMaximoProducto\Ajustar\Ficha.cs" />
     <Compile Include="LibInventario\Tool\AjusteNivelMinimoMaximoProducto\Capturar\Ficha.cs" />
     <Compile Include="LibInventario\Tool\AjusteNivelMinimoMaximoProducto\Capturar\Filtro.cs" />
+    <Compile Include="LibInventario\Tool\CambioMasivoPrecio\Ficha.cs" />
     <Compile Include="LibInventario\Transito\Movimiento\Agregar\Detalle.cs" />
     <Compile Include="LibInventario\Transito\Movimiento\Agregar\Ficha.cs" />
     <Compile Include="LibInventario\Transito\Movimiento\Agregar\Mov.cs" />

@@ -164,7 +164,10 @@ namespace ModInventario.Producto.AgregarEditar
             //
             TB_PESO.Text = _controlador.GetPeso.ToString();
             TB_VOLUMEN.Text = _controlador.GetVolumen.ToString();
-
+            //
+            TB_LARGO.Text = _controlador.GetLargo.ToString();
+            TB_ANCHO.Text = _controlador.GetAncho.ToString();
+            TB_ALTO.Text = _controlador.GetAlto.ToString();
 
             inicializarData = false;
         }
@@ -571,6 +574,21 @@ namespace ModInventario.Producto.AgregarEditar
         {
             var _volumen = decimal.Parse(TB_VOLUMEN.Text);
             _controlador.setVolumen(_volumen);
+        }
+        private void TB_ALTO_Leave(object sender, EventArgs e)
+        {
+            var _alto= decimal.Parse(TB_ALTO.Text);
+            _controlador.setAlto(_alto);
+        }
+        private void TB_LARGO_Leave(object sender, EventArgs e)
+        {
+            var _largo= decimal.Parse(TB_LARGO.Text);
+            _controlador.setLargo(_largo);
+        }
+        private void TB_ANCHO_Leave(object sender, EventArgs e)
+        {
+            var _ancho= decimal.Parse(TB_ANCHO.Text);
+            _controlador.setAncho(_ancho);
         }
 
     }

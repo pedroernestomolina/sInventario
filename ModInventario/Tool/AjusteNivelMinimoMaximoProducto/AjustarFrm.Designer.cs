@@ -36,6 +36,8 @@
             this.BT_ACEPTAR = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.BT_SALIR = new System.Windows.Forms.Button();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.BT_RESTAURAR = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -54,13 +56,12 @@
             this.TB_EXISTENCIA = new LibControles.NumeroDecimal();
             this.panel9 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.BT_RESTAURAR = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.panel5.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -72,7 +73,6 @@
             this.panel11.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel9.SuspendLayout();
-            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -181,6 +181,32 @@
             this.BT_SALIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.BT_SALIR.UseVisualStyleBackColor = true;
             this.BT_SALIR.Click += new System.EventHandler(this.BT_SALIR_Click);
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.BT_RESTAURAR);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel8.Location = new System.Drawing.Point(139, 2);
+            this.panel8.Margin = new System.Windows.Forms.Padding(1);
+            this.panel8.Name = "panel8";
+            this.panel8.Padding = new System.Windows.Forms.Padding(2);
+            this.panel8.Size = new System.Drawing.Size(135, 49);
+            this.panel8.TabIndex = 2;
+            // 
+            // BT_RESTAURAR
+            // 
+            this.BT_RESTAURAR.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_RESTAURAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_RESTAURAR.Image = global::ModInventario.Properties.Resources.bt_exchange_32;
+            this.BT_RESTAURAR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.BT_RESTAURAR.Location = new System.Drawing.Point(2, 2);
+            this.BT_RESTAURAR.Name = "BT_RESTAURAR";
+            this.BT_RESTAURAR.Size = new System.Drawing.Size(131, 45);
+            this.BT_RESTAURAR.TabIndex = 1;
+            this.BT_RESTAURAR.Text = "Restaurar Valores";
+            this.BT_RESTAURAR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.BT_RESTAURAR.UseVisualStyleBackColor = true;
+            this.BT_RESTAURAR.Click += new System.EventHandler(this.BT_RESTAURAR_Click);
             // 
             // panel5
             // 
@@ -413,32 +439,6 @@
             this.label3.Text = "Existencia:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.BT_RESTAURAR);
-            this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(139, 2);
-            this.panel8.Margin = new System.Windows.Forms.Padding(1);
-            this.panel8.Name = "panel8";
-            this.panel8.Padding = new System.Windows.Forms.Padding(2);
-            this.panel8.Size = new System.Drawing.Size(135, 49);
-            this.panel8.TabIndex = 2;
-            // 
-            // BT_RESTAURAR
-            // 
-            this.BT_RESTAURAR.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BT_RESTAURAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BT_RESTAURAR.Image = global::ModInventario.Properties.Resources.bt_exchange_32;
-            this.BT_RESTAURAR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.BT_RESTAURAR.Location = new System.Drawing.Point(2, 2);
-            this.BT_RESTAURAR.Name = "BT_RESTAURAR";
-            this.BT_RESTAURAR.Size = new System.Drawing.Size(131, 45);
-            this.BT_RESTAURAR.TabIndex = 1;
-            this.BT_RESTAURAR.Text = "Restaurar Valores";
-            this.BT_RESTAURAR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.BT_RESTAURAR.UseVisualStyleBackColor = true;
-            this.BT_RESTAURAR.Click += new System.EventHandler(this.BT_RESTAURAR_Click);
-            // 
             // AjustarFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -458,6 +458,7 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
@@ -472,7 +473,6 @@
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             this.panel9.ResumeLayout(false);
-            this.panel8.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

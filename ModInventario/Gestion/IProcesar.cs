@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 namespace ModInventario.Gestion
 {
     
-    public interface IAbandonar
+    public interface IProcesar
     {
 
-        bool AbandonarIsOk { get; }
-        void AbandonarFicha();
+        bool ProcesarIsOk { get; }
+        void ProcesarFicha();
 
     }
 

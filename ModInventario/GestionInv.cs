@@ -120,6 +120,10 @@ namespace ModInventario
         //
         private Visor.PrecioAjuste.IAjuste _gVisorPrecioAjuste;
         private Producto.Precio.Visualizar.IVisual _gVistaPrecio;
+        //
+        private Configuracion.CambiarPreciosAlModificarCosto.IConf _gConfEditarPrecioAlCambiarCosto;
+        //
+        private Tool.CambioMasivoPrecio.ICambio _gCambioMasivoPrecio;
 
 
         public string Version { get { return "Ver. 2 - " + Application.ProductVersion; } }
@@ -301,6 +305,10 @@ namespace ModInventario
             _gVisorPrecioAjuste = new Visor.PrecioAjuste.Ajuste(_seguridad);
             //
             _gVistaPrecio = new Producto.Precio.Visualizar.Visual();
+            //
+            _gConfEditarPrecioAlCambiarCosto = new Configuracion.CambiarPreciosAlModificarCosto.Conf();
+            //
+            _gCambioMasivoPrecio = new Tool.CambioMasivoPrecio.Cambio();
 
 
             _gestionBusqueda = new Buscar.Gestion(
@@ -949,6 +957,36 @@ namespace ModInventario
                     rp.setFiltros(_gestionReporteFiltros.dataFiltrar);
                     rp.Generar();
                 }
+            }
+        }
+
+        public void CambioMovimientoPrecios()
+        {
+            var r00 = Sistema.MyData.Permiso_CambioMovimientoMasivoPrecio(Sistema.UsuarioP.autoGru);
+            if (r00.Result == OOB.Enumerados.EnumResult.isError)
+            {
+                Helpers.Msg.Error(r00.Mensaje);
+                return;
+            }
+            if (_seguridad.Verificar(r00.Entidad)) 
+            {
+                _gCambioMasivoPrecio.Inicializa();
+                _gCambioMasivoPrecio.Inicia();
+            }
+        }
+
+        public void PermitirCambiarPrecioAlModificarCosto()
+        {
+            var r00 = Sistema.MyData.Permiso_ConfiguracionSistema(Sistema.UsuarioP.autoGru);
+            if (r00.Result == OOB.Enumerados.EnumResult.isError) 
+            {
+                Helpers.Msg.Error(r00.Mensaje);
+                return;
+            }
+            if (_seguridad.Verificar(r00.Entidad))
+            {
+                _gConfEditarPrecioAlCambiarCosto.Inicializa();
+                _gConfEditarPrecioAlCambiarCosto.Inicia();
             }
         }
 

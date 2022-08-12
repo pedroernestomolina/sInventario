@@ -94,6 +94,12 @@ namespace ModInventario.Producto.AgregarEditar
         void setPeso(decimal _peso);
         decimal GetVolumen { get; }
         void setVolumen(decimal _volumen);
+        decimal GetAlto { get; }
+        void setAlto(decimal _alto);
+        decimal GetLargo { get;  }
+        void setLargo(decimal _largo);
+        decimal GetAncho { get; }
+        void setAncho(decimal _ancho);
 
     }
 

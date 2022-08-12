@@ -39,6 +39,9 @@ namespace OOB.LibInventario.Producto.Agregar
         //
         public decimal peso { get; set; }
         public decimal volumen { get; set; }
+        public decimal alto { get; set; }
+        public decimal largo { get; set; }
+        public decimal ancho { get; set; }
 
     }
 

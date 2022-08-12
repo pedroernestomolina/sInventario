@@ -40,6 +40,9 @@ namespace OOB.LibInventario.Producto.Editar.Actualizar
         public List<FichaCodigoAlterno> codigosAlterno { get; set; }
         public decimal peso { get; set; }
         public decimal volumen { get; set; }
+        public decimal alto { get; set; }
+        public decimal largo { get; set; }
+        public decimal ancho { get; set; }
 
 
         public Ficha() 
@@ -71,6 +74,9 @@ namespace OOB.LibInventario.Producto.Editar.Actualizar
             estatusCatalogo="";
             peso=0m;
             volumen=0m;
+            alto = 0m;
+            largo = 0m;
+            ancho = 0m;
             imagen=null;
             codigosAlterno=null;
         }

@@ -13,8 +13,11 @@ namespace DataProvInventario.InfraEstructura
 
         OOB.ResultadoLista<OOB.LibInventario.Tool.AjusteNivelMinimoMaximoProducto.Capturar.Ficha> 
             Tools_AjusteNivelMinimoMaximo_GetLista(OOB.LibInventario.Tool.AjusteNivelMinimoMaximoProducto.Capturar.Filtro filtro);
-
-        OOB.Resultado Tools_AjusteNivelMinimoMaximo_Ajustar(List<OOB.LibInventario.Tool.AjusteNivelMinimoMaximoProducto.Ajustar.Ficha> lista);
+        OOB.Resultado 
+            Tools_AjusteNivelMinimoMaximo_Ajustar(List<OOB.LibInventario.Tool.AjusteNivelMinimoMaximoProducto.Ajustar.Ficha> lista);
+        //
+        OOB.Resultado
+            Tools_CambioMasivoPrecio(OOB.LibInventario.Tool.CambioMasivoPrecio.Ficha ficha);
 
     }
 

@@ -148,7 +148,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.Orange;
+            this.panel1.BackColor = System.Drawing.Color.Gold;
             this.panel1.Controls.Add(this.tableLayoutPanel9);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(1, 1);
@@ -192,7 +192,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(1066, 37);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Visor: Ajuste de Precio";
+            this.label1.Text = "Ajuste de Precio";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel24
@@ -344,7 +344,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(116, 24);
             this.label4.TabIndex = 2;
-            this.label4.Text = "Sucursal Grupo:";
+            this.label4.Text = "Empresa Grupo:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel12

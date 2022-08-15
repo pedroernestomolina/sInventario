@@ -72,6 +72,7 @@
             this.TSM_AJUSTE_CERO = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripSeparator();
             this.TSM_AJSUTES_ASIGNACION_MASIVA_PRODUCTOS_DEPOSITO = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSM_AJUSTES_CAMBIO_MOVIMIENTOS_PRECIOS = new System.Windows.Forms.ToolStripMenuItem();
             this.movimientosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.controlDeMovimientosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_Movimiento_Control_Cargo = new System.Windows.Forms.ToolStripMenuItem();
@@ -92,7 +93,6 @@
             this.TSM_VISOR_EXISTENCIA = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_VISOR_COSTO_EXISTENCIA = new System.Windows.Forms.ToolStripMenuItem();
             this.rotaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_REPORTE_MAESTRO_PRODUCTO = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_REPORTE_MAESTRO_INVENTARIO = new System.Windows.Forms.ToolStripMenuItem();
@@ -119,6 +119,7 @@
             this.TSM_CONFIGURACION_COSTO_EDAD = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_CONFIGURACION_DEPOSITOS_PRE_DETERMINADOS = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSM_CONFIGURACION_PERMITIR_CAMBIAR_PRECIO_AL_MODIFICAR_COSTO = new System.Windows.Forms.ToolStripMenuItem();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -134,8 +135,7 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.TSM_AJUSTES_CAMBIO_MOVIMIENTOS_PRECIOS = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSM_CONFIGURACION_PERMITIR_CAMBIAR_PRECIO_AL_MODIFICAR_COSTO = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -200,11 +200,11 @@
             // 
             this.panel2.Controls.Add(this.BT_SALIR);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(692, 1);
+            this.panel2.Location = new System.Drawing.Point(691, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(1);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(2);
-            this.panel2.Size = new System.Drawing.Size(191, 52);
+            this.panel2.Size = new System.Drawing.Size(192, 52);
             this.panel2.TabIndex = 0;
             // 
             // BT_SALIR
@@ -215,7 +215,7 @@
             this.BT_SALIR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.BT_SALIR.Location = new System.Drawing.Point(2, 2);
             this.BT_SALIR.Name = "BT_SALIR";
-            this.BT_SALIR.Size = new System.Drawing.Size(187, 48);
+            this.BT_SALIR.Size = new System.Drawing.Size(188, 48);
             this.BT_SALIR.TabIndex = 0;
             this.BT_SALIR.Text = "Salir";
             this.BT_SALIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -424,7 +424,7 @@
             this.panel20.Margin = new System.Windows.Forms.Padding(1);
             this.panel20.Name = "panel20";
             this.panel20.Padding = new System.Windows.Forms.Padding(2);
-            this.panel20.Size = new System.Drawing.Size(121, 52);
+            this.panel20.Size = new System.Drawing.Size(120, 52);
             this.panel20.TabIndex = 3;
             // 
             // tableLayoutPanel8
@@ -440,7 +440,7 @@
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(117, 48);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(116, 48);
             this.tableLayoutPanel8.TabIndex = 0;
             // 
             // panel21
@@ -577,7 +577,8 @@
             this.TSM_AJUSTE_CERO,
             this.toolStripMenuItem9,
             this.TSM_AJSUTES_ASIGNACION_MASIVA_PRODUCTOS_DEPOSITO,
-            this.TSM_AJUSTES_CAMBIO_MOVIMIENTOS_PRECIOS});
+            this.TSM_AJUSTES_CAMBIO_MOVIMIENTOS_PRECIOS,
+            this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO});
             this.ajustesToolStripMenuItem.Name = "ajustesToolStripMenuItem";
             this.ajustesToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.ajustesToolStripMenuItem.Text = "Ajustes";
@@ -586,27 +587,27 @@
             // 
             this.TSM_AJUSTE_DefinirNivelMinimoMaximo.Image = global::ModInventario.Properties.Resources.setup;
             this.TSM_AJUSTE_DefinirNivelMinimoMaximo.Name = "TSM_AJUSTE_DefinirNivelMinimoMaximo";
-            this.TSM_AJUSTE_DefinirNivelMinimoMaximo.Size = new System.Drawing.Size(323, 22);
+            this.TSM_AJUSTE_DefinirNivelMinimoMaximo.Size = new System.Drawing.Size(378, 22);
             this.TSM_AJUSTE_DefinirNivelMinimoMaximo.Text = "Definir Nivel Minimo/Maximo de los Productos";
             this.TSM_AJUSTE_DefinirNivelMinimoMaximo.Click += new System.EventHandler(this.TSM_AJUSTE_DefinirNivelMinimoMaximo_Click);
             // 
             // cambioDePreciosToolStripMenuItem
             // 
             this.cambioDePreciosToolStripMenuItem.Name = "cambioDePreciosToolStripMenuItem";
-            this.cambioDePreciosToolStripMenuItem.Size = new System.Drawing.Size(323, 22);
+            this.cambioDePreciosToolStripMenuItem.Size = new System.Drawing.Size(378, 22);
             this.cambioDePreciosToolStripMenuItem.Text = "Cambio De Precios";
             this.cambioDePreciosToolStripMenuItem.Visible = false;
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(320, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(375, 6);
             // 
             // TSM_AJUSTE_MOVIMIENTO
             // 
             this.TSM_AJUSTE_MOVIMIENTO.Image = global::ModInventario.Properties.Resources.setup;
             this.TSM_AJUSTE_MOVIMIENTO.Name = "TSM_AJUSTE_MOVIMIENTO";
-            this.TSM_AJUSTE_MOVIMIENTO.Size = new System.Drawing.Size(323, 22);
+            this.TSM_AJUSTE_MOVIMIENTO.Size = new System.Drawing.Size(378, 22);
             this.TSM_AJUSTE_MOVIMIENTO.Text = "Ajuste Inventario";
             this.TSM_AJUSTE_MOVIMIENTO.Click += new System.EventHandler(this.TSM_AJUSTE_MOVIMIENTO_Click);
             // 
@@ -614,21 +615,28 @@
             // 
             this.TSM_AJUSTE_CERO.Image = global::ModInventario.Properties.Resources.setup;
             this.TSM_AJUSTE_CERO.Name = "TSM_AJUSTE_CERO";
-            this.TSM_AJUSTE_CERO.Size = new System.Drawing.Size(323, 22);
+            this.TSM_AJUSTE_CERO.Size = new System.Drawing.Size(378, 22);
             this.TSM_AJUSTE_CERO.Text = "Ajuste Inventario A Cero (0)";
             this.TSM_AJUSTE_CERO.Click += new System.EventHandler(this.TSM_AJUSTE_CERO_Click);
             // 
             // toolStripMenuItem9
             // 
             this.toolStripMenuItem9.Name = "toolStripMenuItem9";
-            this.toolStripMenuItem9.Size = new System.Drawing.Size(320, 6);
+            this.toolStripMenuItem9.Size = new System.Drawing.Size(375, 6);
             // 
             // TSM_AJSUTES_ASIGNACION_MASIVA_PRODUCTOS_DEPOSITO
             // 
             this.TSM_AJSUTES_ASIGNACION_MASIVA_PRODUCTOS_DEPOSITO.Name = "TSM_AJSUTES_ASIGNACION_MASIVA_PRODUCTOS_DEPOSITO";
-            this.TSM_AJSUTES_ASIGNACION_MASIVA_PRODUCTOS_DEPOSITO.Size = new System.Drawing.Size(323, 22);
+            this.TSM_AJSUTES_ASIGNACION_MASIVA_PRODUCTOS_DEPOSITO.Size = new System.Drawing.Size(378, 22);
             this.TSM_AJSUTES_ASIGNACION_MASIVA_PRODUCTOS_DEPOSITO.Text = "Asignación Masiva Productos A Depósito";
             this.TSM_AJSUTES_ASIGNACION_MASIVA_PRODUCTOS_DEPOSITO.Click += new System.EventHandler(this.TSM_AJSUTES_ASIGNACION_MASIVA_PRODUCTOS_DEPOSITO_Click);
+            // 
+            // TSM_AJUSTES_CAMBIO_MOVIMIENTOS_PRECIOS
+            // 
+            this.TSM_AJUSTES_CAMBIO_MOVIMIENTOS_PRECIOS.Name = "TSM_AJUSTES_CAMBIO_MOVIMIENTOS_PRECIOS";
+            this.TSM_AJUSTES_CAMBIO_MOVIMIENTOS_PRECIOS.Size = new System.Drawing.Size(378, 22);
+            this.TSM_AJUSTES_CAMBIO_MOVIMIENTOS_PRECIOS.Text = "Cambio / Movimiento Masivo de Precios";
+            this.TSM_AJUSTES_CAMBIO_MOVIMIENTOS_PRECIOS.Click += new System.EventHandler(this.TSM_AJUSTES_CAMBIO_MOVIMIENTOS_PRECIOS_Click);
             // 
             // movimientosToolStripMenuItem
             // 
@@ -740,8 +748,7 @@
             this.TSM_VISOR_TRASLADO,
             this.TSM_VISOR_EXISTENCIA,
             this.TSM_VISOR_COSTO_EXISTENCIA,
-            this.rotaciónToolStripMenuItem,
-            this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO});
+            this.rotaciónToolStripMenuItem});
             this.visorToolStripMenuItem.Name = "visorToolStripMenuItem";
             this.visorToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.visorToolStripMenuItem.Text = "Visor";
@@ -750,7 +757,7 @@
             // 
             this.TSM_VISOR_COSTOEDAD.Image = ((System.Drawing.Image)(resources.GetObject("TSM_VISOR_COSTOEDAD.Image")));
             this.TSM_VISOR_COSTOEDAD.Name = "TSM_VISOR_COSTOEDAD";
-            this.TSM_VISOR_COSTOEDAD.Size = new System.Drawing.Size(378, 22);
+            this.TSM_VISOR_COSTOEDAD.Size = new System.Drawing.Size(209, 22);
             this.TSM_VISOR_COSTOEDAD.Text = "Costo Edad ";
             this.TSM_VISOR_COSTOEDAD.Click += new System.EventHandler(this.TSM_VISOR_COSTOEDAD_Click);
             // 
@@ -758,7 +765,7 @@
             // 
             this.TSM_VISOR_AJUSTE.Image = ((System.Drawing.Image)(resources.GetObject("TSM_VISOR_AJUSTE.Image")));
             this.TSM_VISOR_AJUSTE.Name = "TSM_VISOR_AJUSTE";
-            this.TSM_VISOR_AJUSTE.Size = new System.Drawing.Size(378, 22);
+            this.TSM_VISOR_AJUSTE.Size = new System.Drawing.Size(209, 22);
             this.TSM_VISOR_AJUSTE.Text = "Ajustes Ganancia/Perdida";
             this.TSM_VISOR_AJUSTE.Click += new System.EventHandler(this.TSM_VISOR_AJUSTE_Click);
             // 
@@ -766,7 +773,7 @@
             // 
             this.TSM_VISOR_TRASLADO.Image = ((System.Drawing.Image)(resources.GetObject("TSM_VISOR_TRASLADO.Image")));
             this.TSM_VISOR_TRASLADO.Name = "TSM_VISOR_TRASLADO";
-            this.TSM_VISOR_TRASLADO.Size = new System.Drawing.Size(378, 22);
+            this.TSM_VISOR_TRASLADO.Size = new System.Drawing.Size(209, 22);
             this.TSM_VISOR_TRASLADO.Text = "Traslados";
             this.TSM_VISOR_TRASLADO.Click += new System.EventHandler(this.TSM_VISOR_TRASLADO_Click);
             // 
@@ -774,7 +781,7 @@
             // 
             this.TSM_VISOR_EXISTENCIA.Image = global::ModInventario.Properties.Resources.bt_visor;
             this.TSM_VISOR_EXISTENCIA.Name = "TSM_VISOR_EXISTENCIA";
-            this.TSM_VISOR_EXISTENCIA.Size = new System.Drawing.Size(378, 22);
+            this.TSM_VISOR_EXISTENCIA.Size = new System.Drawing.Size(209, 22);
             this.TSM_VISOR_EXISTENCIA.Text = "Existencia";
             this.TSM_VISOR_EXISTENCIA.Click += new System.EventHandler(this.TSM_VISOR_EXISTENCIA_Click);
             // 
@@ -782,24 +789,17 @@
             // 
             this.TSM_VISOR_COSTO_EXISTENCIA.Image = global::ModInventario.Properties.Resources.bt_visor;
             this.TSM_VISOR_COSTO_EXISTENCIA.Name = "TSM_VISOR_COSTO_EXISTENCIA";
-            this.TSM_VISOR_COSTO_EXISTENCIA.Size = new System.Drawing.Size(378, 22);
+            this.TSM_VISOR_COSTO_EXISTENCIA.Size = new System.Drawing.Size(209, 22);
             this.TSM_VISOR_COSTO_EXISTENCIA.Text = "Costo / Existencia";
             this.TSM_VISOR_COSTO_EXISTENCIA.Click += new System.EventHandler(this.TSM_VISOR_COSTO_EXISTENCIA_Click);
             // 
             // rotaciónToolStripMenuItem
             // 
             this.rotaciónToolStripMenuItem.Name = "rotaciónToolStripMenuItem";
-            this.rotaciónToolStripMenuItem.Size = new System.Drawing.Size(378, 22);
+            this.rotaciónToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.rotaciónToolStripMenuItem.Text = "Rotación";
             this.rotaciónToolStripMenuItem.Visible = false;
             this.rotaciónToolStripMenuItem.Click += new System.EventHandler(this.rotaciónToolStripMenuItem_Click);
-            // 
-            // TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO
-            // 
-            this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO.Name = "TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO";
-            this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO.Size = new System.Drawing.Size(378, 22);
-            this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO.Text = "Ajustar Productos Con Existencia Pero Sin Precio de Venta";
-            this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO.Click += new System.EventHandler(this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO_Click);
             // 
             // reportesToolStripMenuItem
             // 
@@ -1023,6 +1023,14 @@
             this.toolStripMenuItem6.Text = "Indicar Depósito / Concepto Pre Determinado Para Devolución Mercancia";
             this.toolStripMenuItem6.Click += new System.EventHandler(this.toolStripMenuItem6_Click);
             // 
+            // TSM_CONFIGURACION_PERMITIR_CAMBIAR_PRECIO_AL_MODIFICAR_COSTO
+            // 
+            this.TSM_CONFIGURACION_PERMITIR_CAMBIAR_PRECIO_AL_MODIFICAR_COSTO.Image = global::ModInventario.Properties.Resources.bt_configuracion;
+            this.TSM_CONFIGURACION_PERMITIR_CAMBIAR_PRECIO_AL_MODIFICAR_COSTO.Name = "TSM_CONFIGURACION_PERMITIR_CAMBIAR_PRECIO_AL_MODIFICAR_COSTO";
+            this.TSM_CONFIGURACION_PERMITIR_CAMBIAR_PRECIO_AL_MODIFICAR_COSTO.Size = new System.Drawing.Size(462, 22);
+            this.TSM_CONFIGURACION_PERMITIR_CAMBIAR_PRECIO_AL_MODIFICAR_COSTO.Text = "Indicar Permitir Cambiar Precio al Modificar Costo del Producto";
+            this.TSM_CONFIGURACION_PERMITIR_CAMBIAR_PRECIO_AL_MODIFICAR_COSTO.Click += new System.EventHandler(this.TSM_CONFIGURACION_PERMITIR_CAMBIAR_PRECIO_AL_MODIFICAR_COSTO_Click);
+            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Azure;
@@ -1217,20 +1225,12 @@
             this.panel10.Size = new System.Drawing.Size(246, 350);
             this.panel10.TabIndex = 0;
             // 
-            // TSM_AJUSTES_CAMBIO_MOVIMIENTOS_PRECIOS
+            // TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO
             // 
-            this.TSM_AJUSTES_CAMBIO_MOVIMIENTOS_PRECIOS.Name = "TSM_AJUSTES_CAMBIO_MOVIMIENTOS_PRECIOS";
-            this.TSM_AJUSTES_CAMBIO_MOVIMIENTOS_PRECIOS.Size = new System.Drawing.Size(323, 22);
-            this.TSM_AJUSTES_CAMBIO_MOVIMIENTOS_PRECIOS.Text = "Cambio / Movimiento Masivo de Precios";
-            this.TSM_AJUSTES_CAMBIO_MOVIMIENTOS_PRECIOS.Click += new System.EventHandler(this.TSM_AJUSTES_CAMBIO_MOVIMIENTOS_PRECIOS_Click);
-            // 
-            // TSM_CONFIGURACION_PERMITIR_CAMBIAR_PRECIO_AL_MODIFICAR_COSTO
-            // 
-            this.TSM_CONFIGURACION_PERMITIR_CAMBIAR_PRECIO_AL_MODIFICAR_COSTO.Image = global::ModInventario.Properties.Resources.bt_configuracion;
-            this.TSM_CONFIGURACION_PERMITIR_CAMBIAR_PRECIO_AL_MODIFICAR_COSTO.Name = "TSM_CONFIGURACION_PERMITIR_CAMBIAR_PRECIO_AL_MODIFICAR_COSTO";
-            this.TSM_CONFIGURACION_PERMITIR_CAMBIAR_PRECIO_AL_MODIFICAR_COSTO.Size = new System.Drawing.Size(462, 22);
-            this.TSM_CONFIGURACION_PERMITIR_CAMBIAR_PRECIO_AL_MODIFICAR_COSTO.Text = "Indicar Permitir Cambiar Precio al Modificar Costo del Producto";
-            this.TSM_CONFIGURACION_PERMITIR_CAMBIAR_PRECIO_AL_MODIFICAR_COSTO.Click += new System.EventHandler(this.TSM_CONFIGURACION_PERMITIR_CAMBIAR_PRECIO_AL_MODIFICAR_COSTO_Click);
+            this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO.Name = "TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO";
+            this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO.Size = new System.Drawing.Size(378, 22);
+            this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO.Text = "Ajustar Productos Con Existencia Pero Sin Precio de Venta";
+            this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO.Click += new System.EventHandler(this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO_Click);
             // 
             // Form1
             // 
@@ -1384,9 +1384,9 @@
         private System.Windows.Forms.ToolStripMenuItem TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem10;
         private System.Windows.Forms.ToolStripMenuItem TSM_REPORTE_RESUMEN_COSTO_INVENTARIO;
-        private System.Windows.Forms.ToolStripMenuItem TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO;
         private System.Windows.Forms.ToolStripMenuItem TSM_AJUSTES_CAMBIO_MOVIMIENTOS_PRECIOS;
         private System.Windows.Forms.ToolStripMenuItem TSM_CONFIGURACION_PERMITIR_CAMBIAR_PRECIO_AL_MODIFICAR_COSTO;
+        private System.Windows.Forms.ToolStripMenuItem TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO;
     }
 }
 

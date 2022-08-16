@@ -117,6 +117,16 @@ namespace ModInventario.MovimientoInvTipo.Ajuste.Captura
 
         public void Procesar()
         {
+            if (_gTipoMov.GetId == "")
+            {
+                Helpers.Msg.Alerta("CAMPO [ TIPO MOVIMIENTO ] NO PUEDE ESTAR VACIO");
+                return;
+            }
+            if (_gEmpaque.GetId == "")
+            {
+                Helpers.Msg.Alerta("CAMPO [ EMPAQUE ] NO PUEDE ESTAR VACIO");
+                return;
+            }
             if (Importe <= 0m)
             {
                 Helpers.Msg.Alerta("MONTO MOVIMIENTO INCORRECTO");

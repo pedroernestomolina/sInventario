@@ -102,6 +102,11 @@ namespace ModInventario.MovimientoInvTipo.Cargo.Captura
 
         public void Procesar()
         {
+            if (_gEmpaque.GetId == "")
+            {
+                Helpers.Msg.Alerta("CAMPO [ EMPAQUE ] NO PUEDE ESTAR VACIO");
+                return;
+            }
             if (Importe <= 0) 
             {
                 Helpers.Msg.Alerta("MONTO MOVIMIENTO INCORRECTO");

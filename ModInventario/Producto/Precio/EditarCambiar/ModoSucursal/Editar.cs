@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace ModInventario.Producto.Precio.ModoSucursal.Editar
+namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
 {
     
-    public class Editar: IEditar 
+    public class Editar: IEditarSucursal 
     {
 
 
@@ -56,11 +56,6 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         private dataPrecio _precioD3;
         private dataPrecio _precioD4;
         private dataProducto _dataPrd;
-
-
-        public bool IsProcesarIsOk { get { return _isProcesarIsOk; } }
-        public bool IsAbandonarIsOk { get { return _isAbandonarIsOk; } }
-        public bool IsEditarPrecioIsOk { get { return _isProcesarIsOk; } }
 
 
         public Editar() 
@@ -484,17 +479,6 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
             return rt;
         }
 
-        public void AbandonarFicha()
-        {
-            _isAbandonarIsOk = false;
-            var xmsg = "Abandonar Cambios Realizados ?";
-            var msg = MessageBox.Show(xmsg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-            if (msg == DialogResult.Yes) 
-            {
-                _isAbandonarIsOk = true;
-            }
-        }
-
 
         public BindingSource GetEmp1_Source { get { return _gEmp1.Source; } }
         public BindingSource GetEmp2_Source { get { return _gEmp2.Source; } }
@@ -826,17 +810,6 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         public bool GetEsAdmDivisaPrd { get { return _dataPrd.InfEsAdmDivisa; } }
 
 
-        public void Procesar()
-        {
-            _isProcesarIsOk = false;
-            var msg = "Procesar Cambios Efectuados ?";
-            var rt = MessageBox.Show(msg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-            if (rt == DialogResult.Yes)
-            {
-                Guardar();
-            }
-        }
-
         private void Guardar()
         {
             var rt = true;
@@ -866,7 +839,6 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
                 Helpers.Msg.Error("[ EMPAQUE PRECIO (5) INCORRECTO");
                 return;
             }
-
             if (_gEmpM1.GetId == "")
             {
                 Helpers.Msg.Error("[ EMPAQUE PRECIO TIPO(2) PARA PRECIO (1) INCORRECTO");
@@ -887,7 +859,6 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
                 Helpers.Msg.Error("[ EMPAQUE PRECIO TIPO(2) PARA PRECIO (4) INCORRECTO");
                 return;
             }
-
             if (_gEmpD1.GetId == "")
             {
                 Helpers.Msg.Error("[ EMPAQUE PRECIO TIPO(3) PARA PRECIO (1) INCORRECTO");
@@ -908,8 +879,6 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
                 Helpers.Msg.Error("[ EMPAQUE PRECIO TIPO(3) PARA PRECIO (4) INCORRECTO");
                 return;
             }
-
-
             if (!_precio1.IsOk())
             {
                 Helpers.Msg.Error("PRECIO (1)," + _precio1.msgError);
@@ -935,7 +904,6 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
                 Helpers.Msg.Error("PRECIO (5)," + _precio5.msgError);
                 return;
             }
-
             if (!_precioM1.IsOk())
             {
                 Helpers.Msg.Error("PRECIO EMPAQUE TIPO(2) PARA PRECIO (1)," + _precioM1.msgError);
@@ -956,7 +924,6 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
                 Helpers.Msg.Error("PRECIO EMPAQUE TIPO(2) PARA PRECIO (4)," + _precioM4.msgError);
                 return;
             }
-
             if (!_precioD1.IsOk())
             {
                 Helpers.Msg.Error("PRECIO EMPAQUE TIPO(3) PARA PRECIO (1)," + _precioM1.msgError);
@@ -977,40 +944,6 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
                 Helpers.Msg.Error("PRECIO EMPAQUE TIPO(3) PARA PRECIO (4)," + _precioM4.msgError);
                 return;
             }
-
-
-            //if (!precio_2.IsOk())
-            //{
-            //    Helpers.Msg.Error("[ UTILIDAD/CONTENIDO EMPAQUE ] PRECIO VENTA ( 2 ) INCORRECTO");
-            //    return false;
-            //}
-            //if (!precio_3.IsOk())
-            //{
-            //    Helpers.Msg.Error("[ UTILIDAD/CONTENIDO EMPAQUE ] PRECIO VENTA ( 3 ) INCORRECTO");
-            //    return false;
-            //}
-            //if (!precio_4.IsOk())
-            //{
-            //    Helpers.Msg.Error("[ UTILIDAD/CONTENIDO EMPAQUE ] PRECIO VENTA ( 4 ) INCORRECTO");
-            //    return false;
-            //}
-            //if (!precio_5.IsOk())
-            //{
-            //    Helpers.Msg.Error("[ UTILIDAD/CONTENIDO EMPAQUE ] PRECIO VENTA ( 5 ) INCORRECTO");
-            //    return false;
-            //}
-            ////
-            //if (!May_1.IsOk())
-            //{
-            //    Helpers.Msg.Error("[ UTILIDAD/CONTENIDO EMPAQUE ] PRECIO MAYOR ( 1 ) INCORRECTO");
-            //    return false;
-            //}
-            //if (!May_2.IsOk())
-            //{
-            //    Helpers.Msg.Error("[ UTILIDAD/CONTENIDO EMPAQUE ] PRECIO MAYOR ( 2 ) INCORRECTO");
-            //    return false;
-            //}
-
             var ficha = new OOB.LibInventario.Precio.Editar.Ficha()
             {
                 autoProducto = _idProducto,
@@ -1036,7 +969,6 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
                 empaque = "UNIDAD",
                 contenido = _precio1.Contenido,
             };
-
             var p2 = new OOB.LibInventario.Precio.Editar.FichaPrecio()
             {
                 autoEmp = _gEmp2.GetId,
@@ -1054,7 +986,6 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
                 empaque = "UNIDAD",
                 contenido = _precio2.Contenido,
             };
-
             var p3 = new OOB.LibInventario.Precio.Editar.FichaPrecio()
             {
                 autoEmp = _gEmp3.GetId,
@@ -1072,7 +1003,6 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
                 empaque = "UNIDAD",
                 contenido = _precio3.Contenido,
             };
-
             var p4 = new OOB.LibInventario.Precio.Editar.FichaPrecio()
             {
                 autoEmp = _gEmp4.GetId,
@@ -1090,7 +1020,6 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
                 empaque = "UNIDAD",
                 contenido = _precio4.Contenido,
             };
-
             var p5 = new OOB.LibInventario.Precio.Editar.FichaPrecio()
             {
                 autoEmp = _gEmp5.GetId,
@@ -1108,8 +1037,6 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
                 empaque = "UNIDAD",
                 contenido = _precio5.Contenido,
             };
-
-            //
             var m1 = new OOB.LibInventario.Precio.Editar.FichaPrecio()
             {
                 autoEmp = _gEmpM1.GetId,
@@ -1127,7 +1054,6 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
                 empaque = _gEmpM1.Item.desc,
                 contenido = _precioM1.Contenido,
             };
-
             var m2 = new OOB.LibInventario.Precio.Editar.FichaPrecio()
             {
                 autoEmp = _gEmpM2.GetId,
@@ -1145,7 +1071,6 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
                 empaque = _gEmpM2.Item.desc,
                 contenido = _precioM2.Contenido,
             };
-
             var m3 = new OOB.LibInventario.Precio.Editar.FichaPrecio()
             {
                 autoEmp = _gEmpM3.GetId,
@@ -1163,7 +1088,6 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
                 empaque = _gEmpM3.Item.desc,
                 contenido = _precioM3.Contenido,
             };
-
             var m4 = new OOB.LibInventario.Precio.Editar.FichaPrecio()
             {
                 autoEmp = _gEmpM4.GetId,
@@ -1181,9 +1105,6 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
                 empaque = _gEmpM4.Item.desc,
                 contenido = _precioM4.Contenido,
             };
-
-
-            //
             var d1 = new OOB.LibInventario.Precio.Editar.FichaPrecio()
             {
                 autoEmp = _gEmpD1.GetId,
@@ -1201,7 +1122,6 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
                 empaque = _gEmpD1.Item.desc,
                 contenido = _precioD1.Contenido,
             };
-
             var d2 = new OOB.LibInventario.Precio.Editar.FichaPrecio()
             {
                 autoEmp = _gEmpD2.GetId,
@@ -1219,7 +1139,6 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
                 empaque = _gEmpD2.Item.desc,
                 contenido = _precioD2.Contenido,
             };
-
             var d3 = new OOB.LibInventario.Precio.Editar.FichaPrecio()
             {
                 autoEmp = _gEmpD3.GetId,
@@ -1237,7 +1156,6 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
                 empaque = _gEmpD3.Item.desc,
                 contenido = _precioD3.Contenido,
             };
-
             var d4 = new OOB.LibInventario.Precio.Editar.FichaPrecio()
             {
                 autoEmp = _gEmpD4.GetId,
@@ -1255,26 +1173,20 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
                 empaque = _gEmpD4.Item.desc,
                 contenido = _precioD4.Contenido,
             };
-
-
             var historia = new List<OOB.LibInventario.Precio.Editar.FichaHistorica>();
             historia.Add(h1);
             historia.Add(h2);
             historia.Add(h3);
             historia.Add(h4);
             historia.Add(h5);
-            //
             historia.Add(hM1);
             historia.Add(hM2);
             historia.Add(hM3);
             historia.Add(hM4);
-            //
             historia.Add(hD1);
             historia.Add(hD2);
             historia.Add(hD3);
             historia.Add(hD4); 
-
-
             ficha.historia = historia;
             var r01 = Sistema.MyData.PrecioProducto_Actualizar(ficha);
             if (r01.Result == OOB.Enumerados.EnumResult.isError)
@@ -1283,6 +1195,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
                 return ;
             }
             _isProcesarIsOk = true;
+            Helpers.Msg.EditarOk();
         }
 
 
@@ -1399,6 +1312,31 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         public string GetEmpTipo_1_Id { get { return _gEmpTipo_1.GetId; } }
         public string GetEmpTipo_2_Id { get { return _gEmpTipo_2.GetId; } }
         public string GetEmpTipo_3_Id { get { return _gEmpTipo_3.GetId; } }
+
+
+        public bool EditarPrecioIsOk { get { return _isProcesarIsOk; } }
+        public bool AbandonarIsOk { get { return _isAbandonarIsOk; } }
+        public bool ProcesarIsOk { get { return _isProcesarIsOk; } }
+        public void AbandonarFicha()
+        {
+            _isAbandonarIsOk = false;
+            var xmsg = "Abandonar Cambios Realizados ?";
+            var msg = MessageBox.Show(xmsg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (msg == DialogResult.Yes)
+            {
+                _isAbandonarIsOk = true;
+            }
+        }
+        public void ProcesarFicha()
+        {
+            _isProcesarIsOk = false;
+            var msg = "Procesar Cambios Efectuados ?";
+            var rt = MessageBox.Show(msg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (rt == DialogResult.Yes)
+            {
+                Guardar();
+            }
+        }
 
     }
 

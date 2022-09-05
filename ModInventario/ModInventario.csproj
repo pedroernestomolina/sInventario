@@ -139,13 +139,13 @@
     </Compile>
     <Compile Include="Analisis\General\data.cs" />
     <Compile Include="Analisis\General\Gestion.cs" />
-    <Compile Include="Anular\AnularFrm.cs">
+    <Compile Include="Auditoria\Anular\AnularFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Anular\AnularFrm.Designer.cs">
+    <Compile Include="Auditoria\Anular\AnularFrm.Designer.cs">
       <DependentUpon>AnularFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Anular\Gestion.cs" />
+    <Compile Include="Auditoria\Anular\Gestion.cs" />
     <Compile Include="Auditoria\Visualizar\Gestion.cs" />
     <Compile Include="Auditoria\Visualizar\VisualizarFrm.cs">
       <SubType>Form</SubType>
@@ -578,16 +578,17 @@
     <Compile Include="Producto\Plu\PluFrm.Designer.cs">
       <DependentUpon>PluFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Producto\Precio\Editar\data.cs" />
-    <Compile Include="Producto\Precio\Editar\EditarFrm.cs">
+    <Compile Include="Producto\Precio\EditarCambiar\IEditar.cs" />
+    <Compile Include="Producto\Precio\EditarCambiar\dataPrecio.cs" />
+    <Compile Include="Producto\Precio\EditarCambiar\dataProducto.cs" />
+    <Compile Include="Producto\Precio\EditarCambiar\ModoSucursal\Editar.cs" />
+    <Compile Include="Producto\Precio\EditarCambiar\ModoSucursal\IEditarSucursal.cs" />
+    <Compile Include="Producto\Precio\EditarCambiar\ModoSucursal\PrecioEditarFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Producto\Precio\Editar\EditarFrm.Designer.cs">
-      <DependentUpon>EditarFrm.cs</DependentUpon>
+    <Compile Include="Producto\Precio\EditarCambiar\ModoSucursal\PrecioEditarFrm.Designer.cs">
+      <DependentUpon>PrecioEditarFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Producto\Precio\Editar\Gestion.cs" />
-    <Compile Include="Producto\Precio\Editar\IGestion.cs" />
-    <Compile Include="Producto\Precio\Editar\ModoSucursal\Gestion.cs" />
     <Compile Include="Producto\Precio\Historico\data.cs" />
     <Compile Include="Producto\Precio\Historico\Gestion.cs" />
     <Compile Include="Producto\Precio\Historico\HistoricoPrecioFrm.cs">
@@ -596,33 +597,32 @@
     <Compile Include="Producto\Precio\Historico\HistoricoPrecioFrm.Designer.cs">
       <DependentUpon>HistoricoPrecioFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Producto\Precio\ModoSucursal\Editar\data.cs" />
-    <Compile Include="Producto\Precio\ModoSucursal\Editar\dataPrecio.cs" />
-    <Compile Include="Producto\Precio\ModoSucursal\Editar\dataProducto.cs" />
-    <Compile Include="Producto\Precio\ModoSucursal\Editar\Editar.cs" />
-    <Compile Include="Producto\Precio\ModoSucursal\Editar\PrecioEditarFrm.cs">
+    <Compile Include="Producto\Precio\EditarCambiar\ModoBasico\Editar.cs" />
+    <Compile Include="Producto\Precio\EditarCambiar\ModoBasico\IEditarBasico.cs" />
+    <Compile Include="Producto\Precio\EditarCambiar\ModoBasico\PrecioEditarFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Producto\Precio\ModoSucursal\Editar\PrecioEditarFrm.Designer.cs">
+    <Compile Include="Producto\Precio\EditarCambiar\ModoBasico\PrecioEditarFrm.Designer.cs">
       <DependentUpon>PrecioEditarFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Producto\Precio\ModoSucursal\Editar\IEditar.cs" />
-    <Compile Include="Producto\Precio\Ver\data.cs" />
-    <Compile Include="Producto\Precio\Ver\Gestion.cs" />
-    <Compile Include="Producto\Precio\Ver\VerFrm.cs">
+    <Compile Include="Producto\Precio\VerVisualizar\IVisual.cs" />
+    <Compile Include="Producto\Precio\VerVisualizar\ModoBasico\data.cs" />
+    <Compile Include="Producto\Precio\VerVisualizar\dataEmp.cs" />
+    <Compile Include="Producto\Precio\VerVisualizar\ModoBasico\IVisualBasico.cs" />
+    <Compile Include="Producto\Precio\VerVisualizar\ModoBasico\Visual.cs" />
+    <Compile Include="Producto\Precio\VerVisualizar\ModoBasico\VisualFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Producto\Precio\Ver\VerFrm.Designer.cs">
-      <DependentUpon>VerFrm.cs</DependentUpon>
+    <Compile Include="Producto\Precio\VerVisualizar\ModoBasico\VisualFrm.Designer.cs">
+      <DependentUpon>VisualFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Producto\Precio\Visualizar\data.cs" />
-    <Compile Include="Producto\Precio\Visualizar\dataEmp.cs" />
-    <Compile Include="Producto\Precio\Visualizar\IVisual.cs" />
-    <Compile Include="Producto\Precio\Visualizar\Visual.cs" />
-    <Compile Include="Producto\Precio\Visualizar\VisualFrm.cs">
+    <Compile Include="Producto\Precio\VerVisualizar\ModoSucursal\data.cs" />
+    <Compile Include="Producto\Precio\VerVisualizar\ModoSucursal\IVisualSucursal.cs" />
+    <Compile Include="Producto\Precio\VerVisualizar\ModoSucursal\Visual.cs" />
+    <Compile Include="Producto\Precio\VerVisualizar\ModoSucursal\VisualFrm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Producto\Precio\Visualizar\VisualFrm.Designer.cs">
+    <Compile Include="Producto\Precio\VerVisualizar\ModoSucursal\VisualFrm.Designer.cs">
       <DependentUpon>VisualFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Producto\Proveedor\data.cs" />
@@ -775,6 +775,10 @@
       <DependentUpon>SeguridadFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Sistema.cs" />
+    <Compile Include="src\FabModoBasico.cs" />
+    <Compile Include="src\FabModoSucursal.cs" />
+    <Compile Include="src\Fabrica.cs" />
+    <Compile Include="src\IFabrica.cs" />
     <Compile Include="Sucursal\Lista\data.cs" />
     <Compile Include="Sucursal\Lista\ListaSuc.cs" />
     <Compile Include="Sucursal\Lista\IListaSuc.cs" />
@@ -887,7 +891,7 @@
     <EmbeddedResource Include="Analisis\General\AnalisisFrm.resx">
       <DependentUpon>AnalisisFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Anular\AnularFrm.resx">
+    <EmbeddedResource Include="Auditoria\Anular\AnularFrm.resx">
       <DependentUpon>AnularFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Auditoria\Visualizar\VisualizarFrm.resx">
@@ -1013,19 +1017,19 @@
     <EmbeddedResource Include="Producto\Plu\PluFrm.resx">
       <DependentUpon>PluFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Producto\Precio\Editar\EditarFrm.resx">
-      <DependentUpon>EditarFrm.cs</DependentUpon>
+    <EmbeddedResource Include="Producto\Precio\EditarCambiar\ModoSucursal\PrecioEditarFrm.resx">
+      <DependentUpon>PrecioEditarFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Producto\Precio\Historico\HistoricoPrecioFrm.resx">
       <DependentUpon>HistoricoPrecioFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Producto\Precio\ModoSucursal\Editar\PrecioEditarFrm.resx">
+    <EmbeddedResource Include="Producto\Precio\EditarCambiar\ModoBasico\PrecioEditarFrm.resx">
       <DependentUpon>PrecioEditarFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Producto\Precio\Ver\VerFrm.resx">
-      <DependentUpon>VerFrm.cs</DependentUpon>
+    <EmbeddedResource Include="Producto\Precio\VerVisualizar\ModoBasico\VisualFrm.resx">
+      <DependentUpon>VisualFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Producto\Precio\Visualizar\VisualFrm.resx">
+    <EmbeddedResource Include="Producto\Precio\VerVisualizar\ModoSucursal\VisualFrm.resx">
       <DependentUpon>VisualFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Producto\Proveedor\ProveedoresFrm.resx">
@@ -1287,6 +1291,7 @@
     <Content Include="Imagenes\bt_exchange.png" />
     <Content Include="Imagenes\bt_exchange_32.png" />
     <Content Include="Imagenes\bt_exchange_48.png" />
+    <Content Include="Imagenes\bt_filtros.png" />
     <Content Include="Imagenes\bt_gestion.png" />
     <Content Include="Imagenes\bt_grafico.png" />
     <Content Include="Imagenes\bt_guardar %282%29.png" />

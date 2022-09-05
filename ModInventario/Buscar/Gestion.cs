@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 
 namespace ModInventario.Buscar
@@ -31,13 +32,13 @@ namespace ModInventario.Buscar
         private FiltrosGen.IAdmProducto _gFiltrarProducto;
         private ISeguridadAccesoSistema _gAccesoSistema;
         //
-        private Producto.Precio.ModoSucursal.Editar.IEditar _gEditarPrecio;
         private SeguridadSist.ISeguridad _gSeguridadUsu;
         private SeguridadSist.Usuario.IModoUsuario _gSeguridadModoUsu;
         private Producto.QR.IQR _gQR;
         private Producto.Imagen.IImagen _gImagen;
         private Kardex.Movimiento.IMov _gKardex;
-        private Producto.Precio.Visualizar.IVisual _gVistaPrecio;
+        //
+        private FiltrosGen.IOpcion _gTipoBusq;
 
 
         public object Source { get { return _gestionLista.Source; } }
@@ -55,16 +56,18 @@ namespace ModInventario.Buscar
             SeguridadSist.Usuario.IModoUsuario seguridadModo,
             Producto.QR.IQR _qr,
             Producto.Imagen.IImagen _imagen,
-            Producto.Precio.Visualizar.IVisual _vistaPrecio
-            )
+            Producto.Precio.EditarCambiar.IEditar editarCambiarPrecio,
+            Producto.Precio.VerVisualizar.IVisual verVisualizarPrecio)
         {
+            _gEditarCambiarPrecio = editarCambiarPrecio;
+            _gVerPrecio = verVisualizarPrecio;
             _gAccesoSistema = ctrSeguridad;
             _gFiltrarProducto = ctrFiltrarProducto;
             _gSeguridadUsu = _seguridadUsu;
             _gSeguridadModoUsu= seguridadModo;
             _gQR = _qr;
             _gImagen = _imagen;
-            _gVistaPrecio = _vistaPrecio;
+            _gTipoBusq= new FiltrosGen.Opcion.Gestion();
 
             //
             _gestionLista = new GestionLista();
@@ -89,16 +92,10 @@ namespace ModInventario.Buscar
             //
             _gKardex = new Kardex.Movimiento.Gestion();
             //
-
-
             _gestionEstatus = new Producto.Estatus.Gestion();
             _gestionImagen = new Producto.Imagen.Gestion();
             _gestionProveedor = new Producto.Proveedor.Gestion();
             _gestionVisualizarFicha = new Producto.VisualizarFicha.Gestion();
-            //
-            //
-            //
-            _gEditarPrecio = new Producto.Precio.ModoSucursal.Editar.Editar();
         }
 
         private void _gestionLista_CambioItemActual(object sender, EventArgs e)
@@ -108,6 +105,7 @@ namespace ModInventario.Buscar
 
         public void Inicializa() 
         {
+            _gTipoBusq.Inicializa();
             _gFiltrarProducto.Inicializa();
         }
 
@@ -131,6 +129,13 @@ namespace ModInventario.Buscar
         {
             var rt = true;
 
+            var lst = new List<ficha>();
+            lst.Add(new ficha("01", "", "Código"));
+            lst.Add(new ficha("02", "", "Descripción"));
+            lst.Add(new ficha("03", "", "Referencia"));
+            lst.Add(new ficha("04", "", "Cod/Barra"));
+            _gTipoBusq.setData(lst);
+
             var r01 = Sistema.MyData.Configuracion_PreferenciaBusqueda();
             if (r01.Result == OOB.Enumerados.EnumResult.isError) 
             {
@@ -140,13 +145,13 @@ namespace ModInventario.Buscar
             switch (r01.Entidad) 
             {
                 case OOB.LibInventario.Configuracion.Enumerados.EnumPreferenciaBusqueda.PorCodigo:
-                    _gFiltrarProducto.setMetBusqByCodigo();
+                    setTipoBusqueda("01");
                     break;
                 case OOB.LibInventario.Configuracion.Enumerados.EnumPreferenciaBusqueda.PorNombre:
-                    _gFiltrarProducto.setMetBusqByNombre();
+                    setTipoBusqueda("02");
                     break;
                 case OOB.LibInventario.Configuracion.Enumerados.EnumPreferenciaBusqueda.PorReferencia:
-                    _gFiltrarProducto.setMetBusqByReferencia();
+                    setTipoBusqueda("03");
                     break;
             }
 
@@ -326,7 +331,7 @@ namespace ModInventario.Buscar
         {
             if (Item != null)
             {
-                if (Item.identidad.estatus != OOB.LibInventario.Producto.Enumerados.EnumEstatus.Inactivo)
+                if (!Item.IsInactivo)
                 {
                     var idAuto = Item.AutoId;
                     var r00 = Sistema.MyData.Permiso_CambiarCostos(Sistema.UsuarioP.autoGru);
@@ -541,33 +546,17 @@ namespace ModInventario.Buscar
             }
         }
 
-        public void setCadenaBusc(string cadena)
-        {
-            _gFiltrarProducto.setCadenaBusc(cadena);
-        }
-        public void setMetodoBusquedaByCodigo()
-        {
-            _gFiltrarProducto.setMetBusqByCodigo();
-        }
-        public void setMetodoBusquedaByNombre()
-        {
-            _gFiltrarProducto.setMetBusqByNombre();
-        }
-        public void setMetodoBusquedaByReferencia()
-        {
-            _gFiltrarProducto.setMetBusqByReferencia();
-        }
-
         public void SeleccionarItem()
         {
             HayItemSeleccionado = _gestionLista.SeleccionarItem() != null ? true : false;
         }
 
+        private Producto.Precio.EditarCambiar.IEditar _gEditarCambiarPrecio;
         public void EditarPrecio()
         {
             if (Item != null)
             {
-                if (Item.identidad.estatus != OOB.LibInventario.Producto.Enumerados.EnumEstatus.Inactivo)
+                if (!Item.IsInactivo)
                 {
                     var r00 = Sistema.MyData.Permiso_CambiarPrecios(Sistema.UsuarioP.autoGru);
                     if (r00.Result == OOB.Enumerados.EnumResult.isError)
@@ -578,10 +567,10 @@ namespace ModInventario.Buscar
                     if (_gAccesoSistema.Verificar(r00.Entidad))
                     {
                         var idAuto = Item.AutoId;
-                        _gEditarPrecio.Inicializa();
-                        _gEditarPrecio.setIdItemEditar(idAuto);
-                        _gEditarPrecio.Inicia();
-                        if (_gEditarPrecio.IsEditarPrecioIsOk)
+                        _gEditarCambiarPrecio.Inicializa();
+                        _gEditarCambiarPrecio.setIdItemEditar(idAuto);
+                        _gEditarCambiarPrecio.Inicia();
+                        if (_gEditarCambiarPrecio.EditarPrecioIsOk)
                         {
                             var filtros = new OOB.LibInventario.Producto.Filtro();
                             filtros.autoProducto = idAuto;
@@ -632,11 +621,6 @@ namespace ModInventario.Buscar
             }
         }
 
-        public void setMetodoBusquedaByCodigoBarra()
-        {
-            _gFiltrarProducto.setMetBusqByCodigoBarra();
-        }
-
         public void MovKardex()
         {
             if (Item != null)
@@ -647,13 +631,41 @@ namespace ModInventario.Buscar
             }
         }
 
+        private Producto.Precio.VerVisualizar.IVisual _gVerPrecio;
         public void VerPrecios()
         {
             if (Item != null)
             {
-                _gVistaPrecio.Inicializa();
-                _gVistaPrecio.setFichaVisualizar(Item.identidad.auto);
-                _gVistaPrecio.Inicia();
+                _gVerPrecio.Inicializa();
+                _gVerPrecio.setFichaVisualizar(Item.identidad.auto);
+                _gVerPrecio.Inicia();
+            }
+        }
+
+
+        public BindingSource GeTipoBusqueda_Source { get { return _gTipoBusq.Source; } }
+        public string GetTipoBusqueda_Id { get { return _gTipoBusq.GetId; } }
+        public void setCadenaBusc(string cadena)
+        {
+            _gFiltrarProducto.setCadenaBusc(cadena);
+        }
+        public void setTipoBusqueda(string id)
+        {
+            _gTipoBusq.setFicha(id);
+            switch (id)
+            {
+                case "01":
+                    _gFiltrarProducto.setMetBusqByCodigo();
+                    break;
+                case "02":
+                    _gFiltrarProducto.setMetBusqByNombre();
+                    break;
+                case "03":
+                    _gFiltrarProducto.setMetBusqByReferencia();
+                    break;
+                case "04":
+                    _gFiltrarProducto.setMetBusqByCodigoBarra();
+                    break;
             }
         }
 

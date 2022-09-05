@@ -119,7 +119,6 @@ namespace ModInventario
         private Producto.Deposito.AsignacionMasiva.IAsignacion _gAsignacionMasiva;
         //
         private Visor.PrecioAjuste.IAjuste _gVisorPrecioAjuste;
-        private Producto.Precio.Visualizar.IVisual _gVistaPrecio;
         //
         private Configuracion.CambiarPreciosAlModificarCosto.IConf _gConfEditarPrecioAlCambiarCosto;
         //
@@ -302,15 +301,13 @@ namespace ModInventario
             //
             _gAsignacionMasiva = new Producto.Deposito.AsignacionMasiva.Asignacion();
             //
-            _gVisorPrecioAjuste = new Visor.PrecioAjuste.Ajuste(_seguridad);
-            //
-            _gVistaPrecio = new Producto.Precio.Visualizar.Visual();
-            //
             _gConfEditarPrecioAlCambiarCosto = new Configuracion.CambiarPreciosAlModificarCosto.Conf();
             //
             _gCambioMasivoPrecio = new Tool.CambioMasivoPrecio.Cambio();
-
-
+            
+            src.IFabrica _fabrica = new src.FabModoSucursal();
+            Producto.Precio.EditarCambiar.IEditar ctrEditarPrecio = _fabrica.CreateInstancia_EditarCambiarPrecio();
+            Producto.Precio.VerVisualizar.IVisual ctrVerVisualizarPrecio = _fabrica.CreateInstancia_VisualizarPrecio();
             _gestionBusqueda = new Buscar.Gestion(
                 _gFiltroAdmProducto, 
                 _seguridad, 
@@ -319,7 +316,9 @@ namespace ModInventario
                 _gSecurityModoUsuario,
                 _gQR, 
                 _gImagen,
-                _gVistaPrecio);
+                ctrEditarPrecio, 
+                ctrVerVisualizarPrecio);
+            _gVisorPrecioAjuste = new Visor.PrecioAjuste.Ajuste(_seguridad, ctrEditarPrecio);
 
             _gestionVisorExistencia = new Visor.Existencia.Gestion();
             _gestionVisorCostoEdad = new Visor.CostoEdad.Gestion();

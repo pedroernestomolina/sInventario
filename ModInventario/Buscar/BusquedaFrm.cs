@@ -23,6 +23,13 @@ namespace ModInventario.Buscar
         {
             InitializeComponent();
             InicializarGrid();
+            InicializaCombo();
+        }
+
+        private void InicializaCombo()
+        {
+            CB_TIPO_BUSQUEDA.DisplayMember = "desc";
+            CB_TIPO_BUSQUEDA.ValueMember = "id";
         }
 
         private void InicializarGrid()
@@ -68,15 +75,6 @@ namespace ModInventario.Buscar
             c3.DefaultCellStyle.BackColor = Color.Green;
             c3.DefaultCellStyle.ForeColor= Color.White;
             c3.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-            //var c3 = new DataGridViewTextBoxColumn();
-            //c3.DataPropertyName = "Estatus";
-            //c3.Name = "Estatus";
-            //c3.HeaderText = "*";
-            //c3.Visible = true;
-            //c3.Width = 20;
-            //c3.HeaderCell.Style.Font = f;
-            //c3.DefaultCellStyle.Font = f1;
 
             var c4 = new DataGridViewTextBoxColumn();
             c4.DataPropertyName = "Estatus";
@@ -165,48 +163,23 @@ namespace ModInventario.Buscar
             }
         }
 
+        private bool _modoInicializar;
         private void BusquedaFrm_Load(object sender, EventArgs e)
         {
+            _modoInicializar = true;
             TB_CADENA.Text = "";
+            CB_TIPO_BUSQUEDA.DataSource = _controlador.GeTipoBusqueda_Source;
+            CB_TIPO_BUSQUEDA.SelectedValue = _controlador.GetTipoBusqueda_Id;
             DGV.DataSource = _controlador.Source;
             L_ITEMS.Text = _controlador.Items.ToString("n0");
             LimpiarEtiquetas();
             TB_CADENA.Focus();
-            switch (_controlador.MetodoBusqueda) 
-            {
-                case Gestion.enumMetodoBusqueda.PorCodigo:
-                    RB_BUSCAR_POR_CODIGO.Checked = true;
-                    break;
-                case Gestion.enumMetodoBusqueda.PorNombre:
-                    RB_BUSCAR_POR_NOMBRE.Checked = true;
-                    break;
-                case Gestion.enumMetodoBusqueda.PorReferencia:
-                    RB_BUSCAR_POR_REF.Checked = true;
-                    break;
-            }
+            _modoInicializar = false;
         }
 
         public void setControlador(Gestion ctr)
         {
             _controlador = ctr;
-        }
-
-        private void RB_BUSCAR_POR_CODIGO_CheckedChanged(object sender, EventArgs e)
-        {
-            _controlador.setMetodoBusquedaByCodigo();
-            TB_CADENA.Focus();
-        }
-
-        private void RB_BUSCAR_POR_NOMBRE_CheckedChanged(object sender, EventArgs e)
-        {
-            _controlador.setMetodoBusquedaByNombre();
-            TB_CADENA.Focus();
-        }
-
-        private void RB_BUSCAR_POR_REF_CheckedChanged(object sender, EventArgs e)
-        {
-            _controlador.setMetodoBusquedaByReferencia();
-            TB_CADENA.Focus();
         }
 
         private void BT_BUSCAR_Click(object sender, EventArgs e)
@@ -253,32 +226,6 @@ namespace ModInventario.Buscar
             L_INV_EMP_COMPRA.Text = _controlador.INV_EMP_COMPRA.ToString();
             L_INV_EMP_INV.Text = _controlador.INV_EMP_INV.ToString();
             L_INV_EMP_UND.Text = _controlador.INV_EMP_UND.ToString();
-
-
-            //if (_controlador.Item.identidad.AdmPorDivisa == OOB.LibInventario.Producto.Enumerados.EnumAdministradorPorDivisa.Si)
-            //{
-            //    L_CostoUnd.Text = _controlador.Item.CostoDivisaUnd.ToString("n2");
-            //    PN_1.Text = _controlador.Item.PDivisaNeto_1.ToString("n2");
-            //    PN_2.Text = _controlador.Item.PDivisaNeto_2.ToString("n2");
-            //    PN_3.Text = _controlador.Item.PDivisaNeto_3.ToString("n2");
-            //    PN_4.Text = _controlador.Item.PDivisaNeto_4.ToString("n2");
-            //    PN_5.Text = _controlador.Item.PDivisaNeto_5.ToString("n2");
-            //    PN_MAY_1.Text = _controlador.Item.PDivisaNetoMay_1.ToString("n2");
-            //    PN_MAY_2.Text = _controlador.Item.PDivisaNetoMay_2.ToString("n2");
-            //}
-            //else
-            //{
-            //    L_CostoUnd.Text = _controlador.Item.CostoUnidad.ToString("n2");
-            //    PN_1.Text = _controlador.Item.PNeto_1.ToString("n2");
-            //    PN_2.Text = _controlador.Item.PNeto_2.ToString("n2");
-            //    PN_3.Text = _controlador.Item.PNeto_3.ToString("n2");
-            //    PN_4.Text = _controlador.Item.PNeto_4.ToString("n2");
-            //    PN_5.Text = _controlador.Item.PNeto_5.ToString("n2");
-            //    PN_MAY_1.Text = _controlador.Item.PNetoMay_1.ToString("n2");
-            //    PN_MAY_2.Text = _controlador.Item.PNetoMay_2.ToString("n2");
-            //}
-            //L_CON_MAY_1.Text = _controlador.Item.ContenidoEmpMay_1.ToString();
-            //L_CON_MAY_2.Text = _controlador.Item.ContenidoEmpMay_2.ToString();
         }
 
         private void LimpiarEtiquetas()
@@ -305,25 +252,12 @@ namespace ModInventario.Buscar
             L_INV_EMP_COMPRA.Text = "";
             L_INV_EMP_INV.Text = "";
             L_INV_EMP_UND.Text = ""; 
-
-
-            //L_CostoUnd.Text = "0";
-            //PN_1.Text = "0";
-            //PN_2.Text = "0";
-            //PN_3.Text = "0";
-            //PN_4.Text = "0";
-            //PN_5.Text = "0";
-            //PN_MAY_1.Text = "0";
-            //PN_MAY_2.Text = "0";
-            //L_CON_MAY_1.Text = "";
-            //L_CON_MAY_2.Text = "";
         }
 
         private void BT_FILTRAR_Click(object sender, EventArgs e)
         {
             FiltrarBusqueda();
         }
-
         private void FiltrarBusqueda()
         {
             BT_BUSCAR.Enabled = false;
@@ -529,12 +463,6 @@ namespace ModInventario.Buscar
             _controlador.setCadenaBusc(TB_CADENA.Text.Trim().ToUpper());
         }
 
-        private void RB_BUSCAR_POR_CODIGO_BARRA_CheckedChanged(object sender, EventArgs e)
-        {
-            _controlador.setMetodoBusquedaByCodigoBarra();
-            TB_CADENA.Focus();
-        }
-
         private void BT_PRECIO_Click(object sender, EventArgs e)
         {
             VerPrecios();
@@ -553,6 +481,16 @@ namespace ModInventario.Buscar
         {
             _controlador.EditarCosto();
             TB_CADENA.Focus();
+        }
+
+        private void CB_TIPO_BUSQUEDA_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_modoInicializar) { return; }
+            _controlador.setTipoBusqueda("");
+            if (CB_TIPO_BUSQUEDA.SelectedIndex != -1) 
+            {
+                _controlador.setTipoBusqueda(CB_TIPO_BUSQUEDA.SelectedValue.ToString());
+            }
         }
       
     }

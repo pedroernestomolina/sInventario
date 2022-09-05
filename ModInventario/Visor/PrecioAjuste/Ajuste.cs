@@ -17,21 +17,21 @@ namespace ModInventario.Visor.PrecioAjuste
         private FiltrosGen.IOpcion _gGrupo;
         private FiltrosGen.IOpcion _gEmpaqueVer;
         private IAjusteLista _gLista;
-        private Producto.Precio.ModoSucursal.Editar.IEditar _gEditarPrecio;
+        private Producto.Precio.EditarCambiar.IEditar _gEditarPrecio;
         private ISeguridadAccesoSistema _gAccesoSistema;
         private Sucursal.Lista.IListaSuc _gSuc;
 
 
-        public Ajuste(ISeguridadAccesoSistema ctrSeguridad)
+        public Ajuste(ISeguridadAccesoSistema ctrSeguridad, Producto.Precio.EditarCambiar.IEditar gPrecio)
         {
             _gEmpresaSuc = new FiltrosGen.Opcion.Gestion();
             _gDepartamento = new FiltrosGen.Opcion.Gestion();
             _gGrupo = new FiltrosGen.Opcion.Gestion();
             _gEmpaqueVer = new FiltrosGen.Opcion.Gestion();
             _gLista = new AjusteLista();
-            _gEditarPrecio = new Producto.Precio.ModoSucursal.Editar.Editar();
             _gAccesoSistema = ctrSeguridad;
             _gSuc = new Sucursal.Lista.ListaSuc();
+            _gEditarPrecio = gPrecio;
         }
 
 
@@ -112,7 +112,7 @@ namespace ModInventario.Visor.PrecioAjuste
         {
             if (_gEmpresaSuc.Item == null)
             {
-                Helpers.Msg.Error("CAMPO [ SUCURSAL GRUPO ] NO PUEDE ESTAR VACIO");
+                Helpers.Msg.Error("CAMPO [ EMPRESA GRUPO ] NO PUEDE ESTAR VACIO");
                 return;
             }
             var _idDep = _gDepartamento.Item == null ? "" : _gDepartamento.GetId;
@@ -277,7 +277,7 @@ namespace ModInventario.Visor.PrecioAjuste
                     _gEditarPrecio.Inicializa();
                     _gEditarPrecio.setIdItemEditar(idAuto);
                     _gEditarPrecio.Inicia();
-                    if (_gEditarPrecio.IsEditarPrecioIsOk)
+                    if (_gEditarPrecio.EditarPrecioIsOk)
                     {
                         _gLista.EliminarItem(idAuto);
                     }

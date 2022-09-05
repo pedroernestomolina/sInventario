@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace ModInventario.Producto.Precio.ModoSucursal.Editar
+namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
 {
     public partial class PrecioEditarFrm : Form
     {
 
 
-        private IEditar _controlador;
+        private IEditarSucursal _controlador;
 
 
         public PrecioEditarFrm()
@@ -64,7 +64,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
             CB_EMP_TIPO_3.ValueMember = "id";
         }
 
-        public void setControlador(IEditar ctr)
+        public void setControlador(IEditarSucursal ctr)
         {
             _controlador = ctr;
         }
@@ -315,8 +315,8 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void Procesar()
         {
-            _controlador.Procesar();
-            if (_controlador.IsProcesarIsOk) 
+            _controlador.ProcesarFicha();
+            if (_controlador.ProcesarIsOk) 
             {
                 Salir();
             }
@@ -329,7 +329,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         private void AbandonarFicha()
         {
             _controlador.AbandonarFicha();
-            if (_controlador.IsAbandonarIsOk) 
+            if (_controlador.AbandonarIsOk) 
             {
                 Salir();
             }
@@ -341,7 +341,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         private void EditarFrm_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
-            if (_controlador.IsAbandonarIsOk || _controlador.IsProcesarIsOk) 
+            if (_controlador.AbandonarIsOk || _controlador.ProcesarIsOk) 
             {
                 e.Cancel = false;
             }
@@ -446,18 +446,17 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
 
         private void TB_CONT_1_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setContEmp_1(int.Parse(TB_CONT_1.Text));
+            _modoInicializar = true;
+            TB_UT_1.Text = _controlador.GetUt1.ToString("N2").Replace(".", "");
+            TB_PN_1.Text = _controlador.GetPN1.ToString("N2").Replace(".", "");
+            TB_PF_1.Text = _controlador.GetPF1.ToString("N2").Replace(".", "");
+            _modoInicializar = false;
         }
         private void TB_UT_1_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar) 
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setUt_1(decimal.Parse(TB_UT_1.Text));
             _modoInicializar = true;
             TB_PN_1.Text = _controlador.GetPN1.ToString("N2").Replace(".", "");
@@ -466,10 +465,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_PN_1_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setPN_1(decimal.Parse(TB_PN_1.Text));
             _modoInicializar = true;
             TB_UT_1.Text = _controlador.GetUt1.ToString("N2").Replace(".", "");
@@ -478,10 +474,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_PF_1_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setPF_1(decimal.Parse(TB_PF_1.Text));
             _modoInicializar = true;
              TB_UT_1.Text = _controlador.GetUt1.ToString("N2").Replace(".", "");
@@ -515,21 +508,19 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
             }
         }
 
-
         private void TB_CONT_2_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setContEmp_2(int.Parse(TB_CONT_2.Text));
+            _modoInicializar = true;
+            TB_UT_2.Text = _controlador.GetUt2.ToString("N2").Replace(".", "");
+            TB_PN_2.Text = _controlador.GetPN2.ToString("N2").Replace(".", "");
+            TB_PF_2.Text = _controlador.GetPF2.ToString("N2").Replace(".", "");
+            _modoInicializar = false;
         }
         private void TB_UT_2_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setUt_2(decimal.Parse(TB_UT_2.Text));
             _modoInicializar = true;
             TB_PN_2.Text = _controlador.GetPN2.ToString("N2").Replace(".", "");
@@ -538,10 +529,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_PN_2_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setPN_2(decimal.Parse(TB_PN_2.Text));
             _modoInicializar = true;
             TB_UT_2.Text = _controlador.GetUt2.ToString("N2").Replace(".", "");
@@ -563,10 +551,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_PF_2_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setPF_2(decimal.Parse(TB_PF_2.Text));
             _modoInicializar = true;
             TB_UT_2.Text = _controlador.GetUt2.ToString("N2").Replace(".", "");
@@ -587,21 +572,19 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
             }
         }
 
-
         private void TB_CONT_3_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setContEmp_3(int.Parse(TB_CONT_3.Text));
+            _modoInicializar = true;
+            TB_UT_3.Text = _controlador.GetUt3.ToString("N2").Replace(".", "");
+            TB_PN_3.Text = _controlador.GetPN3.ToString("N2").Replace(".", "");
+            TB_PF_3.Text = _controlador.GetPF3.ToString("N2").Replace(".", "");
+            _modoInicializar = false;
         }
         private void TB_UT_3_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setUt_3(decimal.Parse(TB_UT_3.Text));
             _modoInicializar = true;
             TB_PN_3.Text = _controlador.GetPN3.ToString("N2").Replace(".", "");
@@ -610,10 +593,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_PN_3_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setPN_3(decimal.Parse(TB_PN_3.Text));
             _modoInicializar = true;
             TB_UT_3.Text = _controlador.GetUt3.ToString("N2").Replace(".", "");
@@ -635,10 +615,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_PF_3_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setPF_3(decimal.Parse(TB_PF_3.Text));
             _modoInicializar = true;
             TB_UT_3.Text = _controlador.GetUt3.ToString("N2").Replace(".", "");
@@ -661,18 +638,17 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
 
         private void TB_CONT_4_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setContEmp_4(int.Parse(TB_CONT_4.Text));
+            _modoInicializar = true;
+            TB_UT_4.Text = _controlador.GetUt4.ToString("N2").Replace(".", "");
+            TB_PN_4.Text = _controlador.GetPN4.ToString("N2").Replace(".", "");
+            TB_PF_4.Text = _controlador.GetPF4.ToString("N2").Replace(".", "");
+            _modoInicializar = false;
         }
         private void TB_UT_4_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setUt_4(decimal.Parse(TB_UT_4.Text));
             _modoInicializar = true;
             TB_PN_4.Text = _controlador.GetPN4.ToString("N2").Replace(".", "");
@@ -681,10 +657,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_PN_4_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setPN_4(decimal.Parse(TB_PN_4.Text));
             _modoInicializar = true;
             TB_UT_4.Text = _controlador.GetUt4.ToString("N2").Replace(".", "");
@@ -706,10 +679,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_PF_4_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setPF_4(decimal.Parse(TB_PF_4.Text));
             _modoInicializar = true;
             TB_UT_4.Text = _controlador.GetUt4.ToString("N2").Replace(".", "");
@@ -730,21 +700,19 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
             }
         }
 
-
         private void TB_CONT_5_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setContEmp_5(int.Parse(TB_CONT_5.Text));
+            _modoInicializar = true;
+            TB_UT_5.Text = _controlador.GetUt5.ToString("N2").Replace(".", "");
+            TB_PN_5.Text = _controlador.GetPN5.ToString("N2").Replace(".", "");
+            TB_PF_5.Text = _controlador.GetPF5.ToString("N2").Replace(".", "");
+            _modoInicializar = false;
         }
         private void TB_UT_5_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setUt_5(decimal.Parse(TB_UT_5.Text));
             _modoInicializar = true;
             TB_PN_5.Text = _controlador.GetPN5.ToString("N2").Replace(".", "");
@@ -753,10 +721,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_PN_5_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setPN_5(decimal.Parse(TB_PN_5.Text));
             _modoInicializar = true;
             TB_UT_5.Text = _controlador.GetUt5.ToString("N2").Replace(".", "");
@@ -778,10 +743,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_PF_5_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setPF_5(decimal.Parse(TB_PF_5.Text));
             _modoInicializar = true;
             TB_UT_5.Text = _controlador.GetUt5.ToString("N2").Replace(".", "");
@@ -801,9 +763,6 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
                 errorProvider1.SetError(TB_PF_5, "");
             }
         }
-
-
-
         private void L_TIT_UT_Click(object sender, EventArgs e)
         {
             ActivarTitulo(true, false,false);
@@ -837,7 +796,6 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
             TB_PF_5.Enabled = pf;
         }
 
-
         private void L_TIT_UT_M_Click(object sender, EventArgs e)
         {
             ActivarTitulo_M(true, false, false);
@@ -867,14 +825,9 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
             TB_PF_M3.Enabled = pf;
             TB_PF_M4.Enabled = pf;
         }
-
-
         private void TB_CONT_M1_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setContEmp_M1(int.Parse(TB_CONT_M1.Text));
             _modoInicializar = true;
             TB_UT_M1.Text = _controlador.GetUtM1.ToString("N2").Replace(".", "");
@@ -884,10 +837,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_UT_M1_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setUt_M1(decimal.Parse(TB_UT_M1.Text));
             _modoInicializar = true;
             TB_PN_M1.Text = _controlador.GetPNM1.ToString("N2").Replace(".", "");
@@ -896,10 +846,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_PN_M1_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setPN_M1(decimal.Parse(TB_PN_M1.Text));
             _modoInicializar = true;
             TB_UT_M1.Text = _controlador.GetUtM1.ToString("N2").Replace(".", "");
@@ -921,10 +868,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_PF_M1_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setPF_M1(decimal.Parse(TB_PF_M1.Text));
             _modoInicializar = true;
             TB_UT_M1.Text = _controlador.GetUtM1.ToString("N2").Replace(".", "");
@@ -945,13 +889,9 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
             }
         }
 
-
         private void TB_CONT_M2_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setContEmp_M2(int.Parse(TB_CONT_M2.Text));
             _modoInicializar = true;
             TB_UT_M2.Text = _controlador.GetUtM2.ToString("N2").Replace(".", "");
@@ -961,10 +901,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_UT_M2_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setUt_M2(decimal.Parse(TB_UT_M2.Text));
             _modoInicializar = true;
             TB_PN_M2.Text = _controlador.GetPNM2.ToString("N2").Replace(".", "");
@@ -973,10 +910,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_PN_M2_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setPN_M2(decimal.Parse(TB_PN_M2.Text));
             _modoInicializar = true;
             TB_UT_M2.Text = _controlador.GetUtM2.ToString("N2").Replace(".", "");
@@ -998,10 +932,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_PF_M2_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setPF_M2(decimal.Parse(TB_PF_M2.Text));
             _modoInicializar = true;
             TB_UT_M2.Text = _controlador.GetUtM2.ToString("N2").Replace(".", "");
@@ -1022,13 +953,9 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
             }
         }
 
-
         private void TB_CONT_M3_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setContEmp_M3(int.Parse(TB_CONT_M3.Text));
             _modoInicializar = true;
             TB_UT_M3.Text = _controlador.GetUtM3.ToString("N2").Replace(".", "");
@@ -1038,10 +965,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_UT_M3_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setUt_M3(decimal.Parse(TB_UT_M3.Text));
             _modoInicializar = true;
             TB_PN_M3.Text = _controlador.GetPNM3.ToString("N2").Replace(".", "");
@@ -1050,10 +974,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_PN_M3_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setPN_M3(decimal.Parse(TB_PN_M3.Text));
             _modoInicializar = true;
             TB_UT_M3.Text = _controlador.GetUtM3.ToString("N2").Replace(".", "");
@@ -1075,10 +996,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_PF_M3_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setPF_M3(decimal.Parse(TB_PF_M3.Text));
             _modoInicializar = true;
             TB_UT_M3.Text = _controlador.GetUtM3.ToString("N2").Replace(".", "");
@@ -1099,13 +1017,9 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
             }
         }
 
-
         private void TB_CONT_M4_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setContEmp_M4(int.Parse(TB_CONT_M4.Text));
             _modoInicializar = true;
             TB_UT_M4.Text = _controlador.GetUtM4.ToString("N2").Replace(".", "");
@@ -1115,10 +1029,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_UT_M4_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setUt_M4(decimal.Parse(TB_UT_M4.Text));
             _modoInicializar = true;
             TB_PN_M4.Text = _controlador.GetPNM4.ToString("N2").Replace(".", "");
@@ -1127,10 +1038,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_PN_M4_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setPN_M4(decimal.Parse(TB_PN_M4.Text));
             _modoInicializar = true;
             TB_UT_M4.Text = _controlador.GetUtM4.ToString("N2").Replace(".", "");
@@ -1152,10 +1060,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_PF_M4_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setPF_M4(decimal.Parse(TB_PF_M4.Text));
             _modoInicializar = true;
             TB_UT_M4.Text = _controlador.GetUtM4.ToString("N2").Replace(".", "");
@@ -1176,8 +1081,6 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
             }
         }
 
-
-        //
         private void L_TIT_UT_D_Click(object sender, EventArgs e)
         {
             ActivarTitulo_D(true, false, false);
@@ -1207,13 +1110,9 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
             TB_PF_D3.Enabled = pf;
             TB_PF_D4.Enabled = pf;
         }
-
-
-
         private void CB_EMP_D1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_modoInicializar == true)
-            { return; }
+            if (_modoInicializar == true) { return; }
             _controlador.setEmpD1("");
             if (CB_EMP_D1.SelectedIndex != -1)
             {
@@ -1222,8 +1121,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void CB_EMP_D2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_modoInicializar == true)
-            { return; }
+            if (_modoInicializar == true) { return; }
             _controlador.setEmpD2("");
             if (CB_EMP_D2.SelectedIndex != -1)
             {
@@ -1232,8 +1130,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void CB_EMP_D3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_modoInicializar == true)
-            { return; }
+            if (_modoInicializar == true) { return; }
             _controlador.setEmpD3("");
             if (CB_EMP_D3.SelectedIndex != -1)
             {
@@ -1242,8 +1139,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void CB_EMP_D4_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_modoInicializar == true)
-            { return; }
+            if (_modoInicializar == true) { return; }
             _controlador.setEmpD4("");
             if (CB_EMP_D4.SelectedIndex != -1)
             {
@@ -1253,10 +1149,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
 
         private void TB_CONT_D1_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setContEmp_D1(int.Parse(TB_CONT_D1.Text));
             _modoInicializar = true;
             TB_UT_D1.Text = _controlador.GetUtD1.ToString("N2").Replace(".", "");
@@ -1266,10 +1159,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_CONT_D2_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setContEmp_D2(int.Parse(TB_CONT_D2.Text));
             _modoInicializar = true;
             TB_UT_D2.Text = _controlador.GetUtD2.ToString("N2").Replace(".", "");
@@ -1279,10 +1169,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_CONT_D3_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setContEmp_D3(int.Parse(TB_CONT_D3.Text));
             _modoInicializar = true;
             TB_UT_D3.Text = _controlador.GetUtD3.ToString("N2").Replace(".", "");
@@ -1292,10 +1179,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_CONT_D4_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setContEmp_D4(int.Parse(TB_CONT_D4.Text));
             _modoInicializar = true;
             TB_UT_D4.Text = _controlador.GetUtD4.ToString("N2").Replace(".", "");
@@ -1306,10 +1190,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
 
         private void TB_UT_D1_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setUt_D1(decimal.Parse(TB_UT_D1.Text));
             _modoInicializar = true;
             TB_PN_D1.Text = _controlador.GetPND1.ToString("N2").Replace(".", "");
@@ -1318,10 +1199,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_UT_D2_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setUt_D2(decimal.Parse(TB_UT_D2.Text));
             _modoInicializar = true;
             TB_PN_D2.Text = _controlador.GetPND2.ToString("N2").Replace(".", "");
@@ -1330,10 +1208,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_UT_D3_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setUt_D3(decimal.Parse(TB_UT_D3.Text));
             _modoInicializar = true;
             TB_PN_D3.Text = _controlador.GetPND3.ToString("N2").Replace(".", "");
@@ -1342,10 +1217,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_UT_D4_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setUt_D4(decimal.Parse(TB_UT_D4.Text));
             _modoInicializar = true;
             TB_PN_D4.Text = _controlador.GetPND4.ToString("N2").Replace(".", "");
@@ -1355,10 +1227,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
 
         private void TB_PN_D1_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setPN_D1(decimal.Parse(TB_PN_D1.Text));
             _modoInicializar = true;
             TB_UT_D1.Text = _controlador.GetUtD1.ToString("N2").Replace(".", "");
@@ -1367,10 +1236,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_PN_D2_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setPN_D2(decimal.Parse(TB_PN_D2.Text));
             _modoInicializar = true;
             TB_UT_D2.Text = _controlador.GetUtD2.ToString("N2").Replace(".", "");
@@ -1379,10 +1245,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_PN_D3_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setPN_D3(decimal.Parse(TB_PN_D3.Text));
             _modoInicializar = true;
             TB_UT_D3.Text = _controlador.GetUtD3.ToString("N2").Replace(".", "");
@@ -1391,10 +1254,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_PN_D4_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setPN_D4(decimal.Parse(TB_PN_D4.Text));
             _modoInicializar = true;
             TB_UT_D4.Text = _controlador.GetUtD4.ToString("N2").Replace(".", "");
@@ -1457,10 +1317,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
 
         private void TB_PF_D1_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setPF_D1(decimal.Parse(TB_PF_D1.Text));
             _modoInicializar = true;
             TB_UT_D1.Text = _controlador.GetUtD1.ToString("N2").Replace(".", "");
@@ -1469,10 +1326,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_PF_D2_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setPF_D2(decimal.Parse(TB_PF_D2.Text));
             _modoInicializar = true;
             TB_UT_D2.Text = _controlador.GetUtD2.ToString("N2").Replace(".", "");
@@ -1481,10 +1335,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_PF_D3_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setPF_D3(decimal.Parse(TB_PF_D3.Text));
             _modoInicializar = true;
             TB_UT_D3.Text = _controlador.GetUtD3.ToString("N2").Replace(".", "");
@@ -1493,10 +1344,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_PF_D4_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             _controlador.setPF_D4(decimal.Parse(TB_PF_D4.Text));
             _modoInicializar = true;
             TB_UT_D4.Text = _controlador.GetUtD4.ToString("N2").Replace(".", "");
@@ -1559,8 +1407,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
 
         private void CB_EMP_TIPO_1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_modoInicializar == true)
-            { return; }
+            if (_modoInicializar == true) { return; }
             if (CB_EMP_TIPO_1.SelectedIndex != -1)
             {
                 var idx=CB_EMP_TIPO_1.SelectedIndex;
@@ -1573,17 +1420,13 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_CONT_EMP_TIPO_1_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             var cont = int.Parse(TB_CONT_EMP_TIPO_1.Text);
             _controlador.setContEmp_1(cont);
             _controlador.setContEmp_2(cont);
             _controlador.setContEmp_3(cont);
             _controlador.setContEmp_4(cont);
             _controlador.setContEmp_5(cont);
-
 
             _modoInicializar = true;
             TB_CONT_1.Text = _controlador.GetCont1.ToString();
@@ -1615,8 +1458,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
 
         private void CB_EMP_TIPO_2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_modoInicializar == true)
-            { return; }
+            if (_modoInicializar == true) { return; }
             if (CB_EMP_TIPO_2.SelectedIndex != -1)
             {
                 var idx = CB_EMP_TIPO_2.SelectedIndex;
@@ -1628,16 +1470,12 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_CONT_EMP_TIPO_2_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             var cont = int.Parse(TB_CONT_EMP_TIPO_2.Text);
             _controlador.setContEmp_M1(cont);
             _controlador.setContEmp_M2(cont);
             _controlador.setContEmp_M3(cont);
             _controlador.setContEmp_M4(cont);
-
 
             _modoInicializar = true;
             TB_CONT_M1.Text = _controlador.GetContM1.ToString();
@@ -1664,8 +1502,7 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
 
         private void CB_EMP_TIPO_3_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar == true)
-            { return; }
+            if (_modoInicializar == true) { return; }
             if (CB_EMP_TIPO_3.SelectedIndex != -1)
             {
                 var idx = CB_EMP_TIPO_3.SelectedIndex;
@@ -1677,16 +1514,12 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         }
         private void TB_CONT_EMP_TIPO_3_Leave(object sender, EventArgs e)
         {
-            if (_modoInicializar)
-            {
-                return;
-            }
+            if (_modoInicializar) { return; }
             var cont = int.Parse(TB_CONT_EMP_TIPO_3.Text);
             _controlador.setContEmp_D1(cont);
             _controlador.setContEmp_D2(cont);
             _controlador.setContEmp_D3(cont);
             _controlador.setContEmp_D4(cont);
-
 
             _modoInicializar = true;
             TB_CONT_D1.Text = _controlador.GetContD1.ToString();

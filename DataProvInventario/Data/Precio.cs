@@ -253,145 +253,179 @@ namespace DataProvInventario.Data
                 estacion = ficha.estacion,
                 nombreUsuario = ficha.nombreUsuario,
             };
-
             var historia = new List<DtoLibInventario.Precio.Editar.FichaHistorica>();
-            foreach (var it in ficha.historia)
+            if (ficha.historia != null) 
             {
-                var nr = new DtoLibInventario.Precio.Editar.FichaHistorica()
+                foreach (var it in ficha.historia)
                 {
-                    nota = it.nota,
-                    precio = it.precio,
-                    precio_id = it.precio_id,
-                    contenido = it.contenido,
-                    empaque = it.empaque,
-                };
-                historia.Add(nr);
+                    var nr = new DtoLibInventario.Precio.Editar.FichaHistorica()
+                    {
+                        nota = it.nota,
+                        precio = it.precio,
+                        precio_id = it.precio_id,
+                        contenido = it.contenido,
+                        empaque = it.empaque,
+                    };
+                    historia.Add(nr);
+                }
             }
             fichaDTO.historia = historia;
-
-            var precio_1 = new DtoLibInventario.Precio.Editar.FichaPrecio()
+            if (ficha.precio_1 != null) 
             {
-                autoEmp = ficha.precio_1.autoEmp,
-                contenido = ficha.precio_1.contenido,
-                precioNeto = ficha.precio_1.precioNeto,
-                precio_divisa_Neto = ficha.precio_1.precio_divisa_Neto,
-                utilidad = ficha.precio_1.utilidad,
-            };
-            fichaDTO.precio_1 = precio_1;
-            var precio_2 = new DtoLibInventario.Precio.Editar.FichaPrecio()
+                var precio_1 = new DtoLibInventario.Precio.Editar.FichaPrecio()
+                {
+                    autoEmp = ficha.precio_1.autoEmp,
+                    contenido = ficha.precio_1.contenido,
+                    precioNeto = ficha.precio_1.precioNeto,
+                    precio_divisa_Neto = ficha.precio_1.precio_divisa_Neto,
+                    utilidad = ficha.precio_1.utilidad,
+                };
+                fichaDTO.precio_1 = precio_1;
+            }
+            if (ficha.precio_2 != null)
             {
-                autoEmp = ficha.precio_2.autoEmp,
-                contenido = ficha.precio_2.contenido,
-                precioNeto = ficha.precio_2.precioNeto,
-                precio_divisa_Neto = ficha.precio_2.precio_divisa_Neto,
-                utilidad = ficha.precio_2.utilidad,
-            };
-            fichaDTO.precio_2 = precio_2;
-            var precio_3 = new DtoLibInventario.Precio.Editar.FichaPrecio()
+                var precio_2 = new DtoLibInventario.Precio.Editar.FichaPrecio()
+                {
+                    autoEmp = ficha.precio_2.autoEmp,
+                    contenido = ficha.precio_2.contenido,
+                    precioNeto = ficha.precio_2.precioNeto,
+                    precio_divisa_Neto = ficha.precio_2.precio_divisa_Neto,
+                    utilidad = ficha.precio_2.utilidad,
+                };
+                fichaDTO.precio_2 = precio_2;
+            }
+            if (ficha.precio_3 != null)
             {
-                autoEmp = ficha.precio_3.autoEmp,
-                contenido = ficha.precio_3.contenido,
-                precioNeto = ficha.precio_3.precioNeto,
-                precio_divisa_Neto = ficha.precio_3.precio_divisa_Neto,
-                utilidad = ficha.precio_3.utilidad,
-            };
-            fichaDTO.precio_3 = precio_3;
-            var precio_4 = new DtoLibInventario.Precio.Editar.FichaPrecio()
+                var precio_3 = new DtoLibInventario.Precio.Editar.FichaPrecio()
+                {
+                    autoEmp = ficha.precio_3.autoEmp,
+                    contenido = ficha.precio_3.contenido,
+                    precioNeto = ficha.precio_3.precioNeto,
+                    precio_divisa_Neto = ficha.precio_3.precio_divisa_Neto,
+                    utilidad = ficha.precio_3.utilidad,
+                };
+                fichaDTO.precio_3 = precio_3;
+            }
+            if (ficha.precio_4 != null)
             {
-                autoEmp = ficha.precio_4.autoEmp,
-                contenido = ficha.precio_4.contenido,
-                precioNeto = ficha.precio_4.precioNeto,
-                precio_divisa_Neto = ficha.precio_4.precio_divisa_Neto,
-                utilidad = ficha.precio_4.utilidad,
-            };
-            fichaDTO.precio_4 = precio_4;
-            var precio_5 = new DtoLibInventario.Precio.Editar.FichaPrecio()
+                var precio_4 = new DtoLibInventario.Precio.Editar.FichaPrecio()
+                {
+                    autoEmp = ficha.precio_4.autoEmp,
+                    contenido = ficha.precio_4.contenido,
+                    precioNeto = ficha.precio_4.precioNeto,
+                    precio_divisa_Neto = ficha.precio_4.precio_divisa_Neto,
+                    utilidad = ficha.precio_4.utilidad,
+                };
+                fichaDTO.precio_4 = precio_4;
+            }
+            if (ficha.precio_5 != null) 
             {
-                autoEmp = ficha.precio_5.autoEmp,
-                contenido = ficha.precio_5.contenido,
-                precioNeto = ficha.precio_5.precioNeto,
-                precio_divisa_Neto = ficha.precio_5.precio_divisa_Neto,
-                utilidad = ficha.precio_5.utilidad,
-            };
-            fichaDTO.precio_5 = precio_5;
-            //
-            var may_1 = new DtoLibInventario.Precio.Editar.FichaPrecio()
+                var precio_5 = new DtoLibInventario.Precio.Editar.FichaPrecio()
+                {
+                    autoEmp = ficha.precio_5.autoEmp,
+                    contenido = ficha.precio_5.contenido,
+                    precioNeto = ficha.precio_5.precioNeto,
+                    precio_divisa_Neto = ficha.precio_5.precio_divisa_Neto,
+                    utilidad = ficha.precio_5.utilidad,
+                };
+                fichaDTO.precio_5 = precio_5;
+            }
+            if (ficha.may_1 != null)
             {
-                autoEmp = ficha.may_1.autoEmp,
-                contenido = ficha.may_1.contenido,
-                precioNeto = ficha.may_1.precioNeto,
-                precio_divisa_Neto = ficha.may_1.precio_divisa_Neto,
-                utilidad = ficha.may_1.utilidad,
-            };
-            fichaDTO.may_1 = may_1;
-            //
-            var may_2 = new DtoLibInventario.Precio.Editar.FichaPrecio()
+                var may_1 = new DtoLibInventario.Precio.Editar.FichaPrecio()
+                {
+                    autoEmp = ficha.may_1.autoEmp,
+                    contenido = ficha.may_1.contenido,
+                    precioNeto = ficha.may_1.precioNeto,
+                    precio_divisa_Neto = ficha.may_1.precio_divisa_Neto,
+                    utilidad = ficha.may_1.utilidad,
+                };
+                fichaDTO.may_1 = may_1;
+            }
+            if (ficha.may_2 != null) 
             {
-                autoEmp = ficha.may_2.autoEmp,
-                contenido = ficha.may_2.contenido,
-                precioNeto = ficha.may_2.precioNeto,
-                precio_divisa_Neto = ficha.may_2.precio_divisa_Neto,
-                utilidad = ficha.may_2.utilidad,
-            };
-            fichaDTO.may_2 = may_2;
-            //
-            var may_3 = new DtoLibInventario.Precio.Editar.FichaPrecio()
+                var may_2 = new DtoLibInventario.Precio.Editar.FichaPrecio()
+                {
+                    autoEmp = ficha.may_2.autoEmp,
+                    contenido = ficha.may_2.contenido,
+                    precioNeto = ficha.may_2.precioNeto,
+                    precio_divisa_Neto = ficha.may_2.precio_divisa_Neto,
+                    utilidad = ficha.may_2.utilidad,
+                };
+                fichaDTO.may_2 = may_2;
+            }
+            if (ficha.may_3 != null)
             {
-                autoEmp = ficha.may_3.autoEmp,
-                contenido = ficha.may_3.contenido,
-                precioNeto = ficha.may_3.precioNeto,
-                precio_divisa_Neto = ficha.may_3.precio_divisa_Neto,
-                utilidad = ficha.may_3.utilidad,
-            };
-            fichaDTO.may_3 = may_3;
-            //
-            var may_4 = new DtoLibInventario.Precio.Editar.FichaPrecio()
+                var may_3 = new DtoLibInventario.Precio.Editar.FichaPrecio()
+                {
+                    autoEmp = ficha.may_3.autoEmp,
+                    contenido = ficha.may_3.contenido,
+                    precioNeto = ficha.may_3.precioNeto,
+                    precio_divisa_Neto = ficha.may_3.precio_divisa_Neto,
+                    utilidad = ficha.may_3.utilidad,
+                };
+                fichaDTO.may_3 = may_3;
+            }
+            if (ficha.may_4 != null)
             {
-                autoEmp = ficha.may_4.autoEmp,
-                contenido = ficha.may_4.contenido,
-                precioNeto = ficha.may_4.precioNeto,
-                precio_divisa_Neto = ficha.may_4.precio_divisa_Neto,
-                utilidad = ficha.may_4.utilidad,
-            };
-            fichaDTO.may_4 = may_4;
-            //
-            var dsp_1 = new DtoLibInventario.Precio.Editar.FichaPrecio()
+                var may_4 = new DtoLibInventario.Precio.Editar.FichaPrecio()
+                {
+                    autoEmp = ficha.may_4.autoEmp,
+                    contenido = ficha.may_4.contenido,
+                    precioNeto = ficha.may_4.precioNeto,
+                    precio_divisa_Neto = ficha.may_4.precio_divisa_Neto,
+                    utilidad = ficha.may_4.utilidad,
+                };
+                fichaDTO.may_4 = may_4;
+            }
+            if (ficha.dsp_1 != null)
             {
-                autoEmp = ficha.dsp_1.autoEmp,
-                contenido = ficha.dsp_1.contenido,
-                precioNeto = ficha.dsp_1.precioNeto,
-                precio_divisa_Neto = ficha.dsp_1.precio_divisa_Neto,
-                utilidad = ficha.dsp_1.utilidad,
-            };
-            fichaDTO.dsp_1 = dsp_1;
-            var dsp_2 = new DtoLibInventario.Precio.Editar.FichaPrecio()
+                var dsp_1 = new DtoLibInventario.Precio.Editar.FichaPrecio()
+                {
+                    autoEmp = ficha.dsp_1.autoEmp,
+                    contenido = ficha.dsp_1.contenido,
+                    precioNeto = ficha.dsp_1.precioNeto,
+                    precio_divisa_Neto = ficha.dsp_1.precio_divisa_Neto,
+                    utilidad = ficha.dsp_1.utilidad,
+                };
+                fichaDTO.dsp_1 = dsp_1;
+            }
+            if (ficha.dsp_2 != null)
             {
-                autoEmp = ficha.dsp_2.autoEmp,
-                contenido = ficha.dsp_2.contenido,
-                precioNeto = ficha.dsp_2.precioNeto,
-                precio_divisa_Neto = ficha.dsp_2.precio_divisa_Neto,
-                utilidad = ficha.dsp_2.utilidad,
-            };
-            fichaDTO.dsp_2 = dsp_2;
-            var dsp_3 = new DtoLibInventario.Precio.Editar.FichaPrecio()
+                var dsp_2 = new DtoLibInventario.Precio.Editar.FichaPrecio()
+                {
+                    autoEmp = ficha.dsp_2.autoEmp,
+                    contenido = ficha.dsp_2.contenido,
+                    precioNeto = ficha.dsp_2.precioNeto,
+                    precio_divisa_Neto = ficha.dsp_2.precio_divisa_Neto,
+                    utilidad = ficha.dsp_2.utilidad,
+                };
+                fichaDTO.dsp_2 = dsp_2;
+            }
+            if (ficha.dsp_3 != null)
             {
-                autoEmp = ficha.dsp_3.autoEmp,
-                contenido = ficha.dsp_3.contenido,
-                precioNeto = ficha.dsp_3.precioNeto,
-                precio_divisa_Neto = ficha.dsp_3.precio_divisa_Neto,
-                utilidad = ficha.dsp_3.utilidad,
-            };
-            fichaDTO.dsp_3 = dsp_3;
-            var dsp_4 = new DtoLibInventario.Precio.Editar.FichaPrecio()
+                var dsp_3 = new DtoLibInventario.Precio.Editar.FichaPrecio()
+                {
+                    autoEmp = ficha.dsp_3.autoEmp,
+                    contenido = ficha.dsp_3.contenido,
+                    precioNeto = ficha.dsp_3.precioNeto,
+                    precio_divisa_Neto = ficha.dsp_3.precio_divisa_Neto,
+                    utilidad = ficha.dsp_3.utilidad,
+                };
+                fichaDTO.dsp_3 = dsp_3;
+            }
+            if (ficha.dsp_4 != null)
             {
-                autoEmp = ficha.dsp_4.autoEmp,
-                contenido = ficha.dsp_4.contenido,
-                precioNeto = ficha.dsp_4.precioNeto,
-                precio_divisa_Neto = ficha.dsp_4.precio_divisa_Neto,
-                utilidad = ficha.dsp_4.utilidad,
-            };
-            fichaDTO.dsp_4 = dsp_4;
-
+                var dsp_4 = new DtoLibInventario.Precio.Editar.FichaPrecio()
+                {
+                    autoEmp = ficha.dsp_4.autoEmp,
+                    contenido = ficha.dsp_4.contenido,
+                    precioNeto = ficha.dsp_4.precioNeto,
+                    precio_divisa_Neto = ficha.dsp_4.precio_divisa_Neto,
+                    utilidad = ficha.dsp_4.utilidad,
+                };
+                fichaDTO.dsp_4 = dsp_4;
+            }
             var r01 = MyData.PrecioProducto_Actualizar(fichaDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
@@ -402,7 +436,6 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
 
     }
 

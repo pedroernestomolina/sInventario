@@ -424,8 +424,8 @@ namespace ModInventario.MovimientoInvTipo.Traslado
             var movOOB = new OOB.LibInventario.Movimiento.Traslado.Insertar.FichaMov()
             {
                 autoConcepto = _gConcepto.Item.id,
-                autoDepositoDestino = _gDepOrigen.Item.id,
-                autoDepositoOrigen = _gDepDestino.Item.id,
+                autoDepositoDestino = _gDepDestino.Item.id,
+                autoDepositoOrigen = _gDepOrigen.Item.id,
                 autoRemision = "",
                 autorizado = _autorizado,
                 autoUsuario = Sistema.UsuarioP.autoUsu,

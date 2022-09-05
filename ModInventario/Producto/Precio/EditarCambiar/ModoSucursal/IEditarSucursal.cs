@@ -6,20 +6,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace ModInventario.Producto.Precio.ModoSucursal.Editar
+namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
 {
     
-    public interface IEditar: ModInventario.IGestion  
+    public interface IEditarSucursal: IEditar
     {
-
-        bool IsProcesarIsOk { get; }
-        bool IsAbandonarIsOk { get; }
-        bool IsEditarPrecioIsOk { get; }
-
-
-        void setIdItemEditar(string idAuto);
-        void AbandonarFicha();
-
 
         BindingSource GetEmp1_Source { get; }
         void setEmp1(string id);
@@ -193,9 +184,6 @@ namespace ModInventario.Producto.Precio.ModoSucursal.Editar
         decimal GetInfCostoUndPrd { get; }
         string GetInfFechaUltActPrd { get; }
         bool GetEsAdmDivisaPrd { get; }
-
-
-        void Procesar();
 
 
         void setContEmp_D1(int cont);

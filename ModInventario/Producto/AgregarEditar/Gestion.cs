@@ -218,6 +218,43 @@ namespace ModInventario.Producto.AgregarEditar
         {
             miGestion.setAncho(_ancho);
         }
+
+
+        public BindingSource GetEmpVentaTipo1_Source { get { return miGestion.GetEmpVentaTipo1_Source; } }
+        public BindingSource GetEmpVentaTipo2_Source { get { return miGestion.GetEmpVentaTipo2_Source; } }
+        public BindingSource GetEmpVentaTipo3_Source { get { return miGestion.GetEmpVentaTipo3_Source; } }
+        public string GetEmpVentaTipo1_ID { get { return miGestion.GetEmpVentaTipo1_ID; } }
+        public string GetEmpVentaTipo2_ID { get { return miGestion.GetEmpVentaTipo2_ID; } }
+        public string GetEmpVentaTipo3_ID { get { return miGestion.GetEmpVentaTipo3_ID; } }
+        public void setEmpVentaTipo1(string id)
+        {
+            miGestion.setEmpVentaTipo1(id);
+        }
+        public void setEmpVentaTipo2(string id)
+        {
+            miGestion.setEmpVentaTipo2(id);
+        }
+        public void setEmpVentaTipo3(string id)
+        {
+            miGestion.setEmpVentaTipo3(id);
+        }
+
+        public int GetContEmpVentaTipo1 { get { return miGestion.GetContEmpVentaTipo1; } }
+        public int GetContEmpVentaTipo2 { get { return miGestion.GetContEmpVentaTipo2; } }
+        public int GetContEmpVentaTipo3 { get { return miGestion.GetContEmpVentaTipo3; } }
+        public void setContEmpVentaTipo1(int cnt)
+        {
+            miGestion.setContEmpVentaTipo1(cnt);
+        }
+        public void setContEmpVentaTipo2(int cnt)
+        {
+            miGestion.setContEmpVentaTipo2(cnt);
+        }
+        public void setContEmpVentaTipo3(int cnt)
+        {
+            miGestion.setContEmpVentaTipo3(cnt);
+        }
+
     }
 
 }

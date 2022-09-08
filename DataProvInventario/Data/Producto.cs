@@ -680,6 +680,13 @@ namespace DataProvInventario.Data
                 nr.alto = e.alto;
                 nr.largo = e.largo;
                 nr.ancho = e.ancho;
+                //
+                nr.autoEmpVentaTipo_1 = e.autoEmpVentaTipo_1;
+                nr.autoEmpVentaTipo_2 = e.autoEmpVentaTipo_2;
+                nr.autoEmpVentaTipo_3 = e.autoEmpVentaTipo_3;
+                nr.contEmpVentaTipo_1 = e.contEmpVentaTipo_1;
+                nr.contEmpVentaTipo_2 = e.contEmpVentaTipo_2;
+                nr.contEmpVentaTipo_3 = e.contEmpVentaTipo_3;
 
                 foreach (var rg in e.CodigosAlterno)
                 {
@@ -703,14 +710,14 @@ namespace DataProvInventario.Data
                 abc = ficha.abc,
                 autoDepartamento = ficha.autoDepartamento,
                 autoEmpCompra = ficha.autoEmpCompra,
-                autoEmpInv=ficha.autoEmpInv,
+                autoEmpInv = ficha.autoEmpInv,
                 autoGrupo = ficha.autoGrupo,
                 autoMarca = ficha.autoMarca,
                 autoTasaImpuesto = ficha.autoTasaImpuesto,
                 categoria = ficha.categoria,
                 codigo = ficha.codigo,
                 contenidoCompra = ficha.contenidoCompra,
-                contenidoInv=ficha.contenidoInv,
+                contenidoInv = ficha.contenidoInv,
                 descripcion = ficha.descripcion,
                 estatusDivisa = ficha.estatusDivisa,
                 modelo = ficha.modelo,
@@ -721,54 +728,20 @@ namespace DataProvInventario.Data
                 diasEmpaque = ficha.diasEmpaque,
                 esPesado = ficha.esPesado,
                 plu = ficha.plu,
-                estatusCatalogo=ficha.estatusCatalogo,
-                tasaImpuesto=ficha.tasaImpuesto,
-                peso=ficha.peso,
-                volumen=ficha.volumen,
-                alto=ficha.alto,
-                largo=ficha.largo,
-                ancho=ficha.ancho,
+                estatusCatalogo = ficha.estatusCatalogo,
+                tasaImpuesto = ficha.tasaImpuesto,
+                peso = ficha.peso,
+                volumen = ficha.volumen,
+                alto = ficha.alto,
+                largo = ficha.largo,
+                ancho = ficha.ancho,
+                autoEmpVentaTipo_1 = ficha.autoEmpVentaTipo_1,
+                autoEmpVentaTipo_2 = ficha.autoEmpVentaTipo_2,
+                autoEmpVentaTipo_3 = ficha.autoEmpVentaTipo_3,
+                contEmpVentaTipo_1 = ficha.contEmpVentaTipo_1,
+                contEmpVentaTipo_2 = ficha.contEmpVentaTipo_2,
+                contEmpVentaTipo_3 = ficha.contEmpVentaTipo_3,
             };
-            //if (ficha.precio_1 != null) 
-            //{
-            //    fichaDTO.precio_1 = new DtoLibInventario.Producto.Editar.Actualizar.FichaPrecio()
-            //    {
-            //        divisaFull = ficha.precio_1.divisaFull,
-            //        neto = ficha.precio_1.neto,
-            //    };
-            //}
-            //if (ficha.precio_2 != null)
-            //{
-            //    fichaDTO.precio_2 = new DtoLibInventario.Producto.Editar.Actualizar.FichaPrecio()
-            //    {
-            //        divisaFull = ficha.precio_2.divisaFull,
-            //        neto = ficha.precio_2.neto,
-            //    };
-            //}
-            //if (ficha.precio_3 != null)
-            //{
-            //    fichaDTO.precio_3 = new DtoLibInventario.Producto.Editar.Actualizar.FichaPrecio()
-            //    {
-            //        divisaFull = ficha.precio_3.divisaFull,
-            //        neto = ficha.precio_3.neto,
-            //    };
-            //}
-            //if (ficha.precio_4 != null)
-            //{
-            //    fichaDTO.precio_4 = new DtoLibInventario.Producto.Editar.Actualizar.FichaPrecio()
-            //    {
-            //        divisaFull = ficha.precio_4.divisaFull,
-            //        neto = ficha.precio_4.neto,
-            //    };
-            //}
-            //if (ficha.precio_5 != null)
-            //{
-            //    fichaDTO.precio_5 = new DtoLibInventario.Producto.Editar.Actualizar.FichaPrecio()
-            //    {
-            //        divisaFull = ficha.precio_5.divisaFull,
-            //        neto = ficha.precio_5.neto,
-            //    };
-            //}
             var codAlterno = new List<DtoLibInventario.Producto.Editar.Actualizar.FichaCodAlterno>();
             foreach (var rg in ficha.codigosAlterno) 
             {
@@ -786,6 +759,7 @@ namespace DataProvInventario.Data
 
             return rt;
         }
+
         public OOB.ResultadoAuto 
             Producto_Nuevo_Agregar(OOB.LibInventario.Producto.Agregar.Ficha ficha)
         {
@@ -819,9 +793,15 @@ namespace DataProvInventario.Data
                 contEmpInv = ficha.contEmpInv,
                 peso = ficha.peso,
                 volumen = ficha.volumen,
-                alto=ficha.alto,
-                largo=ficha.largo,
-                ancho=ficha.ancho,
+                alto = ficha.alto,
+                largo = ficha.largo,
+                ancho = ficha.ancho,
+                autoEmpVentaTipo_1 = ficha.autoEmpVentaTipo_1,
+                autoEmpVentaTipo_2 = ficha.autoEmpVentaTipo_2,
+                autoEmpVentaTipo_3 = ficha.autoEmpVentaTipo_3,
+                contEmpVentaTipo_1 = ficha.contEmpVentaTipo_1,
+                contEmpVentaTipo_2 = ficha.contEmpVentaTipo_2,
+                contEmpVentaTipo_3 = ficha.contEmpVentaTipo_3,
             };
             var codAlterno = new List<DtoLibInventario.Producto.Agregar.FichaCodAlterno>();
             foreach (var rg in ficha.codigosAlterno)

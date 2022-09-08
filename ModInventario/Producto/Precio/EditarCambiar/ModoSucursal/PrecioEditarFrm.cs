@@ -227,13 +227,6 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
             TB_PF_D4.Text = _controlador.GetPFD4.ToString("n2").Replace(".", "");
             L_UT_ACTUAL_D4.Text = _controlador.GetUtActualD4.ToString("n2").Replace(".", "");
 
-
-            TB_CONT_1.Enabled = true;
-            TB_CONT_2.Enabled = true;
-            TB_CONT_3.Enabled = true;
-            TB_CONT_4.Enabled = true;
-            TB_CONT_5.Enabled = true;
-
             TB_UT_1.Enabled = false;
             TB_UT_2.Enabled = false;
             TB_UT_3.Enabled = false;
@@ -251,12 +244,6 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
             TB_PF_3.Enabled = false;
             TB_PF_4.Enabled = false;
             TB_PF_5.Enabled = false;
-
-            CB_EMP_1.Enabled = true;
-            CB_EMP_2.Enabled = true;
-            CB_EMP_3.Enabled = true;
-            CB_EMP_4.Enabled = true;
-            CB_EMP_5.Enabled = true;
 
             //
             TB_UT_M1.Enabled = false;
@@ -290,7 +277,6 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
             TB_PF_D3.Enabled = false;
             TB_PF_D4.Enabled = false;
             //
-
 
             _modoInicializar = false;
         }

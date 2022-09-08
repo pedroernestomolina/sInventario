@@ -87,6 +87,13 @@ namespace ModInventario.Producto.AgregarEditar
             CB_EMPAQUE_COMPRA.ValueMember = "id";
             CB_EMPAQUE_INV.DisplayMember = "desc";
             CB_EMPAQUE_INV.ValueMember = "id";
+            //
+            CB_EMP_VENTA_TIPO_1.DisplayMember = "desc";
+            CB_EMP_VENTA_TIPO_1.ValueMember = "id";
+            CB_EMP_VENTA_TIPO_2.DisplayMember = "desc";
+            CB_EMP_VENTA_TIPO_2.ValueMember = "id";
+            CB_EMP_VENTA_TIPO_3.DisplayMember = "desc";
+            CB_EMP_VENTA_TIPO_3.ValueMember = "id";
         }
 
 
@@ -143,6 +150,16 @@ namespace ModInventario.Producto.AgregarEditar
             TB_CONTENIDO.Text = _controlador.GetContEmpCompra.ToString();
             TB_CONTENIDO_INV.Text = _controlador.GetContEmpInv.ToString();
             //
+
+            CB_EMP_VENTA_TIPO_1.DataSource = _controlador.GetEmpVentaTipo1_Source;
+            CB_EMP_VENTA_TIPO_2.DataSource = _controlador.GetEmpVentaTipo2_Source;
+            CB_EMP_VENTA_TIPO_3.DataSource = _controlador.GetEmpVentaTipo3_Source;
+            CB_EMP_VENTA_TIPO_1.SelectedValue = _controlador.GetEmpVentaTipo1_ID;
+            CB_EMP_VENTA_TIPO_2.SelectedValue = _controlador.GetEmpVentaTipo2_ID;
+            CB_EMP_VENTA_TIPO_3.SelectedValue = _controlador.GetEmpVentaTipo3_ID;
+            TB_CONT_EMP_VENTA_TIPO_1.Text = _controlador.GetContEmpVentaTipo1.ToString();
+            TB_CONT_EMP_VENTA_TIPO_2.Text = _controlador.GetContEmpVentaTipo2.ToString();
+            TB_CONT_EMP_VENTA_TIPO_3.Text = _controlador.GetContEmpVentaTipo3.ToString();
 
 
             PB_IMAGEN.Image = PB_IMAGEN.InitialImage;
@@ -589,6 +606,47 @@ namespace ModInventario.Producto.AgregarEditar
         {
             var _ancho= decimal.Parse(TB_ANCHO.Text);
             _controlador.setAncho(_ancho);
+        }
+
+
+        private void CB_EMP_VENTA_TIPO_1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (inicializarData) return;
+            _controlador.setEmpVentaTipo1("");
+            if (CB_EMP_VENTA_TIPO_1.SelectedIndex != -1)
+            {
+                _controlador.setEmpVentaTipo1(CB_EMP_VENTA_TIPO_1.SelectedValue.ToString());
+            }
+        }
+        private void CB_EMP_VENTA_TIPO_2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (inicializarData) return;
+            _controlador.setEmpVentaTipo2("");
+            if (CB_EMP_VENTA_TIPO_2.SelectedIndex != -1)
+            {
+                _controlador.setEmpVentaTipo2(CB_EMP_VENTA_TIPO_2.SelectedValue.ToString());
+            }
+        }
+        private void CB_EMP_VENTA_TIPO_3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (inicializarData) return;
+            _controlador.setEmpVentaTipo3("");
+            if (CB_EMP_VENTA_TIPO_3.SelectedIndex != -1)
+            {
+                _controlador.setEmpVentaTipo3(CB_EMP_VENTA_TIPO_3.SelectedValue.ToString());
+            }
+        }
+        private void TB_CONT_EMP_VENTA_TIPO_1_Leave(object sender, EventArgs e)
+        {
+            _controlador.setContEmpVentaTipo1(int.Parse(TB_CONT_EMP_VENTA_TIPO_1.Text));  
+        }
+        private void TB_CONT_EMP_VENTA_TIPO_2_Leave(object sender, EventArgs e)
+        {
+            _controlador.setContEmpVentaTipo2(int.Parse(TB_CONT_EMP_VENTA_TIPO_2.Text));
+        }
+        private void TB_CONT_EMP_VENTA_TIPO_3_Leave(object sender, EventArgs e)
+        {
+            _controlador.setContEmpVentaTipo3(int.Parse(TB_CONT_EMP_VENTA_TIPO_3.Text));
         }
 
     }

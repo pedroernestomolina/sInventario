@@ -43,6 +43,13 @@ namespace OOB.LibInventario.Producto.Editar.Actualizar
         public decimal alto { get; set; }
         public decimal largo { get; set; }
         public decimal ancho { get; set; }
+        //
+        public string autoEmpVentaTipo_1 { get; set; }
+        public string autoEmpVentaTipo_2 { get; set; }
+        public string autoEmpVentaTipo_3 { get; set; }
+        public int contEmpVentaTipo_1 { get; set; }
+        public int contEmpVentaTipo_2 { get; set; }
+        public int contEmpVentaTipo_3 { get; set; }
 
 
         public Ficha() 
@@ -79,6 +86,13 @@ namespace OOB.LibInventario.Producto.Editar.Actualizar
             ancho = 0m;
             imagen=null;
             codigosAlterno=null;
+
+            autoEmpVentaTipo_1 = "";
+            autoEmpVentaTipo_2 = "";
+            autoEmpVentaTipo_3 = "";
+            contEmpVentaTipo_1 = 1;
+            contEmpVentaTipo_2 = 1;
+            contEmpVentaTipo_3 = 1;
         }
 
     }

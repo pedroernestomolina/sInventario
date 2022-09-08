@@ -89,6 +89,9 @@ namespace ModInventario.Producto.AgregarEditar.Agregar
             _gestionCodAlterno = new CodAlterno.Gestion();
             _gEmpInv = new FiltrosGen.Opcion.Gestion();
             _gEmpCompra = new FiltrosGen.Opcion.Gestion();
+            _gEmpVentaTipo1 = new FiltrosGen.Opcion.Gestion();
+            _gEmpVentaTipo2 = new FiltrosGen.Opcion.Gestion();
+            _gEmpVentaTipo3 = new FiltrosGen.Opcion.Gestion();
 
             CodigoAlterno = "";
             _isAgregarEditarOk = false;
@@ -209,7 +212,9 @@ namespace ModInventario.Producto.AgregarEditar.Agregar
             }
             _gEmpCompra.setData(lData);
             _gEmpInv.setData(lData);
-
+            _gEmpVentaTipo1.setData(lData);
+            _gEmpVentaTipo2.setData(lData);
+            _gEmpVentaTipo3.setData(lData);
 
             var r08 = Sistema.MyData.Producto_AdmDivisa_Lista ();
             if (r08.Result == OOB.Enumerados.EnumResult.isError)
@@ -302,17 +307,23 @@ namespace ModInventario.Producto.AgregarEditar.Agregar
                 estatusDivisa = miData.Divisa,
                 origen = miData.Origen,
                 estatus = "Activo",
-                tasa=impuesto.First(f=>f.auto==miData.AutoImpuesto).tasa,
-                imagen=miData.Imagen,
+                tasa = impuesto.First(f => f.auto == miData.AutoImpuesto).tasa,
+                imagen = miData.Imagen,
                 esPesado = _pesado,
                 plu = _plu,
                 diasEmpaque = _diasEmpaque,
-                estatusCatalogo=_catalogo,
-                peso=miData.GetPeso,
-                volumen=miData.GetVolumen,
-                alto=miData.GetAlto,
-                ancho=miData.GetAncho,
-                largo=miData.GetLargo
+                estatusCatalogo = _catalogo,
+                peso = miData.GetPeso,
+                volumen = miData.GetVolumen,
+                alto = miData.GetAlto,
+                ancho = miData.GetAncho,
+                largo = miData.GetLargo,
+                autoEmpVentaTipo_1 = miData.GetEmpVentaTipo1_ID,
+                autoEmpVentaTipo_2 = miData.GetEmpVentaTipo2_ID,
+                autoEmpVentaTipo_3 = miData.GetEmpVentaTipo3_ID,                
+                contEmpVentaTipo_1 = miData.GetContEmpVentaTipo1,
+                contEmpVentaTipo_2 = miData.GetContEmpVentaTipo2,
+                contEmpVentaTipo_3 = miData.GetContEmpVentaTipo3,
             };
             var codAlterno = new List<OOB.LibInventario.Producto.Agregar.FichaCodAlterno>();
             foreach (var rg in _gestionCodAlterno.ListaCodigos) 
@@ -430,6 +441,9 @@ namespace ModInventario.Producto.AgregarEditar.Agregar
             _procesarIsOk = false;
             _gEmpCompra.Inicializa();
             _gEmpInv.Inicializa();
+            _gEmpVentaTipo1.Inicializa();
+            _gEmpVentaTipo2.Inicializa();
+            _gEmpVentaTipo3.Inicializa();
         }
 
 
@@ -505,6 +519,49 @@ namespace ModInventario.Producto.AgregarEditar.Agregar
         public void setAncho(decimal _ancho)
         {
             miData.setAncho(_ancho);
+        }
+
+
+        private FiltrosGen.IOpcion _gEmpVentaTipo1;
+        private FiltrosGen.IOpcion _gEmpVentaTipo2;
+        private FiltrosGen.IOpcion _gEmpVentaTipo3;
+        public BindingSource GetEmpVentaTipo1_Source { get { return _gEmpVentaTipo1.Source; } }
+        public BindingSource GetEmpVentaTipo2_Source { get { return _gEmpVentaTipo2.Source; } }
+        public BindingSource GetEmpVentaTipo3_Source { get { return _gEmpVentaTipo3.Source; } }
+        public string GetEmpVentaTipo1_ID { get { return _gEmpVentaTipo1.GetId; } }
+        public string GetEmpVentaTipo2_ID { get { return _gEmpVentaTipo2.GetId; } }
+        public string GetEmpVentaTipo3_ID { get { return _gEmpVentaTipo3.GetId; } }
+        public void setEmpVentaTipo1(string id)
+        {
+            _gEmpVentaTipo1.setFicha(id);
+            miData.setEmpVentaTipo1(_gEmpVentaTipo1.Item);
+        }
+        public void setEmpVentaTipo2(string id)
+        {
+            _gEmpVentaTipo2.setFicha(id);
+            miData.setEmpVentaTipo2(_gEmpVentaTipo2.Item);
+        }
+        public void setEmpVentaTipo3(string id)
+        {
+            _gEmpVentaTipo3.setFicha(id);
+            miData.setEmpVentaTipo3(_gEmpVentaTipo3.Item);
+        }
+
+
+        public int GetContEmpVentaTipo1 { get { return miData.GetContEmpVentaTipo1; } }
+        public int GetContEmpVentaTipo2 { get { return miData.GetContEmpVentaTipo2; } }
+        public int GetContEmpVentaTipo3 { get { return miData.GetContEmpVentaTipo3; } }
+        public void setContEmpVentaTipo1(int cnt)
+        {
+            miData.setContEmpVentaTipo1(cnt);
+        }
+        public void setContEmpVentaTipo2(int cnt)
+        {
+            miData.setContEmpVentaTipo2(cnt);
+        }
+        public void setContEmpVentaTipo3(int cnt)
+        {
+            miData.setContEmpVentaTipo3(cnt);
         }
 
     }

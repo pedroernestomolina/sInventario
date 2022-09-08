@@ -121,6 +121,13 @@ namespace ModInventario.Producto.AgregarEditar.Editar
             Plu = "";
             DiasEmpaque = 0;
             ActivarCatalogo = false;
+            //
+            _empVentaTipo1 = null;
+            _empVentaTipo2 = null;
+            _empVentaTipo3 = null;
+            _contEmpVentaTipo1 = 0;
+            _contEmpVentaTipo2 = 0;
+            _contEmpVentaTipo3 = 0;
         }
 
         public string Clasificacion 
@@ -261,6 +268,38 @@ namespace ModInventario.Producto.AgregarEditar.Editar
             }
 
 
+            if (_empVentaTipo1 == null)
+            {
+                Helpers.Msg.Error("CAMPO [ EMPAQUE VENTA TIPO 1] INCORRECTO");
+                return false;
+            }
+            if (_empVentaTipo2 == null)
+            {
+                Helpers.Msg.Error("CAMPO [ EMPAQUE VENTA TIPO 2] INCORRECTO");
+                return false;
+            }
+            if (_empVentaTipo3 == null)
+            {
+                Helpers.Msg.Error("CAMPO [ EMPAQUE VENTA TIPO 3] INCORRECTO");
+                return false;
+            }
+            if (_contEmpVentaTipo1 <= 0)
+            {
+                Helpers.Msg.Error("CAMPO [ CONTENIDO EMPAQUE VENTA TIPO 1 ] INCORRECTO");
+                return false;
+            }
+            if (_contEmpVentaTipo2 <= 0)
+            {
+                Helpers.Msg.Error("CAMPO [ CONTENIDO EMPAQUE VENTA TIPO 2 ] INCORRECTO");
+                return false;
+            }
+            if (_contEmpVentaTipo3 <= 0)
+            {
+                Helpers.Msg.Error("CAMPO [ CONTENIDO EMPAQUE VENTA TIPO 3 ] INCORRECTO");
+                return false;
+            }
+
+
             if (AutoImpuesto.Trim() == "")
             {
                 Helpers.Msg.Error("CAMPO [ TASA IMPUESTO ] DEBE SER LLENADO");
@@ -346,6 +385,45 @@ namespace ModInventario.Producto.AgregarEditar.Editar
         public void setAncho(decimal ancho)
         {
             _ancho = ancho;
+        }
+
+
+        private ficha _empVentaTipo1;
+        private ficha _empVentaTipo2;
+        private ficha _empVentaTipo3;
+        public string GetEmpVentaTipo1_ID { get { return _empVentaTipo1.id; } }
+        public string GetEmpVentaTipo2_ID { get { return _empVentaTipo2.id; } }
+        public string GetEmpVentaTipo3_ID { get { return _empVentaTipo3.id; } }
+        public void setEmpVentaTipo1(ficha ficha)
+        {
+            _empVentaTipo1 = ficha;
+        }
+        public void setEmpVentaTipo2(ficha ficha)
+        {
+            _empVentaTipo2 = ficha;
+        }
+        public void setEmpVentaTipo3(ficha ficha)
+        {
+            _empVentaTipo3 = ficha;
+        }
+
+        private int _contEmpVentaTipo1;
+        private int _contEmpVentaTipo2;
+        private int _contEmpVentaTipo3;
+        public int GetContEmpVentaTipo1 { get { return _contEmpVentaTipo1; } }
+        public int GetContEmpVentaTipo2 { get { return _contEmpVentaTipo2; } }
+        public int GetContEmpVentaTipo3 { get { return _contEmpVentaTipo3; } }
+        public void setContEmpVentaTipo1(int cnt)
+        {
+            _contEmpVentaTipo1 = cnt;
+        }
+        public void setContEmpVentaTipo2(int cnt)
+        {
+            _contEmpVentaTipo2 = cnt;
+        }
+        public void setContEmpVentaTipo3(int cnt)
+        {
+            _contEmpVentaTipo3 = cnt;
         }
 
     }

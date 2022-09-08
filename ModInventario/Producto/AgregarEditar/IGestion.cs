@@ -101,6 +101,25 @@ namespace ModInventario.Producto.AgregarEditar
         decimal GetAncho { get; }
         void setAncho(decimal _ancho);
 
+
+        BindingSource GetEmpVentaTipo3_Source { get; }
+        BindingSource GetEmpVentaTipo2_Source { get; }
+        BindingSource GetEmpVentaTipo1_Source { get; }
+        string GetEmpVentaTipo1_ID { get; }
+        string GetEmpVentaTipo2_ID { get; }
+        string GetEmpVentaTipo3_ID { get; }
+        void setEmpVentaTipo1(string id);
+        void setEmpVentaTipo2(string id);
+        void setEmpVentaTipo3(string id);
+
+
+        void setContEmpVentaTipo1(int cnt);
+        void setContEmpVentaTipo2(int cnt);
+        void setContEmpVentaTipo3(int cnt);
+        int GetContEmpVentaTipo1 { get; }
+        int GetContEmpVentaTipo2 { get; }
+        int GetContEmpVentaTipo3 { get; }
+
     }
 
 }

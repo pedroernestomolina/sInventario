@@ -425,6 +425,11 @@ namespace ModInventario.MovimientoInvTipo
             _gBusqPrd.setActivarDepDestino(id);
         }
 
+        public void LimpiarFiltros()
+        {
+            _gBusqPrd.LimpiarFiltros();
+        }
+
     }
 
 }

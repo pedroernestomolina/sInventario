@@ -114,44 +114,45 @@ namespace ModInventario.Tool.CambioMasivoPrecio
 
         private bool CargarData()
         {
-            var r01 = Sistema.MyData.Departamento_GetLista();
-            if (r01.Result == OOB.Enumerados.EnumResult.isError) 
+            try
             {
-                Helpers.Msg.Error(r01.Mensaje);
+                var r01 = Sistema.MyData.Departamento_GetLista();
+                var _lst_1 = r01.Lista.OrderBy(o => o.nombre).Select(s =>
+                {
+                    var nr = new ficha()
+                    {
+                        codigo = "",
+                        desc = s.nombre,
+                        id = s.auto,
+                    };
+                    return nr;
+                }).ToList();
+                _gDepartamento.setData(_lst_1);
+
+                var r02 = Sistema.MyData.Sistema_TipoPreciosDefinidos_Lista();
+                if (r02.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r02.Mensaje);
+                    return false;
+                }
+                var _lst_2 = r02.Lista.Select(s =>
+                {
+                    var nr = new ficha()
+                    {
+                        codigo = s.codigo,
+                        desc = s.descripcion,
+                        id = s.id,
+                    };
+                    return nr;
+                }).ToList();
+                _gPrecio.setData(_lst_2);
+                _gDestino.setData(_lst_2);
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
                 return false;
             }
-            var _lst_1 = r01.Lista.OrderBy(o=>o.nombre).Select(s =>
-            {
-                var nr = new ficha()
-                {
-                    codigo = "",
-                    desc = s.nombre,
-                    id = s.auto,
-                };
-                return nr;
-            }).ToList();
-
-            var r02 = Sistema.MyData.Sistema_TipoPreciosDefinidos_Lista();
-            if (r02.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r02.Mensaje);
-                return false;
-            }
-            var _lst_2 = r02.Lista.Select(s =>
-            {
-                var nr = new ficha()
-                {
-                    codigo = s.codigo,
-                    desc = s.descripcion,
-                    id = s.id,
-                };
-                return nr;
-            }).ToList();
-
-            _gPrecio.setData(_lst_2);
-            _gDepartamento.setData(_lst_1);
-            _gDestino.setData(_lst_2);
-
             return true;
         }
 
@@ -174,26 +175,29 @@ namespace ModInventario.Tool.CambioMasivoPrecio
         {
             _gDepartamento.setFicha(id);
             _gGrupo.Inicializa();
+            var _lst = new List<ficha>();
             if (id != "")
             {
-                var r01 = Sistema.MyData.Grupo_GetListaByIdDepartamento(id);
-                if (r01.Result == OOB.Enumerados.EnumResult.isError)
+                try
                 {
-                    Helpers.Msg.Error(r01.Mensaje);
-                    return;
-                }
-                var _lst_1 = r01.Lista.OrderBy(o=>o.nombre).Select(s =>
-                {
-                    var nr = new ficha()
+                    var r01 = Sistema.MyData.Grupo_GetListaByIdDepartamento(id);
+                    _lst = r01.Lista.OrderBy(o => o.nombre).Select(s =>
                     {
-                        codigo = "",
-                        desc = s.nombre,
-                        id = s.auto,
-                    };
-                    return nr;
-                }).ToList();
-                _gGrupo.setData(_lst_1);
+                        var nr = new ficha()
+                        {
+                            codigo = "",
+                            desc = s.nombre,
+                            id = s.auto,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+                catch (Exception e)
+                {
+                    Helpers.Msg.Error(e.Message);
+                }
             }
+            _gGrupo.setData(_lst);
         }
         public void setGrupo(string id)
         {

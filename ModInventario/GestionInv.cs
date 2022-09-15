@@ -28,7 +28,6 @@ namespace ModInventario
         private Configuracion.DepositoPreDeterminado.Gestion _gConfDepPredeterminado;
 
         //
-        private Buscar.IListaSeleccion _gListaSelProv;
         private Buscar.INotificarSeleccion _gListaSelPrd;
         private FiltrosGen.IOpcion _gfiltroMarca;
         private FiltrosGen.IOpcion _gfiltroConcepto;
@@ -36,7 +35,6 @@ namespace ModInventario
         private FiltrosGen.IOpcion _gfiltroDepOrigen;
         private FiltrosGen.IOpcion _gfiltroDepDestino;
         private FiltrosGen.IBuscar _gFiltroBusPrd;
-        private FiltrosGen.IBuscar _gFiltroBusProv;
         private FiltrosGen.IOpcion _gfiltroSucursal;
         private FiltrosGen.IOpcion _gfiltroTipoDoc;
         private FiltrosGen.IOpcion _gfiltroCategoria;
@@ -53,7 +51,6 @@ namespace ModInventario
         private FiltrosGen.IFecha _gfiltroDesde;
         private FiltrosGen.IFecha _gfiltroHasta;
         private FiltrosGen.IAdmDoc _gFiltroAdmDoc;
-        private FiltrosGen.IAdmProducto _gFiltroAdmProducto;
         private FiltrosGen.IAdmSelecciona _gAdmSelPrd;
         private Administrador.IGestion _gAdmDoc;
         private IGestionRep _gestionReporteFiltros;
@@ -140,12 +137,18 @@ namespace ModInventario
 
         public GestionInv()
         {
+            src.IFabrica _fabrica = new src.FabModoBasico();
+            Producto.Precio.EditarCambiar.IEditar _hndEditarPrecio = _fabrica.CreateInstancia_EditarCambiarPrecio();
+            Producto.Precio.VerVisualizar.IVisual _hndVerVisualizarPrecio = _fabrica.CreateInstancia_VisualizarPrecio();
+            FiltrosGen.AdmProducto.IAdmProducto _hndFiltroAdmProducto = _fabrica.CreateInstancia_FiltroPrdAdm();
+            Producto.Precio.Historico.IHistorico _hndHistPrecio = _fabrica.CreateInstancia_HistoricoPrecio();
+
+
             _gSecurity= new SeguridadSist.Gestion();
             _gSecurityModoUsuario = new SeguridadSist.Usuario.Gestion();
             _gSecurityNivelAcceso= new SeguridadSist.NivelAcceso.Gestion();
             _seguridad = new Helpers.Seguridad(_gSecurityNivelAcceso, _gSecurity);
             //
-            _gListaSelProv = new Proveedor.ListaSel.Gestion();
             _gListaSelPrd = new Producto.ListaSel.Gestion();
             _gfiltroMarca= new FiltrosGen.Opcion.Gestion();
             _gfiltroConcepto = new FiltrosGen.Opcion.Gestion();
@@ -153,7 +156,7 @@ namespace ModInventario
             _gfiltroDepOrigen= new FiltrosGen.Opcion.Gestion();
             _gfiltroDepDestino = new FiltrosGen.Opcion.Gestion();
             _gFiltroBusPrd= new FiltrosGen.BuscarProducto.Gestion(_gListaSelPrd);
-            _gFiltroBusProv = new FiltrosGen.BuscarProveedor.Gestion(_gListaSelProv);
+
             _gfiltroSucursal= new FiltrosGen.Opcion.Gestion();
             _gfiltroTipoDoc= new FiltrosGen.Opcion.Gestion();
             _gfiltroDesde = new FiltrosGen.Fecha.Gestion();
@@ -181,22 +184,7 @@ namespace ModInventario
                 _gfiltroTipoDoc, 
                 _gfiltroDesde, 
                 _gfiltroHasta);
-            _gFiltroAdmProducto = new FiltrosGen.AdmProducto.Gestion(
-                _gfiltroMarca, 
-                _gFiltroBusProv, 
-                _gfiltroDepOrigen,
-                _gfiltroCategoria, 
-                _gfiltroOrigen, 
-                _gfiltroTasaIva, 
-                _gfiltroEstatus, 
-                _gfiltroDivisa, 
-                _gfiltroPesado,
-                _gfiltroOferta, 
-                _gfiltroExistencia, 
-                _gfiltroCatalogo, 
-                _gfiltroPrecioMay, 
-                _gfiltroDepart, 
-                _gfiltroGrupo);
+
             _gestionReporteFiltros = new FiltrosGen.Reportes.Gestion(
                 _gFiltroBusPrd, 
                 _gfiltroDepOrigen, 
@@ -213,7 +201,7 @@ namespace ModInventario
                 _gfiltroHasta);
             _gAdmDoc = new Administrador.Movimiento.Gestion(_gFiltroAdmDoc);
             _gAdmSelPrd = new FiltrosGen.AdmSelecciona.Gestion(
-                _gFiltroAdmProducto, 
+                _hndFiltroAdmProducto, 
                 _gListaSelPrd);
             //
             _gAgregarDepart = new MaestrosInv.Departamento.Agregar.Gestion();
@@ -305,20 +293,20 @@ namespace ModInventario
             //
             _gCambioMasivoPrecio = new Tool.CambioMasivoPrecio.Cambio();
             
-            src.IFabrica _fabrica = new src.FabModoSucursal();
-            Producto.Precio.EditarCambiar.IEditar ctrEditarPrecio = _fabrica.CreateInstancia_EditarCambiarPrecio();
-            Producto.Precio.VerVisualizar.IVisual ctrVerVisualizarPrecio = _fabrica.CreateInstancia_VisualizarPrecio();
+
             _gestionBusqueda = new Buscar.Gestion(
-                _gFiltroAdmProducto, 
-                _seguridad, 
+                _hndFiltroAdmProducto, 
+                _seguridad,
                 _callMaestro,
-                _gSecurity, 
+                _gSecurity,
                 _gSecurityModoUsuario,
-                _gQR, 
+                _gQR,
                 _gImagen,
-                ctrEditarPrecio, 
-                ctrVerVisualizarPrecio);
-            _gVisorPrecioAjuste = new Visor.PrecioAjuste.Ajuste(_seguridad, ctrEditarPrecio);
+                _hndEditarPrecio,
+                _hndVerVisualizarPrecio,
+                _hndHistPrecio);
+
+            _gVisorPrecioAjuste = new Visor.PrecioAjuste.Ajuste(_seguridad, _hndEditarPrecio);
 
             _gestionVisorExistencia = new Visor.Existencia.Gestion();
             _gestionVisorCostoEdad = new Visor.CostoEdad.Gestion();
@@ -397,14 +385,7 @@ namespace ModInventario
 
         public void AdministradorMovimiento()
         {
-            var r00 = Sistema.MyData.Permiso_AdministradorMovimientoInventario(Sistema.UsuarioP.autoGru);
-            if (r00.Result == OOB.Enumerados.EnumResult.isError) 
-            {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-
-            if (_seguridad.Verificar(r00.Entidad))
+            if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_AdministradorMovimientoInventario, Sistema.UsuarioP.autoGru, _seguridad))
             {
                 _gAdmDoc.Inicializa();
                 _gestionAdmMov.setGestion(_gAdmDoc);
@@ -419,105 +400,9 @@ namespace ModInventario
             gestion.Inicia();
         }
 
-        public void Conf_CostoEdadProducto()
-        {
-            var r00 = Sistema.MyData.Permiso_ConfiguracionSistema(Sistema.UsuarioP.autoGru);
-            if (r00.Result == OOB.Enumerados.EnumResult.isError) 
-            {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-            if (_seguridad.Verificar(r00.Entidad))
-            {
-                _gestionConfCostoEdad.Inicializa();
-                _gestionConfCostoEdad.Inicia();
-            }
-        }
-
-        public void Conf_RedondeoPreciosVenta()
-        {
-            var r00 = Sistema.MyData.Permiso_ConfiguracionSistema(Sistema.UsuarioP.autoGru);
-            if (r00.Result == OOB.Enumerados.EnumResult.isError) 
-            {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-            if (_seguridad.Verificar(r00.Entidad))
-            {
-                _gestionConfRedondeoPrecio.Inicializa();
-                _gestionConfRedondeoPrecio.Inicia();
-            }
-        }
-
-        public void Conf_RegistroPrecio()
-        {
-            var r00 = Sistema.MyData.Permiso_ConfiguracionSistema(Sistema.UsuarioP.autoGru);
-            if (r00.Result == OOB.Enumerados.EnumResult.isError) 
-            {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-            if (_seguridad.Verificar(r00.Entidad))
-            {
-                _gestionConfRegistroPrecio.Inicializa();
-                _gestionConfRegistroPrecio.Inicia();
-            }
-        }
-
-        public void Conf_BusquedaPredeterminada()
-        {
-            var r00 = Sistema.MyData.Permiso_ConfiguracionSistema(Sistema.UsuarioP.autoGru);
-            if (r00.Result == OOB.Enumerados.EnumResult.isError) 
-            {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-            if (_seguridad.Verificar(r00.Entidad))
-            {
-                _gestionConfBusquedaPred.Inicializa();
-                _gestionConfBusquedaPred.Inicia();
-            }
-        }
-
-        public void Conf_MetodoCalcUtilidad()
-        {
-            var r00 = Sistema.MyData.Permiso_ConfiguracionSistema(Sistema.UsuarioP.autoGru);
-            if (r00.Result == OOB.Enumerados.EnumResult.isError) 
-            {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-            if (_seguridad.Verificar(r00.Entidad))
-            {
-                _gestionConfMetodoCalUtilidad.Inicializa();
-                _gestionConfMetodoCalUtilidad.Inicia();
-            }
-        }
-
-        public void Conf_DepositosPreDeterminadosRegistrar()
-        {
-            var r00 = Sistema.MyData.Permiso_ConfiguracionSistema(Sistema.UsuarioP.autoGru);
-            if (r00.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-            if (_seguridad.Verificar(r00.Entidad))
-            {
-                _gConfDepPredeterminado.Inicializa();
-                _gConfDepPredeterminado.Inicia();
-            }
-        }
-
         public void MovimientoDesCargo()
         {
-            var r00 = Sistema.MyData.Permiso_MovimientoDescargoInventario(Sistema.UsuarioP.autoGru);
-            if (r00.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-            if (_seguridad.Verificar(r00.Entidad))
+            if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_MovimientoDescargoInventario, Sistema.UsuarioP.autoGru, _seguridad))
             {
                 _gMovTipoDescargo.Inicializa();
                 _gMovTipo.Inicializa();
@@ -529,14 +414,7 @@ namespace ModInventario
 
         public void MovimientoCargo()
         {
-            var r00 = Sistema.MyData.Permiso_MovimientoCargoInventario(Sistema.UsuarioP.autoGru);
-            if (r00.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-
-            if (_seguridad.Verificar(r00.Entidad))
+            if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_MovimientoCargoInventario, Sistema.UsuarioP.autoGru, _seguridad))
             {
                 _gMovTipoCargo.Inicializa();
                 _gMovTipo.Inicializa();
@@ -548,13 +426,7 @@ namespace ModInventario
 
         public void MovimientoTraslado()
         {
-            var r00 = Sistema.MyData.Permiso_MovimientoTrasladoInventario(Sistema.UsuarioP.autoGru);
-            if (r00.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-            if (_seguridad.Verificar(r00.Entidad))
+            if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_MovimientoTrasladoInventario, Sistema.UsuarioP.autoGru, _seguridad))
             {
                 _gMovTipoTraslado.Inicializa();
                 _gMovTipoTraslado.setActivarPorDevolucion(false);
@@ -567,13 +439,7 @@ namespace ModInventario
 
         public void TrasladoPorDevolucion()
         {
-            var r00 = Sistema.MyData.Permiso_MovimientoTrasladoPorDevolucion(Sistema.UsuarioP.autoGru);
-            if (r00.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-            if (_seguridad.Verificar(r00.Entidad))
+            if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_MovimientoTrasladoPorDevolucion, Sistema.UsuarioP.autoGru, _seguridad))
             {
                 _gMovTipoTraslado.Inicializa();
                 _gMovTipoTraslado.setActivarPorDevolucion(true);
@@ -586,13 +452,7 @@ namespace ModInventario
 
         public void MovimientoAjuste()
         {
-            var r00 = Sistema.MyData.Permiso_MovimientoAjusteInventario(Sistema.UsuarioP.autoGru);
-            if (r00.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-            if (_seguridad.Verificar(r00.Entidad))
+            if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_MovimientoAjusteInventario, Sistema.UsuarioP.autoGru, _seguridad))
             {
                 _gMovTipoAjuste.Inicializa();
                 _gMovTipo.Inicializa();
@@ -604,13 +464,7 @@ namespace ModInventario
 
         public void AjusteInvCero()
         {
-            var r00 = Sistema.MyData.Permiso_MovimientoAjusteInventarioCero(Sistema.UsuarioP.autoGru);
-            if (r00.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-            if (_seguridad.Verificar(r00.Entidad))
+            if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_MovimientoAjusteInventarioCero, Sistema.UsuarioP.autoGru, _seguridad))
             {
                 // POR USUARIO
                 _gSecurityModoUsuario.Inicializa();
@@ -626,30 +480,9 @@ namespace ModInventario
             }
         }
 
-        public void Conf_DepositoConceptoDevMercancia()
-        {
-            var r00 = Sistema.MyData.Permiso_ConfiguracionSistema(Sistema.UsuarioP.autoGru);
-            if (r00.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-            if (_seguridad.Verificar(r00.Entidad))
-            {
-                _gCnfDepositoConceptoDev.Inicializa();
-                _gCnfDepositoConceptoDev.Inicia();
-            }
-        }
-
         public void TrasladoMercanciaEntreSucursalPorNivelMinimo()
         {
-            var r00 = Sistema.MyData.Permiso_MovimientoTrasladoEntreSucursales_PorExistenciaDebajoDelMinimo(Sistema.UsuarioP.autoGru);
-            if (r00.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-            if (_seguridad.Verificar(r00.Entidad))
+            if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_MovimientoTrasladoEntreSucursales_PorExistenciaDebajoDelMinimo, Sistema.UsuarioP.autoGru, _seguridad))
             {
                 _gMovTipoTraslPorNIvelMinimo.Inicializa();
                 _gMovTipo.Inicializa();
@@ -671,29 +504,13 @@ namespace ModInventario
 
         public void AsignacionMasivaProductoDeposito()
         {
-            var r00 = Sistema.MyData.Permiso_AsignacionMasivaProductosDeposito(Sistema.UsuarioP.autoGru);
-            if (r00.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-            if (_seguridad.Verificar(r00.Entidad))
+            if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_AsignacionMasivaProductosDeposito, Sistema.UsuarioP.autoGru, _seguridad))
             {
                 _gAsignacionMasiva.Inicializa();
                 _gAsignacionMasiva.Inicia();
             }
         }
 
-        public bool VerificarPermisoVisor() 
-        {
-            var r00 = Sistema.MyData.Permiso_Visor(Sistema.UsuarioP.autoGru);
-            if (r00.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r00.Mensaje);
-                return false;
-            }
-            return _seguridad.Verificar(r00.Entidad);
-        }
         public void VisorCostoExistencia()
         {
             if (VerificarPermisoVisor())
@@ -742,18 +559,12 @@ namespace ModInventario
                 _gVisorPrecioAjuste.Inicia();
             }
         }
-
-
-        public bool VerificarPermisoReportes()
+        public bool VerificarPermisoVisor()
         {
-            var r00 = Sistema.MyData.Permiso_Reportes(Sistema.UsuarioP.autoGru);
-            if (r00.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r00.Mensaje);
-                return false;
-            }
-            return _seguridad.Verificar(r00.Entidad);
+            return Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_Visor, Sistema.UsuarioP.autoGru, _seguridad);
         }
+
+
         public void ReporteMaestroDepositoResumen()
         {
             if (VerificarPermisoReportes())
@@ -958,35 +769,88 @@ namespace ModInventario
                 }
             }
         }
+        public bool VerificarPermisoReportes()
+        {
+            return Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_Reportes, Sistema.UsuarioP.autoGru, _seguridad);
+        }
 
         public void CambioMovimientoPrecios()
         {
-            var r00 = Sistema.MyData.Permiso_CambioMovimientoMasivoPrecio(Sistema.UsuarioP.autoGru);
-            if (r00.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-            if (_seguridad.Verificar(r00.Entidad)) 
+            if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_CambioMovimientoMasivoPrecio, Sistema.UsuarioP.autoGru, _seguridad))
             {
                 _gCambioMasivoPrecio.Inicializa();
                 _gCambioMasivoPrecio.Inicia();
             }
         }
 
+
+        public void Conf_CostoEdadProducto()
+        {
+            if (VerificarPermisoConfiguracionSistema()) 
+            {
+                _gestionConfCostoEdad.Inicializa();
+                _gestionConfCostoEdad.Inicia();
+            }
+        }
+        public void Conf_RedondeoPreciosVenta()
+        {
+            if (VerificarPermisoConfiguracionSistema()) 
+            {
+                _gestionConfRedondeoPrecio.Inicializa();
+                _gestionConfRedondeoPrecio.Inicia();
+            }
+        }
+        public void Conf_RegistroPrecio()
+        {
+            if (VerificarPermisoConfiguracionSistema()) 
+            {
+                _gestionConfRegistroPrecio.Inicializa();
+                _gestionConfRegistroPrecio.Inicia();
+            }
+        }
+        public void Conf_BusquedaPredeterminada()
+        {
+            if (VerificarPermisoConfiguracionSistema()) 
+            {
+                _gestionConfBusquedaPred.Inicializa();
+                _gestionConfBusquedaPred.Inicia();
+            }
+        }
+        public void Conf_MetodoCalcUtilidad()
+        {
+            if (VerificarPermisoConfiguracionSistema()) 
+            {
+                _gestionConfMetodoCalUtilidad.Inicializa();
+                _gestionConfMetodoCalUtilidad.Inicia();
+            }
+        }
+        public void Conf_DepositosPreDeterminadosRegistrar()
+        {
+            if (VerificarPermisoConfiguracionSistema()) 
+            {
+                _gConfDepPredeterminado.Inicializa();
+                _gConfDepPredeterminado.Inicia();
+            }
+        }
         public void PermitirCambiarPrecioAlModificarCosto()
         {
-            var r00 = Sistema.MyData.Permiso_ConfiguracionSistema(Sistema.UsuarioP.autoGru);
-            if (r00.Result == OOB.Enumerados.EnumResult.isError) 
-            {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-            if (_seguridad.Verificar(r00.Entidad))
+            if (VerificarPermisoConfiguracionSistema()) 
             {
                 _gConfEditarPrecioAlCambiarCosto.Inicializa();
                 _gConfEditarPrecioAlCambiarCosto.Inicia();
             }
+        }
+        public void Conf_DepositoConceptoDevMercancia()
+        {
+            if (VerificarPermisoConfiguracionSistema()) 
+            {
+                _gCnfDepositoConceptoDev.Inicializa();
+                _gCnfDepositoConceptoDev.Inicia();
+            }
+        }
+        public bool VerificarPermisoConfiguracionSistema()
+        {
+            return Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_ConfiguracionSistema, Sistema.UsuarioP.autoGru, _seguridad);
         }
 
     }

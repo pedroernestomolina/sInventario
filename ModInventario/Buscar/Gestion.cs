@@ -17,7 +17,8 @@ namespace ModInventario.Buscar
 
         private GestionLista _gestionLista;
         private Producto.Deposito.Listar.Gestion _gestionPrdExistencia;
-        private Producto.Precio.Historico.Gestion _gestionHistoricoPrecio;
+        private Producto.Precio.Historico.IHistorico _gHistPrecio;
+
         private Producto.Costo.Historico.Gestion _gestionHistoricoCosto;
         private Producto.Costo.Ver.Gestion _gestionPrdCosto;
         private Producto.Costo.Editar.Gestion _gestionEditarCosto;
@@ -29,7 +30,7 @@ namespace ModInventario.Buscar
         private Producto.Proveedor.Gestion _gestionProveedor;
         private Producto.VisualizarFicha.Gestion _gestionVisualizarFicha;
         //
-        private FiltrosGen.IAdmProducto _gFiltrarProducto;
+        private FiltrosGen.AdmProducto.IAdmProducto _gFiltrarProducto;
         private ISeguridadAccesoSistema _gAccesoSistema;
         //
         private SeguridadSist.ISeguridad _gSeguridadUsu;
@@ -41,7 +42,7 @@ namespace ModInventario.Buscar
         private FiltrosGen.IOpcion _gTipoBusq;
 
 
-        public object Source { get { return _gestionLista.Source; } }
+        public BindingSource Source { get { return _gestionLista.Source; } }
         public int Items { get { return _gestionLista.Items; } }
         public OOB.LibInventario.Producto.Data.Ficha Item { get { return _gestionLista.Item; } }
         public bool HayItemSeleccionado { get; set; }
@@ -49,20 +50,22 @@ namespace ModInventario.Buscar
         public enumMetodoBusqueda MetodoBusqueda { get { return (enumMetodoBusqueda)_gFiltrarProducto.MetBusqueda; } }
 
 
-        public Gestion(FiltrosGen.IAdmProducto ctrFiltrarProducto, 
+        public Gestion(FiltrosGen.AdmProducto.IAdmProducto hndFiltrarProducto, 
             ISeguridadAccesoSistema ctrSeguridad,
             Helpers.Maestros.ICallMaestros ctrMaestros,
             SeguridadSist.ISeguridad _seguridadUsu,
             SeguridadSist.Usuario.IModoUsuario seguridadModo,
             Producto.QR.IQR _qr,
             Producto.Imagen.IImagen _imagen,
-            Producto.Precio.EditarCambiar.IEditar editarCambiarPrecio,
-            Producto.Precio.VerVisualizar.IVisual verVisualizarPrecio)
+            Producto.Precio.EditarCambiar.IEditar hndEditarCambiarPrecio,
+            Producto.Precio.VerVisualizar.IVisual hndVerVisualizarPrecio, 
+            Producto.Precio.Historico.IHistorico hndHistPrecio)
         {
-            _gEditarCambiarPrecio = editarCambiarPrecio;
-            _gVerPrecio = verVisualizarPrecio;
+            _gHistPrecio = hndHistPrecio;
+            _gEditarCambiarPrecio = hndEditarCambiarPrecio;
+            _gVerPrecio = hndVerVisualizarPrecio;
+            _gFiltrarProducto = hndFiltrarProducto;
             _gAccesoSistema = ctrSeguridad;
-            _gFiltrarProducto = ctrFiltrarProducto;
             _gSeguridadUsu = _seguridadUsu;
             _gSeguridadModoUsu= seguridadModo;
             _gQR = _qr;
@@ -71,9 +74,7 @@ namespace ModInventario.Buscar
 
             //
             _gestionLista = new GestionLista();
-            _gestionLista.CambioItemActual+=_gestionLista_CambioItemActual;
             _gestionPrdExistencia = new Producto.Deposito.Listar.Gestion();
-            _gestionHistoricoPrecio = new Producto.Precio.Historico.Gestion();
             _gestionHistoricoCosto= new Producto.Costo.Historico.Gestion();
             _gestionPrdCosto = new Producto.Costo.Ver.Gestion();
             _gestionEditarCosto = new Producto.Costo.Editar.Gestion();
@@ -96,11 +97,6 @@ namespace ModInventario.Buscar
             _gestionImagen = new Producto.Imagen.Gestion();
             _gestionProveedor = new Producto.Proveedor.Gestion();
             _gestionVisualizarFicha = new Producto.VisualizarFicha.Gestion();
-        }
-
-        private void _gestionLista_CambioItemActual(object sender, EventArgs e)
-        {
-            frm.ActualizarItem();
         }
 
         public void Inicializa() 
@@ -304,8 +300,9 @@ namespace ModInventario.Buscar
         {
             if (Item != null)
             {
-                _gestionHistoricoPrecio.setFicha(Item.identidad.auto);
-                _gestionHistoricoPrecio.Inicia();
+                _gHistPrecio.Inicializa();
+                _gHistPrecio.setFicha(Item.identidad.auto);
+                _gHistPrecio.Inicia();
             }
         }
 
@@ -523,7 +520,8 @@ namespace ModInventario.Buscar
         {
             if (_gFiltrarProducto.DataFiltrarIsOk())
             {
-                RealizarBusqueda(_gFiltrarProducto.dataFiltrar);
+                var filtros= Helpers.Filtro.BusqProducto((src.FiltroBusqAdm.dataFiltro) _gFiltrarProducto.FiltrosExportar);
+                RealizarBusqueda(filtros);
             }
         }
 

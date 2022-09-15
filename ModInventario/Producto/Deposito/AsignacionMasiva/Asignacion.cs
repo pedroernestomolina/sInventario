@@ -94,36 +94,39 @@ namespace ModInventario.Producto.Deposito.AsignacionMasiva
         {
             var rt = true;
 
-            var r01 = Sistema.MyData.Deposito_GetLista();
-            if (r01.Result == OOB.Enumerados.EnumResult.isError)
+            try
             {
-                Helpers.Msg.Error(r01.Mensaje);
-                return false;
-            }
-            var r02 = Sistema.MyData.Departamento_GetLista();
-            if (r02.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r02.Mensaje);
-                return false;
-            }
-            var lst = new List<ficha>();
-            foreach (var rg in r01.Lista.OrderBy(o => o.nombre).ToList())
-            {
-                lst.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
-            }
-            _gDep.setData(lst);
-            _departExcluir.Clear();
-            foreach (var rg in r02.Lista.OrderBy(o => o.nombre).ToList())
-            {
-                var depart = new dataDepart()
+                var r01 = Sistema.MyData.Deposito_GetLista();
+                if (r01.Result == OOB.Enumerados.EnumResult.isError)
                 {
-                    id = rg.auto,
-                    nombre = rg.nombre,
-                    excluir = false,
-                };
-                _departExcluir.Add(depart);
+                    Helpers.Msg.Error(r01.Mensaje);
+                    return false;
+                }
+                var lst = new List<ficha>();
+                foreach (var rg in r01.Lista.OrderBy(o => o.nombre).ToList())
+                {
+                    lst.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
+                }
+                _gDep.setData(lst);
+                _departExcluir.Clear();
+                var r02 = Sistema.MyData.Departamento_GetLista();
+                foreach (var rg in r02.Lista.OrderBy(o => o.nombre).ToList())
+                {
+                    var depart = new dataDepart()
+                    {
+                        id = rg.auto,
+                        nombre = rg.nombre,
+                        excluir = false,
+                    };
+                    _departExcluir.Add(depart);
+                }
+                _bsDepart.CurrencyManager.Refresh();
             }
-            _bsDepart.CurrencyManager.Refresh();
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
+                return false;
+            }
 
             return rt;
         }

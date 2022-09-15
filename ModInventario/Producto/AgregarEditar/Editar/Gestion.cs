@@ -412,101 +412,103 @@ namespace ModInventario.Producto.AgregarEditar.Editar
         {
             var rt = true;
 
-            if (!DepartamentosCargar())
-                return false;
-
-            if (!GruposCargar())
-                return false;
-
-            if (!MarcasCargar())
-                return false;
-
-            var r04 = Sistema.MyData.TasaImpuesto_GetLista();
-            if (r04.Result == OOB.Enumerados.EnumResult.isError)
+            try
             {
-                Helpers.Msg.Error(r04.Mensaje);
+                if (!DepartamentosCargar())
+                    return false;
+
+                if (!GruposCargar())
+                    return false;
+
+                if (!MarcasCargar())
+                    return false;
+
+                var r04 = Sistema.MyData.TasaImpuesto_GetLista();
+                if (r04.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r04.Mensaje);
+                    return false;
+                }
+                blImpuesto.Clear();
+                impuesto.AddRange(r04.Lista.OrderBy(o => o.tasa).ToList());
+                bsImpuesto.CurrencyManager.Refresh();
+
+                var r05 = Sistema.MyData.Producto_Categoria_Lista();
+                if (r05.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r05.Mensaje);
+                    return false;
+                }
+                blCategoria.Clear();
+                categoria.AddRange(r05.Lista.OrderBy(o => o.Descripcion).ToList());
+                bsCategoria.CurrencyManager.Refresh();
+
+                var r06 = Sistema.MyData.Producto_Origen_Lista();
+                if (r06.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r06.Mensaje);
+                    return false;
+                }
+                blOrigen.Clear();
+                origen.AddRange(r06.Lista.OrderBy(o => o.Descripcion).ToList());
+                bsOrigen.CurrencyManager.Refresh();
+
+                var lData = new List<ficha>();
+                var r07 = Sistema.MyData.EmpaqueMedida_GetLista();
+                foreach (var rg in r07.Lista.OrderBy(o => o.nombre).ToList())
+                {
+                    var nr = new ficha(rg.auto, "", rg.nombre);
+                    lData.Add(nr);
+                }
+                _gEmpCompra.setData(lData);
+                _gEmpInv.setData(lData);
+                _gEmpVentaTipo1.setData(lData);
+                _gEmpVentaTipo2.setData(lData);
+                _gEmpVentaTipo3.setData(lData);
+
+                var r08 = Sistema.MyData.Producto_AdmDivisa_Lista();
+                if (r08.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r08.Mensaje);
+                    return false;
+                }
+                blDivisa.Clear();
+                divisa.AddRange(r08.Lista.OrderBy(o => o.Descripcion).ToList());
+                bsDivisa.CurrencyManager.Refresh();
+
+                var r09 = Sistema.MyData.Producto_Clasificacion_Lista();
+                if (r09.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r09.Mensaje);
+                    return false;
+                }
+                blClasificacion.Clear();
+                clasificacion.AddRange(r09.Lista.OrderBy(o => o.Descripcion).ToList());
+                bsClasificacion.CurrencyManager.Refresh();
+
+                var r0A = Sistema.MyData.Producto_Editar_GetFicha(autoPrd);
+                if (r0A.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r0A.Mensaje);
+                    return false;
+                }
+                autoTasaActualPrd = r0A.Entidad.autoTasaImpuesto;
+                miData.setFicha(r0A.Entidad);
+                setEmpCompra(r0A.Entidad.autoEmpCompra);
+                setEmpInv(r0A.Entidad.autoEmpInv);
+                setEmpVentaTipo1(r0A.Entidad.autoEmpVentaTipo_1);
+                setEmpVentaTipo2(r0A.Entidad.autoEmpVentaTipo_2);
+                setEmpVentaTipo3(r0A.Entidad.autoEmpVentaTipo_3);
+                setContEmpVentaTipo1(r0A.Entidad.contEmpVentaTipo_1);
+                setContEmpVentaTipo2(r0A.Entidad.contEmpVentaTipo_2);
+                setContEmpVentaTipo3(r0A.Entidad.contEmpVentaTipo_3);
+                _gestionCodAlterno.CargarData(r0A.Entidad.CodigosAlterno);
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
                 return false;
             }
-            blImpuesto.Clear();
-            impuesto.AddRange(r04.Lista.OrderBy(o => o.tasa).ToList());
-            bsImpuesto.CurrencyManager.Refresh();
-
-            var r05 = Sistema.MyData.Producto_Categoria_Lista();
-            if (r05.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r05.Mensaje);
-                return false;
-            }
-            blCategoria.Clear();
-            categoria.AddRange(r05.Lista.OrderBy(o => o.Descripcion).ToList());
-            bsCategoria.CurrencyManager.Refresh();
-
-            var r06 = Sistema.MyData.Producto_Origen_Lista();
-            if (r06.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r06.Mensaje);
-                return false;
-            }
-            blOrigen.Clear();
-            origen.AddRange(r06.Lista.OrderBy(o => o.Descripcion).ToList());
-            bsOrigen.CurrencyManager.Refresh();
-
-            //
-            var r07 = Sistema.MyData.EmpaqueMedida_GetLista ();
-            if (r07.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r07.Mensaje);
-                return false;
-            }
-            var lData = new List<ficha>();
-            foreach (var rg in r07.Lista.OrderBy(o => o.nombre).ToList())
-            {
-                var nr = new ficha(rg.auto, "", rg.nombre);
-                lData.Add(nr);
-            }
-            _gEmpCompra.setData(lData);
-            _gEmpInv.setData(lData);
-            _gEmpVentaTipo1.setData(lData);
-            _gEmpVentaTipo2.setData(lData);
-            _gEmpVentaTipo3.setData(lData);
-
-            var r08 = Sistema.MyData.Producto_AdmDivisa_Lista ();
-            if (r08.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r08.Mensaje);
-                return false;
-            }
-            blDivisa.Clear();
-            divisa.AddRange(r08.Lista.OrderBy(o => o.Descripcion).ToList());
-            bsDivisa.CurrencyManager.Refresh();
-
-            var r09 = Sistema.MyData.Producto_Clasificacion_Lista ();
-            if (r09.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r09.Mensaje);
-                return false;
-            }
-            blClasificacion.Clear();
-            clasificacion.AddRange(r09.Lista.OrderBy(o => o.Descripcion).ToList());
-            bsClasificacion.CurrencyManager.Refresh();
-
-            var r0A = Sistema.MyData.Producto_Editar_GetFicha(autoPrd);
-            if (r0A.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r0A.Mensaje);
-                return false;
-            }
-            autoTasaActualPrd = r0A.Entidad.autoTasaImpuesto;
-            miData.setFicha(r0A.Entidad);
-            setEmpCompra(r0A.Entidad.autoEmpCompra);
-            setEmpInv(r0A.Entidad.autoEmpInv);
-            setEmpVentaTipo1(r0A.Entidad.autoEmpVentaTipo_1);
-            setEmpVentaTipo2(r0A.Entidad.autoEmpVentaTipo_2);
-            setEmpVentaTipo3(r0A.Entidad.autoEmpVentaTipo_3);
-            setContEmpVentaTipo1(r0A.Entidad.contEmpVentaTipo_1);
-            setContEmpVentaTipo2(r0A.Entidad.contEmpVentaTipo_2);
-            setContEmpVentaTipo3(r0A.Entidad.contEmpVentaTipo_3);
-            _gestionCodAlterno.CargarData(r0A.Entidad.CodigosAlterno);
 
             return rt;
         }
@@ -646,13 +648,8 @@ namespace ModInventario.Producto.AgregarEditar.Editar
         {
             var rt = true;
 
-            var r02 = Sistema.MyData.Grupo_GetLista();
-            if (r02.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r02.Mensaje);
-                return false;
-            }
             blGrupo.Clear();
+            var r02 = Sistema.MyData.Grupo_GetLista();
             grupo.AddRange(r02.Lista.OrderBy(o => o.nombre).ToList());
             bsGrupo.CurrencyManager.Refresh();
 
@@ -666,19 +663,19 @@ namespace ModInventario.Producto.AgregarEditar.Editar
 
         public bool MarcasCargar() 
         {
-            var rt = true;
-
-            var r03 = Sistema.MyData.Marca_GetLista();
-            if (r03.Result == OOB.Enumerados.EnumResult.isError)
+            try
             {
-                Helpers.Msg.Error(r03.Mensaje);
+                blMarca.Clear();
+                var r03 = Sistema.MyData.Marca_GetLista();
+                marca.AddRange(r03.Lista.OrderBy(o => o.nombre).ToList());
+                bsMarca.CurrencyManager.Refresh();
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
                 return false;
             }
-            blMarca.Clear();
-            marca.AddRange(r03.Lista.OrderBy(o => o.nombre).ToList());
-            bsMarca.CurrencyManager.Refresh();
-
-            return rt;
+            return true;
         }
 
         public void ListaPlu()

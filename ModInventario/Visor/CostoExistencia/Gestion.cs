@@ -66,26 +66,28 @@ namespace ModInventario.Visor.CostoExistencia
         {
             var rt = true;
 
-            var r01 = Sistema.MyData.Deposito_GetLista();
-            if (r01.Result == OOB.Enumerados.EnumResult.isError)
+            try
             {
-                Helpers.Msg.Error(r01.Mensaje);
+                var r01 = Sistema.MyData.Deposito_GetLista();
+                if (r01.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r01.Mensaje);
+                    return false;
+                }
+                lDeposito.Clear();
+                lDeposito.AddRange(r01.Lista.OrderBy(o => o.nombre).ToList());
+                bsDeposito.CurrencyManager.Refresh();
+
+                lDepart.Clear();
+                var r02 = Sistema.MyData.Departamento_GetLista();
+                lDepart.AddRange(r02.Lista);
+                bsDepart.CurrencyManager.Refresh();
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
                 return false;
             }
-            var r02 = Sistema.MyData.Departamento_GetLista();
-            if (r02.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r02.Mensaje);
-                return false;
-            }
-
-            lDeposito.Clear();
-            lDeposito.AddRange(r01.Lista.OrderBy(o => o.nombre).ToList());
-            bsDeposito.CurrencyManager.Refresh();
-
-            lDepart.Clear();
-            lDepart.AddRange(r02.Lista);
-            bsDepart.CurrencyManager.Refresh();
 
             return rt;
         }

@@ -39,13 +39,15 @@ namespace DataProvInventario.Data
                         return new OOB.LibInventario.Precio.Historico.Data()
                         {
                             estacion = s.estacion,
-                            etqPrecio = s.etqPrecio,
                             fecha = s.fecha,
                             hora = s.hora,
-                            idPrecio = s.idPrecio,
                             nota = s.nota,
                             precio = s.precio,
-                            usuario = s.usuario
+                            usuario = s.usuario,
+                            contenido = s.contenido,
+                            empaque = s.empaque,
+                            factorCambio = s.factor_cambio,
+                            idPrecio = s.precio_id,
                         };
                     }).ToList();
                 }
@@ -265,6 +267,7 @@ namespace DataProvInventario.Data
                         precio_id = it.precio_id,
                         contenido = it.contenido,
                         empaque = it.empaque,
+                        factorCambio= it.factorCambio,
                     };
                     historia.Add(nr);
                 }

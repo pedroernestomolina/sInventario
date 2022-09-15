@@ -39,7 +39,7 @@ namespace ModInventario.MovimientoInvTipo.TrasladoPorNivelMinimo
 
 
         public bool IsOk { get { return _isOk; } }
-        public string TipoMovimiento { get { return "TRASLADO x NIVE MINIMO"; } }
+        public string TipoMovimiento { get { return "TRASLADO x NIVEL MINIMO"; } }
         public BindingSource ConceptoSource { get { return _gConcepto.Source; } }
         public BindingSource SucursalSource { get { return null; } }
         public BindingSource DepOrigenSource { get { return _gDepOrigen.Source; } }
@@ -125,73 +125,76 @@ namespace ModInventario.MovimientoInvTipo.TrasladoPorNivelMinimo
 
         public bool CargarData()
         {
-            var r01 = Sistema.MyData.Concepto_GetLista();
-            if (r01.Result == OOB.Enumerados.EnumResult.isError)
+            try
             {
-                Helpers.Msg.Error(r01.Mensaje);
-                return false;
-            }
-            var _lConcepto = new List<ficha>();
-            foreach (var rg in r01.Lista.OrderBy(o => o.nombre).ToList())
-            {
-                _lConcepto.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
-            }
-            _gConcepto.setData(_lConcepto);
+                var r01 = Sistema.MyData.Concepto_GetLista();
+                if (r01.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r01.Mensaje);
+                    return false;
+                }
+                var _lConcepto = new List<ficha>();
+                foreach (var rg in r01.Lista.OrderBy(o => o.nombre).ToList())
+                {
+                    _lConcepto.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
+                }
+                _gConcepto.setData(_lConcepto);
 
-            var filtroOOb = new OOB.LibInventario.Sucursal.Filtro();
-            var r02 = Sistema.MyData.Sucursal_GetLista(filtroOOb);
-            if (r02.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r02.Mensaje);
-                return false;
-            }
-            var lstSucOrigen = new List<ficha>();
-            var lstSucDestino = new List<ficha>();
-            foreach (var rg in r02.Lista.OrderBy(o => o.nombre).ToList())
-            {
-                lstSucOrigen.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
-                lstSucDestino.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
-            }
-            _gDepOrigen.setData(lstSucOrigen);
-            _gDepDestino.setData(lstSucDestino);
+                var filtroOOb = new OOB.LibInventario.Sucursal.Filtro();
+                var r02 = Sistema.MyData.Sucursal_GetLista(filtroOOb);
+                if (r02.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r02.Mensaje);
+                    return false;
+                }
+                var lstSucOrigen = new List<ficha>();
+                var lstSucDestino = new List<ficha>();
+                foreach (var rg in r02.Lista.OrderBy(o => o.nombre).ToList())
+                {
+                    lstSucOrigen.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
+                    lstSucDestino.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
+                }
+                _gDepOrigen.setData(lstSucOrigen);
+                _gDepDestino.setData(lstSucDestino);
 
-            var r03 = Sistema.MyData.Departamento_GetLista();
-            if (r03.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r03.Mensaje);
-                return false;
-            }
-            var _lDepart= new List<ficha>();
-            foreach (var rg in r03.Lista.OrderBy(o => o.nombre).ToList())
-            {
-                _lDepart.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
-            }
-            _gDepartamento.setData(_lDepart);
+                var r03 = Sistema.MyData.Departamento_GetLista();
+                var _lDepart = new List<ficha>();
+                foreach (var rg in r03.Lista.OrderBy(o => o.nombre).ToList())
+                {
+                    _lDepart.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
+                }
+                _gDepartamento.setData(_lDepart);
 
-            var r04 = Sistema.MyData.Configuracion_TasaCambioActual();
-            if (r04.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r04.Mensaje);
-                return false;
-            }
-            _tasaCambio = r04.Entidad;
+                var r04 = Sistema.MyData.Configuracion_TasaCambioActual();
+                if (r04.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r04.Mensaje);
+                    return false;
+                }
+                _tasaCambio = r04.Entidad;
 
-            var r05 = Sistema.MyData.Sistema_TipoDocumento_GetFichaByTipo(OOB.LibInventario.Sistema.TipoDocumento.enumerados.enumTipoDocumento.TRASLADO);
-            if (r05.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r05.Mensaje);
-                return false;
-            }
-            var _docTipo = r05.Entidad;
+                var r05 = Sistema.MyData.Sistema_TipoDocumento_GetFichaByTipo(OOB.LibInventario.Sistema.TipoDocumento.enumerados.enumTipoDocumento.TRASLADO);
+                if (r05.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r05.Mensaje);
+                    return false;
+                }
+                var _docTipo = r05.Entidad;
 
-            var filtroOOB = new OOB.LibInventario.Transito.Movimiento.Lista.Filtro() { codigoMov = _docTipo.codigo, tipoMov = "3" };
-            var r06 = Sistema.MyData.Transito_Movimiento_GetCnt(filtroOOB);
-            if (r06.Result == OOB.Enumerados.EnumResult.isError)
+                var filtroOOB = new OOB.LibInventario.Transito.Movimiento.Lista.Filtro() { codigoMov = _docTipo.codigo, tipoMov = "3" };
+                var r06 = Sistema.MyData.Transito_Movimiento_GetCnt(filtroOOB);
+                if (r06.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r06.Mensaje);
+                    return false;
+                }
+                _cntDocPend = r06.Entidad;
+            }
+            catch (Exception e)
             {
-                Helpers.Msg.Error(r06.Mensaje);
+                Helpers.Msg.Error(e.Message);
                 return false;
             }
-            _cntDocPend = r06.Entidad;
 
             return true;
         }

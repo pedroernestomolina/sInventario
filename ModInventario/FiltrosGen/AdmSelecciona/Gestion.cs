@@ -14,7 +14,7 @@ namespace ModInventario.FiltrosGen.AdmSelecciona
         public event EventHandler NotificarSeleccion;
 
 
-        private IAdmProducto _gAdmPrd;
+        private AdmProducto.IAdmProducto _gAdmPrd;
         private Buscar.INotificarSeleccion _gSelNotifica;
         private bool _activarBusquedaParaTraslado ;
         private string _idDepOrigen;
@@ -27,7 +27,7 @@ namespace ModInventario.FiltrosGen.AdmSelecciona
         public string CadenaBusqueda { get { return _gAdmPrd.CadenaBusq; } }
 
 
-        public Gestion(IAdmProducto admPrd, Buscar.INotificarSeleccion selNotifica)
+        public Gestion(AdmProducto.IAdmProducto admPrd, Buscar.INotificarSeleccion selNotifica)
         {
             _activarBusquedaParaTraslado = false;
             _idDepOrigen = "";
@@ -55,7 +55,9 @@ namespace ModInventario.FiltrosGen.AdmSelecciona
         {
             if (_gAdmPrd.DataFiltrarIsOk()) 
             {
-                Buscar(_gAdmPrd.dataFiltrar);
+                var filtros = Helpers.Filtro.BusqProducto((src.FiltroBusqAdm.dataFiltro)_gAdmPrd.FiltrosExportar);
+                Buscar(filtros);
+                //Buscar(_gAdmPrd.dataFiltrar);
             }
         }
         private void Buscar(AdmProducto.data data)
@@ -209,6 +211,12 @@ namespace ModInventario.FiltrosGen.AdmSelecciona
         public void setActivarDepDestino(string id)
         {
             _idDepDestino = id;
+        }
+
+
+        public void LimpiarFiltros()
+        {
+            _gAdmPrd.LimpiarFiltros();
         }
 
     }

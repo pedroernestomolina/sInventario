@@ -113,6 +113,8 @@
     <Compile Include="Gestion\IAbandonar.cs" />
     <Compile Include="Gestion\ILista.cs" />
     <Compile Include="Gestion\IProcesar.cs" />
+    <Compile Include="Helpers\Filtro.cs" />
+    <Compile Include="Helpers\VerificarPermiso.cs" />
     <Compile Include="IListaAdm.cs" />
     <Compile Include="AdmMovPend\Lista.cs" />
     <Compile Include="Analisis\Detallado\AnalisisFrm.cs">
@@ -233,19 +235,12 @@
     </Compile>
     <Compile Include="FiltrosGen\AdmDoc\Gestion.cs" />
     <Compile Include="FiltrosGen\AdmProducto\data.cs" />
-    <Compile Include="FiltrosGen\AdmProducto\FiltrosFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FiltrosGen\AdmProducto\FiltrosFrm.Designer.cs">
-      <DependentUpon>FiltrosFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FiltrosGen\AdmProducto\Gestion.cs" />
     <Compile Include="FiltrosGen\AdmSelecciona\Gestion.cs" />
     <Compile Include="FiltrosGen\BuscarProducto\Gestion.cs" />
     <Compile Include="FiltrosGen\BuscarProveedor\Gestion.cs" />
     <Compile Include="FiltrosGen\Fecha\Gestion.cs" />
     <Compile Include="FiltrosGen\IAdmDoc.cs" />
-    <Compile Include="FiltrosGen\IAdmProducto.cs" />
+    <Compile Include="FiltrosGen\AdmProducto\IAdmProducto.cs" />
     <Compile Include="FiltrosGen\IAdmSelecciona.cs" />
     <Compile Include="FiltrosGen\IBuscar.cs" />
     <Compile Include="FiltrosGen\IFecha.cs" />
@@ -589,14 +584,7 @@
     <Compile Include="Producto\Precio\EditarCambiar\ModoSucursal\PrecioEditarFrm.Designer.cs">
       <DependentUpon>PrecioEditarFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Producto\Precio\Historico\data.cs" />
-    <Compile Include="Producto\Precio\Historico\Gestion.cs" />
-    <Compile Include="Producto\Precio\Historico\HistoricoPrecioFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Producto\Precio\Historico\HistoricoPrecioFrm.Designer.cs">
-      <DependentUpon>HistoricoPrecioFrm.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Producto\Precio\Historico\dataHist.cs" />
     <Compile Include="Producto\Precio\EditarCambiar\ModoBasico\Editar.cs" />
     <Compile Include="Producto\Precio\EditarCambiar\ModoBasico\IEditarBasico.cs" />
     <Compile Include="Producto\Precio\EditarCambiar\ModoBasico\PrecioEditarFrm.cs">
@@ -605,6 +593,15 @@
     <Compile Include="Producto\Precio\EditarCambiar\ModoBasico\PrecioEditarFrm.Designer.cs">
       <DependentUpon>PrecioEditarFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Producto\Precio\Historico\IHistorico.cs" />
+    <Compile Include="Producto\Precio\Historico\ModoSucursal\HistoricoPrecioFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Producto\Precio\Historico\ModoSucursal\HistoricoPrecioFrm.Designer.cs">
+      <DependentUpon>HistoricoPrecioFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Producto\Precio\Historico\ModoSucursal\ImpSucursal.cs" />
+    <Compile Include="Producto\Precio\Historico\ModoSucursal\ISucursal.cs" />
     <Compile Include="Producto\Precio\VerVisualizar\IVisual.cs" />
     <Compile Include="Producto\Precio\VerVisualizar\ModoBasico\data.cs" />
     <Compile Include="Producto\Precio\VerVisualizar\dataEmp.cs" />
@@ -720,7 +717,6 @@
       <DependentUpon>DS_COSTO.xsd</DependentUpon>
     </Compile>
     <Compile Include="Reportes\HistoricoCosto\gestionRep.cs" />
-    <Compile Include="Reportes\HistoricoPrecio\data.cs" />
     <Compile Include="Reportes\HistoricoPrecio\DS_Precio1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -778,6 +774,26 @@
     <Compile Include="src\FabModoBasico.cs" />
     <Compile Include="src\FabModoSucursal.cs" />
     <Compile Include="src\Fabrica.cs" />
+    <Compile Include="src\FiltroBusqAdm\dataFiltro.cs" />
+    <Compile Include="src\FiltroBusqAdm\Enumerados.cs" />
+    <Compile Include="src\FiltroBusqAdm\IFiltroPrd.cs" />
+    <Compile Include="src\FiltroBusqAdm\BaseImpFiltroPrd.cs" />
+    <Compile Include="src\FiltroBusqAdm\ModoBasico\FiltrosFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\FiltroBusqAdm\ModoBasico\FiltrosFrm.Designer.cs">
+      <DependentUpon>FiltrosFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\FiltroBusqAdm\ModoBasico\ImpBasico.cs" />
+    <Compile Include="src\FiltroBusqAdm\ModoBasico\IBasico.cs" />
+    <Compile Include="src\FiltroBusqAdm\ModoSucursal\FiltrosFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\FiltroBusqAdm\ModoSucursal\FiltrosFrm.Designer.cs">
+      <DependentUpon>FiltrosFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\FiltroBusqAdm\ModoSucursal\ImpSucursal.cs" />
+    <Compile Include="src\FiltroBusqAdm\ModoSucursal\ISucursal.cs" />
     <Compile Include="src\IFabrica.cs" />
     <Compile Include="Sucursal\Lista\data.cs" />
     <Compile Include="Sucursal\Lista\ListaSuc.cs" />
@@ -924,9 +940,6 @@
     <EmbeddedResource Include="FiltrosGen\AdmDoc\FiltroFrm.resx">
       <DependentUpon>FiltroFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FiltrosGen\AdmProducto\FiltrosFrm.resx">
-      <DependentUpon>FiltrosFrm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FiltrosGen\Reportes\FiltrosFrm.resx">
       <DependentUpon>FiltrosFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1020,11 +1033,11 @@
     <EmbeddedResource Include="Producto\Precio\EditarCambiar\ModoSucursal\PrecioEditarFrm.resx">
       <DependentUpon>PrecioEditarFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Producto\Precio\Historico\HistoricoPrecioFrm.resx">
-      <DependentUpon>HistoricoPrecioFrm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Producto\Precio\EditarCambiar\ModoBasico\PrecioEditarFrm.resx">
       <DependentUpon>PrecioEditarFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Producto\Precio\Historico\ModoSucursal\HistoricoPrecioFrm.resx">
+      <DependentUpon>HistoricoPrecioFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Producto\Precio\VerVisualizar\ModoBasico\VisualFrm.resx">
       <DependentUpon>VisualFrm.cs</DependentUpon>
@@ -1120,6 +1133,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Seguridad\SeguridadFrm.resx">
       <DependentUpon>SeguridadFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\FiltroBusqAdm\ModoBasico\FiltrosFrm.resx">
+      <DependentUpon>FiltrosFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\FiltroBusqAdm\ModoSucursal\FiltrosFrm.resx">
+      <DependentUpon>FiltrosFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sucursal\Lista\ListaFrm.resx">
       <DependentUpon>ListaFrm.cs</DependentUpon>
@@ -1337,12 +1356,15 @@
     <Content Include="Imagenes\libro.png" />
     <Content Include="Imagenes\Machine-learning-1024x682.jpg" />
     <Content Include="Imagenes\mobile.ico" />
+    <Content Include="Imagenes\pulgar_arrba.svg" />
     <Content Include="Imagenes\setup.png" />
     <Content Include="Imagenes\sinImagen.png" />
     <Content Include="Imagenes\sucursal.png" />
     <Content Include="Imagenes\TOOLS.ico" />
     <Content Include="Imagenes\transferencia.png" />
     <Content Include="Imagenes\warehouse.png" />
+    <None Include="Resources\bt_pulgar_arriba.png" />
+    <None Include="Resources\pulgar_arrba.svg" />
     <None Include="Resources\sucursal.png" />
     <None Include="Resources\bt_abrir_pendiente.png" />
     <None Include="Resources\bt_pendiente.png" />

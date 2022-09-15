@@ -184,299 +184,299 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
 
         private bool CargarData()
         {
-            var rt = true;
             var _tasaCambio = 0m;
             var _metodoCalculoDesc = "";
             var _metodoCalculo = dataPrecio.enumMetCalUtilidad.SinDefinir;
 
-            var r01 = Sistema.MyData.PrecioCosto_GetData(_idProducto);
-            if (r01.Result == OOB.Enumerados.EnumResult.isError)
+            try
             {
-                Helpers.Msg.Error(r01.Mensaje);
-                return false;
-            }
-            var r03 = Sistema.MyData.Configuracion_TasaCambioActual();
-            if (r03.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r03.Mensaje);
-                return false;
-            }
-            _tasaCambio = r03.Entidad;
-            var r04 = Sistema.MyData.Configuracion_MetodoCalculoUtilidad();
-            if (r04.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r04.Mensaje);
-                return false;
-            }
-            if (r04.Entidad== OOB.LibInventario.Configuracion.Enumerados.EnumMetodoCalculoUtilidad.Lineal)
-            {
-                _metodoCalculoDesc="LINEAL";
-                _metodoCalculo = dataPrecio.enumMetCalUtilidad.Lineal;
-            }
-            else if (r04.Entidad== OOB.LibInventario.Configuracion.Enumerados.EnumMetodoCalculoUtilidad.Financiero)
-            {
-                _metodoCalculoDesc="FINANCIERO";
-                _metodoCalculo = dataPrecio.enumMetCalUtilidad.Financiero;
-            }
+                var r01 = Sistema.MyData.PrecioCosto_GetData(_idProducto);
+                if (r01.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r01.Mensaje);
+                    return false;
+                }
+                var r03 = Sistema.MyData.Configuracion_TasaCambioActual();
+                if (r03.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r03.Mensaje);
+                    return false;
+                }
+                _tasaCambio = r03.Entidad;
+                var r04 = Sistema.MyData.Configuracion_MetodoCalculoUtilidad();
+                if (r04.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r04.Mensaje);
+                    return false;
+                }
+                if (r04.Entidad == OOB.LibInventario.Configuracion.Enumerados.EnumMetodoCalculoUtilidad.Lineal)
+                {
+                    _metodoCalculoDesc = "LINEAL";
+                    _metodoCalculo = dataPrecio.enumMetCalUtilidad.Lineal;
+                }
+                else if (r04.Entidad == OOB.LibInventario.Configuracion.Enumerados.EnumMetodoCalculoUtilidad.Financiero)
+                {
+                    _metodoCalculoDesc = "FINANCIERO";
+                    _metodoCalculo = dataPrecio.enumMetCalUtilidad.Financiero;
+                }
 
-            var prd = r01.Entidad;
-            var costo = prd.costoMonedaLocal;
-            var admDivisa = "NO";
-            var pneto_1 = prd.pNeto_1;
-            var pneto_2 = prd.pNeto_2;
-            var pneto_3 = prd.pNeto_3;
-            var pneto_4 = prd.pNeto_4;
-            var pneto_5 = prd.pNeto_5;
-            var pneto_M1 = prd.pNeto_M1;
-            var pneto_M2 = prd.pNeto_M2;
-            var pneto_M3 = prd.pNeto_M3;
-            var pneto_M4 = prd.pNeto_M4;
-            //
-            var pneto_D1 = prd.pNeto_D1;
-            var pneto_D2 = prd.pNeto_D2;
-            var pneto_D3 = prd.pNeto_D3;
-            var pneto_D4 = prd.pNeto_D4;
-            if (prd.EsAdmDivisa) 
-            {
-                admDivisa = "SI";
-                costo = prd.costoMonedaDivisa;
-                pneto_1 = CalculaNeto(prd.pfd_1, prd.tasaIva);
-                pneto_2 = CalculaNeto(prd.pfd_2, prd.tasaIva);
-                pneto_3 = CalculaNeto(prd.pfd_3, prd.tasaIva);
-                pneto_4 = CalculaNeto(prd.pfd_4, prd.tasaIva);
-                pneto_5 = CalculaNeto(prd.pfd_5, prd.tasaIva);
-                pneto_M1 = CalculaNeto(prd.pfd_M1, prd.tasaIva);
-                pneto_M2 = CalculaNeto(prd.pfd_M2, prd.tasaIva);
-                pneto_M3 = CalculaNeto(prd.pfd_M3, prd.tasaIva);
-                pneto_M4 = CalculaNeto(prd.pfd_M4, prd.tasaIva);
+                var prd = r01.Entidad;
+                var costo = prd.costoMonedaLocal;
+                var admDivisa = "NO";
+                var pneto_1 = prd.pNeto_1;
+                var pneto_2 = prd.pNeto_2;
+                var pneto_3 = prd.pNeto_3;
+                var pneto_4 = prd.pNeto_4;
+                var pneto_5 = prd.pNeto_5;
+                var pneto_M1 = prd.pNeto_M1;
+                var pneto_M2 = prd.pNeto_M2;
+                var pneto_M3 = prd.pNeto_M3;
+                var pneto_M4 = prd.pNeto_M4;
                 //
-                pneto_D1 = CalculaNeto(prd.pfd_D1, prd.tasaIva);
-                pneto_D2 = CalculaNeto(prd.pfd_D2, prd.tasaIva);
-                pneto_D3 = CalculaNeto(prd.pfd_D3, prd.tasaIva);
-                pneto_D4 = CalculaNeto(prd.pfd_D4, prd.tasaIva);
+                var pneto_D1 = prd.pNeto_D1;
+                var pneto_D2 = prd.pNeto_D2;
+                var pneto_D3 = prd.pNeto_D3;
+                var pneto_D4 = prd.pNeto_D4;
+                if (prd.EsAdmDivisa)
+                {
+                    admDivisa = "SI";
+                    costo = prd.costoMonedaDivisa;
+                    pneto_1 = CalculaNeto(prd.pfd_1, prd.tasaIva);
+                    pneto_2 = CalculaNeto(prd.pfd_2, prd.tasaIva);
+                    pneto_3 = CalculaNeto(prd.pfd_3, prd.tasaIva);
+                    pneto_4 = CalculaNeto(prd.pfd_4, prd.tasaIva);
+                    pneto_5 = CalculaNeto(prd.pfd_5, prd.tasaIva);
+                    pneto_M1 = CalculaNeto(prd.pfd_M1, prd.tasaIva);
+                    pneto_M2 = CalculaNeto(prd.pfd_M2, prd.tasaIva);
+                    pneto_M3 = CalculaNeto(prd.pfd_M3, prd.tasaIva);
+                    pneto_M4 = CalculaNeto(prd.pfd_M4, prd.tasaIva);
+                    //
+                    pneto_D1 = CalculaNeto(prd.pfd_D1, prd.tasaIva);
+                    pneto_D2 = CalculaNeto(prd.pfd_D2, prd.tasaIva);
+                    pneto_D3 = CalculaNeto(prd.pfd_D3, prd.tasaIva);
+                    pneto_D4 = CalculaNeto(prd.pfd_D4, prd.tasaIva);
+                }
+
+                _dataPrd.setCodigo(prd.codigo);
+                _dataPrd.setDescripcion(prd.descripcion);
+                _dataPrd.setAuto(prd.auto);
+                _dataPrd.setEmpaqueCompraDesc(prd.empCompraDesc);
+                _dataPrd.setContEmpaqueCompraDesc(prd.contEmpCompra);
+                _dataPrd.setCostoEmpCompra(costo);
+                _dataPrd.setMetodoCalculoUt(_metodoCalculoDesc);
+                _dataPrd.setTasaCambioPrd(_tasaCambio);
+                _dataPrd.setAdmDivisaDesc(admDivisa);
+                _dataPrd.setTasaIvaPrd(prd.tasaIva);
+                _dataPrd.setFechaUltActPrd(new DateTime(2022, 05, 03).ToShortDateString());
+                _dataPrd.setEsAdmDivisa(prd.EsAdmDivisa);
+
+
+                _descPrecio1 = "PRECIO 1";
+                _descPrecio2 = "PRECIO 2";
+                _descPrecio3 = "PRECIO 3";
+                _descPrecio4 = "PRECIO 4";
+                _descPrecio5 = "PRECIO 5";
+
+                var lst = new List<ficha>();
+                var r02 = Sistema.MyData.EmpaqueMedida_GetLista();
+                foreach (var rg in r02.Lista.OrderBy(o => o.nombre).ToList())
+                {
+                    lst.Add(new ficha(rg.auto, "", rg.nombre));
+                }
+                _gEmp1.setData(lst);
+                _gEmp2.setData(lst);
+                _gEmp3.setData(lst);
+                _gEmp4.setData(lst);
+                _gEmp5.setData(lst);
+                _gEmpM1.setData(lst);
+                _gEmpM2.setData(lst);
+                _gEmpM3.setData(lst);
+                _gEmpM4.setData(lst);
+                _gEmpD1.setData(lst);
+                _gEmpD2.setData(lst);
+                _gEmpD3.setData(lst);
+                _gEmpD4.setData(lst);
+                //
+                _gEmpTipo_1.setData(lst);
+                _gEmpTipo_2.setData(lst);
+                _gEmpTipo_3.setData(lst);
+                //
+
+                _precio1.setContenido(prd.cont_1);
+                _precio1.setUtilidadActual(prd.utilidad_1);
+                _precio1.setCostoEmpCompra(costo);
+                _precio1.setContEmpCompra(prd.contEmpCompra);
+                _precio1.setAdmDivisa(prd.EsAdmDivisa);
+                _precio1.setTasaCambio(_tasaCambio);
+                _precio1.setTasaIva(prd.tasaIva);
+                _precio1.setMetodoCalculoUtilidad(_metodoCalculo);
+                _precio1.setNeto(pneto_1);
+                _gEmp1.setFicha(prd.autoEmp_1);
+
+                _precio2.setContenido(prd.cont_2);
+                _precio2.setUtilidadActual(prd.utilidad_2);
+                _precio2.setCostoEmpCompra(costo);
+                _precio2.setContEmpCompra(prd.contEmpCompra);
+                _precio2.setAdmDivisa(prd.EsAdmDivisa);
+                _precio2.setTasaCambio(_tasaCambio);
+                _precio2.setTasaIva(prd.tasaIva);
+                _precio2.setMetodoCalculoUtilidad(_metodoCalculo);
+                _precio2.setNeto(pneto_2);
+                _gEmp2.setFicha(prd.autoEmp_2);
+
+                _precio3.setContenido(prd.cont_3);
+                _precio3.setUtilidadActual(prd.utilidad_3);
+                _precio3.setCostoEmpCompra(costo);
+                _precio3.setContEmpCompra(prd.contEmpCompra);
+                _precio3.setAdmDivisa(prd.EsAdmDivisa);
+                _precio3.setTasaCambio(_tasaCambio);
+                _precio3.setTasaIva(prd.tasaIva);
+                _precio3.setMetodoCalculoUtilidad(_metodoCalculo);
+                _precio3.setNeto(pneto_3);
+                _gEmp3.setFicha(prd.autoEmp_3);
+
+                _precio4.setContenido(prd.cont_4);
+                _precio4.setUtilidadActual(prd.utilidad_4);
+                _precio4.setCostoEmpCompra(costo);
+                _precio4.setContEmpCompra(prd.contEmpCompra);
+                _precio4.setAdmDivisa(prd.EsAdmDivisa);
+                _precio4.setTasaCambio(_tasaCambio);
+                _precio4.setTasaIva(prd.tasaIva);
+                _precio4.setMetodoCalculoUtilidad(_metodoCalculo);
+                _precio4.setNeto(pneto_4);
+                _gEmp4.setFicha(prd.autoEmp_4);
+
+                _precio5.setContenido(prd.cont_5);
+                _precio5.setUtilidadActual(prd.utilidad_5);
+                _precio5.setCostoEmpCompra(costo);
+                _precio5.setContEmpCompra(prd.contEmpCompra);
+                _precio5.setAdmDivisa(prd.EsAdmDivisa);
+                _precio5.setTasaCambio(_tasaCambio);
+                _precio5.setTasaIva(prd.tasaIva);
+                _precio5.setMetodoCalculoUtilidad(_metodoCalculo);
+                _precio5.setNeto(pneto_5);
+                _gEmp5.setFicha(prd.autoEmp_5);
+
+
+                _precioM1.setContenido(prd.cont_M1);
+                _precioM1.setUtilidadActual(prd.utilidad_M1);
+                _precioM1.setCostoEmpCompra(costo);
+                _precioM1.setContEmpCompra(prd.contEmpCompra);
+                _precioM1.setAdmDivisa(prd.EsAdmDivisa);
+                _precioM1.setTasaCambio(_tasaCambio);
+                _precioM1.setTasaIva(prd.tasaIva);
+                _precioM1.setMetodoCalculoUtilidad(_metodoCalculo);
+                _precioM1.setNeto(pneto_M1);
+                _gEmpM1.setFicha(prd.autoEmp_M1);
+
+                _precioM2.setContenido(prd.cont_M2);
+                _precioM2.setUtilidadActual(prd.utilidad_M2);
+                _precioM2.setCostoEmpCompra(costo);
+                _precioM2.setContEmpCompra(prd.contEmpCompra);
+                _precioM2.setAdmDivisa(prd.EsAdmDivisa);
+                _precioM2.setTasaCambio(_tasaCambio);
+                _precioM2.setTasaIva(prd.tasaIva);
+                _precioM2.setMetodoCalculoUtilidad(_metodoCalculo);
+                _precioM2.setNeto(pneto_M2);
+                _gEmpM2.setFicha(prd.autoEmp_M2);
+
+                _precioM3.setContenido(prd.cont_M3);
+                _precioM3.setUtilidadActual(prd.utilidad_M3);
+                _precioM3.setCostoEmpCompra(costo);
+                _precioM3.setContEmpCompra(prd.contEmpCompra);
+                _precioM3.setAdmDivisa(prd.EsAdmDivisa);
+                _precioM3.setTasaCambio(_tasaCambio);
+                _precioM3.setTasaIva(prd.tasaIva);
+                _precioM3.setMetodoCalculoUtilidad(_metodoCalculo);
+                _precioM3.setNeto(pneto_M3);
+                _gEmpM3.setFicha(prd.autoEmp_M3);
+
+                _precioM4.setContenido(prd.cont_M4);
+                _precioM4.setUtilidadActual(prd.utilidad_M4);
+                _precioM4.setCostoEmpCompra(costo);
+                _precioM4.setContEmpCompra(prd.contEmpCompra);
+                _precioM4.setAdmDivisa(prd.EsAdmDivisa);
+                _precioM4.setTasaCambio(_tasaCambio);
+                _precioM4.setTasaIva(prd.tasaIva);
+                _precioM4.setMetodoCalculoUtilidad(_metodoCalculo);
+                _precioM4.setNeto(pneto_M4);
+                _gEmpM4.setFicha(prd.autoEmp_M4);
+
+
+                _precioD1.setContenido(prd.cont_D1);
+                _precioD1.setUtilidadActual(prd.utilidad_D1);
+                _precioD1.setCostoEmpCompra(costo);
+                _precioD1.setContEmpCompra(prd.contEmpCompra);
+                _precioD1.setAdmDivisa(prd.EsAdmDivisa);
+                _precioD1.setTasaCambio(_tasaCambio);
+                _precioD1.setTasaIva(prd.tasaIva);
+                _precioD1.setMetodoCalculoUtilidad(_metodoCalculo);
+                _precioD1.setNeto(pneto_D1);
+                _gEmpD1.setFicha(prd.autoEmp_D1);
+
+                _precioD2.setContenido(prd.cont_D2);
+                _precioD2.setUtilidadActual(prd.utilidad_D2);
+                _precioD2.setCostoEmpCompra(costo);
+                _precioD2.setContEmpCompra(prd.contEmpCompra);
+                _precioD2.setAdmDivisa(prd.EsAdmDivisa);
+                _precioD2.setTasaCambio(_tasaCambio);
+                _precioD2.setTasaIva(prd.tasaIva);
+                _precioD2.setMetodoCalculoUtilidad(_metodoCalculo);
+                _precioD2.setNeto(pneto_D2);
+                _gEmpD2.setFicha(prd.autoEmp_D2);
+
+                _precioD3.setContenido(prd.cont_D3);
+                _precioD3.setUtilidadActual(prd.utilidad_D3);
+                _precioD3.setCostoEmpCompra(costo);
+                _precioD3.setContEmpCompra(prd.contEmpCompra);
+                _precioD3.setAdmDivisa(prd.EsAdmDivisa);
+                _precioD3.setTasaCambio(_tasaCambio);
+                _precioD3.setTasaIva(prd.tasaIva);
+                _precioD3.setMetodoCalculoUtilidad(_metodoCalculo);
+                _precioD3.setNeto(pneto_D3);
+                _gEmpD3.setFicha(prd.autoEmp_D3);
+
+                _precioD4.setContenido(prd.cont_D4);
+                _precioD4.setUtilidadActual(prd.utilidad_D4);
+                _precioD4.setCostoEmpCompra(costo);
+                _precioD4.setContEmpCompra(prd.contEmpCompra);
+                _precioD4.setAdmDivisa(prd.EsAdmDivisa);
+                _precioD4.setTasaCambio(_tasaCambio);
+                _precioD4.setTasaIva(prd.tasaIva);
+                _precioD4.setMetodoCalculoUtilidad(_metodoCalculo);
+                _precioD4.setNeto(pneto_D4);
+                _gEmpD4.setFicha(prd.autoEmp_D4);
+
+
+                //
+                _contEmpTipo_1 = prd.cont_1;
+                _contEmpTipo_2 = prd.cont_M1;
+                _contEmpTipo_3 = prd.cont_D1;
+                _gEmpTipo_1.setFicha(prd.autoEmp_1);
+                _gEmpTipo_2.setFicha(prd.autoEmp_M1);
+                _gEmpTipo_3.setFicha(prd.autoEmp_D1);
+                //
+
+
+                var r05 = Sistema.MyData.Configuracion_ForzarRedondeoPrecioVenta();
+                if (r05.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r05.Mensaje);
+                    return false;
+                }
+                var r06 = Sistema.MyData.Configuracion_PreferenciaRegistroPrecio();
+                if (r06.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r06.Mensaje);
+                    return false;
+                }
             }
-
-            _dataPrd.setCodigo(prd.codigo);
-            _dataPrd.setDescripcion(prd.descripcion);
-            _dataPrd.setAuto(prd.auto);
-            _dataPrd.setEmpaqueCompraDesc(prd.empCompraDesc);
-            _dataPrd.setContEmpaqueCompraDesc(prd.contEmpCompra);
-            _dataPrd.setCostoEmpCompra(costo);
-            _dataPrd.setMetodoCalculoUt(_metodoCalculoDesc);
-            _dataPrd.setTasaCambioPrd(_tasaCambio);
-            _dataPrd.setAdmDivisaDesc(admDivisa);
-            _dataPrd.setTasaIvaPrd(prd.tasaIva);
-            _dataPrd.setFechaUltActPrd(new DateTime(2022, 05, 03).ToShortDateString());
-            _dataPrd.setEsAdmDivisa(prd.EsAdmDivisa);
-
-
-            _descPrecio1 = "PRECIO 1";
-            _descPrecio2 = "PRECIO 2";
-            _descPrecio3 = "PRECIO 3";
-            _descPrecio4 = "PRECIO 4";
-            _descPrecio5 = "PRECIO 5";
-
-            var r02 = Sistema.MyData.EmpaqueMedida_GetLista();
-            if (r02.Result == OOB.Enumerados.EnumResult.isError)
+            catch (Exception e)
             {
-                Helpers.Msg.Error(r02.Mensaje);
+                Helpers.Msg.Error(e.Message);
                 return false;
             }
-            var lst = new List<ficha>();
-            foreach (var rg in r02.Lista.OrderBy(o => o.nombre).ToList()) 
-            {
-                var nr = new ficha(rg.auto, "", rg.nombre);
-                lst.Add(nr);
-            }
-            _gEmp1.setData(lst);
-            _gEmp2.setData(lst);
-            _gEmp3.setData(lst);
-            _gEmp4.setData(lst);
-            _gEmp5.setData(lst);
-            _gEmpM1.setData(lst);
-            _gEmpM2.setData(lst);
-            _gEmpM3.setData(lst);
-            _gEmpM4.setData(lst);
-            _gEmpD1.setData(lst);
-            _gEmpD2.setData(lst);
-            _gEmpD3.setData(lst);
-            _gEmpD4.setData(lst);
-            //
-            _gEmpTipo_1.setData(lst);
-            _gEmpTipo_2.setData(lst);
-            _gEmpTipo_3.setData(lst);
-            //
-
-            _precio1.setContenido(prd.cont_1);
-            _precio1.setUtilidadActual(prd.utilidad_1 );
-            _precio1.setCostoEmpCompra(costo);
-            _precio1.setContEmpCompra(prd.contEmpCompra);
-            _precio1.setAdmDivisa(prd.EsAdmDivisa);
-            _precio1.setTasaCambio(_tasaCambio);
-            _precio1.setTasaIva(prd.tasaIva);
-            _precio1.setMetodoCalculoUtilidad(_metodoCalculo);
-            _precio1.setNeto(pneto_1);
-            _gEmp1.setFicha(prd.autoEmp_1);
-
-            _precio2.setContenido(prd.cont_2);
-            _precio2.setUtilidadActual(prd.utilidad_2);
-            _precio2.setCostoEmpCompra(costo);
-            _precio2.setContEmpCompra(prd.contEmpCompra);
-            _precio2.setAdmDivisa(prd.EsAdmDivisa);
-            _precio2.setTasaCambio(_tasaCambio);
-            _precio2.setTasaIva(prd.tasaIva);
-            _precio2.setMetodoCalculoUtilidad(_metodoCalculo);
-            _precio2.setNeto(pneto_2);
-            _gEmp2.setFicha(prd.autoEmp_2);
-
-            _precio3.setContenido(prd.cont_3);
-            _precio3.setUtilidadActual(prd.utilidad_3);
-            _precio3.setCostoEmpCompra(costo);
-            _precio3.setContEmpCompra(prd.contEmpCompra);
-            _precio3.setAdmDivisa(prd.EsAdmDivisa);
-            _precio3.setTasaCambio(_tasaCambio);
-            _precio3.setTasaIva(prd.tasaIva);
-            _precio3.setMetodoCalculoUtilidad(_metodoCalculo);
-            _precio3.setNeto(pneto_3);
-            _gEmp3.setFicha(prd.autoEmp_3);
-
-            _precio4.setContenido(prd.cont_4);
-            _precio4.setUtilidadActual(prd.utilidad_4);
-            _precio4.setCostoEmpCompra(costo);
-            _precio4.setContEmpCompra(prd.contEmpCompra);
-            _precio4.setAdmDivisa(prd.EsAdmDivisa);
-            _precio4.setTasaCambio(_tasaCambio);
-            _precio4.setTasaIva(prd.tasaIva);
-            _precio4.setMetodoCalculoUtilidad(_metodoCalculo);
-            _precio4.setNeto(pneto_4);
-            _gEmp4.setFicha(prd.autoEmp_4);
-
-            _precio5.setContenido(prd.cont_5);
-            _precio5.setUtilidadActual(prd.utilidad_5);
-            _precio5.setCostoEmpCompra(costo);
-            _precio5.setContEmpCompra(prd.contEmpCompra);
-            _precio5.setAdmDivisa(prd.EsAdmDivisa);
-            _precio5.setTasaCambio(_tasaCambio);
-            _precio5.setTasaIva(prd.tasaIva);
-            _precio5.setMetodoCalculoUtilidad(_metodoCalculo);
-            _precio5.setNeto(pneto_5);
-            _gEmp5.setFicha(prd.autoEmp_5);
-
-
-            _precioM1.setContenido(prd.cont_M1);
-            _precioM1.setUtilidadActual(prd.utilidad_M1);
-            _precioM1.setCostoEmpCompra(costo);
-            _precioM1.setContEmpCompra(prd.contEmpCompra);
-            _precioM1.setAdmDivisa(prd.EsAdmDivisa);
-            _precioM1.setTasaCambio(_tasaCambio);
-            _precioM1.setTasaIva(prd.tasaIva);
-            _precioM1.setMetodoCalculoUtilidad(_metodoCalculo);
-            _precioM1.setNeto(pneto_M1);
-            _gEmpM1.setFicha(prd.autoEmp_M1);
-
-            _precioM2.setContenido(prd.cont_M2);
-            _precioM2.setUtilidadActual(prd.utilidad_M2);
-            _precioM2.setCostoEmpCompra(costo);
-            _precioM2.setContEmpCompra(prd.contEmpCompra);
-            _precioM2.setAdmDivisa(prd.EsAdmDivisa);
-            _precioM2.setTasaCambio(_tasaCambio);
-            _precioM2.setTasaIva(prd.tasaIva);
-            _precioM2.setMetodoCalculoUtilidad(_metodoCalculo);
-            _precioM2.setNeto(pneto_M2);
-            _gEmpM2.setFicha(prd.autoEmp_M2);
-
-            _precioM3.setContenido(prd.cont_M3);
-            _precioM3.setUtilidadActual(prd.utilidad_M3);
-            _precioM3.setCostoEmpCompra(costo);
-            _precioM3.setContEmpCompra(prd.contEmpCompra);
-            _precioM3.setAdmDivisa(prd.EsAdmDivisa);
-            _precioM3.setTasaCambio(_tasaCambio);
-            _precioM3.setTasaIva(prd.tasaIva);
-            _precioM3.setMetodoCalculoUtilidad(_metodoCalculo);
-            _precioM3.setNeto(pneto_M3);
-            _gEmpM3.setFicha(prd.autoEmp_M3);
-
-            _precioM4.setContenido(prd.cont_M4);
-            _precioM4.setUtilidadActual(prd.utilidad_M4);
-            _precioM4.setCostoEmpCompra(costo);
-            _precioM4.setContEmpCompra(prd.contEmpCompra);
-            _precioM4.setAdmDivisa(prd.EsAdmDivisa);
-            _precioM4.setTasaCambio(_tasaCambio);
-            _precioM4.setTasaIva(prd.tasaIva);
-            _precioM4.setMetodoCalculoUtilidad(_metodoCalculo);
-            _precioM4.setNeto(pneto_M4);
-            _gEmpM4.setFicha(prd.autoEmp_M4);
-
-
-            _precioD1.setContenido(prd.cont_D1);
-            _precioD1.setUtilidadActual(prd.utilidad_D1);
-            _precioD1.setCostoEmpCompra(costo);
-            _precioD1.setContEmpCompra(prd.contEmpCompra);
-            _precioD1.setAdmDivisa(prd.EsAdmDivisa);
-            _precioD1.setTasaCambio(_tasaCambio);
-            _precioD1.setTasaIva(prd.tasaIva);
-            _precioD1.setMetodoCalculoUtilidad(_metodoCalculo);
-            _precioD1.setNeto(pneto_D1);
-            _gEmpD1.setFicha(prd.autoEmp_D1);
-
-            _precioD2.setContenido(prd.cont_D2);
-            _precioD2.setUtilidadActual(prd.utilidad_D2);
-            _precioD2.setCostoEmpCompra(costo);
-            _precioD2.setContEmpCompra(prd.contEmpCompra);
-            _precioD2.setAdmDivisa(prd.EsAdmDivisa);
-            _precioD2.setTasaCambio(_tasaCambio);
-            _precioD2.setTasaIva(prd.tasaIva);
-            _precioD2.setMetodoCalculoUtilidad(_metodoCalculo);
-            _precioD2.setNeto(pneto_D2);
-            _gEmpD2.setFicha(prd.autoEmp_D2);
-
-            _precioD3.setContenido(prd.cont_D3);
-            _precioD3.setUtilidadActual(prd.utilidad_D3);
-            _precioD3.setCostoEmpCompra(costo);
-            _precioD3.setContEmpCompra(prd.contEmpCompra);
-            _precioD3.setAdmDivisa(prd.EsAdmDivisa);
-            _precioD3.setTasaCambio(_tasaCambio);
-            _precioD3.setTasaIva(prd.tasaIva);
-            _precioD3.setMetodoCalculoUtilidad(_metodoCalculo);
-            _precioD3.setNeto(pneto_D3);
-            _gEmpD3.setFicha(prd.autoEmp_D3);
-
-            _precioD4.setContenido(prd.cont_D4);
-            _precioD4.setUtilidadActual(prd.utilidad_D4);
-            _precioD4.setCostoEmpCompra(costo);
-            _precioD4.setContEmpCompra(prd.contEmpCompra);
-            _precioD4.setAdmDivisa(prd.EsAdmDivisa);
-            _precioD4.setTasaCambio(_tasaCambio);
-            _precioD4.setTasaIva(prd.tasaIva);
-            _precioD4.setMetodoCalculoUtilidad(_metodoCalculo);
-            _precioD4.setNeto(pneto_D4);
-            _gEmpD4.setFicha(prd.autoEmp_D4);
-
-
-            //
-            _contEmpTipo_1 = prd.cont_1;
-            _contEmpTipo_2 = prd.cont_M1;
-            _contEmpTipo_3 = prd.cont_D1;
-            _gEmpTipo_1.setFicha(prd.autoEmp_1);
-            _gEmpTipo_2.setFicha(prd.autoEmp_M1);
-            _gEmpTipo_3.setFicha(prd.autoEmp_D1);
-            //
-
-
-            var r05 = Sistema.MyData.Configuracion_ForzarRedondeoPrecioVenta();
-            if (r05.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r05.Mensaje);
-                return false;
-            }
-            var r06 = Sistema.MyData.Configuracion_PreferenciaRegistroPrecio();
-            if (r06.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r06.Mensaje);
-                return false;
-            }
-
-            return rt;
+            return true;
         }
 
 
@@ -968,6 +968,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 precio_id = "1",
                 empaque = "UNIDAD",
                 contenido = _precio1.Contenido,
+                factorCambio=_precio1.TasaCambio,
             };
             var p2 = new OOB.LibInventario.Precio.Editar.FichaPrecio()
             {
@@ -985,6 +986,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 precio_id = "2",
                 empaque = "UNIDAD",
                 contenido = _precio2.Contenido,
+                factorCambio = _precio1.TasaCambio,
             };
             var p3 = new OOB.LibInventario.Precio.Editar.FichaPrecio()
             {
@@ -1002,6 +1004,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 precio_id = "3",
                 empaque = "UNIDAD",
                 contenido = _precio3.Contenido,
+                factorCambio = _precio1.TasaCambio,
             };
             var p4 = new OOB.LibInventario.Precio.Editar.FichaPrecio()
             {
@@ -1019,6 +1022,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 precio_id = "4",
                 empaque = "UNIDAD",
                 contenido = _precio4.Contenido,
+                factorCambio = _precio1.TasaCambio,
             };
             var p5 = new OOB.LibInventario.Precio.Editar.FichaPrecio()
             {
@@ -1036,6 +1040,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 precio_id = "PTO",
                 empaque = "UNIDAD",
                 contenido = _precio5.Contenido,
+                factorCambio = _precio1.TasaCambio,
             };
             var m1 = new OOB.LibInventario.Precio.Editar.FichaPrecio()
             {
@@ -1053,6 +1058,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 precio_id = "MY1",
                 empaque = _gEmpM1.Item.desc,
                 contenido = _precioM1.Contenido,
+                factorCambio = _precio1.TasaCambio,
             };
             var m2 = new OOB.LibInventario.Precio.Editar.FichaPrecio()
             {
@@ -1070,6 +1076,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 precio_id = "MY2",
                 empaque = _gEmpM2.Item.desc,
                 contenido = _precioM2.Contenido,
+                factorCambio = _precio1.TasaCambio,
             };
             var m3 = new OOB.LibInventario.Precio.Editar.FichaPrecio()
             {
@@ -1087,6 +1094,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 precio_id = "MY3",
                 empaque = _gEmpM3.Item.desc,
                 contenido = _precioM3.Contenido,
+                factorCambio = _precio1.TasaCambio,
             };
             var m4 = new OOB.LibInventario.Precio.Editar.FichaPrecio()
             {
@@ -1104,6 +1112,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 precio_id = "MY4",
                 empaque = _gEmpM4.Item.desc,
                 contenido = _precioM4.Contenido,
+                factorCambio = _precio1.TasaCambio,
             };
             var d1 = new OOB.LibInventario.Precio.Editar.FichaPrecio()
             {
@@ -1121,6 +1130,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 precio_id = "DS1",
                 empaque = _gEmpD1.Item.desc,
                 contenido = _precioD1.Contenido,
+                factorCambio = _precio1.TasaCambio,
             };
             var d2 = new OOB.LibInventario.Precio.Editar.FichaPrecio()
             {
@@ -1138,6 +1148,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 precio_id = "DS2",
                 empaque = _gEmpD2.Item.desc,
                 contenido = _precioD2.Contenido,
+                factorCambio = _precio1.TasaCambio,
             };
             var d3 = new OOB.LibInventario.Precio.Editar.FichaPrecio()
             {
@@ -1155,6 +1166,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 precio_id = "DS3",
                 empaque = _gEmpD3.Item.desc,
                 contenido = _precioD3.Contenido,
+                factorCambio = _precio1.TasaCambio,
             };
             var d4 = new OOB.LibInventario.Precio.Editar.FichaPrecio()
             {
@@ -1172,6 +1184,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 precio_id = "DS4",
                 empaque = _gEmpD4.Item.desc,
                 contenido = _precioD4.Contenido,
+                factorCambio = _precio1.TasaCambio,
             };
             var historia = new List<OOB.LibInventario.Precio.Editar.FichaHistorica>();
             historia.Add(h1);

@@ -65,20 +65,21 @@ namespace ModInventario.Visor.Precio
 
         private bool CargarData()
         {
-            var r01 = Sistema.MyData.Departamento_GetLista();
-            if (r01.Result == OOB.Enumerados.EnumResult.isError)
+            try
             {
-                Helpers.Msg.Error(r01.Mensaje);
+                _lDepart.Clear();
+                var r01 = Sistema.MyData.Departamento_GetLista();
+                foreach (var it in r01.Lista.OrderBy(o => o.nombre).ToList())
+                {
+                    _lDepart.Add(new general(it.auto, it.nombre));
+                }
+                _bsDepart.CurrencyManager.Refresh();
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
                 return false;
             }
-
-            _lDepart.Clear();
-            foreach (var it in r01.Lista.OrderBy(o=>o.nombre).ToList())
-            {
-                _lDepart.Add(new general(it.auto, it.nombre));
-            }
-            _bsDepart.CurrencyManager.Refresh();
-
             return true;
         }
 
@@ -88,15 +89,17 @@ namespace ModInventario.Visor.Precio
             _data.setDepartamento(_lDepart.FirstOrDefault(s => s.id == id));
             if (id != "")
             {
-                var r01 = Sistema.MyData.Grupo_GetListaByIdDepartamento(id);
-                if (r01.Result == OOB.Enumerados.EnumResult.isError)
+                try
                 {
-                    Helpers.Msg.Error(r01.Mensaje);
-                    return;
+                    var r01 = Sistema.MyData.Grupo_GetListaByIdDepartamento(id);
+                    foreach (var it in r01.Lista.OrderBy(o => o.nombre).ToList())
+                    {
+                        _lGrupo.Add(new general(it.auto, it.nombre));
+                    }
                 }
-                foreach (var it in r01.Lista.OrderBy(o => o.nombre).ToList())
+                catch (Exception e)
                 {
-                    _lGrupo.Add(new general(it.auto, it.nombre));
+                    Helpers.Msg.Error(e.Message);
                 }
             }
             _bsGrupo.CurrencyManager.Refresh();

@@ -12,16 +12,15 @@ namespace DataProvInventario.Data
     public partial class DataProv: IData
     {
 
-        public OOB.ResultadoLista<OOB.LibInventario.Grupo.Ficha> Grupo_GetLista()
+        public OOB.ResultadoLista<OOB.LibInventario.Grupo.Ficha> 
+            Grupo_GetLista()
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Grupo.Ficha>();
 
             var r01 = MyData.Grupo_GetLista();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
 
             var list = new List<OOB.LibInventario.Grupo.Ficha>();
@@ -44,7 +43,39 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.ResultadoEntidad<OOB.LibInventario.Grupo.Ficha> Grupo_GetFicha(string auto)
+        public OOB.ResultadoLista<OOB.LibInventario.Grupo.Ficha>
+            Grupo_GetListaByIdDepartamento(string idDepart)
+        {
+            var rt = new OOB.ResultadoLista<OOB.LibInventario.Grupo.Ficha>();
+
+            var r01 = MyData.Grupo_GetListaByDepartamento(idDepart);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+
+            var list = new List<OOB.LibInventario.Grupo.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    list = r01.Lista.Select(s =>
+                    {
+                        return new OOB.LibInventario.Grupo.Ficha()
+                        {
+                            auto = s.auto,
+                            codigo = s.codigo,
+                            nombre = s.nombre,
+                        };
+                    }).ToList();
+                }
+            }
+            rt.Lista = list;
+
+            return rt;
+        }
+        public OOB.ResultadoEntidad<OOB.LibInventario.Grupo.Ficha> 
+            Grupo_GetFicha(string auto)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Grupo.Ficha>();
 
@@ -67,39 +98,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.ResultadoLista<OOB.LibInventario.Grupo.Ficha> Grupo_GetListaByIdDepartamento(string idDepart)
-        {
-            var rt = new OOB.ResultadoLista<OOB.LibInventario.Grupo.Ficha>();
-
-            var r01 = MyData.Grupo_GetListaByDepartamento(idDepart);
-            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
-            {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
-            }
-
-            var list = new List<OOB.LibInventario.Grupo.Ficha>();
-            if (r01.Lista != null)
-            {
-                if (r01.Lista.Count > 0)
-                {
-                    list = r01.Lista.Select(s =>
-                    {
-                        return new OOB.LibInventario.Grupo.Ficha()
-                        {
-                            auto = s.auto,
-                            codigo = s.codigo,
-                            nombre = s.nombre,
-                        };
-                    }).ToList();
-                }
-            }
-            rt.Lista = list;
-
-            return rt;
-        }
-        public OOB.ResultadoAuto Grupo_Agregar(OOB.LibInventario.Grupo.Agregar ficha)
+        public OOB.ResultadoAuto 
+            Grupo_Agregar(OOB.LibInventario.Grupo.Agregar ficha)
         {
             var rt = new OOB.ResultadoAuto();
 
@@ -119,7 +119,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.Resultado Grupo_Editar(OOB.LibInventario.Grupo.Editar ficha)
+        public OOB.Resultado 
+            Grupo_Editar(OOB.LibInventario.Grupo.Editar ficha)
         {
             var rt = new OOB.Resultado();
 
@@ -139,7 +140,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.Resultado Grupo_Eliminar(string auto)
+        public OOB.Resultado 
+            Grupo_Eliminar(string auto)
         {
             var rt = new OOB.Resultado();
 

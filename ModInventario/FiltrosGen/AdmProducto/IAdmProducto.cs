@@ -5,14 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModInventario.FiltrosGen
+namespace ModInventario.FiltrosGen.AdmProducto
 {
     
 
     public interface IAdmProducto: IFiltro
     {
 
-        AdmProducto.data dataFiltrar { get; }
+        Object FiltrosExportar { get; }
         int MetBusqueda { get; }
         string CadenaBusq { get; }
 

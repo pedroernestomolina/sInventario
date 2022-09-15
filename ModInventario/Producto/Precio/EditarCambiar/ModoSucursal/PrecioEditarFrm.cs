@@ -232,6 +232,11 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
             TB_UT_3.Enabled = false;
             TB_UT_4.Enabled = false;
             TB_UT_5.Enabled = false;
+            L_UT_ACTUAL_1.Enabled = false;
+            L_UT_ACTUAL_2.Enabled = false;
+            L_UT_ACTUAL_3.Enabled = false;
+            L_UT_ACTUAL_4.Enabled = false;
+            L_UT_ACTUAL_5.Enabled = false;
 
             TB_PN_1.Enabled = false;
             TB_PN_2.Enabled = false;
@@ -250,6 +255,10 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
             TB_UT_M2.Enabled = false;
             TB_UT_M3.Enabled = false;
             TB_UT_M4.Enabled = false;
+            L_UT_ACTUAL_M1.Enabled = false;
+            L_UT_ACTUAL_M2.Enabled = false;
+            L_UT_ACTUAL_M3.Enabled = false;
+            L_UT_ACTUAL_M4.Enabled = false;
 
             TB_PN_M1.Enabled = false;
             TB_PN_M2.Enabled = false;
@@ -266,6 +275,10 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
             TB_UT_D2.Enabled = false;
             TB_UT_D3.Enabled = false;
             TB_UT_D4.Enabled = false;
+            L_UT_ACTUAL_D1.Enabled = false;
+            L_UT_ACTUAL_D2.Enabled = false;
+            L_UT_ACTUAL_D3.Enabled = false;
+            L_UT_ACTUAL_D4.Enabled = false;
 
             TB_PN_D1.Enabled = false;
             TB_PN_D2.Enabled = false;
@@ -768,6 +781,11 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
             TB_UT_3.Enabled = ut;
             TB_UT_4.Enabled = ut;
             TB_UT_5.Enabled = ut;
+            L_UT_ACTUAL_1.Enabled = ut;
+            L_UT_ACTUAL_2.Enabled = ut;
+            L_UT_ACTUAL_3.Enabled = ut;
+            L_UT_ACTUAL_4.Enabled = ut;
+            L_UT_ACTUAL_5.Enabled = ut;
 
             TB_PN_1.Enabled = pn;
             TB_PN_2.Enabled = pn;
@@ -800,6 +818,10 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
             TB_UT_M2.Enabled = ut;
             TB_UT_M3.Enabled = ut;
             TB_UT_M4.Enabled = ut;
+            L_UT_ACTUAL_M1.Enabled = ut;
+            L_UT_ACTUAL_M2.Enabled = ut;
+            L_UT_ACTUAL_M3.Enabled = ut;
+            L_UT_ACTUAL_M4.Enabled = ut;
 
             TB_PN_M1.Enabled = pn;
             TB_PN_M2.Enabled = pn;
@@ -1085,6 +1107,10 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
             TB_UT_D2.Enabled = ut;
             TB_UT_D3.Enabled = ut;
             TB_UT_D4.Enabled = ut;
+            L_UT_ACTUAL_D1.Enabled = ut;
+            L_UT_ACTUAL_D2.Enabled = ut;
+            L_UT_ACTUAL_D3.Enabled = ut;
+            L_UT_ACTUAL_D4.Enabled = ut;
 
             TB_PN_D1.Enabled = pn;
             TB_PN_D2.Enabled = pn;
@@ -1528,6 +1554,74 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
             TB_PN_D4.Text = _controlador.GetPND4.ToString("N2").Replace(".", "");
             TB_PF_D4.Text = _controlador.GetPFD4.ToString("N2").Replace(".", "");
             _modoInicializar = false;
+        }
+
+        private void L_UT_ACTUAL_1_Click(object sender, EventArgs e)
+        {
+            TB_UT_1.Focus();
+            TB_UT_1.Text = L_UT_ACTUAL_1.Text;
+        }
+        private void L_UT_ACTUAL_2_Click(object sender, EventArgs e)
+        {
+            TB_UT_2.Focus();
+            TB_UT_2.Text = L_UT_ACTUAL_2.Text;
+        }
+        private void L_UT_ACTUAL_3_Click(object sender, EventArgs e)
+        {
+            TB_UT_3.Focus();
+            TB_UT_3.Text = L_UT_ACTUAL_3.Text;
+        }
+        private void L_UT_ACTUAL_4_Click(object sender, EventArgs e)
+        {
+            TB_UT_4.Focus();
+            TB_UT_4.Text = L_UT_ACTUAL_4.Text;
+        }
+        private void L_UT_ACTUAL_5_Click(object sender, EventArgs e)
+        {
+            TB_UT_5.Focus();
+            TB_UT_5.Text = L_UT_ACTUAL_5.Text;
+        }
+
+        private void L_UT_ACTUAL_M1_Click(object sender, EventArgs e)
+        {
+            TB_UT_M1.Focus();
+            TB_UT_M1.Text = L_UT_ACTUAL_M1.Text;
+        }
+        private void L_UT_ACTUAL_M2_Click(object sender, EventArgs e)
+        {
+            TB_UT_M2.Focus();
+            TB_UT_M2.Text = L_UT_ACTUAL_M2.Text;
+        }
+        private void L_UT_ACTUAL_M3_Click(object sender, EventArgs e)
+        {
+            TB_UT_M3.Focus();
+            TB_UT_M3.Text = L_UT_ACTUAL_M3.Text;
+        }
+        private void L_UT_ACTUAL_M4_Click(object sender, EventArgs e)
+        {
+            TB_UT_M4.Focus();
+            TB_UT_M4.Text = L_UT_ACTUAL_M4.Text;
+        }
+
+        private void L_UT_ACTUAL_D1_Click(object sender, EventArgs e)
+        {
+            TB_UT_D1.Focus();
+            TB_UT_D1.Text = L_UT_ACTUAL_D1.Text;
+        }
+        private void L_UT_ACTUAL_D2_Click(object sender, EventArgs e)
+        {
+            TB_UT_D2.Focus();
+            TB_UT_D2.Text = L_UT_ACTUAL_D2.Text;
+        }
+        private void L_UT_ACTUAL_D3_Click(object sender, EventArgs e)
+        {
+            TB_UT_D3.Focus();
+            TB_UT_D3.Text = L_UT_ACTUAL_D3.Text;
+        }
+        private void L_UT_ACTUAL_D4_Click(object sender, EventArgs e)
+        {
+            TB_UT_D4.Focus();
+            TB_UT_D4.Text = L_UT_ACTUAL_D4.Text;
         }
     
     }

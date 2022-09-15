@@ -12,16 +12,15 @@ namespace DataProvInventario.Data
     public partial class DataProv: IData
     {
 
-        public OOB.ResultadoLista<OOB.LibInventario.EmpaqueMedida.Ficha> EmpaqueMedida_GetLista()
+        public OOB.ResultadoLista<OOB.LibInventario.EmpaqueMedida.Ficha> 
+            EmpaqueMedida_GetLista()
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.EmpaqueMedida.Ficha>();
 
             var r01 = MyData.EmpaqueMedida_GetLista();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
 
             var list = new List<OOB.LibInventario.EmpaqueMedida.Ficha>();
@@ -44,8 +43,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoEntidad<OOB.LibInventario.EmpaqueMedida.Ficha> EmpaqueMedida_GetFicha(string auto)
+        public OOB.ResultadoEntidad<OOB.LibInventario.EmpaqueMedida.Ficha> 
+            EmpaqueMedida_GetFicha(string auto)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.EmpaqueMedida.Ficha>();
 
@@ -68,8 +67,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoAuto EmpaqueMedida_Agregar(OOB.LibInventario.EmpaqueMedida.Agregar ficha)
+        public OOB.ResultadoAuto 
+            EmpaqueMedida_Agregar(OOB.LibInventario.EmpaqueMedida.Agregar ficha)
         {
             var rt = new OOB.ResultadoAuto();
 
@@ -89,8 +88,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.Resultado EmpaqueMedida_Editar(OOB.LibInventario.EmpaqueMedida.Editar ficha)
+        public OOB.Resultado 
+            EmpaqueMedida_Editar(OOB.LibInventario.EmpaqueMedida.Editar ficha)
         {
             var rt = new OOB.Resultado();
 
@@ -110,8 +109,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.Resultado EmpaqueMedida_Eliminar(string auto)
+        public OOB.Resultado 
+            EmpaqueMedida_Eliminar(string auto)
         {
             var rt = new OOB.Resultado();
 

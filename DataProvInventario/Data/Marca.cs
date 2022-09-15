@@ -12,18 +12,16 @@ namespace DataProvInventario.Data
     public partial class DataProv: IData
     {
 
-        public OOB.ResultadoLista<OOB.LibInventario.Marca.Ficha> Marca_GetLista()
+        public OOB.ResultadoLista<OOB.LibInventario.Marca.Ficha> 
+            Marca_GetLista()
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Marca.Ficha>();
 
             var r01 = MyData.Marca_GetLista();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
-
             var list = new List<OOB.LibInventario.Marca.Ficha>();
             if (r01.Lista != null)
             {
@@ -43,8 +41,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoEntidad<OOB.LibInventario.Marca.Ficha> Marca_GetFicha(string auto)
+        public OOB.ResultadoEntidad<OOB.LibInventario.Marca.Ficha> 
+            Marca_GetFicha(string auto)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Marca.Ficha>();
 
@@ -66,8 +64,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoAuto Marca_Agregar(OOB.LibInventario.Marca.Agregar ficha)
+        public OOB.ResultadoAuto 
+            Marca_Agregar(OOB.LibInventario.Marca.Agregar ficha)
         {
             var rt = new OOB.ResultadoAuto();
 
@@ -86,8 +84,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.Resultado Marca_Editar(OOB.LibInventario.Marca.Editar ficha)
+        public OOB.Resultado 
+            Marca_Editar(OOB.LibInventario.Marca.Editar ficha)
         {
             var rt = new OOB.Resultado();
 
@@ -106,8 +104,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.Resultado Marca_Eliminar(string auto)
+        public OOB.Resultado 
+            Marca_Eliminar(string auto)
         {
             var rt = new OOB.Resultado();
 

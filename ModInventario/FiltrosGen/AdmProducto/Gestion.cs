@@ -443,6 +443,11 @@ namespace ModInventario.FiltrosGen.AdmProducto
             _data.setMetBusqByCodigoBarra();
         }
 
+        public object FiltrosExportar
+        {
+            get { throw new NotImplementedException(); }
+        }
+
     }
 
 }

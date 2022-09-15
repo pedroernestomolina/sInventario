@@ -583,6 +583,16 @@ namespace ModInventario.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bt_pulgar_arriba {
+            get {
+                object obj = ResourceManager.GetObject("bt_pulgar_arriba", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bt_qr {
             get {
                 object obj = ResourceManager.GetObject("bt_qr", resourceCulture);

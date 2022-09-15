@@ -17,8 +17,10 @@ namespace OOB.LibInventario.Precio.Historico
         public DateTime fecha { get; set; }
         public string hora { get; set; }
         public decimal precio { get; set; }
+        public decimal factorCambio { get; set; }
+        public string empaque { get; set; }
+        public int contenido { get; set; }
         public string idPrecio { get; set; }
-        public string etqPrecio { get; set; }
 
     }
 

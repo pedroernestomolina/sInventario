@@ -148,6 +148,8 @@
             this.panel40 = new System.Windows.Forms.Panel();
             this.DGV_DETALLE = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.panel58 = new System.Windows.Forms.Panel();
+            this.BT_LIMPIAR_FILTROS = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -226,6 +228,7 @@
             this.panel51.SuspendLayout();
             this.panel40.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_DETALLE)).BeginInit();
+            this.panel58.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -1332,11 +1335,13 @@
             // 
             // tableLayoutPanel16
             // 
-            this.tableLayoutPanel16.ColumnCount = 2;
-            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel16.ColumnCount = 3;
+            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel16.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel16.Controls.Add(this.panel42, 0, 1);
             this.tableLayoutPanel16.Controls.Add(this.panel44, 0, 0);
+            this.tableLayoutPanel16.Controls.Add(this.panel58, 1, 0);
             this.tableLayoutPanel16.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel16.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel16.Margin = new System.Windows.Forms.Padding(1);
@@ -1356,7 +1361,7 @@
             this.panel42.Margin = new System.Windows.Forms.Padding(1);
             this.panel42.Name = "panel42";
             this.panel42.Padding = new System.Windows.Forms.Padding(2);
-            this.panel42.Size = new System.Drawing.Size(109, 27);
+            this.panel42.Size = new System.Drawing.Size(70, 27);
             this.panel42.TabIndex = 0;
             // 
             // BT_BUSCAR_PRODUCTO
@@ -1365,7 +1370,7 @@
             this.BT_BUSCAR_PRODUCTO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BT_BUSCAR_PRODUCTO.Location = new System.Drawing.Point(2, 2);
             this.BT_BUSCAR_PRODUCTO.Name = "BT_BUSCAR_PRODUCTO";
-            this.BT_BUSCAR_PRODUCTO.Size = new System.Drawing.Size(105, 23);
+            this.BT_BUSCAR_PRODUCTO.Size = new System.Drawing.Size(66, 23);
             this.BT_BUSCAR_PRODUCTO.TabIndex = 0;
             this.BT_BUSCAR_PRODUCTO.Text = "Buscar";
             this.BT_BUSCAR_PRODUCTO.UseVisualStyleBackColor = true;
@@ -1379,12 +1384,12 @@
             this.panel44.Margin = new System.Windows.Forms.Padding(1);
             this.panel44.Name = "panel44";
             this.panel44.Padding = new System.Windows.Forms.Padding(2);
-            this.panel44.Size = new System.Drawing.Size(53, 27);
+            this.panel44.Size = new System.Drawing.Size(34, 27);
             this.panel44.TabIndex = 1;
             // 
             // BT_FILTRAR
             // 
-            this.BT_FILTRAR.BackgroundImage = global::ModInventario.Properties.Resources.bt_consulta;
+            this.BT_FILTRAR.BackgroundImage = global::ModInventario.Properties.Resources.setup;
             this.BT_FILTRAR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.BT_FILTRAR.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BT_FILTRAR.FlatAppearance.BorderSize = 0;
@@ -1392,7 +1397,7 @@
             this.BT_FILTRAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BT_FILTRAR.Location = new System.Drawing.Point(2, 2);
             this.BT_FILTRAR.Name = "BT_FILTRAR";
-            this.BT_FILTRAR.Size = new System.Drawing.Size(49, 23);
+            this.BT_FILTRAR.Size = new System.Drawing.Size(30, 23);
             this.BT_FILTRAR.TabIndex = 2;
             this.toolTip1.SetToolTip(this.BT_FILTRAR, "Filtrar Busqueda");
             this.BT_FILTRAR.UseVisualStyleBackColor = true;
@@ -1756,6 +1761,33 @@
             this.DGV_DETALLE.Size = new System.Drawing.Size(1154, 351);
             this.DGV_DETALLE.TabIndex = 0;
             // 
+            // panel58
+            // 
+            this.panel58.Controls.Add(this.BT_LIMPIAR_FILTROS);
+            this.panel58.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel58.Location = new System.Drawing.Point(37, 1);
+            this.panel58.Margin = new System.Windows.Forms.Padding(1);
+            this.panel58.Name = "panel58";
+            this.panel58.Padding = new System.Windows.Forms.Padding(2);
+            this.panel58.Size = new System.Drawing.Size(34, 27);
+            this.panel58.TabIndex = 2;
+            // 
+            // BT_LIMPIAR_FILTROS
+            // 
+            this.BT_LIMPIAR_FILTROS.BackgroundImage = global::ModInventario.Properties.Resources.bt_limpiar_3;
+            this.BT_LIMPIAR_FILTROS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BT_LIMPIAR_FILTROS.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_LIMPIAR_FILTROS.FlatAppearance.BorderSize = 0;
+            this.BT_LIMPIAR_FILTROS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_LIMPIAR_FILTROS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_LIMPIAR_FILTROS.Location = new System.Drawing.Point(2, 2);
+            this.BT_LIMPIAR_FILTROS.Name = "BT_LIMPIAR_FILTROS";
+            this.BT_LIMPIAR_FILTROS.Size = new System.Drawing.Size(30, 23);
+            this.BT_LIMPIAR_FILTROS.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.BT_LIMPIAR_FILTROS, "Limpiar Filtros Busqueda");
+            this.BT_LIMPIAR_FILTROS.UseVisualStyleBackColor = true;
+            this.BT_LIMPIAR_FILTROS.Click += new System.EventHandler(this.BT_LIMPIAR_FILTROS_Click);
+            // 
             // MovFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1853,6 +1885,7 @@
             this.panel51.ResumeLayout(false);
             this.panel40.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_DETALLE)).EndInit();
+            this.panel58.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1978,6 +2011,8 @@
         private System.Windows.Forms.Panel panel57;
         private System.Windows.Forms.Label L_ITEMS_PEND;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Panel panel58;
+        private System.Windows.Forms.Button BT_LIMPIAR_FILTROS;
 
     }
 }

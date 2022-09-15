@@ -265,6 +265,9 @@ namespace ModInventario.Producto.Precio.EditarCambiar
             return rt;
         }
 
+
+        public decimal TasaCambio { get { return _tasaCambio; } }
+
     }
 
 }

@@ -63,47 +63,53 @@ namespace ModInventario.Visor.PrecioAjuste
         {
             var rt = true;
 
-            var r01 = Sistema.MyData.EmpresaGrupo_GetLista();
-            if (r01.Result == OOB.Enumerados.EnumResult.isError)
+            try
             {
-                Helpers.Msg.Error(r01.Mensaje);
+                var r01 = Sistema.MyData.EmpresaGrupo_GetLista();
+                if (r01.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r01.Mensaje);
+                    return false;
+                }
+                var _lst_1 = r01.Lista.Select(s =>
+                {
+                    var nr = new ficha()
+                    {
+                        codigo = "",
+                        desc = s.descripcion,
+                        id = s.idGrupo,
+                    };
+                    return nr;
+                }).ToList();
+                _gEmpresaSuc.setData(_lst_1);
+
+                var r02 = Sistema.MyData.Departamento_GetLista();
+                var _lst_2 = r02.Lista.Select(s =>
+                {
+                    var nr = new ficha()
+                    {
+                        codigo = "",
+                        desc = s.nombre,
+                        id = s.auto,
+                    };
+                    return nr;
+                }).ToList();
+                _gDepartamento.setData(_lst_2);
+
+                var _lst_3 = new List<ficha>() 
+                { 
+                    new ficha(){ id="01", desc="Empaque 1"},  
+                    new ficha(){ id="02", desc="Empaque 2"},  
+                    new ficha(){ id="03", desc="Empaque 3"},  
+                };
+                _gEmpaqueVer.setData(_lst_3);
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
                 return false;
             }
-            var r02 = Sistema.MyData.Departamento_GetLista();
-            if (r02.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r02.Mensaje);
-                return false;
-            }
-            var _lst_1 = r01.Lista.Select(s =>
-            {
-                var nr = new ficha()
-                {
-                    codigo = "",
-                    desc = s.descripcion,
-                    id = s.idGrupo,
-                };
-                return nr;
-            }).ToList();
-            var _lst_2 = r02.Lista.Select(s =>
-            {
-                var nr = new ficha()
-                {
-                    codigo = "",
-                    desc = s.nombre,
-                    id = s.auto,
-                };
-                return nr;
-            }).ToList();
-            var _lst_3 = new List<ficha>() 
-            { 
-                new ficha(){ id="01", desc="Empaque 1"},  
-                new ficha(){ id="02", desc="Empaque 2"},  
-                new ficha(){ id="03", desc="Empaque 3"},  
-            };
-            _gEmpresaSuc.setData(_lst_1);
-            _gDepartamento.setData(_lst_2);
-            _gEmpaqueVer.setData(_lst_3);
+
             return rt;
         }
 
@@ -216,26 +222,29 @@ namespace ModInventario.Visor.PrecioAjuste
         {
             _gDepartamento.setFicha(id);
             _gGrupo.Inicializa();
+            var _lst = new List<ficha>();
             if (id != "")
             {
-                var r01 = Sistema.MyData.Grupo_GetListaByIdDepartamento(id);
-                if (r01.Result == OOB.Enumerados.EnumResult.isError)
+                try
                 {
-                    Helpers.Msg.Error(r01.Mensaje);
-                    return;
-                }
-                var _lst_1 = r01.Lista.Select(s =>
-                {
-                    var nr = new ficha()
+                    var r01 = Sistema.MyData.Grupo_GetListaByIdDepartamento(id);
+                    _lst = r01.Lista.Select(s =>
                     {
-                        codigo = "",
-                        desc = s.nombre,
-                        id = s.auto,
-                    };
-                    return nr;
-                }).ToList();
-                _gGrupo.setData(_lst_1);
+                        var nr = new ficha()
+                        {
+                            codigo = "",
+                            desc = s.nombre,
+                            id = s.auto,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+                catch (Exception e)
+                {
+                    Helpers.Msg.Error(e.Message);
+                }
             }
+            _gGrupo.setData(_lst);
         }
         public void setGrupo(string id)
         {
@@ -288,13 +297,13 @@ namespace ModInventario.Visor.PrecioAjuste
         {
             var filtroOOb = new OOB.LibInventario.Sucursal.Filtro() { idEmpresaGrupo = _gEmpresaSuc.GetId };
             var r01 = Sistema.MyData.Sucursal_GetLista(filtroOOb);
-            if (r01.Result ==  OOB.Enumerados.EnumResult.isError)
+            if (r01.Result == OOB.Enumerados.EnumResult.isError)
             {
                 Helpers.Msg.Error(r01.Mensaje);
                 return;
             }
             var _lst = new List<Sucursal.Lista.data>();
-            foreach(var rg in r01.Lista.OrderBy(o=>o.nombre).ToList())
+            foreach (var rg in r01.Lista.OrderBy(o => o.nombre).ToList())
             {
                 var nr = new Sucursal.Lista.data() { codigo = rg.codigo, nombre = rg.nombre };
                 _lst.Add(nr);

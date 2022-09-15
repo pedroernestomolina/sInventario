@@ -171,10 +171,16 @@ namespace ModInventario.Buscar
             CB_TIPO_BUSQUEDA.DataSource = _controlador.GeTipoBusqueda_Source;
             CB_TIPO_BUSQUEDA.SelectedValue = _controlador.GetTipoBusqueda_Id;
             DGV.DataSource = _controlador.Source;
+            _controlador.Source.CurrentChanged += Source_CurrentChanged;
             L_ITEMS.Text = _controlador.Items.ToString("n0");
             LimpiarEtiquetas();
             TB_CADENA.Focus();
             _modoInicializar = false;
+        }
+
+        private void Source_CurrentChanged(object sender, EventArgs e)
+        {
+            ActualizarItem();
         }
 
         public void setControlador(Gestion ctr)
@@ -341,7 +347,6 @@ namespace ModInventario.Buscar
         {
             HistoricoPrecio();
         }
-
         private void HistoricoPrecio()
         {
             _controlador.HistoricoPrecio();

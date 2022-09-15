@@ -51,16 +51,19 @@ namespace ModInventario.MaestrosInv.Departamento
 
         public bool CargarData()
         {
-            var r01 = Sistema.MyData.Departamento_GetLista();
-            if (r01.Result == OOB.Enumerados.EnumResult.isError)
+            try
             {
-                Helpers.Msg.Error(r01.Mensaje);
-                return false;
+                _lst.Clear();
+                var r01 = Sistema.MyData.Departamento_GetLista();
+                foreach (var rg in r01.Lista.OrderBy(o => o.nombre).ToList())
+                {
+                    _lst.Add(new data(rg.auto, rg.codigo, rg.nombre));
+                }
             }
-            _lst.Clear();
-            foreach (var rg in r01.Lista.OrderBy(o => o.nombre).ToList())
+            catch (Exception e)
             {
-                _lst.Add(new data(rg.auto, rg.codigo, rg.nombre));
+                Helpers.Msg.Error(e.Message);
+                return false;
             }
             return true;
         }

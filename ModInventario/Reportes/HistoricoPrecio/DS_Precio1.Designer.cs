@@ -287,7 +287,13 @@ namespace ModInventario.Reportes.HistoricoPrecio {
             
             private global::System.Data.DataColumn columnusuarioEstacion;
             
-            private global::System.Data.DataColumn columntipoPrecio;
+            private global::System.Data.DataColumn columnprecioDivisa;
+            
+            private global::System.Data.DataColumn columnfactorCambio;
+            
+            private global::System.Data.DataColumn columnempContenido;
+            
+            private global::System.Data.DataColumn columnidPrecio;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -356,9 +362,33 @@ namespace ModInventario.Reportes.HistoricoPrecio {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn tipoPrecioColumn {
+            public global::System.Data.DataColumn precioDivisaColumn {
                 get {
-                    return this.columntipoPrecio;
+                    return this.columnprecioDivisa;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn factorCambioColumn {
+                get {
+                    return this.columnfactorCambio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn empContenidoColumn {
+                get {
+                    return this.columnempContenido;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn idPrecioColumn {
+                get {
+                    return this.columnidPrecio;
                 }
             }
             
@@ -399,14 +429,17 @@ namespace ModInventario.Reportes.HistoricoPrecio {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public PrecioHistRow AddPrecioHistRow(string precio, string fechaHora, string nota, string usuarioEstacion, string tipoPrecio) {
+            public PrecioHistRow AddPrecioHistRow(decimal precio, string fechaHora, string nota, string usuarioEstacion, decimal precioDivisa, decimal factorCambio, string empContenido, string idPrecio) {
                 PrecioHistRow rowPrecioHistRow = ((PrecioHistRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         precio,
                         fechaHora,
                         nota,
                         usuarioEstacion,
-                        tipoPrecio};
+                        precioDivisa,
+                        factorCambio,
+                        empContenido,
+                        idPrecio};
                 rowPrecioHistRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowPrecioHistRow);
                 return rowPrecioHistRow;
@@ -433,13 +466,16 @@ namespace ModInventario.Reportes.HistoricoPrecio {
                 this.columnfechaHora = base.Columns["fechaHora"];
                 this.columnnota = base.Columns["nota"];
                 this.columnusuarioEstacion = base.Columns["usuarioEstacion"];
-                this.columntipoPrecio = base.Columns["tipoPrecio"];
+                this.columnprecioDivisa = base.Columns["precioDivisa"];
+                this.columnfactorCambio = base.Columns["factorCambio"];
+                this.columnempContenido = base.Columns["empContenido"];
+                this.columnidPrecio = base.Columns["idPrecio"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnprecio = new global::System.Data.DataColumn("precio", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnprecio = new global::System.Data.DataColumn("precio", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnprecio);
                 this.columnfechaHora = new global::System.Data.DataColumn("fechaHora", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfechaHora);
@@ -447,8 +483,14 @@ namespace ModInventario.Reportes.HistoricoPrecio {
                 base.Columns.Add(this.columnnota);
                 this.columnusuarioEstacion = new global::System.Data.DataColumn("usuarioEstacion", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnusuarioEstacion);
-                this.columntipoPrecio = new global::System.Data.DataColumn("tipoPrecio", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columntipoPrecio);
+                this.columnprecioDivisa = new global::System.Data.DataColumn("precioDivisa", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnprecioDivisa);
+                this.columnfactorCambio = new global::System.Data.DataColumn("factorCambio", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnfactorCambio);
+                this.columnempContenido = new global::System.Data.DataColumn("empContenido", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnempContenido);
+                this.columnidPrecio = new global::System.Data.DataColumn("idPrecio", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnidPrecio);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -591,10 +633,10 @@ namespace ModInventario.Reportes.HistoricoPrecio {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string precio {
+            public decimal precio {
                 get {
                     try {
-                        return ((string)(this[this.tablePrecioHist.precioColumn]));
+                        return ((decimal)(this[this.tablePrecioHist.precioColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'precio\' in table \'PrecioHist\' is DBNull.", e);
@@ -655,17 +697,65 @@ namespace ModInventario.Reportes.HistoricoPrecio {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string tipoPrecio {
+            public decimal precioDivisa {
                 get {
                     try {
-                        return ((string)(this[this.tablePrecioHist.tipoPrecioColumn]));
+                        return ((decimal)(this[this.tablePrecioHist.precioDivisaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'tipoPrecio\' in table \'PrecioHist\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'precioDivisa\' in table \'PrecioHist\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablePrecioHist.tipoPrecioColumn] = value;
+                    this[this.tablePrecioHist.precioDivisaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal factorCambio {
+                get {
+                    try {
+                        return ((decimal)(this[this.tablePrecioHist.factorCambioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'factorCambio\' in table \'PrecioHist\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePrecioHist.factorCambioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string empContenido {
+                get {
+                    try {
+                        return ((string)(this[this.tablePrecioHist.empContenidoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'empContenido\' in table \'PrecioHist\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePrecioHist.empContenidoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string idPrecio {
+                get {
+                    try {
+                        return ((string)(this[this.tablePrecioHist.idPrecioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'idPrecio\' in table \'PrecioHist\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablePrecioHist.idPrecioColumn] = value;
                 }
             }
             
@@ -719,14 +809,50 @@ namespace ModInventario.Reportes.HistoricoPrecio {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IstipoPrecioNull() {
-                return this.IsNull(this.tablePrecioHist.tipoPrecioColumn);
+            public bool IsprecioDivisaNull() {
+                return this.IsNull(this.tablePrecioHist.precioDivisaColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SettipoPrecioNull() {
-                this[this.tablePrecioHist.tipoPrecioColumn] = global::System.Convert.DBNull;
+            public void SetprecioDivisaNull() {
+                this[this.tablePrecioHist.precioDivisaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsfactorCambioNull() {
+                return this.IsNull(this.tablePrecioHist.factorCambioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetfactorCambioNull() {
+                this[this.tablePrecioHist.factorCambioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsempContenidoNull() {
+                return this.IsNull(this.tablePrecioHist.empContenidoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetempContenidoNull() {
+                this[this.tablePrecioHist.empContenidoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsidPrecioNull() {
+                return this.IsNull(this.tablePrecioHist.idPrecioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetidPrecioNull() {
+                this[this.tablePrecioHist.idPrecioColumn] = global::System.Convert.DBNull;
             }
         }
         

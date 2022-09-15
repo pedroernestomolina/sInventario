@@ -114,126 +114,124 @@ namespace ModInventario.FiltrosGen.Reportes
         {
             var rt = true;
 
-            var r00 = Sistema.MyData.Configuracion_VisualizarProductosInactivos();
-            if (r00.Result == OOB.Enumerados.EnumResult.isError)
+            try
             {
-                Helpers.Msg.Error(r00.Mensaje);
+                var r00 = Sistema.MyData.Configuracion_VisualizarProductosInactivos();
+                if (r00.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r00.Mensaje);
+                    return false;
+                }
+                var _activarProductosInactivos = r00.Entidad;
+
+                var lDepart = new List<ficha>();
+                var r01 = Sistema.MyData.Departamento_GetLista();
+                foreach (var rg in r01.Lista.OrderBy(o => o.nombre).ToList())
+                {
+                    lDepart.Add(new ficha(rg.auto, "", rg.nombre));
+                }
+                _gDepart.setData(lDepart);
+
+                var r02 = Sistema.MyData.Deposito_GetLista();
+                if (r02.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r02.Mensaje);
+                    return false;
+                }
+                var lDeposito = new List<ficha>();
+                foreach (var rg in r02.Lista.OrderBy(o => o.nombre).ToList())
+                {
+                    lDeposito.Add(new ficha(rg.auto, "", rg.nombre));
+                }
+                _gDeposito.setData(lDeposito);
+
+                var r03 = Sistema.MyData.Producto_AdmDivisa_Lista();
+                if (r03.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r03.Mensaje);
+                    return false;
+                }
+                var lDivisa = new List<ficha>();
+                foreach (var rg in r03.Lista.OrderBy(o => o.Descripcion).ToList())
+                {
+                    lDivisa.Add(new ficha(rg.Id, "", rg.Descripcion));
+                }
+                _gDivisa.setData(lDivisa);
+
+                var filtroOOb = new OOB.LibInventario.Sucursal.Filtro();
+                var r04 = Sistema.MyData.Sucursal_GetLista(filtroOOb);
+                if (r04.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r04.Mensaje);
+                    return false;
+                }
+                var lSucursal = new List<ficha>();
+                foreach (var rg in r04.Lista.OrderBy(o => o.nombre).ToList())
+                {
+                    lSucursal.Add(new ficha(rg.auto, "", rg.nombre));
+                }
+                _gSucursal.setData(lSucursal);
+
+                var r05 = Sistema.MyData.Producto_Categoria_Lista();
+                if (r05.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r05.Mensaje);
+                    return false;
+                }
+                var lCategoria = new List<ficha>();
+                foreach (var rg in r05.Lista.OrderBy(o => o.Descripcion).ToList())
+                {
+                    lCategoria.Add(new ficha(rg.Id, "", rg.Descripcion));
+                }
+                _gCategoria.setData(lCategoria);
+
+                var r06 = Sistema.MyData.Producto_Origen_Lista();
+                if (r06.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r06.Mensaje);
+                    return false;
+                }
+                var lOrigen = new List<ficha>();
+                foreach (var rg in r06.Lista.OrderBy(o => o.Descripcion).ToList())
+                {
+                    lOrigen.Add(new ficha(rg.Id, "", rg.Descripcion));
+                }
+                _gOrigen.setData(lOrigen);
+
+                var r07 = Sistema.MyData.TasaImpuesto_GetLista();
+                if (r07.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r07.Mensaje);
+                    return false;
+                }
+                var lTasa = new List<ficha>();
+                foreach (var rg in r07.Lista.OrderBy(o => o.tasa).ToList())
+                {
+                    lTasa.Add(new ficha(rg.auto, "", rg.ToString()));
+                }
+                _gTasaIva.setData(lTasa);
+
+                var lMarca = new List<ficha>();
+                var r09 = Sistema.MyData.Marca_GetLista();
+                foreach (var rg in r09.Lista.OrderBy(o => o.nombre).ToList())
+                {
+                    lMarca.Add(new ficha(rg.auto, "", rg.nombre));
+                }
+                _gMarca.setData(lMarca);
+
+                var lEstatus = new List<ficha>();
+                lEstatus.Add(new ficha("01", "", "ACTIVO"));
+                if (_activarProductosInactivos)
+                {
+                    lEstatus.Add(new ficha("03", "", "INACTIVO"));
+                }
+                _gEstatus.setData(lEstatus);
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
                 return false;
             }
-            var _activarProductosInactivos = r00.Entidad;
-
-            var r01 = Sistema.MyData.Departamento_GetLista();
-            if (r01.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r01.Mensaje);
-                return false;
-            }
-            var lDepart = new List<ficha>();
-            foreach (var rg in r01.Lista.OrderBy(o => o.nombre).ToList())
-            {
-                lDepart.Add(new ficha(rg.auto, "", rg.nombre));
-            }
-            _gDepart.setData(lDepart);
-
-            var r02 = Sistema.MyData.Deposito_GetLista();
-            if (r02.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r02.Mensaje);
-                return false;
-            }
-            var lDeposito= new List<ficha>();
-            foreach (var rg in r02.Lista.OrderBy(o => o.nombre).ToList()) 
-            {
-                lDeposito.Add(new ficha(rg.auto, "", rg.nombre));
-            }
-            _gDeposito.setData(lDeposito);
-
-            var r03 = Sistema.MyData.Producto_AdmDivisa_Lista();
-            if (r03.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r03.Mensaje);
-                return false;
-            }
-            var lDivisa= new List<ficha>();
-            foreach (var rg in r03.Lista.OrderBy(o => o.Descripcion).ToList())
-            {
-                lDivisa.Add(new ficha(rg.Id, "", rg.Descripcion));
-            }
-            _gDivisa.setData(lDivisa);
-
-            var filtroOOb = new OOB.LibInventario.Sucursal.Filtro();
-            var r04 = Sistema.MyData.Sucursal_GetLista(filtroOOb);
-            if (r04.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r04.Mensaje);
-                return false;
-            }
-            var lSucursal= new List<ficha>();
-            foreach (var rg in r04.Lista.OrderBy(o => o.nombre).ToList())
-            {
-                lSucursal.Add(new ficha(rg.auto, "", rg.nombre));
-            }
-            _gSucursal.setData(lSucursal);
-
-            var r05 = Sistema.MyData.Producto_Categoria_Lista();
-            if (r05.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r05.Mensaje);
-                return false;
-            }
-            var lCategoria= new List<ficha>();
-            foreach (var rg in r05.Lista.OrderBy(o => o.Descripcion).ToList())
-            {
-                lCategoria.Add(new ficha(rg.Id, "", rg.Descripcion));
-            }
-            _gCategoria.setData(lCategoria);
-
-            var r06 = Sistema.MyData.Producto_Origen_Lista();
-            if (r06.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r06.Mensaje);
-                return false;
-            }
-            var lOrigen= new List<ficha>();
-            foreach (var rg in r06.Lista.OrderBy(o => o.Descripcion).ToList())
-            {
-                lOrigen.Add(new ficha(rg.Id, "", rg.Descripcion));
-            }
-            _gOrigen.setData(lOrigen);
-
-            var r07 = Sistema.MyData.TasaImpuesto_GetLista();
-            if (r07.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r07.Mensaje);
-                return false;
-            }
-            var lTasa= new List<ficha>();
-            foreach (var rg in r07.Lista.OrderBy(o => o.tasa).ToList())
-            {
-                lTasa.Add(new ficha(rg.auto, "", rg.ToString()));
-            }
-            _gTasaIva.setData(lTasa);
-
-            var r09 = Sistema.MyData.Marca_GetLista();
-            if (r09.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r09.Mensaje);
-                return false;
-            }
-            var lMarca= new List<ficha>();
-            foreach (var rg in r09.Lista.OrderBy(o => o.nombre).ToList())
-            {
-                lMarca.Add(new ficha(rg.auto, "", rg.nombre));
-            }
-            _gMarca.setData(lMarca);
-
-            var lEstatus= new List<ficha>();
-            lEstatus.Add(new ficha("01", "", "ACTIVO"));
-            if (_activarProductosInactivos)
-            {
-                lEstatus.Add(new ficha("03", "", "INACTIVO"));
-            }
-            _gEstatus.setData(lEstatus);
 
             return rt;
         }
@@ -298,17 +296,19 @@ namespace ModInventario.FiltrosGen.Reportes
         {
             _gDepart.setFicha(id);
             _gGrupo.setFicha("");
-
-            var r01 = Sistema.MyData.Grupo_GetListaByIdDepartamento(id);
-            if (r01.Result == OOB.Enumerados.EnumResult.isError)
+            if (id == "") { return; }
+            var lst = new List<ficha>();
+            try
             {
-                Helpers.Msg.Error(r01.Mensaje);
-                return;
+                var r01 = Sistema.MyData.Grupo_GetListaByIdDepartamento(id);
+                foreach (var rg in r01.Lista.OrderBy(o => o.nombre).ToList())
+                {
+                    lst.Add(new ficha(rg.auto, "", rg.nombre));
+                }
             }
-            var lst= new List<ficha>();
-            foreach (var rg in r01.Lista.OrderBy(o => o.nombre).ToList())
+            catch (Exception e)
             {
-                lst.Add(new ficha(rg.auto, "", rg.nombre));
+                Helpers.Msg.Error(e.Message);
             }
             _gGrupo.setData(lst);
         }

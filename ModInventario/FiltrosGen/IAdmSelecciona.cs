@@ -31,6 +31,9 @@ namespace ModInventario.FiltrosGen
         void setActivarDepOrigen(string id);
         void setActivarDepDestino(string id);
 
+
+        void LimpiarFiltros();
+
     }
 
 }

@@ -19,6 +19,15 @@ namespace ModInventario.src
         {
             return new Producto.Precio.EditarCambiar.ModoBasico.Editar();
         }
+        public FiltrosGen.AdmProducto.IAdmProducto CreateInstancia_FiltroPrdAdm()
+        {
+            return new src.FiltroBusqAdm.ModoBasico.ImpBasico();
+        }
+
+        public Producto.Precio.Historico.IHistorico CreateInstancia_HistoricoPrecio()
+        {
+            return new Producto.Precio.Historico.ModoSucursal.ImpSucursal();
+        }
 
     }
 

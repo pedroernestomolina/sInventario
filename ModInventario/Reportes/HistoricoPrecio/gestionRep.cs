@@ -13,26 +13,20 @@ namespace ModInventario.Reportes.HistoricoPrecio
     public class gestionRep
     {
 
-        private List<data> _list;
+        private List<Producto.Precio.Historico.dataHist> _lst;
         private string _filtros;
 
 
         public gestionRep()
         {
-            _list = new List<data>();
             _filtros = "";
         }
 
 
-        public void setLista(List<OOB.LibInventario.Precio.Historico.Data> lista) 
+        public void setLista(List<Producto.Precio.Historico.dataHist> lst)
         {
-            _list = lista.OrderByDescending(o => o.fecha).ThenByDescending(o => o.hora).Select(s => 
-            {
-                var nr = new data(s);
-                return nr;
-            }).ToList();
+            _lst = lst;
         }
-
         public void setFiltros(string p)
         {
             _filtros = p;
@@ -43,14 +37,17 @@ namespace ModInventario.Reportes.HistoricoPrecio
             var pt = AppDomain.CurrentDomain.BaseDirectory + @"Reportes\HistoricoPrecio\HistoricoPrecio.rdlc";
             var ds = new DS_Precio();
 
-            foreach (var it in _list)
+            foreach (var it in _lst)
             {
                 DataRow rt = ds.Tables["PrecioHist"].NewRow();
-                rt["precio"] = it.precioNeto;
+                rt["precio"] = it.precioLocalNeto;
+                rt["precioDivisa"] = it.precioDivisaNeto;
+                rt["factorCambio"] = it.factorCambio;
+                rt["empContenido"] = it.empContenido;
                 rt["fechaHora"] = it.fechaHora;
                 rt["usuarioEstacion"] = it.usuarioEstacion;
                 rt["nota"] = it.nota;
-                rt["tipoPrecio"] = it.etqPrecio;
+                rt["idPrecio"] = it.idPrecio;
                 ds.Tables["PrecioHist"].Rows.Add(rt);
             }
 

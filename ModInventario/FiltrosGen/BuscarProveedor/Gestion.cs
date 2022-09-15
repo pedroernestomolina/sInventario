@@ -49,7 +49,6 @@ namespace ModInventario.FiltrosGen.BuscarProveedor
                     Helpers.Msg.Error(r01.Mensaje);
                     return;
                 }
-
                 var lst = new List<fichaSeleccion>();
                 foreach (var rg in r01.Lista.OrderBy(o => o.nombreRazonSocial).ToList())
                 {

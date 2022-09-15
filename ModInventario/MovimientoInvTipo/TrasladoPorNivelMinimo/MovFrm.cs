@@ -544,6 +544,15 @@ namespace ModInventario.MovimientoInvTipo.TrasladoPorNivelMinimo
             }
         }
 
+        private void BT_LIMPIAR_FILTROS_Click(object sender, EventArgs e)
+        {
+            LimpiarFiltros();
+        }
+        private void LimpiarFiltros()
+        {
+            _controlador.LimpiarFiltros();
+        }
+
     }
 
 }

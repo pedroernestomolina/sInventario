@@ -16,7 +16,7 @@ namespace ModInventario.Producto.Plu
     {
 
 
-        Gestion _controlador;
+        IPlu _controlador;
 
 
         public PluFrm()
@@ -73,16 +73,23 @@ namespace ModInventario.Producto.Plu
         }
 
 
-        public void setControlador(Gestion ctr)
+        public void setControlador(IPlu ctr)
         {
             _controlador = ctr;
         }
 
         private void BT_SALIR_Click(object sender, EventArgs e)
         {
-            Salir();
+            Abandonar();
         }
-
+        private void Abandonar()
+        {
+            _controlador.AbandonarFicha();
+            if (_controlador.AbandonarIsOk) 
+            {
+                Salir();
+            }
+        }
         private void Salir()
         {
             this.Close();
@@ -90,9 +97,17 @@ namespace ModInventario.Producto.Plu
 
         private void PluFrm_Load(object sender, EventArgs e)
         {
-            DGV.DataSource = _controlador.Source;
+            DGV.DataSource = _controlador.GetSource;
             DGV.Refresh();
-            L_ITEMS.Text = _controlador.ItemsEncontrados;
+            L_ITEMS.Text = "Items Encontrados: "+_controlador.GetCntItems.ToString();
+        }
+        private void PluFrm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            if (_controlador.AbandonarIsOk) 
+            {
+                e.Cancel = false;
+            }
         }
 
     }

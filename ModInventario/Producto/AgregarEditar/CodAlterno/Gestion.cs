@@ -49,6 +49,10 @@ namespace ModInventario.Producto.AgregarEditar.CodAlterno
             _detalle.Limpiar();
         }
 
+        public void Inicializa()
+        {
+        }
+
     }
 
 }

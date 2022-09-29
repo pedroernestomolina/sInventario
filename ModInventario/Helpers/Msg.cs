@@ -42,6 +42,11 @@ namespace ModInventario.Helpers
             MessageBox.Show(msg, "*** OK ***", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        public static bool Abandonar(string msg="Abandonar Cambios Realizados ?")
+        {
+            return MessageBox.Show(msg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes;
+        }
+
     }
 
 }

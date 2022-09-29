@@ -135,9 +135,10 @@ namespace ModInventario
         }
 
 
+        private src.IFabrica _fabrica; 
         public GestionInv()
         {
-            src.IFabrica _fabrica = new src.FabModoBasico();
+            _fabrica = new src.FabModoBasico();
             Producto.Precio.EditarCambiar.IEditar _hndEditarPrecio = _fabrica.CreateInstancia_EditarCambiarPrecio();
             Producto.Precio.VerVisualizar.IVisual _hndVerVisualizarPrecio = _fabrica.CreateInstancia_VisualizarPrecio();
             FiltrosGen.AdmProducto.IAdmProducto _hndFiltroAdmProducto = _fabrica.CreateInstancia_FiltroPrdAdm();
@@ -304,7 +305,8 @@ namespace ModInventario
                 _gImagen,
                 _hndEditarPrecio,
                 _hndVerVisualizarPrecio,
-                _hndHistPrecio);
+                _hndHistPrecio,
+                _fabrica);
 
             _gVisorPrecioAjuste = new Visor.PrecioAjuste.Ajuste(_seguridad, _hndEditarPrecio);
 
@@ -326,14 +328,28 @@ namespace ModInventario
 
 
         Form1 frm = null;
+        src.Inicio.ModoBasico.Form2 frm2 = null;
         public void Inicia() 
         {
-            if (frm == null) 
+            var r =_fabrica.GetType().ToString();
+            if (r.Trim()=="ModInventario.src.FabModoSucursal")
             {
-                frm = new Form1();
-                frm.setControlador(this);
+                if (frm == null)
+                {
+                    frm = new Form1();
+                    frm.setControlador(this);
+                }
+                frm.ShowDialog();
             }
-            frm.ShowDialog();
+            if (r.Trim()=="ModInventario.src.FabModoBasico")
+            {
+                if (frm2 == null)
+                {
+                    frm2 = new src.Inicio.ModoBasico.Form2();
+                    frm2.setControlador(this);
+                }
+                frm2.ShowDialog();
+            }
         }
 
         public void Ajuste_DefinirNivelMinimoMaximo()
@@ -851,6 +867,39 @@ namespace ModInventario
         public bool VerificarPermisoConfiguracionSistema()
         {
             return Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_ConfiguracionSistema, Sistema.UsuarioP.autoGru, _seguridad);
+        }
+
+        public void ReporteMaestroInventarioBasico()
+        {
+            if (VerificarPermisoReportes())
+            {
+                _gestionReporteFiltros.Inicializa();
+                _gestionReporteFiltros.setValidarData(false);
+                _gestionReporteFiltros.setGestion(new Reportes.Filtros.MaestroInventario.Filtros());
+                _gestionReporteFiltros.Inicia();
+                if (_gestionReporteFiltros.FiltrosIsOK)
+                {
+                    var rp = new Reportes.Filtros.MaestroInventarioBasico.GestionRep();
+                    rp.setFiltros(_gestionReporteFiltros.dataFiltrar);
+                    rp.Generar();
+                }
+            }
+        }
+        public void ReporteMaestroPrecioBasico()
+        {
+            if (VerificarPermisoReportes())
+            {
+                _gestionReporteFiltros.Inicializa();
+                _gestionReporteFiltros.setValidarData(false);
+                _gestionReporteFiltros.setGestion(new Reportes.Filtros.MaestroInventario.Filtros());
+                _gestionReporteFiltros.Inicia();
+                if (_gestionReporteFiltros.FiltrosIsOK)
+                {
+                    var rp = new Reportes.Filtros.MaestroPrecioBasico.GestionRep();
+                    rp.setFiltros(_gestionReporteFiltros.dataFiltrar);
+                    rp.Generar();
+                }
+            }
         }
 
     }

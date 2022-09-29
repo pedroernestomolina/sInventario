@@ -11,22 +11,50 @@ namespace ModInventario.src
     public class FabModoBasico: IFabrica
     {
 
-        public Producto.Precio.VerVisualizar.IVisual CreateInstancia_VisualizarPrecio()
+        public ModInventario.Producto.Precio.VerVisualizar.IVisual CreateInstancia_VisualizarPrecio()
         {
-            return new Producto.Precio.VerVisualizar.ModoBasico.Visual();
+            return new ModInventario.Producto.Precio.VerVisualizar.ModoBasico.Visual();
         }
-        public Producto.Precio.EditarCambiar.IEditar CreateInstancia_EditarCambiarPrecio()
+        public ModInventario.Producto.Precio.EditarCambiar.IEditar CreateInstancia_EditarCambiarPrecio()
         {
-            return new Producto.Precio.EditarCambiar.ModoBasico.Editar();
+            return new ModInventario.Producto.Precio.EditarCambiar.ModoBasico.Editar();
         }
         public FiltrosGen.AdmProducto.IAdmProducto CreateInstancia_FiltroPrdAdm()
         {
             return new src.FiltroBusqAdm.ModoBasico.ImpBasico();
         }
-
-        public Producto.Precio.Historico.IHistorico CreateInstancia_HistoricoPrecio()
+        public ModInventario.Producto.Precio.Historico.IHistorico CreateInstancia_HistoricoPrecio()
         {
-            return new Producto.Precio.Historico.ModoSucursal.ImpSucursal();
+            return new ModInventario.Producto.Precio.Historico.ModoSucursal.ImpSucursal();
+        }
+        public Producto.AgregarEditar.IBaseAgregarEditar CreateInstancia_AgregarPrd()
+        {
+            return new Producto.AgregarEditar.ModoBasico.Agregar.ImpAgregar();
+        }
+        public Producto.AgregarEditar.IBaseAgregarEditar CreateInstancia_EditarPrd()
+        {
+            return new Producto.AgregarEditar.ModoBasico.Editar.ImpEditar();
+        }
+        public ModInventario.Producto.VisualizarFicha.IVisualizar CreateInstancia_VisualizarPrd()
+        {
+            return new Producto.Visualizar.ModoBasico.Gestion();
+        }
+
+
+
+        ModInventario.src.Buscar.ModoBasico.BusquedaFrm _frm;
+        public object BuscarPrd
+        {
+            get { return _frm; }
+        }
+        public void CreateInstancia_BuscarPrd(ModInventario.Buscar.Gestion ctr)
+        {
+            _frm = new ModInventario.src.Buscar.ModoBasico.BusquedaFrm();
+            _frm.setControlador(ctr);
+        }
+        public void ShowBuscarPrd()
+        {
+            _frm.ShowDialog();
         }
 
     }

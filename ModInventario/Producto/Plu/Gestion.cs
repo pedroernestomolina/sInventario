@@ -9,30 +9,29 @@ using System.Windows.Forms;
 namespace ModInventario.Producto.Plu
 {
 
-    public class Gestion
+    public class Gestion: IPlu
     {
 
 
-        private List<data> ldata;
-        private BindingSource bs;
+        private List<data> _lst;
+        private BindingSource _bs;
 
 
-        public BindingSource Source { get { return bs; } }
-        public string ItemsEncontrados { get { return string.Format("Items Encontrados {0}", bs.Count); } }
+        public BindingSource GetSource { get { return _bs; } }
+        public int GetCntItems { get { return _bs.Count; } }
 
 
         public Gestion()
         {
-            ldata = new List<data>();
-            bs = new BindingSource();
-            bs.DataSource = ldata;
+            _lst= new List<data>();
+            _bs = new BindingSource();
+            _bs.DataSource = _lst;
         }
 
         
         PluFrm frm;
         public void Inicia()
         {
-            Limpiar();
             if (CargarData())
             {
                 if (frm == null)
@@ -46,26 +45,38 @@ namespace ModInventario.Producto.Plu
 
         private bool CargarData()
         {
-            var rt = true;
-
-            var r01 = Sistema.MyData.Producto_Plu_Lista();
-            if (r01.Result == OOB.Enumerados.EnumResult.isError) 
+            try
             {
-                Helpers.Msg.Error(r01.Mensaje);
+                _lst.Clear();
+                var r01 = Sistema.MyData.Producto_Plu_Lista();
+                foreach (var reg in r01.Lista.OrderBy(o => o.plu).ToList())
+                {
+                    _lst.Add(new data(reg));
+                }
+                _bs.CurrencyManager.Refresh();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
                 return false;
             }
-            ldata.Clear();
-            foreach (var reg in r01.Lista.OrderBy(o=>o.plu).ToList())
-            {
-                ldata.Add(new data(reg));
-            }
-            bs.CurrencyManager.Refresh();
-
-            return rt;
         }
 
-        private void Limpiar()
+
+        public void Inicializa()
         {
+            _lst.Clear();
+            _bs.DataSource = _lst;
+            _bs.CurrencyManager.Refresh();
+        }
+
+
+        private bool _abandonarIsOk;
+        public bool AbandonarIsOk { get { return _abandonarIsOk; } }
+        public void AbandonarFicha()
+        {
+            _abandonarIsOk = true;
         }
 
     }

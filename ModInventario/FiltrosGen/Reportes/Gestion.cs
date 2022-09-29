@@ -145,13 +145,8 @@ namespace ModInventario.FiltrosGen.Reportes
                 }
                 _gDeposito.setData(lDeposito);
 
-                var r03 = Sistema.MyData.Producto_AdmDivisa_Lista();
-                if (r03.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r03.Mensaje);
-                    return false;
-                }
                 var lDivisa = new List<ficha>();
+                var r03 = Sistema.MyData.Producto_AdmDivisa_Lista();
                 foreach (var rg in r03.Lista.OrderBy(o => o.Descripcion).ToList())
                 {
                     lDivisa.Add(new ficha(rg.Id, "", rg.Descripcion));
@@ -172,39 +167,24 @@ namespace ModInventario.FiltrosGen.Reportes
                 }
                 _gSucursal.setData(lSucursal);
 
-                var r05 = Sistema.MyData.Producto_Categoria_Lista();
-                if (r05.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r05.Mensaje);
-                    return false;
-                }
                 var lCategoria = new List<ficha>();
+                var r05 = Sistema.MyData.Producto_Categoria_Lista();
                 foreach (var rg in r05.Lista.OrderBy(o => o.Descripcion).ToList())
                 {
                     lCategoria.Add(new ficha(rg.Id, "", rg.Descripcion));
                 }
                 _gCategoria.setData(lCategoria);
 
-                var r06 = Sistema.MyData.Producto_Origen_Lista();
-                if (r06.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r06.Mensaje);
-                    return false;
-                }
                 var lOrigen = new List<ficha>();
+                var r06 = Sistema.MyData.Producto_Origen_Lista();
                 foreach (var rg in r06.Lista.OrderBy(o => o.Descripcion).ToList())
                 {
                     lOrigen.Add(new ficha(rg.Id, "", rg.Descripcion));
                 }
                 _gOrigen.setData(lOrigen);
 
-                var r07 = Sistema.MyData.TasaImpuesto_GetLista();
-                if (r07.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r07.Mensaje);
-                    return false;
-                }
                 var lTasa = new List<ficha>();
+                var r07 = Sistema.MyData.TasaImpuesto_GetLista();
                 foreach (var rg in r07.Lista.OrderBy(o => o.tasa).ToList())
                 {
                     lTasa.Add(new ficha(rg.auto, "", rg.ToString()));

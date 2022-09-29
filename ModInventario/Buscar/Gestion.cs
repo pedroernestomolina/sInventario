@@ -23,12 +23,17 @@ namespace ModInventario.Buscar
         private Producto.Costo.Ver.Gestion _gestionPrdCosto;
         private Producto.Costo.Editar.Gestion _gestionEditarCosto;
         private Producto.Deposito.Asignar.Gestion _gestionDeposito;
-        private Producto.AgregarEditar.Gestion _gestionEditarFicha;
-        private Producto.AgregarEditar.Gestion _gestionAgregarFicha;
+
+        //private Producto.AgregarEditar.Gestion _gestionEditarFicha;
+        //private Producto.AgregarEditar.Gestion _gestionAgregarFicha;
+        private ModInventario.src.Producto.AgregarEditar.IBaseAgregarEditar _gestionAgregarFicha;
+        private ModInventario.src.Producto.AgregarEditar.IBaseAgregarEditar _gestionEditarFicha;
+        private Producto.VisualizarFicha.IVisualizar _gVisualizarFicha;
+
+
         private Producto.Estatus.Gestion _gestionEstatus;
         private Producto.Imagen.Gestion _gestionImagen;
         private Producto.Proveedor.Gestion _gestionProveedor;
-        private Producto.VisualizarFicha.Gestion _gestionVisualizarFicha;
         //
         private FiltrosGen.AdmProducto.IAdmProducto _gFiltrarProducto;
         private ISeguridadAccesoSistema _gAccesoSistema;
@@ -50,6 +55,7 @@ namespace ModInventario.Buscar
         public enumMetodoBusqueda MetodoBusqueda { get { return (enumMetodoBusqueda)_gFiltrarProducto.MetBusqueda; } }
 
 
+        private src.IFabrica _fabrica;
         public Gestion(FiltrosGen.AdmProducto.IAdmProducto hndFiltrarProducto, 
             ISeguridadAccesoSistema ctrSeguridad,
             Helpers.Maestros.ICallMaestros ctrMaestros,
@@ -59,7 +65,8 @@ namespace ModInventario.Buscar
             Producto.Imagen.IImagen _imagen,
             Producto.Precio.EditarCambiar.IEditar hndEditarCambiarPrecio,
             Producto.Precio.VerVisualizar.IVisual hndVerVisualizarPrecio, 
-            Producto.Precio.Historico.IHistorico hndHistPrecio)
+            Producto.Precio.Historico.IHistorico hndHistPrecio,
+            src.IFabrica hndFabrica)
         {
             _gHistPrecio = hndHistPrecio;
             _gEditarCambiarPrecio = hndEditarCambiarPrecio;
@@ -71,6 +78,7 @@ namespace ModInventario.Buscar
             _gQR = _qr;
             _gImagen = _imagen;
             _gTipoBusq= new FiltrosGen.Opcion.Gestion();
+            _fabrica = hndFabrica;
 
             //
             _gestionLista = new GestionLista();
@@ -81,22 +89,27 @@ namespace ModInventario.Buscar
             _gestionDeposito = new Producto.Deposito.Asignar.Gestion();
 
             //
-            var _editarFicha = new Producto.AgregarEditar.Editar.Gestion();
-            _editarFicha.setSeguridad(_gSeguridadUsu);
-            _editarFicha.setModoSeguridad(_gSeguridadModoUsu);
-            _gestionEditarFicha = new Producto.AgregarEditar.Gestion(
-                _editarFicha, 
-                ctrMaestros);
-            _gestionAgregarFicha = new Producto.AgregarEditar.Gestion(
-                new Producto.AgregarEditar.Agregar.Gestion(), 
-                ctrMaestros);
+            //var _editarFicha = new Producto.AgregarEditar.Editar.Gestion();
+            //_editarFicha.setSeguridad(_gSeguridadUsu);
+            //_editarFicha.setModoSeguridad(_gSeguridadModoUsu);
+            //_gestionEditarFicha = new Producto.AgregarEditar.Gestion(
+            //    _editarFicha,
+            //    ctrMaestros);
+
+            //_gestionAgregarFicha = new Producto.AgregarEditar.Gestion(
+            //    new Producto.AgregarEditar.Agregar.Gestion(),
+            //    ctrMaestros);
+
+            _gestionAgregarFicha = _fabrica.CreateInstancia_AgregarPrd();
+            _gestionEditarFicha = _fabrica.CreateInstancia_EditarPrd();
+            _gVisualizarFicha = _fabrica.CreateInstancia_VisualizarPrd(); 
+
             //
             _gKardex = new Kardex.Movimiento.Gestion();
             //
             _gestionEstatus = new Producto.Estatus.Gestion();
             _gestionImagen = new Producto.Imagen.Gestion();
             _gestionProveedor = new Producto.Proveedor.Gestion();
-            _gestionVisualizarFicha = new Producto.VisualizarFicha.Gestion();
         }
 
         public void Inicializa() 
@@ -105,19 +118,16 @@ namespace ModInventario.Buscar
             _gFiltrarProducto.Inicializa();
         }
 
-        BusquedaFrm frm;
         public void Inicia() 
         {
             if (CargarData()) 
             {
                 HayItemSeleccionado = false;
                 _gestionLista.Limpiar();
-                if (frm == null) 
-                {
-                    frm = new BusquedaFrm();
-                    frm.setControlador(this);
-                }
-                frm.ShowDialog();
+
+                if (_fabrica.BuscarPrd == null)
+                    _fabrica.CreateInstancia_BuscarPrd(this);
+                _fabrica.ShowBuscarPrd();
             }
         }
 
@@ -276,7 +286,7 @@ namespace ModInventario.Buscar
                 return;
             }
             _gestionLista.setLista(r01.Lista);
-            frm.ActualizarItem();
+            //frm.ActualizarItem();
         }
 
         public void VerExistencia()
@@ -293,7 +303,7 @@ namespace ModInventario.Buscar
             _gFiltrarProducto.LimpiarFiltros();
             _gFiltrarProducto.setCadenaBusc("");
             _gestionLista.Limpiar();
-            frm.ActualizarItem();
+            //frm.ActualizarItem();
         }
 
         public void HistoricoPrecio()
@@ -538,9 +548,9 @@ namespace ModInventario.Buscar
         {
             if (Item != null)
             {
-                _gestionVisualizarFicha.Inicializa();
-                _gestionVisualizarFicha.setFicha(Item.identidad.auto);
-                _gestionVisualizarFicha.Inicia();
+                _gVisualizarFicha.Inicializa();
+                _gVisualizarFicha.setFicha(Item.identidad.auto);
+                _gVisualizarFicha.Inicia();
             }
         }
 

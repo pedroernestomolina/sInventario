@@ -180,27 +180,27 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoBasico
                 _precio1.setNeto(pneto_1);
                 _gEmp1.setFicha(prd.autoEmp_1);
 
-                _precio2.setContenido(prd.cont_2);
-                _precio2.setUtilidadActual(prd.utilidad_2);
+                _precio2.setContenido(prd.cont_M1);
+                _precio2.setUtilidadActual(prd.utilidad_M1);
                 _precio2.setCostoEmpCompra(costo);
                 _precio2.setContEmpCompra(prd.contEmpCompra);
                 _precio2.setAdmDivisa(prd.EsAdmDivisa);
                 _precio2.setTasaCambio(_tasaCambio);
                 _precio2.setTasaIva(prd.tasaIva);
                 _precio2.setMetodoCalculoUtilidad(_metodoCalculo);
-                _precio2.setNeto(pneto_2);
-                _gEmp2.setFicha(prd.autoEmp_2);
+                _precio2.setNeto(pneto_M1);
+                _gEmp2.setFicha(prd.autoEmp_M1);
 
-                _precio3.setContenido(prd.cont_3);
-                _precio3.setUtilidadActual(prd.utilidad_3);
+                _precio3.setContenido(prd.cont_D1);
+                _precio3.setUtilidadActual(prd.utilidad_D1);
                 _precio3.setCostoEmpCompra(costo);
                 _precio3.setContEmpCompra(prd.contEmpCompra);
                 _precio3.setAdmDivisa(prd.EsAdmDivisa);
                 _precio3.setTasaCambio(_tasaCambio);
                 _precio3.setTasaIva(prd.tasaIva);
                 _precio3.setMetodoCalculoUtilidad(_metodoCalculo);
-                _precio3.setNeto(pneto_3);
-                _gEmp3.setFicha(prd.autoEmp_3);
+                _precio3.setNeto(pneto_D1);
+                _gEmp3.setFicha(prd.autoEmp_D1);
 
                 var r05 = Sistema.MyData.Configuracion_ForzarRedondeoPrecioVenta();
                 if (r05.Result == OOB.Enumerados.EnumResult.isError)
@@ -378,7 +378,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoBasico
             var p1 = new OOB.LibInventario.Precio.Editar.FichaPrecio()
             {
                 autoEmp = _gEmp1.GetId,
-                contenido = _precio1.Contenido ,
+                contenido = _precio1.Contenido,
                 precio_divisa_Neto = _precio1.Full_Divisa,
                 precioNeto = _precio1.Neto_MonedaLocal,
                 utilidad = _precio1.Utilidad,
@@ -389,7 +389,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoBasico
                 nota = "",
                 precio = _precio1.Neto_MonedaLocal,
                 precio_id = "1",
-                empaque = "UNIDAD",
+                empaque = _gEmp1.Item.desc,
                 contenido = _precio1.Contenido,
                 factorCambio = _precio1.TasaCambio,
             };
@@ -401,13 +401,13 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoBasico
                 precioNeto = _precio2.Neto_MonedaLocal,
                 utilidad = _precio2.Utilidad,
             };
-            ficha.precio_2 = p2;
+            ficha.may_1 = p2;
             var h2 = new OOB.LibInventario.Precio.Editar.FichaHistorica()
             {
                 nota = "",
                 precio = _precio2.Neto_MonedaLocal,
-                precio_id = "2",
-                empaque = "UNIDAD",
+                precio_id = "MY1",
+                empaque = _gEmp2.Item.desc,
                 contenido = _precio2.Contenido,
                 factorCambio = _precio1.TasaCambio,
             };
@@ -419,13 +419,13 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoBasico
                 precioNeto = _precio3.Neto_MonedaLocal,
                 utilidad = _precio3.Utilidad ,
             };
-            ficha.precio_3 = p3;
+            ficha.dsp_1 = p3;
             var h3 = new OOB.LibInventario.Precio.Editar.FichaHistorica()
             {
                 nota = "",
                 precio = _precio3.Neto_MonedaLocal,
-                precio_id = "3",
-                empaque = "UNIDAD",
+                precio_id = "DS1",
+                empaque = _gEmp3.Item.desc,
                 contenido = _precio3.Contenido,
                 factorCambio = _precio1.TasaCambio,
             };

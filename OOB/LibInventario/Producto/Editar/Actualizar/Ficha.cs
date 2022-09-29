@@ -84,7 +84,7 @@ namespace OOB.LibInventario.Producto.Editar.Actualizar
             alto = 0m;
             largo = 0m;
             ancho = 0m;
-            imagen=null;
+            imagen = new byte[] { };
             codigosAlterno=null;
 
             autoEmpVentaTipo_1 = "";

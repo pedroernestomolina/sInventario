@@ -169,33 +169,18 @@ namespace ModInventario.Producto.AgregarEditar.Agregar
                 if (!MarcasCargar())
                     return false;
 
-                var r04 = Sistema.MyData.TasaImpuesto_GetLista();
-                if (r04.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r04.Mensaje);
-                    return false;
-                }
                 blImpuesto.Clear();
+                var r04 = Sistema.MyData.TasaImpuesto_GetLista();
                 impuesto.AddRange(r04.Lista.OrderBy(o => o.tasa).ToList());
                 bsImpuesto.CurrencyManager.Refresh();
 
-                var r05 = Sistema.MyData.Producto_Categoria_Lista();
-                if (r05.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r05.Mensaje);
-                    return false;
-                }
                 blCategoria.Clear();
+                var r05 = Sistema.MyData.Producto_Categoria_Lista();
                 categoria.AddRange(r05.Lista.OrderBy(o => o.Descripcion).ToList());
                 bsCategoria.CurrencyManager.Refresh();
 
-                var r06 = Sistema.MyData.Producto_Origen_Lista();
-                if (r06.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r06.Mensaje);
-                    return false;
-                }
                 blOrigen.Clear();
+                var r06 = Sistema.MyData.Producto_Origen_Lista();
                 origen.AddRange(r06.Lista.OrderBy(o => o.Descripcion).ToList());
                 bsOrigen.CurrencyManager.Refresh();
 
@@ -212,23 +197,13 @@ namespace ModInventario.Producto.AgregarEditar.Agregar
                 _gEmpVentaTipo2.setData(lData);
                 _gEmpVentaTipo3.setData(lData);
 
-                var r08 = Sistema.MyData.Producto_AdmDivisa_Lista();
-                if (r08.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r08.Mensaje);
-                    return false;
-                }
                 blDivisa.Clear();
+                var r08 = Sistema.MyData.Producto_AdmDivisa_Lista();
                 divisa.AddRange(r08.Lista.OrderBy(o => o.Descripcion).ToList());
                 bsDivisa.CurrencyManager.Refresh();
 
-                var r09 = Sistema.MyData.Producto_Clasificacion_Lista();
-                if (r09.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r09.Mensaje);
-                    return false;
-                }
                 blClasificacion.Clear();
+                var r09 = Sistema.MyData.Producto_Clasificacion_Lista();
                 clasificacion.AddRange(r09.Lista.OrderBy(o => o.Descripcion).ToList());
                 bsClasificacion.CurrencyManager.Refresh();
 
@@ -410,6 +385,7 @@ namespace ModInventario.Producto.AgregarEditar.Agregar
 
         public void ListaPlu()
         {
+            _gestionPlu.Inicializa();
             _gestionPlu.Inicia();
         }
 

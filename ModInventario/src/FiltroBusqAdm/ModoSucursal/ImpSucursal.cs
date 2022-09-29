@@ -136,72 +136,75 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
         {
             if (base.CargarData())
             {
-                var r01 = Sistema.MyData.Producto_Categoria_Lista();
-                if (r01.Result == OOB.Enumerados.EnumResult.isError)
+                try
                 {
-                    Helpers.Msg.Error(r01.Mensaje);
+                    var lstCategoria = new List<ficha>();
+                    var r01 = Sistema.MyData.Producto_Categoria_Lista();
+                    foreach (var rg in r01.Lista.OrderBy(o => o.Descripcion).ToList())
+                    {
+                        lstCategoria.Add(new ficha(rg.Id, "", rg.Descripcion));
+                    }
+                    _gCategoria.setData(lstCategoria);
+
+                    var r02 = Sistema.MyData.Deposito_GetLista();
+                    if (r02.Result == OOB.Enumerados.EnumResult.isError)
+                    {
+                        Helpers.Msg.Error(r02.Mensaje);
+                        return false;
+                    }
+                    var lstDeposito = new List<ficha>();
+                    foreach (var rg in r02.Lista.OrderBy(o => o.nombre).ToList())
+                    {
+                        lstDeposito.Add(new ficha(rg.auto, "", rg.nombre));
+                    }
+                    _gDeposito.setData(lstDeposito);
+
+                    var r03 = Sistema.MyData.Configuracion_VisualizarProductosInactivos();
+                    if (r03.Result == OOB.Enumerados.EnumResult.isError)
+                    {
+                        Helpers.Msg.Error(r03.Mensaje);
+                        return false;
+                    }
+                    var lstEstatus = new List<ficha>();
+                    lstEstatus.Add(new ficha("01", "", "ACTIVO"));
+                    lstEstatus.Add(new ficha("02", "", "SUSPENDIDO"));
+                    if (r03.Entidad)
+                    {
+                        lstEstatus.Add(new ficha("03", "", "INACTIVO"));
+                    }
+                    _gEstatus.setData(lstEstatus);
+
+                    var r04 = Sistema.MyData.Producto_Oferta_Lista();
+                    if (r04.Result == OOB.Enumerados.EnumResult.isError)
+                    {
+                        Helpers.Msg.Error(r04.Mensaje);
+                        return false;
+                    }
+                    var lstOferta = new List<ficha>();
+                    foreach (var rg in r04.Lista.OrderBy(o => o.Descripcion).ToList())
+                    {
+                        lstOferta.Add(new ficha(rg.Id.ToString().Trim(), "", rg.Descripcion));
+                    }
+                    _gOferta.setData(lstOferta);
+
+                    var lstExistencia = new List<ficha>();
+                    lstExistencia.Add(new ficha("1", "", "Mayor A Cero"));
+                    lstExistencia.Add(new ficha("2", "", "Igual Cero"));
+                    lstExistencia.Add(new ficha("3", "", "Menor A Cero"));
+                    _gExistencia.setData(lstExistencia);
+
+                    var lstCatalogo = new List<ficha>();
+                    lstCatalogo.Add(new ficha("1", "", "NO"));
+                    lstCatalogo.Add(new ficha("2", "", "SI"));
+                    _gCatalogo.setData(lstCatalogo);
+
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    Helpers.Msg.Error(e.Message );
                     return false;
                 }
-                var lstCategoria = new List<ficha>();
-                foreach (var rg in r01.Lista.OrderBy(o => o.Descripcion).ToList())
-                {
-                    lstCategoria.Add(new ficha(rg.Id, "", rg.Descripcion));
-                }
-                _gCategoria.setData(lstCategoria);
-
-                var r02 = Sistema.MyData.Deposito_GetLista();
-                if (r02.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r02.Mensaje);
-                    return false;
-                }
-                var lstDeposito = new List<ficha>();
-                foreach (var rg in r02.Lista.OrderBy(o => o.nombre).ToList())
-                {
-                    lstDeposito.Add(new ficha(rg.auto, "", rg.nombre));
-                }
-                _gDeposito.setData(lstDeposito);
-
-                var r03 = Sistema.MyData.Configuracion_VisualizarProductosInactivos();
-                if (r03.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r03.Mensaje);
-                    return false;
-                }
-                var lstEstatus = new List<ficha>();
-                lstEstatus.Add(new ficha("01", "", "ACTIVO"));
-                lstEstatus.Add(new ficha("02", "", "SUSPENDIDO"));
-                if (r03.Entidad)
-                {
-                    lstEstatus.Add(new ficha("03", "", "INACTIVO"));
-                }
-                _gEstatus.setData(lstEstatus);
-
-                var r04 = Sistema.MyData.Producto_Oferta_Lista();
-                if (r04.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r04.Mensaje);
-                    return false;
-                }
-                var lstOferta = new List<ficha>();
-                foreach (var rg in r04.Lista.OrderBy(o => o.Descripcion).ToList())
-                {
-                    lstOferta.Add(new ficha(rg.Id.ToString().Trim(), "", rg.Descripcion));
-                }
-                _gOferta.setData(lstOferta);
-
-                var lstExistencia = new List<ficha>();
-                lstExistencia.Add(new ficha("1", "", "Mayor A Cero"));
-                lstExistencia.Add(new ficha("2", "", "Igual Cero"));
-                lstExistencia.Add(new ficha("3", "", "Menor A Cero"));
-                _gExistencia.setData(lstExistencia);
-
-                var lstCatalogo = new List<ficha>();
-                lstCatalogo.Add(new ficha("1", "", "NO"));
-                lstCatalogo.Add(new ficha("2", "", "SI"));
-                _gCatalogo.setData(lstCatalogo);
-
-                return true;
             }
             else 
             {

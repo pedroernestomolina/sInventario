@@ -54,26 +54,16 @@ namespace ModInventario.src.FiltroBusqAdm
                 }
                 _gDepartamento.setData(lstDepart);
 
-                var r04 = Sistema.MyData.Producto_Origen_Lista();
-                if (r04.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r04.Mensaje);
-                    return false;
-                }
                 var lstOrigen = new List<ficha>();
+                var r04 = Sistema.MyData.Producto_Origen_Lista();
                 foreach (var rg in r04.Lista.OrderBy(o => o.Descripcion).ToList())
                 {
                     lstOrigen.Add(new ficha(rg.Id, "", rg.Descripcion));
                 }
                 _gOrigen.setData(lstOrigen);
 
-                var r05 = Sistema.MyData.TasaImpuesto_GetLista();
-                if (r05.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r05.Mensaje);
-                    return false;
-                }
                 var lstTasa = new List<ficha>();
+                var r05 = Sistema.MyData.TasaImpuesto_GetLista();
                 foreach (var rg in r05.Lista.OrderBy(o => o.tasa).ToList())
                 {
                     lstTasa.Add(new ficha(rg.auto, "", rg.ToString()));
@@ -88,13 +78,8 @@ namespace ModInventario.src.FiltroBusqAdm
                 }
                 _gMarca.setData(lstMarca);
 
-                var r09 = Sistema.MyData.Producto_AdmDivisa_Lista();
-                if (r09.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r09.Mensaje);
-                    return false;
-                }
                 var lstDivisa = new List<ficha>();
+                var r09 = Sistema.MyData.Producto_AdmDivisa_Lista();
                 foreach (var rg in r09.Lista.OrderBy(o => o.Descripcion).ToList())
                 {
                     lstDivisa.Add(new ficha(rg.Id, "", rg.Descripcion));

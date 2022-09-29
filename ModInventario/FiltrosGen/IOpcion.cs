@@ -10,7 +10,6 @@ namespace ModInventario.FiltrosGen
 
     public interface IOpcion
     {
-
         System.Windows.Forms.BindingSource Source { get; }
         string GetId { get; }
         ficha Item { get; }
@@ -21,7 +20,6 @@ namespace ModInventario.FiltrosGen
         void setFicha(string id);
         void Limpiar();
         void Inicializa();
-
     }
 
 }

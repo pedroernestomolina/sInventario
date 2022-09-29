@@ -50,6 +50,15 @@ namespace OOB.LibInventario.Producto.Agregar
         public int contEmpVentaTipo_2 { get; set; }
         public int contEmpVentaTipo_3 { get; set; }
 
+
+        public Ficha()
+        {
+            estatusCatalogo = "0";
+            referencia = "";
+            modelo = "";
+            imagen = new byte[] { };
+        }
+
     }
 
 }

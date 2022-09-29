@@ -144,9 +144,7 @@ namespace DataProvInventario.Data
             var r01 = MyData.Producto_Origen_Lista();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
 
             var list = new List<OOB.LibInventario.Producto.Origen.Ficha>();
@@ -176,9 +174,7 @@ namespace DataProvInventario.Data
             var r01 = MyData.Producto_Categoria_Lista();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
 
             var list = new List<OOB.LibInventario.Producto.Categoria.Ficha>();
@@ -285,12 +281,10 @@ namespace DataProvInventario.Data
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Producto.AdmDivisa.Ficha>();
 
-            var r01 = MyData.Producto_AdmDivisa_Lista ();
+            var r01 = MyData.Producto_AdmDivisa_Lista();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
 
             var list = new List<OOB.LibInventario.Producto.AdmDivisa.Ficha>();
@@ -609,9 +603,7 @@ namespace DataProvInventario.Data
             var r01 = MyData.Producto_Clasificacion_Lista();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
 
             var list = new List<OOB.LibInventario.Producto.ClasificacionAbc.Ficha>();
@@ -1000,9 +992,7 @@ namespace DataProvInventario.Data
             var r01 = MyData.Producto_Plu_Lista ();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
 
             var list = new List<OOB.LibInventario.Producto.Plu.Lista.Ficha>();

@@ -1,0 +1,112 @@
+﻿using Microsoft.Reporting.WinForms;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+
+namespace ModInventario.Reportes.Filtros.MaestroInventarioBasico
+{
+    
+    public class GestionRep
+    {
+
+        private FiltrosGen.Reportes.data  dataFiltros;
+
+
+        public GestionRep()
+        {
+        }
+
+
+        public void setFiltros(FiltrosGen.Reportes.data data)
+        {
+            dataFiltros = data;
+        }
+
+        public void Generar()
+        {
+            var filtro = new OOB.LibInventario.Reportes.MaestroInventario.Filtro();
+            if (dataFiltros.Depart != null)
+            {
+                filtro.autoDepartamento = dataFiltros.Depart.id;
+            }
+            if (dataFiltros.Deposito!= null)
+            {
+                filtro.autoDeposito= dataFiltros.Deposito.id;
+            }
+            if (dataFiltros.Grupo != null)
+            {
+                filtro.autoGrupo= dataFiltros.Grupo.id;
+            }
+
+            var r01 = Sistema.MyData.Reportes_MaestroInventario(filtro);
+            if (r01.Result == OOB.Enumerados.EnumResult.isError)
+            {
+                Helpers.Msg.Error(r01.Mensaje);
+                return;
+            }
+            Imprimir(r01.Lista, dataFiltros.ToString());
+        }
+
+        public void Imprimir(List<OOB.LibInventario.Reportes.MaestroInventario.Ficha> lista, string sFiltro)
+        {
+            var pt = AppDomain.CurrentDomain.BaseDirectory + @"Reportes\Filtros\MaestroInventarioBasico.rdlc";
+            var ds = new DS();
+
+            foreach (var it in lista.ToList().OrderBy(o => o.departamento).OrderBy(o => o.nombrePrd).ToList())
+            {
+                var existencia = 0.0m;
+                if (it.existencia.HasValue)
+                    existencia= it.existencia.Value;
+                var costoUnd = it.costoUnd;
+                var costoDivisaUnd = 0.0m;
+                var admDivisa = "No";
+                var importe = 0.0m;
+                var importeDivisa = 0.0m;
+                if (it.admDivisa == OOB.LibInventario.Reportes.enumerados.EnumAdministradorPorDivisa.Si) 
+                {
+                    admDivisa = "Si";
+                    costoDivisaUnd = it.costoDivisaUnd;
+                    costoUnd = 0.0m;
+                }
+                importe = costoUnd * existencia;
+                importeDivisa = costoDivisaUnd * existencia;
+
+
+                DataRow rt = ds.Tables["MaestroInventario"].NewRow();
+                rt["codigo"] = it.codigoPrd;
+                rt["nombre"] = it.nombrePrd +Environment.NewLine + it.codigoPrd;
+                rt["modelo"] = it.modeloPrd;
+                rt["referencia"] = it.referenciaPrd;
+                rt["departamento"] = it.departamento;
+                rt["grupo"] = it.grupo;
+                rt["existencia"] = existencia.ToString("n" + it.decimales);
+                rt["costoUnd"] = costoUnd.ToString("n2");
+                rt["costoDivisaUnd"] = costoDivisaUnd.ToString("n2");
+                rt["importe"] = importe;
+                rt["importeDivisa"] = importeDivisa;
+                rt["admDivisa"] = admDivisa;
+                if (existencia!=0.0m)
+                    ds.Tables["MaestroInventario"].Rows.Add(rt);
+            }
+
+            var Rds = new List<ReportDataSource>();
+            var pmt = new List<ReportParameter>();
+            pmt.Add(new ReportParameter("EMPRESA_RIF", Sistema.Negocio.CiRif));
+            pmt.Add(new ReportParameter("EMPRESA_NOMBRE", Sistema.Negocio.Nombre));
+            pmt.Add(new ReportParameter("FILTROS", sFiltro));
+            Rds.Add(new ReportDataSource("MaestroInventario", ds.Tables["MaestroInventario"]));
+
+            var frp = new ReporteFrm();
+            frp.rds = Rds;
+            frp.prmts = pmt;
+            frp.Path = pt;
+            frp.ShowDialog();
+        }
+
+    }
+
+}

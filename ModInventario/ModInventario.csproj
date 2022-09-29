@@ -567,6 +567,7 @@
     </Compile>
     <Compile Include="Producto\Plu\data.cs" />
     <Compile Include="Producto\Plu\Gestion.cs" />
+    <Compile Include="Producto\Plu\IPlu.cs" />
     <Compile Include="Producto\Plu\PluFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -639,6 +640,7 @@
       <DependentUpon>QRFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Producto\VisualizarFicha\Gestion.cs" />
+    <Compile Include="Producto\VisualizarFicha\IVisualizar.cs" />
     <Compile Include="Producto\VisualizarFicha\VisualizarFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -689,8 +691,12 @@
     <Compile Include="Reportes\Filtros\MaestroExistenciaInventario\GestionRep.cs" />
     <Compile Include="Reportes\Filtros\MaestroExistencia\Filtros.cs" />
     <Compile Include="Reportes\Filtros\MaestroExistencia\GestionRep.cs" />
+    <Compile Include="Reportes\Filtros\MaestroInventarioBasico\Filtros.cs" />
+    <Compile Include="Reportes\Filtros\MaestroInventarioBasico\GestionRep.cs" />
     <Compile Include="Reportes\Filtros\MaestroInventario\Filtros.cs" />
     <Compile Include="Reportes\Filtros\MaestroInventario\GestionRep.cs" />
+    <Compile Include="Reportes\Filtros\MaestroPrecioBasico\Filtros.cs" />
+    <Compile Include="Reportes\Filtros\MaestroPrecioBasico\GestionRep.cs" />
     <Compile Include="Reportes\Filtros\MaestroPrecio\Filtros.cs" />
     <Compile Include="Reportes\Filtros\MaestroPrecio\GestionRep.cs" />
     <Compile Include="Reportes\Filtros\MaestroProducto\Filtros.cs" />
@@ -771,6 +777,12 @@
       <DependentUpon>SeguridadFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Sistema.cs" />
+    <Compile Include="src\Buscar\ModoBasico\BusquedaFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Buscar\ModoBasico\BusquedaFrm.Designer.cs">
+      <DependentUpon>BusquedaFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\FabModoBasico.cs" />
     <Compile Include="src\FabModoSucursal.cs" />
     <Compile Include="src\Fabrica.cs" />
@@ -795,6 +807,38 @@
     <Compile Include="src\FiltroBusqAdm\ModoSucursal\ImpSucursal.cs" />
     <Compile Include="src\FiltroBusqAdm\ModoSucursal\ISucursal.cs" />
     <Compile Include="src\IFabrica.cs" />
+    <Compile Include="src\Inicio\ModoBasico\Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Inicio\ModoBasico\Form2.designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Producto\AgregarEditar\BaseAgregarEditar.cs" />
+    <Compile Include="src\Producto\AgregarEditar\baseDataAgregarEditar.cs" />
+    <Compile Include="src\Producto\AgregarEditar\IBaseAgregarEditar.cs" />
+    <Compile Include="src\Producto\AgregarEditar\ModoBasico\AgregarEditarFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Producto\AgregarEditar\ModoBasico\AgregarEditarFrm.Designer.cs">
+      <DependentUpon>AgregarEditarFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Producto\AgregarEditar\ModoBasico\Agregar\ImpAgregar.cs" />
+    <Compile Include="src\Producto\AgregarEditar\ModoBasico\Agregar\dataAgregar.cs" />
+    <Compile Include="src\Producto\AgregarEditar\ModoBasico\Agregar\IAgregar.cs" />
+    <Compile Include="src\Producto\AgregarEditar\ModoBasico\Editar\ImpEditar.cs" />
+    <Compile Include="src\Producto\AgregarEditar\ModoBasico\Editar\dataEditar.cs" />
+    <Compile Include="src\Producto\AgregarEditar\ModoBasico\Editar\IEditar.cs" />
+    <Compile Include="src\Producto\AgregarEditar\ModoBasico\IAgregarEditar.cs" />
+    <Compile Include="src\Producto\CodigosAlterno\data.cs" />
+    <Compile Include="src\Producto\CodigosAlterno\Gestion.cs" />
+    <Compile Include="src\Producto\CodigosAlterno\IAlterno.cs" />
+    <Compile Include="src\Producto\Visualizar\ModoBasico\Gestion.cs" />
+    <Compile Include="src\Producto\Visualizar\ModoBasico\VisualizarFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Producto\Visualizar\ModoBasico\VisualizarFrm.Designer.cs">
+      <DependentUpon>VisualizarFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sucursal\Lista\data.cs" />
     <Compile Include="Sucursal\Lista\ListaSuc.cs" />
     <Compile Include="Sucursal\Lista\IListaSuc.cs" />
@@ -1089,6 +1133,9 @@
     <EmbeddedResource Include="Reportes\Filtros\MaestroInventario.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Filtros\MaestroInventarioBasico.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Filtros\MaestroPrecio.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -1134,11 +1181,23 @@
     <EmbeddedResource Include="Seguridad\SeguridadFrm.resx">
       <DependentUpon>SeguridadFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\Buscar\ModoBasico\BusquedaFrm.resx">
+      <DependentUpon>BusquedaFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\FiltroBusqAdm\ModoBasico\FiltrosFrm.resx">
       <DependentUpon>FiltrosFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\FiltroBusqAdm\ModoSucursal\FiltrosFrm.resx">
       <DependentUpon>FiltrosFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Inicio\ModoBasico\Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Producto\AgregarEditar\ModoBasico\AgregarEditarFrm.resx">
+      <DependentUpon>AgregarEditarFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Producto\Visualizar\ModoBasico\VisualizarFrm.resx">
+      <DependentUpon>VisualizarFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sucursal\Lista\ListaFrm.resx">
       <DependentUpon>ListaFrm.cs</DependentUpon>
@@ -1353,6 +1412,7 @@
     <Content Include="Imagenes\icon_setup.png" />
     <Content Include="Imagenes\inventario.jpg" />
     <Content Include="Imagenes\inventario_2.jpg" />
+    <Content Include="Imagenes\inv_basico.jpg" />
     <Content Include="Imagenes\libro.png" />
     <Content Include="Imagenes\Machine-learning-1024x682.jpg" />
     <Content Include="Imagenes\mobile.ico" />
@@ -1363,6 +1423,7 @@
     <Content Include="Imagenes\TOOLS.ico" />
     <Content Include="Imagenes\transferencia.png" />
     <Content Include="Imagenes\warehouse.png" />
+    <None Include="Resources\inv_basico.jpg" />
     <None Include="Resources\bt_pulgar_arriba.png" />
     <None Include="Resources\pulgar_arrba.svg" />
     <None Include="Resources\sucursal.png" />

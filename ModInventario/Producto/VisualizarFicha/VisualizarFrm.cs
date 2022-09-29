@@ -59,9 +59,16 @@ namespace ModInventario.Producto.VisualizarFicha
 
         private void BT_SALIR_Click(object sender, EventArgs e)
         {
-            Salir();
+            AbandonarFicha();
         }
-
+        private void AbandonarFicha()
+        {
+            _controlador.AbandonarFicha();
+            if (_controlador.AbandonarIsOk) 
+            {
+                Salir();
+            }
+        }
         private void Salir()
         {
             this.Close();
@@ -69,29 +76,37 @@ namespace ModInventario.Producto.VisualizarFicha
 
         private void VisualizarFrm_Load(object sender, EventArgs e)
         {
-            L_CODIGO_PRD.Text = _controlador.CodigoPrd;
-            L_DESCRIPCION_PRD.Text = _controlador.DescripcionPrd;
-            L_NOMBRE_PRD.Text = _controlador.NombrePrd;
-            L_DEPARTAMENTO_PRD.Text = _controlador.DepartamentoPrd;
-            L_GRUPO_PRD.Text=_controlador.GrupoPrd;
-            L_MARCA_PRD.Text=_controlador.MarcaPrd;
-            L_IMPUESTO_PRD.Text=_controlador.ImpuestoPrd;
-            L_ORIGEN_PRD.Text=_controlador.OrigenPrd;
-            L_CATEGORIA_PRD.Text = _controlador.CategoriaPrd;
-            L_CLASIFICACION_PRD.Text = _controlador.ClasificacionPrd;
-            L_ADM_DIVISA_PRD.Text = _controlador.AdmDivisaPrd;
-            L_EMPAQUE_PRD.Text = _controlador.EmpaquePrd;
-            label30.Text = _controlador.ContenidoPrd;
-            L_MODELO_PRD.Text = _controlador.ModeloPrd;
-            L_REFERENCIA_PRD.Text = _controlador.ReferenciaPrd;
-            CHB_CATALOGO.Checked = _controlador.IsCatalagoPrd;
-            CHB_PESADO.Checked = _controlador.IsPesadoPrd;
-            L_PLU_PRD.Text = _controlador.PluPrd;
-            L_DIAS_EMPAQUE_PRD.Text = _controlador.DiasEmpaquePrd.ToString();
-            DGV.DataSource = _controlador.SourceCodAlterno;
-            L_ESTATUS_INACTIVO.Visible = _controlador.IsInactivo;
-            L_EMP_INV.Text = _controlador.EmpaqueInv;
-            L_CONT_EMP_INV.Text = _controlador.ContEmpInv.ToString();
+            L_CODIGO_PRD.Text = _controlador.GetCodigoPrd;
+            L_DESCRIPCION_PRD.Text = _controlador.GetDescripcionPrd;
+            L_NOMBRE_PRD.Text = _controlador.GetNombrePrd;
+            L_DEPARTAMENTO_PRD.Text = _controlador.GetDepartamentoPrd;
+            L_GRUPO_PRD.Text=_controlador.GetGrupoPrd;
+            L_MARCA_PRD.Text=_controlador.GetMarcaPrd;
+            L_IMPUESTO_PRD.Text=_controlador.GetImpuestoPrd;
+            L_ORIGEN_PRD.Text=_controlador.GetOrigenPrd;
+            L_CATEGORIA_PRD.Text = _controlador.GetCategoriaPrd;
+            L_CLASIFICACION_PRD.Text = _controlador.GetClasificacionPrd;
+            L_ADM_DIVISA_PRD.Text = _controlador.GetAdmDivisaPrd;
+            L_EMPAQUE_PRD.Text = _controlador.GetEmpaquePrd;
+            label30.Text = _controlador.GetContenidoPrd;
+            L_MODELO_PRD.Text = _controlador.GetModeloPrd;
+            L_REFERENCIA_PRD.Text = _controlador.GetReferenciaPrd;
+            CHB_CATALOGO.Checked = _controlador.GetIsCatalagoPrd;
+            CHB_PESADO.Checked = _controlador.GetIsPesadoPrd;
+            L_PLU_PRD.Text = _controlador.GetPluPrd;
+            L_DIAS_EMPAQUE_PRD.Text = _controlador.GetDiasEmpaquePrd.ToString();
+            DGV.DataSource = _controlador.GetCodAlterno_Source;
+            L_ESTATUS_INACTIVO.Visible = _controlador.GetIsInactivo;
+            L_EMP_INV.Text = _controlador.GetEmpaqueInv;
+            L_CONT_EMP_INV.Text = _controlador.GetContEmpInv.ToString();
+        }
+        private void VisualizarFrm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            if (_controlador.AbandonarIsOk) 
+            {
+                e.Cancel = false;
+            }
         }
 
     }

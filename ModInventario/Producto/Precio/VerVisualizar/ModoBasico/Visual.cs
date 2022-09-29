@@ -95,18 +95,18 @@ namespace ModInventario.Producto.Precio.VerVisualizar.ModoBasico
                                     r01.Entidad.utEmp1_1, 
                                     r01.Entidad.tasaIva);
             _ficha.emp1_2.setData("PRECIO 2",
-                                    r01.Entidad.contEmp1_2,
-                                    r01.Entidad.descEmp1_2,
-                                    r01.Entidad.pnEmp1_2,
-                                    r01.Entidad.pfdEmp1_2,
-                                    r01.Entidad.utEmp1_2,
+                                    r01.Entidad.contEmp2_1 ,
+                                    r01.Entidad.descEmp2_1,
+                                    r01.Entidad.pnEmp2_1,
+                                    r01.Entidad.pfdEmp2_1,
+                                    r01.Entidad.utEmp2_1,
                                     r01.Entidad.tasaIva);
             _ficha.emp1_3.setData("PRECIO 3",
-                                    r01.Entidad.contEmp1_3,
-                                    r01.Entidad.descEmp1_3,
-                                    r01.Entidad.pnEmp1_3,
-                                    r01.Entidad.pfdEmp1_3,
-                                    r01.Entidad.utEmp1_3,
+                                    r01.Entidad.contEmp3_1,
+                                    r01.Entidad.descEmp3_1,
+                                    r01.Entidad.pnEmp3_1,
+                                    r01.Entidad.pfdEmp3_1,
+                                    r01.Entidad.utEmp3_1,
                                     r01.Entidad.tasaIva);
             return true;
         }

@@ -81,6 +81,9 @@ namespace ModInventario.Reportes.Filtros.NivelMInimo
             get { return false; }
         }
 
+        public bool ActivarPesado { get { return false; } }
+        public bool ActivarEntreFechas { get { return false; } }
+
 
         public Filtro()
         {

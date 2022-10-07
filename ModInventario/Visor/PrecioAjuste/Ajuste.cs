@@ -295,22 +295,24 @@ namespace ModInventario.Visor.PrecioAjuste
         }
         public void ListaSucursal()
         {
-            var filtroOOb = new OOB.LibInventario.Sucursal.Filtro() { idEmpresaGrupo = _gEmpresaSuc.GetId };
-            var r01 = Sistema.MyData.Sucursal_GetLista(filtroOOb);
-            if (r01.Result == OOB.Enumerados.EnumResult.isError)
+            try
             {
-                Helpers.Msg.Error(r01.Mensaje);
-                return;
+                var _lst = new List<Sucursal.Lista.data>();
+                var filtroOOb = new OOB.LibInventario.Sucursal.Filtro() { idEmpresaGrupo = _gEmpresaSuc.GetId };
+                var r01 = Sistema.MyData.Sucursal_GetLista(filtroOOb);
+                foreach (var rg in r01.Lista.OrderBy(o => o.nombre).ToList())
+                {
+                    var nr = new Sucursal.Lista.data() { codigo = rg.codigo, nombre = rg.nombre };
+                    _lst.Add(nr);
+                }
+                ((IGestion)_gSuc).Inicializa();
+                _gSuc.setData(_lst);
+                _gSuc.Inicia();
             }
-            var _lst = new List<Sucursal.Lista.data>();
-            foreach (var rg in r01.Lista.OrderBy(o => o.nombre).ToList())
+            catch (Exception e)
             {
-                var nr = new Sucursal.Lista.data() { codigo = rg.codigo, nombre = rg.nombre };
-                _lst.Add(nr);
+                Helpers.Msg.Error(e.Message);
             }
-            ((IGestion)_gSuc).Inicializa();
-            _gSuc.setData(_lst);
-            _gSuc.Inicia();
         }
 
     }

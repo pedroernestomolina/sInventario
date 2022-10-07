@@ -17,12 +17,11 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoBasico.Agregar
 
 
         public ImpAgregar() 
-            :base()
+            :base(new dataAgregar())
         {
             _autoPrd = "";
             _abandonarIsOk = false;
             _procesarIsOk = false;
-            _data = new dataAgregar();
             _departamento = new FiltrosGen.Opcion.Gestion();
             _grupo=new FiltrosGen.Opcion.Gestion();
             _marca= new FiltrosGen.Opcion.Gestion();
@@ -122,6 +121,7 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoBasico.Agregar
 
         private void GuardarFicha()
         {
+            var _tasaIva = 0m;
             var _plu = _data.GetPlu;
             var _diasEmpaque = _data.GetDiasEmpaque;
             var _pesado = "1";
@@ -135,10 +135,10 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoBasico.Agregar
             if (_data.GetDivisa.id == "2")
                 _divisa = "0";
 
-            var _tasaIva = 0m;
             try
             {
                 var r01 = Sistema.MyData.TasaImpuesto_GetById(_data.GetImpuesto.id);
+                _tasaIva = r01.Entidad.tasa;
                 var ficha = new OOB.LibInventario.Producto.Agregar.Ficha()
                 {
                     autoDepartamento = _data.GetDepartamento.id,

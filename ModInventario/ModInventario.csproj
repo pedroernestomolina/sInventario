@@ -113,6 +113,7 @@
     <Compile Include="Gestion\IAbandonar.cs" />
     <Compile Include="Gestion\ILista.cs" />
     <Compile Include="Gestion\IProcesar.cs" />
+    <Compile Include="Gestion\IProcesarSalir.cs" />
     <Compile Include="Helpers\Filtro.cs" />
     <Compile Include="Helpers\VerificarPermiso.cs" />
     <Compile Include="IListaAdm.cs" />
@@ -806,6 +807,27 @@
     </Compile>
     <Compile Include="src\FiltroBusqAdm\ModoSucursal\ImpSucursal.cs" />
     <Compile Include="src\FiltroBusqAdm\ModoSucursal\ISucursal.cs" />
+    <Compile Include="src\Filtro\FiltroRep\baseData.cs" />
+    <Compile Include="src\Filtro\FiltroRep\baseFiltro.cs" />
+    <Compile Include="src\Filtro\FiltroRep\ModoBasico\dataFiltrar.cs" />
+    <Compile Include="src\Filtro\FiltroRep\ModoBasico\FiltrosFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Filtro\FiltroRep\ModoBasico\FiltrosFrm.Designer.cs">
+      <DependentUpon>FiltrosFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Filtro\FiltroRep\ModoBasico\ImpModoBasico.cs" />
+    <Compile Include="src\Filtro\FiltroRep\ModoBasico\IModoBasico.cs" />
+    <Compile Include="src\Filtro\FiltroRep\ModoSucursal\dataFiltrar.cs" />
+    <Compile Include="src\Filtro\FiltroRep\ModoSucursal\FiltrosFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Filtro\FiltroRep\ModoSucursal\FiltrosFrm.Designer.cs">
+      <DependentUpon>FiltrosFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Filtro\FiltroRep\ModoSucursal\IModoSucursal.cs" />
+    <Compile Include="src\Filtro\FiltroRep\ModoSucursal\ImpModoSucursal.cs" />
+    <Compile Include="src\Filtro\IFiltro.cs" />
     <Compile Include="src\IFabrica.cs" />
     <Compile Include="src\Inicio\ModoBasico\Form2.cs">
       <SubType>Form</SubType>
@@ -829,6 +851,21 @@
     <Compile Include="src\Producto\AgregarEditar\ModoBasico\Editar\dataEditar.cs" />
     <Compile Include="src\Producto\AgregarEditar\ModoBasico\Editar\IEditar.cs" />
     <Compile Include="src\Producto\AgregarEditar\ModoBasico\IAgregarEditar.cs" />
+    <Compile Include="src\Producto\AgregarEditar\ModoSucursal\AgregarEditarFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Producto\AgregarEditar\ModoSucursal\AgregarEditarFrm.Designer.cs">
+      <DependentUpon>AgregarEditarFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Producto\AgregarEditar\ModoSucursal\Agregar\dataAgregar.cs" />
+    <Compile Include="src\Producto\AgregarEditar\ModoSucursal\Agregar\IAgregar.cs" />
+    <Compile Include="src\Producto\AgregarEditar\ModoSucursal\Agregar\ImpAgregar.cs" />
+    <Compile Include="src\Producto\AgregarEditar\ModoSucursal\BaseAgregarEditarModoSucursal.cs" />
+    <Compile Include="src\Producto\AgregarEditar\ModoSucursal\baseDataAgregarEditarModoSucursal.cs" />
+    <Compile Include="src\Producto\AgregarEditar\ModoSucursal\Editar\dataEditar.cs" />
+    <Compile Include="src\Producto\AgregarEditar\ModoSucursal\Editar\IEditar.cs" />
+    <Compile Include="src\Producto\AgregarEditar\ModoSucursal\Editar\ImpEditar.cs" />
+    <Compile Include="src\Producto\AgregarEditar\ModoSucursal\IAgregarEditar.cs" />
     <Compile Include="src\Producto\CodigosAlterno\data.cs" />
     <Compile Include="src\Producto\CodigosAlterno\Gestion.cs" />
     <Compile Include="src\Producto\CodigosAlterno\IAlterno.cs" />
@@ -1139,6 +1176,9 @@
     <EmbeddedResource Include="Reportes\Filtros\MaestroPrecio.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Filtros\MaestroPrecioBasico.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Filtros\MaestroProductos.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -1190,10 +1230,19 @@
     <EmbeddedResource Include="src\FiltroBusqAdm\ModoSucursal\FiltrosFrm.resx">
       <DependentUpon>FiltrosFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\Filtro\FiltroRep\ModoBasico\FiltrosFrm.resx">
+      <DependentUpon>FiltrosFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Filtro\FiltroRep\ModoSucursal\FiltrosFrm.resx">
+      <DependentUpon>FiltrosFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\Inicio\ModoBasico\Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Producto\AgregarEditar\ModoBasico\AgregarEditarFrm.resx">
+      <DependentUpon>AgregarEditarFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Producto\AgregarEditar\ModoSucursal\AgregarEditarFrm.resx">
       <DependentUpon>AgregarEditarFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Producto\Visualizar\ModoBasico\VisualizarFrm.resx">

@@ -81,6 +81,9 @@ namespace ModInventario.Reportes.Filtros.MaestroPrecio
             get { return true; }
         }
 
+        public bool ActivarPesado { get { return false; } }
+        public bool ActivarEntreFechas { get { return false; } }
+
 
         public Filtros()
         {

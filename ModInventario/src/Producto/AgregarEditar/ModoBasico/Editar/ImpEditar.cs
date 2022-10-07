@@ -17,12 +17,11 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoBasico.Editar
 
 
         public ImpEditar() 
-            :base()
+            :base(new dataEditar())
         {
             _autoPrd = "";
             _abandonarIsOk = false;
             _procesarIsOk = false;
-            _data = new dataEditar();
             _departamento = new FiltrosGen.Opcion.Gestion();
             _grupo=new FiltrosGen.Opcion.Gestion();
             _marca= new FiltrosGen.Opcion.Gestion();
@@ -79,42 +78,46 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoBasico.Editar
         {
             if (base.CargarData())
             {
-                var r01 = Sistema.MyData.Producto_Editar_GetFicha(_fichaEditar);
-                if (r01.Result == OOB.Enumerados.EnumResult.isError)
+                try
                 {
-                    Helpers.Msg.Error(r01.Mensaje);
+                    var r01 = Sistema.MyData.Producto_Editar_GetFicha(_fichaEditar);
+
+                    var ficha = r01.Entidad;
+                    setCodigoProducto(ficha.codigo);
+                    setDescripcionProducto(ficha.descripcion);
+                    setNombreProducto(ficha.nombre);
+                    setDepartamento(ficha.autoDepartamento);
+                    setGrupo(ficha.autoGrupo);
+                    setMarca(ficha.autoMarca);
+                    setImpuesto(ficha.autoTasaImpuesto);
+                    setOrigen(((int)ficha.origen).ToString());
+                    setCategoria(((int)ficha.categoria).ToString());
+                    setClasificacion(((int)ficha.Clasificacion).ToString());
+                    setDivisa(((int)ficha.AdmPorDivisa).ToString());
+                    setPesado(ficha.esPesado == OOB.LibInventario.Producto.Enumerados.EnumPesado.Si ? true : false);
+                    setPlu(ficha.plu);
+                    setDiasEmpaque(ficha.diasEmpaque);
+                    setEmpCompra(ficha.autoEmpCompra);
+                    setEmpVentaTipo1(ficha.autoEmpVentaTipo_1);
+                    setEmpVentaTipo2(ficha.autoEmpVentaTipo_2);
+                    setEmpVentaTipo3(ficha.autoEmpVentaTipo_3);
+                    setContEmpCompra(ficha.contenidoCompra);
+                    setContEmpVentaTipo1(ficha.contEmpVentaTipo_1);
+                    setContEmpVentaTipo2(ficha.contEmpVentaTipo_2);
+                    setContEmpVentaTipo3(ficha.contEmpVentaTipo_3);
+                    var _lst = new List<string>();
+                    foreach (var rg in ficha.CodigosAlterno)
+                    {
+                        _lst.Add(rg.Codigo);
+                    }
+                    _gCodAlterno.CargarData(_lst);
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    Helpers.Msg.Error(e.Message);
                     return false;
                 }
-                var ficha = r01.Entidad;
-                setCodigoProducto(ficha.codigo);
-                setDescripcionProducto(ficha.descripcion);
-                setNombreProducto(ficha.nombre);
-                setDepartamento(ficha.autoDepartamento);
-                setGrupo(ficha.autoGrupo);
-                setMarca(ficha.autoMarca);
-                setImpuesto(ficha.autoTasaImpuesto);
-                setOrigen(((int)ficha.origen).ToString());
-                setCategoria(((int)ficha.categoria).ToString());
-                setClasificacion(((int)ficha.Clasificacion).ToString());
-                setDivisa(((int)ficha.AdmPorDivisa).ToString());
-                setPesado(ficha.esPesado == OOB.LibInventario.Producto.Enumerados.EnumPesado.Si ? true : false);
-                setPlu(ficha.plu);
-                setDiasEmpaque(ficha.diasEmpaque);
-                setEmpCompra(ficha.autoEmpCompra);
-                setEmpVentaTipo1(ficha.autoEmpVentaTipo_1);
-                setEmpVentaTipo2(ficha.autoEmpVentaTipo_2);
-                setEmpVentaTipo3(ficha.autoEmpVentaTipo_3);
-                setContEmpCompra(ficha.contenidoCompra);
-                setContEmpVentaTipo1(ficha.contEmpVentaTipo_1);
-                setContEmpVentaTipo2(ficha.contEmpVentaTipo_2);
-                setContEmpVentaTipo3(ficha.contEmpVentaTipo_3);
-                var _lst = new List<string>();
-                foreach (var rg in ficha.CodigosAlterno)
-                {
-                    _lst.Add(rg.Codigo);
-                }
-                _gCodAlterno.CargarData(_lst);
-                return true;
             }
             return false;
         }

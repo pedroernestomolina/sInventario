@@ -66,30 +66,30 @@ namespace ModInventario.Administrador.Movimiento
 
         private bool CargarData()
         {
-            var rt = true;
-
-            var filtroOOb = new OOB.LibInventario.Sucursal.Filtro();
-            var rt1 = Sistema.MyData.Sucursal_GetLista(filtroOOb);
-            if (rt1.Result == OOB.Enumerados.EnumResult.isError) 
+            try
             {
-                Helpers.Msg.Error(rt1.Mensaje);
+                var lst = new List<ficha>();
+                var filtroOOb = new OOB.LibInventario.Sucursal.Filtro();
+                var rt1 = Sistema.MyData.Sucursal_GetLista(filtroOOb);
+                foreach (var rg in rt1.Lista.OrderBy(o => o.nombre).ToList())
+                {
+                    lst.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
+                }
+                _gFiltro.Sucursal.setData(lst);
+
+                var lst2 = new List<ficha>();
+                lst2.Add(new ficha("1", "01", "CARGO"));
+                lst2.Add(new ficha("2", "02", "DESCARGO"));
+                lst2.Add(new ficha("3", "03", "TRASLADO"));
+                lst2.Add(new ficha("4", "04", "AJUSTE"));
+                _gFiltro.TipoDoc.setData(lst2);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
                 return false;
             }
-            var lst = new List<ficha>();
-            foreach (var rg in rt1.Lista.OrderBy(o => o.nombre).ToList())
-            {
-                lst.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
-            }
-            _gFiltro.Sucursal.setData(lst);
-
-            var lst2 = new List<ficha>();
-            lst2.Add(new ficha("1", "01", "CARGO"));
-            lst2.Add(new ficha("2", "02", "DESCARGO"));
-            lst2.Add(new ficha("3", "03", "TRASLADO"));
-            lst2.Add(new ficha("4", "04", "AJUSTE"));
-            _gFiltro.TipoDoc.setData(lst2);
-
-            return rt;
         }
 
         public void Buscar()

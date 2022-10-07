@@ -15,9 +15,10 @@ namespace DataProvInventario.InfraEstructura
         IMovTransito, IMovPendiente, IEmpresa
     {
 
-        OOB.ResultadoEntidad<DateTime> FechaServidor();
-        OOB.ResultadoEntidad<OOB.LibInventario.Empresa.Data.Ficha > Empresa_Datos();
-        //OOB.ResultadoEntidad<OOB.LibVenta.PosOffline.Sistema.InformacionBD.Ficha> InformacionBD();
+        OOB.ResultadoEntidad<DateTime> 
+            FechaServidor();
+        OOB.ResultadoEntidad<OOB.LibInventario.Empresa.Data.Ficha >
+            Empresa_Datos();
 
     }
 

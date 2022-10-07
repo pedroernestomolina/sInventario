@@ -32,7 +32,7 @@ namespace ModInventario.src.Inicio.ModoBasico
         {
             var s = DateTime.Now;
             L_FECHA.Text = s.ToLongDateString();
-            L_HORA.Text = s.ToLongTimeString();
+            L_HORA.Text = s.ToShortTimeString();
         }
 
         private void BT_TRASLADO_MERC_SUCURSAL_NIVEL_MINIMO_Click(object sender, EventArgs e)
@@ -294,7 +294,6 @@ namespace ModInventario.src.Inicio.ModoBasico
         {
             Kardex();
         }
-
         private void Kardex()
         {
             _controlador.Kardex();
@@ -384,7 +383,6 @@ namespace ModInventario.src.Inicio.ModoBasico
         {
             ReporteValorizacionInventario();
         }
-
         private void ReporteValorizacionInventario()
         {
             _controlador.ReporteValorizacionInventario();

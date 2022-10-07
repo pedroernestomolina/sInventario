@@ -18,32 +18,21 @@ namespace ModInventario.Buscar
         private GestionLista _gestionLista;
         private Producto.Deposito.Listar.Gestion _gestionPrdExistencia;
         private Producto.Precio.Historico.IHistorico _gHistPrecio;
-
         private Producto.Costo.Historico.Gestion _gestionHistoricoCosto;
         private Producto.Costo.Ver.Gestion _gestionPrdCosto;
         private Producto.Costo.Editar.Gestion _gestionEditarCosto;
         private Producto.Deposito.Asignar.Gestion _gestionDeposito;
-
-        //private Producto.AgregarEditar.Gestion _gestionEditarFicha;
-        //private Producto.AgregarEditar.Gestion _gestionAgregarFicha;
         private ModInventario.src.Producto.AgregarEditar.IBaseAgregarEditar _gestionAgregarFicha;
         private ModInventario.src.Producto.AgregarEditar.IBaseAgregarEditar _gestionEditarFicha;
         private Producto.VisualizarFicha.IVisualizar _gVisualizarFicha;
-
-
         private Producto.Estatus.Gestion _gestionEstatus;
         private Producto.Imagen.Gestion _gestionImagen;
         private Producto.Proveedor.Gestion _gestionProveedor;
-        //
         private FiltrosGen.AdmProducto.IAdmProducto _gFiltrarProducto;
         private ISeguridadAccesoSistema _gAccesoSistema;
-        //
-        private SeguridadSist.ISeguridad _gSeguridadUsu;
-        private SeguridadSist.Usuario.IModoUsuario _gSeguridadModoUsu;
         private Producto.QR.IQR _gQR;
         private Producto.Imagen.IImagen _gImagen;
         private Kardex.Movimiento.IMov _gKardex;
-        //
         private FiltrosGen.IOpcion _gTipoBusq;
 
 
@@ -58,11 +47,11 @@ namespace ModInventario.Buscar
         private src.IFabrica _fabrica;
         public Gestion(FiltrosGen.AdmProducto.IAdmProducto hndFiltrarProducto, 
             ISeguridadAccesoSistema ctrSeguridad,
-            Helpers.Maestros.ICallMaestros ctrMaestros,
-            SeguridadSist.ISeguridad _seguridadUsu,
-            SeguridadSist.Usuario.IModoUsuario seguridadModo,
             Producto.QR.IQR _qr,
             Producto.Imagen.IImagen _imagen,
+            ModInventario.src.Producto.AgregarEditar.IBaseAgregarEditar hndAgregarFicha,
+            ModInventario.src.Producto.AgregarEditar.IBaseAgregarEditar hndEditarFicha,
+            Producto.VisualizarFicha.IVisualizar hndVisualizarFicha,
             Producto.Precio.EditarCambiar.IEditar hndEditarCambiarPrecio,
             Producto.Precio.VerVisualizar.IVisual hndVerVisualizarPrecio, 
             Producto.Precio.Historico.IHistorico hndHistPrecio,
@@ -73,40 +62,20 @@ namespace ModInventario.Buscar
             _gVerPrecio = hndVerVisualizarPrecio;
             _gFiltrarProducto = hndFiltrarProducto;
             _gAccesoSistema = ctrSeguridad;
-            _gSeguridadUsu = _seguridadUsu;
-            _gSeguridadModoUsu= seguridadModo;
             _gQR = _qr;
             _gImagen = _imagen;
             _gTipoBusq= new FiltrosGen.Opcion.Gestion();
             _fabrica = hndFabrica;
-
-            //
             _gestionLista = new GestionLista();
             _gestionPrdExistencia = new Producto.Deposito.Listar.Gestion();
             _gestionHistoricoCosto= new Producto.Costo.Historico.Gestion();
             _gestionPrdCosto = new Producto.Costo.Ver.Gestion();
             _gestionEditarCosto = new Producto.Costo.Editar.Gestion();
             _gestionDeposito = new Producto.Deposito.Asignar.Gestion();
-
-            //
-            //var _editarFicha = new Producto.AgregarEditar.Editar.Gestion();
-            //_editarFicha.setSeguridad(_gSeguridadUsu);
-            //_editarFicha.setModoSeguridad(_gSeguridadModoUsu);
-            //_gestionEditarFicha = new Producto.AgregarEditar.Gestion(
-            //    _editarFicha,
-            //    ctrMaestros);
-
-            //_gestionAgregarFicha = new Producto.AgregarEditar.Gestion(
-            //    new Producto.AgregarEditar.Agregar.Gestion(),
-            //    ctrMaestros);
-
-            _gestionAgregarFicha = _fabrica.CreateInstancia_AgregarPrd();
-            _gestionEditarFicha = _fabrica.CreateInstancia_EditarPrd();
-            _gVisualizarFicha = _fabrica.CreateInstancia_VisualizarPrd(); 
-
-            //
+            _gestionAgregarFicha = hndAgregarFicha;
+            _gestionEditarFicha = hndEditarFicha;
+            _gVisualizarFicha = hndVisualizarFicha;
             _gKardex = new Kardex.Movimiento.Gestion();
-            //
             _gestionEstatus = new Producto.Estatus.Gestion();
             _gestionImagen = new Producto.Imagen.Gestion();
             _gestionProveedor = new Producto.Proveedor.Gestion();

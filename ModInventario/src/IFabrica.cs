@@ -31,6 +31,8 @@ namespace ModInventario.src
         void ShowBuscarPrd();
 
 
+
+        Filtro.IFiltro CreateInstancia_FiltrosReporte();
     }
 
 }

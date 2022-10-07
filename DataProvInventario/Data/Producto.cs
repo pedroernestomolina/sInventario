@@ -135,7 +135,6 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
         public OOB.ResultadoLista<OOB.LibInventario.Producto.Origen.Ficha> 
             Producto_Origen_Lista()
         {
@@ -541,7 +540,6 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
         public OOB.Resultado 
             Producto_AsignarRemoverDepositos(OOB.LibInventario.Producto.Depositos.Asignar.Ficha ficha)
         {
@@ -625,7 +623,6 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
         public OOB.ResultadoEntidad<OOB.LibInventario.Producto.Editar.Obtener.Ficha> 
             Producto_Editar_GetFicha(string autoPrd)
         {
@@ -634,9 +631,7 @@ namespace DataProvInventario.Data
             var r01 = MyData.Producto_Editar_GetFicha(autoPrd);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
 
             var nr = new OOB.LibInventario.Producto.Editar.Obtener.Ficha();
@@ -751,7 +746,6 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
         public OOB.ResultadoAuto 
             Producto_Nuevo_Agregar(OOB.LibInventario.Producto.Agregar.Ficha ficha)
         {
@@ -933,7 +927,6 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
         public OOB.ResultadoEntidad<OOB.LibInventario.Producto.Estatus.Actual.Ficha> 
             Producto_Estatus_GetFicha(string autoPrd)
         {
@@ -1017,7 +1010,6 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
         public OOB.ResultadoEntidad<OOB.LibInventario.Producto.Data.Identificacion> 
             Producto_GetIdentificacion(string autoPrd)
         {
@@ -1170,7 +1162,6 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
         public OOB.ResultadoEntidad<string> 
             Producto_GetId_ByCodigoBarra(string codBarra)
         {

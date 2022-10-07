@@ -38,6 +38,7 @@ namespace ModInventario.SeguridadSist
         {
             _aceptarIsOk = false;
             _abandonarIsOk = false;
+            _gestion.Inicializa();
         }
 
         SeguridadFrm frm;

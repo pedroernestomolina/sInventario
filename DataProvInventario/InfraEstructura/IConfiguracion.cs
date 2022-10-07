@@ -11,6 +11,9 @@ namespace DataProvInventario.InfraEstructura
     public interface IConfiguracion
     {
 
+        OOB.ResultadoEntidad<Enumerados.modoConfInventario>
+            Configuracion_ModuloInventario_Modo();
+
         OOB.ResultadoEntidad<OOB.LibInventario.Configuracion.Enumerados.EnumPreferenciaBusqueda> 
             Configuracion_PreferenciaBusqueda();
         OOB.ResultadoEntidad<OOB.LibInventario.Configuracion.Enumerados.EnumMetodoCalculoUtilidad> 

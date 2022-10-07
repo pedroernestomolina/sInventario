@@ -36,6 +36,13 @@ namespace ModInventario.Reportes.Filtros.MaestroProducto
                     rt = OOB.LibInventario.Reportes.enumerados.EnumAdministradorPorDivisa.No;
                 filtro.admDivisa = rt;
             }
+            if (dataFiltros.Pesado != null)
+            {
+                var rt = OOB.LibInventario.Reportes.enumerados.EnumPesado.Si;
+                if (dataFiltros.Pesado.id == "02")
+                    rt = OOB.LibInventario.Reportes.enumerados.EnumPesado.No;
+                filtro.pesado = rt;
+            }
             if (dataFiltros.Origen != null)
             {
                 filtro.origen = (OOB.LibInventario.Reportes.enumerados.EnumOrigen)int.Parse(dataFiltros.Origen.id);
@@ -64,14 +71,15 @@ namespace ModInventario.Reportes.Filtros.MaestroProducto
             {
                 filtro.autoTasa = dataFiltros.TasaIva.id;
             }
-            var r01 = Sistema.MyData.Reportes_MaestroProducto(filtro);
-            if (r01.Result == OOB.Enumerados.EnumResult.isError)
+            try
             {
-                Helpers.Msg.Error(r01.Mensaje);
-                return;
+                var r01 = Sistema.MyData.Reportes_MaestroProducto(filtro);
+                Imprimir(r01.Lista, dataFiltros.ToString());
             }
-
-            Imprimir(r01.Lista, dataFiltros.ToString());
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
+            }
         }
 
 

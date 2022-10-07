@@ -27,13 +27,12 @@ namespace DataProvInventario.Data
                 categoria = (DtoLibInventario.Reportes.enumerados.EnumCategoria)filtro.categoria,
                 estatus = (DtoLibInventario.Reportes.enumerados.EnumEstatus)filtro.estatus,
                 origen = (DtoLibInventario.Reportes.enumerados.EnumOrigen)filtro.origen,
+                pesado = (DtoLibInventario.Reportes.enumerados.EnumPesado)filtro.pesado,
             };
             var r01 = MyData.Reportes_MaestroProducto(filtroDto);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
 
             var list = new List<OOB.LibInventario.Reportes.MaestroProducto.Ficha>() ;
@@ -76,13 +75,14 @@ namespace DataProvInventario.Data
                 autoDepartamento = filtro.autoDepartamento,
                 autoDeposito = filtro.autoDeposito,
                 autoGrupo = filtro.autoGrupo,
+                autoTasa = filtro.autoTasa,
+                admDivisa = (DtoLibInventario.Reportes.enumerados.EnumAdministradorPorDivisa)filtro.admDivisa,
+                pesado = (DtoLibInventario.Reportes.enumerados.EnumPesado)filtro.pesado,
             };
             var r01 = MyData.Reportes_MaestroInventario(filtroDto);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
 
             var list = new List<OOB.LibInventario.Reportes.MaestroInventario.Ficha>();
@@ -237,13 +237,12 @@ namespace DataProvInventario.Data
                 categoria = (DtoLibInventario.Reportes.enumerados.EnumCategoria) filtro.categoria,
                 origen = (DtoLibInventario.Reportes.enumerados.EnumOrigen) filtro.origen,
                 precio = (DtoLibInventario.Reportes.enumerados.EnumPrecio) filtro.precio,
+                pesado = (DtoLibInventario.Reportes.enumerados.EnumPesado) filtro.pesado,
             };
             var r01 = MyData.Reportes_MaestroPrecio(filtroDto);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
 
             var list = new List<OOB.LibInventario.Reportes.MaestroPrecio.Ficha>();
@@ -255,25 +254,67 @@ namespace DataProvInventario.Data
                     {
                         return new OOB.LibInventario.Reportes.MaestroPrecio.Ficha()
                         {
-                            codigoPrd = s.codigoPrd,
-                            fechaUltCambioPrd = s.fechaUltCambioPrd,
-                            isAdmDivisaPrd = (OOB.LibInventario.Reportes.enumerados.EnumAdministradorPorDivisa) s.isAdmDivisaPrd,
-                            modeloPrd = s.modeloPrd,
-                            nombrePrd = s.nombrePrd,
-                            departamento=s.departamento,
-                            precioDivisaFull_1 = s.precioDivisaFull_1,
-                            precioDivisaFull_2 = s.precioDivisaFull_2,
-                            precioDivisaFull_3 = s.precioDivisaFull_3,
-                            precioDivisaFull_4 = s.precioDivisaFull_4,
-                            precioDivisaFull_5 = s.precioDivisaFull_5,
-                            precioNeto_1 = s.precioNeto_1,
-                            precioNeto_2 = s.precioNeto_2,
-                            precioNeto_3 = s.precioNeto_3,
-                            precioNeto_4 = s.precioNeto_4,
-                            precioNeto_5 = s.precioNeto_5,
-                            referenciaPrd = s.referenciaPrd,
-                            tasaIvaPrd = s.tasaIvaPrd,
-                            grupo=s.grupo,
+                            codigo = s.codigo,
+                            nombre = s.nombre,
+                            admDivisa = s.admDivisa,
+                            departamento = s.departamento,
+                            grupo = s.grupo,
+                            tasa = s.tasa,
+
+                            p1_neto=s.p1_neto,
+                            p2_neto=s.p2_neto,
+                            p3_neto=s.p3_neto,
+                            p4_neto=s.p4_neto,
+                            p5_neto=s.p5_neto,
+                            cont_1=s.cont_1,
+                            cont_2=s.cont_2,
+                            cont_3=s.cont_3,
+                            cont_4=s.cont_4,
+                            cont_5=s.cont_5,
+                            p1_div_full= s.p1_div_full,
+                            p2_div_full= s.p2_div_full,
+                            p3_div_full= s.p3_div_full,
+                            p4_div_full= s.p4_div_full,
+                            p5_div_full= s.p5_div_full,
+                            empaque_1=s.empaque_1,
+                            empaque_2=s.empaque_2,
+                            empaque_3=s.empaque_3,
+                            empaque_4=s.empaque_4,
+                            empaque_5=s.empaque_5,
+
+                            pM1_neto = s.pM1_neto,
+                            pM2_neto = s.pM2_neto,
+                            pM3_neto = s.pM3_neto,
+                            pM4_neto = s.pM4_neto,
+                            cont_M1 = s.cont_M1,
+                            cont_M2 = s.cont_M2,
+                            cont_M3 = s.cont_M3,
+                            cont_M4 = s.cont_M4,
+                            pM1_div_full = s.pM1_div_full,
+                            pM2_div_full = s.pM2_div_full,
+                            pM3_div_full = s.pM3_div_full,
+                            pM4_div_full = s.pM4_div_full,
+                            empaque_M1 = s.empaque_M1,
+                            empaque_M2 = s.empaque_M2,
+                            empaque_M3 = s.empaque_M3,
+                            empaque_M4 = s.empaque_M4,
+
+                            pD1_neto = s.pD1_neto,
+                            pD2_neto = s.pD2_neto,
+                            pD3_neto = s.pD3_neto,
+                            pD4_neto = s.pD4_neto,
+                            cont_D1 = s.cont_D1,
+                            cont_D2 = s.cont_D2,
+                            cont_D3 = s.cont_D3,
+                            cont_D4 = s.cont_D4,
+                            pD1_div_full = s.pD1_div_full,
+                            pD2_div_full = s.pD2_div_full,
+                            pD3_div_full = s.pD3_div_full,
+                            pD4_div_full = s.pD4_div_full,
+                            empaque_D1 = s.empaque_D1,
+                            empaque_D2 = s.empaque_D2,
+                            empaque_D3 = s.empaque_D3,
+                            empaque_D4 = s.empaque_D4,
                         };
                     }).ToList();
                 }
@@ -297,14 +338,11 @@ namespace DataProvInventario.Data
             var r01 = MyData.Reportes_Kardex(filtroDto);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
 
             var mov= new List<OOB.LibInventario.Reportes.Kardex.Mov>();
             var ex = new List<OOB.LibInventario.Reportes.Kardex.Existencia>();
-
             var xmov = r01.Entidad.movimientos;
             if (xmov != null)
             {

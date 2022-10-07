@@ -31,6 +31,12 @@ namespace ModInventario.src.Producto.AgregarEditar
         protected string _fichaEditar;
 
 
+        public BaseAgregarEditar(baseDataAgregarEditar data)
+        {
+            this._data = data;
+        }
+
+
         public BindingSource GetCodAlterno_Source { get { return _gCodAlterno.GetSource; } }
         public BindingSource GetDepartamento_Source { get { return _departamento.Source; } }
         public BindingSource GetGrupo_Source { get { return _grupo.Source; } }

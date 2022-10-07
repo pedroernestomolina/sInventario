@@ -21,6 +21,9 @@ namespace ModInventario.FiltrosGen
         void LimpiarItem();
         void Inicializa();
 
+
+        bool LimpiarItemIsOk { get; }
+
     }
 
 }

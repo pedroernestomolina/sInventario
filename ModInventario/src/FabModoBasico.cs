@@ -39,7 +39,10 @@ namespace ModInventario.src
         {
             return new Producto.Visualizar.ModoBasico.Gestion();
         }
-
+        public Filtro.IFiltro CreateInstancia_FiltrosReporte()
+        {
+            return new ModInventario.src.Filtro.FiltroRep.ModoBasico.ImpModoBasico();
+        }
 
 
         ModInventario.src.Buscar.ModoBasico.BusquedaFrm _frm;

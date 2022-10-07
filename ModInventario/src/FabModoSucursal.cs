@@ -34,15 +34,31 @@ namespace ModInventario.src
         }
         public Producto.AgregarEditar.IBaseAgregarEditar CreateInstancia_AgregarPrd()
         {
-            return null;
+            return new src.Producto.AgregarEditar.ModoSucursal.Agregar.ImpAgregar(CrearInstancia_Seguridad_Modo_NivelAcceso_Usuario(SeguridadSist.Usuario.enumerados.enumTipo.GrupoAdministrador));
         }
         public Producto.AgregarEditar.IBaseAgregarEditar CreateInstancia_EditarPrd()
         {
-            return null;
+            return new src.Producto.AgregarEditar.ModoSucursal.Editar.ImpEditar(CrearInstancia_Seguridad_Modo_NivelAcceso_Usuario(SeguridadSist.Usuario.enumerados.enumTipo.GrupoAdministrador));
         }
         public ModInventario.Producto.VisualizarFicha.IVisualizar CreateInstancia_VisualizarPrd()
         {
             return new ModInventario.Producto.VisualizarFicha.Gestion();
+        }
+        public Filtro.IFiltro CreateInstancia_FiltrosReporte()
+        {
+            var filtroBusPrd = CreateInstancia_FiltroBusqProducto();
+            return new ModInventario.src.Filtro.FiltroRep.ModoSucursal.ImpModoSucursal(filtroBusPrd);
+        }
+
+        private FiltrosGen.IBuscar CreateInstancia_FiltroBusqProducto()
+        {
+            var listaPrdSel = CreateInstancia_ListaSeleccionableProducto();
+            return new FiltrosGen.BuscarProducto.Gestion(listaPrdSel);
+        }
+
+        private ModInventario.Buscar.INotificarSeleccion CreateInstancia_ListaSeleccionableProducto()
+        {
+            return new ModInventario.Producto.ListaSel.Gestion();
         }
 
 
@@ -59,6 +75,16 @@ namespace ModInventario.src
         public void ShowBuscarPrd()
         {
             _frm.ShowDialog();
+        }
+
+
+        private SeguridadSist.ISeguridad CrearInstancia_Seguridad_Modo_NivelAcceso_Usuario(SeguridadSist.Usuario.enumerados.enumTipo modo) 
+        {
+            SeguridadSist.Usuario.IModoUsuario _gModoNivelAcceso = new SeguridadSist.Usuario.Gestion(); 
+            _gModoNivelAcceso.setUsuarioValidar(modo);
+            SeguridadSist.ISeguridad _gSecurity = new SeguridadSist.Gestion();
+            _gSecurity.setGestionTipo(_gModoNivelAcceso);
+            return _gSecurity;
         }
 
     }

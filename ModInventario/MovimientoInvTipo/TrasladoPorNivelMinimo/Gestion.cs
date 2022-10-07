@@ -140,15 +140,10 @@ namespace ModInventario.MovimientoInvTipo.TrasladoPorNivelMinimo
                 }
                 _gConcepto.setData(_lConcepto);
 
-                var filtroOOb = new OOB.LibInventario.Sucursal.Filtro();
-                var r02 = Sistema.MyData.Sucursal_GetLista(filtroOOb);
-                if (r02.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r02.Mensaje);
-                    return false;
-                }
                 var lstSucOrigen = new List<ficha>();
                 var lstSucDestino = new List<ficha>();
+                var filtroOOb = new OOB.LibInventario.Sucursal.Filtro();
+                var r02 = Sistema.MyData.Sucursal_GetLista(filtroOOb);
                 foreach (var rg in r02.Lista.OrderBy(o => o.nombre).ToList())
                 {
                     lstSucOrigen.Add(new ficha(rg.auto, rg.codigo, rg.nombre));

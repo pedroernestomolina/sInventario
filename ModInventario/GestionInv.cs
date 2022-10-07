@@ -37,23 +37,24 @@ namespace ModInventario
         private FiltrosGen.IBuscar _gFiltroBusPrd;
         private FiltrosGen.IOpcion _gfiltroSucursal;
         private FiltrosGen.IOpcion _gfiltroTipoDoc;
-        private FiltrosGen.IOpcion _gfiltroCategoria;
-        private FiltrosGen.IOpcion _gfiltroOrigen;
-        private FiltrosGen.IOpcion _gfiltroTasaIva;
-        private FiltrosGen.IOpcion _gfiltroDivisa;
-        private FiltrosGen.IOpcion _gfiltroPesado;
-        private FiltrosGen.IOpcion _gfiltroOferta;
-        private FiltrosGen.IOpcion _gfiltroExistencia;
-        private FiltrosGen.IOpcion _gfiltroCatalogo;
-        private FiltrosGen.IOpcion _gfiltroPrecioMay;
-        private FiltrosGen.IOpcion _gfiltroDepart;
-        private FiltrosGen.IOpcion _gfiltroGrupo;
+        //private FiltrosGen.IOpcion _gfiltroCategoria;
+        //private FiltrosGen.IOpcion _gfiltroOrigen;
+        //private FiltrosGen.IOpcion _gfiltroTasaIva;
+        //private FiltrosGen.IOpcion _gfiltroDivisa;
+        //private FiltrosGen.IOpcion _gfiltroPesado;
+        //private FiltrosGen.IOpcion _gfiltroOferta;
+        //private FiltrosGen.IOpcion _gfiltroExistencia;
+        //private FiltrosGen.IOpcion _gfiltroCatalogo;
+        //private FiltrosGen.IOpcion _gfiltroPrecioMay;
+        //private FiltrosGen.IOpcion _gfiltroDepart;
+        //private FiltrosGen.IOpcion _gfiltroGrupo;
         private FiltrosGen.IFecha _gfiltroDesde;
         private FiltrosGen.IFecha _gfiltroHasta;
         private FiltrosGen.IAdmDoc _gFiltroAdmDoc;
         private FiltrosGen.IAdmSelecciona _gAdmSelPrd;
         private Administrador.IGestion _gAdmDoc;
-        private IGestionRep _gestionReporteFiltros;
+        //private IGestionRep _gestionReporteFiltros;
+
         //
         private ISeguridadAccesoSistema _seguridad;
         private SeguridadSist.ISeguridad _gSecurity;
@@ -135,14 +136,19 @@ namespace ModInventario
         }
 
 
-        private src.IFabrica _fabrica; 
-        public GestionInv()
+        private src.IFabrica _fabrica;
+        ModInventario.src.Filtro.IFiltro _gestionReporteFiltros;
+        public GestionInv(src.IFabrica fabrica)
         {
-            _fabrica = new src.FabModoBasico();
+            _fabrica = fabrica;
             Producto.Precio.EditarCambiar.IEditar _hndEditarPrecio = _fabrica.CreateInstancia_EditarCambiarPrecio();
             Producto.Precio.VerVisualizar.IVisual _hndVerVisualizarPrecio = _fabrica.CreateInstancia_VisualizarPrecio();
             FiltrosGen.AdmProducto.IAdmProducto _hndFiltroAdmProducto = _fabrica.CreateInstancia_FiltroPrdAdm();
             Producto.Precio.Historico.IHistorico _hndHistPrecio = _fabrica.CreateInstancia_HistoricoPrecio();
+            ModInventario.src.Producto.AgregarEditar.IBaseAgregarEditar _hndAgregarFicha = _fabrica.CreateInstancia_AgregarPrd();
+            ModInventario.src.Producto.AgregarEditar.IBaseAgregarEditar _hndEditarFicha = _fabrica.CreateInstancia_EditarPrd();
+            Producto.VisualizarFicha.IVisualizar _hndVisualizarFicha = _fabrica.CreateInstancia_VisualizarPrd();
+            _gestionReporteFiltros = _fabrica.CreateInstancia_FiltrosReporte();
 
 
             _gSecurity= new SeguridadSist.Gestion();
@@ -162,18 +168,18 @@ namespace ModInventario
             _gfiltroTipoDoc= new FiltrosGen.Opcion.Gestion();
             _gfiltroDesde = new FiltrosGen.Fecha.Gestion();
             _gfiltroHasta= new FiltrosGen.Fecha.Gestion();
-            _gfiltroCategoria = new FiltrosGen.Opcion.Gestion();
-            _gfiltroOrigen = new FiltrosGen.Opcion.Gestion();
-            _gfiltroTasaIva= new FiltrosGen.Opcion.Gestion();
+            //_gfiltroCategoria = new FiltrosGen.Opcion.Gestion();
+            //_gfiltroOrigen = new FiltrosGen.Opcion.Gestion();
+            //_gfiltroTasaIva= new FiltrosGen.Opcion.Gestion();
             _gfiltroEstatus= new FiltrosGen.Opcion.Gestion();
-            _gfiltroDivisa= new FiltrosGen.Opcion.Gestion();
-            _gfiltroPesado= new FiltrosGen.Opcion.Gestion();
-            _gfiltroOferta= new FiltrosGen.Opcion.Gestion();
-            _gfiltroExistencia= new FiltrosGen.Opcion.Gestion();
-            _gfiltroCatalogo= new FiltrosGen.Opcion.Gestion();
-            _gfiltroPrecioMay = new FiltrosGen.Opcion.Gestion();
-            _gfiltroDepart= new FiltrosGen.Opcion.Gestion();
-            _gfiltroGrupo= new FiltrosGen.Opcion.Gestion();
+            //_gfiltroDivisa= new FiltrosGen.Opcion.Gestion();
+            //_gfiltroPesado= new FiltrosGen.Opcion.Gestion();
+            //_gfiltroOferta= new FiltrosGen.Opcion.Gestion();
+            //_gfiltroExistencia= new FiltrosGen.Opcion.Gestion();
+            //_gfiltroCatalogo= new FiltrosGen.Opcion.Gestion();
+            //_gfiltroPrecioMay = new FiltrosGen.Opcion.Gestion();
+            //_gfiltroDepart= new FiltrosGen.Opcion.Gestion();
+            //_gfiltroGrupo= new FiltrosGen.Opcion.Gestion();
             //
             _gFiltroAdmDoc = new FiltrosGen.AdmDoc.Gestion(
                 _gfiltroConcepto, 
@@ -186,20 +192,21 @@ namespace ModInventario
                 _gfiltroDesde, 
                 _gfiltroHasta);
 
-            _gestionReporteFiltros = new FiltrosGen.Reportes.Gestion(
-                _gFiltroBusPrd, 
-                _gfiltroDepOrigen, 
-                _gfiltroMarca,
-                _gfiltroSucursal, 
-                _gfiltroDepart, 
-                _gfiltroDivisa, 
-                _gfiltroCategoria, 
-                _gfiltroTasaIva, 
-                _gfiltroEstatus,
-                _gfiltroOrigen, 
-                _gfiltroGrupo, 
-                _gfiltroDesde, 
-                _gfiltroHasta);
+            //_gestionReporteFiltros = new FiltrosGen.Reportes.Gestion(
+            //    _gFiltroBusPrd, 
+            //    _gfiltroDepOrigen, 
+            //    _gfiltroMarca,
+            //    _gfiltroSucursal, 
+            //    _gfiltroDepart, 
+            //    _gfiltroDivisa, 
+            //    _gfiltroCategoria, 
+            //    _gfiltroTasaIva, 
+            //    _gfiltroEstatus,
+            //    _gfiltroOrigen, 
+            //    _gfiltroGrupo, 
+            //    _gfiltroDesde, 
+            //    _gfiltroHasta);
+
             _gAdmDoc = new Administrador.Movimiento.Gestion(_gFiltroAdmDoc);
             _gAdmSelPrd = new FiltrosGen.AdmSelecciona.Gestion(
                 _hndFiltroAdmProducto, 
@@ -298,11 +305,11 @@ namespace ModInventario
             _gestionBusqueda = new Buscar.Gestion(
                 _hndFiltroAdmProducto, 
                 _seguridad,
-                _callMaestro,
-                _gSecurity,
-                _gSecurityModoUsuario,
                 _gQR,
                 _gImagen,
+                _hndAgregarFicha,
+                _hndEditarFicha,
+                _hndVisualizarFicha,
                 _hndEditarPrecio,
                 _hndVerVisualizarPrecio,
                 _hndHistPrecio,
@@ -643,6 +650,8 @@ namespace ModInventario
             {
                 _gestionReporteFiltros.Inicializa();
                 _gestionReporteFiltros.setValidarData(false);
+                _gestionReporteFiltros.setDesde(DateTime.Now.Date);
+                _gestionReporteFiltros.setHasta(DateTime.Now.Date);
                 _gestionReporteFiltros.setGestion(new Reportes.Filtros.ResumenCostoInventario.Filtros());
                 _gestionReporteFiltros.Inicia();
                 if (_gestionReporteFiltros.FiltrosIsOK)
@@ -718,6 +727,7 @@ namespace ModInventario
                 _gestionReporteFiltros.Inicializa();
                 _gestionReporteFiltros.setValidarData(true);
                 _gestionReporteFiltros.setGestion(new Reportes.Filtros.Valorizacion.Filtros());
+                _gestionReporteFiltros.setHasta(DateTime.Now.Date);
                 _gestionReporteFiltros.Inicia();
                 if (_gestionReporteFiltros.FiltrosIsOK)
                 {
@@ -759,6 +769,8 @@ namespace ModInventario
             {
                 _gestionReporteFiltros.Inicializa();
                 _gestionReporteFiltros.setValidarData(true);
+                _gestionReporteFiltros.setDesde(DateTime.Now.Date);
+                _gestionReporteFiltros.setHasta(DateTime.Now.Date);
                 _gestionReporteFiltros.setGestion(new Reportes.Filtros.Kardex.Filtros());
                 _gestionReporteFiltros.Inicia();
                 if (_gestionReporteFiltros.FiltrosIsOK)
@@ -891,7 +903,7 @@ namespace ModInventario
             {
                 _gestionReporteFiltros.Inicializa();
                 _gestionReporteFiltros.setValidarData(false);
-                _gestionReporteFiltros.setGestion(new Reportes.Filtros.MaestroInventario.Filtros());
+                _gestionReporteFiltros.setGestion(new Reportes.Filtros.MaestroPrecioBasico.Filtros());
                 _gestionReporteFiltros.Inicia();
                 if (_gestionReporteFiltros.FiltrosIsOK)
                 {

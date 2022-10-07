@@ -45,13 +45,15 @@ namespace ModInventario.Reportes.Filtros.Kardex
             {
                 filtro.autoProducto = dataFiltros.Producto.id;
             }
-            var r01 = Sistema.MyData.Reportes_Kardex(filtro);
-            if (r01.Result == OOB.Enumerados.EnumResult.isError)
+            try
             {
-                Helpers.Msg.Error(r01.Mensaje);
-                return;
+                var r01 = Sistema.MyData.Reportes_Kardex(filtro);
+                Imprimir(r01.Entidad, dataFiltros.ToString());
             }
-            Imprimir(r01.Entidad, dataFiltros.ToString());
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
+            }
         }
 
 

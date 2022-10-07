@@ -12,7 +12,8 @@ namespace DataProvInventario.Data
     public partial class DataProv: IData
     {
 
-        OOB.ResultadoEntidad<OOB.LibInventario.Concepto.Ficha> IConcepto.Concepto_PorTraslado()
+        OOB.ResultadoEntidad<OOB.LibInventario.Concepto.Ficha> 
+            IConcepto.Concepto_PorTraslado()
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Concepto.Ficha>();
 
@@ -35,8 +36,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoLista<OOB.LibInventario.Concepto.Ficha> Concepto_GetLista()
+        public OOB.ResultadoLista<OOB.LibInventario.Concepto.Ficha> 
+            Concepto_GetLista()
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Concepto.Ficha>();
 
@@ -68,8 +69,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoEntidad<OOB.LibInventario.Concepto.Ficha> Concepto_GetFicha(string auto)
+        public OOB.ResultadoEntidad<OOB.LibInventario.Concepto.Ficha> 
+            Concepto_GetFicha(string auto)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Concepto.Ficha>();
 
@@ -92,8 +93,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoAuto Concepto_Agregar(OOB.LibInventario.Concepto.Agregar ficha)
+        public OOB.ResultadoAuto 
+            Concepto_Agregar(OOB.LibInventario.Concepto.Agregar ficha)
         {
             var rt = new OOB.ResultadoAuto();
 
@@ -113,8 +114,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.Resultado Concepto_Editar(OOB.LibInventario.Concepto.Editar ficha)
+        public OOB.Resultado 
+            Concepto_Editar(OOB.LibInventario.Concepto.Editar ficha)
         {
             var rt = new OOB.Resultado();
 
@@ -134,8 +135,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.Resultado Concepto_Eliminar(string auto)
+        public OOB.Resultado 
+            Concepto_Eliminar(string auto)
         {
             var rt = new OOB.Resultado();
 

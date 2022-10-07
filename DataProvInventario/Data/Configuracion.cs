@@ -13,6 +13,32 @@ namespace DataProvInventario.Data
     public partial class DataProv: IData
     {
 
+        public OOB.ResultadoEntidad<Enumerados.modoConfInventario> 
+            Configuracion_ModuloInventario_Modo()
+        {
+            var rt = new OOB.ResultadoEntidad<Enumerados.modoConfInventario>();
+            var r01 = MyData.Configuracion_ModuloInventario_Modo();
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+
+            Enumerados.modoConfInventario _modo = Enumerados.modoConfInventario.SinDefinir;
+            var _dato=r01.Entidad;
+            switch(_dato.Trim().ToUpper())
+            {
+                case "BASICO":
+                    _modo = Enumerados.modoConfInventario.Basico;
+                    break;
+                case "SUCURSAL":
+                    _modo = Enumerados.modoConfInventario.Sucursal;
+                    break;
+            }
+            rt.Entidad = _modo;
+
+            return rt;
+        }
+
         public OOB.ResultadoEntidad<OOB.LibInventario.Configuracion.Enumerados.EnumPreferenciaBusqueda> 
             Configuracion_PreferenciaBusqueda()
         {

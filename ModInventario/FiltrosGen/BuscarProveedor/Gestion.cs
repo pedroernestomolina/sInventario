@@ -83,6 +83,9 @@ namespace ModInventario.FiltrosGen.BuscarProveedor
             _item = null;
         }
 
+
+        public bool LimpiarItemIsOk { get { return _item == null; } }
+
     }
 
 }

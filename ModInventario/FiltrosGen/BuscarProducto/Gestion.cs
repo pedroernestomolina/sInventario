@@ -95,6 +95,9 @@ namespace ModInventario.FiltrosGen.BuscarProducto
             _cadena = "";
         }
 
+
+        public bool LimpiarItemIsOk { get { return _item == null; } }
+
     }
 
 }

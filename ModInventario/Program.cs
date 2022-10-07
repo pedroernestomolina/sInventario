@@ -18,39 +18,47 @@ namespace ModInventario
             var r01 = Helpers.Utilitis.CargarXml();
             if (r01.Result != OOB.Enumerados.EnumResult.isError)
             {
-                if (Sistema._Usuario.Trim() == "") 
+                if (Sistema._Usuario.Trim() == "")
                 {
                     Sistema.MyData = new DataProvInventario.Data.DataProv(Sistema._Instancia, Sistema._BaseDatos);
                 }
-                else
+                else 
                 {
-                    Sistema.MyData = new DataProvInventario.Data.DataProv(Sistema._Instancia, Sistema._BaseDatos,Sistema._Usuario);
+                    Sistema.MyData = new DataProvInventario.Data.DataProv(Sistema._Instancia, Sistema._BaseDatos, Sistema._Usuario);
                 }
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-
-                var r02 = Sistema.MyData.Empresa_Datos();
-                if (r02.Result == OOB.Enumerados.EnumResult.isError)
+                try
                 {
-                    Helpers.Msg.Error(r02.Mensaje);
-                    Application.Exit();
-                }
-                else
-                {
+                    src.IFabrica fabrica;
+                    var r02 = Sistema.MyData.Empresa_Datos();
                     Sistema.Negocio = r02.Entidad;
-
+                    var r03 = Sistema.MyData.Configuracion_ModuloInventario_Modo();
+                    switch(r03.Entidad)
+                    {
+                        case DataProvInventario.Enumerados.modoConfInventario.Basico:
+                            fabrica= new src.FabModoBasico();
+                            break;
+                        case DataProvInventario.Enumerados.modoConfInventario.Sucursal:
+                            fabrica= new src.FabModoSucursal();
+                            break;
+                        default:
+                            throw new Exception("NO SE HA DEFINIDO UN MODO DE CONFIGURACION PARA INVENTARIO");
+                    }
                     var _gestionId = new Identificacion.Gestion();
                     _gestionId.Inicia();
                     if (_gestionId.IsUsuarioOk)
                     {
-                        var _gestionInv = new GestionInv();
+                        var _gestionInv = new GestionInv(fabrica);
                         _gestionInv.Inicia();
                     }
                 }
-                //Application.EnableVisualStyles();
-                //Application.SetCompatibleTextRenderingDefault(false);
-                //Application.Run(new Form1());
+                catch (Exception e)
+                {
+                    Helpers.Msg.Error(e.Message);
+                    Application.Exit();
+                }
             }
             else 
             {

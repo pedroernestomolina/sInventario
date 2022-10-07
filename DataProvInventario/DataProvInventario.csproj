@@ -78,6 +78,7 @@
     <Compile Include="Data\MovTransito.cs" />
     <Compile Include="Data\Usuario.cs" />
     <Compile Include="Data\Visor.cs" />
+    <Compile Include="Enumerados.cs" />
     <Compile Include="InfraEstructura\IAnalisis.cs" />
     <Compile Include="InfraEstructura\IAuditoria.cs" />
     <Compile Include="InfraEstructura\IConcepto.cs" />

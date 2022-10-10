@@ -175,8 +175,14 @@ namespace ModInventario.Producto.Precio.EditarCambiar
         {
             if (_metodoCalculoUtilidad == enumMetCalUtilidad.Financiero)
             {
-                if (monto <= 0m)
+                if (monto < 0m)
                 {
+                }
+                else if (monto==0m)
+                {
+                    _utilidadNueva = 0m;
+                    _pn = 0m;
+                    _pf = 0m;
                 }
                 else 
                 {

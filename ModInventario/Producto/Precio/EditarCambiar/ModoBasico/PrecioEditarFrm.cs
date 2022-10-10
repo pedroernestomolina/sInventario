@@ -82,10 +82,6 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoBasico
             TB_PF_3.Text = _controlador.GetPF3.ToString("n2").Replace(".", "");
             L_UT_ACTUAL_3.Text = _controlador.GetUtActual3.ToString("n2").Replace(".", "");
 
-            TB_CONT_1.Enabled = true;
-            TB_CONT_2.Enabled = true;
-            TB_CONT_3.Enabled = true;
-
             TB_UT_1.Enabled = false;
             TB_UT_2.Enabled = false;
             TB_UT_3.Enabled = false;
@@ -97,10 +93,6 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoBasico
             TB_PF_1.Enabled = false;
             TB_PF_2.Enabled = false;
             TB_PF_3.Enabled = false;
-
-            CB_EMP_1.Enabled = true;
-            CB_EMP_2.Enabled = true;
-            CB_EMP_3.Enabled = true;
 
             _modoInicializar = false;
         }
@@ -410,7 +402,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoBasico
             TB_PF_2.Enabled = pf;
             TB_PF_3.Enabled = pf;
         }
-  
+ 
     }
 
 }

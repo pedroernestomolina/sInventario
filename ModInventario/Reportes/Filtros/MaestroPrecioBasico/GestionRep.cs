@@ -84,9 +84,25 @@ namespace ModInventario.Reportes.Filtros.MaestroPrecioBasico
                 rt["grupo"] = it.grupo;
                 rt["divisa"] = it.admDivisa == "1" ? "Si" : "No";
                 rt["tasaIva"] = it.tasa;
-                rt["empaque_1"] = Precio(it.p1_neto, it.p1_div_full, it.tasa, it.admDivisa).ToString() + Environment.NewLine + it.empaque_1.Trim() + "/(" + it.cont_1.ToString() + ")";
-                rt["empaque_2"] = Precio(it.pM1_neto, it.pM1_div_full, it.tasa, it.admDivisa).ToString() + Environment.NewLine + it.empaque_M1.Trim() + "/(" + it.cont_M1.ToString() + ")";
-                rt["empaque_3"] = Precio(it.pD1_neto, it.pD1_div_full, it.tasa, it.admDivisa).ToString() + Environment.NewLine + it.empaque_D1.Trim() + "/(" + it.cont_D1.ToString() + ")";
+
+                var pemp1 = "";
+                var pemp2 = "";
+                var pemp3 = "";
+                if (it.p1_neto > 0)
+                {
+                    pemp1 = Precio(it.p1_neto, it.p1_div_full, it.tasa, it.admDivisa).ToString() + Environment.NewLine + it.empaque_1.Trim() + "/(" + it.cont_1.ToString() + ")";
+                }
+                if (it.pM1_neto > 0)
+                {
+                    pemp2 = Precio(it.pM1_neto, it.pM1_div_full, it.tasa, it.admDivisa).ToString() + Environment.NewLine + it.empaque_M1.Trim() + "/(" + it.cont_M1.ToString() + ")"; 
+                }
+                if (it.pD1_neto > 0)
+                {
+                    pemp3 = Precio(it.pD1_neto, it.pD1_div_full, it.tasa, it.admDivisa).ToString() + Environment.NewLine + it.empaque_D1.Trim() + "/(" + it.cont_D1.ToString() + ")";
+                }
+                rt["empaque_1"] = pemp1;
+                rt["empaque_2"] = pemp2;
+                rt["empaque_3"] = pemp3;
                 rt["precio_1"] = Precio(it.p1_neto, it.p1_div_full, it.tasa, it.admDivisa);
                 rt["precio_2"] = Precio(it.pM1_neto, it.pM1_div_full, it.tasa, it.admDivisa);
                 rt["precio_3"] = Precio(it.pD1_neto, it.pD1_div_full, it.tasa, it.admDivisa);  

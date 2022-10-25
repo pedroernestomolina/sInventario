@@ -59,42 +59,40 @@ namespace ModInventario.Configuracion.DepositoConceptoDevMercancia
 
         private bool CargarData()
         {
-            var r01 = Sistema.MyData.Configuracion_DepositoConceptoPreDeterminadoDevolucionMercancia();
-            if (r01.Result == OOB.Enumerados.EnumResult.isError) 
+            try
             {
-                Helpers.Msg.Error(r01.Mensaje);
+                var r01 = Sistema.MyData.Configuracion_DepositoConceptoPreDeterminadoDevolucionMercancia();
+                if (r01.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r01.Mensaje);
+                    return false;
+                }
+
+                var lstDep = new List<ficha>();
+                var r02 = Sistema.MyData.Deposito_GetLista();
+                foreach (var rg in r02.Lista.OrderBy(o => o.nombre))
+                {
+                    lstDep.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
+                }
+                _gDeposito.setData(lstDep);
+                _gDeposito.setFicha(r01.Entidad.IdDeposito);
+
+                var lstCon = new List<ficha>();
+                var r03 = Sistema.MyData.Concepto_GetLista();
+                foreach (var rg in r03.Lista.OrderBy(o => o.nombre))
+                {
+                    lstCon.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
+                }
+                _gConcepto.setData(lstCon);
+                _gConcepto.setFicha(r01.Entidad.IdConcepto);
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
                 return false;
             }
-
-            var r02 = Sistema.MyData.Deposito_GetLista();
-            if (r02.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r02.Mensaje);
-                return false;
-            }
-            var lstDep = new List<ficha>();
-            foreach (var rg in r02.Lista.OrderBy(o => o.nombre)) 
-            {
-                lstDep.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
-            }
-            _gDeposito.setData(lstDep);
-            _gDeposito.setFicha(r01.Entidad.IdDeposito);
-
-            var r03 = Sistema.MyData.Concepto_GetLista ();
-            if (r03.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r03.Mensaje);
-                return false;
-            }
-            var lstCon= new List<ficha>();
-            foreach (var rg in r03.Lista.OrderBy(o => o.nombre))
-            {
-                lstCon.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
-            }
-            _gConcepto.setData(lstCon);
-            _gConcepto.setFicha(r01.Entidad.IdConcepto);
-
-            return true;
         }
 
 

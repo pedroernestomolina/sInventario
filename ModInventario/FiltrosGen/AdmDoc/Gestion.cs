@@ -97,39 +97,38 @@ namespace ModInventario.FiltrosGen.AdmDoc
 
         private bool CargarData()
         {
-            var xr1 = Sistema.MyData.Concepto_GetLista();
-            if (xr1.Result == OOB.Enumerados.EnumResult.isError)
+            try
             {
-                Helpers.Msg.Error(xr1.Mensaje);
+                var lst = new List<ficha>();
+                var xr1 = Sistema.MyData.Concepto_GetLista();
+                if (xr1.Result == OOB.Enumerados.EnumResult.isError)
+                foreach (var rg in xr1.Lista.OrderBy(o => o.nombre).ToList())
+                {
+                    lst.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
+                }
+                _gConcepto.setData(lst);
+
+                var lst2 = new List<ficha>();
+                lst2.Add(new ficha("1", "", "ACTIVO"));
+                lst2.Add(new ficha("2", "", "ANULADO"));
+                _gEstatus.setData(lst2);
+
+                var lst3 = new List<ficha>();
+                var xr3 = Sistema.MyData.Deposito_GetLista();
+                foreach (var rg in xr3.Lista.OrderBy(o => o.nombre).ToList())
+                {
+                    lst3.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
+                }
+                _gDepOrigen.setData(lst3);
+                _gDepDestino.setData(lst3);
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
                 return false;
             }
-            var lst = new List<ficha>();
-            foreach (var rg in xr1.Lista.OrderBy(o => o.nombre).ToList())
-            {
-                lst.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
-            }
-            _gConcepto.setData(lst);
-
-            var lst2 = new List<ficha>();
-            lst2.Add(new ficha("1", "", "ACTIVO"));
-            lst2.Add(new ficha("2", "", "ANULADO"));
-            _gEstatus.setData(lst2);
-
-            var xr3 = Sistema.MyData.Deposito_GetLista();
-            if (xr3.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(xr3.Mensaje);
-                return false;
-            }
-            var lst3 = new List<ficha>();
-            foreach (var rg in xr3.Lista.OrderBy(o => o.nombre).ToList())
-            {
-                lst3.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
-            }
-            _gDepOrigen.setData(lst3);
-            _gDepDestino.setData(lst3);
-
-            return true;
         }
 
         public void LimpiarFiltros()

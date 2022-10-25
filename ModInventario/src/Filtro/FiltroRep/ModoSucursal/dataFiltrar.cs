@@ -15,6 +15,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
         public ficha Sucursal { get; set; }
         public ficha Categoria { get; set; }
         public ficha Origen { get; set; }
+        public ficha Precio { get; set; }
 
 
         public dataFiltrar()
@@ -24,6 +25,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
             Sucursal = null;
             Categoria = null;
             Origen = null;
+            Precio = null;
         }
 
 
@@ -34,6 +36,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
             Sucursal = null;
             Categoria = null;
             Origen = null;
+            Precio = null;
         }
 
 
@@ -44,6 +47,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
             if (Categoria != null) t += ", Categoria: " + Categoria.desc;
             if (Origen != null) t += ", Origen: " + Origen.desc;
             if (Producto != null) t += ", Producto: " + Producto.desc;
+            if (Precio != null) t += ", Precio: " + Precio.desc;
             return t;
         }
 

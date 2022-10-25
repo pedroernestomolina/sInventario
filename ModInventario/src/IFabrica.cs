@@ -10,6 +10,10 @@ namespace ModInventario.src
     
     public interface IFabrica
     {
+
+        void Iniciar_FrmPrincipal(ModInventario.GestionInv ctr);
+
+
         ModInventario.Producto.Precio.VerVisualizar.IVisual 
             CreateInstancia_VisualizarPrecio();
         ModInventario.Producto.Precio.EditarCambiar.IEditar 
@@ -24,6 +28,8 @@ namespace ModInventario.src
             CreateInstancia_EditarPrd();
         ModInventario.Producto.VisualizarFicha.IVisualizar 
             CreateInstancia_VisualizarPrd();
+        AdmDocumentos.IAdmDoc 
+            CreateInstancia_AdmDocumentos();
 
 
         object BuscarPrd { get; }
@@ -31,8 +37,9 @@ namespace ModInventario.src
         void ShowBuscarPrd();
 
 
+        Filtro.FiltroRep.IFiltroRep CreateInstancia_FiltrosReporte();
 
-        Filtro.IFiltro CreateInstancia_FiltrosReporte();
+
     }
 
 }

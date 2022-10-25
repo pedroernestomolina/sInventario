@@ -936,21 +936,18 @@ namespace DataProvInventario.Data
                 Desde = filtro.Desde,
                 Hasta = filtro.Hasta,
                 TipoDocumento = (DtoLibInventario.Movimiento.enumerados.EnumTipoDocumento)filtro.TipoDocumento,
-                IdSucursal = filtro.IdSucursal,
                 IdDepDestino = filtro.IdDepDestino,
                 IdDepOrigen = filtro.IdDepOrigen,
                 IdConcepto=filtro.IdConcepto,
                 Estatus = (DtoLibInventario.Movimiento.enumerados.EnumEstatus)filtro.Estatus,
                 IdProducto=filtro.IdProducto,
+                IdSucursal = filtro.CodigoSucursal,
             };
             var r01 = MyData.Producto_Movimiento_GetLista(filtroDto);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
-
             var list = new List<OOB.LibInventario.Movimiento.Lista.Ficha>();
             if (r01.Lista != null)
             {
@@ -1059,9 +1056,7 @@ namespace DataProvInventario.Data
             var r01 = MyData.Producto_Movimiento_Cargo_Anular(fichaDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
 
             return rt;
@@ -1084,9 +1079,7 @@ namespace DataProvInventario.Data
             var r01 = MyData.Producto_Movimiento_Descargo_Anular(fichaDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
 
             return rt;
@@ -1109,9 +1102,7 @@ namespace DataProvInventario.Data
             var r01 = MyData.Producto_Movimiento_Traslado_Anular(fichaDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
 
             return rt;
@@ -1134,9 +1125,7 @@ namespace DataProvInventario.Data
             var r01 = MyData.Producto_Movimiento_Ajuste_Anular(fichaDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
 
             return rt;
@@ -1204,6 +1193,9 @@ namespace DataProvInventario.Data
                             //
                             autoTasa = s.tasaAuto,
                             costo = s.costo,
+                            //
+                            nombreEmpInv = s.nombreEmpInv,
+                            contEmpInv = s.contEmpInv,
                         };
                     }).ToList();
                 }
@@ -1309,6 +1301,8 @@ namespace DataProvInventario.Data
                 estatusDivisa = s.estatusDivisa,
                 valorTasa = s.valorTasa,
                 fechaUltActualizacionCosto = _fechaUltActCosto,
+                nombreEmpInv = s.nombreEmpInv,
+                contEmpInv = s.contEmpInv,
             };
             rt.Entidad = new OOB.LibInventario.Movimiento.DesCargo.CapturaMov.Ficha()
             {
@@ -1337,15 +1331,10 @@ namespace DataProvInventario.Data
             var s = r01.Entidad.data;
             var _fechaNula = new DateTime(2000, 01, 01);
             var _fechaUltActCosto = "";
-            if (s.fechaUltActCosto == _fechaNula)
-            {
-                _fechaUltActCosto = "";
-            }
-            else
+            if (s.fechaUltActCosto != _fechaNula)
             {
                 _fechaUltActCosto = s.fechaUltActCosto.ToShortDateString();
             }
-
             var ent = new OOB.LibInventario.Movimiento.Cargo.CapturaMov.Data()
             {
                 autoDepart = s.autoDepart,
@@ -1366,6 +1355,8 @@ namespace DataProvInventario.Data
                 estatusDivisa = s.estatusDivisa,
                 valorTasa = s.valorTasa,
                 fechaUltActualizacionCosto = _fechaUltActCosto,
+                nombreEmpInv= s.nombreEmpInv,
+                contEmpInv= s.contEmpInv,
             };
             rt.Entidad = new OOB.LibInventario.Movimiento.Cargo.CapturaMov.Ficha()
             {
@@ -1373,7 +1364,6 @@ namespace DataProvInventario.Data
             };
             return rt;
         }
-
         //
         public OOB.ResultadoEntidad<OOB.LibInventario.Movimiento.Traslado.CapturaMov.Ficha> 
             Producto_Movimiento_Traslado_CaptureMov(OOB.LibInventario.Movimiento.Traslado.CapturaMov.Filtro filtro)
@@ -1425,6 +1415,8 @@ namespace DataProvInventario.Data
                 estatusDivisa = s.estatusDivisa,
                 valorTasa = s.valorTasa,
                 fechaUltActualizacionCosto = _fechaUltActCosto,
+                nombreEmpInv = s.nombreEmpInv,
+                contEmpInv = s.contEmpInv,
             };
             rt.Entidad = new OOB.LibInventario.Movimiento.Traslado.CapturaMov.Ficha()
             {

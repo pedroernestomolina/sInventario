@@ -190,6 +190,9 @@ namespace ModInventario.MovimientoInvTipo.Ajuste.Captura
             _item.setTasaCambio(tasaCambio);
         }
 
+
+        public string InfProductoEmpInventario { get { return _item.InfProductoEmpInventario; } }
+        public string InfProductoEmpUnidad { get { return _item.InfProductoEmpUnidad; } }
     }
 
 }

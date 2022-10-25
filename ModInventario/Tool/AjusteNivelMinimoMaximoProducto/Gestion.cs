@@ -86,31 +86,23 @@ namespace ModInventario.Tool.AjusteNivelMinimoMaximoProducto
 
         private bool CargarData()
         {
-            var rt = true;
-
             try
             {
-                var r01 = Sistema.MyData.Deposito_GetLista();
-                if (r01.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r01.Mensaje);
-                    return false;
-                }
-
                 lDeposito.Clear();
+                var r01 = Sistema.MyData.Deposito_GetLista();
                 lDeposito.AddRange(r01.Lista.OrderBy(o => o.nombre).ToList());
 
                 var r02 = Sistema.MyData.Departamento_GetLista();
                 lDepartamento.Clear();
                 lDepartamento.AddRange(r02.Lista.OrderBy(o => o.nombre).ToList());
+
+                return true;
             }
             catch (Exception e)
             {
                 Helpers.Msg.Error(e.Message);
                 return false;
             }
-
-            return rt;
         }
 
         public void Buscar()

@@ -19,7 +19,6 @@ namespace DataProvInventario.InfraEstructura
             FechaServidor();
         OOB.ResultadoEntidad<OOB.LibInventario.Empresa.Data.Ficha >
             Empresa_Datos();
-
     }
 
 }

@@ -31,6 +31,9 @@ namespace OOB.LibInventario.Movimiento.CapturaMov
         public string fechaUltActualizacionCosto { get; set; }
         public bool esAdmDivisa { get { return estatusDivisa.Trim() == "1" ? true : false; } }
         public decimal costoDivisaUnd { get { return Math.Round(costoDivisa / contEmp, 2, MidpointRounding.AwayFromZero); } }
+        //
+        public string nombreEmpInv { get; set; }
+        public int contEmpInv { get; set; }
 
     }
 

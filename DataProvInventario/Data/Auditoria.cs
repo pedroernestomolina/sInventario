@@ -12,7 +12,8 @@ namespace DataProvInventario.Data
     public partial class DataProv: IData
     {
 
-        public OOB.ResultadoEntidad<OOB.LibInventario.Auditoria.Entidad.Ficha> Auditoria_Documento_GetFichaBy(OOB.LibInventario.Auditoria.Buscar.Ficha ficha)
+        public OOB.ResultadoEntidad<OOB.LibInventario.Auditoria.Entidad.Ficha> 
+            Auditoria_Documento_GetFichaBy(OOB.LibInventario.Auditoria.Buscar.Ficha ficha)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Auditoria.Entidad.Ficha>();
 
@@ -24,11 +25,8 @@ namespace DataProvInventario.Data
             var r01 = MyData.Auditoria_Documento_GetFichaBy (fichaDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
-
             var s = r01.Entidad;
             var nr = new OOB.LibInventario.Auditoria.Entidad.Ficha()
             {

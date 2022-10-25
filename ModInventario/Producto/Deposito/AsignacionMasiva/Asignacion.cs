@@ -92,17 +92,10 @@ namespace ModInventario.Producto.Deposito.AsignacionMasiva
 
         private bool CargarData()
         {
-            var rt = true;
-
             try
             {
-                var r01 = Sistema.MyData.Deposito_GetLista();
-                if (r01.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r01.Mensaje);
-                    return false;
-                }
                 var lst = new List<ficha>();
+                var r01 = Sistema.MyData.Deposito_GetLista();
                 foreach (var rg in r01.Lista.OrderBy(o => o.nombre).ToList())
                 {
                     lst.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
@@ -121,14 +114,14 @@ namespace ModInventario.Producto.Deposito.AsignacionMasiva
                     _departExcluir.Add(depart);
                 }
                 _bsDepart.CurrencyManager.Refresh();
+
+                return true;
             }
             catch (Exception e)
             {
                 Helpers.Msg.Error(e.Message);
                 return false;
             }
-
-            return rt;
         }
         private void Guardar()
         {

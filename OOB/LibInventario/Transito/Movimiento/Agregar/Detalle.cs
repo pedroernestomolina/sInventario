@@ -38,6 +38,9 @@ namespace OOB.LibInventario.Transito.Movimiento.Agregar
         public string empaqueIdSolicitada { get; set; }
         public string ajusteIdSolicitada { get; set; }
         public decimal costoSolicitada { get; set; }
+        //
+        public int contEmpInv { get; set; }
+        public string nombreEmpInv { get; set; }
 
 
         public Detalle()
@@ -69,6 +72,9 @@ namespace OOB.LibInventario.Transito.Movimiento.Agregar
             empaqueIdSolicitada = "";
             ajusteIdSolicitada = "";
             costoSolicitada = 0m;
+            //
+            contEmpInv = 0;
+            nombreEmpInv = "";
         }
 
     }

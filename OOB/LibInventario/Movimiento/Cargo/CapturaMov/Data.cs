@@ -32,6 +32,8 @@ namespace OOB.LibInventario.Movimiento.Cargo.CapturaMov
             descTasa = "";
             valorTasa = 0m;
             fechaUltActualizacionCosto = "";
+            nombreEmpInv = "";
+            contEmpInv = 0;
         }
 
     }

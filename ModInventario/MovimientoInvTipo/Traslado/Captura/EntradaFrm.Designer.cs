@@ -98,6 +98,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel22 = new System.Windows.Forms.Panel();
             this.L_EMP_COMPRA = new System.Windows.Forms.Label();
+            this.panel27 = new System.Windows.Forms.Panel();
+            this.panel28 = new System.Windows.Forms.Panel();
+            this.panel29 = new System.Windows.Forms.Panel();
+            this.panel30 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.L_EMP_INV = new System.Windows.Forms.Label();
+            this.L_EMP_UND = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -140,6 +148,10 @@
             this.tableLayoutPanel6.SuspendLayout();
             this.panel21.SuspendLayout();
             this.panel22.SuspendLayout();
+            this.panel27.SuspendLayout();
+            this.panel28.SuspendLayout();
+            this.panel29.SuspendLayout();
+            this.panel30.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -945,6 +957,10 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.tableLayoutPanel6.Controls.Add(this.panel21, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.panel22, 2, 0);
+            this.tableLayoutPanel6.Controls.Add(this.panel27, 1, 1);
+            this.tableLayoutPanel6.Controls.Add(this.panel28, 2, 1);
+            this.tableLayoutPanel6.Controls.Add(this.panel29, 1, 2);
+            this.tableLayoutPanel6.Controls.Add(this.panel30, 2, 2);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(1);
@@ -1001,6 +1017,94 @@
             this.L_EMP_COMPRA.TabIndex = 2;
             this.L_EMP_COMPRA.Text = "Emp/Compra:";
             this.L_EMP_COMPRA.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel27
+            // 
+            this.panel27.Controls.Add(this.label9);
+            this.panel27.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel27.Location = new System.Drawing.Point(21, 30);
+            this.panel27.Margin = new System.Windows.Forms.Padding(1);
+            this.panel27.Name = "panel27";
+            this.panel27.Padding = new System.Windows.Forms.Padding(2);
+            this.panel27.Size = new System.Drawing.Size(112, 27);
+            this.panel27.TabIndex = 2;
+            // 
+            // panel28
+            // 
+            this.panel28.Controls.Add(this.L_EMP_INV);
+            this.panel28.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel28.Location = new System.Drawing.Point(135, 30);
+            this.panel28.Margin = new System.Windows.Forms.Padding(1);
+            this.panel28.Name = "panel28";
+            this.panel28.Padding = new System.Windows.Forms.Padding(2);
+            this.panel28.Size = new System.Drawing.Size(163, 27);
+            this.panel28.TabIndex = 3;
+            // 
+            // panel29
+            // 
+            this.panel29.Controls.Add(this.label13);
+            this.panel29.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel29.Location = new System.Drawing.Point(21, 59);
+            this.panel29.Margin = new System.Windows.Forms.Padding(1);
+            this.panel29.Name = "panel29";
+            this.panel29.Padding = new System.Windows.Forms.Padding(2);
+            this.panel29.Size = new System.Drawing.Size(112, 27);
+            this.panel29.TabIndex = 4;
+            // 
+            // panel30
+            // 
+            this.panel30.Controls.Add(this.L_EMP_UND);
+            this.panel30.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel30.Location = new System.Drawing.Point(135, 59);
+            this.panel30.Margin = new System.Windows.Forms.Padding(1);
+            this.panel30.Name = "panel30";
+            this.panel30.Padding = new System.Windows.Forms.Padding(2);
+            this.panel30.Size = new System.Drawing.Size(163, 27);
+            this.panel30.TabIndex = 5;
+            // 
+            // label9
+            // 
+            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(2, 2);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(108, 23);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Emp/Inv:";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label13
+            // 
+            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(2, 2);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(108, 23);
+            this.label13.TabIndex = 2;
+            this.label13.Text = "Emp/Unidad:";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // L_EMP_INV
+            // 
+            this.L_EMP_INV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_EMP_INV.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_EMP_INV.Location = new System.Drawing.Point(2, 2);
+            this.L_EMP_INV.Name = "L_EMP_INV";
+            this.L_EMP_INV.Size = new System.Drawing.Size(159, 23);
+            this.L_EMP_INV.TabIndex = 5;
+            this.L_EMP_INV.Text = "Emp/Compra:";
+            this.L_EMP_INV.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // L_EMP_UND
+            // 
+            this.L_EMP_UND.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_EMP_UND.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_EMP_UND.Location = new System.Drawing.Point(2, 2);
+            this.L_EMP_UND.Name = "L_EMP_UND";
+            this.L_EMP_UND.Size = new System.Drawing.Size(159, 23);
+            this.L_EMP_UND.TabIndex = 5;
+            this.L_EMP_UND.Text = "Emp/Compra:";
+            this.L_EMP_UND.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // EntradaFrm
             // 
@@ -1061,6 +1165,10 @@
             this.tableLayoutPanel6.ResumeLayout(false);
             this.panel21.ResumeLayout(false);
             this.panel22.ResumeLayout(false);
+            this.panel27.ResumeLayout(false);
+            this.panel28.ResumeLayout(false);
+            this.panel29.ResumeLayout(false);
+            this.panel30.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1137,6 +1245,14 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel26;
         private System.Windows.Forms.Label L_EXISTENCIA;
+        private System.Windows.Forms.Panel panel27;
+        private System.Windows.Forms.Panel panel28;
+        private System.Windows.Forms.Panel panel29;
+        private System.Windows.Forms.Panel panel30;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label L_EMP_INV;
+        private System.Windows.Forms.Label L_EMP_UND;
 
     }
 }

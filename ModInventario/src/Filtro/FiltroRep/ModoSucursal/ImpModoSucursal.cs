@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 
 namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
@@ -14,19 +15,19 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
         private FiltrosGen.IOpcion _gSucursal;
         private FiltrosGen.IOpcion _gCategoria;
         private FiltrosGen.IOpcion _gOrigen;
+        private FiltrosGen.IOpcion _gPrecio;
         private FiltrosGen.IBuscar _filtroBusPrd;
         static new protected dataFiltrar _data;
 
 
-        public System.Windows.Forms.BindingSource GetSucursal_Source { get { return _gSucursal.Source; } }
-        public System.Windows.Forms.BindingSource GetCategoria_Source { get { return _gCategoria.Source; } }
-        public System.Windows.Forms.BindingSource GetOrigen_Source { get { return _gOrigen.Source; } }
+        public BindingSource GetSucursal_Source { get { return _gSucursal.Source; } }
+        public BindingSource GetCategoria_Source { get { return _gCategoria.Source; } }
+        public BindingSource GetOrigen_Source { get { return _gOrigen.Source; } }
 
 
         public string GetSucursal_Id { get { return _gSucursal.GetId; } }
         public string GetCategoria_Id { get { return _gCategoria.GetId; } }
         public string GetOrigen_Id { get { return _gOrigen.GetId; } }
-        public string GetProducto { get { return _filtroBusPrd.DescItemSeleccionado; } }
 
 
         public bool GetHabilitarSucursal { get { return _filtros.ActivarSucursal; } }
@@ -51,6 +52,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
             _gSucursal = new FiltrosGen.Opcion.Gestion();
             _gCategoria = new FiltrosGen.Opcion.Gestion();
             _gOrigen = new FiltrosGen.Opcion.Gestion();
+            _gPrecio = new FiltrosGen.Opcion.Gestion();
             _filtroBusPrd = filtroBusPrd;
         }
 
@@ -61,6 +63,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
             _gSucursal.Inicializa();
             _gCategoria.Inicializa();
             _gOrigen.Inicializa();
+            _gPrecio.Inicializa();
             _filtroBusPrd.Inicializa();
             _data.Limpiar();
         }
@@ -109,6 +112,14 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
                         lOrigen.Add(new ficha(rg.Id, "", rg.Descripcion));
                     }
                     _gOrigen.setData(lOrigen);
+
+                    var lPrecio = new List<ficha>();
+                    var r04 = Sistema.MyData.Sistema_TipoPreciosDefinidos_Lista();
+                    foreach (var rg in r04.Lista.OrderBy(o => o.descripcion).ToList())
+                    {
+                        lPrecio.Add(new ficha(rg.id, "", rg.descripcion));
+                    }
+                    _gPrecio.setData(lPrecio);
                     return true;
                 }
                 catch (Exception e)
@@ -125,6 +136,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
             _gSucursal.Inicializa();
             _gCategoria.Inicializa();
             _gOrigen.Inicializa();
+            _gPrecio.Inicializa();
             _filtroBusPrd.Inicializa();
         }
 
@@ -173,6 +185,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
                 Origen = _data.Origen,
                 Producto = _data.Producto,
                 Sucursal = _data.Sucursal,
+                Precio = _data.Precio,
             };
             return rg;
         }
@@ -193,20 +206,15 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
             _gOrigen.setFicha(id);
             _data.Origen= _gOrigen.Item;
         }
+
+
+        public string GetProducto { get { return _filtroBusPrd.DescItemSeleccionado; } }
+        public bool ProductoIsOk { get { return _filtroBusPrd.ItemIsOk; } }
+        public bool LimpiarProductoIsOk { get { return _filtroBusPrd.LimpiarItemIsOk; } }
         public void setProducto(string desc)
         {
             _filtroBusPrd.setCadenaBuscar(desc);
         }
-
-
-        public bool LimpiarProductoIsOk { get { return _filtroBusPrd.LimpiarItemIsOk; } }
-        public void LimpiarProducto()
-        {
-            _filtroBusPrd.LimpiarItem();
-        }
-
-
-        public bool ProductoIsOk { get { return _filtroBusPrd.ItemIsOk; } }
         public void BuscarProducto()
         {
             _filtroBusPrd.Buscar();
@@ -214,6 +222,20 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
             {
                 _data.Producto = _filtroBusPrd.ItemSeleccionado;
             }
+        }
+        public void LimpiarProducto()
+        {
+            _filtroBusPrd.LimpiarItem();
+        }
+        
+
+        public BindingSource GetPrecio_Source { get { return _gPrecio.Source; } }
+        public string GetPrecio_Id { get { return _gPrecio.GetId; } }
+        public bool GetHabilitarPrecio { get { return _filtros.ActivarPrecio ; } }
+        public void setPrecio(string id)
+        {
+            _gPrecio.setFicha(id);
+            _data.Precio = _gPrecio.Item;
         }
 
     }

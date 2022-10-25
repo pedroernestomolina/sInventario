@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
 {
 
-    public interface IModoSucursal: IFiltro
+    public interface IModoSucursal: IFiltroRep
     {
         BindingSource GetSucursal_Source { get; }
         BindingSource GetCategoria_Source { get; }
@@ -19,7 +19,6 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
         string GetSucursal_Id { get; }
         string GetCategoria_Id { get; }
         string GetOrigen_Id { get; }
-        string GetProducto { get; }
 
 
         bool GetHabilitarSucursal { get; }
@@ -31,15 +30,20 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
         void setSucursal(string id);
         void setCategoria(string id);
         void setOrigen(string id);
-        void setProducto(string desc);
 
 
+        string GetProducto { get; }
         bool LimpiarProductoIsOk { get; }
+        bool ProductoIsOk { get; }
+        void setProducto(string desc);
+        void BuscarProducto();
         void LimpiarProducto();
 
 
-        bool ProductoIsOk { get; }
-        void BuscarProducto();
+        BindingSource GetPrecio_Source { get; }
+        string GetPrecio_Id { get; }
+        bool GetHabilitarPrecio { get;  }
+        void setPrecio(string id);
     }
 
 }

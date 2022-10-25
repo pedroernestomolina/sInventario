@@ -83,6 +83,7 @@ namespace ModInventario.MovimientoInvTipo.Cargo.Captura
         {
             var lst= new List<ficha>();
             lst.Add(new ficha("1", "", "POR EMPQ/COMPRA"));
+            lst.Add(new ficha("3", "", "POR EMPQ/INV"));
             lst.Add(new ficha("2", "", "POR UNIDAD"));
             _gEmpaque.setData(lst);
 
@@ -102,6 +103,7 @@ namespace ModInventario.MovimientoInvTipo.Cargo.Captura
 
         public void Procesar()
         {
+            _procesarIsOk = false;
             if (_gEmpaque.GetId == "")
             {
                 Helpers.Msg.Alerta("CAMPO [ EMPAQUE ] NO PUEDE ESTAR VACIO");
@@ -142,13 +144,17 @@ namespace ModInventario.MovimientoInvTipo.Cargo.Captura
         {
             _gEmpaque.Limpiar();
             _gEmpaque.setFicha(ItemActual.EmpaqueFicha.id);
-            _item = ItemActual;
+            _item = new dataItem(ItemActual);
         }
 
         public void setTasaCambio(decimal tasaCambio)
         {
             _item.setTasaCambio(tasaCambio);
         }
+
+
+        public string InfProductoEmpInventario { get { return _item.InfProductoEmpInventario; } }
+        public string InfProductoEmpUnidad { get { return _item.InfProductoEmpUnidad; } }
 
     }
 

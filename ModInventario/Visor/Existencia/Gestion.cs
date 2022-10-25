@@ -68,13 +68,8 @@ namespace ModInventario.Visor.Existencia
 
             try
             {
-                var r01 = Sistema.MyData.Deposito_GetLista();
-                if (r01.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r01.Mensaje);
-                    return false;
-                }
                 lDeposito.Clear();
+                var r01 = Sistema.MyData.Deposito_GetLista();
                 lDeposito.AddRange(r01.Lista.OrderBy(o => o.nombre).ToList());
                 bsDeposito.CurrencyManager.Refresh();
 

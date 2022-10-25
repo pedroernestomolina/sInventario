@@ -57,19 +57,22 @@ namespace ModInventario.Configuracion.DepositoPreDeterminado
 
         private bool CargarData()
         {
-            var r01 = Sistema.MyData.Deposito_GetLista();
-            if (r01.Result == OOB.Enumerados.EnumResult.isError)
+            try
             {
-                Helpers.Msg.Error(r01.Mensaje);
+                var r01 = Sistema.MyData.Deposito_GetLista();
+                foreach (var dep in r01.Lista.OrderBy(o => o.nombre).ToList())
+                {
+                    _bl.Add(new data(dep));
+                }
+                _bs.CurrencyManager.Refresh();
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
                 return false;
             }
-            foreach (var dep in r01.Lista.OrderBy(o=>o.nombre).ToList())
-            {
-                _bl.Add(new data(dep));
-            }
-            _bs.CurrencyManager.Refresh();
-
-            return true;
         }
 
         public void Procesar()

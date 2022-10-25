@@ -50,6 +50,10 @@ namespace ModInventario.MovimientoInvTipo
         void setItemEditar(dataItem ItemActual);
         void setTasaCambio(decimal _tasaCambio);
 
+
+        string InfProductoEmpInventario { get; }
+        string InfProductoEmpUnidad { get; }
+
     }
 
 }

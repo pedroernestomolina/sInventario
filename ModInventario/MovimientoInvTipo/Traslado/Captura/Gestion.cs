@@ -89,6 +89,7 @@ namespace ModInventario.MovimientoInvTipo.Traslado.Captura
         {
             var lst = new List<ficha>();
             lst.Add(new ficha("1", "", "POR EMPQ/COMPRA"));
+            lst.Add(new ficha("3", "", "POR EMPQ/INV"));
             lst.Add(new ficha("2", "", "POR UNIDAD"));
             _gEmpaque.setData(lst);
         }
@@ -106,6 +107,7 @@ namespace ModInventario.MovimientoInvTipo.Traslado.Captura
 
         public void Procesar()
         {
+            _procesarIsOk = false;
             if (_gEmpaque.GetId == "")
             {
                 Helpers.Msg.Alerta("CAMPO [ EMPAQUE ] NO PUEDE ESTAR VACIO");
@@ -116,7 +118,6 @@ namespace ModInventario.MovimientoInvTipo.Traslado.Captura
                 Helpers.Msg.Alerta("MONTO MOVIMIENTO INCORRECTO");
                 return;
             }
-
             _procesarIsOk = false;
             var xmsg = "Guardar Cambios ?";
             var msg = MessageBox.Show(xmsg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
@@ -150,7 +151,7 @@ namespace ModInventario.MovimientoInvTipo.Traslado.Captura
             }
             _gEmpaque.Limpiar();
             _gEmpaque.setFicha(ItemActual.EmpaqueFicha.id);
-            _item = ItemActual;
+            _item = new dataItem(ItemActual);
         }
 
         public void setTasaCambio(decimal tasaCambio)
@@ -158,6 +159,9 @@ namespace ModInventario.MovimientoInvTipo.Traslado.Captura
             _item.setTasaCambio(tasaCambio);
         }
 
+
+        public string InfProductoEmpInventario { get { return _item.InfProductoEmpInventario; } }
+        public string InfProductoEmpUnidad { get { return _item.InfProductoEmpUnidad; } }
     }
 
 }

@@ -2,7 +2,7 @@
 <Configuracion>
   <Servidor>
     <Instancia>localhost</Instancia>
-    <Catalogo>russo</Catalogo>
+    <Catalogo>pita</Catalogo>
     <Usuario></Usuario>
   </Servidor>
 </Configuracion>

@@ -40,6 +40,8 @@ namespace ModInventario.MovimientoInvTipo.Traslado.Captura
             CB_EMPAQUE.SelectedValue = _controlador.EmpaqueGetID;
             L_PRODUCTO.Text = _controlador.InfProductoDesc;
             L_EMP_COMPRA.Text = _controlador.InfProductoEmpaCompra;
+            L_EMP_INV.Text = _controlador.InfProductoEmpInventario;
+            L_EMP_UND.Text = _controlador.InfProductoEmpUnidad;
             L_TASA_CAMBIO.Text = _controlador.InfTasaCambio.ToString("n2");
             L_ADM_DIVISA.Text = _controlador.InfProductoEsAdmDivisa;
             L_TASA_IVA.Text = _controlador.InfProductoTasaIva;

@@ -74,6 +74,9 @@ namespace DataProvInventario.Data
                     costoSolicitada = det.costoSolicitada,
                     empaqueIdSolicitada = det.empaqueIdSolicitada,
                     ajusteIdSolicitada = det.ajusteIdSolicitada,
+                    //
+                    contEmpInv = det.contEmpInv,
+                    nombreEmpInv = det.nombreEmpInv,
                 };
                 detallesDTO.Add(rg);
             }
@@ -243,6 +246,9 @@ namespace DataProvInventario.Data
                     costoSolicitado = det.costoSolicitado,
                     empaqueIdSolicitado = det.empaqueIdSolicitado,
                     ajusteIdSolicitado = det.ajusteIdSolicitado,
+                    //
+                    contEmpaqueInv = det.contEmpaqueInv,
+                    descEmpaqueInv = det.descEmpaqueInv,
                 };
                 detalles.Add(rg);
             }

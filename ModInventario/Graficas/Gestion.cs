@@ -56,18 +56,19 @@ namespace ModInventario.Graficas
 
         private bool CargarData()
         {
-            var rt = true;
-
-            var r01 = Sistema.MyData.Deposito_GetLista();
-            if (r01.Result == OOB.Enumerados.EnumResult.isError)
+            try
             {
-                Helpers.Msg.Error(r01.Mensaje);
+                lDeposito.Clear();
+                var r01 = Sistema.MyData.Deposito_GetLista();
+                lDeposito.AddRange(r01.Lista.OrderBy(o => o.nombre));
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
                 return false;
             }
-            lDeposito.Clear();
-            lDeposito.AddRange(r01.Lista.OrderBy(o => o.nombre));
-
-            return rt;
         }
 
         private void Limpiar()

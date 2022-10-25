@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ModInventario.src.Filtro.FiltroRep.ModoBasico
 {
     
-    public interface IModoBasico: IFiltro
+    public interface IModoBasico: IFiltroRep
     {
     }
 

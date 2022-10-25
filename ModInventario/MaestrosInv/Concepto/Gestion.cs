@@ -51,18 +51,21 @@ namespace ModInventario.MaestrosInv.Concepto
 
         public bool CargarData()
         {
-            var r01 = Sistema.MyData.Concepto_GetLista();
-            if (r01.Result == OOB.Enumerados.EnumResult.isError)
+            try
             {
-                Helpers.Msg.Error(r01.Mensaje);
+                _lst.Clear();
+                var r01 = Sistema.MyData.Concepto_GetLista();
+                foreach (var rg in r01.Lista.OrderBy(o => o.nombre).ToList())
+                {
+                    _lst.Add(new data(rg.auto, rg.codigo, rg.nombre));
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
                 return false;
             }
-            _lst.Clear();
-            foreach (var rg in r01.Lista.OrderBy(o => o.nombre).ToList())
-            {
-                _lst.Add(new data(rg.auto, rg.codigo, rg.nombre));
-            }
-            return true;
         }
 
         public void AgregarItem()

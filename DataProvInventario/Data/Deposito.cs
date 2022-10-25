@@ -12,18 +12,16 @@ namespace DataProvInventario.Data
     public partial class DataProv: IData
     {
 
-        public OOB.ResultadoLista<OOB.LibInventario.Deposito.Ficha> Deposito_GetLista()
+        public OOB.ResultadoLista<OOB.LibInventario.Deposito.Ficha> 
+            Deposito_GetLista()
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Deposito.Ficha>();
 
             var r01 = MyData.Deposito_GetLista();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
-
             var list = new List<OOB.LibInventario.Deposito.Ficha>();
             if (r01.Lista != null)
             {
@@ -46,8 +44,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoEntidad<OOB.LibInventario.Deposito.Ficha> Deposito_GetFicha(string autoDep)
+        public OOB.ResultadoEntidad<OOB.LibInventario.Deposito.Ficha> 
+            Deposito_GetFicha(string autoDep)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Deposito.Ficha>();
 
@@ -73,8 +71,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-        public OOB.ResultadoLista<OOB.LibInventario.Deposito.Ficha> Deposito_GetListaBySucursal(string codSuc)
+        public OOB.ResultadoLista<OOB.LibInventario.Deposito.Ficha> 
+            Deposito_GetListaBySucursal(string codSuc)
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Deposito.Ficha>();
 

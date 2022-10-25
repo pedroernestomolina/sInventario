@@ -778,6 +778,43 @@
       <DependentUpon>SeguridadFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Sistema.cs" />
+    <Compile Include="src\AdmDocumentos\baseAdmDoc.cs" />
+    <Compile Include="src\AdmDocumentos\data.cs" />
+    <Compile Include="src\AdmDocumentos\IAdmDoc.cs" />
+    <Compile Include="src\AdmDocumentos\IListaAdmDoc.cs" />
+    <Compile Include="src\AdmDocumentos\ImpListaAdmDoc.cs" />
+    <Compile Include="src\AdmDocumentos\ModoBasico\AdministradorFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\AdmDocumentos\ModoBasico\AdministradorFrm.Designer.cs">
+      <DependentUpon>AdministradorFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\AdmDocumentos\ModoBasico\IBasico.cs" />
+    <Compile Include="src\AdmDocumentos\ModoBasico\ImpModoBasico.cs" />
+    <Compile Include="src\AdmDocumentos\ModoSucursal\AdministradorFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\AdmDocumentos\ModoSucursal\AdministradorFrm.Designer.cs">
+      <DependentUpon>AdministradorFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\AdmDocumentos\ModoSucursal\ImpModoSucursal.cs" />
+    <Compile Include="src\AdmDocumentos\ModoSucursal\ISucursal.cs" />
+    <Compile Include="src\AnularDoc\AnularFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\AnularDoc\AnularFrm.Designer.cs">
+      <DependentUpon>AnularFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\AnularDoc\ImpAnular.cs" />
+    <Compile Include="src\AnularDoc\IAnular.cs" />
+    <Compile Include="src\Auditoria\Visualizar\ImpVisualizar.cs" />
+    <Compile Include="src\Auditoria\Visualizar\IVisualizar.cs" />
+    <Compile Include="src\Auditoria\Visualizar\VisualizarFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Auditoria\Visualizar\VisualizarFrm.Designer.cs">
+      <DependentUpon>VisualizarFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Buscar\ModoBasico\BusquedaFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -807,8 +844,26 @@
     </Compile>
     <Compile Include="src\FiltroBusqAdm\ModoSucursal\ImpSucursal.cs" />
     <Compile Include="src\FiltroBusqAdm\ModoSucursal\ISucursal.cs" />
+    <Compile Include="src\Filtro\FiltroAdmDoc\baseAdmDoc.cs" />
+    <Compile Include="src\Filtro\FiltroAdmDoc\dataExportar.cs" />
+    <Compile Include="src\Filtro\FiltroAdmDoc\IAdmDoc.cs" />
+    <Compile Include="src\Filtro\FiltroAdmDoc\ModoBasico\FiltroFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Filtro\FiltroAdmDoc\ModoBasico\FiltroFrm.Designer.cs">
+      <DependentUpon>FiltroFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Filtro\FiltroAdmDoc\ModoBasico\ImpModoBasico.cs" />
+    <Compile Include="src\Filtro\FiltroAdmDoc\ModoSucursal\FiltroFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Filtro\FiltroAdmDoc\ModoSucursal\FiltroFrm.Designer.cs">
+      <DependentUpon>FiltroFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Filtro\FiltroAdmDoc\ModoSucursal\ImpModoSucursal.cs" />
     <Compile Include="src\Filtro\FiltroRep\baseData.cs" />
     <Compile Include="src\Filtro\FiltroRep\baseFiltro.cs" />
+    <Compile Include="src\Filtro\FiltroRep\IFiltroRep.cs" />
     <Compile Include="src\Filtro\FiltroRep\ModoBasico\dataFiltrar.cs" />
     <Compile Include="src\Filtro\FiltroRep\ModoBasico\FiltrosFrm.cs">
       <SubType>Form</SubType>
@@ -829,11 +884,18 @@
     <Compile Include="src\Filtro\FiltroRep\ModoSucursal\ImpModoSucursal.cs" />
     <Compile Include="src\Filtro\IFiltro.cs" />
     <Compile Include="src\IFabrica.cs" />
+    <Compile Include="src\ILista.cs" />
     <Compile Include="src\Inicio\ModoBasico\Form2.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="src\Inicio\ModoBasico\Form2.designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Inicio\ModoSucursal\Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Inicio\ModoSucursal\Principal.designer.cs">
+      <DependentUpon>Principal.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Producto\AgregarEditar\BaseAgregarEditar.cs" />
     <Compile Include="src\Producto\AgregarEditar\baseDataAgregarEditar.cs" />
@@ -1221,6 +1283,18 @@
     <EmbeddedResource Include="Seguridad\SeguridadFrm.resx">
       <DependentUpon>SeguridadFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\AdmDocumentos\ModoBasico\AdministradorFrm.resx">
+      <DependentUpon>AdministradorFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\AdmDocumentos\ModoSucursal\AdministradorFrm.resx">
+      <DependentUpon>AdministradorFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\AnularDoc\AnularFrm.resx">
+      <DependentUpon>AnularFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Auditoria\Visualizar\VisualizarFrm.resx">
+      <DependentUpon>VisualizarFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\Buscar\ModoBasico\BusquedaFrm.resx">
       <DependentUpon>BusquedaFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1230,6 +1304,12 @@
     <EmbeddedResource Include="src\FiltroBusqAdm\ModoSucursal\FiltrosFrm.resx">
       <DependentUpon>FiltrosFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\Filtro\FiltroAdmDoc\ModoBasico\FiltroFrm.resx">
+      <DependentUpon>FiltroFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Filtro\FiltroAdmDoc\ModoSucursal\FiltroFrm.resx">
+      <DependentUpon>FiltroFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\Filtro\FiltroRep\ModoBasico\FiltrosFrm.resx">
       <DependentUpon>FiltrosFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1238,6 +1318,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\Inicio\ModoBasico\Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Inicio\ModoSucursal\Principal.resx">
+      <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Producto\AgregarEditar\ModoBasico\AgregarEditarFrm.resx">
       <DependentUpon>AgregarEditarFrm.cs</DependentUpon>

@@ -112,8 +112,6 @@ namespace ModInventario.FiltrosGen.Reportes
 
         private bool CargarData()
         {
-            var rt = true;
-
             try
             {
                 var r00 = Sistema.MyData.Configuracion_VisualizarProductosInactivos();
@@ -132,13 +130,8 @@ namespace ModInventario.FiltrosGen.Reportes
                 }
                 _gDepart.setData(lDepart);
 
-                var r02 = Sistema.MyData.Deposito_GetLista();
-                if (r02.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r02.Mensaje);
-                    return false;
-                }
                 var lDeposito = new List<ficha>();
+                var r02 = Sistema.MyData.Deposito_GetLista();
                 foreach (var rg in r02.Lista.OrderBy(o => o.nombre).ToList())
                 {
                     lDeposito.Add(new ficha(rg.auto, "", rg.nombre));
@@ -206,14 +199,14 @@ namespace ModInventario.FiltrosGen.Reportes
                     lEstatus.Add(new ficha("03", "", "INACTIVO"));
                 }
                 _gEstatus.setData(lEstatus);
+
+                return true;
             }
             catch (Exception e)
             {
                 Helpers.Msg.Error(e.Message);
                 return false;
             }
-
-            return rt;
         }
 
         public void LimpiarFiltros()

@@ -64,17 +64,10 @@ namespace ModInventario.Visor.CostoEdad
 
         private bool CargarData()
         {
-            var rt = true;
-
             try
             {
-                var r01 = Sistema.MyData.Deposito_GetLista();
-                if (r01.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r01.Mensaje);
-                    return false;
-                }
                 lDeposito.Clear();
+                var r01 = Sistema.MyData.Deposito_GetLista();
                 lDeposito.AddRange(r01.Lista.OrderBy(o => o.nombre).ToList());
                 bsDeposito.CurrencyManager.Refresh();
 
@@ -82,14 +75,14 @@ namespace ModInventario.Visor.CostoEdad
                 var r02 = Sistema.MyData.Departamento_GetLista();
                 lDepart.AddRange(r02.Lista.OrderBy(o => o.nombre).ToList());
                 bsDepart.CurrencyManager.Refresh();
+
+                return false;
             }
             catch (Exception e)
             {
                 Helpers.Msg.Error(e.Message);
                 return false;
             }
-
-            return rt;
         }
 
         private void Limpiar()

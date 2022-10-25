@@ -155,31 +155,31 @@ namespace ModInventario.MovimientoInvTipo.Traslado
             }
             else
             {
-                var r11 = Sistema.MyData.Concepto_GetLista();
-                if (r11.Result == OOB.Enumerados.EnumResult.isError)
+                try
                 {
-                    Helpers.Msg.Error(r11.Mensaje);
-                    return false;
-                }
-                var _lConcepto = new List<ficha>();
-                foreach (var rg in r11.Lista.OrderBy(o => o.nombre).ToList())
-                {
-                    _lConcepto.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
-                }
-                _gConcepto.setData(_lConcepto);
+                    var _lConcepto = new List<ficha>();
+                    var r11 = Sistema.MyData.Concepto_GetLista();
+                    foreach (var rg in r11.Lista.OrderBy(o => o.nombre).ToList())
+                    {
+                        _lConcepto.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
+                    }
+                    _gConcepto.setData(_lConcepto);
 
-                var r22 = Sistema.MyData.Deposito_GetLista();
-                if (r22.Result == OOB.Enumerados.EnumResult.isError)
+                    var lst = new List<ficha>();
+                    var r22 = Sistema.MyData.Deposito_GetLista();
+                    foreach (var rg in r22.Lista.OrderBy(o => o.nombre).ToList())
+                    {
+                        lst.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
+                    }
+                    _gDepDestino.setData(lst);
+
+                    return true;
+                }
+                catch (Exception e)
                 {
-                    Helpers.Msg.Error(r22.Mensaje);
+                    Helpers.Msg.Error(e.Message);
                     return false;
                 }
-                var lst = new List<ficha>();
-                foreach (var rg in r22.Lista.OrderBy(o => o.nombre).ToList())
-                {
-                    lst.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
-                }
-                _gDepDestino.setData(lst);
             }
 
             try
@@ -330,6 +330,8 @@ namespace ModInventario.MovimientoInvTipo.Traslado
                 nombrePrd = r.nombrePrd,
                 valorTasa = r.valorTasa,
                 fechaUltimaActCosto = r.fechaUltActualizacionCosto,
+                contEmpInv = r.contEmpInv,
+                nombreEmpInv = r.nombreEmpInv,
             };
             _gCapturaMov.Inicializa();
             _gCapturaMov.setData(dat);
@@ -374,16 +376,18 @@ namespace ModInventario.MovimientoInvTipo.Traslado
         {
             _gMaestro.MtConcepto();
 
-            var r01 = Sistema.MyData.Concepto_GetLista();
-            if (r01.Result == OOB.Enumerados.EnumResult.isError) 
+            var _lConcepto = new List<ficha>();
+            try
             {
-                Helpers.Msg.Error(r01.Mensaje);
-                return;
+                var r01 = Sistema.MyData.Concepto_GetLista();
+                foreach (var rg in r01.Lista.OrderBy(o => o.nombre).ToList())
+                {
+                    _lConcepto.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
+                }
             }
-            var _lConcepto= new List<ficha>();
-            foreach(var rg in r01.Lista.OrderBy(o=>o.nombre).ToList())
+            catch (Exception e)
             {
-                _lConcepto.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
+                Helpers.Msg.Error(e.Message);
             }
             _gConcepto.setData(_lConcepto);
         }
@@ -467,17 +471,19 @@ namespace ModInventario.MovimientoInvTipo.Traslado
                     cantidadUnd = s.CntUnd,
                     categoria = s.Data.catPrd,
                     codigoProducto = s.Data.codigoPrd,
-                    contEmpaque = s.Data.contEmp,
                     costoCompra = s.CostoNacional,
                     costoUnd = s.CostoUndNacional,
                     decimales = s.Data.decimales,
-                    empaque = s.Data.nombreEmp,
                     estatusAnulado = "0",
                     estatusUnidad = s.MovPorUnidad ? "1" : "0",
                     nombreProducto = s.Data.nombrePrd,
                     signo = _docTipo.signo,
                     tipo = _docTipo.codigo,
                     total = s.ImporteNacional,
+                    //empaque = s.Data.nombreEmp,
+                    //contEmpaque = s.Data.contEmp,
+                    contEmpaque = s.contEmpSeleccionado,
+                    empaque = s.empSeleccionado,
                 };
                 return rg;
             }).ToList();
@@ -745,13 +751,11 @@ namespace ModInventario.MovimientoInvTipo.Traslado
                     autoTasa = det.Data.autoTasa,
                     catPrd = det.Data.catPrd,
                     codigoPrd = det.Data.codigoPrd,
-                    contEmp = det.Data.contEmp,
                     costo = det.Data.costo,
                     costoDivisa = det.Data.costoDivisa,
                     costoDivisaUnd = det.Data.costoDivisaUnd,
                     costoUnd = det.Data.costoUnd,
                     decimales = det.Data.decimales,
-                    nombreEmp = det.Data.nombreEmp,
                     descTasa = det.Data.descTasa,
                     estatusDivisa = det.Data.esAdmDivisa ? "1" : "0",
                     exFisica = det.Data.exFisica,
@@ -766,6 +770,11 @@ namespace ModInventario.MovimientoInvTipo.Traslado
                     costoSolicitada = det.Costo,
                     ajusteIdSolicitada = idTipoMovFicha,
                     empaqueIdSolicitada = det.EmpaqueFicha.id,
+                    //
+                    contEmp = det.Data.contEmp,
+                    nombreEmp = det.Data.nombreEmp,
+                    contEmpInv = det.Data.contEmpInv,
+                    nombreEmpInv = det.Data.nombreEmpInv,
                 };
                 detallesOOB.Add(rg);
             }
@@ -938,6 +947,8 @@ namespace ModInventario.MovimientoInvTipo.Traslado
                     exFisicaDepDestino = r.exFisicaDestino,
                     nivelMinimoDepDestino = r.nivelMinimo,
                     nivelOptimoDepDestino = r.nivelOptimo,
+                    contEmpInv = r.contEmpaqueInv,
+                    nombreEmpInv = r.descEmpaqueInv,
                 };
                 var _item = new dataItem();
                 _item.setFicha(dat);
@@ -945,6 +956,10 @@ namespace ModInventario.MovimientoInvTipo.Traslado
                 if (r.empaqueIdSolicitado == "2")
                 {
                     _item.setEmpaque(new ficha("2", "", "POR UNIDAD"));
+                }
+                else if (r.empaqueIdSolicitado == "3")
+                {
+                    _item.setEmpaque(new ficha("3", "", "POR EMPQ/INV"));
                 }
                 else
                 {

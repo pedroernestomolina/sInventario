@@ -14,12 +14,12 @@ namespace OOB.LibInventario.Movimiento.Lista
         public DateTime? Desde { get; set; }
         public DateTime? Hasta { get; set; }
         public enumerados.EnumTipoDocumento TipoDocumento { get; set; }
-        public string IdSucursal { get; set; }
         public string IdDepOrigen { get; set; }
         public string IdDepDestino { get; set; }
         public string IdConcepto { get; set; }
         public enumerados.EnumEstatus Estatus { get; set; }
         public string IdProducto { get; set; }
+        public string CodigoSucursal { get; set; }
 
 
         public Filtro()
@@ -28,11 +28,11 @@ namespace OOB.LibInventario.Movimiento.Lista
             Hasta = null;
             TipoDocumento = enumerados.EnumTipoDocumento.SinDefinir;
             Estatus = enumerados.EnumEstatus.SinDefinir;
-            IdSucursal = "";
             IdDepOrigen = "";
             IdDepDestino = "";
             IdConcepto = "";
             IdProducto = "";
+            CodigoSucursal = "";
         }
 
     }

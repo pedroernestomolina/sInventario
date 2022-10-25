@@ -96,11 +96,6 @@ namespace ModInventario.MovimientoInvTipo.Descargo
             {
                 var _lConcepto = new List<ficha>();
                 var r01 = Sistema.MyData.Concepto_GetLista();
-                if (r01.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r01.Mensaje);
-                    return false;
-                }
                 foreach (var rg in r01.Lista.OrderBy(o => o.nombre).ToList())
                 {
                     _lConcepto.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
@@ -229,6 +224,8 @@ namespace ModInventario.MovimientoInvTipo.Descargo
                 nombrePrd = r.nombrePrd,
                 valorTasa = r.valorTasa,
                 fechaUltimaActCosto = r.fechaUltActualizacionCosto,
+                contEmpInv= r.contEmpInv,
+                nombreEmpInv=r.nombreEmpInv,
             };
             _gCapturaMov.Inicializa();
             _gCapturaMov.setData(dat);
@@ -271,16 +268,18 @@ namespace ModInventario.MovimientoInvTipo.Descargo
         {
             _gMaestro.MtConcepto();
 
-            var r01 = Sistema.MyData.Concepto_GetLista();
-            if (r01.Result == OOB.Enumerados.EnumResult.isError) 
+            var _lConcepto = new List<ficha>();
+            try
             {
-                Helpers.Msg.Error(r01.Mensaje);
-                return;
+                var r01 = Sistema.MyData.Concepto_GetLista();
+                foreach (var rg in r01.Lista.OrderBy(o => o.nombre).ToList())
+                {
+                    _lConcepto.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
+                }
             }
-            var _lConcepto= new List<ficha>();
-            foreach(var rg in r01.Lista.OrderBy(o=>o.nombre).ToList())
+            catch (Exception e)
             {
-                _lConcepto.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
+                Helpers.Msg.Error(e.Message);
             }
             _gConcepto.setData(_lConcepto);
         }
@@ -354,11 +353,13 @@ namespace ModInventario.MovimientoInvTipo.Descargo
                     cantidadUnd = s.CntUnd,
                     categoria = s.Data.catPrd,
                     codigoProducto = s.Data.codigoPrd,
-                    contEmpaque = s.Data.contEmp,
+                    //empaque = s.Data.nombreEmp,
+                    //contEmpaque = s.Data.contEmp,
+                    contEmpaque = s.contEmpSeleccionado,
+                    empaque = s.empSeleccionado,
                     costoCompra = s.CostoNacional,
                     costoUnd = s.CostoUndNacional,
                     decimales = s.Data.decimales,
-                    empaque = s.Data.nombreEmp,
                     estatusAnulado = "0",
                     estatusUnidad = s.MovPorUnidad ? "1" : "0",
                     nombreProducto = s.Data.nombrePrd,

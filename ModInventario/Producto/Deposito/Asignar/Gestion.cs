@@ -72,37 +72,38 @@ namespace ModInventario.Producto.Deposito.Asignar
 
         private bool CargarData()
         {
-            var rt = true;
-
-            var r01 = Sistema.MyData.Deposito_GetLista();
-            if (r01.Result == OOB.Enumerados.EnumResult.isError) 
+            try
             {
-                Helpers.Msg.Error(r01.Mensaje);
-                return false;
-            }
-            foreach (var it in r01.Lista.OrderBy(o=>o.nombre).ToList()) 
-            {
-                bldepositos.Add(new data(it));
-            }
-
-            var r02 = Sistema.MyData.Producto_GetDepositos(autoPrd);
-            if (r02.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r02.Mensaje);
-                return false;
-            }
-            prdDep = r02.Entidad;
-            producto = r02.Entidad.codigoPrd + Environment.NewLine + r02.Entidad.descripcionPrd;
-            foreach (var it in r02.Entidad.depositos)
-            {
-                var dep = depositos.FirstOrDefault(f => f.auto == it.auto);
-                if (dep != null) 
+                var r01 = Sistema.MyData.Deposito_GetLista();
+                foreach (var it in r01.Lista.OrderBy(o => o.nombre).ToList())
                 {
-                    dep.setAsignado();
+                    bldepositos.Add(new data(it));
                 }
-            }
 
-            return rt;
+                var r02 = Sistema.MyData.Producto_GetDepositos(autoPrd);
+                if (r02.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    Helpers.Msg.Error(r02.Mensaje);
+                    return false;
+                }
+                prdDep = r02.Entidad;
+                producto = r02.Entidad.codigoPrd + Environment.NewLine + r02.Entidad.descripcionPrd;
+                foreach (var it in r02.Entidad.depositos)
+                {
+                    var dep = depositos.FirstOrDefault(f => f.auto == it.auto);
+                    if (dep != null)
+                    {
+                        dep.setAsignado();
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
+                return false;
+            }
         }
 
         public void Procesar()

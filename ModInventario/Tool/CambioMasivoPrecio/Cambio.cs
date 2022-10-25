@@ -130,11 +130,6 @@ namespace ModInventario.Tool.CambioMasivoPrecio
                 _gDepartamento.setData(_lst_1);
 
                 var r02 = Sistema.MyData.Sistema_TipoPreciosDefinidos_Lista();
-                if (r02.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r02.Mensaje);
-                    return false;
-                }
                 var _lst_2 = r02.Lista.Select(s =>
                 {
                     var nr = new ficha()

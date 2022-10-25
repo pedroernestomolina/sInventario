@@ -42,35 +42,43 @@ namespace OOB.LibInventario.Reportes.MaestroPrecio
         public decimal pM2_neto { get; set; }
         public decimal pM3_neto { get; set; }
         public decimal pM4_neto { get; set; }
+        public decimal pM5_neto { get; set; }
         public int cont_M1 { get; set; }
         public int cont_M2 { get; set; }
         public int cont_M3 { get; set; }
         public int cont_M4 { get; set; }
+        public int cont_M5 { get; set; }
         public decimal pM1_div_full { get; set; }
         public decimal pM2_div_full { get; set; }
         public decimal pM3_div_full { get; set; }
         public decimal pM4_div_full { get; set; }
+        public decimal pM5_div_full { get; set; }
         public string empaque_M1 { get; set; }
         public string empaque_M2 { get; set; }
         public string empaque_M3 { get; set; }
         public string empaque_M4 { get; set; }
+        public string empaque_M5 { get; set; }
 
         public decimal pD1_neto { get; set; }
         public decimal pD2_neto { get; set; }
         public decimal pD3_neto { get; set; }
         public decimal pD4_neto { get; set; }
+        public decimal pD5_neto { get; set; }
         public int cont_D1 { get; set; }
         public int cont_D2 { get; set; }
         public int cont_D3 { get; set; }
         public int cont_D4 { get; set; }
+        public int cont_D5 { get; set; }
         public decimal pD1_div_full { get; set; }
         public decimal pD2_div_full { get; set; }
         public decimal pD3_div_full { get; set; }
         public decimal pD4_div_full { get; set; }
+        public decimal pD5_div_full { get; set; }
         public string empaque_D1 { get; set; }
         public string empaque_D2 { get; set; }
         public string empaque_D3 { get; set; }
         public string empaque_D4 { get; set; }
+        public string empaque_D5 { get; set; }
     }
 
 }

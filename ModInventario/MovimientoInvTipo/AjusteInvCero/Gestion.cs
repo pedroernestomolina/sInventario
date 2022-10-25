@@ -105,13 +105,8 @@ namespace ModInventario.MovimientoInvTipo.AjusteInvCero
         {
             try
             {
-                var r01 = Sistema.MyData.Concepto_GetLista();
-                if (r01.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r01.Mensaje);
-                    return false;
-                }
                 var _lConcepto = new List<ficha>();
+                var r01 = Sistema.MyData.Concepto_GetLista();
                 foreach (var rg in r01.Lista.OrderBy(o => o.nombre).ToList())
                 {
                     _lConcepto.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
@@ -211,16 +206,18 @@ namespace ModInventario.MovimientoInvTipo.AjusteInvCero
         {
             _gMaestro.MtConcepto();
 
-            var r01 = Sistema.MyData.Concepto_GetLista();
-            if (r01.Result == OOB.Enumerados.EnumResult.isError) 
+            var _lConcepto = new List<ficha>();
+            try
             {
-                Helpers.Msg.Error(r01.Mensaje);
-                return;
+                var r01 = Sistema.MyData.Concepto_GetLista();
+                foreach (var rg in r01.Lista.OrderBy(o => o.nombre).ToList())
+                {
+                    _lConcepto.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
+                }
             }
-            var _lConcepto= new List<ficha>();
-            foreach(var rg in r01.Lista.OrderBy(o=>o.nombre).ToList())
+            catch (Exception e)
             {
-                _lConcepto.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
+                Helpers.Msg.Error(e.Message);
             }
             _gConcepto.setData(_lConcepto);
         }

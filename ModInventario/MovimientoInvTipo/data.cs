@@ -34,6 +34,9 @@ namespace ModInventario.MovimientoInvTipo
         public decimal nivelMinimoDepDestino { get; set; }
         public decimal nivelOptimoDepDestino { get; set; }
         public decimal exFisicaDepDestino { get; set; }
+        //        
+        public int contEmpInv { get; set; }
+        public string nombreEmpInv { get; set; }
 
 
         public string InfProductoDesc 
@@ -102,8 +105,14 @@ namespace ModInventario.MovimientoInvTipo
             nivelMinimoDepDestino = 0m;
             nivelOptimoDepDestino = 0m;
             exFisicaDepDestino = 0m;
+            //
+            contEmpInv = 0;
+            nombreEmpInv = "";
         }
 
+
+        public string InfProductoEmpInventario { get { return nombreEmpInv + "(" + contEmpInv.ToString() + ")"; } }
+        public string InfProductoEmpUnidad { get { return "Unidad" + "(" + 1.ToString() + ")"; } }
     }
 
 }

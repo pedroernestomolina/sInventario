@@ -51,6 +51,10 @@ namespace OOB.LibInventario.Movimiento.Traslado.Capturar.ProductoPorDebajoNivelM
         //
         public string autoTasa { get; set; }
         public decimal costo { get; set; }
+        //
+        public string nombreEmpInv { get; set; }
+        public int contEmpInv { get; set; }
+
 
 
         public Ficha()
@@ -91,6 +95,9 @@ namespace OOB.LibInventario.Movimiento.Traslado.Capturar.ProductoPorDebajoNivelM
             //
             autoTasa = "";
             costo = 0m;
+            //
+            nombreEmpInv = "";
+            contEmpInv = 0;
         }
 
     }

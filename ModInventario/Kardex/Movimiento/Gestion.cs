@@ -177,37 +177,40 @@ namespace ModInventario.Kardex.Movimiento
 
         private bool CargarData()
         {
-            var r02 = Sistema.MyData.Deposito_GetLista();
-            if (r02.Result == OOB.Enumerados.EnumResult.isError)
+            try
             {
-                Helpers.Msg.Error(r02.Mensaje);
+                var r02 = Sistema.MyData.Deposito_GetLista();
+                var lst = r02.Lista.Select(s =>
+                {
+                    var nr = new ficha()
+                    {
+                        codigo = s.codigo,
+                        desc = s.nombre,
+                        id = s.auto,
+                    };
+                    return nr;
+                });
+                _gDeposito.setData(lst.OrderBy(o => o.desc).ToList());
+                var lst2 = new List<ficha>();
+                lst2.Add(new ficha() { id = "01", codigo = "", desc = "     Hoy" });
+                lst2.Add(new ficha() { id = "02", codigo = "", desc = "    Ayer" });
+                lst2.Add(new ficha() { id = "03", codigo = "", desc = "  7 Dias " });
+                lst2.Add(new ficha() { id = "04", codigo = "", desc = " 15 Dias" });
+                lst2.Add(new ficha() { id = "05", codigo = "", desc = " 30 Dias" });
+                lst2.Add(new ficha() { id = "06", codigo = "", desc = " 45 Dias" });
+                lst2.Add(new ficha() { id = "07", codigo = "", desc = " 60 Dias" });
+                lst2.Add(new ficha() { id = "08", codigo = "", desc = " 90 Dias" });
+                lst2.Add(new ficha() { id = "09", codigo = "", desc = "120 Dias" });
+                lst2.Add(new ficha() { id = "10", codigo = "", desc = "   1 Año" });
+                _gDias.setData(lst2);
+
+                return Cargar();
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
                 return false;
             }
-            var lst = r02.Lista.Select(s =>
-            {
-                var nr = new ficha()
-                {
-                    codigo = s.codigo,
-                    desc = s.nombre,
-                    id = s.auto,
-                };
-                return nr;
-            });
-            _gDeposito.setData(lst.OrderBy(o => o.desc).ToList());
-            var lst2 = new List<ficha>();
-            lst2.Add(new ficha() { id = "01", codigo = "", desc = "     Hoy" });
-            lst2.Add(new ficha() { id = "02", codigo = "", desc = "    Ayer" });
-            lst2.Add(new ficha() { id = "03", codigo = "", desc = "  7 Dias " });
-            lst2.Add(new ficha() { id = "04", codigo = "", desc = " 15 Dias" });
-            lst2.Add(new ficha() { id = "05", codigo = "", desc = " 30 Dias" });
-            lst2.Add(new ficha() { id = "06", codigo = "", desc = " 45 Dias" });
-            lst2.Add(new ficha() { id = "07", codigo = "", desc = " 60 Dias" });
-            lst2.Add(new ficha() { id = "08", codigo = "", desc = " 90 Dias" });
-            lst2.Add(new ficha() { id = "09", codigo = "", desc = "120 Dias" });
-            lst2.Add(new ficha() { id = "10", codigo = "", desc = "   1 Año" });
-            _gDias.setData(lst2);
-
-            return Cargar();
         }
 
     }

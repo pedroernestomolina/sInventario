@@ -12,8 +12,8 @@ namespace DataProvInventario.Data
     public partial class DataProv: IData
     {
 
-        OOB.ResultadoEntidad<OOB.LibInventario.Concepto.Ficha> 
-            IConcepto.Concepto_PorTraslado()
+        public OOB.ResultadoEntidad<OOB.LibInventario.Concepto.Ficha> 
+            Concepto_PorTraslado()
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Concepto.Ficha>();
 
@@ -44,11 +44,8 @@ namespace DataProvInventario.Data
             var r01 = MyData.Concepto_GetLista();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
-
             var list = new List<OOB.LibInventario.Concepto.Ficha>();
             if (r01.Lista != null)
             {

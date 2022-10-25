@@ -28,6 +28,7 @@ namespace ModInventario.FiltrosGen.Reportes
         public DateTime? Desde  { get; set; }
         public DateTime? Hasta { get; set; }
         public ficha Pesado { get; set; }
+        public ficha Precio { get; set; }
 
 
         public data() 
@@ -86,6 +87,7 @@ namespace ModInventario.FiltrosGen.Reportes
             Producto = null;
             Divisa = null;
             Pesado = null;
+            Precio = null;
             Desde = DateTime.Now.Date;
             Hasta = DateTime.Now.Date;
         }
@@ -107,6 +109,7 @@ namespace ModInventario.FiltrosGen.Reportes
             if (Producto!= null) t += ", Producto: " + Producto.desc;
             if (TasaIva != null) t += ", Tasa Iva: " + TasaIva;
             if (Pesado != null) t += ", Pesado: " + Pesado.desc;
+            if (Precio != null) t += ", Precio: " + Precio.desc;
 
             return t;
         }

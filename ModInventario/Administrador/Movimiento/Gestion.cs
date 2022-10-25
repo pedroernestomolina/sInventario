@@ -43,9 +43,23 @@ namespace ModInventario.Administrador.Movimiento
         }
 
 
+        private src.Filtro.FiltroAdmDoc.IAdmDoc _admFiltroDoc;
+        public Gestion(src.Filtro.FiltroAdmDoc.IAdmDoc admFiltroDoc)
+        {
+            _admFiltroDoc = admFiltroDoc;
+
+            _limpiarFiltrosIsOk = false;
+            _gestionAnular = new Anular.Gestion();
+            _gestionListaDetalle = new GestionListaDetalle();
+            _gestionListaDetalle.setGestionAnular(_gestionAnular);
+            //LimpiarFiltros();
+        }
+
+
         public void Inicializa() 
         {
-            _gFiltro.Inicializa();
+            _admFiltroDoc.Inicializa();
+            //_gFiltro.Inicializa();
             _gestionListaDetalle.Inicializa();
             _limpiarFiltrosIsOk = false;
         }
@@ -68,22 +82,22 @@ namespace ModInventario.Administrador.Movimiento
         {
             try
             {
-                var lst = new List<ficha>();
-                var filtroOOb = new OOB.LibInventario.Sucursal.Filtro();
-                var rt1 = Sistema.MyData.Sucursal_GetLista(filtroOOb);
-                foreach (var rg in rt1.Lista.OrderBy(o => o.nombre).ToList())
+                if (_admFiltroDoc.CargarData())
                 {
-                    lst.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
+                    //var _lst_1 = new List<ficha>();
+                    //var filtroOOb = new OOB.LibInventario.Sucursal.Filtro();
+                    //var rt1 = Sistema.MyData.Sucursal_GetLista(filtroOOb);
+                    //foreach (var rg in rt1.Lista.OrderBy(o => o.nombre).ToList())
+                    //{
+                    //    _lst_1.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
+                    //}
+                    //_gFiltro.Sucursal.setData(_lst_1);
+                    return true;
                 }
-                _gFiltro.Sucursal.setData(lst);
-
-                var lst2 = new List<ficha>();
-                lst2.Add(new ficha("1", "01", "CARGO"));
-                lst2.Add(new ficha("2", "02", "DESCARGO"));
-                lst2.Add(new ficha("3", "03", "TRASLADO"));
-                lst2.Add(new ficha("4", "04", "AJUSTE"));
-                _gFiltro.TipoDoc.setData(lst2);
-                return true;
+                else 
+                {
+                    return false;
+                }
             }
             catch (Exception e)
             {
@@ -139,7 +153,7 @@ namespace ModInventario.Administrador.Movimiento
                 }
                 if (data.Sucursal != null)
                 {
-                    filtro.IdSucursal = data.Sucursal.codigo;
+                    filtro.CodigoSucursal = data.Sucursal.codigo;
                     xfiltros += ", Sucursal: " + data.Sucursal.desc;
                 }
                 if (data.Producto != null)

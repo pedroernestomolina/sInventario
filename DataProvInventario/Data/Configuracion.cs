@@ -39,6 +39,7 @@ namespace DataProvInventario.Data
             return rt;
         }
 
+
         public OOB.ResultadoEntidad<OOB.LibInventario.Configuracion.Enumerados.EnumPreferenciaBusqueda> 
             Configuracion_PreferenciaBusqueda()
         {
@@ -177,12 +178,10 @@ namespace DataProvInventario.Data
             var r01 = MyData.Configuracion_CantDocVisualizar();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
             var cnf = r01.Entidad;
-            var m1 = 0;
+            var m1 = 1000;
             if (cnf.Trim() != "")
             {
                 var style = NumberStyles.AllowDecimalPoint | NumberStyles.AllowThousands;

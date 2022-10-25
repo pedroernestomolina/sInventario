@@ -48,6 +48,8 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
             CB_GRUPO.ValueMember = "id";
             CB_PESADO.DisplayMember = "desc";
             CB_PESADO.ValueMember = "id";
+            CB_PRECIO.DisplayMember = "desc";
+            CB_PRECIO.ValueMember = "id";
         }
 
         bool _modoInicializar;
@@ -65,6 +67,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
             CB_SUCURSAL.DataSource = _controlador.GetSucursal_Source;
             CB_CATEGORIA.DataSource = _controlador.GetCategoria_Source;
             CB_ORIGEN.DataSource = _controlador.GetOrigen_Source;
+            CB_PRECIO.DataSource = _controlador.GetPrecio_Source;
 
 
             CB_DEPOSITO.SelectedValue = _controlador.GetDeposito_Id;
@@ -78,6 +81,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
             CB_SUCURSAL.SelectedValue = _controlador.GetSucursal_Id;
             CB_CATEGORIA.SelectedValue = _controlador.GetCategoria_Id;
             CB_ORIGEN.SelectedValue = _controlador.GetOrigen_Id;
+            CB_PRECIO.SelectedValue = _controlador.GetPrecio_Id;
             DTP_DESDE.Value = _controlador.GetDesde;
             DTP_HASTA.Value = _controlador.GetHasta;
             TB_PRODUCTO.Text = _controlador.GetProducto;
@@ -94,6 +98,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
             CB_SUCURSAL.Enabled = _controlador.GetHabilitarSucursal;
             CB_ORIGEN.Enabled = _controlador.GetHabilitarOrigen;
             CB_CATEGORIA.Enabled = _controlador.GetHabilitarCategoria;
+            CB_PRECIO.Enabled = _controlador.GetHabilitarPrecio;
             DTP_DESDE.Enabled = _controlador.GetHabilitarFechaDesde;
             DTP_HASTA.Enabled = _controlador.GetHabilitarFechaHasta;
             TB_PRODUCTO.Enabled = _controlador.GetHabilitarProducto;
@@ -216,6 +221,15 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
                 _controlador.setOrigen(CB_ORIGEN.SelectedValue.ToString());
             }
         }
+        private void CB_PRECIO_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_modoInicializar) { return; }
+            _controlador.setPrecio("");
+            if (CB_PRECIO.SelectedIndex != -1)
+            {
+                _controlador.setPrecio(CB_PRECIO.SelectedValue.ToString());
+            }
+        }
 
 
         private void DTP_DESDE_ValueChanged(object sender, EventArgs e)
@@ -292,6 +306,10 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
                 TB_PRODUCTO.Focus();
             }
         }
+        private void L_PRECIO_Click(object sender, EventArgs e)
+        {
+            CB_PRECIO.SelectedIndex = -1;
+        }
 
 
         private void BT_LIMPIAR_Click(object sender, EventArgs e)
@@ -321,6 +339,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
                 CB_SUCURSAL.SelectedIndex = -1;
                 CB_CATEGORIA.SelectedIndex = -1;
                 CB_ORIGEN.SelectedIndex = -1;
+                CB_PRECIO.SelectedIndex = -1;
                 P_BUSCAR_PRODUCTO.Enabled = true;
                 TB_PRODUCTO.Text = "";
                 DTP_DESDE.Value = DateTime.Now.Date;

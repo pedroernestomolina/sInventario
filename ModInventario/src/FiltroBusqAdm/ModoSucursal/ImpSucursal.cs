@@ -146,13 +146,8 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
                     }
                     _gCategoria.setData(lstCategoria);
 
-                    var r02 = Sistema.MyData.Deposito_GetLista();
-                    if (r02.Result == OOB.Enumerados.EnumResult.isError)
-                    {
-                        Helpers.Msg.Error(r02.Mensaje);
-                        return false;
-                    }
                     var lstDeposito = new List<ficha>();
+                    var r02 = Sistema.MyData.Deposito_GetLista();
                     foreach (var rg in r02.Lista.OrderBy(o => o.nombre).ToList())
                     {
                         lstDeposito.Add(new ficha(rg.auto, "", rg.nombre));

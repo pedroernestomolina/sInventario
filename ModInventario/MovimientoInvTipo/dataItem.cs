@@ -21,6 +21,9 @@ namespace ModInventario.MovimientoInvTipo
         private int _signo;
         private ficha _empaque;
         private ficha _tipoMov;
+        private string _empSeleccionado;
+        private int _contEmpSeleccionado;
+
 
 
         public int Id { get; set; }
@@ -74,8 +77,10 @@ namespace ModInventario.MovimientoInvTipo
             get 
             {
                 var rt = "UNIDAD(1)";
-                if (_empaque.id == "1") 
+                if (_empaque.id == "1")
                     rt = _data.InfProductoEmpaCompra;
+                else if (_empaque.id == "3")
+                    rt = _data.InfProductoEmpInventario;
                 return rt; ; 
             } 
         }
@@ -117,6 +122,26 @@ namespace ModInventario.MovimientoInvTipo
             _signo = 1;
             _empaque = null;
             _tipoMov = null;
+            _empSeleccionado = null;
+            _contEmpSeleccionado = 0;
+        }
+
+        public dataItem(dataItem ItemActual)
+            :this()
+        {
+            Id = ItemActual.Id;
+            _data = ItemActual._data;
+            _tasaCambio = ItemActual._tasaCambio;
+            _cantidad = ItemActual._cantidad;
+            _cantidadUnd = ItemActual._cantidadUnd;
+            _costo = ItemActual._costo;
+            _costoUnd = ItemActual._costoUnd;
+            _importe = ItemActual._importe;
+            _signo = ItemActual._signo;
+            _empaque = ItemActual._empaque;
+            _tipoMov = ItemActual._tipoMov;
+            _empSeleccionado = ItemActual._empSeleccionado;
+            _contEmpSeleccionado = ItemActual._contEmpSeleccionado;
         }
 
 
@@ -146,6 +171,8 @@ namespace ModInventario.MovimientoInvTipo
             {
                 if (ficha.id == "1")
                 {
+                    _contEmpSeleccionado = _data.contEmp;
+                    _empSeleccionado = _data.nombreEmp;
                     _costo = _data.costo;
                     _costoUnd = _data.costoUnd;
                     if (_data.esAdmDivisa)
@@ -156,11 +183,25 @@ namespace ModInventario.MovimientoInvTipo
                 }
                 if (ficha.id == "2")
                 {
+                    _contEmpSeleccionado = 1;
+                    _empSeleccionado = "UNIDAD";
                     _costo = _data.costoUnd;
                     _costoUnd = _data.costoUnd;
                     if (_data.esAdmDivisa)
                     {
                         _costo = Math.Round(_data.costoDivisaUnd, 2, MidpointRounding.AwayFromZero);
+                        _costoUnd = Math.Round(_data.costoDivisaUnd, 2, MidpointRounding.AwayFromZero);
+                    }
+                }
+                if (ficha.id == "3")
+                {
+                    _contEmpSeleccionado = _data.contEmpInv;
+                    _empSeleccionado = _data.nombreEmpInv;
+                    _costo = _data.costoUnd * _data.contEmpInv;
+                    _costoUnd = _data.costoUnd;
+                    if (_data.esAdmDivisa)
+                    {
+                        _costo = Math.Round(_data.costoDivisaUnd * _data.contEmpInv, 2, MidpointRounding.AwayFromZero);
                         _costoUnd = Math.Round(_data.costoDivisaUnd, 2, MidpointRounding.AwayFromZero);
                     }
                 }
@@ -192,11 +233,22 @@ namespace ModInventario.MovimientoInvTipo
                 {
                     cont = _data.contEmp;
                 }
+                else if (_empaque.id == "3") 
+                {
+                    cont = _data.contEmpInv;
+                }
             }
             _cantidadUnd = _cantidad * cont;
             _costoUnd = _costo / cont ;
         }
 
+
+        public string InfProductoEmpInventario { get { return _data.InfProductoEmpInventario; } }
+        public string InfProductoEmpUnidad { get { return _data.InfProductoEmpUnidad; } }
+
+
+        public string empSeleccionado { get { return _empSeleccionado; } }
+        public int contEmpSeleccionado { get { return _contEmpSeleccionado; } }
     }
 
 }

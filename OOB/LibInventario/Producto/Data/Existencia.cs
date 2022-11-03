@@ -17,6 +17,8 @@ namespace OOB.LibInventario.Producto.Data
         public string decimales { get; set; }
         public string empaque { get; set; }
         public int empaqueContenido { get; set; }
+        public string descEmpInv { get; set; }
+        public int contEmpInv  { get; set; }
 
 
         public Existencia()
@@ -27,6 +29,8 @@ namespace OOB.LibInventario.Producto.Data
             empaqueContenido = 1;
             codigoPrd = "";
             nombrePrd = "";
+            contEmpInv = 0;
+            descEmpInv = "";
         }
 
         public Existencia(Existencia ex)

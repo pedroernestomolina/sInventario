@@ -69,6 +69,7 @@ namespace ModInventario.Producto.Deposito.Listar
 
         private void Limpiar()
         {
+            _fichaPrd = null;
             _empaque = "";
             _empaqueContenido = 1;
             _data.Clear();
@@ -79,29 +80,30 @@ namespace ModInventario.Producto.Deposito.Listar
             _autoPrd = autoprd;
         }
 
+        private OOB.LibInventario.Producto.Data.Existencia _fichaPrd;
         private bool CargarData()
         {
-            var rt = true;
-
-            var r01 = Sistema.MyData.Producto_GetExistencia(_autoPrd);
-            if (r01.Result == OOB.Enumerados.EnumResult.isError) 
+            try
             {
-                Helpers.Msg.Error(r01.Mensaje);
+                var r01 = Sistema.MyData.Producto_GetExistencia(_autoPrd);
+                _fichaPrd = r01.Entidad;
+                _producto = r01.Entidad.codigoPrd + Environment.NewLine + r01.Entidad.nombrePrd;
+                _decimales = r01.Entidad.decimales;
+                _empaque = r01.Entidad.empaque;
+                _empaqueContenido = r01.Entidad.empaqueContenido;
+                foreach (var it in r01.Entidad.depositos.OrderBy(o => o.nombre).ToList())
+                {
+                    var nr = new data(it, _decimales);
+                    _data.Add(nr);
+                }
+                _bs.CurrencyManager.Refresh();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
                 return false;
             }
-            _producto = r01.Entidad.codigoPrd + Environment.NewLine + r01.Entidad.nombrePrd;
-            _decimales = r01.Entidad.decimales;
-            _empaque = r01.Entidad.empaque;
-            _empaqueContenido = r01.Entidad.empaqueContenido;
-
-            foreach (var it in r01.Entidad.depositos.OrderBy(o=>o.nombre).ToList()) 
-            {
-                var nr = new data(it,_decimales);
-                _data.Add(nr);
-            }
-            _bs.CurrencyManager.Refresh();
-
-            return rt;
         }
 
         public void setCompra()
@@ -149,6 +151,12 @@ namespace ModInventario.Producto.Deposito.Listar
                     _gestionEditar.Inicia();
                 }
             }
+        }
+
+        public void ImprimirReporte()
+        {
+            var rp = new Reportes.RepProducto.ExistenciaPorDeposito.gestionRep(_fichaPrd, "");
+            rp.Generar();
         }
 
     }

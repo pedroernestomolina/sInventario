@@ -30,14 +30,19 @@ namespace ModInventario.src
             CreateInstancia_VisualizarPrd();
         AdmDocumentos.IAdmDoc 
             CreateInstancia_AdmDocumentos();
+        ModInventario.src.Producto.Imagen.IImagen
+            CreateInstancia_ImagenProducto();
+        ModInventario.src.Producto.QR.IQR
+            CreateInstancia_ImagenQRProducto();
+        Filtro.FiltroRep.IFiltroRep 
+            CreateInstancia_FiltrosReporte();
+        ModInventario.Buscar.Gestion 
+            CreateInstancia_HndProducto(ISeguridadAccesoSistema _seguridad, IFabrica _fabrica);
 
 
         object BuscarPrd { get; }
         void CreateInstancia_BuscarPrd(ModInventario.Buscar.Gestion gestion);
         void ShowBuscarPrd();
-
-
-        Filtro.FiltroRep.IFiltroRep CreateInstancia_FiltrosReporte();
 
 
     }

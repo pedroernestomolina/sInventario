@@ -12,13 +12,11 @@ namespace ModInventario
     public class GestionInv
     {
 
-        private Buscar.Gestion _gestionBusqueda;
         private Visor.Existencia.Gestion _gestionVisorExistencia;
         private Visor.CostoEdad.Gestion _gestionVisorCostoEdad;
         private Visor.Traslado.Gestion _gestionVisorTraslado;
         private Visor.Ajuste.Gestion _gestionVisorAjuste;
         private Visor.CostoExistencia.Gestion _gestionVisorCostoExistencia;
-        private Administrador.Gestion _gestionAdmMov;
         private Configuracion.CostoEdad.Gestion _gestionConfCostoEdad;
         private Configuracion.RedondeoPrecio.Gestion _gestionConfRedondeoPrecio;
         private Configuracion.RegistroPrecio.Gestion _gestionConfRegistroPrecio;
@@ -29,16 +27,6 @@ namespace ModInventario
 
         //
         private Buscar.INotificarSeleccion _gListaSelPrd;
-        private FiltrosGen.IOpcion _gfiltroConcepto;
-        private FiltrosGen.IOpcion _gfiltroEstatus;
-        private FiltrosGen.IOpcion _gfiltroDepOrigen;
-        private FiltrosGen.IOpcion _gfiltroDepDestino;
-        private FiltrosGen.IBuscar _gFiltroBusPrd;
-        private FiltrosGen.IOpcion _gfiltroSucursal;
-        private FiltrosGen.IOpcion _gfiltroTipoDoc;
-        private FiltrosGen.IFecha _gfiltroDesde;
-        private FiltrosGen.IFecha _gfiltroHasta;
-        private FiltrosGen.IAdmDoc _gFiltroAdmDoc;
         private FiltrosGen.IAdmSelecciona _gAdmSelPrd;
         private Administrador.IGestion _gAdmDoc;
 
@@ -98,9 +86,6 @@ namespace ModInventario
         private AdmMovPend.IAdmMovPend _gAdmMovPend;
         private AdmMovPend.IListaAdmMovPend _gListaAdmMovPend;
         //
-        private Producto.QR.IQR _gQR;
-        private Producto.Imagen.IImagen _gImagen;
-        //
         private Producto.Deposito.AsignacionMasiva.IAsignacion _gAsignacionMasiva;
         //
         private Visor.PrecioAjuste.IAjuste _gVisorPrecioAjuste;
@@ -126,16 +111,12 @@ namespace ModInventario
         private src.IFabrica _fabrica;
         ModInventario.src.Filtro.FiltroRep.IFiltroRep _gestionReporteFiltros;
         ModInventario.src.AdmDocumentos.IAdmDoc _hndAdmDoc;
+        private Buscar.Gestion _gHndProducto;
         public GestionInv(src.IFabrica fabrica)
         {
             _fabrica = fabrica;
             Producto.Precio.EditarCambiar.IEditar _hndEditarPrecio = _fabrica.CreateInstancia_EditarCambiarPrecio();
-            Producto.Precio.VerVisualizar.IVisual _hndVerVisualizarPrecio = _fabrica.CreateInstancia_VisualizarPrecio();
             FiltrosGen.AdmProducto.IAdmProducto _hndFiltroAdmProducto = _fabrica.CreateInstancia_FiltroPrdAdm();
-            Producto.Precio.Historico.IHistorico _hndHistPrecio = _fabrica.CreateInstancia_HistoricoPrecio();
-            ModInventario.src.Producto.AgregarEditar.IBaseAgregarEditar _hndAgregarFicha = _fabrica.CreateInstancia_AgregarPrd();
-            ModInventario.src.Producto.AgregarEditar.IBaseAgregarEditar _hndEditarFicha = _fabrica.CreateInstancia_EditarPrd();
-            Producto.VisualizarFicha.IVisualizar _hndVisualizarFicha = _fabrica.CreateInstancia_VisualizarPrd();
             _gestionReporteFiltros = _fabrica.CreateInstancia_FiltrosReporte();
             _hndAdmDoc = _fabrica.CreateInstancia_AdmDocumentos();
 
@@ -144,38 +125,14 @@ namespace ModInventario
             _gSecurityModoUsuario = new SeguridadSist.Usuario.Gestion();
             _gSecurityNivelAcceso= new SeguridadSist.NivelAcceso.Gestion();
             _seguridad = new Helpers.Seguridad(_gSecurityNivelAcceso, _gSecurity);
-            //
+
+
             _gListaSelPrd = new Producto.ListaSel.Gestion();
-            _gfiltroConcepto = new FiltrosGen.Opcion.Gestion();
-            _gfiltroEstatus = new FiltrosGen.Opcion.Gestion();
-            _gfiltroDepOrigen= new FiltrosGen.Opcion.Gestion();
-            _gfiltroDepDestino = new FiltrosGen.Opcion.Gestion();
-            _gFiltroBusPrd= new FiltrosGen.BuscarProducto.Gestion(_gListaSelPrd);
-            _gfiltroSucursal= new FiltrosGen.Opcion.Gestion();
-            _gfiltroTipoDoc= new FiltrosGen.Opcion.Gestion();
-            _gfiltroDesde = new FiltrosGen.Fecha.Gestion();
-            _gfiltroHasta= new FiltrosGen.Fecha.Gestion();
-            _gfiltroEstatus= new FiltrosGen.Opcion.Gestion();
-
-            ////
-            //_gFiltroAdmDoc = new FiltrosGen.AdmDoc.Gestion(
-            //    _gfiltroConcepto, 
-            //    _gfiltroEstatus, 
-            //    _gfiltroDepOrigen,
-            //    _gfiltroDepDestino, 
-            //    _gFiltroBusPrd, 
-            //    _gfiltroSucursal, 
-            //    _gfiltroTipoDoc, 
-            //    _gfiltroDesde, 
-            //    _gfiltroHasta);
-            ////_gAdmDoc = new Administrador.Movimiento.Gestion(_gFiltroAdmDoc);
-            //var filtroAdmDoc = _fabrica.CreateInstancia_FiltrosAdmDoc();
-            //_gAdmDoc = new Administrador.Movimiento.Gestion(filtroAdmDoc);
-            //
-
             _gAdmSelPrd = new FiltrosGen.AdmSelecciona.Gestion(
-                _hndFiltroAdmProducto, 
+                _hndFiltroAdmProducto,
                 _gListaSelPrd);
+
+
             //
             _gAgregarDepart = new MaestrosInv.Departamento.Agregar.Gestion();
             _gEditarDepart = new MaestrosInv.Departamento.Editar.Gestion();
@@ -257,37 +214,19 @@ namespace ModInventario
                 _gMovTipo, 
                 _seguridad);
             //
-            _gQR = new Producto.QR.Gestion();
-            _gImagen = new Producto.Imagen.Gestion();
-            //
             _gAsignacionMasiva = new Producto.Deposito.AsignacionMasiva.Asignacion();
             //
             _gConfEditarPrecioAlCambiarCosto = new Configuracion.CambiarPreciosAlModificarCosto.Conf();
             //
             _gCambioMasivoPrecio = new Tool.CambioMasivoPrecio.Cambio();
-            
 
-            _gestionBusqueda = new Buscar.Gestion(
-                _hndFiltroAdmProducto, 
-                _seguridad,
-                _gQR,
-                _gImagen,
-                _hndAgregarFicha,
-                _hndEditarFicha,
-                _hndVisualizarFicha,
-                _hndEditarPrecio,
-                _hndVerVisualizarPrecio,
-                _hndHistPrecio,
-                _fabrica);
 
             _gVisorPrecioAjuste = new Visor.PrecioAjuste.Ajuste(_seguridad, _hndEditarPrecio);
-
             _gestionVisorExistencia = new Visor.Existencia.Gestion();
             _gestionVisorCostoEdad = new Visor.CostoEdad.Gestion();
             _gestionVisorTraslado = new Visor.Traslado.Gestion();
             _gestionVisorAjuste = new Visor.Ajuste.Gestion();
             _gestionVisorCostoExistencia = new Visor.CostoExistencia.Gestion();
-            _gestionAdmMov = new Administrador.Gestion();
 
             _gestionConfCostoEdad = new Configuracion.CostoEdad.Gestion();
             _gestionConfRedondeoPrecio = new Configuracion.RedondeoPrecio.Gestion();
@@ -296,6 +235,10 @@ namespace ModInventario
             _gestionConfMetodoCalUtilidad = new Configuracion.MetodoCalculoUtilidad.Gestion();
             _gestionAuditoria = new Auditoria.Visualizar.Gestion();
             _gConfDepPredeterminado = new Configuracion.DepositoPreDeterminado.Gestion();
+
+
+            //
+            _gHndProducto = _fabrica.CreateInstancia_HndProducto(_seguridad, _fabrica);
         }
 
 
@@ -343,26 +286,19 @@ namespace ModInventario
 
         public void BuscarProducto()
         {
-            _gestionBusqueda.Inicializa();
-            _gestionBusqueda.Inicia();
-            if (_gestionBusqueda.HayItemSeleccionado)
-            {
-                MessageBox.Show(_gestionBusqueda.Item.Producto);
-            }
+            _gHndProducto.Inicializa();
+            _gHndProducto.Inicia();
         }
 
         public void AdministradorMovimiento()
         {
-            if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_AdministradorMovimientoInventario, Sistema.UsuarioP.autoGru, _seguridad))
+            if (Helpers.VerificarPermiso.PermitirAcceso(
+                Sistema.MyData.Permiso_AdministradorMovimientoInventario, 
+                Sistema.UsuarioP.autoGru, _seguridad)
+                )
             {
-                //_gAdmDoc.Inicializa();
-                //_gestionAdmMov.setGestion(_gAdmDoc);
-                //_gestionAdmMov.setGestionAuditoria(_gestionAuditoria);
-                //_gestionAdmMov.Inicia();
-
                 _hndAdmDoc.Inicializa();
                 _hndAdmDoc.Inicia();
-
             }
         }
 

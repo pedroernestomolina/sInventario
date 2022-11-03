@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DS_VAR" targetNamespace="http://tempuri.org/DS_VAR.xsd" xmlns:mstns="http://tempuri.org/DS_VAR.xsd" xmlns="http://tempuri.org/DS_VAR.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DS_VAR" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DS_VAR" msprop:Generator_UserDSName="DS_VAR">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="EXISTENCIA_DEPOSITO" msprop:Generator_TableClassName="EXISTENCIA_DEPOSITODataTable" msprop:Generator_TableVarName="tableEXISTENCIA_DEPOSITO" msprop:Generator_TablePropName="EXISTENCIA_DEPOSITO" msprop:Generator_RowDeletingName="EXISTENCIA_DEPOSITORowDeleting" msprop:Generator_RowChangingName="EXISTENCIA_DEPOSITORowChanging" msprop:Generator_RowEvHandlerName="EXISTENCIA_DEPOSITORowChangeEventHandler" msprop:Generator_RowDeletedName="EXISTENCIA_DEPOSITORowDeleted" msprop:Generator_UserTableName="EXISTENCIA_DEPOSITO" msprop:Generator_RowChangedName="EXISTENCIA_DEPOSITORowChanged" msprop:Generator_RowEvArgName="EXISTENCIA_DEPOSITORowChangeEvent" msprop:Generator_RowClassName="EXISTENCIA_DEPOSITORow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="deposito" msprop:Generator_ColumnVarNameInTable="columndeposito" msprop:Generator_ColumnPropNameInRow="deposito" msprop:Generator_ColumnPropNameInTable="depositoColumn" msprop:Generator_UserColumnName="deposito" type="xs:string" minOccurs="0" />
+              <xs:element name="exEmpCompra" msprop:Generator_ColumnVarNameInTable="columnexEmpCompra" msprop:Generator_ColumnPropNameInRow="exEmpCompra" msprop:Generator_ColumnPropNameInTable="exEmpCompraColumn" msprop:Generator_UserColumnName="exEmpCompra" type="xs:string" minOccurs="0" />
+              <xs:element name="exEmpInv" msprop:Generator_ColumnVarNameInTable="columnexEmpInv" msprop:Generator_ColumnPropNameInRow="exEmpInv" msprop:Generator_ColumnPropNameInTable="exEmpInvColumn" msprop:Generator_UserColumnName="exEmpInv" type="xs:string" minOccurs="0" />
+              <xs:element name="exEmpUnd" msprop:Generator_ColumnVarNameInTable="columnexEmpUnd" msprop:Generator_ColumnPropNameInRow="exEmpUnd" msprop:Generator_ColumnPropNameInTable="exEmpUndColumn" msprop:Generator_UserColumnName="exEmpUnd" type="xs:string" minOccurs="0" />
+              <xs:element name="exTotal" msprop:Generator_ColumnVarNameInTable="columnexTotal" msprop:Generator_ColumnPropNameInRow="exTotal" msprop:Generator_ColumnPropNameInTable="exTotalColumn" msprop:Generator_UserColumnName="exTotal" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

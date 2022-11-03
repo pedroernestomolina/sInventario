@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DS_Kardex" targetNamespace="http://tempuri.org/DS_Kardex.xsd" xmlns:mstns="http://tempuri.org/DS_Kardex.xsd" xmlns="http://tempuri.org/DS_Kardex.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DS_Kardex" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DS_Kardex" msprop:Generator_UserDSName="DS_Kardex">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Documento" msprop:Generator_TableClassName="DocumentoDataTable" msprop:Generator_TableVarName="tableDocumento" msprop:Generator_TablePropName="Documento" msprop:Generator_RowDeletingName="DocumentoRowDeleting" msprop:Generator_RowChangingName="DocumentoRowChanging" msprop:Generator_RowEvHandlerName="DocumentoRowChangeEventHandler" msprop:Generator_RowDeletedName="DocumentoRowDeleted" msprop:Generator_UserTableName="Documento" msprop:Generator_RowChangedName="DocumentoRowChanged" msprop:Generator_RowEvArgName="DocumentoRowChangeEvent" msprop:Generator_RowClassName="DocumentoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="documentoNro" msprop:Generator_ColumnVarNameInTable="columndocumentoNro" msprop:Generator_ColumnPropNameInRow="documentoNro" msprop:Generator_ColumnPropNameInTable="documentoNroColumn" msprop:Generator_UserColumnName="documentoNro" type="xs:string" minOccurs="0" />
+              <xs:element name="fechaHora" msprop:Generator_ColumnVarNameInTable="columnfechaHora" msprop:Generator_ColumnPropNameInRow="fechaHora" msprop:Generator_ColumnPropNameInTable="fechaHoraColumn" msprop:Generator_UserColumnName="fechaHora" type="xs:string" minOccurs="0" />
+              <xs:element name="estatus" msprop:Generator_ColumnVarNameInTable="columnestatus" msprop:Generator_ColumnPropNameInRow="estatus" msprop:Generator_ColumnPropNameInTable="estatusColumn" msprop:Generator_UserColumnName="estatus" type="xs:string" minOccurs="0" />
+              <xs:element name="siglas" msprop:Generator_ColumnVarNameInTable="columnsiglas" msprop:Generator_ColumnPropNameInRow="siglas" msprop:Generator_ColumnPropNameInTable="siglasColumn" msprop:Generator_UserColumnName="siglas" type="xs:string" minOccurs="0" />
+              <xs:element name="entidad" msprop:Generator_ColumnVarNameInTable="columnentidad" msprop:Generator_ColumnPropNameInRow="entidad" msprop:Generator_ColumnPropNameInTable="entidadColumn" msprop:Generator_UserColumnName="entidad" type="xs:string" minOccurs="0" />
+              <xs:element name="cnt" msprop:Generator_ColumnVarNameInTable="columncnt" msprop:Generator_ColumnPropNameInRow="cnt" msprop:Generator_ColumnPropNameInTable="cntColumn" msprop:Generator_UserColumnName="cnt" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

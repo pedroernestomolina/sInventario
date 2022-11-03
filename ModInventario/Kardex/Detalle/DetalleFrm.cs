@@ -122,10 +122,12 @@ namespace ModInventario.Kardex.Detalle
             DGV.Columns.Add(c8);
         }
 
+
         public void setControlador(Gestion ctr)
         {
             _controlador = ctr;
         }
+
 
         private void DetalleFrm_Load(object sender, EventArgs e)
         {
@@ -157,14 +159,16 @@ namespace ModInventario.Kardex.Detalle
                     cell.Style.ForeColor = Color.White;
                 }
             }
-
         }
 
+        private void BT_IMPRIMIR_Click(object sender, EventArgs e)
+        {
+            _controlador.Imprimir();
+        }
         private void BT_SALIR_Click(object sender, EventArgs e)
         {
             Salir();
         }
-
         private void Salir()
         {
             this.Close();

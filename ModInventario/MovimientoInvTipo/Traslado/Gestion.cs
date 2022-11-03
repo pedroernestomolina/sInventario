@@ -172,8 +172,6 @@ namespace ModInventario.MovimientoInvTipo.Traslado
                         lst.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
                     }
                     _gDepDestino.setData(lst);
-
-                    return true;
                 }
                 catch (Exception e)
                 {

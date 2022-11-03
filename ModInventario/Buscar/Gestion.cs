@@ -26,12 +26,11 @@ namespace ModInventario.Buscar
         private ModInventario.src.Producto.AgregarEditar.IBaseAgregarEditar _gestionEditarFicha;
         private Producto.VisualizarFicha.IVisualizar _gVisualizarFicha;
         private Producto.Estatus.Gestion _gestionEstatus;
-        private Producto.Imagen.Gestion _gestionImagen;
         private Producto.Proveedor.Gestion _gestionProveedor;
         private FiltrosGen.AdmProducto.IAdmProducto _gFiltrarProducto;
         private ISeguridadAccesoSistema _gAccesoSistema;
-        private Producto.QR.IQR _gQR;
-        private Producto.Imagen.IImagen _gImagen;
+        private ModInventario.src.Producto.QR.IQR _gQR;
+        private ModInventario.src.Producto.Imagen.IImagen _gImagen;
         private Kardex.Movimiento.IMov _gKardex;
         private FiltrosGen.IOpcion _gTipoBusq;
 
@@ -47,8 +46,8 @@ namespace ModInventario.Buscar
         private src.IFabrica _fabrica;
         public Gestion(FiltrosGen.AdmProducto.IAdmProducto hndFiltrarProducto, 
             ISeguridadAccesoSistema ctrSeguridad,
-            Producto.QR.IQR _qr,
-            Producto.Imagen.IImagen _imagen,
+            ModInventario.src.Producto.QR.IQR _qr,
+            ModInventario.src.Producto.Imagen.IImagen _imagen,
             ModInventario.src.Producto.AgregarEditar.IBaseAgregarEditar hndAgregarFicha,
             ModInventario.src.Producto.AgregarEditar.IBaseAgregarEditar hndEditarFicha,
             Producto.VisualizarFicha.IVisualizar hndVisualizarFicha,
@@ -77,9 +76,9 @@ namespace ModInventario.Buscar
             _gVisualizarFicha = hndVisualizarFicha;
             _gKardex = new Kardex.Movimiento.Gestion();
             _gestionEstatus = new Producto.Estatus.Gestion();
-            _gestionImagen = new Producto.Imagen.Gestion();
             _gestionProveedor = new Producto.Proveedor.Gestion();
         }
+
 
         public void Inicializa() 
         {
@@ -579,25 +578,6 @@ namespace ModInventario.Buscar
             }
         }
 
-        public void GetImagen()
-        {
-            if (Item != null)
-            {
-                var r00 = Sistema.MyData.Permiso_CambiarImagenDelProducto(Sistema.UsuarioP.autoGru);
-                if (r00.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r00.Mensaje);
-                    return;
-                }
-                if (_gAccesoSistema.Verificar(r00.Entidad))
-                {
-                    _gImagen.Inicializa();
-                    _gImagen.setFicha(Item.identidad.auto);
-                    _gImagen.Inicia();
-                }
-            }
-        }
-
         public void MovKardex()
         {
             if (Item != null)
@@ -643,6 +623,28 @@ namespace ModInventario.Buscar
                 case "04":
                     _gFiltrarProducto.setMetBusqByCodigoBarra();
                     break;
+            }
+        }
+
+
+        public void GetImagen()
+        {
+            if (Item != null)
+            {
+                try
+                {
+                    var r00 = Sistema.MyData.Permiso_CambiarImagenDelProducto(Sistema.UsuarioP.autoGru);
+                    if (_gAccesoSistema.Verificar(r00.Entidad))
+                    {
+                        _gImagen.Inicializa();
+                        _gImagen.setFicha(Item.identidad.auto);
+                        _gImagen.Inicia();
+                    }
+                }
+                catch (Exception e)
+                {
+                    Helpers.Msg.Error(e.Message);
+                }
             }
         }
 

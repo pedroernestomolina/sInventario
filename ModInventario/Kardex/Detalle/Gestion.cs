@@ -52,6 +52,10 @@ namespace ModInventario.Kardex.Detalle
         }
 
 
+        public void Inicializa()
+        {
+            _filtros = "";
+        }
         DetalleFrm frm;
         public void Inicia()
         {
@@ -96,6 +100,7 @@ namespace ModInventario.Kardex.Detalle
             return rt;
         }
 
+        private string _filtros;
         public void setFicha(string autoprd, string dep, string concept, OOB.LibInventario.Kardex.Enumerados.EnumMovUltDias dias,  Movimiento.detalle item)
         {
             deposito=dep;
@@ -105,9 +110,14 @@ namespace ModInventario.Kardex.Detalle
             detalle = item;
         }
 
-
-        public void Inicializa()
+        public void Imprimir()
         {
+            if (lData.Count > 0)
+            {
+                _filtros += "Filtro: " + Producto + ", Deposito: " + deposito + ", Concepto: " + concepto + ", Ultimos: " + nDias.ToString();
+                var rp = new Reportes.Kardex.gestionRep(lData, _filtros);
+                rp.Generar();
+            }
         }
 
     }

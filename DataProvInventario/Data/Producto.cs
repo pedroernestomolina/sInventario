@@ -203,11 +203,8 @@ namespace DataProvInventario.Data
             var r01 = MyData.Producto_GetExistencia(autoPrd);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
-
             var nr = new OOB.LibInventario.Producto.Data.Existencia();
             var e = r01.Entidad;
             if (e != null)
@@ -217,6 +214,8 @@ namespace DataProvInventario.Data
                 nr.decimales = e.decimales;
                 nr.empaque = e.empaqueCompra;
                 nr.empaqueContenido = e.empaqueCompraCont;
+                nr.contEmpInv=e.contEmpInv;
+                nr.descEmpInv = e.descEmpInv;
 
                 var list = new List<OOB.LibInventario.Producto.Data.Deposito>();
                 if (e.depositos != null)
@@ -961,11 +960,8 @@ namespace DataProvInventario.Data
             var r01 = MyData.Producto_GetImagen(autoPrd);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
-
             var s = r01.Entidad;
             var nr = new OOB.LibInventario.Producto.Data.Imagen()
             {

@@ -167,6 +167,15 @@ namespace ModInventario.Producto.Deposito.Listar
         {
             _controlador.EditarDeposito();
         }
+
+        private void BT_IMPRIMIR_Click(object sender, EventArgs e)
+        {
+            ImprimirReporte();
+        }
+        private void ImprimirReporte()
+        {
+            _controlador.ImprimirReporte();
+        }
       
     }
 

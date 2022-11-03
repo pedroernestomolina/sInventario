@@ -92,6 +92,8 @@ namespace ModInventario.Kardex.Movimiento
         {
             var dep = item.Deposito;
             var concept = item.Concepto;
+
+            _gestionDetalle.Inicializa();
             _gestionDetalle.setFicha(_autoPrd, dep, concept, _dias, item);
             _gestionDetalle.Inicia();
         }

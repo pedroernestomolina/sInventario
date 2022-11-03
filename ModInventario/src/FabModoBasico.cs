@@ -119,7 +119,33 @@ namespace ModInventario.src
         {
             return new ModInventario.src.AnularDoc.ImpAnular();
         }
-
+        public Producto.Imagen.IImagen 
+            CreateInstancia_ImagenProducto()
+        {
+            return new ModInventario.src.Producto.Imagen.ImpImagen();
+        }
+        public Producto.QR.IQR
+            CreateInstancia_ImagenQRProducto()
+        {
+            return new ModInventario.src.Producto.QR.ImpQR();
+        }
+        public ModInventario.Buscar.Gestion
+            CreateInstancia_HndProducto(ISeguridadAccesoSistema _seguridad, IFabrica _fabrica)
+        {
+            return new ModInventario.Buscar.Gestion(
+                CreateInstancia_FiltroPrdAdm(),
+                _seguridad,
+                CreateInstancia_ImagenQRProducto(),
+                CreateInstancia_ImagenProducto(),
+                CreateInstancia_AgregarPrd(),
+                CreateInstancia_EditarPrd(),
+                CreateInstancia_VisualizarPrd(),
+                CreateInstancia_EditarCambiarPrecio(),
+                CreateInstancia_VisualizarPrecio(),
+                CreateInstancia_HistoricoPrecio(),
+                _fabrica);
+        }
+       
     }
 
 }

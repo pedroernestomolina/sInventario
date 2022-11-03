@@ -730,6 +730,12 @@
       <DependentUpon>DS_Precio.xsd</DependentUpon>
     </Compile>
     <Compile Include="Reportes\HistoricoPrecio\gestionRep.cs" />
+    <Compile Include="Reportes\Kardex\DS_Kardex.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Kardex.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Kardex\gestionRep.cs" />
     <Compile Include="Reportes\Movimientos\data.cs" />
     <Compile Include="Reportes\Movimientos\DS1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -743,6 +749,13 @@
       <DependentUpon>DS_MOVPEND.xsd</DependentUpon>
     </Compile>
     <Compile Include="Reportes\MovPend\gestionRep.cs" />
+    <Compile Include="Reportes\RepProducto\DS_VAR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_VAR.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\RepProducto\ExistenciaPorDeposito\data.cs" />
+    <Compile Include="Reportes\RepProducto\ExistenciaPorDeposito\gestionRep.cs" />
     <Compile Include="Reportes\ReporteFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -931,6 +944,22 @@
     <Compile Include="src\Producto\CodigosAlterno\data.cs" />
     <Compile Include="src\Producto\CodigosAlterno\Gestion.cs" />
     <Compile Include="src\Producto\CodigosAlterno\IAlterno.cs" />
+    <Compile Include="src\Producto\Imagen\ImpImagen.cs" />
+    <Compile Include="src\Producto\Imagen\IImagen.cs" />
+    <Compile Include="src\Producto\Imagen\ImgFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Producto\Imagen\ImgFrm.Designer.cs">
+      <DependentUpon>ImgFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Producto\QR\ImpQR.cs" />
+    <Compile Include="src\Producto\QR\IQR.cs" />
+    <Compile Include="src\Producto\QR\QRFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Producto\QR\QRFrm.Designer.cs">
+      <DependentUpon>QRFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Producto\Visualizar\ModoBasico\Gestion.cs" />
     <Compile Include="src\Producto\Visualizar\ModoBasico\VisualizarFrm.cs">
       <SubType>Form</SubType>
@@ -1265,6 +1294,9 @@
     <EmbeddedResource Include="Reportes\HistoricoPrecio\HistoricoPrecio.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Kardex\Movimientos.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Movimientos\Movimientos.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -1273,6 +1305,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReporteFrm.resx">
       <DependentUpon>ReporteFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\RepProducto\Prd_ExistenciaDeposito.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Visor\Existencia.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1327,6 +1362,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\Producto\AgregarEditar\ModoSucursal\AgregarEditarFrm.resx">
       <DependentUpon>AgregarEditarFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Producto\Imagen\ImgFrm.resx">
+      <DependentUpon>ImgFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Producto\QR\QRFrm.resx">
+      <DependentUpon>QRFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Producto\Visualizar\ModoBasico\VisualizarFrm.resx">
       <DependentUpon>VisualizarFrm.cs</DependentUpon>
@@ -1429,6 +1470,17 @@
     <None Include="Reportes\HistoricoPrecio\DS_Precio.xss">
       <DependentUpon>DS_Precio.xsd</DependentUpon>
     </None>
+    <None Include="Reportes\Kardex\DS_Kardex.xsc">
+      <DependentUpon>DS_Kardex.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\Kardex\DS_Kardex.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Kardex.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\Kardex\DS_Kardex.xss">
+      <DependentUpon>DS_Kardex.xsd</DependentUpon>
+    </None>
     <None Include="Reportes\Movimientos\DS.xsc">
       <DependentUpon>DS.xsd</DependentUpon>
     </None>
@@ -1450,6 +1502,17 @@
     </None>
     <None Include="Reportes\MovPend\DS_MOVPEND.xss">
       <DependentUpon>DS_MOVPEND.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\RepProducto\DS_VAR.xsc">
+      <DependentUpon>DS_VAR.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\RepProducto\DS_VAR.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_VAR.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\RepProducto\DS_VAR.xss">
+      <DependentUpon>DS_VAR.xsd</DependentUpon>
     </None>
     <None Include="Reportes\Visor\DSVisor.xsc">
       <DependentUpon>DSVisor.xsd</DependentUpon>

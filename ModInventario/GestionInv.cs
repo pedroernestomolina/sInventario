@@ -638,6 +638,8 @@ namespace ModInventario
             {
                 _gestionReporteFiltros.Inicializa();
                 _gestionReporteFiltros.setValidarData(true);
+                _gestionReporteFiltros.setDesde(DateTime.Now.Date);
+                _gestionReporteFiltros.setHasta(DateTime.Now.Date);
                 _gestionReporteFiltros.setGestion(new Reportes.Filtros.Kardex.Filtros());
                 _gestionReporteFiltros.Inicia();
                 if (_gestionReporteFiltros.FiltrosIsOK)

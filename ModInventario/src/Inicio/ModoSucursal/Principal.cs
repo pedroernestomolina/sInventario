@@ -406,7 +406,6 @@ namespace ModInventario.src.Inicio.ModoSucursal
         {
             Kardex_Resumen_Mov();
         }
-
         private void Kardex_Resumen_Mov()
         {
             _controlador.Kardex_Resumen_Mov();

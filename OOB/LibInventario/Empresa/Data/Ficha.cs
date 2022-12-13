@@ -15,6 +15,9 @@ namespace OOB.LibInventario.Empresa.Data
         public string CiRif { get; set; }
         public string DireccionFiscal { get; set; }
         public string Telefono { get; set; }
+        public string CodigoEmpresa { get; set; }
+        public string CodigoDepositoPrincipal { get; set; }
+        public bool EsEmpresaPrincipal { get { return CodigoEmpresa == "01"; } }
 
 
         public Ficha()
@@ -23,6 +26,8 @@ namespace OOB.LibInventario.Empresa.Data
             CiRif = "";
             DireccionFiscal = "";
             Telefono = "";
+            CodigoEmpresa = "";
+            CodigoDepositoPrincipal = "";
         }
 
     }

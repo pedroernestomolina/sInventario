@@ -112,6 +112,10 @@ namespace ModInventario
         ModInventario.src.Filtro.FiltroRep.IFiltroRep _gestionReporteFiltros;
         ModInventario.src.AdmDocumentos.IAdmDoc _hndAdmDoc;
         private Buscar.Gestion _gHndProducto;
+        ModInventario.src.Visor.Traslado.IVisorTraslado _gVisorTraslado;
+        ModInventario.src.Visor.GananciaPerdida.IVisorGanPerd _gVisorGanPerd;
+        ModInventario.src.Visor.Precios.IPrecio _gVisorPrecio;
+        ModInventario.src.Visor.EntradaxCompra.IEntradaxCompra _gVisorEntradaxCompra;
         public GestionInv(src.IFabrica fabrica)
         {
             _fabrica = fabrica;
@@ -119,7 +123,11 @@ namespace ModInventario
             FiltrosGen.AdmProducto.IAdmProducto _hndFiltroAdmProducto = _fabrica.CreateInstancia_FiltroPrdAdm();
             _gestionReporteFiltros = _fabrica.CreateInstancia_FiltrosReporte();
             _hndAdmDoc = _fabrica.CreateInstancia_AdmDocumentos();
-
+            //VISOR
+            _gVisorTraslado = _fabrica.CreateInstancia_VisorTraslado();
+            _gVisorGanPerd = _fabrica.CreateInstancia_VisorGananciaPerdida();
+            _gVisorPrecio = _fabrica.CreateInstancia_VisorPrecio();
+            _gVisorEntradaxCompra = _fabrica.CreateInstancia_VisorEntradaxCompra();
 
             _gSecurity= new SeguridadSist.Gestion();
             _gSecurityModoUsuario = new SeguridadSist.Usuario.Gestion();
@@ -224,8 +232,8 @@ namespace ModInventario
             _gVisorPrecioAjuste = new Visor.PrecioAjuste.Ajuste(_seguridad, _hndEditarPrecio);
             _gestionVisorExistencia = new Visor.Existencia.Gestion();
             _gestionVisorCostoEdad = new Visor.CostoEdad.Gestion();
-            _gestionVisorTraslado = new Visor.Traslado.Gestion();
-            _gestionVisorAjuste = new Visor.Ajuste.Gestion();
+            //_gestionVisorTraslado = new Visor.Traslado.Gestion();
+            //_gestionVisorAjuste = new Visor.Ajuste.Gestion();
             _gestionVisorCostoExistencia = new Visor.CostoExistencia.Gestion();
 
             _gestionConfCostoEdad = new Configuracion.CostoEdad.Gestion();
@@ -447,16 +455,20 @@ namespace ModInventario
         {
             if (VerificarPermisoVisor())
             {
-                _gestionVisorTraslado = new Visor.Traslado.Gestion();
-                _gestionVisorTraslado.Inicia();
+                _gVisorTraslado.Inicializa();
+                _gVisorTraslado.Inicia();
+                //_gestionVisorTraslado = new Visor.Traslado.Gestion();
+                //_gestionVisorTraslado.Inicia();
             }
         }
         public void VisorAjuste()
         {
             if (VerificarPermisoVisor())
             {
-                _gestionVisorAjuste = new Visor.Ajuste.Gestion();
-                _gestionVisorAjuste.Inicia();
+                _gVisorGanPerd.Inicializa();
+                _gVisorGanPerd.Inicia();
+                //_gestionVisorAjuste = new Visor.Ajuste.Gestion();
+                //_gestionVisorAjuste.Inicia();
             }
         }
         public void VisorPrecio_AjustarProductosConExistenciaPrecioCero()
@@ -465,6 +477,22 @@ namespace ModInventario
             {
                 _gVisorPrecioAjuste.Inicializa();
                 _gVisorPrecioAjuste.Inicia();
+            }
+        }
+        public void VisorPrecio_Precios()
+        {
+            if (VerificarPermisoVisor())
+            {
+                _gVisorPrecio.Inicializa();
+                _gVisorPrecio.Inicia();
+            }
+        }
+        public void VisorEntradasPorCompra()
+        {
+            if (VerificarPermisoVisor())
+            {
+                _gVisorEntradaxCompra.Inicializa();
+                _gVisorEntradaxCompra.Inicia();
             }
         }
         public bool VerificarPermisoVisor()
@@ -504,6 +532,7 @@ namespace ModInventario
                 _gestionReporteFiltros.Inicializa();
                 _gestionReporteFiltros.setValidarData(false);
                 _gestionReporteFiltros.setGestion(new Reportes.Filtros.MaestroPrecio.Filtros());
+                _gestionReporteFiltros.setDepartamento("");
                 _gestionReporteFiltros.Inicia();
                 if (_gestionReporteFiltros.FiltrosIsOK)
                 {

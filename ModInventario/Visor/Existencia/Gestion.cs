@@ -20,6 +20,7 @@ namespace ModInventario.Visor.Existencia
         private BindingSource bsDeposito;
         private Reportes.Visor.Existencia.GestionRep _gestionRep;
         private string _filtros;
+        private bool _conMercEnReserva;
 
 
         public string Items { get { return bs.Count.ToString("n0"); } }
@@ -33,6 +34,7 @@ namespace ModInventario.Visor.Existencia
 
         public Gestion()
         {
+            _conMercEnReserva=false;
             _filtros = "";
             Deposito = "";
             Departamento = "";
@@ -133,7 +135,12 @@ namespace ModInventario.Visor.Existencia
             }
 
             lista.Clear();
-            foreach (var rg in r01.Lista.OrderBy(o=>o.nombrePrd).ToList()) 
+            var _lst= r01.Lista;
+            if (_conMercEnReserva)
+            {
+                _lst = _lst.Where(w => w.cntReserva > 0).ToList();
+            }
+            foreach (var rg in _lst.OrderBy(o=>o.nombrePrd).ToList()) 
             {
                 lista.Add(new data(rg,Filtrar));
             }
@@ -144,6 +151,11 @@ namespace ModInventario.Visor.Existencia
         {
             Buscar();
             _gestionRep.Imprimir(lista, _filtros);
+        }
+
+        public void InvConMercanciaReserva(bool enReserva)
+        {
+            _conMercEnReserva = enReserva;
         }
 
     }

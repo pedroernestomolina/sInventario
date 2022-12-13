@@ -145,7 +145,28 @@ namespace ModInventario.src
                 CreateInstancia_HistoricoPrecio(),
                 _fabrica);
         }
-       
+
+        public Visor.Traslado.IVisorTraslado 
+            CreateInstancia_VisorTraslado()
+        {
+            return null;
+        }
+        public Visor.GananciaPerdida.IVisorGanPerd 
+            CreateInstancia_VisorGananciaPerdida()
+        {
+            return null;
+        }
+        public Visor.Precios.IPrecio 
+            CreateInstancia_VisorPrecio()
+        {
+            return null;
+        }
+        public Visor.EntradaxCompra.IEntradaxCompra 
+            CreateInstancia_VisorEntradaxCompra()
+        {
+            return null;
+        }
+
     }
 
 }

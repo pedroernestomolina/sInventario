@@ -20,7 +20,11 @@ namespace ModInventario.Visor.Existencia
         public string Deposito { get { return rg.nombreDeposito; } }
         public string Departamento { get { return rg.nombreDepart; } }
         public decimal CntFisica { get { return rg.cntFisica; } }
-        public string SCntFisica { get { return CntFisica.ToString("n"+rg.decimales); } }
+        public decimal CntReserva { get { return rg.cntReserva; } }
+        public decimal CntDisponible { get { return rg.cntDisponible; } }
+        public string SCntFisica { get { return CntFisica.ToString("n" + rg.decimales); } }
+        public string SCntReserva { get { return CntReserva.ToString("n" + rg.decimales); } }
+        public string SCntDisponible { get { return CntDisponible.ToString("n" + rg.decimales); } }
         public bool EsPesado { get { return rg.esPesado == "S"; } }
         public string NivelMinimo 
         {

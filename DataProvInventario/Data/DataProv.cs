@@ -26,15 +26,11 @@ namespace DataProvInventario.Data
             FechaServidor()
         {
             var result = new OOB.ResultadoEntidad<DateTime>();
-
             var r01 = MyData.FechaServidor();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                result.Mensaje = r01.Mensaje;
-                result.Result = OOB.Enumerados.EnumResult.isError;
-                return result;
+                throw new Exception(r01.Mensaje);
             }
-
             result.Entidad = (DateTime)r01.Entidad;
             return result;
         }
@@ -42,13 +38,11 @@ namespace DataProvInventario.Data
             Empresa_Datos()
         {
             var result = new OOB.ResultadoEntidad<OOB.LibInventario.Empresa.Data.Ficha>();
-
             var r01 = MyData.Empresa_Datos();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
                 throw new Exception(r01.Mensaje);
             }
-
             var s=r01.Entidad;
             var nr = new OOB.LibInventario.Empresa.Data.Ficha()
             {
@@ -57,8 +51,24 @@ namespace DataProvInventario.Data
                 Nombre = s.Nombre,
                 Telefono = s.Telefono,
             };
+            if (s.extra != null)
+            {
+                nr.CodigoEmpresa = s.extra.codEmpresa;
+                nr.CodigoDepositoPrincipal = s.extra.idDepPrincipal;
+            }
             result.Entidad = nr;
-
+            return result;
+        }
+        public OOB.ResultadoEntidad<string> 
+            Empresa_Sucursal_TipoPrecioManejar(string codEmpresa)
+        {
+            var result = new OOB.ResultadoEntidad<string>();
+            var r01 = MyData.Empresa_Sucursal_TipoPrecioManejar(codEmpresa);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            result.Entidad = r01.Entidad;
             return result;
         }
 

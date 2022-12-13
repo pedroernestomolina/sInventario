@@ -33,6 +33,8 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.BT_SALIR = new System.Windows.Forms.Button();
+            this.panel25 = new System.Windows.Forms.Panel();
+            this.BT_IMPRIMIR = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.panel32 = new System.Windows.Forms.Panel();
@@ -78,11 +80,13 @@
             this.panel22 = new System.Windows.Forms.Panel();
             this.DGV = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.panel25 = new System.Windows.Forms.Panel();
-            this.BT_IMPRIMIR = new System.Windows.Forms.Button();
+            this.panel26 = new System.Windows.Forms.Panel();
+            this.panel27 = new System.Windows.Forms.Panel();
+            this.CHB_EN_RESERVA = new System.Windows.Forms.CheckBox();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel9.SuspendLayout();
+            this.panel25.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
             this.panel32.SuspendLayout();
@@ -113,7 +117,7 @@
             this.panel21.SuspendLayout();
             this.panel22.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
-            this.panel25.SuspendLayout();
+            this.panel27.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -173,6 +177,33 @@
             this.BT_SALIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.BT_SALIR.UseVisualStyleBackColor = true;
             this.BT_SALIR.Click += new System.EventHandler(this.BT_SALIR_Click);
+            // 
+            // panel25
+            // 
+            this.panel25.Controls.Add(this.BT_IMPRIMIR);
+            this.panel25.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel25.Location = new System.Drawing.Point(653, 1);
+            this.panel25.Margin = new System.Windows.Forms.Padding(1);
+            this.panel25.Name = "panel25";
+            this.panel25.Padding = new System.Windows.Forms.Padding(2);
+            this.panel25.Size = new System.Drawing.Size(161, 46);
+            this.panel25.TabIndex = 2;
+            // 
+            // BT_IMPRIMIR
+            // 
+            this.BT_IMPRIMIR.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.BT_IMPRIMIR.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_IMPRIMIR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_IMPRIMIR.Image = global::ModInventario.Properties.Resources.bt_imprimir_2;
+            this.BT_IMPRIMIR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.BT_IMPRIMIR.Location = new System.Drawing.Point(2, 2);
+            this.BT_IMPRIMIR.Name = "BT_IMPRIMIR";
+            this.BT_IMPRIMIR.Size = new System.Drawing.Size(157, 42);
+            this.BT_IMPRIMIR.TabIndex = 2;
+            this.BT_IMPRIMIR.Text = "Imprimir";
+            this.BT_IMPRIMIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.BT_IMPRIMIR.UseVisualStyleBackColor = true;
+            this.BT_IMPRIMIR.Click += new System.EventHandler(this.BT_IMPRIMIR_Click);
             // 
             // panel1
             // 
@@ -491,15 +522,18 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.09687F));
             this.tableLayoutPanel6.Controls.Add(this.panel15, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.panel16, 1, 1);
-            this.tableLayoutPanel6.Controls.Add(this.panel17, 0, 2);
-            this.tableLayoutPanel6.Controls.Add(this.panel18, 1, 2);
+            this.tableLayoutPanel6.Controls.Add(this.panel17, 0, 3);
+            this.tableLayoutPanel6.Controls.Add(this.panel18, 1, 3);
+            this.tableLayoutPanel6.Controls.Add(this.panel26, 0, 2);
+            this.tableLayoutPanel6.Controls.Add(this.panel27, 1, 2);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 3;
+            this.tableLayoutPanel6.RowCount = 4;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(346, 56);
             this.tableLayoutPanel6.TabIndex = 2;
@@ -508,7 +542,7 @@
             // 
             this.panel15.Controls.Add(this.L_DEPARTAMENTO);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel15.Location = new System.Drawing.Point(1, 15);
+            this.panel15.Location = new System.Drawing.Point(1, 0);
             this.panel15.Margin = new System.Windows.Forms.Padding(1);
             this.panel15.Name = "panel15";
             this.panel15.Padding = new System.Windows.Forms.Padding(2);
@@ -533,7 +567,7 @@
             // 
             this.panel16.Controls.Add(this.CB_DEPART);
             this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel16.Location = new System.Drawing.Point(118, 15);
+            this.panel16.Location = new System.Drawing.Point(118, 0);
             this.panel16.Margin = new System.Windows.Forms.Padding(1);
             this.panel16.Name = "panel16";
             this.panel16.Padding = new System.Windows.Forms.Padding(2);
@@ -556,21 +590,21 @@
             // panel17
             // 
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(1, 43);
+            this.panel17.Location = new System.Drawing.Point(1, 58);
             this.panel17.Margin = new System.Windows.Forms.Padding(1);
             this.panel17.Name = "panel17";
             this.panel17.Padding = new System.Windows.Forms.Padding(2);
-            this.panel17.Size = new System.Drawing.Size(115, 12);
+            this.panel17.Size = new System.Drawing.Size(115, 1);
             this.panel17.TabIndex = 2;
             // 
             // panel18
             // 
             this.panel18.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel18.Location = new System.Drawing.Point(118, 43);
+            this.panel18.Location = new System.Drawing.Point(118, 58);
             this.panel18.Margin = new System.Windows.Forms.Padding(1);
             this.panel18.Name = "panel18";
             this.panel18.Padding = new System.Windows.Forms.Padding(2);
-            this.panel18.Size = new System.Drawing.Size(227, 12);
+            this.panel18.Size = new System.Drawing.Size(227, 1);
             this.panel18.TabIndex = 3;
             // 
             // panel10
@@ -731,32 +765,38 @@
             this.DGV.TabIndex = 0;
             this.DGV.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.DGV_DataBindingComplete);
             // 
-            // panel25
+            // panel26
             // 
-            this.panel25.Controls.Add(this.BT_IMPRIMIR);
-            this.panel25.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel25.Location = new System.Drawing.Point(653, 1);
-            this.panel25.Margin = new System.Windows.Forms.Padding(1);
-            this.panel25.Name = "panel25";
-            this.panel25.Padding = new System.Windows.Forms.Padding(2);
-            this.panel25.Size = new System.Drawing.Size(161, 46);
-            this.panel25.TabIndex = 2;
+            this.panel26.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel26.Location = new System.Drawing.Point(1, 28);
+            this.panel26.Margin = new System.Windows.Forms.Padding(1);
+            this.panel26.Name = "panel26";
+            this.panel26.Padding = new System.Windows.Forms.Padding(2);
+            this.panel26.Size = new System.Drawing.Size(115, 28);
+            this.panel26.TabIndex = 4;
             // 
-            // BT_IMPRIMIR
+            // panel27
             // 
-            this.BT_IMPRIMIR.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.BT_IMPRIMIR.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BT_IMPRIMIR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BT_IMPRIMIR.Image = global::ModInventario.Properties.Resources.bt_imprimir_2;
-            this.BT_IMPRIMIR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.BT_IMPRIMIR.Location = new System.Drawing.Point(2, 2);
-            this.BT_IMPRIMIR.Name = "BT_IMPRIMIR";
-            this.BT_IMPRIMIR.Size = new System.Drawing.Size(157, 42);
-            this.BT_IMPRIMIR.TabIndex = 2;
-            this.BT_IMPRIMIR.Text = "Imprimir";
-            this.BT_IMPRIMIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.BT_IMPRIMIR.UseVisualStyleBackColor = true;
-            this.BT_IMPRIMIR.Click += new System.EventHandler(this.BT_IMPRIMIR_Click);
+            this.panel27.Controls.Add(this.CHB_EN_RESERVA);
+            this.panel27.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel27.Location = new System.Drawing.Point(118, 28);
+            this.panel27.Margin = new System.Windows.Forms.Padding(1);
+            this.panel27.Name = "panel27";
+            this.panel27.Padding = new System.Windows.Forms.Padding(2);
+            this.panel27.Size = new System.Drawing.Size(227, 28);
+            this.panel27.TabIndex = 5;
+            // 
+            // CHB_EN_RESERVA
+            // 
+            this.CHB_EN_RESERVA.AutoSize = true;
+            this.CHB_EN_RESERVA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CHB_EN_RESERVA.Location = new System.Drawing.Point(5, 5);
+            this.CHB_EN_RESERVA.Name = "CHB_EN_RESERVA";
+            this.CHB_EN_RESERVA.Size = new System.Drawing.Size(211, 20);
+            this.CHB_EN_RESERVA.TabIndex = 0;
+            this.CHB_EN_RESERVA.Text = "Inv Con Mercancia En Reserva";
+            this.CHB_EN_RESERVA.UseVisualStyleBackColor = true;
+            this.CHB_EN_RESERVA.CheckedChanged += new System.EventHandler(this.CHB_EN_RESERVA_CheckedChanged);
             // 
             // ExistenciaFrm
             // 
@@ -774,6 +814,7 @@
             this.panel2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
+            this.panel25.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel12.ResumeLayout(false);
             this.panel32.ResumeLayout(false);
@@ -804,7 +845,8 @@
             this.panel21.ResumeLayout(false);
             this.panel22.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).EndInit();
-            this.panel25.ResumeLayout(false);
+            this.panel27.ResumeLayout(false);
+            this.panel27.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -862,5 +904,8 @@
         private System.Windows.Forms.Panel panel24;
         private System.Windows.Forms.Panel panel25;
         private System.Windows.Forms.Button BT_IMPRIMIR;
+        private System.Windows.Forms.Panel panel26;
+        private System.Windows.Forms.Panel panel27;
+        private System.Windows.Forms.CheckBox CHB_EN_RESERVA;
     }
 }

@@ -279,6 +279,8 @@
     <Compile Include="LibInventario\Visor\CostoEdad\Filtro.cs" />
     <Compile Include="LibInventario\Visor\CostoExistencia\Ficha.cs" />
     <Compile Include="LibInventario\Visor\CostoExistencia\Filtro.cs" />
+    <Compile Include="LibInventario\Visor\EntradaxCompra\Ficha.cs" />
+    <Compile Include="LibInventario\Visor\EntradaxCompra\Filtro.cs" />
     <Compile Include="LibInventario\Visor\Existencia\Enumerados.cs" />
     <Compile Include="LibInventario\Visor\Existencia\Ficha.cs" />
     <Compile Include="LibInventario\Visor\Existencia\Filtro.cs" />
@@ -286,6 +288,8 @@
     <Compile Include="LibInventario\Visor\PrecioAjuste\Filtro.cs" />
     <Compile Include="LibInventario\Visor\Precio\Ficha.cs" />
     <Compile Include="LibInventario\Visor\Precio\Filtro.cs" />
+    <Compile Include="LibInventario\Visor\Precio\SoloReporte\Ficha.cs" />
+    <Compile Include="LibInventario\Visor\Precio\SoloReporte\Filtro.cs" />
     <Compile Include="LibInventario\Visor\Traslado\Ficha.cs" />
     <Compile Include="LibInventario\Visor\Traslado\Filtro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

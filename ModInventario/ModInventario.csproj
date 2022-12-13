@@ -804,6 +804,14 @@
     </Compile>
     <Compile Include="src\AdmDocumentos\ModoBasico\IBasico.cs" />
     <Compile Include="src\AdmDocumentos\ModoBasico\ImpModoBasico.cs" />
+    <Compile Include="src\AdmDocumentos\ModoSoloReporte\AdministradorFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\AdmDocumentos\ModoSoloReporte\AdministradorFrm.Designer.cs">
+      <DependentUpon>AdministradorFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\AdmDocumentos\ModoSoloReporte\ImpModo.cs" />
+    <Compile Include="src\AdmDocumentos\ModoSoloReporte\IModo.cs" />
     <Compile Include="src\AdmDocumentos\ModoSucursal\AdministradorFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -835,6 +843,7 @@
       <DependentUpon>BusquedaFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\FabModoBasico.cs" />
+    <Compile Include="src\FabModoSoloReporte.cs" />
     <Compile Include="src\FabModoSucursal.cs" />
     <Compile Include="src\Fabrica.cs" />
     <Compile Include="src\FiltroBusqAdm\dataFiltro.cs" />
@@ -886,6 +895,15 @@
     </Compile>
     <Compile Include="src\Filtro\FiltroRep\ModoBasico\ImpModoBasico.cs" />
     <Compile Include="src\Filtro\FiltroRep\ModoBasico\IModoBasico.cs" />
+    <Compile Include="src\Filtro\FiltroRep\ModoSoloReporte\dataFiltrar.cs" />
+    <Compile Include="src\Filtro\FiltroRep\ModoSoloReporte\FiltrosFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Filtro\FiltroRep\ModoSoloReporte\FiltrosFrm.Designer.cs">
+      <DependentUpon>FiltrosFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Filtro\FiltroRep\ModoSoloReporte\IModo.cs" />
+    <Compile Include="src\Filtro\FiltroRep\ModoSoloReporte\ImpModo.cs" />
     <Compile Include="src\Filtro\FiltroRep\ModoSucursal\dataFiltrar.cs" />
     <Compile Include="src\Filtro\FiltroRep\ModoSucursal\FiltrosFrm.cs">
       <SubType>Form</SubType>
@@ -903,6 +921,12 @@
     </Compile>
     <Compile Include="src\Inicio\ModoBasico\Form2.designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Inicio\ModoSoloReporte\Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Inicio\ModoSoloReporte\Principal.designer.cs">
+      <DependentUpon>Principal.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Inicio\ModoSucursal\Principal.cs">
       <SubType>Form</SubType>
@@ -966,6 +990,45 @@
     </Compile>
     <Compile Include="src\Producto\Visualizar\ModoBasico\VisualizarFrm.Designer.cs">
       <DependentUpon>VisualizarFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Visor\EntradaxCompra\IEntradaxCompra.cs" />
+    <Compile Include="src\Visor\EntradaxCompra\ModoSoloReporte\data.cs" />
+    <Compile Include="src\Visor\EntradaxCompra\ModoSoloReporte\EntradaxCompraFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Visor\EntradaxCompra\ModoSoloReporte\EntradaxCompraFrm.Designer.cs">
+      <DependentUpon>EntradaxCompraFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Visor\EntradaxCompra\ModoSoloReporte\ImpSoloReporte.cs" />
+    <Compile Include="src\Visor\EntradaxCompra\ModoSoloReporte\ISoloReporte.cs" />
+    <Compile Include="src\Visor\GananciaPerdida\GananciaPerdidaFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Visor\GananciaPerdida\GananciaPerdidaFrm.Designer.cs">
+      <DependentUpon>GananciaPerdidaFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Visor\GananciaPerdida\data.cs" />
+    <Compile Include="src\Visor\GananciaPerdida\ModoSoloReporte\ImpVisorGanPerd.cs" />
+    <Compile Include="src\Visor\GananciaPerdida\IVisorGanPerd.cs" />
+    <Compile Include="src\Visor\IVisor.cs" />
+    <Compile Include="src\Visor\Precios\IPrecio.cs" />
+    <Compile Include="src\Visor\Precios\ModoSoloReporte\data.cs" />
+    <Compile Include="src\Visor\Precios\ModoSoloReporte\ImpVisor.cs" />
+    <Compile Include="src\Visor\Precios\ModoSoloReporte\ISoloReporte.cs" />
+    <Compile Include="src\Visor\Precios\ModoSoloReporte\VisorFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Visor\Precios\ModoSoloReporte\VisorFrm.Designer.cs">
+      <DependentUpon>VisorFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Visor\Traslado\data.cs" />
+    <Compile Include="src\Visor\Traslado\IVisorTraslado.cs" />
+    <Compile Include="src\Visor\Traslado\ModoSoloReporte\ImpVisorTraslado.cs" />
+    <Compile Include="src\Visor\Traslado\TrasladoFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Visor\Traslado\TrasladoFrm.Designer.cs">
+      <DependentUpon>TrasladoFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Sucursal\Lista\data.cs" />
     <Compile Include="Sucursal\Lista\ListaSuc.cs" />
@@ -1321,6 +1384,9 @@
     <EmbeddedResource Include="src\AdmDocumentos\ModoBasico\AdministradorFrm.resx">
       <DependentUpon>AdministradorFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\AdmDocumentos\ModoSoloReporte\AdministradorFrm.resx">
+      <DependentUpon>AdministradorFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\AdmDocumentos\ModoSucursal\AdministradorFrm.resx">
       <DependentUpon>AdministradorFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1348,11 +1414,17 @@
     <EmbeddedResource Include="src\Filtro\FiltroRep\ModoBasico\FiltrosFrm.resx">
       <DependentUpon>FiltrosFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\Filtro\FiltroRep\ModoSoloReporte\FiltrosFrm.resx">
+      <DependentUpon>FiltrosFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\Filtro\FiltroRep\ModoSucursal\FiltrosFrm.resx">
       <DependentUpon>FiltrosFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Inicio\ModoBasico\Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Inicio\ModoSoloReporte\Principal.resx">
+      <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Inicio\ModoSucursal\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
@@ -1371,6 +1443,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\Producto\Visualizar\ModoBasico\VisualizarFrm.resx">
       <DependentUpon>VisualizarFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Visor\EntradaxCompra\ModoSoloReporte\EntradaxCompraFrm.resx">
+      <DependentUpon>EntradaxCompraFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Visor\GananciaPerdida\GananciaPerdidaFrm.resx">
+      <DependentUpon>GananciaPerdidaFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Visor\Precios\ModoSoloReporte\VisorFrm.resx">
+      <DependentUpon>VisorFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Visor\Traslado\TrasladoFrm.resx">
+      <DependentUpon>TrasladoFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Sucursal\Lista\ListaFrm.resx">
       <DependentUpon>ListaFrm.cs</DependentUpon>
@@ -1640,7 +1724,10 @@
       <Name>OOB</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="src\Visor\GananciaPerdida\ModoSucursal\" />
+    <Folder Include="src\Visor\Traslado\ModoSucursal\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

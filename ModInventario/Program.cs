@@ -34,17 +34,24 @@ namespace ModInventario
                     src.IFabrica fabrica;
                     var r02 = Sistema.MyData.Empresa_Datos();
                     Sistema.Negocio = r02.Entidad;
-                    var r03 = Sistema.MyData.Configuracion_ModuloInventario_Modo();
-                    switch(r03.Entidad)
+                    if (!r02.Entidad.EsEmpresaPrincipal)
                     {
-                        case DataProvInventario.Enumerados.modoConfInventario.Basico:
-                            fabrica= new src.FabModoBasico();
-                            break;
-                        case DataProvInventario.Enumerados.modoConfInventario.Sucursal:
-                            fabrica= new src.FabModoSucursal();
-                            break;
-                        default:
-                            throw new Exception("NO SE HA DEFINIDO UN MODO DE CONFIGURACION PARA INVENTARIO");
+                        fabrica = new src.FabModoSoloReporte();
+                    }
+                    else
+                    {
+                        var r03 = Sistema.MyData.Configuracion_ModuloInventario_Modo();
+                        switch (r03.Entidad)
+                        {
+                            case DataProvInventario.Enumerados.modoConfInventario.Basico:
+                                fabrica = new src.FabModoBasico();
+                                break;
+                            case DataProvInventario.Enumerados.modoConfInventario.Sucursal:
+                                fabrica = new src.FabModoSucursal();
+                                break;
+                            default:
+                                throw new Exception("NO SE HA DEFINIDO UN MODO DE CONFIGURACION PARA INVENTARIO");
+                        }
                     }
                     var _gestionId = new Identificacion.Gestion();
                     _gestionId.Inicia();

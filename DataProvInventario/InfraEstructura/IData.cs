@@ -19,6 +19,9 @@ namespace DataProvInventario.InfraEstructura
             FechaServidor();
         OOB.ResultadoEntidad<OOB.LibInventario.Empresa.Data.Ficha >
             Empresa_Datos();
+        OOB.ResultadoEntidad<string>
+            Empresa_Sucursal_TipoPrecioManejar(string codEmpresa);
+
     }
 
 }

@@ -11,7 +11,6 @@ namespace DataProvInventario.Data
 
     public partial class DataProv : IData
     {
-
         public OOB.ResultadoLista<OOB.LibInventario.Visor.Existencia.Ficha> 
             Visor_Existencia(OOB.LibInventario.Visor.Existencia.Filtro filtro)
         {
@@ -50,6 +49,8 @@ namespace DataProvInventario.Data
                             autoDeposito = s.autoDeposito,
                             autoPrd = s.autoPrd,
                             cntFisica = s.cntFisica,
+                            cntReserva = s.cntReserva,
+                            cntDisponible = s.cntDisponible,
                             codigoDepart = s.codigoDepart,
                             codigoDeposito = s.codigoDeposito,
                             codigoPrd = s.codigoPrd,
@@ -60,7 +61,7 @@ namespace DataProvInventario.Data
                             nombreDeposito = s.nombreDeposito,
                             nombrePrd = s.nombrePrd,
                             esPesado = s.esPesado,
-                            estatus=estatus,
+                            estatus = estatus,
                         };
                     }).ToList();
                 }
@@ -141,19 +142,14 @@ namespace DataProvInventario.Data
             Visor_Traslado(OOB.LibInventario.Visor.Traslado.Filtro filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Visor.Traslado.Ficha>();
-
             var filtroDto = new DtoLibInventario.Visor.Traslado.Filtro();
             filtroDto.ano = filtro.ano;
             filtroDto.mes = filtro.mes;
-
             var r01 = MyData.Visor_Traslado(filtroDto);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
-
             var list = new List<OOB.LibInventario.Visor.Traslado.Ficha>();
             if (r01.Lista != null)
             {
@@ -187,26 +183,20 @@ namespace DataProvInventario.Data
                 }
             }
             rt.Lista = list;
-
             return rt;
         }
         public OOB.ResultadoEntidad<OOB.LibInventario.Visor.Ajuste.Ficha> 
             Visor_Ajuste(OOB.LibInventario.Visor.Ajuste.Filtro filtro)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Visor.Ajuste.Ficha>();
-
             var filtroDto = new DtoLibInventario.Visor.Ajuste.Filtro();
             filtroDto.ano = filtro.ano;
             filtroDto.mes = filtro.mes;
-
             var r01 = MyData.Visor_Ajuste(filtroDto);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
-
             rt.Entidad = new OOB.LibInventario.Visor.Ajuste.Ficha();
             var list = new List<OOB.LibInventario.Visor.Ajuste.FichaDetalle>();
             rt.Entidad.montoVentaNeto = 0.0m;
@@ -246,7 +236,6 @@ namespace DataProvInventario.Data
                 rt.Entidad.montoVentaNeto = se.montoVentaNeto;
             }
             rt.Entidad.detalles = list;
-
             return rt;
         }
         public OOB.ResultadoLista<OOB.LibInventario.Visor.CostoExistencia.Ficha> 
@@ -427,7 +416,117 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
+        //
+        public OOB.ResultadoLista<OOB.LibInventario.Visor.Precio.SoloReporte.Ficha> 
+            Visor_Precio_Modo_SoloReporte(OOB.LibInventario.Visor.Precio.SoloReporte.Filtro filtro)
+        {
+            var rt = new OOB.ResultadoLista<OOB.LibInventario.Visor.Precio.SoloReporte.Ficha>();
+            var filtroDto = new DtoLibInventario.Visor.Precio.SoloReporte.Filtro()
+            {
+                autoDeposito = filtro.autoDeposito,
+                desdeCntDias = filtro.desdeCntDias,
+                excluirCambMasivo = filtro.excluirCambiosMasivo,
+            };
+            var r01 = MyData.Visor_Precio_Modo_SoloReporte(filtroDto);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var _lst = new List<OOB.LibInventario.Visor.Precio.SoloReporte.Ficha>();
+            if (r01.Lista != null) 
+            {
+                if (r01.Lista.Count > 0) 
+                {
+                    _lst = r01.Lista.Select(s =>
+                    {
+                        var nr = new OOB.LibInventario.Visor.Precio.SoloReporte.Ficha()
+                        {
+                            codigo = s.codigo,
+                            cont_emp_1 = s.cont_emp_1,
+                            cont_emp_2 = s.cont_emp_2,
+                            cont_emp_3 = s.cont_emp_3,
+                            emp_1 = s.emp_1,
+                            emp_2 = s.emp_2,
+                            emp_3 = s.emp_3,
+                            nombre = s.nombre,
+                            p1 = s.p1,
+                            p1_FD = s.p1_FD,
+                            p2 = s.p2,
+                            p2_FD = s.p2_FD,
+                            p3 = s.p3,
+                            p3_FD = s.p3_FD,
+                            p4 = s.p4,
+                            p4_FD = s.p4_FD,
+                            pDSP1 = s.pDSP1,
+                            pDSP1_FD = s.pDSP1_FD,
+                            pDSP2 = s.pDSP2,
+                            pDSP2_FD = s.pDSP2_FD,
+                            pDSP3 = s.pDSP3,
+                            pDSP3_FD = s.pDSP3_FD,
+                            pDSP4 = s.pDSP4,
+                            pDSP4_FD = s.pDSP4_FD,
+                            pM1 = s.pM1,
+                            pM1_FD = s.pM1_FD,
+                            pM2 = s.pM2,
+                            pM2_FD = s.pM2_FD,
+                            pM3 = s.pM3,
+                            pM3_FD = s.pM3_FD,
+                            pM4 = s.pM4,
+                            pM4_FD = s.pM4_FD,
+                            tasa = s.tasa,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            rt.Lista = _lst;
+            return rt;
+        }
+        public OOB.ResultadoLista<OOB.LibInventario.Visor.EntradaxCompra.Ficha> 
+            Visor_EntradaxCompra(OOB.LibInventario.Visor.EntradaxCompra.Filtro filtro)
+        {
+            var rt = new OOB.ResultadoLista<OOB.LibInventario.Visor.EntradaxCompra.Ficha>();
+            var filtroDto = new DtoLibInventario.Visor.EntradaxCompra.Filtro()
+            {
+                ano = filtro.ano,
+                idDeposito = filtro.idDeposito,
+                mes = filtro.mes,
+            };
+            var r01 = MyData.Visor_EntradasxCompra(filtroDto);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var _lst = new List<OOB.LibInventario.Visor.EntradaxCompra.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    _lst = r01.Lista.Select(s =>
+                    {
+                        var nr = new OOB.LibInventario.Visor.EntradaxCompra.Ficha()
+                        {
+                            cantUnd = s.cantUnd,
+                            codConcepto = s.codConcepto,
+                            codDeposito = s.codDeposito,
+                            codigoPrd = s.codigoPrd,
+                            descConcepto = s.descConcepto,
+                            descDeposito = s.descDeposito,
+                            entidadProv = s.entidadProv,
+                            fecha = s.fecha,
+                            hora = s.hora,
+                            nombrePrd = s.nombrePrd,
+                            nroDoc = s.nroDoc,
+                            siglasDoc = s.siglasDoc,
+                            signoDoc = s.signoDoc,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            rt.Lista = _lst;
+            return rt;
+        }
     }
 
 }

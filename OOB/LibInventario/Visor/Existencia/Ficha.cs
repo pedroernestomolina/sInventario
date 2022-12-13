@@ -10,7 +10,6 @@ namespace OOB.LibInventario.Visor.Existencia
     
     public class Ficha
     {
-
         public string autoPrd { get; set; }
         public string codigoPrd { get; set; }
         public string nombrePrd { get; set; }
@@ -21,12 +20,13 @@ namespace OOB.LibInventario.Visor.Existencia
         public string codigoDepart { get; set; }
         public string nombreDepart { get; set; }
         public decimal cntFisica { get; set; }
+        public decimal cntReserva { get; set; }
+        public decimal cntDisponible { get; set; }
         public decimal nivelMinimo { get; set; }
         public decimal nivelOptimo { get; set; }
         public string decimales { get; set; }
         public string esPesado { get; set; }
         public string estatus { get; set; }
-
     }
 
 }

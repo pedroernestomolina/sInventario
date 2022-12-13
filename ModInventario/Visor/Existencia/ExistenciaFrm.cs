@@ -94,6 +94,28 @@ namespace ModInventario.Visor.Existencia
             c5.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             //c5.DefaultCellStyle.Format = _controlador.Decimales;
 
+            var c52 = new DataGridViewTextBoxColumn();
+            c52.DataPropertyName = "SCntReserva";
+            c52.Name = "SCntReserva";
+            c52.HeaderText = "Cnt/Reserv";
+            c52.Visible = true;
+            c52.Width = 80;
+            c52.HeaderCell.Style.Font = f;
+            c52.DefaultCellStyle.Font = f1;
+            c52.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //c52.DefaultCellStyle.Format = _controlador.Decimales;
+
+            var c53 = new DataGridViewTextBoxColumn();
+            c53.DataPropertyName = "SCntDisponible";
+            c53.Name = "SCntDisponible";
+            c53.HeaderText = "Cnt/Disponib";
+            c53.Visible = true;
+            c53.Width = 80;
+            c53.HeaderCell.Style.Font = f;
+            c53.DefaultCellStyle.Font = f1;
+            c53.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //c53.DefaultCellStyle.Format = _controlador.Decimales;
+
             var c5A = new DataGridViewCheckBoxColumn();
             c5A.DataPropertyName = "EsPesado";
             c5A.HeaderText = "Kg";
@@ -155,6 +177,8 @@ namespace ModInventario.Visor.Existencia
             DGV.Columns.Add(c3);
             DGV.Columns.Add(c4);
             DGV.Columns.Add(c5);
+            DGV.Columns.Add(c52);
+            DGV.Columns.Add(c53);
             DGV.Columns.Add(c5A);
             DGV.Columns.Add(c6);
             DGV.Columns.Add(c7);
@@ -245,7 +269,6 @@ namespace ModInventario.Visor.Existencia
                 _controlador.Deposito = CB_DEPOSITO.SelectedValue.ToString();
             }
         }
-
         private void CB_DEPART_SelectedIndexChanged(object sender, EventArgs e)
         {
             _controlador.Departamento = "";
@@ -254,6 +277,17 @@ namespace ModInventario.Visor.Existencia
                 _controlador.Departamento = CB_DEPART.SelectedValue.ToString();
             }
         }
+
+
+        private void CHB_EN_RESERVA_CheckedChanged(object sender, EventArgs e)
+        {
+            InvConMercanciaReserva();
+        }
+        private void InvConMercanciaReserva()
+        {
+            _controlador.InvConMercanciaReserva(CHB_EN_RESERVA.Checked);
+        }
+
 
         private void L_DEPOSITO_Click(object sender, EventArgs e)
         {

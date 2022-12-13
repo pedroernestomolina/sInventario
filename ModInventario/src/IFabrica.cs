@@ -38,13 +38,19 @@ namespace ModInventario.src
             CreateInstancia_FiltrosReporte();
         ModInventario.Buscar.Gestion 
             CreateInstancia_HndProducto(ISeguridadAccesoSistema _seguridad, IFabrica _fabrica);
+        ModInventario.src.Visor.Traslado.IVisorTraslado 
+            CreateInstancia_VisorTraslado();
+        ModInventario.src.Visor.GananciaPerdida.IVisorGanPerd 
+            CreateInstancia_VisorGananciaPerdida();
+        ModInventario.src.Visor.Precios.IPrecio 
+            CreateInstancia_VisorPrecio();
+        ModInventario.src.Visor.EntradaxCompra.IEntradaxCompra 
+            CreateInstancia_VisorEntradaxCompra();
 
 
         object BuscarPrd { get; }
         void CreateInstancia_BuscarPrd(ModInventario.Buscar.Gestion gestion);
         void ShowBuscarPrd();
-
-
     }
 
 }

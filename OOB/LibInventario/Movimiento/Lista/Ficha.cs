@@ -10,7 +10,6 @@ namespace OOB.LibInventario.Movimiento.Lista
     
     public class Ficha
     {
-
         public string autoId { get; set; }
         public DateTime fecha { get; set; }
         public string hora { get; set; }
@@ -27,7 +26,8 @@ namespace OOB.LibInventario.Movimiento.Lista
         public bool isDocAnulado { get; set; }
         public string depositoOrigen { get; set; }
         public string depositoDestino { get; set; }
-
+        public string idDepOrigen { get; set; }
+        public string idDepDestino { get; set; }
     }
 
 }

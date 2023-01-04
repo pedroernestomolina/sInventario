@@ -15,17 +15,14 @@ namespace ModInventario
         [STAThread]
         static void Main()
         {
+            Sistema.MotorDatos = new ConfiguracionMotorDatos(gestor:"MYSQL");
             var r01 = Helpers.Utilitis.CargarXml();
             if (r01.Result != OOB.Enumerados.EnumResult.isError)
             {
-                if (Sistema._Usuario.Trim() == "")
-                {
-                    Sistema.MyData = new DataProvInventario.Data.DataProv(Sistema._Instancia, Sistema._BaseDatos);
-                }
-                else 
-                {
-                    Sistema.MyData = new DataProvInventario.Data.DataProv(Sistema._Instancia, Sistema._BaseDatos, Sistema._Usuario);
-                }
+                Sistema.MyData = new DataProvInventario.Data.DataProv(Sistema.MotorDatos.Instancia, 
+                                                                        Sistema.MotorDatos.BaseDatos, 
+                                                                        Sistema.MotorDatos.Usuario.Trim(),
+                                                                        Sistema.MotorDatos.Gestor.Trim().ToUpper()); 
 
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
@@ -49,13 +46,17 @@ namespace ModInventario
                             case DataProvInventario.Enumerados.modoConfInventario.Sucursal:
                                 fabrica = new src.FabModoSucursal();
                                 break;
+                            case DataProvInventario.Enumerados.modoConfInventario.BasicoFoxSystem:
+                                fabrica = new src.FabModoBasicoFoxSystem();
+                                break;
                             default:
                                 throw new Exception("NO SE HA DEFINIDO UN MODO DE CONFIGURACION PARA INVENTARIO");
                         }
                     }
-                    var _gestionId = new Identificacion.Gestion();
+                     Identificacion.ILogin _gestionId = new Identificacion.ImpLogin();
+                    _gestionId.Inicializa();
                     _gestionId.Inicia();
-                    if (_gestionId.IsUsuarioOk)
+                    if (_gestionId.LoginIsOK)
                     {
                         var _gestionInv = new GestionInv(fabrica);
                         _gestionInv.Inicia();

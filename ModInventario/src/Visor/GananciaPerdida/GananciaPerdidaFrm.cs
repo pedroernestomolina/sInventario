@@ -98,7 +98,7 @@ namespace ModInventario.src.Visor.GananciaPerdida
             c3.Visible = true;
             c3.HeaderCell.Style.Font = f;
             c3.DefaultCellStyle.Font = f1;
-            c3.Width = 120;
+            c3.Width = 160;
 
             var c5 = new DataGridViewTextBoxColumn();
             c5.DataPropertyName = "CntUnd";
@@ -111,18 +111,18 @@ namespace ModInventario.src.Visor.GananciaPerdida
 
             var c6 = new DataGridViewTextBoxColumn();
             c6.DataPropertyName = "CostoUnd";
-            c6.HeaderText = "Costo";
+            c6.HeaderText = "Costo($)";
             c6.Visible = true;
-            c6.Width = 100;
+            c6.Width = 90;
             c6.HeaderCell.Style.Font = f;
             c6.DefaultCellStyle.Font = f1;
             c6.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             var c7 = new DataGridViewTextBoxColumn();
             c7.DataPropertyName = "Importe";
-            c7.HeaderText = "Importe";
+            c7.HeaderText = "Importe($)";
             c7.Visible = true;
-            c7.Width = 100;
+            c7.Width = 90;
             c7.HeaderCell.Style.Font = f;
             c7.DefaultCellStyle.Font = f1;
             c7.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;

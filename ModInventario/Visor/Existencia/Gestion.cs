@@ -66,8 +66,6 @@ namespace ModInventario.Visor.Existencia
 
         private bool CargarData()
         {
-            var rt = true;
-
             try
             {
                 lDeposito.Clear();
@@ -79,14 +77,13 @@ namespace ModInventario.Visor.Existencia
                 var r02 = Sistema.MyData.Departamento_GetLista();
                 lDepart.AddRange(r02.Lista);
                 bsDepart.CurrencyManager.Refresh();
+                return true;
             }
             catch (Exception e)
             {
                 Helpers.Msg.Error(e.Message);
                 return false;
             }
-
-            return rt;
         }
 
         private void Limpiar()
@@ -98,7 +95,6 @@ namespace ModInventario.Visor.Existencia
             lDeposito.Clear();
             lDepart.Clear();
         }
-
         public void Buscar()
         {
             if (Filtrar == OOB.LibInventario.Visor.Existencia.Enumerados.enumFiltrarPor.SinDefinir) { return; }
@@ -127,32 +123,31 @@ namespace ModInventario.Visor.Existencia
                 }
             }
 
-            var r01 = Sistema.MyData.Visor_Existencia(filtro);
-            if (r01.Result == OOB.Enumerados.EnumResult.isError) 
-            {
-                Helpers.Msg.Error(r01.Mensaje);
-                return;
-            }
-
             lista.Clear();
-            var _lst= r01.Lista;
-            if (_conMercEnReserva)
+            try
             {
-                _lst = _lst.Where(w => w.cntReserva > 0).ToList();
+                var r01 = Sistema.MyData.Visor_Existencia(filtro);
+                var _lst = r01.Lista;
+                if (_conMercEnReserva)
+                {
+                    _lst = _lst.Where(w => w.cntReserva > 0).ToList();
+                }
+                foreach (var rg in _lst.OrderBy(o => o.nombrePrd).ToList())
+                {
+                    lista.Add(new data(rg, Filtrar));
+                }
             }
-            foreach (var rg in _lst.OrderBy(o=>o.nombrePrd).ToList()) 
+            catch (Exception e)
             {
-                lista.Add(new data(rg,Filtrar));
+                Helpers.Msg.Error(e.Message);
             }
             bs.CurrencyManager.Refresh();
         }
-
         public void Imprimir()
         {
             Buscar();
             _gestionRep.Imprimir(lista, _filtros);
         }
-
         public void InvConMercanciaReserva(bool enReserva)
         {
             _conMercEnReserva = enReserva;

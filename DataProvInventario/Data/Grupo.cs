@@ -63,9 +63,9 @@ namespace DataProvInventario.Data
                     {
                         return new OOB.LibInventario.Grupo.Ficha()
                         {
-                            auto = s.auto,
-                            codigo = s.codigo,
-                            nombre = s.nombre,
+                            auto = s.auto.ToString(),
+                            codigo = s.codigo.ToString(),
+                            nombre = s.nombre.ToString(),
                         };
                     }).ToList();
                 }

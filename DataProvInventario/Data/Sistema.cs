@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace DataProvInventario.Data
 {
-    
     public partial class DataProv: IData
     {
-
         public OOB.ResultadoEntidad<OOB.LibInventario.Sistema.TipoDocumento.Entidad.Ficha> 
             Sistema_TipoDocumento_GetFichaByTipo(OOB.LibInventario.Sistema.TipoDocumento.enumerados.enumTipoDocumento tipo)
         {
@@ -59,7 +57,6 @@ namespace DataProvInventario.Data
             Sistema_TipoPreciosDefinidos_Lista()
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Sistema.HndPrecios.Lista.Ficha>();
-
             var r01 = MyData.Sistema_TipoPreciosDefinidos_Lista();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
@@ -74,19 +71,16 @@ namespace DataProvInventario.Data
                     {
                         var nr = new OOB.LibInventario.Sistema.HndPrecios.Lista.Ficha()
                         {
-                            descripcion = s.descripcion,
-                            codigo = s.codigo,
-                            id = s.id.ToString(),
+                            descripcion = s.descripcion.Trim(),
+                            codigo = s.codigo.Trim(),
+                            id = s.id.ToString().ToString(),
                         };
                         return nr;
                     }).ToList();
                 }
             }
             rt.Lista = lst;
-
             return rt;
         }
-
     }
-
 }

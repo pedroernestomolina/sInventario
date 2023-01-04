@@ -11,12 +11,10 @@ namespace DataProvInventario.Data
 
     public partial class DataProv: IData
     {
-
         public OOB.ResultadoLista<OOB.LibInventario.Deposito.Ficha> 
             Deposito_GetLista()
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Deposito.Ficha>();
-
             var r01 = MyData.Deposito_GetLista();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
@@ -31,11 +29,11 @@ namespace DataProvInventario.Data
                     {
                         return new OOB.LibInventario.Deposito.Ficha()
                         {
-                            auto = s.auto,
-                            codigo = s.codigo,
-                            nombre = s.nombre,
-                            estatusActivo = s.estatusActivo,
-                            estatusPredeterminado = s.estatusPreDeterminado,
+                            auto = s.auto.Trim(),
+                            codigo = s.codigo.Trim(),
+                            nombre = s.nombre.Trim(),
+                            estatusActivo = s.estatusActivo.Trim(),
+                            estatusPredeterminado = s.estatusPreDeterminado.Trim(),
                         };
                     }).ToList();
                 }
@@ -104,7 +102,6 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
     }
 
 }

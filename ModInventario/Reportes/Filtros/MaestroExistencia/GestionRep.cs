@@ -29,26 +29,19 @@ namespace ModInventario.Reportes.Filtros.MaestroExistencia
         public void Generar()
         {
             var filtro = new OOB.LibInventario.Reportes.MaestroExistencia.Filtro();
-            if (dataFiltros.Depart != null) 
+            if (dataFiltros.Depart != null) { filtro.autoDepartamento = dataFiltros.Depart.id; }
+            if (dataFiltros.Deposito != null) { filtro.autoDeposito = dataFiltros.Deposito.id; }
+            if (dataFiltros.Grupo != null) { filtro.autoGrupo = dataFiltros.Grupo.id; }
+            if (dataFiltros.Producto != null) { filtro.autoProducto = dataFiltros.Producto.id; }
+            try
             {
-                filtro.autoDepartamento = dataFiltros.Depart.id;
+                var r01 = Sistema.MyData.Reportes_MaestroExistencia(filtro);
+                Imprimir(r01.Lista, dataFiltros.ToString());
             }
-            if (dataFiltros.Deposito != null)
+            catch (Exception e)
             {
-                filtro.autoDeposito= dataFiltros.Deposito.id;
+                Helpers.Msg.Error(e.Message);
             }
-            if (dataFiltros.Grupo != null)
-            {
-                filtro.autoGrupo = dataFiltros.Grupo.id;
-            }
-            var r01 = Sistema.MyData.Reportes_MaestroExistencia(filtro);
-            if (r01.Result == OOB.Enumerados.EnumResult.isError)
-            {
-                Helpers.Msg.Error(r01.Mensaje);
-                return;
-            }
-
-            Imprimir(r01.Lista, dataFiltros.ToString());
         }
 
         public void Imprimir(List<OOB.LibInventario.Reportes.MaestroExistencia.Ficha> lista, string filtro)

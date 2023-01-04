@@ -10,7 +10,6 @@ namespace OOB.LibInventario.Usuario
 
     public class Ficha
     {
-
         public string autoUsu { get; set; }
         public string autoGru { get; set; }
         public string nombreUsu { get; set; }
@@ -18,7 +17,6 @@ namespace OOB.LibInventario.Usuario
         public string codigoUsu { get; set; }
         public string NombreGru { get; set; }
         public bool isActivo { get; set; }
-
     }
 
 }

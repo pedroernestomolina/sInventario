@@ -665,15 +665,11 @@ namespace DataProvInventario.Data
             Permiso_ToolInventario(string autoGrupoUsuario)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha>();
-
             var r01 = MyData.Permiso_ToolInventario(autoGrupoUsuario);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
-
             var s = r01.Entidad;
             var nr = new OOB.LibInventario.Permiso.Ficha()
             {
@@ -681,12 +677,12 @@ namespace DataProvInventario.Data
                 NivelSeguridad = (OOB.LibInventario.Permiso.Enumerados.EnumNivelSeguridad)s.NivelSeguridad,
             };
             rt.Entidad = nr;
-
             return rt;
         }
 
 
-        public OOB.ResultadoEntidad<string> Permiso_PedirClaveAcceso_NivelMaximo()
+        public OOB.ResultadoEntidad<string>
+            Permiso_PedirClaveAcceso_NivelMaximo()
         {
             var rt = new OOB.ResultadoEntidad<string>();
 
@@ -701,7 +697,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.ResultadoEntidad<string> Permiso_PedirClaveAcceso_NivelMedio()
+        public OOB.ResultadoEntidad<string> 
+            Permiso_PedirClaveAcceso_NivelMedio()
         {
             var rt = new OOB.ResultadoEntidad<string>();
 
@@ -716,7 +713,8 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-        public OOB.ResultadoEntidad<string> Permiso_PedirClaveAcceso_NivelMinimo()
+        public OOB.ResultadoEntidad<string> 
+            Permiso_PedirClaveAcceso_NivelMinimo()
         {
             var rt = new OOB.ResultadoEntidad<string>();
 
@@ -1008,15 +1006,11 @@ namespace DataProvInventario.Data
             Permiso_Reportes(string autoGrupoUsuario)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha>();
-
             var r01 = MyData.Permiso_Reportes(autoGrupoUsuario);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
-
             var s = r01.Entidad;
             var nr = new OOB.LibInventario.Permiso.Ficha()
             {
@@ -1024,7 +1018,6 @@ namespace DataProvInventario.Data
                 NivelSeguridad = (OOB.LibInventario.Permiso.Enumerados.EnumNivelSeguridad)s.NivelSeguridad,
             };
             rt.Entidad = nr;
-
             return rt;
         }
         public OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha> 

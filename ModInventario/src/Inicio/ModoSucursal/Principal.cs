@@ -218,7 +218,6 @@ namespace ModInventario.src.Inicio.ModoSucursal
         {
             VisorAjuste();
         }
-
         private void VisorAjuste()
         {
             _controlador.VisorAjuste();
@@ -266,7 +265,6 @@ namespace ModInventario.src.Inicio.ModoSucursal
         {
             ReporteMaestroInventario();
         }
-
         private void ReporteMaestroInventario()
         {
             _controlador.ReporteMaestroInventario();
@@ -316,7 +314,6 @@ namespace ModInventario.src.Inicio.ModoSucursal
         {
             ReporteMaestroDepositoResumen();
         }
-
         private void ReporteMaestroDepositoResumen()
         {
             _controlador.ReporteMaestroDepositoResumen();
@@ -449,11 +446,11 @@ namespace ModInventario.src.Inicio.ModoSucursal
 
         private void TSM_REPORTE_MAESTRO_EXISTENCIA_Click(object sender, EventArgs e)
         {
-            ReporteMaestroExistencia();
+            ReporteMaestroExistenciaDetalle();
         }
-        private void ReporteMaestroExistencia()
+        private void ReporteMaestroExistenciaDetalle()
         {
-            _controlador.ReporteMaestroExistencia();
+            _controlador.ReporteMaestroExistenciaDetalle();
         }
 
         private void TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO_Click(object sender, EventArgs e)

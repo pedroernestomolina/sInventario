@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace OOB.LibInventario.Reportes.MaestroPrecio
 {
-    
     public class Ficha
     {
         public string codigo { get; set; }
@@ -80,5 +79,4 @@ namespace OOB.LibInventario.Reportes.MaestroPrecio
         public string empaque_D4 { get; set; }
         public string empaque_D5 { get; set; }
     }
-
 }

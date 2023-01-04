@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace ModInventario.Reportes.Filtros.MaestroPrecioBasico
 {
     
-    public class GestionRep
+    public class GestionRep: src.Reporte.IReporte
     {
 
         private FiltrosGen.Reportes.data dataFiltros;

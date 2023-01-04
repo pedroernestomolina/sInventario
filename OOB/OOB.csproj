@@ -235,6 +235,7 @@
     <Compile Include="LibInventario\Reportes\MaestroInventario\Ficha.cs" />
     <Compile Include="LibInventario\Reportes\MaestroInventario\Filtro.cs" />
     <Compile Include="LibInventario\Reportes\MaestroPrecio\Ficha.cs" />
+    <Compile Include="LibInventario\Reportes\MaestroPrecio\FichaFox.cs" />
     <Compile Include="LibInventario\Reportes\MaestroPrecio\Filtro.cs" />
     <Compile Include="LibInventario\Reportes\MaestroProducto\Ficha.cs" />
     <Compile Include="LibInventario\Reportes\MaestroProducto\Filtro.cs" />

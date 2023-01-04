@@ -66,6 +66,9 @@
             this.CB_DEPART = new System.Windows.Forms.ComboBox();
             this.panel17 = new System.Windows.Forms.Panel();
             this.panel18 = new System.Windows.Forms.Panel();
+            this.panel26 = new System.Windows.Forms.Panel();
+            this.panel27 = new System.Windows.Forms.Panel();
+            this.CHB_EN_RESERVA = new System.Windows.Forms.CheckBox();
             this.panel10 = new System.Windows.Forms.Panel();
             this.BT_BUSCAR = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -80,9 +83,6 @@
             this.panel22 = new System.Windows.Forms.Panel();
             this.DGV = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.panel26 = new System.Windows.Forms.Panel();
-            this.panel27 = new System.Windows.Forms.Panel();
-            this.CHB_EN_RESERVA = new System.Windows.Forms.CheckBox();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -108,6 +108,7 @@
             this.tableLayoutPanel6.SuspendLayout();
             this.panel15.SuspendLayout();
             this.panel16.SuspendLayout();
+            this.panel27.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel19.SuspendLayout();
@@ -117,7 +118,6 @@
             this.panel21.SuspendLayout();
             this.panel22.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
-            this.panel27.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -607,6 +607,39 @@
             this.panel18.Size = new System.Drawing.Size(227, 1);
             this.panel18.TabIndex = 3;
             // 
+            // panel26
+            // 
+            this.panel26.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel26.Location = new System.Drawing.Point(1, 28);
+            this.panel26.Margin = new System.Windows.Forms.Padding(1);
+            this.panel26.Name = "panel26";
+            this.panel26.Padding = new System.Windows.Forms.Padding(2);
+            this.panel26.Size = new System.Drawing.Size(115, 28);
+            this.panel26.TabIndex = 4;
+            // 
+            // panel27
+            // 
+            this.panel27.Controls.Add(this.CHB_EN_RESERVA);
+            this.panel27.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel27.Location = new System.Drawing.Point(118, 28);
+            this.panel27.Margin = new System.Windows.Forms.Padding(1);
+            this.panel27.Name = "panel27";
+            this.panel27.Padding = new System.Windows.Forms.Padding(2);
+            this.panel27.Size = new System.Drawing.Size(227, 28);
+            this.panel27.TabIndex = 5;
+            // 
+            // CHB_EN_RESERVA
+            // 
+            this.CHB_EN_RESERVA.AutoSize = true;
+            this.CHB_EN_RESERVA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CHB_EN_RESERVA.Location = new System.Drawing.Point(5, 5);
+            this.CHB_EN_RESERVA.Name = "CHB_EN_RESERVA";
+            this.CHB_EN_RESERVA.Size = new System.Drawing.Size(211, 20);
+            this.CHB_EN_RESERVA.TabIndex = 0;
+            this.CHB_EN_RESERVA.Text = "Inv Con Mercancia En Reserva";
+            this.CHB_EN_RESERVA.UseVisualStyleBackColor = true;
+            this.CHB_EN_RESERVA.CheckedChanged += new System.EventHandler(this.CHB_EN_RESERVA_CheckedChanged);
+            // 
             // panel10
             // 
             this.panel10.Controls.Add(this.BT_BUSCAR);
@@ -763,40 +796,6 @@
             this.DGV.Name = "DGV";
             this.DGV.Size = new System.Drawing.Size(972, 435);
             this.DGV.TabIndex = 0;
-            this.DGV.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.DGV_DataBindingComplete);
-            // 
-            // panel26
-            // 
-            this.panel26.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel26.Location = new System.Drawing.Point(1, 28);
-            this.panel26.Margin = new System.Windows.Forms.Padding(1);
-            this.panel26.Name = "panel26";
-            this.panel26.Padding = new System.Windows.Forms.Padding(2);
-            this.panel26.Size = new System.Drawing.Size(115, 28);
-            this.panel26.TabIndex = 4;
-            // 
-            // panel27
-            // 
-            this.panel27.Controls.Add(this.CHB_EN_RESERVA);
-            this.panel27.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel27.Location = new System.Drawing.Point(118, 28);
-            this.panel27.Margin = new System.Windows.Forms.Padding(1);
-            this.panel27.Name = "panel27";
-            this.panel27.Padding = new System.Windows.Forms.Padding(2);
-            this.panel27.Size = new System.Drawing.Size(227, 28);
-            this.panel27.TabIndex = 5;
-            // 
-            // CHB_EN_RESERVA
-            // 
-            this.CHB_EN_RESERVA.AutoSize = true;
-            this.CHB_EN_RESERVA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHB_EN_RESERVA.Location = new System.Drawing.Point(5, 5);
-            this.CHB_EN_RESERVA.Name = "CHB_EN_RESERVA";
-            this.CHB_EN_RESERVA.Size = new System.Drawing.Size(211, 20);
-            this.CHB_EN_RESERVA.TabIndex = 0;
-            this.CHB_EN_RESERVA.Text = "Inv Con Mercancia En Reserva";
-            this.CHB_EN_RESERVA.UseVisualStyleBackColor = true;
-            this.CHB_EN_RESERVA.CheckedChanged += new System.EventHandler(this.CHB_EN_RESERVA_CheckedChanged);
             // 
             // ExistenciaFrm
             // 
@@ -836,6 +835,8 @@
             this.tableLayoutPanel6.ResumeLayout(false);
             this.panel15.ResumeLayout(false);
             this.panel16.ResumeLayout(false);
+            this.panel27.ResumeLayout(false);
+            this.panel27.PerformLayout();
             this.panel10.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel19.ResumeLayout(false);
@@ -845,8 +846,6 @@
             this.panel21.ResumeLayout(false);
             this.panel22.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).EndInit();
-            this.panel27.ResumeLayout(false);
-            this.panel27.PerformLayout();
             this.ResumeLayout(false);
 
         }

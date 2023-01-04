@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace ModInventario.Reportes.Filtros.MaestroPrecio
 {
 
-    public class GestionRep
+    public class GestionRep: src.Reporte.IReporte
     {
 
         private FiltrosGen.Reportes.data dataFiltros;
@@ -81,40 +81,6 @@ namespace ModInventario.Reportes.Filtros.MaestroPrecio
 
         public void Imprimir(List<OOB.LibInventario.Reportes.MaestroPrecio.Ficha> lista, string filtro, ficha precio)
         {
-            //var pt = AppDomain.CurrentDomain.BaseDirectory + @"Reportes\Filtros\MaestroPrecio.rdlc";
-            //var ds = new DS();
-
-            //foreach (var it in lista.ToList().OrderBy(o=>o.departamento).ThenBy(o=>o.nombrePrd).ToList())
-            //{
-            //    DataRow rt = ds.Tables["MaestroPrecio"].NewRow();
-            //    rt["codigo"] = it.codigoPrd;
-            //    rt["nombre"] = it.nombrePrd + Environment.NewLine + it.codigoPrd;
-            //    rt["modelo"] = it.modeloPrd;
-            //    rt["referencia"] = it.referenciaPrd;
-            //    rt["departamento"] = it.departamento;
-            //    rt["grupo"] = it.grupo;
-            //    rt["pfull_1"] = it.precioFull_1;
-            //    rt["pfull_2"] = it.precioFull_2;
-            //    rt["pfull_3"] = it.precioFull_3;
-            //    rt["pfull_4"] = it.precioFull_4;
-            //    rt["pfull_5"] = it.precioFull_5;
-            //    ds.Tables["MaestroPrecio"].Rows.Add(rt);
-            //}
-
-            //var Rds = new List<ReportDataSource>();
-            //var pmt = new List<ReportParameter>();
-            //pmt.Add(new ReportParameter("EMPRESA_RIF", Sistema.Negocio.CiRif));
-            //pmt.Add(new ReportParameter("EMPRESA_NOMBRE", Sistema.Negocio.Nombre));
-            //pmt.Add(new ReportParameter("Filtro", filtro));
-            //Rds.Add(new ReportDataSource("MaestroPrecio", ds.Tables["MaestroPrecio"]));
-
-            //var frp = new ReporteFrm();
-            //frp.rds = Rds;
-            //frp.prmts = pmt;
-            //frp.Path = pt;
-            //frp.ShowDialog();
-
-
             var pt = AppDomain.CurrentDomain.BaseDirectory + @"Reportes\Filtros\MaestroPrecioBasico.rdlc";
             var ds = new DS();
 

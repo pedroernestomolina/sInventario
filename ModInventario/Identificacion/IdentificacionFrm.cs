@@ -16,54 +16,36 @@ namespace ModInventario.Identificacion
     {
 
 
-        private Gestion _controlador;
+        private ILogin _controlador;
 
 
         public IdentificacionFrm()
         {
             InitializeComponent();
-            Limpiar();
         }
 
         private void BT_SALIR_Click(object sender, EventArgs e)
         {
             Salir();
         }
-
-        private void Salir()
-        {
-            this.Close();
-        }
-
         private void BT_ACEPTAR_Click(object sender, EventArgs e)
         {
             Aceptar();
         }
 
-        private void Aceptar()
-        {
-            if (_controlador.VerificarUsuario())
-            {
-                Salir();
-            }
-        }
-
-        private void Limpiar()
-        {
-            TB_CODIGO.Text = "";
-            TB_CLAVE.Text = "";
-            TB_CODIGO.Focus();
-        }
 
         private void IdentificacionFrm_Load(object sender, EventArgs e)
         {
+            TB_CODIGO.Text = _controlador.GetCodigo;
+            TB_CLAVE.Text = _controlador.GetClave;
             TB_CODIGO.Focus();
         }
 
-        public void setControlador(Gestion ctr)
+        public void setControlador(ILogin ctr)
         {
             _controlador = ctr;
         }
+
 
         private void TB_KeyDown(object sender, KeyEventArgs e)
         {
@@ -73,14 +55,27 @@ namespace ModInventario.Identificacion
             }
         }
 
+
         private void TB_CODIGO_Leave(object sender, EventArgs e)
         {
-            _controlador.CodigoUsuario = TB_CODIGO.Text.Trim();
+            _controlador.setCodigoUsu(TB_CODIGO.Text.Trim());
         }
-
         private void TB_CLAVE_Leave(object sender, EventArgs e)
         {
-            _controlador.ClaveUsuario = TB_CLAVE.Text.Trim();
+            _controlador.setClaveUsu(TB_CLAVE.Text.Trim());
+        }
+
+
+        private void Aceptar()
+        {
+            if (_controlador.UsuarioIsOk)
+            {
+                Salir();
+            }
+        }
+        private void Salir()
+        {
+            this.Close();
         }
      
     }

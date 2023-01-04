@@ -11,18 +11,15 @@ namespace DataProvInventario.Data
     
     public partial class DataProv: IData
     {
-
         public OOB.ResultadoLista<OOB.LibInventario.TasaImpuesto.Ficha> 
             TasaImpuesto_GetLista()
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.TasaImpuesto.Ficha>();
-
             var r01 = MyData.TasaImpuesto_GetLista();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
                 throw new Exception(r01.Mensaje);
             }
-
             var list = new List<OOB.LibInventario.TasaImpuesto.Ficha>();
             if (r01.Lista != null)
             {
@@ -32,15 +29,14 @@ namespace DataProvInventario.Data
                     {
                         return new OOB.LibInventario.TasaImpuesto.Ficha()
                         {
-                            auto = s.auto,
+                            auto = s.auto.Trim(),
                             tasa = s.tasa,
-                            nombre = s.nombre,
+                            nombre = s.nombre.Trim(),
                         };
                     }).ToList();
                 }
             }
             rt.Lista = list;
-
             return rt;
         }
         public OOB.ResultadoEntidad<OOB.LibInventario.TasaImpuesto.Ficha> 
@@ -61,7 +57,6 @@ namespace DataProvInventario.Data
                         };
             return rt;
         }
-
     }
 
 }

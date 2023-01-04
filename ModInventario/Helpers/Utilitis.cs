@@ -58,15 +58,19 @@ namespace ModInventario.Helpers
                                     {
                                         if (sv.LocalName.Trim().ToUpper() == "INSTANCIA")
                                         {
-                                            Sistema._Instancia = sv.InnerText.Trim();
+                                            Sistema.MotorDatos.Instancia = sv.InnerText.Trim();
                                         }
                                         if (sv.LocalName.Trim().ToUpper() == "CATALOGO")
                                         {
-                                            Sistema._BaseDatos = sv.InnerText.Trim();
+                                            Sistema.MotorDatos.BaseDatos = sv.InnerText.Trim();
                                         }
                                         if (sv.LocalName.Trim().ToUpper() == "USUARIO")
                                         {
-                                            Sistema._Usuario = sv.InnerText.Trim();
+                                            Sistema.MotorDatos.Usuario = sv.InnerText.Trim();
+                                        }
+                                        if (sv.LocalName.Trim().ToUpper() == "GESTOR")
+                                        {
+                                            Sistema.MotorDatos.Gestor = sv.InnerText.Trim().ToUpper();
                                         }
                                     }
                                 }

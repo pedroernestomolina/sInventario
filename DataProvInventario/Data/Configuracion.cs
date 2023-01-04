@@ -33,13 +33,14 @@ namespace DataProvInventario.Data
                 case "SUCURSAL":
                     _modo = Enumerados.modoConfInventario.Sucursal;
                     break;
+                case "BASICO_FOX":
+                    _modo = Enumerados.modoConfInventario.BasicoFoxSystem;
+                    break;
             }
             rt.Entidad = _modo;
 
             return rt;
         }
-
-
         public OOB.ResultadoEntidad<OOB.LibInventario.Configuracion.Enumerados.EnumPreferenciaBusqueda> 
             Configuracion_PreferenciaBusqueda()
         {

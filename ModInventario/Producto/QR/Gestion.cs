@@ -80,7 +80,7 @@ namespace ModInventario.Producto.QR
 
         private void generarQR()
         {
-            var _url = @"http://" + Sistema._Instancia + "/info.php?auto=" + _autoPrd;
+            var _url = @"http://" + Sistema.MotorDatos.Instancia + "/info.php?auto=" + _autoPrd;
             QrEncoder qrencoder = new QrEncoder(ErrorCorrectionLevel.H);
             QrCode qrcode = new QrCode();
             //"http://192.168.100.10/info.php?auto="+_controlador.AutoPrd

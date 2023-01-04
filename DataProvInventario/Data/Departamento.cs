@@ -11,7 +11,6 @@ namespace DataProvInventario.Data
 
     public partial class DataProv: IData
     {
-
         public OOB.ResultadoLista<OOB.LibInventario.Departamento.Ficha> 
             Departamento_GetLista()
         {
@@ -32,9 +31,9 @@ namespace DataProvInventario.Data
                     {
                         return new OOB.LibInventario.Departamento.Ficha()
                         {
-                            auto = s.auto,
-                            codigo = s.codigo,
-                            nombre = s.nombre,
+                            auto = s.auto.Trim(),
+                            codigo = s.codigo.Trim(),
+                            nombre = s.nombre.Trim(),
                         };
                     }).ToList();
                 }
@@ -124,7 +123,6 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
     }
 
 }

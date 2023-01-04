@@ -278,13 +278,11 @@ namespace DataProvInventario.Data
             Producto_AdmDivisa_Lista()
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Producto.AdmDivisa.Ficha>();
-
             var r01 = MyData.Producto_AdmDivisa_Lista();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
                 throw new Exception(r01.Mensaje);
             }
-
             var list = new List<OOB.LibInventario.Producto.AdmDivisa.Ficha>();
             if (r01.Lista != null)
             {
@@ -294,14 +292,13 @@ namespace DataProvInventario.Data
                     {
                         return new OOB.LibInventario.Producto.AdmDivisa.Ficha()
                         {
-                            Id = s.Id.ToString(),
-                            Descripcion = s.Descripcion,
+                            Id = s.Id.ToString().Trim(),
+                            Descripcion = s.Descripcion.Trim(),
                         };
                     }).ToList();
                 }
             }
             rt.Lista = list;
-
             return rt;
         }
         public OOB.ResultadoLista<OOB.LibInventario.Producto.Pesado.Ficha> 

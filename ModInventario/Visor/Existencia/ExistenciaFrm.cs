@@ -183,8 +183,6 @@ namespace ModInventario.Visor.Existencia
             DGV.Columns.Add(c6);
             DGV.Columns.Add(c7);
             DGV.Columns.Add(c8);
-            DGV.Columns.Add(c2A);
-            DGV.Columns.Add(c2B);
         }
 
 
@@ -309,33 +307,33 @@ namespace ModInventario.Visor.Existencia
             }
         }
 
-        private void DGV_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            foreach (DataGridViewRow row in DGV.Rows)
-            {
-                if ((int)row.Cells["estatus"].Value == 1)
-                {
-                    row.Cells["Estatus"].Style.BackColor = Color.Green;
-                    row.Cells["Estatus"].Style.ForeColor = Color.Green;
-                }
-                else if ((int)row.Cells["estatus"].Value == 2)
-                {
-                    row.Cells["Estatus"].Style.BackColor = Color.Orange;
-                    row.Cells["Estatus"].Style.ForeColor = Color.Orange;
-                }
-                else
-                {
-                    row.Cells["Estatus"].Style.BackColor = Color.Red;
-                    row.Cells["Estatus"].Style.ForeColor = Color.Red;
-                }
+        //private void DGV_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        //{
+        //    foreach (DataGridViewRow row in DGV.Rows)
+        //    {
+        //        if ((int)row.Cells["estatus"].Value == 1)
+        //        {
+        //            row.Cells["Estatus"].Style.BackColor = Color.Green;
+        //            row.Cells["Estatus"].Style.ForeColor = Color.Green;
+        //        }
+        //        else if ((int)row.Cells["estatus"].Value == 2)
+        //        {
+        //            row.Cells["Estatus"].Style.BackColor = Color.Orange;
+        //            row.Cells["Estatus"].Style.ForeColor = Color.Orange;
+        //        }
+        //        else
+        //        {
+        //            row.Cells["Estatus"].Style.BackColor = Color.Red;
+        //            row.Cells["Estatus"].Style.ForeColor = Color.Red;
+        //        }
 
-                if ((decimal)row.Cells["CntFisica"].Value < 0)
-                {
-                    row.Cells["SCntFisica"].Style.BackColor = Color.Red;
-                    row.Cells["SCntFisica"].Style.ForeColor = Color.White;
-                }
-            }
-        }
+        //        if ((decimal)row.Cells["CntFisica"].Value < 0)
+        //        {
+        //            row.Cells["SCntFisica"].Style.BackColor = Color.Red;
+        //            row.Cells["SCntFisica"].Style.ForeColor = Color.White;
+        //        }
+        //    }
+        //}
 
         private void BT_IMPRIMIR_Click(object sender, EventArgs e)
         {

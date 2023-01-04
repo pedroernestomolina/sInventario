@@ -11,7 +11,18 @@ namespace DataProvInventario.Data
     
     public partial class DataProv: IData
     {
-
+        class ficha 
+        {
+            public string prd { get; set; }
+            public string codigo { get; set; }
+            public string nombre{ get; set; }
+            public string depart { get; set; }
+            public string grupo { get; set; }
+            public decimal tasa { get; set; }
+            public int contDetal { get; set; }
+            public decimal pDetal { get; set; }
+            public string empDetal { get; set; }
+        }
         public OOB.ResultadoLista<OOB.LibInventario.Reportes.MaestroProducto.Ficha> 
             Reportes_MaestroProducto(OOB.LibInventario.Reportes.MaestroProducto.Filtro filtro)
         {
@@ -169,21 +180,18 @@ namespace DataProvInventario.Data
             Reportes_MaestroExistencia(OOB.LibInventario.Reportes.MaestroExistencia.Filtro filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Reportes.MaestroExistencia.Ficha>();
-
             var filtroDto = new DtoLibInventario.Reportes.MaestroExistencia.Filtro()
             {
                 autoDepartamento = filtro.autoDepartamento,
                 autoDeposito = filtro.autoDeposito,
-                autoGrupo= filtro.autoGrupo,
+                autoGrupo = filtro.autoGrupo,
+                autoProducto = filtro.autoProducto,
             };
             var r01 = MyData.Reportes_MaestroExistencia(filtroDto);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
-
             var list = new List<OOB.LibInventario.Reportes.MaestroExistencia.Ficha>();
             if (r01.Lista != null)
             {
@@ -219,14 +227,12 @@ namespace DataProvInventario.Data
                 }
             }
             rt.Lista = list;
-
             return rt;
         }
         public OOB.ResultadoLista<OOB.LibInventario.Reportes.MaestroPrecio.Ficha> 
             Reportes_MaestroPrecio(OOB.LibInventario.Reportes.MaestroPrecio.Filtro filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Reportes.MaestroPrecio.Ficha>();
-
             var filtroDto = new DtoLibInventario.Reportes.MaestroPrecio.Filtro()
             {
                 autoGrupo = filtro.autoGrupo,
@@ -244,7 +250,6 @@ namespace DataProvInventario.Data
             {
                 throw new Exception(r01.Mensaje);
             }
-
             var list = new List<OOB.LibInventario.Reportes.MaestroPrecio.Ficha>();
             if (r01.Lista != null)
             {
@@ -254,11 +259,11 @@ namespace DataProvInventario.Data
                     {
                         return new OOB.LibInventario.Reportes.MaestroPrecio.Ficha()
                         {
-                            codigo = s.codigo,
-                            nombre = s.nombre,
-                            admDivisa = s.admDivisa,
-                            departamento = s.departamento,
-                            grupo = s.grupo,
+                            codigo = s.codigo.Trim(),
+                            nombre = s.nombre.Trim(),
+                            admDivisa = s.admDivisa.Trim(),
+                            departamento = s.departamento.Trim(),
+                            grupo = s.grupo.Trim(),
                             tasa = s.tasa,
 
                             p1_neto=s.p1_neto,
@@ -276,11 +281,11 @@ namespace DataProvInventario.Data
                             p3_div_full= s.p3_div_full,
                             p4_div_full= s.p4_div_full,
                             p5_div_full= s.p5_div_full,
-                            empaque_1=s.empaque_1,
-                            empaque_2=s.empaque_2,
-                            empaque_3=s.empaque_3,
-                            empaque_4=s.empaque_4,
-                            empaque_5=s.empaque_5,
+                            empaque_1 = s.empaque_1.Trim(),
+                            empaque_2 = s.empaque_2.Trim(),
+                            empaque_3 = s.empaque_3.Trim(),
+                            empaque_4 = s.empaque_4.Trim(),
+                            empaque_5 = s.empaque_5.Trim(),
 
                             pM1_neto = s.pM1_neto,
                             pM2_neto = s.pM2_neto,
@@ -294,10 +299,10 @@ namespace DataProvInventario.Data
                             pM2_div_full = s.pM2_div_full,
                             pM3_div_full = s.pM3_div_full,
                             pM4_div_full = s.pM4_div_full,
-                            empaque_M1 = s.empaque_M1,
-                            empaque_M2 = s.empaque_M2,
-                            empaque_M3 = s.empaque_M3,
-                            empaque_M4 = s.empaque_M4,
+                            empaque_M1 = s.empaque_M1.Trim(),
+                            empaque_M2 = s.empaque_M2.Trim(),
+                            empaque_M3 = s.empaque_M3.Trim(),
+                            empaque_M4 = s.empaque_M4.Trim(),
 
                             pD1_neto = s.pD1_neto,
                             pD2_neto = s.pD2_neto,
@@ -311,16 +316,15 @@ namespace DataProvInventario.Data
                             pD2_div_full = s.pD2_div_full,
                             pD3_div_full = s.pD3_div_full,
                             pD4_div_full = s.pD4_div_full,
-                            empaque_D1 = s.empaque_D1,
-                            empaque_D2 = s.empaque_D2,
-                            empaque_D3 = s.empaque_D3,
-                            empaque_D4 = s.empaque_D4,
+                            empaque_D1 = s.empaque_D1.Trim(),
+                            empaque_D2 = s.empaque_D2.Trim(),
+                            empaque_D3 = s.empaque_D3.Trim(),
+                            empaque_D4 = s.empaque_D4.Trim(),
                         };
                     }).ToList();
                 }
             }
             rt.Lista = list;
-
             return rt;
         }
         public OOB.ResultadoEntidad<OOB.LibInventario.Reportes.Kardex.Ficha> 
@@ -833,7 +837,118 @@ namespace DataProvInventario.Data
             };
             return rt;
         }
+        public OOB.ResultadoLista<OOB.LibInventario.Reportes.MaestroPrecio.FichaFox> 
+            Reportes_MaestroPrecio_FoxSystem(OOB.LibInventario.Reportes.MaestroPrecio.Filtro filtro)
+        {
+            var rt = new OOB.ResultadoLista<OOB.LibInventario.Reportes.MaestroPrecio.FichaFox>();
+            var filtroDto = new DtoLibInventario.Reportes.MaestroPrecio.Filtro()
+            {
+                autoGrupo = filtro.autoGrupo,
+                autoMarca = filtro.autoMarca,
+                autoTasa = filtro.autoTasa,
+                admDivisa = (DtoLibInventario.Reportes.enumerados.EnumAdministradorPorDivisa)filtro.admDivisa,
+                autoDepartamento = filtro.autoDepartamento,
+                categoria = (DtoLibInventario.Reportes.enumerados.EnumCategoria)filtro.categoria,
+                origen = (DtoLibInventario.Reportes.enumerados.EnumOrigen)filtro.origen,
+                precio = (DtoLibInventario.Reportes.enumerados.EnumPrecio)filtro.precio,
+                pesado = (DtoLibInventario.Reportes.enumerados.EnumPesado)filtro.pesado,
+            };
+            var r01 = MyData.Reportes_MaestroPrecio_FoxSystem(filtroDto);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var list = new List<OOB.LibInventario.Reportes.MaestroPrecio.FichaFox>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    var lg = r01.Lista.
+                                GroupBy(g => g.autoPrd). 
+                                Select(s => new ficha() 
+                                { 
+                                    prd = s.Key, 
+                                    codigo = s.Select(t=>t.codigo).FirstOrDefault(),
+                                    nombre= s.Select(t => t.nombre).FirstOrDefault(),
+                                    depart= s.Select(t => t.Depart).FirstOrDefault(),
+                                    grupo= s.Select(t => t.Grupo).FirstOrDefault(),
+                                    tasa= s.Select(t => t.tasa).FirstOrDefault(),
+                                    contDetal = s.Select(t => t.contDetal).FirstOrDefault(),
+                                    pDetal = s.Select(t => t.pDetal).FirstOrDefault(),
+                                    empDetal = s.Select(t => t.empDetal).FirstOrDefault(),
+                                }).ToList();
+                    foreach (var rg in lg)
+                    {
+                        var prd = rg.prd;
+                        var nr = new OOB.LibInventario.Reportes.MaestroPrecio.FichaFox()
+                        {
+                            codigo = rg.codigo.Trim(),
+                            nombre = rg.nombre.Trim(),
+                            admDivisa = "",
+                            departamento = rg.depart.Trim(),
+                            grupo = rg.grupo.Trim(),
+                            tasa = rg.tasa,
+                            pDetal = rg.pDetal,
+                            empDetal = rg.empDetal,
+                            contDetal = rg.contDetal,
+                            emp1_des1 = "",
+                            emp1_des2 = "",
+                            emp1_des3 = "",
+                            emp1_des4 = "",
+                            emp2_des1 = "",
+                            emp2_des2 = "",
+                            emp2_des3 = "",
+                            emp2_des4 = "",
+                        };
+                        foreach (var n in r01.Lista.Where(w => w.autoPrd == prd).ToList())
+                        {
+                            switch (n.referencia.Trim())
+                            {
+                                case "1":
+                                    nr.p1_neto1 = n.precio_1;
+                                    nr.cont1_emp1 = n.contenido;
+                                    nr.emp1_des1 = n.nombreEmpq.Trim();
 
+                                    nr.p2_neto1 = n.precio_2;
+                                    nr.cont2_emp1 = n.contenido;
+                                    nr.emp2_des1 = n.nombreEmpq.Trim();
+                                    break;
+                                case "2":
+                                    nr.p1_neto2 = n.precio_1;
+                                    nr.cont1_emp2 = n.contenido;
+                                    nr.emp1_des2 = n.nombreEmpq.Trim();
+
+                                    nr.p2_neto2 = n.precio_2;
+                                    nr.cont2_emp2 = n.contenido;
+                                    nr.emp2_des2 = n.nombreEmpq.Trim();
+                                    break;
+                                case "3":
+                                    nr.p1_neto3 = n.precio_1;
+                                    nr.cont1_emp3 = n.contenido;
+                                    nr.emp1_des3 = n.nombreEmpq.Trim();
+
+                                    nr.p2_neto3 = n.precio_2;
+                                    nr.cont2_emp3 = n.contenido;
+                                    nr.emp2_des3 = n.nombreEmpq.Trim();
+                                    break;
+                                case "4":
+                                    nr.p1_neto4 = n.precio_1;
+                                    nr.cont1_emp4 = n.contenido;
+                                    nr.emp1_des4 = n.nombreEmpq.Trim();
+
+                                    nr.p2_neto4 = n.precio_2;
+                                    nr.cont2_emp4 = n.contenido;
+                                    nr.emp2_des4 = n.nombreEmpq.Trim();
+                                    break;
+                            }
+                        }
+                        list.Add(nr);
+                    }
+                }
+            }
+            rt.Lista = list;
+            return rt;
+        }
     }
 
 }

@@ -13,13 +13,16 @@ namespace ModInventario.Helpers
 
         public static bool PermitirAcceso(Func<string, OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha>> func, string idGrupo, ISeguridadAccesoSistema _seguridad)
         {
-            var rt= func.Invoke(idGrupo);
-            if (rt.Result == OOB.Enumerados.EnumResult.isError)
+            try
             {
-                Helpers.Msg.Error(rt.Mensaje);
+                var rt = func.Invoke(idGrupo);
+                return _seguridad.Verificar(rt.Entidad);
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
                 return false;
             }
-            return _seguridad.Verificar(rt.Entidad);
         }
 
     }

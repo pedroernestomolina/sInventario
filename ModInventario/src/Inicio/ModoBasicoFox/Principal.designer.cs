@@ -1,6 +1,6 @@
-﻿namespace ModInventario
+﻿namespace ModInventario.src.Inicio.ModoBasicoFox
 {
-    partial class Form1
+    partial class Principal
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -88,12 +88,16 @@
             this.TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripSeparator();
             this.visorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSM_VISOR_PRECIO = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripSeparator();
             this.TSM_VISOR_COSTOEDAD = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_VISOR_AJUSTE = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_VISOR_TRASLADO = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_VISOR_EXISTENCIA = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_VISOR_COSTO_EXISTENCIA = new System.Windows.Forms.ToolStripMenuItem();
             this.rotaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripSeparator();
+            this.TSM_VISOR_ENTRADAS_POR_COMPRA = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_REPORTE_MAESTRO_PRODUCTO = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_REPORTE_MAESTRO_INVENTARIO = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,6 +106,7 @@
             this.TSM_REPORTE_MAESTRO_DEPOSITO_RESUMEN = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_REPORTE_MAESTRO_PRECIO = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_REPORTE_MAESTRO_NIVEL_MINIMO = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripSeparator();
             this.TSM_REPORTE_KARDEX = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_REPORTE_KARDEX_RESUMEN_MOV = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_REPORTE_VALORIZACION = new System.Windows.Forms.ToolStripMenuItem();
@@ -200,11 +205,11 @@
             // 
             this.panel2.Controls.Add(this.BT_SALIR);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(690, 1);
+            this.panel2.Location = new System.Drawing.Point(684, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(1);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(2);
-            this.panel2.Size = new System.Drawing.Size(193, 52);
+            this.panel2.Size = new System.Drawing.Size(199, 52);
             this.panel2.TabIndex = 0;
             // 
             // BT_SALIR
@@ -215,7 +220,7 @@
             this.BT_SALIR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.BT_SALIR.Location = new System.Drawing.Point(2, 2);
             this.BT_SALIR.Name = "BT_SALIR";
-            this.BT_SALIR.Size = new System.Drawing.Size(189, 48);
+            this.BT_SALIR.Size = new System.Drawing.Size(195, 48);
             this.BT_SALIR.TabIndex = 0;
             this.BT_SALIR.Text = "Salir";
             this.BT_SALIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -230,7 +235,7 @@
             this.panel7.Margin = new System.Windows.Forms.Padding(1);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(2);
-            this.panel7.Size = new System.Drawing.Size(363, 52);
+            this.panel7.Size = new System.Drawing.Size(358, 52);
             this.panel7.TabIndex = 1;
             // 
             // tableLayoutPanel6
@@ -249,7 +254,7 @@
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(359, 48);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(354, 48);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // panel13
@@ -260,7 +265,7 @@
             this.panel13.Margin = new System.Windows.Forms.Padding(1);
             this.panel13.Name = "panel13";
             this.panel13.Padding = new System.Windows.Forms.Padding(2);
-            this.panel13.Size = new System.Drawing.Size(83, 22);
+            this.panel13.Size = new System.Drawing.Size(82, 22);
             this.panel13.TabIndex = 2;
             // 
             // label5
@@ -270,7 +275,7 @@
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(2, 2);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(79, 18);
+            this.label5.Size = new System.Drawing.Size(78, 18);
             this.label5.TabIndex = 4;
             this.label5.Text = "Fecha:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -279,11 +284,11 @@
             // 
             this.panel14.Controls.Add(this.L_FECHA);
             this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel14.Location = new System.Drawing.Point(86, 1);
+            this.panel14.Location = new System.Drawing.Point(85, 1);
             this.panel14.Margin = new System.Windows.Forms.Padding(1);
             this.panel14.Name = "panel14";
             this.panel14.Padding = new System.Windows.Forms.Padding(2);
-            this.panel14.Size = new System.Drawing.Size(272, 22);
+            this.panel14.Size = new System.Drawing.Size(268, 22);
             this.panel14.TabIndex = 3;
             // 
             // L_FECHA
@@ -293,7 +298,7 @@
             this.L_FECHA.ForeColor = System.Drawing.Color.Yellow;
             this.L_FECHA.Location = new System.Drawing.Point(2, 2);
             this.L_FECHA.Name = "L_FECHA";
-            this.L_FECHA.Size = new System.Drawing.Size(268, 18);
+            this.L_FECHA.Size = new System.Drawing.Size(264, 18);
             this.L_FECHA.TabIndex = 5;
             this.L_FECHA.Text = "Hoy";
             this.L_FECHA.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -306,7 +311,7 @@
             this.panel15.Margin = new System.Windows.Forms.Padding(1);
             this.panel15.Name = "panel15";
             this.panel15.Padding = new System.Windows.Forms.Padding(2);
-            this.panel15.Size = new System.Drawing.Size(83, 22);
+            this.panel15.Size = new System.Drawing.Size(82, 22);
             this.panel15.TabIndex = 2;
             // 
             // label3
@@ -316,7 +321,7 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(2, 2);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 18);
+            this.label3.Size = new System.Drawing.Size(78, 18);
             this.label3.TabIndex = 3;
             this.label3.Text = "Ruta BD:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -325,11 +330,11 @@
             // 
             this.panel16.Controls.Add(this.L_HOST);
             this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel16.Location = new System.Drawing.Point(86, 25);
+            this.panel16.Location = new System.Drawing.Point(85, 25);
             this.panel16.Margin = new System.Windows.Forms.Padding(1);
             this.panel16.Name = "panel16";
             this.panel16.Padding = new System.Windows.Forms.Padding(2);
-            this.panel16.Size = new System.Drawing.Size(272, 22);
+            this.panel16.Size = new System.Drawing.Size(268, 22);
             this.panel16.TabIndex = 4;
             // 
             // L_HOST
@@ -339,7 +344,7 @@
             this.L_HOST.ForeColor = System.Drawing.Color.Yellow;
             this.L_HOST.Location = new System.Drawing.Point(2, 2);
             this.L_HOST.Name = "L_HOST";
-            this.L_HOST.Size = new System.Drawing.Size(268, 18);
+            this.L_HOST.Size = new System.Drawing.Size(264, 18);
             this.L_HOST.TabIndex = 4;
             this.L_HOST.Text = "label2";
             this.L_HOST.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -348,7 +353,7 @@
             // 
             this.panel17.Controls.Add(this.tableLayoutPanel7);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(366, 1);
+            this.panel17.Location = new System.Drawing.Point(361, 1);
             this.panel17.Margin = new System.Windows.Forms.Padding(1);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(200, 52);
@@ -420,11 +425,11 @@
             // 
             this.panel20.Controls.Add(this.tableLayoutPanel8);
             this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel20.Location = new System.Drawing.Point(568, 1);
+            this.panel20.Location = new System.Drawing.Point(563, 1);
             this.panel20.Margin = new System.Windows.Forms.Padding(1);
             this.panel20.Name = "panel20";
             this.panel20.Padding = new System.Windows.Forms.Padding(2);
-            this.panel20.Size = new System.Drawing.Size(120, 52);
+            this.panel20.Size = new System.Drawing.Size(119, 52);
             this.panel20.TabIndex = 3;
             // 
             // tableLayoutPanel8
@@ -440,7 +445,7 @@
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(116, 48);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(115, 48);
             this.tableLayoutPanel8.TabIndex = 0;
             // 
             // panel21
@@ -451,7 +456,7 @@
             this.panel21.Margin = new System.Windows.Forms.Padding(1);
             this.panel21.Name = "panel21";
             this.panel21.Padding = new System.Windows.Forms.Padding(2);
-            this.panel21.Size = new System.Drawing.Size(77, 46);
+            this.panel21.Size = new System.Drawing.Size(76, 46);
             this.panel21.TabIndex = 0;
             // 
             // L_HORA
@@ -461,7 +466,7 @@
             this.L_HORA.ForeColor = System.Drawing.Color.Black;
             this.L_HORA.Location = new System.Drawing.Point(2, 2);
             this.L_HORA.Name = "L_HORA";
-            this.L_HORA.Size = new System.Drawing.Size(73, 42);
+            this.L_HORA.Size = new System.Drawing.Size(72, 42);
             this.L_HORA.TabIndex = 6;
             this.L_HORA.Text = "Hoy";
             this.L_HORA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -471,9 +476,9 @@
             this.menuStrip1.BackColor = System.Drawing.Color.Yellow;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
+            this.movimientosToolStripMenuItem,
             this.maestrosToolStripMenuItem,
             this.ajustesToolStripMenuItem,
-            this.movimientosToolStripMenuItem,
             this.visorToolStripMenuItem,
             this.reportesToolStripMenuItem,
             this.estadisticasToolStripMenuItem,
@@ -513,6 +518,7 @@
             this.maestrosToolStripMenuItem.Name = "maestrosToolStripMenuItem";
             this.maestrosToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.maestrosToolStripMenuItem.Text = "Maestros";
+            this.maestrosToolStripMenuItem.Visible = false;
             // 
             // productosToolStripMenuItem
             // 
@@ -582,6 +588,7 @@
             this.ajustesToolStripMenuItem.Name = "ajustesToolStripMenuItem";
             this.ajustesToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
             this.ajustesToolStripMenuItem.Text = "Ajustes";
+            this.ajustesToolStripMenuItem.Visible = false;
             // 
             // TSM_AJUSTE_DefinirNivelMinimoMaximo
             // 
@@ -658,6 +665,7 @@
             this.movimientosToolStripMenuItem.Name = "movimientosToolStripMenuItem";
             this.movimientosToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
             this.movimientosToolStripMenuItem.Text = "Movimientos";
+            this.movimientosToolStripMenuItem.Visible = false;
             // 
             // controlDeMovimientosToolStripMenuItem
             // 
@@ -670,6 +678,7 @@
             this.controlDeMovimientosToolStripMenuItem.Name = "controlDeMovimientosToolStripMenuItem";
             this.controlDeMovimientosToolStripMenuItem.Size = new System.Drawing.Size(356, 22);
             this.controlDeMovimientosToolStripMenuItem.Text = "Control De Movimientos";
+            this.controlDeMovimientosToolStripMenuItem.Visible = false;
             // 
             // TSM_Movimiento_Control_Cargo
             // 
@@ -714,12 +723,14 @@
             this.TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO.Name = "TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO";
             this.TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO.Size = new System.Drawing.Size(356, 22);
             this.TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO.Text = "Traslado Mercancia Por Existencia Debajo del Minimo";
+            this.TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO.Visible = false;
             this.TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO.Click += new System.EventHandler(this.TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(353, 6);
+            this.toolStripMenuItem2.Visible = false;
             // 
             // TSM_MOVIMIENTO_ADMINISTRADOR
             // 
@@ -740,25 +751,45 @@
             this.TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE.Name = "TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE";
             this.TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE.Size = new System.Drawing.Size(356, 22);
             this.TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE.Text = "Admnistrador Movimientos Pendientes";
+            this.TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE.Visible = false;
             this.TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE.Click += new System.EventHandler(this.TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE_Click);
             // 
             // toolStripMenuItem8
             // 
             this.toolStripMenuItem8.Name = "toolStripMenuItem8";
             this.toolStripMenuItem8.Size = new System.Drawing.Size(353, 6);
+            this.toolStripMenuItem8.Visible = false;
             // 
             // visorToolStripMenuItem
             // 
             this.visorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSM_VISOR_PRECIO,
+            this.toolStripMenuItem12,
             this.TSM_VISOR_COSTOEDAD,
             this.TSM_VISOR_AJUSTE,
             this.TSM_VISOR_TRASLADO,
             this.TSM_VISOR_EXISTENCIA,
             this.TSM_VISOR_COSTO_EXISTENCIA,
-            this.rotaciónToolStripMenuItem});
+            this.rotaciónToolStripMenuItem,
+            this.toolStripMenuItem13,
+            this.TSM_VISOR_ENTRADAS_POR_COMPRA});
             this.visorToolStripMenuItem.Name = "visorToolStripMenuItem";
             this.visorToolStripMenuItem.Size = new System.Drawing.Size(45, 20);
             this.visorToolStripMenuItem.Text = "Visor";
+            this.visorToolStripMenuItem.Visible = false;
+            // 
+            // TSM_VISOR_PRECIO
+            // 
+            this.TSM_VISOR_PRECIO.Image = global::ModInventario.Properties.Resources.bt_visor;
+            this.TSM_VISOR_PRECIO.Name = "TSM_VISOR_PRECIO";
+            this.TSM_VISOR_PRECIO.Size = new System.Drawing.Size(209, 22);
+            this.TSM_VISOR_PRECIO.Text = "Precios";
+            this.TSM_VISOR_PRECIO.Click += new System.EventHandler(this.TSM_VISOR_PRECIO_Click);
+            // 
+            // toolStripMenuItem12
+            // 
+            this.toolStripMenuItem12.Name = "toolStripMenuItem12";
+            this.toolStripMenuItem12.Size = new System.Drawing.Size(206, 6);
             // 
             // TSM_VISOR_COSTOEDAD
             // 
@@ -766,6 +797,7 @@
             this.TSM_VISOR_COSTOEDAD.Name = "TSM_VISOR_COSTOEDAD";
             this.TSM_VISOR_COSTOEDAD.Size = new System.Drawing.Size(209, 22);
             this.TSM_VISOR_COSTOEDAD.Text = "Costo Edad ";
+            this.TSM_VISOR_COSTOEDAD.Visible = false;
             this.TSM_VISOR_COSTOEDAD.Click += new System.EventHandler(this.TSM_VISOR_COSTOEDAD_Click);
             // 
             // TSM_VISOR_AJUSTE
@@ -798,6 +830,7 @@
             this.TSM_VISOR_COSTO_EXISTENCIA.Name = "TSM_VISOR_COSTO_EXISTENCIA";
             this.TSM_VISOR_COSTO_EXISTENCIA.Size = new System.Drawing.Size(209, 22);
             this.TSM_VISOR_COSTO_EXISTENCIA.Text = "Costo / Existencia";
+            this.TSM_VISOR_COSTO_EXISTENCIA.Visible = false;
             this.TSM_VISOR_COSTO_EXISTENCIA.Click += new System.EventHandler(this.TSM_VISOR_COSTO_EXISTENCIA_Click);
             // 
             // rotaciónToolStripMenuItem
@@ -807,6 +840,19 @@
             this.rotaciónToolStripMenuItem.Text = "Rotación";
             this.rotaciónToolStripMenuItem.Visible = false;
             this.rotaciónToolStripMenuItem.Click += new System.EventHandler(this.rotaciónToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem13
+            // 
+            this.toolStripMenuItem13.Name = "toolStripMenuItem13";
+            this.toolStripMenuItem13.Size = new System.Drawing.Size(206, 6);
+            // 
+            // TSM_VISOR_ENTRADAS_POR_COMPRA
+            // 
+            this.TSM_VISOR_ENTRADAS_POR_COMPRA.Image = global::ModInventario.Properties.Resources.bt_visor;
+            this.TSM_VISOR_ENTRADAS_POR_COMPRA.Name = "TSM_VISOR_ENTRADAS_POR_COMPRA";
+            this.TSM_VISOR_ENTRADAS_POR_COMPRA.Size = new System.Drawing.Size(209, 22);
+            this.TSM_VISOR_ENTRADAS_POR_COMPRA.Text = "Entradas Por Compras";
+            this.TSM_VISOR_ENTRADAS_POR_COMPRA.Click += new System.EventHandler(this.TSM_VISOR_ENTRADAS_POR_COMPRA_Click);
             // 
             // reportesToolStripMenuItem
             // 
@@ -818,6 +864,7 @@
             this.TSM_REPORTE_MAESTRO_DEPOSITO_RESUMEN,
             this.TSM_REPORTE_MAESTRO_PRECIO,
             this.TSM_REPORTE_MAESTRO_NIVEL_MINIMO,
+            this.toolStripMenuItem11,
             this.TSM_REPORTE_KARDEX,
             this.TSM_REPORTE_KARDEX_RESUMEN_MOV,
             this.TSM_REPORTE_VALORIZACION,
@@ -835,6 +882,7 @@
             this.TSM_REPORTE_MAESTRO_PRODUCTO.Name = "TSM_REPORTE_MAESTRO_PRODUCTO";
             this.TSM_REPORTE_MAESTRO_PRODUCTO.Size = new System.Drawing.Size(280, 22);
             this.TSM_REPORTE_MAESTRO_PRODUCTO.Text = "Maestro Productos / Datos Del Articulo";
+            this.TSM_REPORTE_MAESTRO_PRODUCTO.Visible = false;
             this.TSM_REPORTE_MAESTRO_PRODUCTO.Click += new System.EventHandler(this.TSM_REPORTE_MAESTRO_PRODUCTO_Click);
             // 
             // TSM_REPORTE_MAESTRO_INVENTARIO
@@ -843,6 +891,7 @@
             this.TSM_REPORTE_MAESTRO_INVENTARIO.Name = "TSM_REPORTE_MAESTRO_INVENTARIO";
             this.TSM_REPORTE_MAESTRO_INVENTARIO.Size = new System.Drawing.Size(280, 22);
             this.TSM_REPORTE_MAESTRO_INVENTARIO.Text = "Maestro Inventario / Resumen";
+            this.TSM_REPORTE_MAESTRO_INVENTARIO.Visible = false;
             this.TSM_REPORTE_MAESTRO_INVENTARIO.Click += new System.EventHandler(this.TSM_REPORTE_MAESTRO_INVENTARIO_Click);
             // 
             // TSM_REPORTE_MAESTRO_EXISTENCIA
@@ -851,6 +900,7 @@
             this.TSM_REPORTE_MAESTRO_EXISTENCIA.Name = "TSM_REPORTE_MAESTRO_EXISTENCIA";
             this.TSM_REPORTE_MAESTRO_EXISTENCIA.Size = new System.Drawing.Size(280, 22);
             this.TSM_REPORTE_MAESTRO_EXISTENCIA.Text = "Maestro Existencia Resumen";
+            this.TSM_REPORTE_MAESTRO_EXISTENCIA.Visible = false;
             this.TSM_REPORTE_MAESTRO_EXISTENCIA.Click += new System.EventHandler(this.TSM_REPORTE_MAESTRO_EXISTENCIA_Click);
             // 
             // TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO
@@ -859,6 +909,7 @@
             this.TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO.Name = "TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO";
             this.TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO.Size = new System.Drawing.Size(280, 22);
             this.TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO.Text = "Maestro Existencia / Inventario";
+            this.TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO.Visible = false;
             this.TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO.Click += new System.EventHandler(this.TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO_Click);
             // 
             // TSM_REPORTE_MAESTRO_DEPOSITO_RESUMEN
@@ -867,6 +918,7 @@
             this.TSM_REPORTE_MAESTRO_DEPOSITO_RESUMEN.Name = "TSM_REPORTE_MAESTRO_DEPOSITO_RESUMEN";
             this.TSM_REPORTE_MAESTRO_DEPOSITO_RESUMEN.Size = new System.Drawing.Size(280, 22);
             this.TSM_REPORTE_MAESTRO_DEPOSITO_RESUMEN.Text = "Maestro Depósito Resumen";
+            this.TSM_REPORTE_MAESTRO_DEPOSITO_RESUMEN.Visible = false;
             this.TSM_REPORTE_MAESTRO_DEPOSITO_RESUMEN.Click += new System.EventHandler(this.TSM_REPORTE_MAESTRO_DEPOSITO_RESUMEN_Click);
             // 
             // TSM_REPORTE_MAESTRO_PRECIO
@@ -883,7 +935,13 @@
             this.TSM_REPORTE_MAESTRO_NIVEL_MINIMO.Name = "TSM_REPORTE_MAESTRO_NIVEL_MINIMO";
             this.TSM_REPORTE_MAESTRO_NIVEL_MINIMO.Size = new System.Drawing.Size(280, 22);
             this.TSM_REPORTE_MAESTRO_NIVEL_MINIMO.Text = "Maestro Nivel Mínimo";
+            this.TSM_REPORTE_MAESTRO_NIVEL_MINIMO.Visible = false;
             this.TSM_REPORTE_MAESTRO_NIVEL_MINIMO.Click += new System.EventHandler(this.TSM_REPORTE_MAESTRO_NIVEL_MINIMO_Click);
+            // 
+            // toolStripMenuItem11
+            // 
+            this.toolStripMenuItem11.Name = "toolStripMenuItem11";
+            this.toolStripMenuItem11.Size = new System.Drawing.Size(277, 6);
             // 
             // TSM_REPORTE_KARDEX
             // 
@@ -891,6 +949,7 @@
             this.TSM_REPORTE_KARDEX.Name = "TSM_REPORTE_KARDEX";
             this.TSM_REPORTE_KARDEX.Size = new System.Drawing.Size(280, 22);
             this.TSM_REPORTE_KARDEX.Text = "Kardex";
+            this.TSM_REPORTE_KARDEX.Visible = false;
             this.TSM_REPORTE_KARDEX.Click += new System.EventHandler(this.TSM_REPORTE_KARDEX_Click);
             // 
             // TSM_REPORTE_KARDEX_RESUMEN_MOV
@@ -899,6 +958,7 @@
             this.TSM_REPORTE_KARDEX_RESUMEN_MOV.Name = "TSM_REPORTE_KARDEX_RESUMEN_MOV";
             this.TSM_REPORTE_KARDEX_RESUMEN_MOV.Size = new System.Drawing.Size(280, 22);
             this.TSM_REPORTE_KARDEX_RESUMEN_MOV.Text = "Kardex Resumen Por Movimiento";
+            this.TSM_REPORTE_KARDEX_RESUMEN_MOV.Visible = false;
             this.TSM_REPORTE_KARDEX_RESUMEN_MOV.Click += new System.EventHandler(this.TSM_REPORTE_KARDEX_RESUMEN_MOV_Click);
             // 
             // TSM_REPORTE_VALORIZACION
@@ -907,12 +967,14 @@
             this.TSM_REPORTE_VALORIZACION.Name = "TSM_REPORTE_VALORIZACION";
             this.TSM_REPORTE_VALORIZACION.Size = new System.Drawing.Size(280, 22);
             this.TSM_REPORTE_VALORIZACION.Text = "Valorizacion Inventario";
+            this.TSM_REPORTE_VALORIZACION.Visible = false;
             this.TSM_REPORTE_VALORIZACION.Click += new System.EventHandler(this.TSM_REPORTE_VALORIZACION_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
             this.toolStripMenuItem3.Size = new System.Drawing.Size(277, 6);
+            this.toolStripMenuItem3.Visible = false;
             // 
             // TSM_REPORTE_RELACION_COMPRAVENTA
             // 
@@ -920,18 +982,21 @@
             this.TSM_REPORTE_RELACION_COMPRAVENTA.Name = "TSM_REPORTE_RELACION_COMPRAVENTA";
             this.TSM_REPORTE_RELACION_COMPRAVENTA.Size = new System.Drawing.Size(280, 22);
             this.TSM_REPORTE_RELACION_COMPRAVENTA.Text = "Relacion Compra / Venta ";
+            this.TSM_REPORTE_RELACION_COMPRAVENTA.Visible = false;
             this.TSM_REPORTE_RELACION_COMPRAVENTA.Click += new System.EventHandler(this.TSM_REPORTE_RELACION_COMPRAVENTA_Click);
             // 
             // toolStripMenuItem10
             // 
             this.toolStripMenuItem10.Name = "toolStripMenuItem10";
             this.toolStripMenuItem10.Size = new System.Drawing.Size(277, 6);
+            this.toolStripMenuItem10.Visible = false;
             // 
             // TSM_REPORTE_RESUMEN_COSTO_INVENTARIO
             // 
             this.TSM_REPORTE_RESUMEN_COSTO_INVENTARIO.Name = "TSM_REPORTE_RESUMEN_COSTO_INVENTARIO";
             this.TSM_REPORTE_RESUMEN_COSTO_INVENTARIO.Size = new System.Drawing.Size(280, 22);
             this.TSM_REPORTE_RESUMEN_COSTO_INVENTARIO.Text = "Resumen Costo Inventario";
+            this.TSM_REPORTE_RESUMEN_COSTO_INVENTARIO.Visible = false;
             this.TSM_REPORTE_RESUMEN_COSTO_INVENTARIO.Click += new System.EventHandler(this.TSM_REPORTE_RESUMEN_COSTO_INVENTARIO_Click);
             // 
             // estadisticasToolStripMenuItem
@@ -942,6 +1007,7 @@
             this.estadisticasToolStripMenuItem.Name = "estadisticasToolStripMenuItem";
             this.estadisticasToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.estadisticasToolStripMenuItem.Text = "Estadísticas";
+            this.estadisticasToolStripMenuItem.Visible = false;
             // 
             // TSM_GRAFICA_TOP_30
             // 
@@ -973,6 +1039,7 @@
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
             this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.configuraciónToolStripMenuItem.Text = "Configuración";
+            this.configuraciónToolStripMenuItem.Visible = false;
             // 
             // TSM_CONFIGURACION_BUSQUEDA_PREDETERMINADA
             // 
@@ -1232,7 +1299,7 @@
             this.panel10.Size = new System.Drawing.Size(246, 350);
             this.panel10.TabIndex = 0;
             // 
-            // Form1
+            // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1241,10 +1308,10 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tools De Inventario";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.Principal_Load);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -1387,6 +1454,11 @@
         private System.Windows.Forms.ToolStripMenuItem TSM_AJUSTES_CAMBIO_MOVIMIENTOS_PRECIOS;
         private System.Windows.Forms.ToolStripMenuItem TSM_CONFIGURACION_PERMITIR_CAMBIAR_PRECIO_AL_MODIFICAR_COSTO;
         private System.Windows.Forms.ToolStripMenuItem TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem11;
+        private System.Windows.Forms.ToolStripMenuItem TSM_VISOR_PRECIO;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem12;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem13;
+        private System.Windows.Forms.ToolStripMenuItem TSM_VISOR_ENTRADAS_POR_COMPRA;
     }
 }
 

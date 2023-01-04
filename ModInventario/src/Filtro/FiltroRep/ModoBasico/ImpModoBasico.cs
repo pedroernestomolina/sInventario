@@ -92,12 +92,13 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoBasico
                 Grupo = _data.Grupo,
                 Hasta = _data.Hasta,
                 Marca = _data.Marca,
-                Pesado= _data.Pesado,
+                Pesado = _data.Pesado,
                 TasaIva = _data.Impuesto,
                 Categoria = null,
                 Origen = null,
                 Producto = null,
                 Sucursal = null,
+                Precio = new ficha() { codigo = "", desc = "", id = "01" },
             };
             return rg;
         }

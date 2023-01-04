@@ -16,54 +16,53 @@ namespace ModInventario.src
             frm.setControlador(ctr);
             frm.ShowDialog();
         }
-
-        public ModInventario.Producto.Precio.VerVisualizar.IVisual CreateInstancia_VisualizarPrecio()
+        public ModInventario.Producto.Precio.VerVisualizar.IVisual 
+            CreateInstancia_VisualizarPrecio()
         {
             return null;
         }
-
-        public ModInventario.Producto.Precio.EditarCambiar.IEditar CreateInstancia_EditarCambiarPrecio()
+        public ModInventario.Producto.Precio.EditarCambiar.IEditar 
+            CreateInstancia_EditarCambiarPrecio()
         {
             return null;
         }
-
-        public FiltrosGen.AdmProducto.IAdmProducto CreateInstancia_FiltroPrdAdm()
+        public FiltrosGen.AdmProducto.IAdmProducto 
+            CreateInstancia_FiltroPrdAdm()
         {
             return null;
         }
-
-        public ModInventario.Producto.Precio.Historico.IHistorico CreateInstancia_HistoricoPrecio()
+        public ModInventario.Producto.Precio.Historico.IHistorico 
+            CreateInstancia_HistoricoPrecio()
         {
             return null;
         }
-
-        public Producto.AgregarEditar.IBaseAgregarEditar CreateInstancia_AgregarPrd()
+        public Producto.AgregarEditar.IBaseAgregarEditar
+            CreateInstancia_AgregarPrd()
         {
             return null;
         }
-
-        public Producto.AgregarEditar.IBaseAgregarEditar CreateInstancia_EditarPrd()
+        public Producto.AgregarEditar.IBaseAgregarEditar 
+            CreateInstancia_EditarPrd()
         {
             return null;
         }
-
-        public ModInventario.Producto.VisualizarFicha.IVisualizar CreateInstancia_VisualizarPrd()
+        public ModInventario.Producto.VisualizarFicha.IVisualizar 
+            CreateInstancia_VisualizarPrd()
         {
             return null;
         }
-
-
-        public Producto.Imagen.IImagen CreateInstancia_ImagenProducto()
+        public Producto.Imagen.IImagen 
+            CreateInstancia_ImagenProducto()
         {
             return null;
         }
-
-        public Producto.QR.IQR CreateInstancia_ImagenQRProducto()
+        public Producto.QR.IQR 
+            CreateInstancia_ImagenQRProducto()
         {
             return null;
         }
-
-        public ModInventario.Buscar.Gestion CreateInstancia_HndProducto(ISeguridadAccesoSistema _seguridad, IFabrica _fabrica)
+        public ModInventario.Buscar.Gestion 
+            CreateInstancia_HndProducto(ISeguridadAccesoSistema _seguridad, IFabrica _fabrica)
         {
             return null;
         }
@@ -72,11 +71,9 @@ namespace ModInventario.src
         {
             get { throw new NotImplementedException(); }
         }
-
         public void CreateInstancia_BuscarPrd(ModInventario.Buscar.Gestion gestion)
         {
         }
-
         public void ShowBuscarPrd()
         {
         }
@@ -101,8 +98,6 @@ namespace ModInventario.src
         {
             return new src.Visor.EntradaxCompra.ModoSoloReporte.ImpSoloReporte();
         }
-
-
         public Filtro.FiltroRep.IFiltroRep 
             CreateInstancia_FiltrosReporte()
         {
@@ -150,7 +145,16 @@ namespace ModInventario.src
         {
             return new ModInventario.src.AnularDoc.ImpAnular();
         }
-
+        public Reporte.IReporte
+            CreateInstancia_RepMasterPrecio()
+        {
+            return new Reportes.Filtros.MaestroPrecio.GestionRep();
+        }
+        public Reportes.Filtros.IFiltros 
+            CreateInstancia_RepMasterPrecio_Filtros()
+        {
+            return new Reportes.Filtros.MaestroPrecio.Filtros();
+        }
     }
 
 }

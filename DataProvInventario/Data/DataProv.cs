@@ -16,9 +16,9 @@ namespace DataProvInventario.Data
         public static IService MyData;
 
 
-        public DataProv(string instancia, string bd, string usu="root")
+        public DataProv(string instancia, string bd, string usu, string gestorDatos)
         {
-            MyData = new ServiceInventario.MyService.Service(instancia,bd, usu);
+            MyData = new ServiceInventario.MyService.Service(instancia,bd, usu, gestorDatos);
         }
 
 

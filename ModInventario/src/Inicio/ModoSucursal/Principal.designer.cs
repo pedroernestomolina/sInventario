@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -73,6 +73,7 @@
             this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripSeparator();
             this.TSM_AJSUTES_ASIGNACION_MASIVA_PRODUCTOS_DEPOSITO = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_AJUSTES_CAMBIO_MOVIMIENTOS_PRECIOS = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO = new System.Windows.Forms.ToolStripMenuItem();
             this.movimientosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.controlDeMovimientosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_Movimiento_Control_Cargo = new System.Windows.Forms.ToolStripMenuItem();
@@ -135,7 +136,6 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -200,11 +200,11 @@
             // 
             this.panel2.Controls.Add(this.BT_SALIR);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(691, 1);
+            this.panel2.Location = new System.Drawing.Point(690, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(1);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(2);
-            this.panel2.Size = new System.Drawing.Size(192, 52);
+            this.panel2.Size = new System.Drawing.Size(193, 52);
             this.panel2.TabIndex = 0;
             // 
             // BT_SALIR
@@ -215,7 +215,7 @@
             this.BT_SALIR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.BT_SALIR.Location = new System.Drawing.Point(2, 2);
             this.BT_SALIR.Name = "BT_SALIR";
-            this.BT_SALIR.Size = new System.Drawing.Size(188, 48);
+            this.BT_SALIR.Size = new System.Drawing.Size(189, 48);
             this.BT_SALIR.TabIndex = 0;
             this.BT_SALIR.Text = "Salir";
             this.BT_SALIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -230,7 +230,7 @@
             this.panel7.Margin = new System.Windows.Forms.Padding(1);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(2);
-            this.panel7.Size = new System.Drawing.Size(364, 52);
+            this.panel7.Size = new System.Drawing.Size(363, 52);
             this.panel7.TabIndex = 1;
             // 
             // tableLayoutPanel6
@@ -249,7 +249,7 @@
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(360, 48);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(359, 48);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // panel13
@@ -260,7 +260,7 @@
             this.panel13.Margin = new System.Windows.Forms.Padding(1);
             this.panel13.Name = "panel13";
             this.panel13.Padding = new System.Windows.Forms.Padding(2);
-            this.panel13.Size = new System.Drawing.Size(84, 22);
+            this.panel13.Size = new System.Drawing.Size(83, 22);
             this.panel13.TabIndex = 2;
             // 
             // label5
@@ -270,7 +270,7 @@
             this.label5.ForeColor = System.Drawing.Color.White;
             this.label5.Location = new System.Drawing.Point(2, 2);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(80, 18);
+            this.label5.Size = new System.Drawing.Size(79, 18);
             this.label5.TabIndex = 4;
             this.label5.Text = "Fecha:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -279,7 +279,7 @@
             // 
             this.panel14.Controls.Add(this.L_FECHA);
             this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel14.Location = new System.Drawing.Point(87, 1);
+            this.panel14.Location = new System.Drawing.Point(86, 1);
             this.panel14.Margin = new System.Windows.Forms.Padding(1);
             this.panel14.Name = "panel14";
             this.panel14.Padding = new System.Windows.Forms.Padding(2);
@@ -306,7 +306,7 @@
             this.panel15.Margin = new System.Windows.Forms.Padding(1);
             this.panel15.Name = "panel15";
             this.panel15.Padding = new System.Windows.Forms.Padding(2);
-            this.panel15.Size = new System.Drawing.Size(84, 22);
+            this.panel15.Size = new System.Drawing.Size(83, 22);
             this.panel15.TabIndex = 2;
             // 
             // label3
@@ -316,7 +316,7 @@
             this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(2, 2);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(80, 18);
+            this.label3.Size = new System.Drawing.Size(79, 18);
             this.label3.TabIndex = 3;
             this.label3.Text = "Ruta BD:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -325,7 +325,7 @@
             // 
             this.panel16.Controls.Add(this.L_HOST);
             this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel16.Location = new System.Drawing.Point(87, 25);
+            this.panel16.Location = new System.Drawing.Point(86, 25);
             this.panel16.Margin = new System.Windows.Forms.Padding(1);
             this.panel16.Name = "panel16";
             this.panel16.Padding = new System.Windows.Forms.Padding(2);
@@ -348,7 +348,7 @@
             // 
             this.panel17.Controls.Add(this.tableLayoutPanel7);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(367, 1);
+            this.panel17.Location = new System.Drawing.Point(366, 1);
             this.panel17.Margin = new System.Windows.Forms.Padding(1);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(200, 52);
@@ -420,7 +420,7 @@
             // 
             this.panel20.Controls.Add(this.tableLayoutPanel8);
             this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel20.Location = new System.Drawing.Point(569, 1);
+            this.panel20.Location = new System.Drawing.Point(568, 1);
             this.panel20.Margin = new System.Windows.Forms.Padding(1);
             this.panel20.Name = "panel20";
             this.panel20.Padding = new System.Windows.Forms.Padding(2);
@@ -638,6 +638,13 @@
             this.TSM_AJUSTES_CAMBIO_MOVIMIENTOS_PRECIOS.Text = "Cambio / Movimiento Masivo de Precios";
             this.TSM_AJUSTES_CAMBIO_MOVIMIENTOS_PRECIOS.Click += new System.EventHandler(this.TSM_AJUSTES_CAMBIO_MOVIMIENTOS_PRECIOS_Click);
             // 
+            // TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO
+            // 
+            this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO.Name = "TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO";
+            this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO.Size = new System.Drawing.Size(378, 22);
+            this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO.Text = "Ajustar Productos Con Existencia Pero Sin Precio de Venta";
+            this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO.Click += new System.EventHandler(this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO_Click);
+            // 
             // movimientosToolStripMenuItem
             // 
             this.movimientosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -835,7 +842,7 @@
             this.TSM_REPORTE_MAESTRO_INVENTARIO.Image = global::ModInventario.Properties.Resources.bt_imprimir_3;
             this.TSM_REPORTE_MAESTRO_INVENTARIO.Name = "TSM_REPORTE_MAESTRO_INVENTARIO";
             this.TSM_REPORTE_MAESTRO_INVENTARIO.Size = new System.Drawing.Size(280, 22);
-            this.TSM_REPORTE_MAESTRO_INVENTARIO.Text = "Maestro Inventario / Resumen";
+            this.TSM_REPORTE_MAESTRO_INVENTARIO.Text = "Maestro Existencia / Resumen";
             this.TSM_REPORTE_MAESTRO_INVENTARIO.Click += new System.EventHandler(this.TSM_REPORTE_MAESTRO_INVENTARIO_Click);
             // 
             // TSM_REPORTE_MAESTRO_EXISTENCIA
@@ -843,7 +850,7 @@
             this.TSM_REPORTE_MAESTRO_EXISTENCIA.Image = global::ModInventario.Properties.Resources.bt_imprimir_3;
             this.TSM_REPORTE_MAESTRO_EXISTENCIA.Name = "TSM_REPORTE_MAESTRO_EXISTENCIA";
             this.TSM_REPORTE_MAESTRO_EXISTENCIA.Size = new System.Drawing.Size(280, 22);
-            this.TSM_REPORTE_MAESTRO_EXISTENCIA.Text = "Maestro Existencia Resumen";
+            this.TSM_REPORTE_MAESTRO_EXISTENCIA.Text = "Maestro Existencia / Detalle";
             this.TSM_REPORTE_MAESTRO_EXISTENCIA.Click += new System.EventHandler(this.TSM_REPORTE_MAESTRO_EXISTENCIA_Click);
             // 
             // TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO
@@ -851,7 +858,7 @@
             this.TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO.Image = global::ModInventario.Properties.Resources.bt_imprimir_3;
             this.TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO.Name = "TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO";
             this.TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO.Size = new System.Drawing.Size(280, 22);
-            this.TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO.Text = "Maestro Existencia / Inventario";
+            this.TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO.Text = "Maestro Existencia / Para Inventario";
             this.TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO.Click += new System.EventHandler(this.TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO_Click);
             // 
             // TSM_REPORTE_MAESTRO_DEPOSITO_RESUMEN
@@ -1225,14 +1232,7 @@
             this.panel10.Size = new System.Drawing.Size(246, 350);
             this.panel10.TabIndex = 0;
             // 
-            // TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO
-            // 
-            this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO.Name = "TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO";
-            this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO.Size = new System.Drawing.Size(378, 22);
-            this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO.Text = "Ajustar Productos Con Existencia Pero Sin Precio de Venta";
-            this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO.Click += new System.EventHandler(this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO_Click);
-            // 
-            // Form1
+            // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1241,7 +1241,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.Name = "Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tools De Inventario";
             this.Load += new System.EventHandler(this.Principal_Load);

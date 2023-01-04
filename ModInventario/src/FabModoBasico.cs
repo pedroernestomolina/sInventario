@@ -10,16 +10,12 @@ namespace ModInventario.src
     
     public class FabModoBasico: IFabrica
     {
-
-
         public void Iniciar_FrmPrincipal(GestionInv ctr)
         {
             var frm = new ModInventario.src.Inicio.ModoBasico.Form2();
             frm.setControlador(ctr);
             frm.ShowDialog();
         }
-
-
         public ModInventario.Producto.Precio.VerVisualizar.IVisual 
             CreateInstancia_VisualizarPrecio()
         {
@@ -85,7 +81,6 @@ namespace ModInventario.src
             _frm.ShowDialog();
         }
 
-
         private Filtro.FiltroAdmDoc.IAdmDoc
             CreateInstancia_FiltrosAdmDoc()
         {
@@ -103,7 +98,6 @@ namespace ModInventario.src
         {
             return new ModInventario.Producto.ListaSel.Gestion();
         }
-
         private ModInventario.src.AdmDocumentos.IListaAdmDoc
             CreateInstancia_ListaAdmDoc()
         {
@@ -145,7 +139,6 @@ namespace ModInventario.src
                 CreateInstancia_HistoricoPrecio(),
                 _fabrica);
         }
-
         public Visor.Traslado.IVisorTraslado 
             CreateInstancia_VisorTraslado()
         {
@@ -166,7 +159,16 @@ namespace ModInventario.src
         {
             return null;
         }
-
+        public Reporte.IReporte
+            CreateInstancia_RepMasterPrecio()
+        {
+            return new Reportes.Filtros.MaestroPrecioBasico.GestionRep();
+        }
+        public Reportes.Filtros.IFiltros 
+            CreateInstancia_RepMasterPrecio_Filtros()
+        {
+            return new Reportes.Filtros.MaestroPrecio.Filtros();
+        }
     }
 
 }

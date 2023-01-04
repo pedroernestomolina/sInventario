@@ -283,11 +283,11 @@ namespace ModInventario.src.Inicio.ModoBasico
 
         private void TSM_REPORTE_MAESTRO_PRECIO_Click(object sender, EventArgs e)
         {
-            ReporteMaestroPrecioBasico();
+            ReporteMaestroPrecio();
         }
-        private void ReporteMaestroPrecioBasico()
+        private void ReporteMaestroPrecio()
         {
-            _controlador.ReporteMaestroPrecioBasico();
+            _controlador.ReporteMaestroPrecio();
         }
 
         private void TSM_REPORTE_KARDEX_Click(object sender, EventArgs e)
@@ -450,7 +450,7 @@ namespace ModInventario.src.Inicio.ModoBasico
         }
         private void ReporteMaestroExistencia()
         {
-            _controlador.ReporteMaestroExistencia();
+            _controlador.ReporteMaestroExistenciaDetalle();
         }
 
         private void TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO_Click(object sender, EventArgs e)

@@ -10,15 +10,12 @@ namespace ModInventario.src
     
     public class FabModoSucursal: IFabrica
     {
-
         public void Iniciar_FrmPrincipal(GestionInv ctr)
         {
             var frm = new ModInventario.src.Inicio.ModoSucursal.Principal();
             frm.setControlador(ctr);
             frm.ShowDialog();
         }
-
-
         public ModInventario.Producto.Precio.VerVisualizar.IVisual 
             CreateInstancia_VisualizarPrecio()
         {
@@ -87,7 +84,6 @@ namespace ModInventario.src
                 CreateInstancia_AnularDoc());
         }
 
-
         ModInventario.Buscar.BusquedaFrm _frm;
         public object BuscarPrd
         {
@@ -103,7 +99,6 @@ namespace ModInventario.src
             _frm.ShowDialog();
         }
 
-
         private SeguridadSist.ISeguridad 
             CrearInstancia_Seguridad_Modo_NivelAcceso_Usuario(SeguridadSist.Usuario.enumerados.enumTipo modo) 
         {
@@ -113,8 +108,6 @@ namespace ModInventario.src
             _gSecurity.setGestionTipo(_gModoNivelAcceso);
             return _gSecurity;
         }
-
-
         private Filtro.FiltroAdmDoc.IAdmDoc
             CreateInstancia_FiltrosAdmDoc()
         {
@@ -146,8 +139,6 @@ namespace ModInventario.src
         {
             return new ModInventario.src.Producto.QR.ImpQR();
         }
-
-
         public ModInventario.Buscar.Gestion 
             CreateInstancia_HndProducto(ISeguridadAccesoSistema _seguridad, IFabrica _fabrica)
         {
@@ -164,16 +155,15 @@ namespace ModInventario.src
                 CreateInstancia_HistoricoPrecio(),
                 _fabrica);
         }
-
         public Visor.Traslado.IVisorTraslado 
             CreateInstancia_VisorTraslado()
         {
-            return null;
+            return new src.Visor.Traslado.ModoSucursal.ImpModo();
         }
         public Visor.GananciaPerdida.IVisorGanPerd 
             CreateInstancia_VisorGananciaPerdida()
         {
-            return null;
+            return new src.Visor.GananciaPerdida.ModoSucursal.ImpModo();
         }
         public Visor.Precios.IPrecio 
             CreateInstancia_VisorPrecio()
@@ -185,7 +175,15 @@ namespace ModInventario.src
         {
             return null;
         }
-
+        public Reporte.IReporte 
+            CreateInstancia_RepMasterPrecio()
+        {
+            return new Reportes.Filtros.MaestroPrecio.GestionRep();
+        }
+        public Reportes.Filtros.IFiltros CreateInstancia_RepMasterPrecio_Filtros()
+        {
+            return new Reportes.Filtros.MaestroPrecio.Filtros();
+        }
     }
 
 }

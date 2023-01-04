@@ -450,7 +450,7 @@ namespace ModInventario.src.Inicio.ModoSoloReporte
         }
         private void ReporteMaestroExistencia()
         {
-            _controlador.ReporteMaestroExistencia();
+            _controlador.ReporteMaestroExistenciaDetalle();
         }
 
         private void TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO_Click(object sender, EventArgs e)

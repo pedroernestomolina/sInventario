@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace ModInventario
+namespace ModInventario.src.Inicio.ModoBasicoFox
 {
 
-    public partial class Form1 : Form
+    public partial class Principal : Form
     {
 
 
@@ -20,7 +20,7 @@ namespace ModInventario
         private Timer timer;
 
 
-        public Form1()
+        public Principal()
         {
             InitializeComponent();
             timer = new Timer();
@@ -45,7 +45,7 @@ namespace ModInventario
             _controlador.TrasladoMercanciaEntreSucursalPorNivelMinimo();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void Principal_Load(object sender, EventArgs e)
         {
             timer.Start();
             L_VERSION.Text = _controlador.Version;
@@ -208,7 +208,6 @@ namespace ModInventario
         {
             VisorTraslados();
         }
-
         private void VisorTraslados()
         {
             _controlador.VisorTraslados();
@@ -237,7 +236,6 @@ namespace ModInventario
         {
             AdministradorMovimiento();
         }
-
         private void AdministradorMovimiento()
         {
             _controlador.AdministradorMovimiento();
@@ -286,7 +284,6 @@ namespace ModInventario
         {
             ReporteMaestroPrecio();
         }
-
         private void ReporteMaestroPrecio()
         {
             _controlador.ReporteMaestroPrecio();
@@ -406,7 +403,6 @@ namespace ModInventario
         {
             Kardex_Resumen_Mov();
         }
-
         private void Kardex_Resumen_Mov()
         {
             _controlador.Kardex_Resumen_Mov();
@@ -454,7 +450,7 @@ namespace ModInventario
         }
         private void ReporteMaestroExistencia()
         {
-            _controlador.ReporteMaestroExistencia();
+            _controlador.ReporteMaestroExistenciaDetalle();
         }
 
         private void TSM_REPORTE_MAESTRO_EXISTENCIA_INVENTARIO_Click(object sender, EventArgs e)
@@ -482,6 +478,15 @@ namespace ModInventario
         {
             _controlador.VisorPrecio_AjustarProductosConExistenciaPrecioCero();
         }
+        private void TSM_VISOR_PRECIO_Click(object sender, EventArgs e)
+        {
+            _controlador.VisorPrecio_Precios();
+        }
+        private void TSM_VISOR_ENTRADAS_POR_COMPRA_Click(object sender, EventArgs e)
+        {
+            _controlador.VisorEntradasPorCompra();
+        }
+
 
         private void TSM_AJSUTES_ASIGNACION_MASIVA_PRODUCTOS_DEPOSITO_Click(object sender, EventArgs e)
         {

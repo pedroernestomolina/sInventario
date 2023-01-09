@@ -209,6 +209,14 @@ namespace ModInventario.src.Visor.Traslado
             DGV.Refresh();
             ActualizarTotales();
         }
+        private void BT_IMPRIMIR_Click(object sender, EventArgs e)
+        {
+            ImprimirReporte();
+        }
+        private void ImprimirReporte()
+        {
+            _controlador.ImprimirReporte();
+        }
         private void ActualizarTotales()
         {
             L_ITEMS.Text = _controlador.GetCntItems.ToString();
@@ -229,7 +237,6 @@ namespace ModInventario.src.Visor.Traslado
         {
             this.Close();
         }
-
     }
 
 }

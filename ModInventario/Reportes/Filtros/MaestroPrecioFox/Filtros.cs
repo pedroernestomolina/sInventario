@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModInventario.Reportes.Filtros.MaestroPrecioFox
 {
-    
     public class Filtros: IFiltros
     {
-
         public bool ActivarDeposito { get { return false; } }
         public bool ActivarDepartamento { get { return true; } }
         public bool ActivarSucursal { get { return false; } }
@@ -27,12 +25,10 @@ namespace ModInventario.Reportes.Filtros.MaestroPrecioFox
         public bool ActivarPrecio { get { return true; } }
         public bool ActivarPesado { get { return true; } }
         public bool ActivarEntreFechas { get { return false; } }
-
+        public bool ActivarEmpaquePrecio { get { return false; } }
 
         public Filtros()
         {
         }
-
     }
-
 }

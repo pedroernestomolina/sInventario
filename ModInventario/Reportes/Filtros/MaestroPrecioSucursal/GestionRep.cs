@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModInventario.Reportes.Filtros.MaestroPrecio
+namespace ModInventario.Reportes.Filtros.MaestroPrecioSucursal
 {
 
     public class GestionRep: src.Reporte.IReporte
@@ -170,7 +170,28 @@ namespace ModInventario.Reportes.Filtros.MaestroPrecio
                         }
                         break;
                 }
-
+                if (dataFiltros.EmpqPrecio != null)
+                {
+                    switch (dataFiltros.EmpqPrecio.id.Trim().ToUpper())
+                    {
+                        case "01":
+                            pemp2 = "";
+                            pemp3 = "";
+                            break;
+                        case "02":
+                            pemp1 = "";
+                            pemp3 = "";
+                            break;
+                        case "03":
+                            pemp1 = "";
+                            pemp2 = "";
+                            break;
+                    }
+                }
+                if (pemp1 == "" && pemp2 == "" && pemp3 == "")
+                {
+                    continue;
+                }
                 rt["empaque_1"] = pemp1;
                 rt["empaque_2"] = pemp2;
                 rt["empaque_3"] = pemp3;

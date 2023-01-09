@@ -44,6 +44,11 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSoloReporte
         string GetPrecio_Id { get; }
         bool GetHabilitarPrecio { get;  }
         void setPrecio(string id);
+
+        bool GetHabilitarEmpaquePrecio { get; }
+        string GetEmpaquePrecio_Id { get; }
+        BindingSource GetEmpaquePrecio_Source { get; }
+        void setEmpqPrecio(string id);
     }
 
 }

@@ -170,6 +170,16 @@ namespace ModInventario.src.Visor.Traslado.ModoSoloReporte
         {
         }
 
+        public void ImprimirReporte()
+        {
+            if (_lista.Count > 0)
+            {
+                var rp = new Reportes.Visor.Traslados.GestionRep();
+                var filtro = "Mes: " + _gMes.Item.desc;
+                filtro += ", Año: " + _gAno.Item.desc;
+                rp.Imprimir(_lista, filtro);
+            }
+        }
     }
 
 }

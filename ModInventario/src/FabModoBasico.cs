@@ -167,7 +167,7 @@ namespace ModInventario.src
         public Reportes.Filtros.IFiltros 
             CreateInstancia_RepMasterPrecio_Filtros()
         {
-            return new Reportes.Filtros.MaestroPrecio.Filtros();
+            return new Reportes.Filtros.MaestroPrecioBasico.Filtros();
         }
     }
 

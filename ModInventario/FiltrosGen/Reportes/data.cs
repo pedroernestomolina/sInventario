@@ -29,6 +29,7 @@ namespace ModInventario.FiltrosGen.Reportes
         public DateTime? Hasta { get; set; }
         public ficha Pesado { get; set; }
         public ficha Precio { get; set; }
+        public ficha EmpqPrecio { get; set; }
 
 
         public data() 
@@ -69,7 +70,6 @@ namespace ModInventario.FiltrosGen.Reportes
                 if (Desde.HasValue) return true;
                 if (Hasta.HasValue) return true;
             }
-
             return false;
         }
 
@@ -88,6 +88,7 @@ namespace ModInventario.FiltrosGen.Reportes
             Divisa = null;
             Pesado = null;
             Precio = null;
+            EmpqPrecio = null;
             Desde = DateTime.Now.Date;
             Hasta = DateTime.Now.Date;
         }
@@ -110,7 +111,7 @@ namespace ModInventario.FiltrosGen.Reportes
             if (TasaIva != null) t += ", Tasa Iva: " + TasaIva;
             if (Pesado != null) t += ", Pesado: " + Pesado.desc;
             if (Precio != null) t += ", Precio: " + Precio.desc;
-
+            if (EmpqPrecio != null) t += ", Empaque Precio: " + EmpqPrecio.desc;
             return t;
         }
 
@@ -118,7 +119,6 @@ namespace ModInventario.FiltrosGen.Reportes
         {
             _validarFecha = p;
         }
-
     }
 
 }

@@ -53,6 +53,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSoloReporte
             _gCategoria = new FiltrosGen.Opcion.Gestion();
             _gOrigen = new FiltrosGen.Opcion.Gestion();
             _gPrecio = new FiltrosGen.Opcion.Gestion();
+            _gEmpaquePrecio = new FiltrosGen.Opcion.Gestion();
             _filtroBusPrd = filtroBusPrd;
         }
 
@@ -64,6 +65,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSoloReporte
             _gCategoria.Inicializa();
             _gOrigen.Inicializa();
             _gPrecio.Inicializa();
+            _gEmpaquePrecio.Inicializa();
             _filtroBusPrd.Inicializa();
             _data.Limpiar();
         }
@@ -124,6 +126,12 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSoloReporte
                     }
                     _gPrecio.setData(lPrecio);
 
+                    var lEmpqPrecio = new List<ficha>();
+                    lEmpqPrecio.Add(new ficha() { id = "01", codigo = "", desc = "Empaque 1" });
+                    lEmpqPrecio.Add(new ficha() { id = "02", codigo = "", desc = "Empaque 2" });
+                    lEmpqPrecio.Add(new ficha() { id = "03", codigo = "", desc = "Empaque 3" });
+                    _gEmpaquePrecio.setData(lEmpqPrecio);
+
                     return true;
                 }
                 catch (Exception e)
@@ -141,6 +149,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSoloReporte
             _gCategoria.Inicializa();
             _gOrigen.Inicializa();
             _gPrecio.Inicializa();
+            _gEmpaquePrecio.Inicializa();
             _filtroBusPrd.Inicializa();
         }
 
@@ -190,6 +199,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSoloReporte
                 Producto = _data.Producto,
                 Sucursal = _data.Sucursal,
                 Precio = _data.Precio,
+                EmpqPrecio = _data.EmpqPrecio
             };
             return rg;
         }
@@ -235,11 +245,22 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSoloReporte
 
         public BindingSource GetPrecio_Source { get { return _gPrecio.Source; } }
         public string GetPrecio_Id { get { return _gPrecio.GetId; } }
-        public bool GetHabilitarPrecio { get { return _filtros.ActivarPrecio ; } }
+        public bool GetHabilitarPrecio { get { return _filtros.ActivarPrecio; } }
         public void setPrecio(string id)
         {
             _gPrecio.setFicha(id);
             _data.Precio = _gPrecio.Item;
+        }
+
+
+        private FiltrosGen.IOpcion _gEmpaquePrecio;
+        public bool GetHabilitarEmpaquePrecio { get { return _filtros.ActivarEmpaquePrecio; } }
+        public string GetEmpaquePrecio_Id { get { return _gEmpaquePrecio.GetId; } }
+        public BindingSource GetEmpaquePrecio_Source { get { return _gEmpaquePrecio.Source; } }
+        public void setEmpqPrecio(string id)
+        {
+            _gEmpaquePrecio.setFicha(id);
+            _data.EmpqPrecio = _gEmpaquePrecio.Item;
         }
 
     }

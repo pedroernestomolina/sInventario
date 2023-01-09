@@ -695,8 +695,10 @@
     <Compile Include="Reportes\Filtros\MaestroPrecioBasico\GestionRep.cs" />
     <Compile Include="Reportes\Filtros\MaestroPrecioFox\Filtros.cs" />
     <Compile Include="Reportes\Filtros\MaestroPrecioFox\GestionRep.cs" />
-    <Compile Include="Reportes\Filtros\MaestroPrecio\Filtros.cs" />
-    <Compile Include="Reportes\Filtros\MaestroPrecio\GestionRep.cs" />
+    <Compile Include="Reportes\Filtros\MaestroPrecioSoloReporte\Filtros.cs" />
+    <Compile Include="Reportes\Filtros\MaestroPrecioSoloReporte\GestionRep.cs" />
+    <Compile Include="Reportes\Filtros\MaestroPrecioSucursal\Filtros.cs" />
+    <Compile Include="Reportes\Filtros\MaestroPrecioSucursal\GestionRep.cs" />
     <Compile Include="Reportes\Filtros\MaestroProducto\Filtros.cs" />
     <Compile Include="Reportes\Filtros\MaestroProducto\GestionRep.cs" />
     <Compile Include="Reportes\Filtros\NivelMInimo\Filtro.cs" />
@@ -765,6 +767,7 @@
       <DependentUpon>DSVisor.xsd</DependentUpon>
     </Compile>
     <Compile Include="Reportes\Visor\Existencia\GestionRep.cs" />
+    <Compile Include="Reportes\Visor\Traslados\GestionRep.cs" />
     <Compile Include="SeguridadSist\Gestion.cs" />
     <Compile Include="SeguridadSist\IModo.cs" />
     <Compile Include="SeguridadSist\ISeguridad.cs" />
@@ -1377,6 +1380,9 @@
     <EmbeddedResource Include="Reportes\Visor\Existencia.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Visor\Traslados.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="SeguridadSist\SeguridadFrm.resx">
       <DependentUpon>SeguridadFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1726,7 +1732,9 @@
       <Name>OOB</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Reportes\Filtros\MaestroPrecio\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -178,11 +178,12 @@ namespace ModInventario.src
         public Reporte.IReporte 
             CreateInstancia_RepMasterPrecio()
         {
-            return new Reportes.Filtros.MaestroPrecio.GestionRep();
+            return new Reportes.Filtros.MaestroPrecioSucursal.GestionRep();
         }
-        public Reportes.Filtros.IFiltros CreateInstancia_RepMasterPrecio_Filtros()
+        public Reportes.Filtros.IFiltros 
+            CreateInstancia_RepMasterPrecio_Filtros()
         {
-            return new Reportes.Filtros.MaestroPrecio.Filtros();
+            return new Reportes.Filtros.MaestroPrecioSucursal.Filtros();
         }
     }
 

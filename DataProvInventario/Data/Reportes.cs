@@ -244,6 +244,7 @@ namespace DataProvInventario.Data
                 origen = (DtoLibInventario.Reportes.enumerados.EnumOrigen) filtro.origen,
                 precio = (DtoLibInventario.Reportes.enumerados.EnumPrecio) filtro.precio,
                 pesado = (DtoLibInventario.Reportes.enumerados.EnumPesado) filtro.pesado,
+                autoDepositoPrincipal = filtro.autoDepositoPrincipal,
             };
             var r01 = MyData.Reportes_MaestroPrecio(filtroDto);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)

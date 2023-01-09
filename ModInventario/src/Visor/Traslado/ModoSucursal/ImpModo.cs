@@ -137,8 +137,9 @@ namespace ModInventario.src.Visor.Traslado.ModoSucursal
                 filtro.mes = int.Parse(_gMes.GetId);
                 var r01 = Sistema.MyData.Visor_Traslado(filtro);
                 foreach (var rg in r01.Lista
-                        .OrderByDescending(o => o.fecha).ThenBy(o => o.documentoNro)
-                        .ThenBy(o => o.nombrePrd).ToList())
+                        .OrderByDescending(o => o.fecha)
+                        .ThenByDescending(o => o.documentoNro)
+                        .ToList())
                 {
                     _lista.Add(new data(rg));
                 }
@@ -168,6 +169,16 @@ namespace ModInventario.src.Visor.Traslado.ModoSucursal
         {
         }
 
+        public void ImprimirReporte()
+        {
+            if (_lista.Count > 0)
+            {
+                var rp = new Reportes.Visor.Traslados.GestionRep();
+                var filtro = "Mes: " + _gMes.Item.desc;
+                filtro += ", Año: " + _gAno.Item.desc;
+                rp.Imprimir(_lista, filtro);
+            }
+        }
     }
 
 }

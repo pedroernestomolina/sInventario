@@ -165,9 +165,13 @@ namespace ModInventario.Producto.Precio.EditarCambiar
                 {
                     _pn = monto;
                     _pf = calculaFull(monto);
-                    var c = (monto / CostoEmpCompraUnd) - 1;
-                    c *= 100m;
-                    _utilidadNueva = c;
+                    _utilidadNueva = 0m;
+                    if (CostoEmpCompraUnd > 0m) 
+                    {
+                        var c = (monto / CostoEmpCompraUnd) - 1;
+                        c *= 100m;
+                        _utilidadNueva = c;
+                    }
                 }
             }
         }
@@ -205,9 +209,13 @@ namespace ModInventario.Producto.Precio.EditarCambiar
                 {
                     _pf = monto;
                     _pn = calculaNeto(monto);
-                    var c = (monto / CostoEmpCompraUnd) - 1;
-                    c *= 100m;
-                    _utilidadNueva = c;
+                    _utilidadNueva = 0m;
+                    if (CostoEmpCompraUnd > 0) 
+                    {
+                        var c = (monto / CostoEmpCompraUnd) - 1;
+                        c *= 100m;
+                        _utilidadNueva = c;
+                    }
                 }
             }
         }

@@ -19,6 +19,7 @@ namespace ModInventario.src.Visor.Traslado
         int GetCntItems { get; }
 
         void Buscar();
+        void ImprimirReporte();
 
         void setMesFiltrar(string id);
         void setAnoFiltrar(string id);

@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModInventario.Reportes.Filtros
 {
-    
     public interface IFiltros
     {
-
         bool ActivarProducto { get; }
         bool ActivarDepartamento { get; }
         bool ActivarDeposito { get; }
@@ -27,7 +25,6 @@ namespace ModInventario.Reportes.Filtros
         bool ActivarPrecio { get; }
         bool ActivarPesado { get; }
         bool ActivarEntreFechas { get; }
-
+        bool ActivarEmpaquePrecio { get; }
     }
-
 }

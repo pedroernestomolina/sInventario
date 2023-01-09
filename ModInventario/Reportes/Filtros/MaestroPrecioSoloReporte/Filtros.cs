@@ -5,12 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModInventario.Reportes.Filtros.MaestroPrecio
+namespace ModInventario.Reportes.Filtros.MaestroPrecioSoloReporte
 {
-    
     public class Filtros: IFiltros
     {
-
         public bool ActivarDepartamento { get { return true; } }
         public bool ActivarDeposito { get { return false; } }
         public bool ActivarSucursal { get { return false; } }
@@ -27,12 +25,10 @@ namespace ModInventario.Reportes.Filtros.MaestroPrecio
         public bool ActivarPrecio { get { return true; } }
         public bool ActivarPesado { get { return true; } }
         public bool ActivarEntreFechas { get { return false; } }
-
+        public bool ActivarEmpaquePrecio { get { return true; } }
 
         public Filtros()
         {
         }
-
     }
-
 }

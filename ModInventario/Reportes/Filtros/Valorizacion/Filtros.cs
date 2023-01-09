@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModInventario.Reportes.Filtros.Valorizacion
 {
-
-    public class Filtros : IFiltros
+   public class Filtros : IFiltros
     {
-
         public bool ActivarDepartamento { get { return false; } }
         public bool ActivarDeposito { get { return true; } }
         public bool ActivarSucursal { get { return false; } }
@@ -27,12 +25,10 @@ namespace ModInventario.Reportes.Filtros.Valorizacion
         public bool ActivarPrecio { get { return false; } }
         public bool ActivarPesado { get { return false; } }
         public bool ActivarEntreFechas { get { return false; ; } }
-
+        public bool ActivarEmpaquePrecio { get { return false; } }
 
         public Filtros()
         {
         }
-
     }
-
 }

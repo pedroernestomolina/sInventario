@@ -16,6 +16,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSoloReporte
         public ficha Categoria { get; set; }
         public ficha Origen { get; set; }
         public ficha Precio { get; set; }
+        public ficha EmpqPrecio { get; set; }
 
 
         public dataFiltrar()
@@ -26,6 +27,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSoloReporte
             Categoria = null;
             Origen = null;
             Precio = null;
+            EmpqPrecio = null;
         }
 
 
@@ -37,6 +39,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSoloReporte
             Categoria = null;
             Origen = null;
             Precio = null;
+            EmpqPrecio = null;
         }
 
 
@@ -48,6 +51,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSoloReporte
             if (Origen != null) t += ", Origen: " + Origen.desc;
             if (Producto != null) t += ", Producto: " + Producto.desc;
             if (Precio != null) t += ", Precio: " + Precio.desc;
+            if (EmpqPrecio != null) t += ", Empaque Precio: " + EmpqPrecio.desc;
             return t;
         }
 

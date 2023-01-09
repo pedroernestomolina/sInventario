@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace ModInventario.Reportes.Filtros.MaestroExistencia
 {
-
     public class Filtros: IFiltros
     {
         public bool ActivarDepartamento { get { return true; } }
@@ -26,6 +25,7 @@ namespace ModInventario.Reportes.Filtros.MaestroExistencia
         public bool ActivarPrecio { get { return false; } }
         public bool ActivarPesado { get { return false; } }
         public bool ActivarEntreFechas { get { return false; } }
+        public bool ActivarEmpaquePrecio { get { return false; } }
 
         public Filtros()
         {

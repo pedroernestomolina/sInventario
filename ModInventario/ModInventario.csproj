@@ -508,14 +508,6 @@
       <DependentUpon>EstatusFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Producto\Estatus\Gestion.cs" />
-    <Compile Include="Producto\Imagen\Gestion.cs" />
-    <Compile Include="Producto\Imagen\IImagen.cs" />
-    <Compile Include="Producto\Imagen\ImgFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Producto\Imagen\ImgFrm.Designer.cs">
-      <DependentUpon>ImgFrm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Producto\ListaSel\Gestion.cs" />
     <Compile Include="Producto\ListaSel\ListaSelFrm.cs">
       <SubType>Form</SubType>
@@ -1245,9 +1237,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Producto\Estatus\EstatusFrm.resx">
       <DependentUpon>EstatusFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Producto\Imagen\ImgFrm.resx">
-      <DependentUpon>ImgFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Producto\ListaSel\ListaSelFrm.resx">
       <DependentUpon>ListaSelFrm.cs</DependentUpon>

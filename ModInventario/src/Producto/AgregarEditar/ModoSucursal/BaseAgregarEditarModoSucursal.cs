@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -9,11 +10,8 @@ using System.Windows.Forms;
 
 namespace ModInventario.src.Producto.AgregarEditar.ModoSucursal
 {
-
     abstract public class BaseAgregarEditarModoSucursal: BaseAgregarEditar, IAgregarEditar
     {
-
-
         protected FiltrosGen.IOpcion _empInv;
         protected MaestrosInv.Departamento.IAgregarEditar _agregarDepartamento;
         protected MaestrosInv.Grupo.IAgregarEditar _agregarGrupo;
@@ -225,6 +223,32 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoSucursal
             _seguridad.Inicia();
         }
 
-    }
 
+        //MANEJO TALLA COLOR
+        protected TallaColorSabor.ITallaColorSabor _gTallaColorSabor;
+        public BindingSource GetTallaColorSabor_Source { get { return _gTallaColorSabor.GetTallaColorSabor_Source; } }
+        public string GetTallaColorSabor_Desc { get { return _gTallaColorSabor.GetTallaColorSabor_Desc; } }
+        public int GetTallaColorSabor_CntItems { get { return _gTallaColorSabor.GetTallaColorSabor_CntItems; } }
+        public void setTallaColorSabor(string desc)
+        {
+            _gTallaColorSabor.setTallaColorSabor(desc);
+        }
+        public void AgregarTallaColorSabor()
+        {
+            _gTallaColorSabor.AgregarTallaColorSabor();
+        }
+        public void EliminarTallaColorSabor()
+        {
+            _gTallaColorSabor.EliminarTallaColorSabor();
+        }
+        public List<TallaColorSabor.dataRetornar> DataRetornar()
+        {
+            return _gTallaColorSabor.DataRetornar();
+        }
+        public void CargarData(List<TallaColorSabor.data> lst)
+        {
+            _gTallaColorSabor.CargarData(lst);
+        }
+        abstract public void RefrescaTallaColorSabor();
+    }
 }

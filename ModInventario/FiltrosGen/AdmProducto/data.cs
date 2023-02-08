@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModInventario.FiltrosGen.AdmProducto
 {
-
     public class data
     {
-        
         public enum enumMetBusqueda {SinDefinir=-1, PorCodigo=1, PorNombre, PorReferencia, PorCodigoBarra};
 
 
@@ -33,6 +31,7 @@ namespace ModInventario.FiltrosGen.AdmProducto
         public ficha Oferta { get; set; }
         public ficha PrecioMayor { get; set; }
         public ficha Proveedor { get; set; }
+        public ficha TCS { get; set; }
         public string CadenaBusq { get { return _cadenaBusq; } }
         public enumMetBusqueda MetBusqueda { get { return _metBusqueda; } }
 
@@ -81,6 +80,7 @@ namespace ModInventario.FiltrosGen.AdmProducto
             if (Existencia != null) return true;
             if (Catalogo != null) return true;
             if (PrecioMayor != null) return true;
+            if (TCS != null) return true;
             return false;
        }
 
@@ -108,13 +108,12 @@ namespace ModInventario.FiltrosGen.AdmProducto
             Oferta = null;
             PrecioMayor = null;
             Proveedor = null;
+            TCS = null;
         }
 
         public void setMetBusqByCodigoBarra()
         {
             _metBusqueda = enumMetBusqueda.PorCodigoBarra;
         }
-
     }
-
 }

@@ -12,13 +12,12 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
 
     public class ImpSucursal : BaseImpFiltroPrd, ISucursal
     {
-
         private IBuscar _buscarProv;
         private IOpcion _gDeposito;
         private IOpcion _gCategoria;
-        private IOpcion _gOferta;
         private IOpcion _gCatalogo;
         private IOpcion _gExistencia;
+        private IOpcion _gTCS;
 
 
         public ImpSucursal(IBuscar buscarProv)
@@ -35,9 +34,9 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
             _gGrupo = new FiltrosGen.Opcion.Gestion();
             _gDeposito = new FiltrosGen.Opcion.Gestion();
             _gCategoria = new FiltrosGen.Opcion.Gestion();
-            _gOferta = new FiltrosGen.Opcion.Gestion();
             _gCatalogo = new FiltrosGen.Opcion.Gestion();
             _gExistencia = new FiltrosGen.Opcion.Gestion();
+            _gTCS = new FiltrosGen.Opcion.Gestion(); 
             reset();
         }
 
@@ -57,67 +56,15 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
         }
 
 
-        public BindingSource GetDepositoSource { get { return _gDeposito.Source; } }
-        public BindingSource GetCategoriaSource { get { return _gCategoria.Source; } }
-        public BindingSource GetOfertaSource { get { return _gOferta.Source; } }
-        public BindingSource GetCatalogoSource { get { return _gCatalogo.Source; } }
-        public BindingSource GetExistenciaSource { get { return _gExistencia.Source; } }
-
-
-        public string GetDepositoId { get { return _gDeposito.GetId; } }
-        public string GetCategoriaId { get { return _gCategoria.GetId; } }
-        public string GetOfertaId { get { return _gOferta.GetId; } }
-        public string GetExistenciaId { get { return _gExistencia.GetId; } }
-        public string GetCatalogoId { get { return _gCatalogo.GetId; } }
-
-
-        public void setDeposito(string id)
-        {
-            _gDeposito.setFicha(id);
-        }
-        public void setCategoria(string id)
-        {
-            _gCategoria.setFicha(id);
-        }
-        public void setCatalogo(string id)
-        {
-            _gCatalogo.setFicha(id);
-        }
-        public void setOferta(string id)
-        {
-            _gOferta.setFicha(id);
-        }
-        public void setExistencia(string id)
-        {
-            _gExistencia.setFicha(id);
-        }
-
-
-        public string GetProveedorNombreFiltrar { get { return _buscarProv.DescItemSeleccionado; } }
-        public bool ProveedorIsOk { get { return _buscarProv.ItemIsOk; } }
-        public void setProveedorCadenaBuscar(string cad)
-        {
-            _buscarProv.setCadenaBuscar(cad);
-        }
-        public void ProveedorBuscar()
-        {
-            _buscarProv.Buscar();
-        }
-        public void ProveedorLimpiar()
-        {
-            _buscarProv.LimpiarItem();
-        }
-
-
         public override bool DataFiltrarIsOk()
         {
             base.DataFiltrarIsOk();
             _data.Deposito = _gDeposito.Item;
             _data.Catalogo = _gCatalogo.Item;
             _data.Categoria = _gCategoria.Item;
-            _data.Oferta= _gOferta.Item;
             _data.Existencia = _gExistencia.Item;
             _data.Proveedor = _buscarProv.ItemSeleccionado;
+            _data.TCS = _gTCS.Item;
             return _data.FiltrarIsOk();
         }
 
@@ -127,10 +74,10 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
             base.limpiarEntradas();
             _gDeposito.Inicializa();
             _gCategoria.Inicializa();
-            _gOferta.Inicializa();
             _gCatalogo.Inicializa();
             _gExistencia.Inicializa();
             _buscarProv.Inicializa();
+            _gTCS.Inicializa();
         }
         override protected bool CargarData() 
         {
@@ -169,19 +116,6 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
                     }
                     _gEstatus.setData(lstEstatus);
 
-                    var r04 = Sistema.MyData.Producto_Oferta_Lista();
-                    if (r04.Result == OOB.Enumerados.EnumResult.isError)
-                    {
-                        Helpers.Msg.Error(r04.Mensaje);
-                        return false;
-                    }
-                    var lstOferta = new List<ficha>();
-                    foreach (var rg in r04.Lista.OrderBy(o => o.Descripcion).ToList())
-                    {
-                        lstOferta.Add(new ficha(rg.Id.ToString().Trim(), "", rg.Descripcion));
-                    }
-                    _gOferta.setData(lstOferta);
-
                     var lstExistencia = new List<ficha>();
                     lstExistencia.Add(new ficha("1", "", "Mayor A Cero"));
                     lstExistencia.Add(new ficha("2", "", "Igual Cero"));
@@ -192,6 +126,11 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
                     lstCatalogo.Add(new ficha("1", "", "NO"));
                     lstCatalogo.Add(new ficha("2", "", "SI"));
                     _gCatalogo.setData(lstCatalogo);
+
+                    var lstTCS= new List<ficha>();
+                    lstTCS.Add(new ficha("1", "", "SI"));
+                    lstTCS.Add(new ficha("2", "", "NO"));
+                    _gTCS.setData(lstTCS);
 
                     return true;
                 }
@@ -207,6 +146,56 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
             }
         }
 
-    }
 
+        //TALLA/COLOR/SABOR
+        public BindingSource SourceTCS { get { return _gTCS.Source; } }
+        public string GetIdTCS { get { return _gTCS.GetId; } }
+        public void setIdTCS(string id)
+        {
+            _gTCS.setFicha(id);
+        }
+        //DEPOSITO
+        public BindingSource SourceDeposito { get { return _gDeposito.Source; } }
+        public string GetIdDeposito { get { return _gDeposito.GetId; } }
+        public void setIdDeposito(string id)
+        {
+            _gDeposito.setFicha(id);
+        }
+        //CATALOGO
+        public BindingSource SourceCatalogo { get { return _gCatalogo.Source; } }
+        public string GetIdCatalogo { get { return _gCatalogo.GetId; } }
+        public void setIdCatalogo(string id)
+        {
+            _gCatalogo.setFicha(id);
+        }
+        //Categoria
+        public BindingSource SourceCategoria { get { return _gCategoria.Source; } }
+        public string GetIdCategoria { get { return _gCategoria.GetId; } }
+        public void setIdCategoria(string id)
+        {
+            _gCategoria.setFicha(id);
+        }
+        //EXISTENCIA
+        public BindingSource SourceExistencia { get { return _gExistencia.Source; } }
+        public string GetIdExistencia { get { return _gExistencia.GetId; } }
+        public void setIdExistencia(string id)
+        {
+            _gExistencia.setFicha(id);
+        }
+        //PROVEEDOR
+        public string GetProveedorNombreFiltrar { get { return _buscarProv.DescItemSeleccionado; } }
+        public bool ProveedorIsOk { get { return _buscarProv.ItemIsOk; } }
+        public void setProveedorCadenaBuscar(string cad)
+        {
+            _buscarProv.setCadenaBuscar(cad);
+        }
+        public void ProveedorBuscar()
+        {
+            _buscarProv.Buscar();
+        }
+        public void ProveedorLimpiar()
+        {
+            _buscarProv.LimpiarItem();
+        }
+    }
 }

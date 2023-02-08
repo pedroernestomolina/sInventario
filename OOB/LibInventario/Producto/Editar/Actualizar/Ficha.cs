@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace OOB.LibInventario.Producto.Editar.Actualizar
 {
-    
     public class Ficha
     {
-
         public string auto { get; set; }
         public string autoDepartamento { get; set; }
         public string autoGrupo { get; set; }
@@ -50,6 +48,8 @@ namespace OOB.LibInventario.Producto.Editar.Actualizar
         public int contEmpVentaTipo_1 { get; set; }
         public int contEmpVentaTipo_2 { get; set; }
         public int contEmpVentaTipo_3 { get; set; }
+        //
+        public FichaTallaColorSabor tallaColorSabor { get; set; }
 
 
         public Ficha() 
@@ -94,7 +94,5 @@ namespace OOB.LibInventario.Producto.Editar.Actualizar
             contEmpVentaTipo_2 = 1;
             contEmpVentaTipo_3 = 1;
         }
-
     }
-
 }

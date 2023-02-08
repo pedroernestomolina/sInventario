@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModInventario.Helpers
 {
-    
     public class Filtro
     {
-
         public static FiltrosGen.AdmProducto.data BusqProducto(src.FiltroBusqAdm.dataFiltro dt)
         {
             var rt = new  FiltrosGen.AdmProducto.data()
@@ -30,6 +28,7 @@ namespace ModInventario.Helpers
                 PrecioMayor = null,
                 Proveedor = dt.Proveedor,
                 TasaIva = dt.TasaIva,
+                TCS=dt.TCS,
             };
             rt.setCadenaBusq(dt.CadenaBusq);
             switch (dt.MetBusqueda)
@@ -49,7 +48,5 @@ namespace ModInventario.Helpers
             }
             return rt;
         }
-
     }
-
 }

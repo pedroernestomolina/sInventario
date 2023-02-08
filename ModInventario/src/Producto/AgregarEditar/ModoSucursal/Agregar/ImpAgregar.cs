@@ -8,10 +8,8 @@ using System.Windows.Forms;
 
 namespace ModInventario.src.Producto.AgregarEditar.ModoSucursal.Agregar
 {
-    
     public class ImpAgregar: BaseAgregarEditarModoSucursal, IAgregar
     {
-
         public override string GetTitulo { get { return "Agregar/Crear Ficha"; } }
         public override bool HabilitarEditarCodigo { get { return false; } }
 
@@ -40,6 +38,7 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoSucursal.Agregar
             _agregarDepartamento = new MaestrosInv.Departamento.Agregar.Gestion();
             _agregarGrupo = new MaestrosInv.Grupo.Agregar.Gestion();
             _agregarMarca = new MaestrosInv.Marca.Agregar.Gestion();
+            _gTallaColorSabor = new TallaColorSabor.ImpTallaColorSabor();
         }
 
 
@@ -67,6 +66,7 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoSucursal.Agregar
             _agregarDepartamento.Inicializa();
             _agregarGrupo.Inicializa();
             _agregarMarca.Inicializa();
+            _gTallaColorSabor.Inicializa();
         }
 
         AgregarEditarFrm frm;
@@ -215,6 +215,24 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoSucursal.Agregar
                     codAlterno.Add(new OOB.LibInventario.Producto.Agregar.FichaCodAlterno() { Codigo = rg.codigo });
                 }
                 ficha.codigosAlterno = codAlterno;
+
+                ficha.tallaColorSabor=null;
+                var _lstTallaColorSabor = _gTallaColorSabor.DataRetornar().Select(s =>
+                {
+                    var nr = new OOB.LibInventario.Producto.Agregar.TallaColorSabor()
+                    {
+                        Descripcion = s.Descripcion,
+                    };
+                    return nr;
+                }).ToList();
+                if (_lstTallaColorSabor.Count > 0)
+                {
+                    ficha.tallaColorSabor = new OOB.LibInventario.Producto.Agregar.FichaTallaColorSabor()
+                    {
+                        ListaTallaColorSabor = _lstTallaColorSabor,
+                    };
+                }
+
                 var r02 = Sistema.MyData.Producto_Nuevo_Agregar(ficha);
                 if (r02.Result == OOB.Enumerados.EnumResult.isError)
                 {
@@ -230,7 +248,8 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoSucursal.Agregar
                 Helpers.Msg.Error(e.Message);
             }
         }
-
+        public override void RefrescaTallaColorSabor()
+        {
+        }
     }
-
 }

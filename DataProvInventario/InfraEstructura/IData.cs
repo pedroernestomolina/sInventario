@@ -12,7 +12,7 @@ namespace DataProvInventario.InfraEstructura
         ITool, IDepartamento, IGrupo, IMarca, IEmpaqueMedida,
         IProducto, ITasaImpuesto, IConfiguracion, IPrecio, ICosto, IKardex,
         IProveedor, IVisor, IReportes, IPermisos, IAnalisis, IAuditoria, ISistema,
-        IMovTransito, IMovPendiente, IEmpresa
+        IMovTransito, IMovPendiente, IEmpresa, ITallaColorSabor
     {
 
         OOB.ResultadoEntidad<DateTime> 

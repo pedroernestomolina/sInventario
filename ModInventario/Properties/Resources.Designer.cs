@@ -543,6 +543,26 @@ namespace ModInventario.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bt_paleta_colores_2_48 {
+            get {
+                object obj = ResourceManager.GetObject("bt_paleta_colores_2_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bt_paleta_colores_48 {
+            get {
+                object obj = ResourceManager.GetObject("bt_paleta_colores_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bt_pendiente {
             get {
                 object obj = ResourceManager.GetObject("bt_pendiente", resourceCulture);
@@ -603,6 +623,16 @@ namespace ModInventario.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bt_refrescar_48 {
+            get {
+                object obj = ResourceManager.GetObject("bt_refrescar_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bt_salida {
             get {
                 object obj = ResourceManager.GetObject("bt_salida", resourceCulture);
@@ -656,6 +686,16 @@ namespace ModInventario.Properties {
         internal static System.Drawing.Bitmap bt_sumar_2 {
             get {
                 object obj = ResourceManager.GetObject("bt_sumar_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bt_talla_color_sabor_48 {
+            get {
+                object obj = ResourceManager.GetObject("bt_talla_color_sabor_48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

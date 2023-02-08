@@ -46,8 +46,8 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
             CB_ADMDIVISA.ValueMember = "id";
             CB_PESADO.DisplayMember = "desc";
             CB_PESADO.ValueMember = "id";
-            CB_OFERTA.DisplayMember = "desc";
-            CB_OFERTA.ValueMember = "id";
+            CB_TCS.DisplayMember = "desc";
+            CB_TCS.ValueMember = "id";
             CB_EXISTENCIA.DisplayMember = "desc";
             CB_EXISTENCIA.ValueMember = "id";
             CB_CATALOGO.DisplayMember = "desc";
@@ -61,32 +61,32 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
             CB_DEPARTAMENTO.DataSource = _controlador.GetDepartamentoSource;
             CB_GRUPO.DataSource = _controlador.GetGrupoSource;
             CB_MARCA.DataSource = _controlador.GetMarcaSource;
-            CB_DEPOSITO .DataSource = _controlador.GetDepositoSource;
-            CB_CATEGORIA.DataSource = _controlador.GetCategoriaSource;
+            CB_DEPOSITO .DataSource = _controlador.SourceDeposito;
+            CB_CATEGORIA.DataSource = _controlador.SourceCategoria;
             CB_ORIGEN.DataSource = _controlador.GetOrigenSource;
             CB_IMPUESTO .DataSource = _controlador.GetImpuestoSource;
             CB_ESTATUS.DataSource = _controlador.GetEstatusSource ;
             CB_ADMDIVISA.DataSource = _controlador.GetAdmDivisaSource;
             CB_PESADO.DataSource = _controlador.GetPesadoSource;
-            CB_OFERTA.DataSource = _controlador.GetOfertaSource;
-            CB_CATALOGO.DataSource = _controlador.GetCatalogoSource;
-            CB_EXISTENCIA.DataSource = _controlador.GetExistenciaSource;
+            CB_CATALOGO.DataSource = _controlador.SourceCatalogo;
+            CB_EXISTENCIA.DataSource = _controlador.SourceExistencia;
+            CB_TCS.DataSource = _controlador.SourceTCS;
 
             P_PROVEEDOR.Enabled = !_controlador.ProveedorIsOk;
             TB_PROVEEDOR.Text = _controlador.GetProveedorNombreFiltrar;
             CB_DEPARTAMENTO.SelectedValue = _controlador.GetDepartamentoId;
             CB_GRUPO.SelectedValue = _controlador.GetGrupoId;
             CB_MARCA.SelectedValue = _controlador.GetMarcaId;
-            CB_DEPOSITO.SelectedValue = _controlador.GetDepositoId;
-            CB_CATEGORIA.SelectedValue = _controlador.GetCategoriaId;
+            CB_DEPOSITO.SelectedValue = _controlador.GetIdDeposito;
+            CB_CATEGORIA.SelectedValue = _controlador.GetIdCategoria;
             CB_ORIGEN.SelectedValue = _controlador.GetOrigenId;
             CB_IMPUESTO.SelectedValue = _controlador.GetImpuestoId;
             CB_ESTATUS.SelectedValue = _controlador.GetEstatusId;
             CB_ADMDIVISA.SelectedValue = _controlador.GetAdmDivisaId;
             CB_PESADO.SelectedValue = _controlador.GetPesadoId;
-            CB_OFERTA.SelectedValue = _controlador.GetOfertaId;
-            CB_EXISTENCIA.SelectedValue = _controlador.GetExistenciaId;
-            CB_CATALOGO.SelectedValue = _controlador.GetCatalogoId;
+            CB_EXISTENCIA.SelectedValue = _controlador.GetIdExistencia;
+            CB_TCS.SelectedValue = _controlador.GetIdTCS;
+            CB_CATALOGO.SelectedValue = _controlador.GetIdCatalogo;
             if (_controlador.GetDepartamentoId == "")
             {
                 CB_GRUPO.Enabled = false;
@@ -138,19 +138,19 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
         private void CB_DEPOSITO_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_modoInicializar) return;
-            _controlador.setDeposito("");
+            _controlador.setIdDeposito("");
             if (CB_DEPOSITO.SelectedIndex != -1)
             {
-                _controlador.setDeposito(CB_DEPOSITO.SelectedValue.ToString());
+                _controlador.setIdDeposito(CB_DEPOSITO.SelectedValue.ToString());
             }
         }
         private void CB_CATEGORIA_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_modoInicializar) return;
-            _controlador.setCategoria("");
+            _controlador.setIdCategoria("");
             if (CB_CATEGORIA.SelectedIndex != -1) 
             {
-                _controlador.setCategoria(CB_CATEGORIA.SelectedValue.ToString());
+                _controlador.setIdCategoria(CB_CATEGORIA.SelectedValue.ToString());
             }
         }
         private void CB_ORIGEN_SelectedIndexChanged(object sender, EventArgs e)
@@ -201,28 +201,28 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
         private void CB_CATALOGO_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_modoInicializar) return;
-            _controlador.setCatalogo("");
+            _controlador.setIdCatalogo("");
             if (CB_CATALOGO.SelectedIndex != -1)
             {
-                _controlador.setCatalogo(CB_CATALOGO.SelectedValue.ToString());
-            }
-        }
-        private void CB_OFERTA_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (_modoInicializar) return;
-            _controlador.setOferta("");
-            if (CB_OFERTA.SelectedIndex != -1)
-            {
-                _controlador.setOferta(CB_OFERTA.SelectedValue.ToString());
+                _controlador.setIdCatalogo(CB_CATALOGO.SelectedValue.ToString());
             }
         }
         private void CB_EXISTENCIA_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_modoInicializar) return;
-            _controlador.setExistencia("");
+            _controlador.setIdExistencia("");
             if (CB_EXISTENCIA.SelectedIndex != -1)
             {
-                _controlador.setExistencia(CB_EXISTENCIA.SelectedValue.ToString());
+                _controlador.setIdExistencia(CB_EXISTENCIA.SelectedValue.ToString());
+            }
+        }
+        private void CB_TCS_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_modoInicializar) return;
+            _controlador.setIdTCS("");
+            if (CB_TCS.SelectedIndex != -1)
+            {
+                _controlador.setIdTCS(CB_TCS.SelectedValue.ToString());
             }
         }
 
@@ -249,7 +249,7 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
                 CB_ESTATUS.SelectedIndex = -1;
                 CB_ADMDIVISA.SelectedIndex = -1;
                 CB_PESADO.SelectedIndex = -1;
-                CB_OFERTA.SelectedIndex = -1;
+                CB_TCS.SelectedIndex = -1;
                 CB_EXISTENCIA.SelectedIndex = -1;
                 CB_CATALOGO.SelectedIndex = -1;
                 _modoInicializar = false;
@@ -299,10 +299,6 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
         {
             CB_MARCA.SelectedIndex = -1;
         }
-        private void L_OFERTA_Click(object sender, EventArgs e)
-        {
-            CB_OFERTA.SelectedIndex = -1;
-        }
         private void L_EXISTENCIA_Click(object sender, EventArgs e)
         {
             CB_EXISTENCIA.SelectedIndex = -1;
@@ -310,6 +306,10 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
         private void L_CATALOGO_Click(object sender, EventArgs e)
         {
             CB_CATALOGO.SelectedIndex = -1;
+        }
+        private void L_TCS_Click(object sender, EventArgs e)
+        {
+            CB_TCS.SelectedIndex = -1;
         }
 
 
@@ -369,7 +369,5 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
                 e.Cancel = false;
             }
         }
-            
     }
-
 }

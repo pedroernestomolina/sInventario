@@ -457,22 +457,6 @@
     <Compile Include="MovimientoInvTipo\Traslado\MovFrm.Designer.cs">
       <DependentUpon>MovFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Producto\AgregarEditar\AgregarEditarFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Producto\AgregarEditar\AgregarEditarFrm.Designer.cs">
-      <DependentUpon>AgregarEditarFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Producto\AgregarEditar\Agregar\data.cs" />
-    <Compile Include="Producto\AgregarEditar\Agregar\Gestion.cs" />
-    <Compile Include="Producto\AgregarEditar\CodAlterno\data.cs" />
-    <Compile Include="Producto\AgregarEditar\CodAlterno\Gestion.cs" />
-    <Compile Include="Producto\AgregarEditar\CodAlterno\GestionLista.cs" />
-    <Compile Include="Producto\AgregarEditar\Editar\data.cs" />
-    <Compile Include="Producto\AgregarEditar\Editar\Gestion.cs" />
-    <Compile Include="Producto\AgregarEditar\Editar\precio.cs" />
-    <Compile Include="Producto\AgregarEditar\Gestion.cs" />
-    <Compile Include="Producto\AgregarEditar\IGestion.cs" />
     <Compile Include="Producto\Costo\Editar\costo.cs" />
     <Compile Include="Producto\Costo\Editar\EditarFrm.cs">
       <SubType>Form</SubType>
@@ -516,28 +500,6 @@
     </Compile>
     <Compile Include="Producto\Deposito\Asignar\data.cs" />
     <Compile Include="Producto\Deposito\Asignar\Gestion.cs" />
-    <Compile Include="Producto\Deposito\Editar\EditarFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Producto\Deposito\Editar\EditarFrm.Designer.cs">
-      <DependentUpon>EditarFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Producto\Deposito\Editar\Gestion.cs" />
-    <Compile Include="Producto\Deposito\Listar\data.cs" />
-    <Compile Include="Producto\Deposito\Listar\Gestion.cs" />
-    <Compile Include="Producto\Deposito\Listar\VerFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Producto\Deposito\Listar\VerFrm.Designer.cs">
-      <DependentUpon>VerFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Producto\Deposito\Ver\Gestion.cs" />
-    <Compile Include="Producto\Deposito\Ver\VerFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Producto\Deposito\Ver\VerFrm.Designer.cs">
-      <DependentUpon>VerFrm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Producto\Estatus\data.cs" />
     <Compile Include="Producto\Estatus\EstatusFrm.cs">
       <SubType>Form</SubType>
@@ -626,14 +588,6 @@
     </Compile>
     <Compile Include="Producto\Proveedor\ProveedoresFrm.Designer.cs">
       <DependentUpon>ProveedoresFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Producto\QR\Gestion.cs" />
-    <Compile Include="Producto\QR\IQR.cs" />
-    <Compile Include="Producto\QR\QRFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Producto\QR\QRFrm.Designer.cs">
-      <DependentUpon>QRFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Producto\VisualizarFicha\Gestion.cs" />
     <Compile Include="Producto\VisualizarFicha\IVisualizar.cs" />
@@ -867,6 +821,12 @@
     </Compile>
     <Compile Include="src\FiltroBusqAdm\ModoSucursal\ImpSucursal.cs" />
     <Compile Include="src\FiltroBusqAdm\ModoSucursal\ISucursal.cs" />
+    <Compile Include="src\FiltroBusqAdm\PorCatalogo\ICatalogo.cs" />
+    <Compile Include="src\FiltroBusqAdm\PorCategoria\ICategoria.cs" />
+    <Compile Include="src\FiltroBusqAdm\PorDeposito\IDeposito.cs" />
+    <Compile Include="src\FiltroBusqAdm\PorExistencia\IExistencia.cs" />
+    <Compile Include="src\FiltroBusqAdm\PorProveedor\IProveedor.cs" />
+    <Compile Include="src\FiltroBusqAdm\PorTCS\ITCS.cs" />
     <Compile Include="src\Filtro\FiltroAdmDoc\baseAdmDoc.cs" />
     <Compile Include="src\Filtro\FiltroAdmDoc\dataExportar.cs" />
     <Compile Include="src\Filtro\FiltroAdmDoc\IAdmDoc.cs" />
@@ -984,6 +944,33 @@
     <Compile Include="src\Producto\CodigosAlterno\data.cs" />
     <Compile Include="src\Producto\CodigosAlterno\Gestion.cs" />
     <Compile Include="src\Producto\CodigosAlterno\IAlterno.cs" />
+    <Compile Include="src\Producto\Deposito\Editar\EditarFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Producto\Deposito\Editar\EditarFrm.Designer.cs">
+      <DependentUpon>EditarFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Producto\Deposito\Editar\ImpEditar.cs" />
+    <Compile Include="src\Producto\Deposito\Editar\IEditar.cs" />
+    <Compile Include="src\Producto\Deposito\VerLista\data.cs" />
+    <Compile Include="src\Producto\Deposito\VerLista\IListaDep.cs" />
+    <Compile Include="src\Producto\Deposito\VerLista\ImpVerLista.cs" />
+    <Compile Include="src\Producto\Deposito\VerLista\IVerLista.cs" />
+    <Compile Include="src\Producto\Deposito\VerLista\Lista.cs" />
+    <Compile Include="src\Producto\Deposito\VerLista\VerFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Producto\Deposito\VerLista\VerFrm.Designer.cs">
+      <DependentUpon>VerFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Producto\Deposito\Visualizar\ImpVisualizar.cs" />
+    <Compile Include="src\Producto\Deposito\Visualizar\IVisualizar.cs" />
+    <Compile Include="src\Producto\Deposito\Visualizar\VerFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Producto\Deposito\Visualizar\VerFrm.Designer.cs">
+      <DependentUpon>VerFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Producto\Imagen\ImpImagen.cs" />
     <Compile Include="src\Producto\Imagen\IImagen.cs" />
     <Compile Include="src\Producto\Imagen\ImgFrm.cs">
@@ -1000,6 +987,10 @@
     <Compile Include="src\Producto\QR\QRFrm.Designer.cs">
       <DependentUpon>QRFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Producto\TallaColorSabor\data.cs" />
+    <Compile Include="src\Producto\TallaColorSabor\dataRetornar.cs" />
+    <Compile Include="src\Producto\TallaColorSabor\ImpTallaColorSabor.cs" />
+    <Compile Include="src\Producto\TallaColorSabor\ITallaColorSabor.cs" />
     <Compile Include="src\Producto\Visualizar\ModoBasico\Gestion.cs" />
     <Compile Include="src\Producto\Visualizar\ModoBasico\VisualizarFrm.cs">
       <SubType>Form</SubType>
@@ -1008,6 +999,17 @@
       <DependentUpon>VisualizarFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Reporte\IReporte.cs" />
+    <Compile Include="src\TallaColorSabor\Visualizar\data.cs" />
+    <Compile Include="src\TallaColorSabor\Visualizar\ImpLista.cs" />
+    <Compile Include="src\TallaColorSabor\Visualizar\ImpVer.cs" />
+    <Compile Include="src\TallaColorSabor\Visualizar\ITCSLista.cs" />
+    <Compile Include="src\TallaColorSabor\Visualizar\IVer.cs" />
+    <Compile Include="src\TallaColorSabor\Visualizar\VerTallaColorSaborFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\TallaColorSabor\Visualizar\VerTallaColorSaborFrm.Designer.cs">
+      <DependentUpon>VerTallaColorSaborFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Visor\EntradaxCompra\IEntradaxCompra.cs" />
     <Compile Include="src\Visor\EntradaxCompra\ModoSoloReporte\data.cs" />
     <Compile Include="src\Visor\EntradaxCompra\ModoSoloReporte\EntradaxCompraFrm.cs">
@@ -1226,9 +1228,6 @@
     <EmbeddedResource Include="MovimientoInvTipo\Traslado\MovFrm.resx">
       <DependentUpon>MovFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Producto\AgregarEditar\AgregarEditarFrm.resx">
-      <DependentUpon>AgregarEditarFrm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Producto\Costo\Editar\EditarFrm.resx">
       <DependentUpon>EditarFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1243,15 +1242,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Producto\Deposito\Asignar\AsignarFrm.resx">
       <DependentUpon>AsignarFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Producto\Deposito\Editar\EditarFrm.resx">
-      <DependentUpon>EditarFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Producto\Deposito\Listar\VerFrm.resx">
-      <DependentUpon>VerFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Producto\Deposito\Ver\VerFrm.resx">
-      <DependentUpon>VerFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Producto\Estatus\EstatusFrm.resx">
       <DependentUpon>EstatusFrm.cs</DependentUpon>
@@ -1282,9 +1272,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Producto\Proveedor\ProveedoresFrm.resx">
       <DependentUpon>ProveedoresFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Producto\QR\QRFrm.resx">
-      <DependentUpon>QRFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Producto\VisualizarFicha\VisualizarFrm.resx">
       <DependentUpon>VisualizarFrm.cs</DependentUpon>
@@ -1449,6 +1436,15 @@
     <EmbeddedResource Include="src\Producto\AgregarEditar\ModoSucursal\AgregarEditarFrm.resx">
       <DependentUpon>AgregarEditarFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\Producto\Deposito\Editar\EditarFrm.resx">
+      <DependentUpon>EditarFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Producto\Deposito\VerLista\VerFrm.resx">
+      <DependentUpon>VerFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Producto\Deposito\Visualizar\VerFrm.resx">
+      <DependentUpon>VerFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\Producto\Imagen\ImgFrm.resx">
       <DependentUpon>ImgFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1457,6 +1453,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\Producto\Visualizar\ModoBasico\VisualizarFrm.resx">
       <DependentUpon>VisualizarFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\TallaColorSabor\Visualizar\VerTallaColorSaborFrm.resx">
+      <DependentUpon>VerTallaColorSaborFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Visor\EntradaxCompra\ModoSoloReporte\EntradaxCompraFrm.resx">
       <DependentUpon>EntradaxCompraFrm.cs</DependentUpon>
@@ -1677,17 +1676,21 @@
     <Content Include="Imagenes\bt_notificacion.png" />
     <Content Include="Imagenes\bt_ok_2.png" />
     <Content Include="Imagenes\bt_ok_3.png" />
+    <Content Include="Imagenes\bt_paleta_colores_2_48.png" />
+    <Content Include="Imagenes\bt_paleta_colores_48.png" />
     <Content Include="Imagenes\bt_pendiente.png" />
     <Content Include="Imagenes\bt_price.png" />
     <Content Include="Imagenes\bt_proceso.png" />
     <Content Include="Imagenes\bt_proveedor.png" />
     <Content Include="Imagenes\bt_qr.png" />
+    <Content Include="Imagenes\bt_refrescar_48.png" />
     <Content Include="Imagenes\bt_salida.png" />
     <Content Include="Imagenes\bt_salida_2.png" />
     <Content Include="Imagenes\bt_setup.png" />
     <Content Include="Imagenes\bt_status.png" />
     <Content Include="Imagenes\bt_sumar.png" />
     <Content Include="Imagenes\bt_sumar_2.png" />
+    <Content Include="Imagenes\bt_talla_color_sabor_48.png" />
     <Content Include="Imagenes\bt_usuario %282%29.png" />
     <Content Include="Imagenes\bt_usuario.png" />
     <Content Include="Imagenes\bt_visor.png" />
@@ -1710,6 +1713,10 @@
     <Content Include="Imagenes\TOOLS.ico" />
     <Content Include="Imagenes\transferencia.png" />
     <Content Include="Imagenes\warehouse.png" />
+    <None Include="Resources\bt_paleta_colores_2_48.png" />
+    <None Include="Resources\bt_paleta_colores_48.png" />
+    <None Include="Resources\bt_refrescar_48.png" />
+    <None Include="Resources\bt_talla_color_sabor_48.png" />
     <None Include="Resources\inv_basico.jpg" />
     <None Include="Resources\bt_pulgar_arriba.png" />
     <None Include="Resources\pulgar_arrba.svg" />

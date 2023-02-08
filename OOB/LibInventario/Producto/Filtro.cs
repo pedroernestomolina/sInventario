@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace OOB.LibInventario.Producto
 {
-    
     public class Filtro
     {
-
         public enum Existencia { SinDefinir = -1, MayorQueCero = 1, IgualCero, MenorQueCero };
 
 
@@ -34,6 +32,7 @@ namespace OOB.LibInventario.Producto
         public string autoDepOrigen { get; set; }
         public string autoDepDestino { get; set; }
         public bool activarBusquedaParaMovTraslado { get; set; }
+        public string estatusTCS { get; set; }
 
 
         public Filtro()
@@ -63,33 +62,7 @@ namespace OOB.LibInventario.Producto
             activarBusquedaParaMovTraslado = false;
             autoDepOrigen = "";
             autoDepDestino = "";
+            estatusTCS = "";
         }
-
-        public bool BusquedaOk 
-        {
-            get
-            {
-                var rt = false;
-                if (cadena != "")
-                    return true;
-                if (autoProducto != "")
-                    return true;
-                if (autoDepartamento != "")
-                    return true;
-                if (autoGrupo != "")
-                    return true;
-                if (autoMarca != "")
-                    return true;
-                if (autoDeposito != "")
-                    return true;
-                if (autoTasa!= "")
-                    return true;
-                if (autoProveedor != "")
-                    return true;
-                return rt;
-            }
-        }
-
     }
-
 }

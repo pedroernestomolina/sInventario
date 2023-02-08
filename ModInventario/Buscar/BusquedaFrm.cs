@@ -11,11 +11,8 @@ using System.Windows.Forms;
 
 namespace ModInventario.Buscar
 {
-
     public partial class BusquedaFrm : Form
     {
-
-
         private Gestion _controlador;
 
 
@@ -31,7 +28,6 @@ namespace ModInventario.Buscar
             CB_TIPO_BUSQUEDA.DisplayMember = "desc";
             CB_TIPO_BUSQUEDA.ValueMember = "id";
         }
-
         private void InicializarGrid()
         {
             var f = new Font("Serif", 8, FontStyle.Bold);
@@ -135,7 +131,6 @@ namespace ModInventario.Buscar
             DGV.Columns.Add(c3);
             DGV.Columns.Add(c4);
         }
-
         private void DGV_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             foreach (DataGridViewRow row in DGV.Rows)
@@ -167,7 +162,7 @@ namespace ModInventario.Buscar
         private void BusquedaFrm_Load(object sender, EventArgs e)
         {
             _modoInicializar = true;
-            TB_CADENA.Text = "";
+            TB_CADENA.Text = _controlador.CadenaBusqProducto;
             CB_TIPO_BUSQUEDA.DataSource = _controlador.GeTipoBusqueda_Source;
             CB_TIPO_BUSQUEDA.SelectedValue = _controlador.GetTipoBusqueda_Id;
             DGV.DataSource = _controlador.Source;
@@ -182,15 +177,229 @@ namespace ModInventario.Buscar
         {
             ActualizarItem();
         }
-
         public void setControlador(Gestion ctr)
         {
             _controlador = ctr;
         }
+        private void DGV_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex != -1 && e.RowIndex != -1)
+            {
+                VisualizarItem();
+            }
+        }
+        private void TB_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.SelectNextControl((Control)sender, true, true, true, true);
+            }
+        }
+        private void VisualizarItem()
+        {
+            _controlador.VisualizarItem();
+        }
 
+        //EXISTENCIA
+        private void BT_VER_EXISTENCIA_Click(object sender, EventArgs e)
+        {
+            VerExistencia();
+        }
+        private void BT_TALLA_COLOR_SABOR_Click(object sender, EventArgs e)
+        {
+            VerTallaColorSabor();
+        }
+        private void BT_ASIGNAR_DEPOSITO_Click(object sender, EventArgs e)
+        {
+            AsignarDeposito();
+        }
+        private void BT_MOV_KARDEX_Click(object sender, EventArgs e)
+        {
+            MovKardex();
+        }
+        private void MovKardex()
+        {
+            _controlador.MovKardex();
+            TB_CADENA.Focus();
+        }
+        private void AsignarDeposito()
+        {
+            _controlador.AsignarDeposito();
+            TB_CADENA.Focus();
+        }
+        private void VerExistencia()
+        {
+            _controlador.VerExistencia();
+            TB_CADENA.Focus();
+        }
+        private void VerTallaColorSabor()
+        {
+            _controlador.VerTallaColorSabor();
+            TB_CADENA.Focus();
+        }
+
+        //PRECIOS
+        private void BT_PRECIO_EDITAR_Click(object sender, EventArgs e)
+        {
+            EditarPrecio();
+        }
+        private void BT_PRECIO_HISTORICO_Click(object sender, EventArgs e)
+        {
+            HistoricoPrecio();
+        }
+        private void BT_PRECIO_Click(object sender, EventArgs e)
+        {
+            VerPrecios();
+        }
+        private void VerPrecios()
+        {
+            _controlador.VerPrecios();
+            TB_CADENA.Focus();
+        }
+        private void EditarPrecio()
+        {
+            _controlador.EditarPrecio();
+            TB_CADENA.Focus();
+        }
+        private void HistoricoPrecio()
+        {
+            _controlador.HistoricoPrecio();
+            TB_CADENA.Focus();
+        }
+
+        //COSTO
+        private void BT_COSTO_Click(object sender, EventArgs e)
+        {
+            VerCosto();
+        }
+        private void BT_HISTORICO_COSTO_Click(object sender, EventArgs e)
+        {
+            HistoricoCosto();
+        }
+        private void BT_EDITAR_COSTO_Click(object sender, EventArgs e)
+        {
+            EditarCosto();
+        }
+        private void EditarCosto()
+        {
+            _controlador.EditarCosto();
+            TB_CADENA.Focus();
+        }
+        private void HistoricoCosto()
+        {
+            _controlador.HistoricoCosto();
+            TB_CADENA.Focus();
+        }
+        private void VerCosto()
+        {
+            _controlador.VerCosto();
+            TB_CADENA.Focus();
+        }
+
+        //UTILTIS
+        private void BT_GENERAR_QR_Click(object sender, EventArgs e)
+        {
+            GenerarQR();
+        }
+        private void TB_CAMBIO_ESTATUS_Click(object sender, EventArgs e)
+        {
+            CambioEstatus();
+        }
+        private void BT_IMAGEN_Click(object sender, EventArgs e)
+        {
+            GetImagen();
+        }
+        private void BT_PROVEEDORES_Click(object sender, EventArgs e)
+        {
+            Proveedores();
+        }
+        private void Proveedores()
+        {
+            _controlador.Proveedores();
+        }
+        private void GetImagen()
+        {
+            _controlador.VerImagen();
+        }
+        private void CambioEstatus()
+        {
+            _controlador.CambioEstatus();
+        }
+        private void GenerarQR()
+        {
+            _controlador.GenerarQR();
+            TB_CADENA.Focus();
+        }
+
+        private void BusquedaFrm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1) 
+            {
+                TB_CADENA.Focus();
+            }
+        }
+
+        //PRODUCTO
+        private void BT_AGREGAR_FICHA_Click(object sender, EventArgs e)
+        {
+            AgregarFicha();
+        }
+        private void BT_EDITAR_FICHA_Click(object sender, EventArgs e)
+        {
+            EditarFicha();
+        }
+        private void AgregarFicha()
+        {
+            _controlador.AgregarFicha();
+            TB_CADENA.Focus();
+            L_ITEMS.Text = _controlador.Items.ToString("n0");
+        }
+        private void EditarFicha()
+        {
+            _controlador.EditarFicha();
+            TB_CADENA.Focus();
+        }
+
+        //BUSQUEDA
+        private void CB_TIPO_BUSQUEDA_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_modoInicializar) { return; }
+            _controlador.setTipoBusqueda("");
+            if (CB_TIPO_BUSQUEDA.SelectedIndex != -1)
+            {
+                _controlador.setTipoBusqueda(CB_TIPO_BUSQUEDA.SelectedValue.ToString());
+            }
+        }
+        private void TB_CADENA_Leave(object sender, EventArgs e)
+        {
+            _controlador.setCadenaBusc(TB_CADENA.Text.Trim().ToUpper());
+        }
         private void BT_BUSCAR_Click(object sender, EventArgs e)
         {
             Buscar();
+        }
+        private void BT_FILTRAR_Click(object sender, EventArgs e)
+        {
+            FiltrarBusqueda();
+        }
+        private void BT_LIMPIAR_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+        }
+        private void FiltrarBusqueda()
+        {
+            BT_BUSCAR.Enabled = false;
+            _controlador.FiltrarBusqueda();
+            BT_BUSCAR.Enabled = true;
+            ActualizarBusqueda();
+            DGV.Focus();
+        }
+        private void Limpiar()
+        {
+            _controlador.Limpiar();
+            TB_CADENA.Text = _controlador.CadenaBusqProducto;
+            TB_CADENA.Focus();
+            L_ITEMS.Text = _controlador.Items.ToString("n0");
         }
         private void Buscar()
         {
@@ -199,14 +408,29 @@ namespace ModInventario.Buscar
             TB_CADENA.Focus();
         }
 
+        private void BT_SALIR_Click(object sender, EventArgs e)
+        {
+            Salir();
+        }
+        private void Salir()
+        {
+            Close();
+        }
+
+
+        private void ActualizarBusqueda()
+        {
+            L_ITEMS.Text = _controlador.Items.ToString("n0");
+            TB_CADENA.Text = _controlador.CadenaBusqProducto;
+            TB_CADENA.Focus();
+        }
         public void ActualizarItem()
         {
-            if (_controlador.Item==null)
+            if (_controlador.Item == null)
             {
                 LimpiarEtiquetas();
                 return;
             }
-
             L_PRODUCTO.Text = _controlador.Item.Producto;
             L_DEPARTAMENTO.Text = _controlador.Item.Departamento;
             L_GRUPO.Text = _controlador.Item.Grupo;
@@ -224,7 +448,7 @@ namespace ModInventario.Buscar
 
             L_PESADO.Text = _controlador.Item.Pesado;
             L_FECHA_ALTA.Text = _controlador.Item.FechaAlta.ToShortDateString();
-            L_FECHA_ACT.Text= _controlador.Item.FechaUltimaActualizacion;
+            L_FECHA_ACT.Text = _controlador.Item.FechaUltimaActualizacion;
 
             L_ET_INV_EMP_COMPRA.Text = _controlador.ET_INV_EMP_COMPRA;
             L_ET_INV_EMP_INV.Text = _controlador.ET_INV_EMP_INV;
@@ -233,7 +457,6 @@ namespace ModInventario.Buscar
             L_INV_EMP_INV.Text = _controlador.INV_EMP_INV.ToString();
             L_INV_EMP_UND.Text = _controlador.INV_EMP_UND.ToString();
         }
-
         private void LimpiarEtiquetas()
         {
             L_PRODUCTO.Text = "";
@@ -250,254 +473,14 @@ namespace ModInventario.Buscar
             L_DIVISA.Text = "";
             L_PESADO.Text = "";
             L_OFERTA.Text = "";
-            L_FECHA_ALTA.Text="";
+            L_FECHA_ALTA.Text = "";
             L_FECHA_ACT.Text = "";
             L_ET_INV_EMP_COMPRA.Text = "";
             L_ET_INV_EMP_INV.Text = "";
             L_ET_INV_EMP_UND.Text = "";
             L_INV_EMP_COMPRA.Text = "";
             L_INV_EMP_INV.Text = "";
-            L_INV_EMP_UND.Text = ""; 
+            L_INV_EMP_UND.Text = "";
         }
-
-        private void BT_FILTRAR_Click(object sender, EventArgs e)
-        {
-            FiltrarBusqueda();
-        }
-        private void FiltrarBusqueda()
-        {
-            BT_BUSCAR.Enabled = false;
-            _controlador.FiltrarBusqueda();
-            BT_BUSCAR.Enabled = true;
-            ActualizarBusqueda();
-            DGV.Focus();
-        }
-
-        private void ActualizarBusqueda()
-        {
-            L_ITEMS.Text = _controlador.Items.ToString("n0");
-            TB_CADENA.Text = _controlador.CadenaBusqProducto;
-            TB_CADENA.Focus();
-        }
-
-        private void DGV_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.ColumnIndex != -1 && e.RowIndex != -1)
-            {
-                VisualizarItem();
-            }
-        }
-        private void VisualizarItem()
-        {
-            _controlador.VisualizarItem();
-        }
-
-        private void BT_SALIR_Click(object sender, EventArgs e)
-        {
-            Salir();
-        }
-
-        private void Salir()
-        {
-            Close();
-        }
-
-        private void TB_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                this.SelectNextControl((Control)sender, true, true, true, true);
-            }
-        }
-
-        private void BT_VER_EXISTENCIA_Click(object sender, EventArgs e)
-        {
-            VerExistencia();
-        }
-
-        private void VerExistencia()
-        {
-            _controlador.VerExistencia();
-            TB_CADENA.Focus();
-        }
-
-        private void BT_LIMPIAR_Click(object sender, EventArgs e)
-        {
-            Limpiar();
-        }
-        private void Limpiar()
-        {
-            _controlador.Limpiar();
-            TB_CADENA.Text = _controlador.CadenaBusqProducto;
-            TB_CADENA.Focus();
-            L_ITEMS.Text = _controlador.Items.ToString("n0");
-        }
-
-        private void BT_PRECIO_EDITAR_Click(object sender, EventArgs e)
-        {
-            EditarPrecio();
-        }
-        private void EditarPrecio()
-        {
-            _controlador.EditarPrecio();
-            TB_CADENA.Focus();
-        }
-
-        private void BT_PRECIO_HISTORICO_Click(object sender, EventArgs e)
-        {
-            HistoricoPrecio();
-        }
-        private void HistoricoPrecio()
-        {
-            _controlador.HistoricoPrecio();
-            TB_CADENA.Focus();
-        }
-
-        private void BT_HISTORICO_COSTO_Click(object sender, EventArgs e)
-        {
-            HistoricoCosto();
-        }
-
-        private void HistoricoCosto()
-        {
-            _controlador.HistoricoCosto();
-            TB_CADENA.Focus();
-        }
-
-        private void BT_COSTO_Click(object sender, EventArgs e)
-        {
-            VerCosto();
-        }
-
-        private void VerCosto()
-        {
-            _controlador.VerCosto();
-            TB_CADENA.Focus();
-        }
-
-        private void BT_GENERAR_QR_Click(object sender, EventArgs e)
-        {
-            GenerarQR();
-        }
-        private void GenerarQR()
-        {
-            _controlador.GenerarQR();
-            TB_CADENA.Focus();
-        }
-
-        private void BusquedaFrm_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1) 
-            {
-                TB_CADENA.Focus();
-            }
-        }
-
-        private void BT_ASIGNAR_DEPOSITO_Click(object sender, EventArgs e)
-        {
-            AsignarDeposito();
-        }
-        private void AsignarDeposito()
-        {
-            _controlador.AsignarDeposito();
-            TB_CADENA.Focus();
-        }
-
-        private void BT_MOV_KARDEX_Click(object sender, EventArgs e)
-        {
-            MovKardex();
-        }
-        private void MovKardex()
-        {
-            _controlador.MovKardex(); 
-            TB_CADENA.Focus();
-        }
-
-        private void BT_EDITAR_FICHA_Click(object sender, EventArgs e)
-        {
-            EditarFicha();
-        }
-        private void EditarFicha()
-        {
-            _controlador.EditarFicha();
-            TB_CADENA.Focus();
-        }
-
-        private void BT_AGREGAR_FICHA_Click(object sender, EventArgs e)
-        {
-            AgregarFicha();
-        }
-        private void AgregarFicha()
-        {
-            _controlador.AgregarFicha();
-            TB_CADENA.Focus();
-            L_ITEMS.Text = _controlador.Items.ToString("n0");
-        }
-
-        private void TB_CAMBIO_ESTATUS_Click(object sender, EventArgs e)
-        {
-            CambioEstatus();
-        }
-
-        private void CambioEstatus()
-        {
-            _controlador.CambioEstatus();
-        }
-
-        private void BT_IMAGEN_Click(object sender, EventArgs e)
-        {
-            GetImagen();
-        }
-        private void GetImagen()
-        {
-            _controlador.GetImagen();
-        }
-
-        private void BT_PROVEEDORES_Click(object sender, EventArgs e)
-        {
-            Proveedores();
-        }
-
-        private void Proveedores()
-        {
-            _controlador.Proveedores();
-        }
-
-        private void TB_CADENA_Leave(object sender, EventArgs e)
-        {
-            _controlador.setCadenaBusc(TB_CADENA.Text.Trim().ToUpper());
-        }
-
-        private void BT_PRECIO_Click(object sender, EventArgs e)
-        {
-            VerPrecios();
-        }
-        private void VerPrecios()
-        {
-            _controlador.VerPrecios();
-            TB_CADENA.Focus();
-        }
-
-        private void BT_EDITAR_COSTO_Click(object sender, EventArgs e)
-        {
-            EditarCosto();
-        }
-        private void EditarCosto()
-        {
-            _controlador.EditarCosto();
-            TB_CADENA.Focus();
-        }
-
-        private void CB_TIPO_BUSQUEDA_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (_modoInicializar) { return; }
-            _controlador.setTipoBusqueda("");
-            if (CB_TIPO_BUSQUEDA.SelectedIndex != -1) 
-            {
-                _controlador.setTipoBusqueda(CB_TIPO_BUSQUEDA.SelectedValue.ToString());
-            }
-        }
-      
     }
-
 }

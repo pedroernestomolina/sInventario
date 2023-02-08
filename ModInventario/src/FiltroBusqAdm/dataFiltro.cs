@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModInventario.src.FiltroBusqAdm
 {
-    
     public class dataFiltro
     {
-
         private string _cadenaBusq;
         private Enumerados.enumMetBusqueda _metBusqueda;
 
@@ -37,22 +35,9 @@ namespace ModInventario.src.FiltroBusqAdm
         public ficha AdmDivisa { get; set; }
         public ficha Pesado { get; set; }
         public ficha Proveedor { get; set; }
+        public ficha TCS { get; set; }
         public string CadenaBusq { get { return _cadenaBusq; } }
         public Enumerados.enumMetBusqueda MetBusqueda { get { return _metBusqueda; } }
-        public string GetDepositoId { get { return Deposito == null ? "" : Deposito.id; } }
-        public string GetCatalogoId { get { return Catalogo == null ? "" : Catalogo.id; } }
-        public string GetOfertaId { get { return Oferta == null ? "" : Oferta.id; } }
-        public string GetCategoriaId { get { return Categoria == null ? "" : Categoria.id; } }
-        public string GetExistenciaId { get { return Existencia == null ? "" : Existencia.id; } }
-        public string GetDepartamentoId { get { return Departamento == null ? "" : Departamento.id; } }
-        public string GetGrupoId { get { return Grupo == null ? "" : Grupo.id; } }
-        public string GetMarcaId { get { return Marca == null ? "" : Marca.id; } }
-        public string GetOrigenId { get { return Origen == null ? "" : Origen.id; } }
-        public string GetEstatusId { get { return Estatus == null ? "" : Estatus.id; } }
-        public string GetTasaIvaId { get { return TasaIva == null ? "" : TasaIva.id; } }
-        public string GetAdmDivisaId { get { return AdmDivisa == null ? "" : AdmDivisa.id; } }
-        public string GetPesadoId { get { return Pesado == null ? "" : Pesado.id; } }
-        public string GetProveedorId { get { return Proveedor == null ? "" : Proveedor.id; } }
 
 
         public void setCadenaBusq(string cadena)
@@ -94,6 +79,7 @@ namespace ModInventario.src.FiltroBusqAdm
             if (AdmDivisa != null) return true;
             if (Pesado != null) return true;
             if (Proveedor != null) return true;
+            if (TCS != null) return true;
             return false;
         }
 
@@ -104,6 +90,7 @@ namespace ModInventario.src.FiltroBusqAdm
 
         private void limpiar()
         {
+            _cadenaBusq = "";
             Deposito = null;
             Categoria = null;
             Catalogo = null;
@@ -118,8 +105,7 @@ namespace ModInventario.src.FiltroBusqAdm
             AdmDivisa = null;
             Pesado = null;
             Proveedor = null;
+            TCS = null;
         }
-
     }
-
 }

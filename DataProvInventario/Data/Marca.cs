@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace DataProvInventario.Data
 {
-
     public partial class DataProv: IData
     {
         public OOB.ResultadoLista<OOB.LibInventario.Marca.Ficha> 
@@ -108,5 +107,4 @@ namespace DataProvInventario.Data
             return rt;
         }
     }
-
 }

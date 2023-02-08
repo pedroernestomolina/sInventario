@@ -8,15 +8,12 @@ using System.Windows.Forms;
 
 namespace ModInventario.Buscar
 {
-
     public class Gestion
     {
-
         public enum enumMetodoBusqueda { SinDefinir = -1, PorCodigo = 1, PorNombre, PorReferencia };
 
 
         private GestionLista _gestionLista;
-        private Producto.Deposito.Listar.Gestion _gestionPrdExistencia;
         private Producto.Precio.Historico.IHistorico _gHistPrecio;
         private Producto.Costo.Historico.Gestion _gestionHistoricoCosto;
         private Producto.Costo.Ver.Gestion _gestionPrdCosto;
@@ -30,9 +27,11 @@ namespace ModInventario.Buscar
         private FiltrosGen.AdmProducto.IAdmProducto _gFiltrarProducto;
         private ISeguridadAccesoSistema _gAccesoSistema;
         private ModInventario.src.Producto.QR.IQR _gQR;
-        private ModInventario.src.Producto.Imagen.IImagen _gImagen;
         private Kardex.Movimiento.IMov _gKardex;
         private FiltrosGen.IOpcion _gTipoBusq;
+        private src.TallaColorSabor.Visualizar.IVer _gTallaColorSabor;
+        private src.Producto.Deposito.VerLista.IVerLista _gVerDepositos;
+        private src.Producto.Imagen.IImagen _gImagen;
 
 
         public BindingSource Source { get { return _gestionLista.Source; } }
@@ -46,27 +45,28 @@ namespace ModInventario.Buscar
         private src.IFabrica _fabrica;
         public Gestion(FiltrosGen.AdmProducto.IAdmProducto hndFiltrarProducto, 
             ISeguridadAccesoSistema ctrSeguridad,
-            ModInventario.src.Producto.QR.IQR _qr,
-            ModInventario.src.Producto.Imagen.IImagen _imagen,
+            ModInventario.src.Producto.QR.IQR hndQR,
+            ModInventario.src.Producto.Imagen.IImagen hndImagen,
             ModInventario.src.Producto.AgregarEditar.IBaseAgregarEditar hndAgregarFicha,
             ModInventario.src.Producto.AgregarEditar.IBaseAgregarEditar hndEditarFicha,
             Producto.VisualizarFicha.IVisualizar hndVisualizarFicha,
             Producto.Precio.EditarCambiar.IEditar hndEditarCambiarPrecio,
             Producto.Precio.VerVisualizar.IVisual hndVerVisualizarPrecio, 
             Producto.Precio.Historico.IHistorico hndHistPrecio,
-            src.IFabrica hndFabrica)
+            ModInventario.src.TallaColorSabor.Visualizar.IVer hndTallaColorSabor,
+            ModInventario.src.Producto.Deposito.VerLista.IVerLista hndListaVisDepositos,
+            ModInventario.src.IFabrica hndFabrica)
         {
             _gHistPrecio = hndHistPrecio;
             _gEditarCambiarPrecio = hndEditarCambiarPrecio;
             _gVerPrecio = hndVerVisualizarPrecio;
             _gFiltrarProducto = hndFiltrarProducto;
             _gAccesoSistema = ctrSeguridad;
-            _gQR = _qr;
-            _gImagen = _imagen;
+            _gQR = hndQR;
+            _gImagen = hndImagen;
             _gTipoBusq= new FiltrosGen.Opcion.Gestion();
             _fabrica = hndFabrica;
             _gestionLista = new GestionLista();
-            _gestionPrdExistencia = new Producto.Deposito.Listar.Gestion();
             _gestionHistoricoCosto= new Producto.Costo.Historico.Gestion();
             _gestionPrdCosto = new Producto.Costo.Ver.Gestion();
             _gestionEditarCosto = new Producto.Costo.Editar.Gestion();
@@ -77,6 +77,8 @@ namespace ModInventario.Buscar
             _gKardex = new Kardex.Movimiento.Gestion();
             _gestionEstatus = new Producto.Estatus.Gestion();
             _gestionProveedor = new Producto.Proveedor.Gestion();
+            _gTallaColorSabor = hndTallaColorSabor;
+            _gVerDepositos = hndListaVisDepositos;
         }
 
 
@@ -194,6 +196,10 @@ namespace ModInventario.Buscar
                 {
                     _filtros.oferta = (OOB.LibInventario.Producto.Enumerados.EnumOferta)int.Parse(data.Oferta.id);
                 }
+                if (data.TCS != null)
+                {
+                    _filtros.estatusTCS = data.TCS.desc.ToString().ToUpper() == "SI" ? "1" : "0";
+                }
                 if (data.Existencia != null)
                 {
                     var xd = OOB.LibInventario.Producto.Filtro.Existencia.SinDefinir;
@@ -245,25 +251,18 @@ namespace ModInventario.Buscar
             }
         }
 
+        private string _filtroIdDeposito;
         private void RealizarBusqueda(OOB.LibInventario.Producto.Filtro _filtros)
         {
+            _filtroIdDeposito = "";
             var r01 = Sistema.MyData.Producto_GetLista(_filtros);
             if (r01.Result == OOB.Enumerados.EnumResult.isError)
             {
                 Helpers.Msg.Error(r01.Mensaje);
                 return;
             }
+            _filtroIdDeposito = _filtros.autoDeposito;
             _gestionLista.setLista(r01.Lista);
-            //frm.ActualizarItem();
-        }
-
-        public void VerExistencia()
-        {
-            if (Item != null)
-            {
-                _gestionPrdExistencia.setFicha(Item.identidad.auto);
-                _gestionPrdExistencia.Inicia();
-            }
         }
 
         public void Limpiar()
@@ -271,7 +270,6 @@ namespace ModInventario.Buscar
             _gFiltrarProducto.LimpiarFiltros();
             _gFiltrarProducto.setCadenaBusc("");
             _gestionLista.Limpiar();
-            //frm.ActualizarItem();
         }
 
         public void HistoricoPrecio()
@@ -568,16 +566,6 @@ namespace ModInventario.Buscar
         public int INV_EMP_UND { get { return Item.GetEx_InvEmpUnd; } }
 
 
-        public void GenerarQR()
-        {
-            if (Item != null)
-            {
-                _gQR.Inicializa();
-                _gQR.setFicha(Item.identidad.auto);
-                _gQR.Inicia();
-            }
-        }
-
         public void MovKardex()
         {
             if (Item != null)
@@ -626,8 +614,16 @@ namespace ModInventario.Buscar
             }
         }
 
-
-        public void GetImagen()
+        public void GenerarQR()
+        {
+            if (Item != null)
+            {
+                _gQR.Inicializa();
+                _gQR.setFicha(Item.identidad.auto);
+                _gQR.Inicia();
+            }
+        }
+        public void VerImagen()
         {
             if (Item != null)
             {
@@ -647,7 +643,26 @@ namespace ModInventario.Buscar
                 }
             }
         }
-
+        public void VerTallaColorSabor()
+        {
+            if (Item != null)
+            {
+                _gTallaColorSabor.Inicializa();
+                _gTallaColorSabor.setIdPrd(Item.identidad.auto);
+                _gTallaColorSabor.setIdDeposito(_filtroIdDeposito);
+                _gTallaColorSabor.HabilitaBtDetalle(_filtroIdDeposito=="");
+                _gTallaColorSabor.Inicia();
+            }
+        }
+        public void VerExistencia()
+        {
+            if (Item != null)
+            {
+                _gVerDepositos.Inicializa();
+                _gVerDepositos.setIdPrd(Item.identidad.auto);
+                _gVerDepositos.setIdDeposito(_filtroIdDeposito);
+                _gVerDepositos.Inicia();
+            }
+        }
     }
-
 }

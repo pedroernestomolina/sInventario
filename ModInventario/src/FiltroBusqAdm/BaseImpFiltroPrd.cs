@@ -9,7 +9,6 @@ using System.Windows.Forms;
 
 namespace ModInventario.src.FiltroBusqAdm
 {
-
     abstract public class BaseImpFiltroPrd : IFiltroPrd
     {
 
@@ -30,8 +29,10 @@ namespace ModInventario.src.FiltroBusqAdm
 
         public void Inicializa()
         {
+            _data.Limpiar();
             reset();
         }
+        abstract public void Inicia();
 
         protected void reset()
         {
@@ -251,10 +252,5 @@ namespace ModInventario.src.FiltroBusqAdm
             _data.Pesado = _gPesado.Item;
             return _data.FiltrarIsOk();
         }
-
-
-        abstract public void Inicia();
-
     }
-
 }

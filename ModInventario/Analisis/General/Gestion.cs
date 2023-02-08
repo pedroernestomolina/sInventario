@@ -26,7 +26,7 @@ namespace ModInventario.Analisis.General
         private BindingSource _bs;
         private List<data> _lstData;
         private Analisis.Detallado.Gestion _gestionAnalisisDetallado;
-        private Producto.Deposito.Listar.Gestion _gestionExistencia;
+        //private Producto.Deposito.Listar.Gestion _gestionExistencia;
         private Analisis.Existencia.Gestion _gestionAnalisisExistencia;
         private data _item;
 
@@ -40,7 +40,7 @@ namespace ModInventario.Analisis.General
         {
             _gestionAnalisisDetallado = new Detallado.Gestion();
             _gestionAnalisisExistencia = new Existencia.Gestion();
-            _gestionExistencia = new Producto.Deposito.Listar.Gestion();
+            //_gestionExistencia = new Producto.Deposito.Listar.Gestion();
             _lstData = new List<data>();
             _bs = new BindingSource();
             _bs.DataSource = _lstData;
@@ -128,12 +128,12 @@ namespace ModInventario.Analisis.General
 
         public void VerExistencia()
         {
-            if (_bs.Current == null)
-                return;
+            //if (_bs.Current == null)
+            //    return;
 
-            var it = (data)_bs.Current;
-            _gestionExistencia.setFicha(it.autoId);
-            _gestionExistencia.Inicia();
+            //var it = (data)_bs.Current;
+            //_gestionExistencia.setFicha(it.autoId);
+            //_gestionExistencia.Inicia();
         }
 
         public void VerComportamientoDiario()

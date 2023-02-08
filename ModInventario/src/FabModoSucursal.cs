@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace ModInventario.src
 {
-    
     public class FabModoSucursal: IFabrica
     {
         public void Iniciar_FrmPrincipal(GestionInv ctr)
@@ -142,6 +141,7 @@ namespace ModInventario.src
         public ModInventario.Buscar.Gestion 
             CreateInstancia_HndProducto(ISeguridadAccesoSistema _seguridad, IFabrica _fabrica)
         {
+            var hndTCS = CreateInstancia_TallaColorSabor();
             return new ModInventario.Buscar.Gestion(
                 CreateInstancia_FiltroPrdAdm(),
                 _seguridad,
@@ -153,8 +153,11 @@ namespace ModInventario.src
                 CreateInstancia_EditarCambiarPrecio(),
                 CreateInstancia_VisualizarPrecio(),
                 CreateInstancia_HistoricoPrecio(),
+                hndTCS,
+                CreateInstancia_ListarVisDepositos(hndTCS),
                 _fabrica);
         }
+
         public Visor.Traslado.IVisorTraslado 
             CreateInstancia_VisorTraslado()
         {
@@ -185,6 +188,28 @@ namespace ModInventario.src
         {
             return new Reportes.Filtros.MaestroPrecioSucursal.Filtros();
         }
+        private TallaColorSabor.Visualizar.IVer 
+            CreateInstancia_TallaColorSabor()
+        {
+            return new src.TallaColorSabor.Visualizar.ImpVer();
+        }
+        private Producto.Deposito.VerLista.IVerLista 
+            CreateInstancia_ListarVisDepositos(src.TallaColorSabor.Visualizar.IVer hndTCS)
+        {
+            var hndVisualizarDeposito = CreateInstancia_VisualizarDeposito();
+            var hndEditarDeposito = CreateInstancia_EditarDeposito();
+            return new src.Producto.Deposito.VerLista.ImpVerLista(hndTCS,
+                                                                    hndVisualizarDeposito,
+                                                                    hndEditarDeposito);
+        }
+        private src.Producto.Deposito.Editar.IEditar 
+            CreateInstancia_EditarDeposito()
+        {
+            return new src.Producto.Deposito.Editar.ImpEditar();        }
+        private src.Producto.Deposito.Visualizar.IVisualizar
+            CreateInstancia_VisualizarDeposito()
+        {
+            return new src.Producto.Deposito.Visualizar.ImpVisualizar();
+        }
     }
-
 }

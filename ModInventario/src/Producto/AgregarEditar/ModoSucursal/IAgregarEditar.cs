@@ -9,8 +9,7 @@ using System.Windows.Forms;
 
 namespace ModInventario.src.Producto.AgregarEditar.ModoSucursal
 {
-    
-    public interface IAgregarEditar: IBaseAgregarEditar
+    public interface IAgregarEditar: IBaseAgregarEditar, TallaColorSabor.ITallaColorSabor
     {
         string GetTitulo { get; }
         string GetModeloProducto { get;  }
@@ -60,6 +59,6 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoSucursal
         void EditarCodigo();
         bool EditarCodigoIsOk { get; }
 
+        void RefrescaTallaColorSabor();
     }
-
 }

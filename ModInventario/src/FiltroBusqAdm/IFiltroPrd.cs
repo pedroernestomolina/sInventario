@@ -8,10 +8,8 @@ using System.Windows.Forms;
 
 namespace ModInventario.src.FiltroBusqAdm
 {
-
     public interface IFiltroPrd: ModInventario.FiltrosGen.AdmProducto.IAdmProducto, Gestion.IAbandonar
     {
-
         BindingSource GetDepartamentoSource { get; }
         BindingSource GetGrupoSource { get; }
         BindingSource GetMarcaSource { get; }
@@ -41,7 +39,5 @@ namespace ModInventario.src.FiltroBusqAdm
 
         bool LimpiarOpcionesIsOk { get; }
         void LimpiarOpciones();
-
     }
-
 }

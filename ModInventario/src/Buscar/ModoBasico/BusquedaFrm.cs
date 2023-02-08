@@ -11,11 +11,8 @@ using System.Windows.Forms;
 
 namespace ModInventario.src.Buscar.ModoBasico
 {
-
     public partial class BusquedaFrm : Form
     {
-
-
         private ModInventario.Buscar.Gestion _controlador;
 
 
@@ -415,7 +412,7 @@ namespace ModInventario.src.Buscar.ModoBasico
         }
         private void GetImagen()
         {
-            _controlador.GetImagen();
+            _controlador.VerImagen();
         }
 
         private void BT_PROVEEDORES_Click(object sender, EventArgs e)
@@ -462,7 +459,5 @@ namespace ModInventario.src.Buscar.ModoBasico
                 _controlador.setTipoBusqueda(CB_TIPO_BUSQUEDA.SelectedValue.ToString());
             }
         }
-      
     }
-
 }

@@ -16,7 +16,6 @@ namespace DataProvInventario.Data
             Producto_GetLista(OOB.LibInventario.Producto.Filtro filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Producto.Data.Ficha>();
-
             var filtroDto = new DtoLibInventario.Producto.Filtro()
             {
                 autoProducto = filtro.autoProducto,
@@ -38,6 +37,7 @@ namespace DataProvInventario.Data
                 activarBusquedaPorTrasalado = filtro.activarBusquedaParaMovTraslado,
                 autoDepOrigen = filtro.autoDepOrigen,
                 autoDepDestino = filtro.autoDepDestino,
+                estatusTCS = filtro.estatusTCS,
             };
             var r01 = MyData.Producto_GetLista(filtroDto);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
@@ -132,7 +132,6 @@ namespace DataProvInventario.Data
                     break;
             }
             rt.Lista = list;
-
             return rt;
         }
         public OOB.ResultadoLista<OOB.LibInventario.Producto.Origen.Ficha> 
@@ -623,13 +622,11 @@ namespace DataProvInventario.Data
             Producto_Editar_GetFicha(string autoPrd)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Producto.Editar.Obtener.Ficha>();
-
             var r01 = MyData.Producto_Editar_GetFicha(autoPrd);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
                 throw new Exception(r01.Mensaje);
             }
-
             var nr = new OOB.LibInventario.Producto.Editar.Obtener.Ficha();
             var codigosAlt = new List<OOB.LibInventario.Producto.Editar.Obtener.FichaAlterno>();
             var e = r01.Entidad;
@@ -670,23 +667,34 @@ namespace DataProvInventario.Data
                 nr.contEmpVentaTipo_1 = e.contEmpVentaTipo_1;
                 nr.contEmpVentaTipo_2 = e.contEmpVentaTipo_2;
                 nr.contEmpVentaTipo_3 = e.contEmpVentaTipo_3;
-
+                //
+                nr.estatusTallaColorSabor = e.estatusTallaColorSabor;
+                nr.tallaColorSabor = new OOB.LibInventario.Producto.Editar.Obtener.FichaTallaColorSabor()
+                {
+                    ListaTallaColorSabor = e.tallaColorSabor.Select(s =>
+                    {
+                        var _nr = new OOB.LibInventario.Producto.Editar.Obtener.TallaColorSabor()
+                        {
+                            Descripcion = s.descripcion,
+                            Id = s.id,
+                        };
+                        return _nr;
+                    }).ToList(),
+                };
+                //
                 foreach (var rg in e.CodigosAlterno)
                 {
                     codigosAlt.Add(new OOB.LibInventario.Producto.Editar.Obtener.FichaAlterno() { Codigo = rg.Codigo });
                 }
             }
-
             nr.CodigosAlterno = codigosAlt;
             rt.Entidad = nr;
-
             return rt;
         }
         public OOB.Resultado 
             Producto_Editar_Actualizar(OOB.LibInventario.Producto.Editar.Actualizar.Ficha ficha)
         {
             var rt = new OOB.Resultado();
-
             var fichaDTO = new DtoLibInventario.Producto.Editar.Actualizar.Ficha()
             {
                 auto = ficha.auto,
@@ -731,7 +739,39 @@ namespace DataProvInventario.Data
                 codAlterno.Add(new DtoLibInventario.Producto.Editar.Actualizar.FichaCodAlterno() { codigo = rg.Codigo });
             }
             fichaDTO.codigosAlterno = codAlterno;
-
+            //
+            fichaDTO.tallaColorSabor = null;
+            if (ficha.tallaColorSabor != null)
+            {
+                var _lst = ficha.tallaColorSabor.ListaTallaColorSabor.Select(s =>
+                {
+                    var _accion= DtoLibInventario.Producto.Editar.Actualizar.Enumerados.EnumAccionTallaColorSabor.SinDefinir;
+                    switch (s.AccionEjecutar.ToString().ToUpper()) 
+                    {
+                        case "1":
+                            _accion = DtoLibInventario.Producto.Editar.Actualizar.Enumerados.EnumAccionTallaColorSabor.Agregar;
+                            break;
+                        case "2":
+                            _accion = DtoLibInventario.Producto.Editar.Actualizar.Enumerados.EnumAccionTallaColorSabor.Editar;
+                            break;
+                        case "3":
+                            _accion = DtoLibInventario.Producto.Editar.Actualizar.Enumerados.EnumAccionTallaColorSabor.Eliminar;
+                            break;
+                    }
+                    var nr = new DtoLibInventario.Producto.Editar.Actualizar.TallaColorSabor()
+                    {
+                        Descripcion = s.Descripcion,
+                        Id = s.Id,
+                        Accion = _accion,
+                    };
+                    return nr;
+                }).ToList();
+                fichaDTO.tallaColorSabor = new DtoLibInventario.Producto.Editar.Actualizar.FichaTallaColorSabor()
+                {
+                    ListaTallaColorSabor = _lst,
+                };
+            }
+            //
             var r01 = MyData.Producto_Editar_Actualizar(fichaDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
@@ -739,14 +779,12 @@ namespace DataProvInventario.Data
                 rt.Result = OOB.Enumerados.EnumResult.isError;
                 return rt;
             }
-
             return rt;
         }
         public OOB.ResultadoAuto 
             Producto_Nuevo_Agregar(OOB.LibInventario.Producto.Agregar.Ficha ficha)
         {
             var rt = new OOB.ResultadoAuto();
-
             var fichaDTO = new DtoLibInventario.Producto.Agregar.Ficha()
             {
                 abc = ficha.abc,
@@ -791,7 +829,24 @@ namespace DataProvInventario.Data
                 codAlterno.Add(new DtoLibInventario.Producto.Agregar.FichaCodAlterno() { codigo = rg.Codigo });
             }
             fichaDTO.codigosAlterno = codAlterno;
-
+            //
+            fichaDTO.tallaColorSabor = null;
+            if (ficha.tallaColorSabor != null) 
+            {
+                var _lst = ficha.tallaColorSabor.ListaTallaColorSabor.Select(s =>
+                {
+                    var nr = new DtoLibInventario.Producto.Agregar.TallaColorSabor() 
+                    {
+                         Descripcion= s.Descripcion,
+                    };
+                    return nr;
+                }).ToList();
+                fichaDTO.tallaColorSabor = new DtoLibInventario.Producto.Agregar.FichaTallaColorSabor()
+                {
+                    ListaTallaColorSabor = _lst,
+                };
+            }
+            //
             var r01 = MyData.Producto_Nuevo_Agregar(fichaDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
@@ -807,7 +862,6 @@ namespace DataProvInventario.Data
             Producto_GetDeposito(OOB.LibInventario.Producto.Depositos.Ver.Filtro filtro)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Producto.Depositos.Ver.Ficha>();
-
             var filtroDTO = new DtoLibInventario.Producto.Depositos.Ver.Filtro()
             {
                 autoDeposito = filtro.autoDeposito,
@@ -816,9 +870,7 @@ namespace DataProvInventario.Data
             var r01 = MyData.Producto_GetDeposito(filtroDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
 
             var s= r01.Entidad;
@@ -848,14 +900,12 @@ namespace DataProvInventario.Data
                 ubicacion_4 = s.ubicacion_4,
             };
             rt.Entidad=nr;
-
             return rt;
         }
         public OOB.Resultado
             Producto_EditarDeposito(OOB.LibInventario.Producto.Depositos.Editar.Ficha ficha)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Producto.Depositos.Editar.Ficha>();
-
             var fichaDTO = new DtoLibInventario.Producto.Depositos.Editar.Ficha()
             {
                 autoDeposito = ficha.autoDeposito,
@@ -871,11 +921,8 @@ namespace DataProvInventario.Data
             var r01 = MyData.Producto_DepositoEditar(fichaDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError) 
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
-
             return rt;
         }
         public OOB.Resultado 

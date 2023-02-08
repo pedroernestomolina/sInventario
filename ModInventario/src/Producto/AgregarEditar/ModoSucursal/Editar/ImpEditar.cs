@@ -8,9 +8,10 @@ using System.Windows.Forms;
 
 namespace ModInventario.src.Producto.AgregarEditar.ModoSucursal.Editar
 {
-    
     public class ImpEditar: BaseAgregarEditarModoSucursal, IEditar
     {
+        private OOB.LibInventario.Producto.Editar.Obtener.FichaTallaColorSabor _tallaColorSabor;
+
 
         public override string GetTitulo { get { return "Editar/Actualizar Ficha"; } }
         public override bool HabilitarEditarCodigo { get { return true; } }
@@ -40,6 +41,7 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoSucursal.Editar
             _agregarDepartamento = new MaestrosInv.Departamento.Agregar.Gestion();
             _agregarGrupo= new MaestrosInv.Grupo.Agregar.Gestion();
             _agregarMarca= new MaestrosInv.Marca.Agregar.Gestion();
+            _gTallaColorSabor = new TallaColorSabor.ImpTallaColorSabor();
         }
 
         public override void Inicializa()
@@ -66,6 +68,7 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoSucursal.Editar
             _agregarDepartamento.Inicializa();
             _agregarGrupo.Inicializa();
             _agregarMarca.Inicializa();
+            _gTallaColorSabor.Inicializa();
         }
 
         AgregarEditarFrm frm;
@@ -138,6 +141,9 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoSucursal.Editar
                         _lst.Add(rg.Codigo);
                     }
                     _gCodAlterno.CargarData(_lst);
+                    //
+                    _tallaColorSabor = ent.tallaColorSabor;
+                    RefrescaTallaColorSabor();
                     return true;
                 }
                 catch (Exception e)
@@ -240,6 +246,46 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoSucursal.Editar
                     codAlterno.Add(new OOB.LibInventario.Producto.Editar.Actualizar.FichaCodigoAlterno() { Codigo = rg.codigo });
                 }
                 ficha.codigosAlterno = codAlterno;
+
+                //
+                ficha.tallaColorSabor = null;
+                var _lstTallaColorSabor = _gTallaColorSabor.DataRetornar().Select(s =>
+                {
+                    var _accion = "2";
+                    if (s.Id == -1)  //AGREGAR NUEVO
+                    {
+                        _accion = "1";
+                    }
+                    var nr = new OOB.LibInventario.Producto.Editar.Actualizar.TallaColorSabor()
+                    {
+                        Descripcion = s.Descripcion,
+                        Id = s.Id,
+                        AccionEjecutar = _accion,
+                    };
+                    return nr;
+                }).ToList();
+                foreach (var rg in _tallaColorSabor.ListaTallaColorSabor)
+                {
+                    var _ent = _lstTallaColorSabor.FirstOrDefault(f => f.Id == rg.Id);
+                    if (_ent == null) // FUE ELIMINADO
+                    {
+                        var nr = new OOB.LibInventario.Producto.Editar.Actualizar.TallaColorSabor()
+                        {
+                            Descripcion = rg.Descripcion,
+                            Id = rg.Id,
+                            AccionEjecutar = "3",
+                        };
+                        _lstTallaColorSabor.Add(nr);
+                    }
+                }
+                if (_lstTallaColorSabor.Count > 0)
+                {
+                    ficha.tallaColorSabor = new OOB.LibInventario.Producto.Editar.Actualizar.FichaTallaColorSabor()
+                    {
+                        ListaTallaColorSabor = _lstTallaColorSabor,
+                    };
+                }
+                //
                 var r02 = Sistema.MyData.Producto_Editar_Actualizar(ficha);
                 if (r02.Result == OOB.Enumerados.EnumResult.isError)
                 {
@@ -260,6 +306,18 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoSucursal.Editar
             _data.setImagenRaw(p);
         }
 
+        public override void RefrescaTallaColorSabor()
+        {
+            var _lstTallaColorSabor = _tallaColorSabor.ListaTallaColorSabor.Select(s =>
+            {
+                var nr = new TallaColorSabor.data()
+                {
+                    Descripcion = s.Descripcion,
+                    Id = s.Id,
+                };
+                return nr;
+            }).ToList();
+            _gTallaColorSabor.CargarData(_lstTallaColorSabor);
+        }
     }
-
 }

@@ -27,6 +27,7 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoSucursal
             InitializeComponent();
             Inicializar();
             InicializarGridAlterno();
+            InicializarGridTallaColorSabor();
         }
 
         private void InicializarGridAlterno()
@@ -55,7 +56,32 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoSucursal
 
             DGV.Columns.Add(c1);
         }
+        private void InicializarGridTallaColorSabor()
+        {
+            var f = new Font("Serif", 8, FontStyle.Bold);
+            var f1 = new Font("Serif", 10, FontStyle.Regular);
 
+            DGV_TALLA_COLOR_SABOR.AllowUserToAddRows = false;
+            DGV_TALLA_COLOR_SABOR.AllowUserToDeleteRows = false;
+            DGV_TALLA_COLOR_SABOR.AutoGenerateColumns = false;
+            DGV_TALLA_COLOR_SABOR.AllowUserToResizeRows = false;
+            DGV_TALLA_COLOR_SABOR.AllowUserToResizeColumns = false;
+            DGV_TALLA_COLOR_SABOR.AllowUserToOrderColumns = false;
+            DGV_TALLA_COLOR_SABOR.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DGV_TALLA_COLOR_SABOR.MultiSelect = false;
+            DGV_TALLA_COLOR_SABOR.ReadOnly = true;
+
+            var c1 = new DataGridViewTextBoxColumn();
+            c1.DataPropertyName = "Descripcion";
+            c1.HeaderText = "Descripción";
+            c1.Visible = true;
+            c1.HeaderCell.Style.Font = f;
+            c1.DefaultCellStyle.Font = f1;
+            c1.MinimumWidth = 180;
+            c1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            DGV_TALLA_COLOR_SABOR.Columns.Add(c1);
+        }
         private void Inicializar()
         {
             CB_DEPARTAMENTO.DisplayMember = "desc";
@@ -106,6 +132,7 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoSucursal
             BT_EDITAR_CODIGO.Visible = _controlador.HabilitarEditarCodigo;
             TB_CODIGO.Enabled = !_controlador.HabilitarEditarCodigo;
             DGV.DataSource = _controlador.GetCodAlterno_Source;
+            DGV_TALLA_COLOR_SABOR.DataSource = _controlador.GetTallaColorSabor_Source;
 
             CB_DEPARTAMENTO.DataSource = _controlador.GetDepartamento_Source;
             CB_GRUPO.DataSource = _controlador.GetGrupo_Source;
@@ -166,6 +193,8 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoSucursal
                 }
             }
 
+            TB_TALLA_COLOR_SABOR.Text = _controlador.GetTallaColorSabor_Desc;
+            ActualizarTallaColorSabor();
             inicializarData = false;
         }
 
@@ -561,6 +590,46 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoSucursal
             }
         }
 
-    }
 
+        //
+        private void TB_TALLA_COLOR_SABOR_Leave(object sender, EventArgs e)
+        {
+            _controlador.setTallaColorSabor(TB_TALLA_COLOR_SABOR.Text.Trim().ToUpper());
+        }
+
+        private void BT_AGREGAR_TALLA_COLOR_SABOR_Click(object sender, EventArgs e)
+        {
+            AgregarTallaColorSabor();
+            ActualizarTallaColorSabor();
+        }
+        private void BT_ELIMINAR_TALLA_COLOR_SABOR_Click(object sender, EventArgs e)
+        {
+            ElminarTallaColorSabor();
+            ActualizarTallaColorSabor();
+        }
+        private void BT_REFRESH_Click(object sender, EventArgs e)
+        {
+            RefreshTallaColorSabor();
+            ActualizarTallaColorSabor();
+        }
+
+        private void ActualizarTallaColorSabor()
+        {
+            L_ITEMS_TALLA_COLOR_SABOR.Text = "Cant Items: "+_controlador.GetTallaColorSabor_CntItems.ToString();
+        }
+
+        private void AgregarTallaColorSabor()
+        {
+            _controlador.AgregarTallaColorSabor();
+            TB_TALLA_COLOR_SABOR.Text = _controlador.GetTallaColorSabor_Desc;
+        }
+        private void ElminarTallaColorSabor()
+        {
+            _controlador.EliminarTallaColorSabor();
+        }
+        private void RefreshTallaColorSabor()
+        {
+            _controlador.RefrescaTallaColorSabor();
+        }
+    }
 }

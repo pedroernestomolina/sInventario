@@ -202,6 +202,8 @@
             this.BT_ASIGNAR_DEPOSITO = new System.Windows.Forms.Button();
             this.panel52 = new System.Windows.Forms.Panel();
             this.BT_MOV_KARDEX = new System.Windows.Forms.Button();
+            this.panel77 = new System.Windows.Forms.Panel();
+            this.BT_TALLA_COLOR_SABOR = new System.Windows.Forms.Button();
             this.panel40 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.panel44 = new System.Windows.Forms.Panel();
@@ -338,6 +340,7 @@
             this.panel50.SuspendLayout();
             this.panel51.SuspendLayout();
             this.panel52.SuspendLayout();
+            this.panel77.SuspendLayout();
             this.panel40.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
             this.panel43.SuspendLayout();
@@ -2455,6 +2458,7 @@
             this.tableLayoutPanel15.Controls.Add(this.panel50, 0, 0);
             this.tableLayoutPanel15.Controls.Add(this.panel51, 1, 0);
             this.tableLayoutPanel15.Controls.Add(this.panel52, 0, 1);
+            this.tableLayoutPanel15.Controls.Add(this.panel77, 1, 1);
             this.tableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel15.Location = new System.Drawing.Point(1, 1);
             this.tableLayoutPanel15.Margin = new System.Windows.Forms.Padding(1);
@@ -2544,6 +2548,33 @@
             this.toolTip1.SetToolTip(this.BT_MOV_KARDEX, "Movimiento del Producto");
             this.BT_MOV_KARDEX.UseVisualStyleBackColor = true;
             this.BT_MOV_KARDEX.Click += new System.EventHandler(this.BT_MOV_KARDEX_Click);
+            // 
+            // panel77
+            // 
+            this.panel77.Controls.Add(this.BT_TALLA_COLOR_SABOR);
+            this.panel77.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel77.Location = new System.Drawing.Point(38, 43);
+            this.panel77.Margin = new System.Windows.Forms.Padding(1);
+            this.panel77.Name = "panel77";
+            this.panel77.Padding = new System.Windows.Forms.Padding(4);
+            this.panel77.Size = new System.Drawing.Size(36, 41);
+            this.panel77.TabIndex = 3;
+            // 
+            // BT_TALLA_COLOR_SABOR
+            // 
+            this.BT_TALLA_COLOR_SABOR.BackgroundImage = global::ModInventario.Properties.Resources.bt_paleta_colores_2_48;
+            this.BT_TALLA_COLOR_SABOR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BT_TALLA_COLOR_SABOR.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_TALLA_COLOR_SABOR.FlatAppearance.BorderSize = 0;
+            this.BT_TALLA_COLOR_SABOR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_TALLA_COLOR_SABOR.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_TALLA_COLOR_SABOR.Location = new System.Drawing.Point(4, 4);
+            this.BT_TALLA_COLOR_SABOR.Name = "BT_TALLA_COLOR_SABOR";
+            this.BT_TALLA_COLOR_SABOR.Size = new System.Drawing.Size(28, 33);
+            this.BT_TALLA_COLOR_SABOR.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.BT_TALLA_COLOR_SABOR, "Talla / Colores / Sabores");
+            this.BT_TALLA_COLOR_SABOR.UseVisualStyleBackColor = true;
+            this.BT_TALLA_COLOR_SABOR.Click += new System.EventHandler(this.BT_TALLA_COLOR_SABOR_Click);
             // 
             // panel40
             // 
@@ -2973,6 +3004,7 @@
             this.panel50.ResumeLayout(false);
             this.panel51.ResumeLayout(false);
             this.panel52.ResumeLayout(false);
+            this.panel77.ResumeLayout(false);
             this.panel40.ResumeLayout(false);
             this.tableLayoutPanel12.ResumeLayout(false);
             this.panel43.ResumeLayout(false);
@@ -3188,5 +3220,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel76;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel77;
+        private System.Windows.Forms.Button BT_TALLA_COLOR_SABOR;
     }
 }

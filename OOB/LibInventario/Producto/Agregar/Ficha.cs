@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace OOB.LibInventario.Producto.Agregar
 {
-    
     public class Ficha
     {
-
         public string autoDepartamento { get; set; }
         public string autoGrupo { get; set; }
         public string autoMarca { get; set; }
@@ -49,7 +47,8 @@ namespace OOB.LibInventario.Producto.Agregar
         public int contEmpVentaTipo_1 { get; set; }
         public int contEmpVentaTipo_2 { get; set; }
         public int contEmpVentaTipo_3 { get; set; }
-
+        //
+        public FichaTallaColorSabor tallaColorSabor { get; set; }
 
         public Ficha()
         {
@@ -58,7 +57,5 @@ namespace OOB.LibInventario.Producto.Agregar
             modelo = "";
             imagen = new byte[] { };
         }
-
     }
-
 }

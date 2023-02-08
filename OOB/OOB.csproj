@@ -175,6 +175,8 @@
     <Compile Include="LibInventario\Producto\AdmDivisa\Ficha.cs" />
     <Compile Include="LibInventario\Producto\Agregar\Ficha.cs" />
     <Compile Include="LibInventario\Producto\Agregar\FichaCodAlterno.cs" />
+    <Compile Include="LibInventario\Producto\Agregar\FichaTallaColorSabor.cs" />
+    <Compile Include="LibInventario\Producto\Agregar\TallaColorSabor.cs" />
     <Compile Include="LibInventario\Producto\Categoria\Ficha.cs" />
     <Compile Include="LibInventario\Producto\ClasificacionAbc\Ficha.cs" />
     <Compile Include="LibInventario\Producto\Data\CodAlterno.cs" />
@@ -202,8 +204,12 @@
     <Compile Include="LibInventario\Producto\Editar\Actualizar\Ficha.cs" />
     <Compile Include="LibInventario\Producto\Editar\Actualizar\FichaCodigoAlterno.cs" />
     <Compile Include="LibInventario\Producto\Editar\Actualizar\FichaPrecio.cs" />
+    <Compile Include="LibInventario\Producto\Editar\Actualizar\FichaTallaColorSabor.cs" />
+    <Compile Include="LibInventario\Producto\Editar\Actualizar\TallaColorSabor.cs" />
     <Compile Include="LibInventario\Producto\Editar\Obtener\Ficha.cs" />
     <Compile Include="LibInventario\Producto\Editar\Obtener\FichaAlterno.cs" />
+    <Compile Include="LibInventario\Producto\Editar\Obtener\FichaTallaColorSabor.cs" />
+    <Compile Include="LibInventario\Producto\Editar\Obtener\TallaColorSabor.cs" />
     <Compile Include="LibInventario\Producto\Enumerados.cs" />
     <Compile Include="LibInventario\Producto\Estatus\Actual\Ficha.cs" />
     <Compile Include="LibInventario\Producto\Estatus\Lista\Ficha.cs" />
@@ -256,6 +262,9 @@
     <Compile Include="LibInventario\Sistema\TipoDocumento\enumerados.cs" />
     <Compile Include="LibInventario\Sucursal\Ficha.cs" />
     <Compile Include="LibInventario\Sucursal\Filtro.cs" />
+    <Compile Include="LibInventario\TallaColorSabor\Existencia\ExDepTCS.cs" />
+    <Compile Include="LibInventario\TallaColorSabor\Existencia\Ficha.cs" />
+    <Compile Include="LibInventario\TallaColorSabor\Existencia\Filtro.cs" />
     <Compile Include="LibInventario\TasaImpuesto\Ficha.cs" />
     <Compile Include="LibInventario\Tool\AjusteNivelMinimoMaximoProducto\Ajustar\Ficha.cs" />
     <Compile Include="LibInventario\Tool\AjusteNivelMinimoMaximoProducto\Capturar\Ficha.cs" />

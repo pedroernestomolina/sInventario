@@ -102,11 +102,7 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
                     _gDeposito.setData(lstDeposito);
 
                     var r03 = Sistema.MyData.Configuracion_VisualizarProductosInactivos();
-                    if (r03.Result == OOB.Enumerados.EnumResult.isError)
-                    {
-                        Helpers.Msg.Error(r03.Mensaje);
-                        return false;
-                    }
+
                     var lstEstatus = new List<ficha>();
                     lstEstatus.Add(new ficha("01", "", "ACTIVO"));
                     lstEstatus.Add(new ficha("02", "", "SUSPENDIDO"));

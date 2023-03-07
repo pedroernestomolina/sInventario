@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace ModInventario.FiltrosGen
 {
-
     public interface IOpcion
     {
         System.Windows.Forms.BindingSource Source { get; }
@@ -21,5 +20,4 @@ namespace ModInventario.FiltrosGen
         void Limpiar();
         void Inicializa();
     }
-
 }

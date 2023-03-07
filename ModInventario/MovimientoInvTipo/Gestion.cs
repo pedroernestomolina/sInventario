@@ -91,38 +91,35 @@ namespace ModInventario.MovimientoInvTipo
 
         private bool CargarData()
         {
-            var r01 = Sistema.MyData.FechaServidor();
-            if (r01.Result == OOB.Enumerados.EnumResult.isError)
+            try
             {
-                Helpers.Msg.Error(r01.Mensaje);
+                var r01 = Sistema.MyData.FechaServidor();
+                _fechaSistema = r01.Entidad.Date;
+
+                var r02 = Sistema.MyData.Configuracion_PreferenciaBusqueda();
+                switch (r02.Entidad)
+                {
+                    case OOB.LibInventario.Configuracion.Enumerados.EnumPreferenciaBusqueda.PorCodigo:
+                        _gBusqPrd.setMetBusqByCodigo();
+                        break;
+                    case OOB.LibInventario.Configuracion.Enumerados.EnumPreferenciaBusqueda.PorNombre:
+                        _gBusqPrd.setMetBusqByNombre();
+                        break;
+                    case OOB.LibInventario.Configuracion.Enumerados.EnumPreferenciaBusqueda.PorReferencia:
+                        _gBusqPrd.setMetBusqByReferencia();
+                        break;
+                }
+                if (_gTipo.CargarData())
+                {
+                    return true;
+                }
                 return false;
             }
-            _fechaSistema = r01.Entidad.Date;
-
-            var r02 = Sistema.MyData.Configuracion_PreferenciaBusqueda();
-            if (r02.Result == OOB.Enumerados.EnumResult.isError)
+            catch (Exception e)
             {
-                Helpers.Msg.Error(r02.Mensaje);
+                Helpers.Msg.Error(e.Message);
                 return false;
             }
-            switch (r02.Entidad) 
-            {
-                case OOB.LibInventario.Configuracion.Enumerados.EnumPreferenciaBusqueda.PorCodigo:
-                    _gBusqPrd.setMetBusqByCodigo();
-                    break;
-                case OOB.LibInventario.Configuracion.Enumerados.EnumPreferenciaBusqueda.PorNombre:
-                    _gBusqPrd.setMetBusqByNombre();
-                    break;
-                case OOB.LibInventario.Configuracion.Enumerados.EnumPreferenciaBusqueda.PorReferencia:
-                    _gBusqPrd.setMetBusqByReferencia();
-                    break;
-            }
-            if (_gTipo.CargarData()) 
-            {
-                return true;
-            }
-
-            return false;
         }
 
         public void setTipoMov(ITipo ctrTipo)

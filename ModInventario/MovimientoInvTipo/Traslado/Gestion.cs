@@ -122,15 +122,17 @@ namespace ModInventario.MovimientoInvTipo.Traslado
 
             if (_activarPorDevolucion)
             {
-                var r11 = Sistema.MyData.Configuracion_DepositoConceptoPreDeterminadoDevolucionMercancia();
-                if (r11.Result == OOB.Enumerados.EnumResult.isError)
+                try
                 {
-                    Helpers.Msg.Error(r11.Mensaje);
+                    var r11 = Sistema.MyData.Configuracion_DepositoConceptoPreDeterminadoDevolucionMercancia();
+                    Id_Concepto_Devolucion = r11.Entidad.IdConcepto;
+                    Id_Deposito_Devolucion = r11.Entidad.IdDeposito;
+                }
+                catch (Exception e)
+                {
+                    Helpers.Msg.Error(e.Message);
                     return false;
                 }
-                Id_Concepto_Devolucion = r11.Entidad.IdConcepto;
-                Id_Deposito_Devolucion = r11.Entidad.IdDeposito;
-
                 var r22 = Sistema.MyData.Concepto_GetFicha(Id_Concepto_Devolucion);
                 if (r22.Result == OOB.Enumerados.EnumResult.isError)
                 {

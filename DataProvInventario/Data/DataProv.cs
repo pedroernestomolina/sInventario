@@ -9,10 +9,8 @@ using System.Threading.Tasks;
 
 namespace DataProvInventario.Data
 {
-    
     public partial class DataProv: IData
     {
-
         public static IService MyData;
 
 
@@ -71,7 +69,5 @@ namespace DataProvInventario.Data
             result.Entidad = r01.Entidad;
             return result;
         }
-
     }
-
 }

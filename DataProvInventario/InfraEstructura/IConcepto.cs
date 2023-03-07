@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace DataProvInventario.InfraEstructura
 {
-    
     public interface IConcepto
     {
-
         OOB.ResultadoLista<OOB.LibInventario.Concepto.Ficha> 
             Concepto_GetLista();
         OOB.ResultadoEntidad<OOB.LibInventario.Concepto.Ficha> 
@@ -23,7 +21,5 @@ namespace DataProvInventario.InfraEstructura
             Concepto_PorTraslado();
         OOB.Resultado 
             Concepto_Eliminar(string auto);
-
     }
-
 }

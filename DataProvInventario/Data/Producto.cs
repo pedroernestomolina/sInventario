@@ -974,15 +974,11 @@ namespace DataProvInventario.Data
             Producto_Estatus_GetFicha(string autoPrd)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Producto.Estatus.Actual.Ficha>();
-
             var r01 = MyData.Producto_Estatus_GetFicha(autoPrd);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
-
             var s= r01.Entidad;
             var nr = new OOB.LibInventario.Producto.Estatus.Actual.Ficha()
             {
@@ -993,7 +989,6 @@ namespace DataProvInventario.Data
                 referenciaProducto = s.referenciaProducto,
             };
             rt.Entidad = nr;
-
             return rt;
         }
         public OOB.ResultadoEntidad<OOB.LibInventario.Producto.Data.Imagen> 
@@ -1206,16 +1201,12 @@ namespace DataProvInventario.Data
             Producto_GetId_ByCodigoBarra(string codBarra)
         {
             var rt = new OOB.ResultadoEntidad<string>();
-
             var r01 = MyData.Producto_GetId_ByCodigoBarra(codBarra);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
             rt.Entidad = r01.Entidad;
-
             return rt;
         }
         public OOB.ResultadoEntidad<OOB.LibInventario.Producto.Precio.Ficha> 
@@ -1318,7 +1309,5 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
     }
-
 }

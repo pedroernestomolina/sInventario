@@ -41,7 +41,7 @@ namespace ModInventario.Producto.Precio.VerVisualizar
             var rt = _neto;
             if (tasaIva > 0)
             {
-                rt = _neto + (_neto + tasaIva * 100);
+                rt = _neto + (_neto * tasaIva / 100);
             }
             return rt;
         }

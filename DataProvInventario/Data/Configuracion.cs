@@ -9,10 +9,8 @@ using System.Threading.Tasks;
 
 namespace DataProvInventario.Data
 {
-
     public partial class DataProv: IData
     {
-
         public OOB.ResultadoEntidad<Enumerados.modoConfInventario> 
             Configuracion_ModuloInventario_Modo()
         {
@@ -45,18 +43,13 @@ namespace DataProvInventario.Data
             Configuracion_PreferenciaBusqueda()
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Configuracion.Enumerados.EnumPreferenciaBusqueda>();
-
             var r01 = MyData.Configuracion_PreferenciaBusqueda();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
-
             var s = r01.Entidad;
             rt.Entidad = (OOB.LibInventario.Configuracion.Enumerados.EnumPreferenciaBusqueda) s;
-
             return rt;
         }
         public OOB.ResultadoEntidad<OOB.LibInventario.Configuracion.Enumerados.EnumMetodoCalculoUtilidad> 
@@ -159,16 +152,12 @@ namespace DataProvInventario.Data
             Configuracion_VisualizarProductosInactivos()
         {
             var rt = new OOB.ResultadoEntidad<bool>();
-
             var r01 = MyData.Configuracion_VisualizarProductosInactivos();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
             rt.Entidad = r01.Entidad.Trim().ToUpper()=="SI"?true:false;
-
             return rt;
         }
         public OOB.ResultadoEntidad<int> 
@@ -424,13 +413,10 @@ namespace DataProvInventario.Data
             Configuracion_DepositoConceptoPreDeterminadoDevolucionMercancia()
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Configuracion.DepositoConceptoDevMerc.Captura.Ficha>();
-
             var r01 = MyData.Configuracion_DepositoConceptoPreDeterminadoParaDevolucion();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
             var s= r01.Entidad;
             var rg = new OOB.LibInventario.Configuracion.DepositoConceptoDevMerc.Captura.Ficha()
@@ -439,7 +425,6 @@ namespace DataProvInventario.Data
                 IdDeposito = s.IdDeposito,
             };
             rt.Entidad= rg;
-
             return rt;
         }
         public OOB.Resultado 
@@ -495,7 +480,5 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
     }
-
 }

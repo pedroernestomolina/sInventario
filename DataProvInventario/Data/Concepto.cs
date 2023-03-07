@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace DataProvInventario.Data
 {
-    
     public partial class DataProv: IData
     {
-
         public OOB.ResultadoEntidad<OOB.LibInventario.Concepto.Ficha> 
             Concepto_PorTraslado()
         {
@@ -40,7 +38,6 @@ namespace DataProvInventario.Data
             Concepto_GetLista()
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Concepto.Ficha>();
-
             var r01 = MyData.Concepto_GetLista();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
@@ -63,7 +60,6 @@ namespace DataProvInventario.Data
                 }
             }
             rt.Lista = list;
-
             return rt;
         }
         public OOB.ResultadoEntidad<OOB.LibInventario.Concepto.Ficha> 
@@ -147,7 +143,5 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
     }
-
 }

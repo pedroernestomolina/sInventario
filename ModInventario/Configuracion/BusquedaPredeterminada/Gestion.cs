@@ -54,34 +54,32 @@ namespace ModInventario.Configuracion.BusquedaPredeterminada
 
         private bool CargarData()
         {
-            var rt = true;
-
-            var r01 = Sistema.MyData.Configuracion_PreferenciaBusqueda();
-            if (r01.Result == OOB.Enumerados.EnumResult.isError)
+            try
             {
-                Helpers.Msg.Error(r01.Mensaje);
+                var r01 = Sistema.MyData.Configuracion_PreferenciaBusqueda();
+                _ldata.Clear();
+                _ldata.Add(new data("1", "Codigo"));
+                _ldata.Add(new data("2", "Nombre"));
+                _ldata.Add(new data("3", "Referencia"));
+                switch (r01.Entidad.ToString().ToUpper())
+                {
+                    case "PORCODIGO":
+                        _busquedaPred = _ldata.FirstOrDefault(f => f.auto == "1");
+                        break;
+                    case "PORNOMBRE":
+                        _busquedaPred = _ldata.FirstOrDefault(f => f.auto == "2");
+                        break;
+                    case "PORREFERENCIA":
+                        _busquedaPred = _ldata.FirstOrDefault(f => f.auto == "3");
+                        break;
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
                 return false;
             }
-
-            _ldata.Clear();
-            _ldata.Add(new data("1", "Codigo"));
-            _ldata.Add(new data("2", "Nombre"));
-            _ldata.Add(new data("3", "Referencia"));
-            
-            switch (r01.Entidad.ToString().ToUpper()) 
-            {
-                case "PORCODIGO":
-                    _busquedaPred= _ldata.FirstOrDefault(f => f.auto == "1");
-                    break;
-                case "PORNOMBRE":
-                    _busquedaPred = _ldata.FirstOrDefault(f => f.auto == "2");
-                    break;
-                case "PORREFERENCIA":
-                    _busquedaPred = _ldata.FirstOrDefault(f => f.auto == "3");
-                    break;
-            }
-
-            return rt;
         }
 
         public void Proesar()

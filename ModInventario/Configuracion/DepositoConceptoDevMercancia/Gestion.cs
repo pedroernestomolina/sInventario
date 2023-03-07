@@ -62,30 +62,25 @@ namespace ModInventario.Configuracion.DepositoConceptoDevMercancia
             try
             {
                 var r01 = Sistema.MyData.Configuracion_DepositoConceptoPreDeterminadoDevolucionMercancia();
-                if (r01.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r01.Mensaje);
-                    return false;
-                }
-
-                var lstDep = new List<ficha>();
                 var r02 = Sistema.MyData.Deposito_GetLista();
+                var r03 = Sistema.MyData.Concepto_GetLista();
+                //
+                var lstDep = new List<ficha>();
                 foreach (var rg in r02.Lista.OrderBy(o => o.nombre))
                 {
                     lstDep.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
                 }
                 _gDeposito.setData(lstDep);
                 _gDeposito.setFicha(r01.Entidad.IdDeposito);
-
+                //
                 var lstCon = new List<ficha>();
-                var r03 = Sistema.MyData.Concepto_GetLista();
                 foreach (var rg in r03.Lista.OrderBy(o => o.nombre))
                 {
                     lstCon.Add(new ficha(rg.auto, rg.codigo, rg.nombre));
                 }
                 _gConcepto.setData(lstCon);
                 _gConcepto.setFicha(r01.Entidad.IdConcepto);
-
+                //
                 return true;
             }
             catch (Exception e)

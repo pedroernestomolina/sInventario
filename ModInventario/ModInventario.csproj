@@ -902,6 +902,84 @@
     <Compile Include="src\Inicio\ModoSucursal\Principal.designer.cs">
       <DependentUpon>Principal.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\MovInventario\BaseMov.cs" />
+    <Compile Include="src\MovInventario\Cargo\CapturaMov\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\MovInventario\Cargo\CapturaMov\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\MovInventario\Cargo\CapturaMov\ImpCapturaMovCargo.cs" />
+    <Compile Include="src\MovInventario\Cargo\CapturaMov\ICapturaMovCargo.cs" />
+    <Compile Include="src\MovInventario\data.cs" />
+    <Compile Include="src\MovInventario\dataItem.cs" />
+    <Compile Include="src\MovInventario\Descargo\CapturaMov\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\MovInventario\Descargo\CapturaMov\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\MovInventario\Descargo\CapturaMov\ICapturaMovDescargo.cs" />
+    <Compile Include="src\MovInventario\Descargo\CapturaMov\ImpCapturaMovDescargo.cs" />
+    <Compile Include="src\MovInventario\Descargo\IDescargo.cs" />
+    <Compile Include="src\MovInventario\Descargo\ImpDescargo.cs" />
+    <Compile Include="src\MovInventario\Descargo\MovFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\MovInventario\Descargo\MovFrm.Designer.cs">
+      <DependentUpon>MovFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\MovInventario\Tools\CapturaMov\ICapturaMov.cs" />
+    <Compile Include="src\MovInventario\Tools\CapturaMov\IDataCaptura.cs" />
+    <Compile Include="src\MovInventario\Tools\CapturaMov\IDataPrd.cs" />
+    <Compile Include="src\MovInventario\Tools\CapturaMov\IEmpaque.cs" />
+    <Compile Include="src\MovInventario\Tools\CapturaMov\ImpDataCaptura.cs" />
+    <Compile Include="src\MovInventario\Tools\CapturaMov\ImpEmpaque.cs" />
+    <Compile Include="src\MovInventario\Tools\CapturaMov\ImpDataPrd.cs" />
+    <Compile Include="src\MovInventario\Tools\ListaMov\data.cs" />
+    <Compile Include="src\MovInventario\Tools\ListaMov\dataItem.cs" />
+    <Compile Include="src\MovInventario\Tools\ListaMov\IListaMov.cs" />
+    <Compile Include="src\MovInventario\Tools\ListaMov\ImpListaMov.cs" />
+    <Compile Include="src\MovInventario\Traslado\CapturaMov\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\MovInventario\Traslado\CapturaMov\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\MovInventario\Traslado\CapturaMov\ICapturaMovTraslado.cs" />
+    <Compile Include="src\MovInventario\Traslado\CapturaMov\ImpCapturaMovTraslado.cs" />
+    <Compile Include="src\MovInventario\Traslado\ITraslado.cs" />
+    <Compile Include="src\MovInventario\Traslado\ImpTraslado.cs" />
+    <Compile Include="src\MovInventario\Traslado\MovFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\MovInventario\Traslado\MovFrm.Designer.cs">
+      <DependentUpon>MovFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Tools\Buscar\dataExportar.cs" />
+    <Compile Include="src\Tools\Buscar\IBuscar.cs" />
+    <Compile Include="src\Tools\Buscar\ImpBuscar.cs" />
+    <Compile Include="src\Tools\BusqProducto\ImpBusqProducto.cs" />
+    <Compile Include="src\MovInventario\Cargo\ICargo.cs" />
+    <Compile Include="src\MovInventario\Cargo\ImpCargo.cs" />
+    <Compile Include="src\MovInventario\Cargo\MovFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\MovInventario\Cargo\MovFrm.Designer.cs">
+      <DependentUpon>MovFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Tools\BusqProducto\IBusqProducto.cs" />
+    <Compile Include="src\MovInventario\Tools\Concepto\IConcepto.cs" />
+    <Compile Include="src\MovInventario\Tools\Concepto\ImpConcepto.cs" />
+    <Compile Include="src\MovInventario\Tools\Deposito\IDeposito.cs" />
+    <Compile Include="src\MovInventario\Tools\Deposito\ImpDeposito.cs" />
+    <Compile Include="src\MovInventario\IDepOrigen.cs" />
+    <Compile Include="src\MovInventario\ImpMov.cs" />
+    <Compile Include="src\MovInventario\IMov.cs" />
+    <Compile Include="src\MovInventario\IBaseMov.cs" />
+    <Compile Include="src\MovInventario\ISucOrigen.cs" />
+    <Compile Include="src\MovInventario\Tools\Sucursal\ImpSucursal.cs" />
+    <Compile Include="src\MovInventario\Tools\Sucursal\ISucursal.cs" />
     <Compile Include="src\Producto\AgregarEditar\BaseAgregarEditar.cs" />
     <Compile Include="src\Producto\AgregarEditar\baseDataAgregarEditar.cs" />
     <Compile Include="src\Producto\AgregarEditar\IBaseAgregarEditar.cs" />
@@ -1001,6 +1079,66 @@
     </Compile>
     <Compile Include="src\TallaColorSabor\Visualizar\VerTallaColorSaborFrm.Designer.cs">
       <DependentUpon>VerTallaColorSaborFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Tools\FiltrosPara\Enumerados.cs" />
+    <Compile Include="src\Tools\FiltrosPara\IFiltrosPara.cs" />
+    <Compile Include="src\Tools\FiltrosPara\Productos\basePrd.cs" />
+    <Compile Include="src\Tools\FiltrosPara\Productos\filtrosExportar.cs" />
+    <Compile Include="src\Tools\FiltrosPara\dataExportar.cs" />
+    <Compile Include="src\Tools\FiltrosPara\Productos\IProducto.cs" />
+    <Compile Include="src\Tools\FiltrosPara\Productos\ModoSucursal\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Tools\FiltrosPara\Productos\ModoSucursal\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Tools\FiltrosPara\Productos\ModoSucursal\ImpSucursal.cs" />
+    <Compile Include="src\Tools\FiltrosPara\Productos\ModoSucursal\ISucursal.cs" />
+    <Compile Include="src\Tools\Filtros\Catalogo\ICatalogo.cs" />
+    <Compile Include="src\Tools\Filtros\Catalogo\ImpCatalogo.cs" />
+    <Compile Include="src\Tools\Filtros\Categoria\ICategoria.cs" />
+    <Compile Include="src\Tools\Filtros\Categoria\ImpCategoria.cs" />
+    <Compile Include="src\Tools\Filtros\Departamento\IDepartamento.cs" />
+    <Compile Include="src\Tools\Filtros\Departamento\ImpDepartamento.cs" />
+    <Compile Include="src\Tools\Filtros\Deposito\IDeposito.cs" />
+    <Compile Include="src\Tools\Filtros\Deposito\ImpDeposito.cs" />
+    <Compile Include="src\Tools\Filtros\Divisa\IDivisa.cs" />
+    <Compile Include="src\Tools\Filtros\Divisa\ImpDivisa.cs" />
+    <Compile Include="src\Tools\Filtros\Estatus\IEstatus.cs" />
+    <Compile Include="src\Tools\Filtros\Estatus\ImpEstatus.cs" />
+    <Compile Include="src\Tools\Filtros\Existencia\IExistencia.cs" />
+    <Compile Include="src\Tools\Filtros\Existencia\ImpExistencia.cs" />
+    <Compile Include="src\Tools\Filtros\Grupo\IGrupo.cs" />
+    <Compile Include="src\Tools\Filtros\Grupo\ImpGrupo.cs" />
+    <Compile Include="src\Tools\Filtros\IFiltro.cs" />
+    <Compile Include="src\Tools\Filtros\Marca\IMarca.cs" />
+    <Compile Include="src\Tools\Filtros\Marca\ImpMarca.cs" />
+    <Compile Include="src\Tools\Filtros\Origen\IOrigen.cs" />
+    <Compile Include="src\Tools\Filtros\Origen\ImpOrigen.cs" />
+    <Compile Include="src\Tools\Filtros\Pesado\ImpPesado.cs" />
+    <Compile Include="src\Tools\Filtros\Pesado\IPesado.cs" />
+    <Compile Include="src\Tools\Filtros\Proveedor\ImpProveedor.cs" />
+    <Compile Include="src\Tools\Filtros\Proveedor\IProveedor.cs" />
+    <Compile Include="src\Tools\Filtros\Proveedor\Lista\ImpListaPrv.cs" />
+    <Compile Include="src\Tools\Filtros\Proveedor\Lista\IListaPrv.cs" />
+    <Compile Include="src\Tools\Filtros\Proveedor\Lista\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Tools\Filtros\Proveedor\Lista\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Tools\Filtros\TasaIva\ImpTasaIva.cs" />
+    <Compile Include="src\Tools\Filtros\TasaIva\ITasaIva.cs" />
+    <Compile Include="src\Tools\Filtros\TCS\ITCS.cs" />
+    <Compile Include="src\Tools\Filtros\TCS\ImpTCS.cs" />
+    <Compile Include="src\Tools\IListaSeleccion.cs" />
+    <Compile Include="src\Tools\ListaSelProducto\IListaSelProducto.cs" />
+    <Compile Include="src\Tools\ListaSelProducto\ImpListaSelProducto.cs" />
+    <Compile Include="src\Tools\ListaSelProducto\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Tools\ListaSelProducto\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Visor\EntradaxCompra\IEntradaxCompra.cs" />
     <Compile Include="src\Visor\EntradaxCompra\ModoSoloReporte\data.cs" />
@@ -1419,6 +1557,24 @@
     <EmbeddedResource Include="src\Inicio\ModoSucursal\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\MovInventario\Cargo\CapturaMov\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\MovInventario\Cargo\MovFrm.resx">
+      <DependentUpon>MovFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\MovInventario\Descargo\CapturaMov\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\MovInventario\Descargo\MovFrm.resx">
+      <DependentUpon>MovFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\MovInventario\Traslado\CapturaMov\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\MovInventario\Traslado\MovFrm.resx">
+      <DependentUpon>MovFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\Producto\AgregarEditar\ModoBasico\AgregarEditarFrm.resx">
       <DependentUpon>AgregarEditarFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1445,6 +1601,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\TallaColorSabor\Visualizar\VerTallaColorSaborFrm.resx">
       <DependentUpon>VerTallaColorSaborFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Tools\FiltrosPara\Productos\ModoSucursal\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Tools\Filtros\Proveedor\Lista\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Tools\ListaSelProducto\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Visor\EntradaxCompra\ModoSoloReporte\EntradaxCompraFrm.resx">
       <DependentUpon>EntradaxCompraFrm.cs</DependentUpon>

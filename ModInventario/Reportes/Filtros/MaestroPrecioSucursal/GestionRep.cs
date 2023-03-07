@@ -67,6 +67,29 @@ namespace ModInventario.Reportes.Filtros.MaestroPrecioSucursal
             {
                 filtro.autoTasa = dataFiltros.TasaIva.id;
             }
+            if (dataFiltros.Precio != null)
+            {
+                var _precio= OOB.LibInventario.Reportes.enumerados.EnumPrecio.SnDefinir;
+                switch (dataFiltros.Precio.id)
+                {
+                    case "1":
+                        _precio= OOB.LibInventario.Reportes.enumerados.EnumPrecio.P1; 
+                        break;
+                    case "2":
+                        _precio= OOB.LibInventario.Reportes.enumerados.EnumPrecio.P2; 
+                        break;
+                    case "3":
+                        _precio= OOB.LibInventario.Reportes.enumerados.EnumPrecio.P3; 
+                        break;
+                    case "4":
+                        _precio= OOB.LibInventario.Reportes.enumerados.EnumPrecio.P4; 
+                        break;
+                    case "5":
+                        _precio= OOB.LibInventario.Reportes.enumerados.EnumPrecio.P5; 
+                        break;
+                }
+                filtro.precio = _precio;
+            }
             try
             {
                 var r01 = Sistema.MyData.Reportes_MaestroPrecio(filtro);

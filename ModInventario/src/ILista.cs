@@ -10,16 +10,12 @@ namespace ModInventario.src
 {
     public interface ILista
     {
-        
         BindingSource GetSource { get; }
         int GetCtnItems { get; }
         IEnumerable<object> GetListaItems { get; }
         object ItemActual { get; }
 
-
         void Inicializa();
         void Limpiar();
-
     }
-
 }

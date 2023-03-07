@@ -29,6 +29,7 @@ namespace ModInventario.src.FiltroBusqAdm
 
         public void Inicializa()
         {
+            _habiltarDeposito = true;
             _data.Limpiar();
             reset();
         }
@@ -251,6 +252,13 @@ namespace ModInventario.src.FiltroBusqAdm
             _data.AdmDivisa = _gDivisa.Item;
             _data.Pesado = _gPesado.Item;
             return _data.FiltrarIsOk();
+        }
+
+
+        private bool _habiltarDeposito;
+        public void HabilitaDeposito(bool act)
+        {
+            _habiltarDeposito = act;
         }
     }
 }

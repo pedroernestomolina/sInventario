@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace DataProvInventario.Data
 {
-
     public partial class DataProv: IData
     {
         public OOB.ResultadoLista<OOB.LibInventario.Deposito.Ficha> 
@@ -73,7 +72,6 @@ namespace DataProvInventario.Data
             Deposito_GetListaBySucursal(string codSuc)
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Deposito.Ficha>();
-
             var r01 = MyData.Deposito_GetListaBySucursal(codSuc);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
@@ -81,7 +79,6 @@ namespace DataProvInventario.Data
                 rt.Result = OOB.Enumerados.EnumResult.isError;
                 return rt;
             }
-
             var list = new List<OOB.LibInventario.Deposito.Ficha>();
             if (r01.Lista != null)
             {
@@ -99,9 +96,7 @@ namespace DataProvInventario.Data
                 }
             }
             rt.Lista = list;
-
             return rt;
         }
     }
-
 }

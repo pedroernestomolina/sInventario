@@ -115,11 +115,6 @@ namespace ModInventario.FiltrosGen.Reportes
             try
             {
                 var r00 = Sistema.MyData.Configuracion_VisualizarProductosInactivos();
-                if (r00.Result == OOB.Enumerados.EnumResult.isError)
-                {
-                    Helpers.Msg.Error(r00.Mensaje);
-                    return false;
-                }
                 var _activarProductosInactivos = r00.Entidad;
 
                 var lDepart = new List<ficha>();

@@ -8,10 +8,8 @@ using System.Windows.Forms;
 
 namespace ModInventario.Producto.Estatus
 {
-
     public class Gestion
     {
-
         private string autoPrd;
         private data fichaActual;
         private bool habilitarCierre;
@@ -45,17 +43,17 @@ namespace ModInventario.Producto.Estatus
 
         private bool CargarData()
         {
-            var rt = true;
-
-            var r01 = Sistema.MyData.Producto_Estatus_GetFicha(autoPrd);
-            if (r01.Result == OOB.Enumerados.EnumResult.isError) 
+            try
             {
-                Helpers.Msg.Error(r01.Mensaje);
+                var r01 = Sistema.MyData.Producto_Estatus_GetFicha(autoPrd);
+                fichaActual.setFicha(r01.Entidad);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
                 return false;
             }
-            fichaActual.setFicha(r01.Entidad);
-
-            return rt;
         }
 
         private void Limpiar()
@@ -119,7 +117,5 @@ namespace ModInventario.Producto.Estatus
         {
             habilitarCierre = true;
         }
-
     }
-
 }

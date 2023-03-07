@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace DataProvInventario.InfraEstructura
 {
-    
     public interface IMovimiento
     {
-
         OOB.ResultadoLista<OOB.LibInventario.Movimiento.Lista.Ficha> Producto_Movimiento_GetLista(OOB.LibInventario.Movimiento.Lista.Filtro filtro);
         OOB.ResultadoLista<OOB.LibInventario.Movimiento.Traslado.Consultar.ProductoPorDebajoNivelMinimo> Producto_Movimiento_Traslado_Consultar_ProductosPorDebajoNivelMinimo(OOB.LibInventario.Movimiento.Traslado.Consultar.Filtro filtro);
         OOB.ResultadoAuto  Producto_Movimiento_Traslado_Insertar(OOB.LibInventario.Movimiento.Traslado.Insertar.Ficha ficha);
@@ -36,7 +34,5 @@ namespace DataProvInventario.InfraEstructura
             Producto_Movimiento_Cargo_CaptureMov(OOB.LibInventario.Movimiento.Cargo.CapturaMov.Filtro filtro);
         OOB.ResultadoEntidad<OOB.LibInventario.Movimiento.Traslado.CapturaMov.Ficha>
             Producto_Movimiento_Traslado_CaptureMov(OOB.LibInventario.Movimiento.Traslado.CapturaMov.Filtro filtro);
-
     }
-
 }

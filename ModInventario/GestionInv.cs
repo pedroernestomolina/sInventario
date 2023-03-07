@@ -114,11 +114,12 @@ namespace ModInventario
         ModInventario.src.Visor.GananciaPerdida.IVisorGanPerd _gVisorGanPerd;
         ModInventario.src.Visor.Precios.IPrecio _gVisorPrecio;
         ModInventario.src.Visor.EntradaxCompra.IEntradaxCompra _gVisorEntradaxCompra;
+        FiltrosGen.AdmProducto.IAdmProducto _hndFiltroAdmProducto;
         public GestionInv(src.IFabrica fabrica)
         {
             _fabrica = fabrica;
             Producto.Precio.EditarCambiar.IEditar _hndEditarPrecio = _fabrica.CreateInstancia_EditarCambiarPrecio();
-            FiltrosGen.AdmProducto.IAdmProducto _hndFiltroAdmProducto = _fabrica.CreateInstancia_FiltroPrdAdm();
+            _hndFiltroAdmProducto = _fabrica.CreateInstancia_FiltroPrdAdm();
             _gestionReporteFiltros = _fabrica.CreateInstancia_FiltrosReporte();
             _hndAdmDoc = _fabrica.CreateInstancia_AdmDocumentos();
             //VISOR
@@ -318,51 +319,84 @@ namespace ModInventario
 
         public void MovimientoDesCargo()
         {
+            //if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_MovimientoDescargoInventario, Sistema.UsuarioP.autoGru, _seguridad))
+            //{
+            //    _gMovTipoDescargo.Inicializa();
+            //    _gMovTipo.Inicializa();
+            //    _gMovTipo.setTipoMov(_gMovTipoDescargo);
+            //    _gMovTipo.Inicia();
+            //    _gMovTipo.Finaliza();
+            //}
             if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_MovimientoDescargoInventario, Sistema.UsuarioP.autoGru, _seguridad))
             {
-                _gMovTipoDescargo.Inicializa();
-                _gMovTipo.Inicializa();
-                _gMovTipo.setTipoMov(_gMovTipoDescargo);
-                _gMovTipo.Inicia();
-                _gMovTipo.Finaliza();
+                src.MovInventario.Descargo.IDescargo _gMov;
+                _gMov = new src.MovInventario.Descargo.ImpDescargo(_seguridad);
+                _gMov.Inicializa();
+                _gMov.Inicia();
             }
         }
 
         public void MovimientoCargo()
         {
+            //if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_MovimientoCargoInventario, Sistema.UsuarioP.autoGru, _seguridad))
+            //{
+            //    _gMovTipoCargo.Inicializa();
+            //    _gMovTipo.Inicializa();
+            //    _gMovTipo.setTipoMov(_gMovTipoCargo);
+            //    _gMovTipo.Inicia();
+            //    _gMovTipo.Finaliza();
+            //}
             if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_MovimientoCargoInventario, Sistema.UsuarioP.autoGru, _seguridad))
             {
-                _gMovTipoCargo.Inicializa();
-                _gMovTipo.Inicializa();
-                _gMovTipo.setTipoMov(_gMovTipoCargo);
-                _gMovTipo.Inicia();
-                _gMovTipo.Finaliza();
+                src.MovInventario.Cargo.ICargo _gMovCargo;
+                _gMovCargo = new src.MovInventario.Cargo.ImpCargo(_seguridad);
+                _gMovCargo.Inicializa();
+                _gMovCargo.Inicia();
             }
         }
 
         public void MovimientoTraslado()
         {
+            //if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_MovimientoTrasladoInventario, Sistema.UsuarioP.autoGru, _seguridad))
+            //{
+            //    _gMovTipoTraslado.Inicializa();
+            //    _gMovTipoTraslado.setActivarPorDevolucion(false);
+            //    _gMovTipo.Inicializa();
+            //    _gMovTipo.setTipoMov(_gMovTipoTraslado);
+            //    _gMovTipo.Inicia();
+            //    _gMovTipo.Finaliza();
+            //}
             if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_MovimientoTrasladoInventario, Sistema.UsuarioP.autoGru, _seguridad))
             {
-                _gMovTipoTraslado.Inicializa();
-                _gMovTipoTraslado.setActivarPorDevolucion(false);
-                _gMovTipo.Inicializa();
-                _gMovTipo.setTipoMov(_gMovTipoTraslado);
-                _gMovTipo.Inicia();
-                _gMovTipo.Finaliza();
+                src.MovInventario.Traslado.ITraslado _gMov;
+                _gMov = new src.MovInventario.Traslado.ImpTraslado(_seguridad);
+                _gMov.Inicializa();
+                _gMov.Inicia();
             }
+        }
+        private void _gMov_NotificarDocGenerado(object sender, string idDoc)
+        {
+            Helpers.VisualizarDocumento.CargarVisualizarDocumento(idDoc);
         }
 
         public void TrasladoPorDevolucion()
         {
-            if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_MovimientoTrasladoPorDevolucion, Sistema.UsuarioP.autoGru, _seguridad))
+            //if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_MovimientoTrasladoPorDevolucion, Sistema.UsuarioP.autoGru, _seguridad))
+            //{
+            //    _gMovTipoTraslado.Inicializa();
+            //    _gMovTipoTraslado.setActivarPorDevolucion(true);
+            //    _gMovTipo.Inicializa();
+            //    _gMovTipo.setTipoMov(_gMovTipoTraslado);
+            //    _gMovTipo.Inicia();
+            //    _gMovTipo.Finaliza();
+            //}
+            if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_MovimientoTrasladoInventario, Sistema.UsuarioP.autoGru, _seguridad))
             {
-                _gMovTipoTraslado.Inicializa();
-                _gMovTipoTraslado.setActivarPorDevolucion(true);
-                _gMovTipo.Inicializa();
-                _gMovTipo.setTipoMov(_gMovTipoTraslado);
-                _gMovTipo.Inicia();
-                _gMovTipo.Finaliza();
+                src.MovInventario.Traslado.ITraslado _gMov;
+                _gMov = new src.MovInventario.Traslado.ImpTraslado(_seguridad);
+                _gMov.Inicializa();
+                _gMov.ActivarDepDestinoPreDeterminado(true);
+                _gMov.Inicia();
             }
         }
 

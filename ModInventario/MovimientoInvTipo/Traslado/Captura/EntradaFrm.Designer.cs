@@ -99,12 +99,12 @@
             this.panel22 = new System.Windows.Forms.Panel();
             this.L_EMP_COMPRA = new System.Windows.Forms.Label();
             this.panel27 = new System.Windows.Forms.Panel();
-            this.panel28 = new System.Windows.Forms.Panel();
-            this.panel29 = new System.Windows.Forms.Panel();
-            this.panel30 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.panel28 = new System.Windows.Forms.Panel();
             this.L_EMP_INV = new System.Windows.Forms.Label();
+            this.panel29 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.panel30 = new System.Windows.Forms.Panel();
             this.L_EMP_UND = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -1029,6 +1029,17 @@
             this.panel27.Size = new System.Drawing.Size(112, 27);
             this.panel27.TabIndex = 2;
             // 
+            // label9
+            // 
+            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(2, 2);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(108, 23);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Emp/Inv:";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // panel28
             // 
             this.panel28.Controls.Add(this.L_EMP_INV);
@@ -1039,6 +1050,17 @@
             this.panel28.Padding = new System.Windows.Forms.Padding(2);
             this.panel28.Size = new System.Drawing.Size(163, 27);
             this.panel28.TabIndex = 3;
+            // 
+            // L_EMP_INV
+            // 
+            this.L_EMP_INV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_EMP_INV.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_EMP_INV.Location = new System.Drawing.Point(2, 2);
+            this.L_EMP_INV.Name = "L_EMP_INV";
+            this.L_EMP_INV.Size = new System.Drawing.Size(159, 23);
+            this.L_EMP_INV.TabIndex = 5;
+            this.L_EMP_INV.Text = "Emp/Compra:";
+            this.L_EMP_INV.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel29
             // 
@@ -1051,28 +1073,6 @@
             this.panel29.Size = new System.Drawing.Size(112, 27);
             this.panel29.TabIndex = 4;
             // 
-            // panel30
-            // 
-            this.panel30.Controls.Add(this.L_EMP_UND);
-            this.panel30.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel30.Location = new System.Drawing.Point(135, 59);
-            this.panel30.Margin = new System.Windows.Forms.Padding(1);
-            this.panel30.Name = "panel30";
-            this.panel30.Padding = new System.Windows.Forms.Padding(2);
-            this.panel30.Size = new System.Drawing.Size(163, 27);
-            this.panel30.TabIndex = 5;
-            // 
-            // label9
-            // 
-            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(2, 2);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(108, 23);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "Emp/Inv:";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // label13
             // 
             this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1084,16 +1084,16 @@
             this.label13.Text = "Emp/Unidad:";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // L_EMP_INV
+            // panel30
             // 
-            this.L_EMP_INV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_EMP_INV.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_EMP_INV.Location = new System.Drawing.Point(2, 2);
-            this.L_EMP_INV.Name = "L_EMP_INV";
-            this.L_EMP_INV.Size = new System.Drawing.Size(159, 23);
-            this.L_EMP_INV.TabIndex = 5;
-            this.L_EMP_INV.Text = "Emp/Compra:";
-            this.L_EMP_INV.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.panel30.Controls.Add(this.L_EMP_UND);
+            this.panel30.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel30.Location = new System.Drawing.Point(135, 59);
+            this.panel30.Margin = new System.Windows.Forms.Padding(1);
+            this.panel30.Name = "panel30";
+            this.panel30.Padding = new System.Windows.Forms.Padding(2);
+            this.panel30.Size = new System.Drawing.Size(163, 27);
+            this.panel30.TabIndex = 5;
             // 
             // L_EMP_UND
             // 

@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace DataProvInventario.Data
 {
-
     public partial class DataProv: IData
     {
-
         //INSERTAR
         public OOB.ResultadoAuto 
             Producto_Movimiento_Ajuste_Insertar(OOB.LibInventario.Movimiento.Ajuste.Insertar.Ficha data)
@@ -138,7 +136,6 @@ namespace DataProvInventario.Data
             Producto_Movimiento_Traslado_Insertar(OOB.LibInventario.Movimiento.Traslado.Insertar.Ficha ficha)
         {
             var rt = new OOB.ResultadoAuto();
-
             var xficha = ficha.mov;
             var movDTO = new DtoLibInventario.Movimiento.Traslado.Insertar.FichaMov()
             {
@@ -239,7 +236,6 @@ namespace DataProvInventario.Data
                 };
                 return dt;
             }).ToList();
-
             var fichaDTO = new DtoLibInventario.Movimiento.Traslado.Insertar.Ficha()
             {
                 mov = movDTO,
@@ -255,7 +251,6 @@ namespace DataProvInventario.Data
                 return rt;
             }
             rt.Auto = r01.Auto;
-
             return rt;
         }
         public OOB.ResultadoAuto 
@@ -864,8 +859,6 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-
         //GET
         public OOB.ResultadoEntidad<OOB.LibInventario.Movimiento.Ver.Ficha>
             Producto_Movimiento_GetFicha(string autoDoc)
@@ -1037,8 +1030,6 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-
         //ANULAR
         public OOB.Resultado 
             Producto_Movimiento_Cargo_Anular(OOB.LibInventario.Movimiento.Anular.Cargo.Ficha ficha)
@@ -1132,8 +1123,6 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-
         //
         public OOB.ResultadoLista<OOB.LibInventario.Movimiento.Traslado.Capturar.ProductoPorDebajoNivelMinimo.Ficha> 
             Capturar_ProductosPorDebajoNivelMinimo(OOB.LibInventario.Movimiento.Traslado.Capturar.ProductoPorDebajoNivelMinimo.Filtro filtro)
@@ -1251,8 +1240,6 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
-
         //
         public OOB.ResultadoEntidad<OOB.LibInventario.Movimiento.DesCargo.CapturaMov.Ficha> 
             Producto_Movimiento_Descargo_CaptureMov(OOB.LibInventario.Movimiento.DesCargo.CapturaMov.Filtro filtro)
@@ -1426,7 +1413,5 @@ namespace DataProvInventario.Data
             };
             return rt;
         }
-
     }
-
 }

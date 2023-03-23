@@ -19,5 +19,8 @@ namespace ModInventario.src.MovInventario.Tools.ListaMov
 
         //
         List<MovInventario.dataItem> GetItems { get; }
+
+        //
+        void EliminarItemsDondeExistenciaEnDepOrigenSeaCero();
     }
 }

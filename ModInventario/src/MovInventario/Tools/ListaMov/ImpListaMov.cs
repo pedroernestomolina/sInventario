@@ -69,41 +69,15 @@ namespace ModInventario.src.MovInventario.Tools.ListaMov
             _bl.Remove(item);
             _bs.CurrencyManager.Refresh();
         }
-
-        //public void setListaAgregar(List<dataItem> list)
-        //{
-        //    _bl.Clear();
-        //    var mx = 0;
-        //    foreach (var rg in list)
-        //    {
-        //        mx += 1;
-        //        rg.Id = mx;
-        //        _bl.Add(rg);
-        //    }
-        //}
-        //public void setActualizarItem(int idItemEditar, dataItem item)
-        //{
-        //    var ent = _bl.FirstOrDefault(f => f.Id == idItemEditar);
-        //    var ind= _bs.IndexOf(ent);
-        //    _bl.Remove(ent);
-        //    _bl.Insert(ind, item);
-        //}
-
-        //public void setEliminarExistenciaNoDisponible()
-        //{
-        //    var _lst = _bl.Where(f => f.Cantidad > 0).ToList();
-        //    _bl.Clear();
-        //    foreach (var rg in _lst)
-        //    {
-        //        _bl.Add(rg);
-        //    }
-        //    _bs.CurrencyManager.Refresh();
-        //}
-
-        //public bool EncuentraItemPrd(string idPrd)
-        //{
-        //    var ent = _bl.FirstOrDefault(f => f.Data.autoPrd == idPrd);
-        //    return (ent != null);
-        //}
+        public void EliminarItemsDondeExistenciaEnDepOrigenSeaCero()
+        {
+            var _lst = _bl.Where(f => f.Cantidad > 0).ToList();
+            _bl.Clear();
+            foreach (var rg in _lst)
+            {
+                _bl.Add(rg);
+            }
+            _bs.CurrencyManager.Refresh();
+        }
     }
 }

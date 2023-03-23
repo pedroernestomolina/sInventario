@@ -15,8 +15,7 @@ namespace ModInventario.src.MovInventario.Tools.CapturaMov
         ficha GetItem { get;  }
 
         void setEmpaque(string id);
-
         void Inicializa();
-        void CargarData(List<ficha> _lst);
+        void CargarData();
     }
 }

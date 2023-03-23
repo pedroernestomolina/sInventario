@@ -206,8 +206,13 @@ namespace ModInventario.src.MovInventario.Traslado
         {
             LimpiarVista();
         }
-        private void BT_PENDIENTE_Click(object sender, EventArgs e)
+        private void BT_LISTA_PEND_Click(object sender, EventArgs e)
         {
+            ListaPendientes();
+        }
+        private void BT_DEJAR_PENDIENTE_Click(object sender, EventArgs e)
+        {
+            DejarEnPendiente();
         }
         private void BT_PROCESAR_Click(object sender, EventArgs e)
         {
@@ -338,6 +343,15 @@ namespace ModInventario.src.MovInventario.Traslado
             ActualizarImporte();
             DGV_DETALLE.Refresh();
         }
+        private void DejarEnPendiente()
+        {
+            _controlador.DejarEnPendiente();
+            if (_controlador.DejarEnPendienteIsOk)
+            {
+                Limpiar();
+                ActualizarImporte();
+            }
+        }
         private void Procesar()
         {
             _controlador.ProcesarFicha();
@@ -361,6 +375,12 @@ namespace ModInventario.src.MovInventario.Traslado
         }
 
 
+        private void ListaPendientes()
+        {
+            _controlador.ListaPendienteVisualizar();
+            Limpiar();
+            ActualizarImporte();
+        }
         private void AgregarConcepto()
         {
             IrFocoBusqueda();
@@ -397,6 +417,7 @@ namespace ModInventario.src.MovInventario.Traslado
         {
             L_MONTO.Text = "(Bs) " + _controlador.ListaItems.GetImporte_MonedaLocal.ToString("n2") + "/ ($) " + _controlador.ListaItems.GetImporte_MonedaOtra.ToString("n2");
             L_ITEMS.Text = "Total Items: " + Environment.NewLine + _controlador.ListaItems.GetCtnItems.ToString();
+            L_ITEMS_PEND.Text = "DOC PEND ( "+_controlador.Pendiente.CntDoc.ToString("n0") +" )" ;
         }
         private void IrFocoBusqueda()
         {

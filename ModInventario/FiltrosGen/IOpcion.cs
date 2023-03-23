@@ -19,5 +19,6 @@ namespace ModInventario.FiltrosGen
         void setFicha(string id);
         void Limpiar();
         void Inicializa();
+        void LimpiarLista();
     }
 }

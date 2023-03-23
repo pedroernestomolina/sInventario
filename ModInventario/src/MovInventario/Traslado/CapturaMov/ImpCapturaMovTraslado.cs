@@ -103,11 +103,7 @@ namespace ModInventario.src.MovInventario.Traslado.CapturaMov
 
         private bool CargarData()
         {
-            var _lst = new List<ficha>();
-            _lst.Add(new ficha("1", "", "POR EMPQ/COMPRA"));
-            _lst.Add(new ficha("3", "", "POR EMPQ/INV"));
-            _lst.Add(new ficha("2", "", "POR UNIDAD"));
-            _dataMov.Empaque.CargarData(_lst);
+            _dataMov.Empaque.CargarData();
 
             if (_modoEditar)
             {

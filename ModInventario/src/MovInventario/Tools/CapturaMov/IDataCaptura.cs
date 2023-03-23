@@ -21,9 +21,19 @@ namespace ModInventario.src.MovInventario.Tools.CapturaMov
         bool EsAdmDivisa { get; }
         decimal ImporteNetoMonedaLocal { get; }
         decimal ImporteNetoDivisa { get; }
-
+        string TipoMov { get; }
+        int Signo { get; }
+        //
+        decimal InfExistenciaActual { get; }
+        decimal InfNivelMinimoDepDestino { get; }
+        decimal InfNivelOptimoDepDestino { get; }
+        decimal InfExFisicaDepDestino { get; }
+        decimal InfCntReponerDepDestino { get; }
+        //
         IDataPrd Ficha { get; }
         IEmpaque Empaque { get; }
+        ITipMov  TipMov { get; }
+        //
         decimal TasaCambio { get; }
         decimal Mov_GetCantidad { get; }
         decimal Mov_GetCosto { get; }
@@ -32,6 +42,7 @@ namespace ModInventario.src.MovInventario.Tools.CapturaMov
         decimal Mov_GetImporte { get; }
         dataItem GetItem { get; }
 
+        void setTipoMov(string id);
         void setEmpaque(string id);
         void setCantidad(decimal cnt);
         void setCosto(decimal mont);
@@ -40,5 +51,6 @@ namespace ModInventario.src.MovInventario.Tools.CapturaMov
 
         void Inicializa();
         bool ValidarParaProcesarIsOk();
+        void CargarEmpaques();
     }
 }

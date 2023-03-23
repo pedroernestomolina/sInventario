@@ -28,14 +28,17 @@ namespace ModInventario.src.MovInventario.Tools.CapturaMov
         {
             _empaque.setFicha(id);
         }
-
         public void Inicializa()
         {
             _empaque.Inicializa();
         }
-        public void CargarData(List<ficha> lst)
+        public void CargarData()
         {
-            _empaque.setData(lst);
+            var _lst = new List<ficha>();
+            _lst.Add(new ficha("1", "", "POR EMPQ/COMPRA"));
+            _lst.Add(new ficha("3", "", "POR EMPQ/INV"));
+            _lst.Add(new ficha("2", "", "POR UNIDAD"));
+            _empaque.setData(_lst);
         }
     }
 }

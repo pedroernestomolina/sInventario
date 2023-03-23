@@ -29,6 +29,7 @@ namespace ModInventario.src.MovInventario
         protected Tools.ListaMov.IListaMov _listaMov;
         protected src.Tools.ListaSelProducto.IListaSelProducto _listaSelPrd;
         protected ISeguridadAccesoSistema _seguridad;
+        protected src.MovInventario.Pendiente.IPendiente _pendiente;
 
 
         abstract public string GetInf_TipoMovimiento { get; }
@@ -41,6 +42,7 @@ namespace ModInventario.src.MovInventario
         public Tools.Concepto.IConcepto Concepto { get { return _concepto; } }
         public Tools.ListaMov.IListaMov ListaItems { get { return _listaMov; } }
         public src.Tools.BusqProducto.IBusqProducto MetBusProducto { get { return _busqPrd; } }
+        public Pendiente.IPendiente Pendiente { get { return _pendiente; } }
         //
         public object ItemActual { get { return _listaMov.ItemActual; } }
 
@@ -60,6 +62,7 @@ namespace ModInventario.src.MovInventario
             _listaMov = new Tools.ListaMov.ImpListaMov();
             _listaSelPrd = new src.Tools.ListaSelProducto.ImpListaSelProducto();
             _nuevoConcepto = new ModInventario.MaestrosInv.Concepto.Agregar.Gestion();
+            _pendiente = new src.MovInventario.Pendiente.ImpPend();
             _seguridad = ctrSeguridad;
         }
 
@@ -76,6 +79,7 @@ namespace ModInventario.src.MovInventario
             _sucOrigen.Inicializa();
             _listaMov.Inicializa();
             _busqPrd.Inicializa();
+            _pendiente.Inicializa();
         }
 
 
@@ -272,6 +276,7 @@ namespace ModInventario.src.MovInventario
             _sucOrigen.Inicializa();
             _listaMov.Inicializa();
             _busqPrd.LimpiarCargarMetBusPreferido();
+            _depOrigen.LimpiarLista();
         }
 
 

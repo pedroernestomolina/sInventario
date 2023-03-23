@@ -275,16 +275,16 @@ namespace ModInventario.MovimientoInvTipo.TrasladoPorNivelMinimo
 
             if (_controlador.HabilitarCambio)
             {
-                _controlador.setDepOrigen("");
+                _controlador.setSucursal("");
                 if (CB_ORIGEN.SelectedIndex != -1)
                 {
-                    _controlador.setDepOrigen(CB_ORIGEN.SelectedValue.ToString());
+                    _controlador.setSucursal(CB_ORIGEN.SelectedValue.ToString());
                 }
             }
             else 
             {
                 _modoInicio = true;
-                CB_ORIGEN.SelectedValue = _controlador.DepOrigenGetID;
+                CB_ORIGEN.SelectedValue = _controlador.SucursalGetId;
                 _modoInicio = false;
             }
         }

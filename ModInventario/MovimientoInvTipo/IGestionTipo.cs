@@ -103,7 +103,5 @@ namespace ModInventario.MovimientoInvTipo
 
 
         void LimpiarFiltros();
-
     }
-
 }

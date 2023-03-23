@@ -1128,19 +1128,19 @@ namespace DataProvInventario.Data
             Capturar_ProductosPorDebajoNivelMinimo(OOB.LibInventario.Movimiento.Traslado.Capturar.ProductoPorDebajoNivelMinimo.Filtro filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Movimiento.Traslado.Capturar.ProductoPorDebajoNivelMinimo.Ficha>();
-
-            var filtroDto = new DtoLibInventario.Movimiento.Traslado.Capturar.ProductoPorDebajoNivelMinimo.Filtro();
-            filtroDto.autoDepositoVerificarNivel = filtro.autoDepositoVerificarNivel;
-            filtroDto.autoDepositoOrigen = filtro.autoDepositoOrigen;
-            filtroDto.autoDepartamento = filtro.autoDepartamento;
+            var filtroDto = new DtoLibInventario.Movimiento.Traslado.Capturar.ProductoPorDebajoNivelMinimo.Filtro()
+            {
+                autoDepositoVerificarNivel = filtro.autoDepositoVerificarNivel,
+                autoDepositoOrigen = filtro.autoDepositoOrigen,
+                autoDepartamento = filtro.autoDepartamento,
+                autoProducto = filtro.autoProducto,
+                verificarNivel = filtro.verificarExistencia, 
+            };
             var r01 = MyData.Capturar_ProductosPorDebajoNivelMinimo(filtroDto);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
-
             var list = new List<OOB.LibInventario.Movimiento.Traslado.Capturar.ProductoPorDebajoNivelMinimo.Ficha>();
             if (r01.Lista != null)
             {
@@ -1192,17 +1192,17 @@ namespace DataProvInventario.Data
                 }
             }
             rt.Lista = list;
-
             return rt;
         }
         public OOB.ResultadoLista<OOB.LibInventario.Movimiento.Traslado.Consultar.ProductoPorDebajoNivelMinimo>
             Producto_Movimiento_Traslado_Consultar_ProductosPorDebajoNivelMinimo(OOB.LibInventario.Movimiento.Traslado.Consultar.Filtro filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Movimiento.Traslado.Consultar.ProductoPorDebajoNivelMinimo>();
-
-            var filtroDto = new DtoLibInventario.Movimiento.Traslado.Consultar.Filtro();
-            filtroDto.autoDeposito = filtro.autoDeposito;
-            filtroDto.autoDepartamento = filtro.autoDepartamento;
+            var filtroDto = new DtoLibInventario.Movimiento.Traslado.Consultar.Filtro()
+            {
+                autoDepartamento = filtro.autoDepartamento,
+                autoDeposito = filtro.autoDeposito,
+            };
             var r01 = MyData.Producto_Movimiento_Traslado_Consultar_ProductosPorDebajoNivelMinimo(filtroDto);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {

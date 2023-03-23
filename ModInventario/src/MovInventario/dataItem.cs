@@ -20,6 +20,9 @@ namespace ModInventario.src.MovInventario
         private decimal _tasaCambio;
         private bool _empaqueSelEsPorUnidad;
         private decimal _costoEmpUndMonedaLocal;
+        private string _idEmpSel;
+        private string _idTipMov;
+        private int _signo;
 
 
         public decimal Cantidad { get { return _cntMov; } }
@@ -29,6 +32,7 @@ namespace ModInventario.src.MovInventario
         public decimal Importe { get { return _importe; } }
         public string DescEmpaqueSel { get { return _descEmpSel; } }
         public int ContEmpaqueSel { get { return _contEmpSel; } }
+        public string EmpaqueSelGetId { get { return _idEmpSel; } }
         public string EmpaqueSel { get { return _descEmpSel.Trim() + "(" + _contEmpSel.ToString().Trim() + ")"; } }
         public bool EmpaqueSel_EsPorUnidad { get { return _empaqueSelEsPorUnidad; } }
         public decimal ImporteMonedaLocal { get { return CalculaImporteMonedaLocal(); } }
@@ -36,6 +40,8 @@ namespace ModInventario.src.MovInventario
         public data FichaPrd { get { return _fichaPrd; } }
         public decimal CostoEmpUndMonedaLocal  {get {return _costoEmpUndMonedaLocal;}}
         public decimal CostoEmpSelMonedaLocal { get { return _costoEmpUndMonedaLocal * _contEmpSel; } }
+        public int Signo { get { return _signo; } }
+        public string TipoMov { get { return _idTipMov == "1" ? "CARGO" : "DESCARGO"; } }
 
 
         public dataItem()
@@ -46,11 +52,14 @@ namespace ModInventario.src.MovInventario
             _costMov = 0m;
             _costUndMov=0m;
             _importe = 0m;
+            _idEmpSel = "";
             _contEmpSel = 0;
             _descEmpSel = "";
             _empaqueSelEsPorUnidad = false;
             _tasaCambio = 0m;
             _costoEmpUndMonedaLocal = 0m;
+            _idTipMov = "";
+            _signo = 1;
         }
 
         public void Inicializa()
@@ -61,11 +70,14 @@ namespace ModInventario.src.MovInventario
             _costMov = 0m;
             _costUndMov=0m;
             _importe = 0m;
+            _idEmpSel = "";
             _contEmpSel = 0;
             _descEmpSel = "";
             _empaqueSelEsPorUnidad = false;
             _tasaCambio = 0m;
             _costoEmpUndMonedaLocal = 0m;
+            _idTipMov = "";
+            _signo = 1;
         }
 
         public void setTasaCambio(decimal tasa)
@@ -86,6 +98,20 @@ namespace ModInventario.src.MovInventario
             _costMov = cost;
             Actualizar();
         }
+        public void setTipMov(ficha ficha)
+        {
+            _idTipMov = "";
+            if (ficha != null)
+            {
+                _idTipMov = ficha.id;
+                _signo = 1;
+                if (_idTipMov == "2")
+                {
+                    _signo = -1;
+                }
+                Actualizar();
+            }
+        }
         public  void setEmpaque(ficha ficha)
         {
             if (ficha != null)
@@ -93,6 +119,7 @@ namespace ModInventario.src.MovInventario
                 switch (ficha.id)
                 {
                     case "1":
+                        _idEmpSel = "1";
                         _contEmpSel = _fichaPrd.contEmp;
                         _descEmpSel = _fichaPrd.nombreEmp;
                         _empaqueSelEsPorUnidad = false;
@@ -106,6 +133,7 @@ namespace ModInventario.src.MovInventario
                         }
                         break;
                     case "2":
+                        _idEmpSel = "2";
                         _contEmpSel = 1;
                         _descEmpSel = "UNIDAD";
                         _empaqueSelEsPorUnidad = true;
@@ -119,6 +147,7 @@ namespace ModInventario.src.MovInventario
                         }
                         break;
                     case "3":
+                        _idEmpSel = "3";
                         _contEmpSel = _fichaPrd.contEmpInv;
                         _descEmpSel = _fichaPrd.nombreEmpInv;
                         _empaqueSelEsPorUnidad = false;
@@ -144,7 +173,7 @@ namespace ModInventario.src.MovInventario
             {
                 _costUndMov = _costMov / _contEmpSel;
             }
-            _importe = _costMov * _cntMov;
+            _importe = _costMov * _cntMov * _signo;
             _cntUndMov = _cntMov * _contEmpSel;
         }
         private decimal CalculaImporteDivisa()

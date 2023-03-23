@@ -8,10 +8,8 @@ using System.Windows.Forms;
 
 namespace ModInventario.MovimientoInvTipo
 {
-
     public interface ITipo
     {
-
         string TipoMovimiento { get; }
         bool IsOk { get; }
         BindingSource ConceptoSource { get; }
@@ -86,7 +84,5 @@ namespace ModInventario.MovimientoInvTipo
 
         string GetIdDepOrigen { get; }
         string GetIdDepDestino { get; }
-
     }
-
 }

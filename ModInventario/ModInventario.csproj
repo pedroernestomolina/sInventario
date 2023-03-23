@@ -902,6 +902,23 @@
     <Compile Include="src\Inicio\ModoSucursal\Principal.designer.cs">
       <DependentUpon>Principal.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\MovInventario\Ajuste\Inv\CapturaMov\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\MovInventario\Ajuste\Inv\CapturaMov\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\MovInventario\Ajuste\Inv\CapturaMov\ICapturaMov.cs" />
+    <Compile Include="src\MovInventario\Ajuste\Inv\CapturaMov\ImpCapturaMov.cs" />
+    <Compile Include="src\MovInventario\Ajuste\Inv\CapturaMov\ImpDataCapture.cs" />
+    <Compile Include="src\MovInventario\Ajuste\Inv\IAjusteInv.cs" />
+    <Compile Include="src\MovInventario\Ajuste\Inv\ImpAjusteInv.cs" />
+    <Compile Include="src\MovInventario\Ajuste\Inv\MovFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\MovInventario\Ajuste\Inv\MovFrm.Designer.cs">
+      <DependentUpon>MovFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\MovInventario\BaseMov.cs" />
     <Compile Include="src\MovInventario\Cargo\CapturaMov\Frm.cs">
       <SubType>Form</SubType>
@@ -929,6 +946,18 @@
     <Compile Include="src\MovInventario\Descargo\MovFrm.Designer.cs">
       <DependentUpon>MovFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\MovInventario\Pendiente\dataDoc.cs" />
+    <Compile Include="src\MovInventario\Pendiente\enumerados.cs" />
+    <Compile Include="src\MovInventario\Pendiente\IListaPend.cs" />
+    <Compile Include="src\MovInventario\Pendiente\ImpListaPend.cs" />
+    <Compile Include="src\MovInventario\Pendiente\ImpPend.cs" />
+    <Compile Include="src\MovInventario\Pendiente\IPendiente.cs" />
+    <Compile Include="src\MovInventario\Pendiente\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\MovInventario\Pendiente\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\MovInventario\Tools\CapturaMov\ICapturaMov.cs" />
     <Compile Include="src\MovInventario\Tools\CapturaMov\IDataCaptura.cs" />
     <Compile Include="src\MovInventario\Tools\CapturaMov\IDataPrd.cs" />
@@ -936,8 +965,10 @@
     <Compile Include="src\MovInventario\Tools\CapturaMov\ImpDataCaptura.cs" />
     <Compile Include="src\MovInventario\Tools\CapturaMov\ImpEmpaque.cs" />
     <Compile Include="src\MovInventario\Tools\CapturaMov\ImpDataPrd.cs" />
-    <Compile Include="src\MovInventario\Tools\ListaMov\data.cs" />
-    <Compile Include="src\MovInventario\Tools\ListaMov\dataItem.cs" />
+    <Compile Include="src\MovInventario\Tools\CapturaMov\ImpTipMov.cs" />
+    <Compile Include="src\MovInventario\Tools\CapturaMov\ITipMov.cs" />
+    <Compile Include="src\MovInventario\Tools\Departamento\IDepartamento.cs" />
+    <Compile Include="src\MovInventario\Tools\Departamento\ImpDepartamento.cs" />
     <Compile Include="src\MovInventario\Tools\ListaMov\IListaMov.cs" />
     <Compile Include="src\MovInventario\Tools\ListaMov\ImpListaMov.cs" />
     <Compile Include="src\MovInventario\Traslado\CapturaMov\Frm.cs">
@@ -948,12 +979,21 @@
     </Compile>
     <Compile Include="src\MovInventario\Traslado\CapturaMov\ICapturaMovTraslado.cs" />
     <Compile Include="src\MovInventario\Traslado\CapturaMov\ImpCapturaMovTraslado.cs" />
+    <Compile Include="src\MovInventario\Traslado\ImpTrasladoPorDev.cs" />
     <Compile Include="src\MovInventario\Traslado\ITraslado.cs" />
     <Compile Include="src\MovInventario\Traslado\ImpTraslado.cs" />
     <Compile Include="src\MovInventario\Traslado\MovFrm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="src\MovInventario\Traslado\MovFrm.Designer.cs">
+      <DependentUpon>MovFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\MovInventario\Traslado\PorNIvel\ImpPorNivel.cs" />
+    <Compile Include="src\MovInventario\Traslado\PorNIvel\IPorNivel.cs" />
+    <Compile Include="src\MovInventario\Traslado\PorNIvel\MovFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\MovInventario\Traslado\PorNIvel\MovFrm.Designer.cs">
       <DependentUpon>MovFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Tools\Buscar\dataExportar.cs" />
@@ -1557,6 +1597,12 @@
     <EmbeddedResource Include="src\Inicio\ModoSucursal\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\MovInventario\Ajuste\Inv\CapturaMov\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\MovInventario\Ajuste\Inv\MovFrm.resx">
+      <DependentUpon>MovFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\MovInventario\Cargo\CapturaMov\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1569,10 +1615,16 @@
     <EmbeddedResource Include="src\MovInventario\Descargo\MovFrm.resx">
       <DependentUpon>MovFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\MovInventario\Pendiente\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\MovInventario\Traslado\CapturaMov\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\MovInventario\Traslado\MovFrm.resx">
+      <DependentUpon>MovFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\MovInventario\Traslado\PorNIvel\MovFrm.resx">
       <DependentUpon>MovFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Producto\AgregarEditar\ModoBasico\AgregarEditarFrm.resx">
@@ -1895,6 +1947,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Reportes\Filtros\MaestroPrecio\" />
+    <Folder Include="src\MovInventario\Ajuste\InvCero\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

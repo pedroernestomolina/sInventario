@@ -73,7 +73,12 @@ namespace ModInventario.FiltrosGen.Opcion
         {
             _item = null;
         }
-
+        public void LimpiarLista()
+        {
+            _lst.Clear();
+            _bs.DataSource = _lst;
+            _bs.CurrencyManager.Refresh();
+        }
     }
 
 }

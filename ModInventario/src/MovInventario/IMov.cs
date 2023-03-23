@@ -20,6 +20,8 @@ namespace ModInventario.src.MovInventario
         Tools.Deposito.IDeposito DepOrigen { get; }
         Tools.ListaMov.IListaMov ListaItems { get; }
         src.Tools.BusqProducto.IBusqProducto MetBusProducto { get; }
+        src.MovInventario.Pendiente.IPendiente Pendiente { get; }
+
 
         void setAutorizadoPor(string aut);
         void setMotivo(string mot);

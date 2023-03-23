@@ -14,5 +14,8 @@ namespace ModInventario.src.MovInventario.Traslado
         void SucOrigenSetId(string id);
         void ActivarDepDestinoPreDeterminado(bool modo);
         bool ActivarDepPreDeterminadoParaDevolucion { get; }
+        void ListaPendienteVisualizar();
+        bool DejarEnPendienteIsOk { get; }
+        void DejarEnPendiente();
     }
 }

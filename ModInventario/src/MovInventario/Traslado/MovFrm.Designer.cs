@@ -37,9 +37,9 @@
             this.BT_PROCESAR = new System.Windows.Forms.Button();
             this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
             this.panel46 = new System.Windows.Forms.Panel();
-            this.label12 = new System.Windows.Forms.Label();
+            this.L_ITEMS_PEND = new System.Windows.Forms.Label();
             this.panel47 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BT_LISTA_PEND = new System.Windows.Forms.Button();
             this.panel50 = new System.Windows.Forms.Panel();
             this.BT_DEJAR_PENDIENTE = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -315,7 +315,7 @@
             // 
             // panel46
             // 
-            this.panel46.Controls.Add(this.label12);
+            this.panel46.Controls.Add(this.L_ITEMS_PEND);
             this.panel46.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel46.Location = new System.Drawing.Point(1, 1);
             this.panel46.Margin = new System.Windows.Forms.Padding(1);
@@ -324,21 +324,21 @@
             this.panel46.Size = new System.Drawing.Size(153, 19);
             this.panel46.TabIndex = 0;
             // 
-            // label12
+            // L_ITEMS_PEND
             // 
-            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Navy;
-            this.label12.Location = new System.Drawing.Point(2, 2);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(149, 15);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "Movimientos Pendientes";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.L_ITEMS_PEND.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_ITEMS_PEND.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_ITEMS_PEND.ForeColor = System.Drawing.Color.Maroon;
+            this.L_ITEMS_PEND.Location = new System.Drawing.Point(2, 2);
+            this.L_ITEMS_PEND.Name = "L_ITEMS_PEND";
+            this.L_ITEMS_PEND.Size = new System.Drawing.Size(149, 15);
+            this.L_ITEMS_PEND.TabIndex = 1;
+            this.L_ITEMS_PEND.Text = "90 DOC PEND";
+            this.L_ITEMS_PEND.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel47
             // 
-            this.panel47.Controls.Add(this.button1);
+            this.panel47.Controls.Add(this.BT_LISTA_PEND);
             this.panel47.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel47.Location = new System.Drawing.Point(1, 22);
             this.panel47.Margin = new System.Windows.Forms.Padding(1);
@@ -347,19 +347,20 @@
             this.panel47.Size = new System.Drawing.Size(153, 37);
             this.panel47.TabIndex = 1;
             // 
-            // button1
+            // BT_LISTA_PEND
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::ModInventario.Properties.Resources.bt_pendiente;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button1.Location = new System.Drawing.Point(2, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(149, 33);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Lista Pend";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.button1.UseVisualStyleBackColor = true;
+            this.BT_LISTA_PEND.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_LISTA_PEND.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_LISTA_PEND.Image = global::ModInventario.Properties.Resources.bt_pendiente;
+            this.BT_LISTA_PEND.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.BT_LISTA_PEND.Location = new System.Drawing.Point(2, 2);
+            this.BT_LISTA_PEND.Name = "BT_LISTA_PEND";
+            this.BT_LISTA_PEND.Size = new System.Drawing.Size(149, 33);
+            this.BT_LISTA_PEND.TabIndex = 4;
+            this.BT_LISTA_PEND.Text = "Lista Pend";
+            this.BT_LISTA_PEND.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.BT_LISTA_PEND.UseVisualStyleBackColor = true;
+            this.BT_LISTA_PEND.Click += new System.EventHandler(this.BT_LISTA_PEND_Click);
             // 
             // panel50
             // 
@@ -384,6 +385,7 @@
             this.BT_DEJAR_PENDIENTE.Text = "En Pendiente";
             this.BT_DEJAR_PENDIENTE.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.BT_DEJAR_PENDIENTE.UseVisualStyleBackColor = true;
+            this.BT_DEJAR_PENDIENTE.Click += new System.EventHandler(this.BT_DEJAR_PENDIENTE_Click);
             // 
             // panel1
             // 
@@ -428,6 +430,7 @@
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(2, 2);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(923, 32);
@@ -1804,10 +1807,10 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel19;
         private System.Windows.Forms.Panel panel46;
         private System.Windows.Forms.Panel panel47;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label L_ITEMS_PEND;
         private System.Windows.Forms.Panel panel50;
         private System.Windows.Forms.Button BT_DEJAR_PENDIENTE;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BT_LISTA_PEND;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel20;
         private System.Windows.Forms.Panel panel51;
         private System.Windows.Forms.Label label10;

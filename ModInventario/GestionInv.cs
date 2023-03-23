@@ -370,6 +370,7 @@ namespace ModInventario
             {
                 src.MovInventario.Traslado.ITraslado _gMov;
                 _gMov = new src.MovInventario.Traslado.ImpTraslado(_seguridad);
+                _gMov.ActivarDepDestinoPreDeterminado(false);
                 _gMov.Inicializa();
                 _gMov.Inicia();
             }
@@ -393,22 +394,47 @@ namespace ModInventario
             if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_MovimientoTrasladoInventario, Sistema.UsuarioP.autoGru, _seguridad))
             {
                 src.MovInventario.Traslado.ITraslado _gMov;
-                _gMov = new src.MovInventario.Traslado.ImpTraslado(_seguridad);
+                _gMov = new src.MovInventario.Traslado.ImpTrasladoPorDev(_seguridad);
                 _gMov.Inicializa();
                 _gMov.ActivarDepDestinoPreDeterminado(true);
                 _gMov.Inicia();
             }
         }
-
+        public void TrasladoMercanciaEntreSucursalPorNivelMinimo()
+        {
+            //if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_MovimientoTrasladoEntreSucursales_PorExistenciaDebajoDelMinimo, Sistema.UsuarioP.autoGru, _seguridad))
+            //{
+            //    _gMovTipoTraslPorNIvelMinimo.Inicializa();
+            //    _gMovTipo.Inicializa();
+            //    _gMovTipo.setTipoMov(_gMovTipoTraslPorNIvelMinimo);
+            //    _gMovTipo.Inicia();
+            //    _gMovTipo.Finaliza();
+            //}
+            if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_MovimientoTrasladoInventario, Sistema.UsuarioP.autoGru, _seguridad))
+            {
+                src.MovInventario.Traslado.ITraslado _gMov;
+                _gMov = new src.MovInventario.Traslado.PorNIvel.ImpPorNIvel(_seguridad);
+                _gMov.Inicializa();
+                _gMov.ActivarDepDestinoPreDeterminado(false);
+                _gMov.Inicia();
+            }
+        }
         public void MovimientoAjuste()
         {
+            //if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_MovimientoAjusteInventario, Sistema.UsuarioP.autoGru, _seguridad))
+            //{
+            //    _gMovTipoAjuste.Inicializa();
+            //    _gMovTipo.Inicializa();
+            //    _gMovTipo.setTipoMov(_gMovTipoAjuste);
+            //    _gMovTipo.Inicia();
+            //    _gMovTipo.Finaliza();
+            //}
             if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_MovimientoAjusteInventario, Sistema.UsuarioP.autoGru, _seguridad))
             {
-                _gMovTipoAjuste.Inicializa();
-                _gMovTipo.Inicializa();
-                _gMovTipo.setTipoMov(_gMovTipoAjuste);
-                _gMovTipo.Inicia();
-                _gMovTipo.Finaliza();
+                src.MovInventario.Ajuste.Inv.IAjusteInv _gMov;
+                _gMov = new src.MovInventario.Ajuste.Inv.ImpAjusteInv(_seguridad);
+                _gMov.Inicializa();
+                _gMov.Inicia();
             }
         }
 
@@ -425,18 +451,6 @@ namespace ModInventario
 
                 _gMovTipo.Inicializa();
                 _gMovTipo.setTipoMov(_gMovTipoAjusteInvCero);
-                _gMovTipo.Inicia();
-                _gMovTipo.Finaliza();
-            }
-        }
-
-        public void TrasladoMercanciaEntreSucursalPorNivelMinimo()
-        {
-            if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_MovimientoTrasladoEntreSucursales_PorExistenciaDebajoDelMinimo, Sistema.UsuarioP.autoGru, _seguridad))
-            {
-                _gMovTipoTraslPorNIvelMinimo.Inicializa();
-                _gMovTipo.Inicializa();
-                _gMovTipo.setTipoMov(_gMovTipoTraslPorNIvelMinimo);
                 _gMovTipo.Inicia();
                 _gMovTipo.Finaliza();
             }

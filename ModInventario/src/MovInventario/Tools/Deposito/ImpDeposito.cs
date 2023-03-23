@@ -63,5 +63,9 @@ namespace ModInventario.src.MovInventario.Tools.Deposito
                 Helpers.Msg.Error(e.Message);
             }
         }
+        public void LimpiarLista()
+        {
+            _deposito.LimpiarLista();
+        }
     }
 }

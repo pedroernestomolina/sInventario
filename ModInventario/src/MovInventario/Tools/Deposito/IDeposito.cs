@@ -19,5 +19,6 @@ namespace ModInventario.src.MovInventario.Tools.Deposito
         void Inicializa();
         void CargarData();
         void CargarDataByIdSucursal(string id);
+        void LimpiarLista();
     }
 }

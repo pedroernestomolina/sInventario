@@ -33,5 +33,14 @@ namespace ModInventario.src.MovInventario
         public decimal exFisicaDepDestino { get; set; }
         public int contEmpInv { get; set; }
         public string nombreEmpInv { get; set; }
+        public decimal cntReponerDepDestino 
+        {
+            get 
+            {
+                var r = nivelOptimoDepDestino - exFisicaDepDestino;
+                if (r < 0) { r = 0m; }
+                return r; 
+            } 
+        }
     }
 }

@@ -321,13 +321,12 @@ namespace ModInventario.src.MovInventario.Cargo
         }
         private void Procesar()
         {
-            //_controlador.Procesar();
-            //if (_controlador.ProcesarDocIsOk)
-            //{
-            //    Limpiar();
-            //    ActualizarImporte();
-            //    _controlador.NuevoDocumento();
-            //}
+            _controlador.ProcesarFicha();
+            if (_controlador.ProcesarIsOk)
+            {
+                Limpiar();
+                ActualizarImporte();
+            }
         }
         private void Abandonar()
         {

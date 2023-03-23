@@ -9,10 +9,11 @@ namespace ModInventario.src.MovInventario.Tools.CapturaMov
 {
     public class ImpDataCaptura: IDataCaptura
     {
-        private dataItem _item;
+        protected dataItem _item;
         private decimal _tasaCambio;
         private IDataPrd _fichaPrd;
-        private IEmpaque _empaque;
+        protected IEmpaque _empaque;
+        protected ITipMov _tipMov;
 
 
         public int Id { get; set; }
@@ -26,6 +27,15 @@ namespace ModInventario.src.MovInventario.Tools.CapturaMov
         public bool EsAdmDivisa { get { return _fichaPrd.InfProductoEsDivisa; } }
         public decimal ImporteNetoMonedaLocal { get { return _item.ImporteMonedaLocal; } }
         public decimal ImporteNetoDivisa { get { return _item.ImporteDivisa;  } }
+        public string TipoMov { get { return _item.TipoMov; } }
+        public int Signo { get { return _item.Signo; } }
+
+        //
+        public decimal InfExistenciaActual { get { return _fichaPrd.GetFicha.exFisica; } }
+        public decimal InfNivelMinimoDepDestino { get { return _fichaPrd.GetFicha.nivelMinimoDepDestino; } }
+        public decimal InfNivelOptimoDepDestino { get { return _fichaPrd.GetFicha.nivelOptimoDepDestino; } }
+        public decimal InfExFisicaDepDestino { get { return _fichaPrd.GetFicha.exFisicaDepDestino; } }
+        public decimal InfCntReponerDepDestino { get { return _fichaPrd.GetFicha.cntReponerDepDestino; } }
         //
         public decimal TasaCambio { get { return _tasaCambio; } }
         public decimal Mov_GetCantidad { get { return _item.Cantidad; } }
@@ -33,8 +43,10 @@ namespace ModInventario.src.MovInventario.Tools.CapturaMov
         public decimal Mov_GetCntUnd { get { return _item.CntUnd; } }
         public decimal Mov_GetCostoUnd { get { return _item.CostoUnd; } }
         public decimal Mov_GetImporte { get { return _item.Importe; } }
+        //
         public IDataPrd Ficha { get { return _fichaPrd; } }
         public IEmpaque Empaque { get { return _empaque; } }
+        public ITipMov TipMov { get { return _tipMov; } }
         //
         public dataItem GetItem { get { return _item; } }
 
@@ -43,10 +55,16 @@ namespace ModInventario.src.MovInventario.Tools.CapturaMov
         {
             _fichaPrd = new ImpDataPrd();
             _empaque = new ImpEmpaque();
+            _tipMov = new ImpTipMov();
             _item = new dataItem();
         }
 
 
+        public void setTipoMov(string id)
+        {
+            _tipMov.setTipMov(id);
+            _item.setTipMov(_tipMov.GetItem);
+        }
         public void setEmpaque(string id)
         {
             _empaque.setEmpaque(id);
@@ -77,8 +95,9 @@ namespace ModInventario.src.MovInventario.Tools.CapturaMov
             _fichaPrd.Inicializa();
             _item.Inicializa();
             _empaque.Inicializa();
+            _tipMov.Inicializa();
         }
-        public bool ValidarParaProcesarIsOk()
+        public virtual bool ValidarParaProcesarIsOk()
         {
             if (_empaque.GetId == "")
             {
@@ -91,6 +110,10 @@ namespace ModInventario.src.MovInventario.Tools.CapturaMov
                 return false;
             }
             return true;
+        }
+        public void CargarEmpaques()
+        {
+            _empaque.CargarData();
         }
     }
 }

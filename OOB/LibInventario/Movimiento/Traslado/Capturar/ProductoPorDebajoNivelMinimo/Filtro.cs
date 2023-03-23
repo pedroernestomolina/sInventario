@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace OOB.LibInventario.Movimiento.Traslado.Capturar.ProductoPorDebajoNivelMinimo
 {
-    
     public class Filtro
     {
-
         public string autoDepositoOrigen { get; set; }
         public string autoDepositoVerificarNivel { get; set; }
         public string autoDepartamento { get; set; }
+        public string autoProducto { get; set; }
+        public bool verificarExistencia { get; set; }
 
 
         public Filtro()
@@ -21,8 +21,8 @@ namespace OOB.LibInventario.Movimiento.Traslado.Capturar.ProductoPorDebajoNivelM
             autoDepartamento = "";
             autoDepositoOrigen = "";
             autoDepositoVerificarNivel = "";
+            autoProducto = "";
+            verificarExistencia = true;
         }
-
     }
-
 }

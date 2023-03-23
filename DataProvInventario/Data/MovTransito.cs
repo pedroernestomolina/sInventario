@@ -8,15 +8,12 @@ using System.Threading.Tasks;
 
 namespace DataProvInventario.Data
 {
-
     public partial class DataProv: IData
     {
-
         public OOB.ResultadoId 
             Transito_Movimiento_Agregar(OOB.LibInventario.Transito.Movimiento.Agregar.Ficha ficha)
         {
             var rt = new OOB.ResultadoId();
-
             var mov = ficha.mov;
             var movDTO = new DtoLibInventario.Transito.Movimiento.Agregar.Mov()
             {
@@ -93,7 +90,6 @@ namespace DataProvInventario.Data
                 return rt;
             }
             rt.Id = r01.Id;
-
             return rt;
         }
         public OOB.ResultadoEntidad<int> 
@@ -275,7 +271,5 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
     }
-
 }

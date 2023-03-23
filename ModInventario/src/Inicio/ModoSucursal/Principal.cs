@@ -397,6 +397,14 @@ namespace ModInventario.src.Inicio.ModoSucursal
         {
             _controlador.TrasladoPorDevolucion();
         }
+        private void TSM_Movimiento_Control_Traslado_Por_Nivel_Minimo_Click(object sender, EventArgs e)
+        {
+            TrasladoPorNiVelMinimo();
+        }
+        private void TrasladoPorNiVelMinimo()
+        {
+            _controlador.TrasladoMercanciaEntreSucursalPorNivelMinimo();
+        }
 
 
         private void TSM_REPORTE_KARDEX_RESUMEN_MOV_Click(object sender, EventArgs e)
@@ -505,7 +513,5 @@ namespace ModInventario.src.Inicio.ModoSucursal
         {
             _controlador.PermitirCambiarPrecioAlModificarCosto();
         }
-
     }
-
 }

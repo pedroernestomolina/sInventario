@@ -206,6 +206,9 @@ namespace ModInventario.src.MovInventario.Traslado
             try
             {
                 base.CargarData();
+                _pendiente.setTipoDocumentoTrabajar(MovInventario.Pendiente.enumerados.enumTipoDocAbrirPend.Trasalado);
+                _pendiente.setTipoMovTraslado(MovInventario.Pendiente.enumerados.enumTipoMovTraslado.TrasladoEntreDepositos);
+                _pendiente.CargarData();
                 _depDestino.CargarData();
                 if (_activarDepDestinoPredeterminado)
                 {
@@ -261,6 +264,10 @@ namespace ModInventario.src.MovInventario.Traslado
                 if (_seguridad.Verificar(r00.Entidad))
                 {
                     Registrar();
+                    if (ProcesarIsOk) 
+                    {
+                        _pendiente.ActualizarContador();
+                    }
                 }
             }
             catch (Exception e)
@@ -269,10 +276,37 @@ namespace ModInventario.src.MovInventario.Traslado
                 return;
             }
         }
+        public void ListaPendienteVisualizar()
+        {
+            _pendiente.ListaVisualizar();
+            if (_pendiente.SeleccionItemIsOk) 
+            {
+                AbrirDocumentoPend(_pendiente.IdItemSeleccionado);
+                _pendiente.ActualizarContador();
+            }
+        }
+        public bool DejarEnPendienteIsOk { get { return _pendiente.DejarEnPendienteIsOk; } }
+        public void DejarEnPendiente()        
+        {
+            if (ValidarDoc())
+            {
+                var xmsg = "Dejar Documento En Pendiente ?";
+                var msg = MessageBox.Show(xmsg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (msg == DialogResult.Yes)
+                {
+                    RegistrarPendiente();
+                    if (DejarEnPendienteIsOk)
+                    {
+                        _pendiente.ActualizarContador();
+                    }
+                }
+            }
+        }
+
 
         private void Registrar()
         {
-            var concepto= (ficha)_concepto.GetItem;
+            var concepto = (ficha)_concepto.GetItem;
             var depOrigen = (ficha)_depOrigen.GetItem;
             var depDestino = (ficha)_depDestino.GetItem;
             var sucOrigen = (ficha)_sucOrigen.GetItem;
@@ -315,24 +349,24 @@ namespace ModInventario.src.MovInventario.Traslado
                 montoDivisa = _mDivisa,
             };
 
-            var _items = (List<dataItem>) _listaMov.GetItems;
+            var _items = (List<dataItem>)_listaMov.GetItems;
             var detOOB = _items.Select(s =>
             {
                 var it = s;
                 var rg = new OOB.LibInventario.Movimiento.Traslado.Insertar.FichaMovDetalle()
                 {
-                    autoDepartamento=  it.FichaPrd.autoDepart,
-                    autoGrupo= it.FichaPrd.autoGrupo,
+                    autoDepartamento = it.FichaPrd.autoDepart,
+                    autoGrupo = it.FichaPrd.autoGrupo,
                     autoProducto = it.FichaPrd.autoPrd,
-                    cantidad= it.Cantidad,
-                    cantidadBono=0,
-                    cantidadUnd= it.CntUnd,
-                    categoria=it.FichaPrd.catPrd,
-                    codigoProducto=it.FichaPrd.codigoPrd,
+                    cantidad = it.Cantidad,
+                    cantidadBono = 0,
+                    cantidadUnd = it.CntUnd,
+                    categoria = it.FichaPrd.catPrd,
+                    codigoProducto = it.FichaPrd.codigoPrd,
                     costoCompra = it.CostoEmpSelMonedaLocal,
-                    costoUnd=it.CostoEmpUndMonedaLocal ,
-                    decimales=it.FichaPrd.decimales,
-                    estatusAnulado="0",
+                    costoUnd = it.CostoEmpUndMonedaLocal,
+                    decimales = it.FichaPrd.decimales,
+                    estatusAnulado = "0",
                     estatusUnidad = it.EmpaqueSel_EsPorUnidad ? "1" : "0",
                     nombreProducto = it.FichaPrd.nombrePrd,
                     signo = _docTipo.signo,
@@ -441,6 +475,167 @@ namespace ModInventario.src.MovInventario.Traslado
             }
             NotificarDocumentoGenerado(r01.Auto);
             _procesarIsOk = true;
+            limpiarTodo();
+        }
+        private void AbrirDocumentoPend(int idMov)
+        {
+            try
+            {
+                if (_listaMov.GetCtnItems > 0)
+                {
+                    throw new Exception("HAY ITEMS CARGADOS ACTUALMENTE, VERIFIQUE POR FAVOR");
+                }
+
+                //CAPTURO MOVIMIENTO
+                var r01 = Sistema.MyData.Transito_Movimiento_GetById(idMov);
+                if (r01.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    throw new Exception(r01.Mensaje);
+                }
+                var _lst = new List<dataItem>();
+                var mov = r01.Entidad.mov;
+                setAutorizadoPor(mov.autoriza);
+                setMotivo(mov.motivo);
+                Concepto.setId(mov.idConcepto);
+                SucOrigenSetId(mov.idSucOrigen);
+                DepOrigen.setId(mov.idDeOrigen);
+                DepDestino.setId(mov.idDepDestino);
+                foreach (var r in r01.Entidad.detalles.OrderBy(o => o.nombreProd).ToList())
+                {
+                    var dat = new data()
+                    {
+                        autoDepart = r.autoDepart,
+                        autoGrupo = r.autoGrupo,
+                        autoPrd = r.autoProd,
+                        autoTasa = r.autoTasa,
+                        catPrd = r.categoriaProd,
+                        codigoPrd = r.codigoProd,
+                        contEmp = r.contEmpaque,
+                        costo = r.costo,
+                        costoDivisa = r.costoDivisa,
+                        costoDivisaUnd = r.costoDivisaUnd,
+                        costoUnd = r.costoUnd,
+                        decimales = r.decimales,
+                        descTasa = r.descTasa,
+                        esAdmDivisa = r.esAdmDivisa == "1" ? true : false,
+                        exFisica = r.exFisica,
+                        nombreEmp = r.descEmpaque,
+                        nombrePrd = r.nombreProd,
+                        valorTasa = r.valorTasa,
+                        fechaUltimaActCosto = r.fechaUltActCosto,
+                        exFisicaDepDestino = r.exFisicaDestino,
+                        nivelMinimoDepDestino = r.nivelMinimo,
+                        nivelOptimoDepDestino = r.nivelOptimo,
+                        contEmpInv = r.contEmpaqueInv,
+                        nombreEmpInv = r.descEmpaqueInv,
+                    };
+                    Tools.CapturaMov.IDataCaptura _dataCapture = _dataCapture = new Tools.CapturaMov.ImpDataCaptura();
+                    _dataCapture.CargarEmpaques();
+                    _dataCapture.setFicha(dat);
+                    _dataCapture.setCantidad(r.cantSolicitada);
+                    _dataCapture.setCosto(r.costo);
+                    _dataCapture.setEmpaque(r.empaqueIdSolicitado);
+                    _dataCapture.setTasaCambio(_tasaCambio);
+                    _listaMov.AgregarItem(_dataCapture);
+                }
+                //ELIMINO MOVIMIENTO
+                var r02 = Sistema.MyData.Transito_Movimiento_AnularById(idMov);
+                if (r02.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    throw new Exception(r02.Mensaje);
+                }
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
+                return;
+            }
+        }
+        private void RegistrarPendiente()
+        {
+            var r00 = Sistema.MyData.Sistema_TipoDocumento_GetFichaByTipo(OOB.LibInventario.Sistema.TipoDocumento.enumerados.enumTipoDocumento.TRASLADO);
+            if (r00.Result == OOB.Enumerados.EnumResult.isError)
+            {
+                Helpers.Msg.Error(r00.Mensaje);
+                return;
+            }
+            var docTipo = r00.Entidad;
+            var concepto = (ficha)_concepto.GetItem;
+            var depOrigen = (ficha)_depOrigen.GetItem;
+            var depDestino = (ficha)_depDestino.GetItem;
+            var sucOrigen = (ficha)_sucOrigen.GetItem;
+
+            var movOOB = new OOB.LibInventario.Transito.Movimiento.Agregar.Mov()
+            {
+                autoriza = GetEnt_AutorizadoPor,
+                cntRenglones = _listaMov.GetCtnItems,
+                codigoMov = docTipo.codigo,
+                descConcepto = concepto.desc,
+                descDepDestino = depDestino.desc,
+                descDepOrigen = depOrigen.desc,
+                descMov = docTipo.nombre,
+                descSucDestino = "",
+                descSucOrigen = sucOrigen.desc,
+                descUsuario = Sistema.UsuarioP.nombreUsu,
+                estacionEquipo = Environment.MachineName,
+                factorCambio = _tasaCambio,
+                idConcepto = concepto.id,
+                idDeOrigen = depOrigen.id,
+                idDepDestino = depDestino.id,
+                idSucDestino = "",
+                idSucOrigen = sucOrigen.id,
+                monto = _listaMov.GetImporte_MonedaLocal,
+                montoDivisa = _listaMov.GetImporte_MonedaOtra,
+                motivo = GetEnt_Motivo,
+                tipoMov = "1",//TRASLADO ENTRE DEPOSITOS
+            };
+
+            var detallesOOB = new List<OOB.LibInventario.Transito.Movimiento.Agregar.Detalle>();
+            var _items = (List<dataItem>) _listaMov.GetItems;
+            foreach (var det in _items)
+            {
+                var idTipoMovFicha = "";
+                var rg = new OOB.LibInventario.Transito.Movimiento.Agregar.Detalle()
+                {
+                    autoDepart = det.FichaPrd.autoDepart,
+                    autoGrupo = det.FichaPrd.autoGrupo,
+                    autoPrd = det.FichaPrd.autoPrd,
+                    autoTasa = det.FichaPrd.autoTasa,
+                    catPrd = det.FichaPrd.catPrd,
+                    codigoPrd = det.FichaPrd.codigoPrd,
+                    costo = det.FichaPrd.costo,
+                    costoDivisa = det.FichaPrd.costoDivisa,
+                    costoDivisaUnd = det.FichaPrd.costoDivisaUnd,
+                    costoUnd = det.FichaPrd.costoUnd,
+                    decimales = det.FichaPrd.decimales,
+                    descTasa = det.FichaPrd.descTasa,
+                    estatusDivisa = det.FichaPrd.esAdmDivisa ? "1" : "0",
+                    exFisica = det.FichaPrd.exFisica,
+                    fechaUltActCosto = det.FichaPrd.fechaUltimaActCosto,
+                    nombrePrd = det.FichaPrd.nombrePrd,
+                    valorTasa = det.FichaPrd.valorTasa,
+                    nivelMinimo = det.FichaPrd.nivelMinimoDepDestino,
+                    nivelOptimo = det.FichaPrd.nivelOptimoDepDestino,
+                    exFisicaDestino = det.FichaPrd.exFisicaDepDestino,
+                    //
+                    cantidadSolicitada = det.Cantidad,
+                    costoSolicitada = det.Costo,
+                    ajusteIdSolicitada = idTipoMovFicha,
+                    empaqueIdSolicitada = det.EmpaqueSelGetId,
+                    //
+                    contEmp = det.FichaPrd.contEmp ,
+                    nombreEmp = det.FichaPrd.nombreEmp,
+                    contEmpInv = det.FichaPrd.contEmpInv,
+                    nombreEmpInv = det.FichaPrd.nombreEmpInv,
+                };
+                detallesOOB.Add(rg);
+            }
+            var fichaOOB = new OOB.LibInventario.Transito.Movimiento.Agregar.Ficha()
+            {
+                mov = movOOB,
+                detalles = detallesOOB,
+            };
+            _pendiente.DejarEnPendiente(fichaOOB);
             limpiarTodo();
         }
     }

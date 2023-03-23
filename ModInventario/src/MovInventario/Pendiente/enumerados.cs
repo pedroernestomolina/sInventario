@@ -9,7 +9,7 @@ namespace ModInventario.src.MovInventario.Pendiente
 {
     public class enumerados
     {
-        public enum enumTipoMovTraslado { SinDefinir = -1, TrasladoEntreDepositos = 1, TrasladoPorDevolucion, TrasladoPorNivelMinimo };
+        public enum enumTipoMovTraslado { SinDefinir = -1, TrasladoEntreDepositos = 1, TrasladoPorDevolucion, TrasladoPorNivelMinimo, AjusteInventario };
         public enum enumTipoDocAbrirPend { SinDefinir = -1, Cargo = 1, Descargo, Trasalado, Ajuste };
     }
 }

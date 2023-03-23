@@ -14,5 +14,6 @@ namespace ModInventario.src.MovInventario.Ajuste.Inv
         void ListaPendienteVisualizar();
         bool DejarEnPendienteIsOk { get; }
         void DejarEnPendiente();
+        void CargarPendiente(int idMovCargar);
     }
 }

@@ -42,6 +42,7 @@ namespace ModInventario.src.MovInventario
         public decimal CostoEmpSelMonedaLocal { get { return _costoEmpUndMonedaLocal * _contEmpSel; } }
         public int Signo { get { return _signo; } }
         public string TipoMov { get { return _idTipMov == "1" ? "CARGO" : "DESCARGO"; } }
+        public string TipoMovSelGetId { get { return _idTipMov; } }
 
 
         public dataItem()

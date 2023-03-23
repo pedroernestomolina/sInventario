@@ -9,18 +9,12 @@ using System.Windows.Forms;
 
 namespace ModInventario.AdmMovPend
 {
-    
     public class AdmMovPend: IAdmMovPend 
     {
-
         private IListaAdm _gLista;
         private bool _eliminarIsOk;
         private bool _limpiarFiltrosIsOk;
-        private ModInventario.MovimientoInvTipo.ITipo _gTraslxNivel;
-        private ModInventario.MovimientoInvTipo.ITipoxDev _gTrasl;
-        private ModInventario.MovimientoInvTipo.IGestionTipo _gMov;
         private ISeguridadAccesoSistema _seguridad;
-        private ModInventario.MovimientoInvTipo.ITipo _gAjuste;
         private IOpcion _gTipoDoc;
 
 
@@ -43,7 +37,6 @@ namespace ModInventario.AdmMovPend
             _eliminarIsOk = false;
             _limpiarFiltrosIsOk = false;
             _gLista = lista;
-            _gMov = tipoMov;
             _seguridad= accesoSist;
             _gTipoDoc = new ModInventario.FiltrosGen.Opcion.Gestion();
         }
@@ -99,19 +92,6 @@ namespace ModInventario.AdmMovPend
         public void GenerarMov()
         {
             GenerarMovimiento();
-        }
-
-        public void setMovTrasladoxNivel(MovimientoInvTipo.ITipo mTraslxNivel)
-        {
-            _gTraslxNivel = mTraslxNivel;
-        }
-        public void setMovTraslado(MovimientoInvTipo.ITipoxDev mTraslado)
-        {
-            _gTrasl = mTraslado;
-        }
-        public void setMovAjuste(MovimientoInvTipo.ITipo mAjuste)
-        {
-            _gAjuste = mAjuste;
         }
         public void LimpiarFiltros()
         {
@@ -223,70 +203,39 @@ namespace ModInventario.AdmMovPend
         }
         private void CargarAjuste(dataItem ItemActual)
         {
-            var r00 = Sistema.MyData.Permiso_MovimientoAjusteInventario(Sistema.UsuarioP.autoGru);
-            if (r00.Result == OOB.Enumerados.EnumResult.isError)
+            if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_MovimientoAjusteInventarioCero, Sistema.UsuarioP.autoGru, _seguridad)) 
             {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-            if (_seguridad.Verificar(r00.Entidad))
-            {
-                _gAjuste.Inicializa();
-                CargarMov(_gAjuste, ItemActual.id);
+                Helpers.GenerarMov.AjusteInv(_seguridad, ItemActual.id);
+                ActualizarLista();
             }
         }
         private void CargarTralasdoxNivelMinimo(dataItem ItemActual)
         {
-            var r00 = Sistema.MyData.Permiso_MovimientoTrasladoEntreSucursales_PorExistenciaDebajoDelMinimo(Sistema.UsuarioP.autoGru);
-            if (r00.Result == OOB.Enumerados.EnumResult.isError)
+            if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_MovimientoAjusteInventarioCero, Sistema.UsuarioP.autoGru, _seguridad))
             {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-            if (_seguridad.Verificar(r00.Entidad))
-            {
-                _gTraslxNivel.Inicializa();
-                CargarMov(_gTraslxNivel, ItemActual.id);
+                Helpers.GenerarMov.TrasladoPorNivelMinimo(_seguridad, ItemActual.id);
+                ActualizarLista();
             }
         }
         private void CargarTralasdoxDevolucion(dataItem ItemActual)
         {
-            var r00 = Sistema.MyData.Permiso_MovimientoTrasladoPorDevolucion(Sistema.UsuarioP.autoGru);
-            if (r00.Result == OOB.Enumerados.EnumResult.isError)
+            if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_MovimientoAjusteInventarioCero, Sistema.UsuarioP.autoGru, _seguridad))
             {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-            if (_seguridad.Verificar(r00.Entidad))
-            {
-                _gTrasl.Inicializa();
-                _gTrasl.setActivarPorDevolucion(true);
-                CargarMov(_gTrasl, ItemActual.id);
+                Helpers.GenerarMov.TrasladoPorDevolucion(_seguridad, ItemActual.id);
+                ActualizarLista();
             }
         }
         private void CargarTralasdo(dataItem ItemActual)
         {
-            var r00 = Sistema.MyData.Permiso_MovimientoTrasladoInventario(Sistema.UsuarioP.autoGru);
-            if (r00.Result == OOB.Enumerados.EnumResult.isError)
+            if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_MovimientoAjusteInventarioCero, Sistema.UsuarioP.autoGru, _seguridad))
             {
-                Helpers.Msg.Error(r00.Mensaje);
-                return;
-            }
-            if (_seguridad.Verificar(r00.Entidad))
-            {
-                _gTrasl.Inicializa();
-                _gTrasl.setActivarPorDevolucion(false);
-                CargarMov(_gTrasl, ItemActual.id);
+                Helpers.GenerarMov.Traslado(_seguridad,ItemActual.id);
+                ActualizarLista();
             }
         }
-        private void CargarMov(MovimientoInvTipo.ITipo mov, int idMov)
+        private void ActualizarLista()
         {
-            _gMov.Inicializa();
-            _gMov.setTipoMov(mov);
-            _gMov.IniciaConPendiente(idMov);
-            _gMov.Finaliza();
+            Buscar();
         }
-
     }
-
 }

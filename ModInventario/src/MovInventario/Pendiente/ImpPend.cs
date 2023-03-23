@@ -43,7 +43,7 @@ namespace ModInventario.src.MovInventario.Pendiente
                 throw new Exception(r01.Mensaje);
             }
             var _docTipo = r01.Entidad;
-            var filtroOOB = new OOB.LibInventario.Transito.Movimiento.Lista.Filtro() { codigoMov = _docTipo.codigo, tipoMov = _tipoTraslado };
+            var filtroOOB = new OOB.LibInventario.Transito.Movimiento.Lista.Filtro() { codigoMov = _docTipo.codigo, tipoMov = _tipoTrasladoAjuste };
             var r02 = Sistema.MyData.Transito_Movimiento_GetCnt(filtroOOB);
             if (r02.Result == OOB.Enumerados.EnumResult.isError)
             {
@@ -74,21 +74,24 @@ namespace ModInventario.src.MovInventario.Pendiente
                     break;
             }
         }
-        private string _tipoTraslado;
-        public void setTipoMovTraslado(enumerados.enumTipoMovTraslado tipoTraslado)
+        private string _tipoTrasladoAjuste;
+        public void setTipoMovTrasladoAjuste(enumerados.enumTipoMovTraslado tipoTrasladoAjuste)
         {
-            _tipoTraslado = "";
-            _tipoMovTraslado = tipoTraslado;
+            _tipoTrasladoAjuste = "";
+            _tipoMovTraslado = tipoTrasladoAjuste;
             switch (_tipoMovTraslado)
             {
                 case enumerados.enumTipoMovTraslado.TrasladoEntreDepositos:
-                    _tipoTraslado = "1";
+                    _tipoTrasladoAjuste = "1";
                     break;
                 case enumerados.enumTipoMovTraslado.TrasladoPorDevolucion:
-                    _tipoTraslado = "2";
+                    _tipoTrasladoAjuste = "2";
                     break;
                 case enumerados.enumTipoMovTraslado.TrasladoPorNivelMinimo:
-                    _tipoTraslado = "3";
+                    _tipoTrasladoAjuste = "3";
+                    break;
+                case enumerados.enumTipoMovTraslado.AjusteInventario:
+                    _tipoTrasladoAjuste = "1";
                     break;
             }
         }
@@ -124,7 +127,7 @@ namespace ModInventario.src.MovInventario.Pendiente
                 }
                 var _docTipo = r01.Entidad;
 
-                var filtroOOB = new OOB.LibInventario.Transito.Movimiento.Lista.Filtro() { codigoMov = _docTipo.codigo, tipoMov = _tipoTraslado };
+                var filtroOOB = new OOB.LibInventario.Transito.Movimiento.Lista.Filtro() { codigoMov = _docTipo.codigo, tipoMov = _tipoTrasladoAjuste };
                 var r02 = Sistema.MyData.Transito_Movimiento_GetCnt(filtroOOB);
                 if (r02.Result == OOB.Enumerados.EnumResult.isError)
                 {

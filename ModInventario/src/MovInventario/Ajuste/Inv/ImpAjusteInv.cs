@@ -13,6 +13,7 @@ namespace ModInventario.src.MovInventario.Ajuste.Inv
     {
         private bool _productoSeleccionadoIsOk;
         private Tools.CapturaMov.ICapturaMov _capturaMov;
+        private int _idMovPendCargar;
 
 
         public bool ProductoSeleccionadoIsOk { get { return _productoSeleccionadoIsOk; } }
@@ -22,6 +23,7 @@ namespace ModInventario.src.MovInventario.Ajuste.Inv
         public ImpAjusteInv(ISeguridadAccesoSistema ctrSeguridad)
             : base(ctrSeguridad)
         {
+            _idMovPendCargar = -1;
             _productoSeleccionadoIsOk = false;
             _capturaMov = new CapturaMov.ImpCapturaMov();
         }
@@ -30,6 +32,7 @@ namespace ModInventario.src.MovInventario.Ajuste.Inv
         public override void Inicializa()
         {
             base.Inicializa();
+            _idMovPendCargar = -1;
             _productoSeleccionadoIsOk = false;
             _busqPrd.setHabilitarFiltroDeposito(false);
         }
@@ -38,6 +41,11 @@ namespace ModInventario.src.MovInventario.Ajuste.Inv
         {
             if (CargarData())
             {
+                if (_idMovPendCargar != -1) 
+                {
+                    AbrirDocumentoPend(_idMovPendCargar);
+                    _pendiente.ActualizarContador();
+                }
                 if (frm == null)
                 {
                     frm = new MovFrm();
@@ -404,10 +412,12 @@ namespace ModInventario.src.MovInventario.Ajuste.Inv
                     };
                     Tools.CapturaMov.IDataCaptura _dataCapture = _dataCapture = new Tools.CapturaMov.ImpDataCaptura();
                     _dataCapture.CargarEmpaques();
+                    _dataCapture.CargarTipoMovAjuste();
                     _dataCapture.setFicha(dat);
                     _dataCapture.setCantidad(r.cantSolicitada);
                     _dataCapture.setCosto(r.costo);
                     _dataCapture.setEmpaque(r.empaqueIdSolicitado);
+                    _dataCapture.setTipoMov(r.ajusteIdSolicitado);
                     _dataCapture.setTasaCambio(_tasaCambio);
                     _listaMov.AgregarItem(_dataCapture);
                 }
@@ -441,11 +451,11 @@ namespace ModInventario.src.MovInventario.Ajuste.Inv
             {
                 autoriza = GetEnt_AutorizadoPor,
                 cntRenglones = _listaMov.GetCtnItems,
-                codigoMov = docTipo.codigo,
+                codigoMov = docTipo.codigo,  //ES UN AJUSTE POR INVENTARIO
                 descConcepto = concepto.desc,
                 descDepOrigen = depOrigen.desc,
                 descMov = docTipo.nombre,
-                descSucDestino = "",
+                descSucDestino = sucOrigen.desc,
                 descSucOrigen = sucOrigen.desc,
                 descUsuario = Sistema.UsuarioP.nombreUsu,
                 estacionEquipo = Environment.MachineName,
@@ -457,7 +467,9 @@ namespace ModInventario.src.MovInventario.Ajuste.Inv
                 monto = _listaMov.GetImporte_MonedaLocal,
                 montoDivisa = _listaMov.GetImporte_MonedaOtra,
                 motivo = GetEnt_Motivo,
-                tipoMov = "",
+                tipoMov = "1",//AJUSTE POR INVENTARIO
+                descDepDestino = depOrigen.desc,
+                idDepDestino = "",
             };
 
             var detallesOOB = new List<OOB.LibInventario.Transito.Movimiento.Agregar.Detalle>();
@@ -490,7 +502,7 @@ namespace ModInventario.src.MovInventario.Ajuste.Inv
                     //
                     cantidadSolicitada = det.Cantidad,
                     costoSolicitada = det.Costo,
-                    ajusteIdSolicitada = idTipoMovFicha,
+                    ajusteIdSolicitada = det.TipoMovSelGetId,
                     empaqueIdSolicitada = det.EmpaqueSelGetId,
                     //
                     contEmp = det.FichaPrd.contEmp,
@@ -507,6 +519,26 @@ namespace ModInventario.src.MovInventario.Ajuste.Inv
             };
             _pendiente.DejarEnPendiente(fichaOOB);
             limpiarTodo();
+        }
+        protected override bool CargarData()
+        {
+            try
+            {
+                base.CargarData();
+                _pendiente.setTipoDocumentoTrabajar(MovInventario.Pendiente.enumerados.enumTipoDocAbrirPend.Ajuste);
+                _pendiente.setTipoMovTrasladoAjuste(MovInventario.Pendiente.enumerados.enumTipoMovTraslado.AjusteInventario);
+                _pendiente.CargarData();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
+                return false;
+            }
+        }
+        public void CargarPendiente(int idMovPendCargar)
+        {
+            _idMovPendCargar = idMovPendCargar;
         }
     }
 }

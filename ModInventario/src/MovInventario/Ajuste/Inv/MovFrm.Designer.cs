@@ -31,10 +31,17 @@
             this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel47 = new System.Windows.Forms.Panel();
+            this.L_ITEMS_PEND = new System.Windows.Forms.Label();
+            this.panel50 = new System.Windows.Forms.Panel();
+            this.BT_LISTA_PEND = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.BT_SALIR = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.BT_PROCESAR = new System.Windows.Forms.Button();
+            this.panel46 = new System.Windows.Forms.Panel();
+            this.BT_DEJAR_PENDIENTE = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.panel32 = new System.Windows.Forms.Panel();
@@ -130,17 +137,14 @@
             this.panel40 = new System.Windows.Forms.Panel();
             this.DGV_DETALLE = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.panel46 = new System.Windows.Forms.Panel();
-            this.BT_DEJAR_PENDIENTE = new System.Windows.Forms.Button();
-            this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel47 = new System.Windows.Forms.Panel();
-            this.L_ITEMS_PEND = new System.Windows.Forms.Label();
-            this.panel50 = new System.Windows.Forms.Panel();
-            this.BT_LISTA_PEND = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel19.SuspendLayout();
+            this.panel47.SuspendLayout();
+            this.panel50.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel46.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
             this.panel32.SuspendLayout();
@@ -206,10 +210,6 @@
             this.panel11.SuspendLayout();
             this.panel40.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_DETALLE)).BeginInit();
-            this.panel46.SuspendLayout();
-            this.tableLayoutPanel19.SuspendLayout();
-            this.panel47.SuspendLayout();
-            this.panel50.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -243,6 +243,71 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1034, 60);
             this.tableLayoutPanel2.TabIndex = 1;
+            // 
+            // tableLayoutPanel19
+            // 
+            this.tableLayoutPanel19.ColumnCount = 1;
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel19.Controls.Add(this.panel47, 0, 0);
+            this.tableLayoutPanel19.Controls.Add(this.panel50, 0, 1);
+            this.tableLayoutPanel19.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel19.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel19.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel19.Name = "tableLayoutPanel19";
+            this.tableLayoutPanel19.RowCount = 2;
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel19.Size = new System.Drawing.Size(155, 60);
+            this.tableLayoutPanel19.TabIndex = 3;
+            // 
+            // panel47
+            // 
+            this.panel47.Controls.Add(this.L_ITEMS_PEND);
+            this.panel47.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel47.Location = new System.Drawing.Point(1, 1);
+            this.panel47.Margin = new System.Windows.Forms.Padding(1);
+            this.panel47.Name = "panel47";
+            this.panel47.Padding = new System.Windows.Forms.Padding(2);
+            this.panel47.Size = new System.Drawing.Size(153, 19);
+            this.panel47.TabIndex = 0;
+            // 
+            // L_ITEMS_PEND
+            // 
+            this.L_ITEMS_PEND.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_ITEMS_PEND.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_ITEMS_PEND.ForeColor = System.Drawing.Color.Maroon;
+            this.L_ITEMS_PEND.Location = new System.Drawing.Point(2, 2);
+            this.L_ITEMS_PEND.Name = "L_ITEMS_PEND";
+            this.L_ITEMS_PEND.Size = new System.Drawing.Size(149, 15);
+            this.L_ITEMS_PEND.TabIndex = 1;
+            this.L_ITEMS_PEND.Text = "90 DOC PEND";
+            this.L_ITEMS_PEND.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel50
+            // 
+            this.panel50.Controls.Add(this.BT_LISTA_PEND);
+            this.panel50.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel50.Location = new System.Drawing.Point(1, 22);
+            this.panel50.Margin = new System.Windows.Forms.Padding(1);
+            this.panel50.Name = "panel50";
+            this.panel50.Padding = new System.Windows.Forms.Padding(2);
+            this.panel50.Size = new System.Drawing.Size(153, 37);
+            this.panel50.TabIndex = 1;
+            // 
+            // BT_LISTA_PEND
+            // 
+            this.BT_LISTA_PEND.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_LISTA_PEND.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_LISTA_PEND.Image = global::ModInventario.Properties.Resources.bt_pendiente;
+            this.BT_LISTA_PEND.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.BT_LISTA_PEND.Location = new System.Drawing.Point(2, 2);
+            this.BT_LISTA_PEND.Name = "BT_LISTA_PEND";
+            this.BT_LISTA_PEND.Size = new System.Drawing.Size(149, 33);
+            this.BT_LISTA_PEND.TabIndex = 4;
+            this.BT_LISTA_PEND.Text = "Lista Pend";
+            this.BT_LISTA_PEND.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.BT_LISTA_PEND.UseVisualStyleBackColor = true;
+            this.BT_LISTA_PEND.Click += new System.EventHandler(this.BT_LISTA_PEND_Click);
             // 
             // panel4
             // 
@@ -294,6 +359,32 @@
             this.BT_PROCESAR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.BT_PROCESAR.UseVisualStyleBackColor = true;
             this.BT_PROCESAR.Click += new System.EventHandler(this.BT_PROCESAR_Click);
+            // 
+            // panel46
+            // 
+            this.panel46.Controls.Add(this.BT_DEJAR_PENDIENTE);
+            this.panel46.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel46.Location = new System.Drawing.Point(414, 1);
+            this.panel46.Margin = new System.Windows.Forms.Padding(1);
+            this.panel46.Name = "panel46";
+            this.panel46.Padding = new System.Windows.Forms.Padding(2);
+            this.panel46.Size = new System.Drawing.Size(204, 58);
+            this.panel46.TabIndex = 2;
+            // 
+            // BT_DEJAR_PENDIENTE
+            // 
+            this.BT_DEJAR_PENDIENTE.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_DEJAR_PENDIENTE.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_DEJAR_PENDIENTE.Image = global::ModInventario.Properties.Resources.bt_pendiente;
+            this.BT_DEJAR_PENDIENTE.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.BT_DEJAR_PENDIENTE.Location = new System.Drawing.Point(2, 2);
+            this.BT_DEJAR_PENDIENTE.Name = "BT_DEJAR_PENDIENTE";
+            this.BT_DEJAR_PENDIENTE.Size = new System.Drawing.Size(200, 54);
+            this.BT_DEJAR_PENDIENTE.TabIndex = 4;
+            this.BT_DEJAR_PENDIENTE.Text = "En Pendiente";
+            this.BT_DEJAR_PENDIENTE.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.BT_DEJAR_PENDIENTE.UseVisualStyleBackColor = true;
+            this.BT_DEJAR_PENDIENTE.Click += new System.EventHandler(this.BT_DEJAR_PENDIENTE_Click);
             // 
             // panel1
             // 
@@ -1511,96 +1602,6 @@
             this.DGV_DETALLE.TabIndex = 0;
             this.DGV_DETALLE.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DGV_DETALLE_CellFormatting);
             // 
-            // panel46
-            // 
-            this.panel46.Controls.Add(this.BT_DEJAR_PENDIENTE);
-            this.panel46.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel46.Location = new System.Drawing.Point(414, 1);
-            this.panel46.Margin = new System.Windows.Forms.Padding(1);
-            this.panel46.Name = "panel46";
-            this.panel46.Padding = new System.Windows.Forms.Padding(2);
-            this.panel46.Size = new System.Drawing.Size(204, 58);
-            this.panel46.TabIndex = 2;
-            // 
-            // BT_DEJAR_PENDIENTE
-            // 
-            this.BT_DEJAR_PENDIENTE.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BT_DEJAR_PENDIENTE.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BT_DEJAR_PENDIENTE.Image = global::ModInventario.Properties.Resources.bt_pendiente;
-            this.BT_DEJAR_PENDIENTE.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.BT_DEJAR_PENDIENTE.Location = new System.Drawing.Point(2, 2);
-            this.BT_DEJAR_PENDIENTE.Name = "BT_DEJAR_PENDIENTE";
-            this.BT_DEJAR_PENDIENTE.Size = new System.Drawing.Size(200, 54);
-            this.BT_DEJAR_PENDIENTE.TabIndex = 4;
-            this.BT_DEJAR_PENDIENTE.Text = "En Pendiente";
-            this.BT_DEJAR_PENDIENTE.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.BT_DEJAR_PENDIENTE.UseVisualStyleBackColor = true;
-            this.BT_DEJAR_PENDIENTE.Click += new System.EventHandler(this.BT_DEJAR_PENDIENTE_Click);
-            // 
-            // tableLayoutPanel19
-            // 
-            this.tableLayoutPanel19.ColumnCount = 1;
-            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel19.Controls.Add(this.panel47, 0, 0);
-            this.tableLayoutPanel19.Controls.Add(this.panel50, 0, 1);
-            this.tableLayoutPanel19.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel19.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel19.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel19.Name = "tableLayoutPanel19";
-            this.tableLayoutPanel19.RowCount = 2;
-            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
-            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel19.Size = new System.Drawing.Size(155, 60);
-            this.tableLayoutPanel19.TabIndex = 3;
-            // 
-            // panel47
-            // 
-            this.panel47.Controls.Add(this.L_ITEMS_PEND);
-            this.panel47.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel47.Location = new System.Drawing.Point(1, 1);
-            this.panel47.Margin = new System.Windows.Forms.Padding(1);
-            this.panel47.Name = "panel47";
-            this.panel47.Padding = new System.Windows.Forms.Padding(2);
-            this.panel47.Size = new System.Drawing.Size(153, 19);
-            this.panel47.TabIndex = 0;
-            // 
-            // L_ITEMS_PEND
-            // 
-            this.L_ITEMS_PEND.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_ITEMS_PEND.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_ITEMS_PEND.ForeColor = System.Drawing.Color.Maroon;
-            this.L_ITEMS_PEND.Location = new System.Drawing.Point(2, 2);
-            this.L_ITEMS_PEND.Name = "L_ITEMS_PEND";
-            this.L_ITEMS_PEND.Size = new System.Drawing.Size(149, 15);
-            this.L_ITEMS_PEND.TabIndex = 1;
-            this.L_ITEMS_PEND.Text = "90 DOC PEND";
-            this.L_ITEMS_PEND.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // panel50
-            // 
-            this.panel50.Controls.Add(this.BT_LISTA_PEND);
-            this.panel50.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel50.Location = new System.Drawing.Point(1, 22);
-            this.panel50.Margin = new System.Windows.Forms.Padding(1);
-            this.panel50.Name = "panel50";
-            this.panel50.Padding = new System.Windows.Forms.Padding(2);
-            this.panel50.Size = new System.Drawing.Size(153, 37);
-            this.panel50.TabIndex = 1;
-            // 
-            // BT_LISTA_PEND
-            // 
-            this.BT_LISTA_PEND.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BT_LISTA_PEND.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BT_LISTA_PEND.Image = global::ModInventario.Properties.Resources.bt_pendiente;
-            this.BT_LISTA_PEND.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.BT_LISTA_PEND.Location = new System.Drawing.Point(2, 2);
-            this.BT_LISTA_PEND.Name = "BT_LISTA_PEND";
-            this.BT_LISTA_PEND.Size = new System.Drawing.Size(149, 33);
-            this.BT_LISTA_PEND.TabIndex = 4;
-            this.BT_LISTA_PEND.Text = "Lista Pend";
-            this.BT_LISTA_PEND.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.BT_LISTA_PEND.UseVisualStyleBackColor = true;
-            // 
             // MovFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1619,8 +1620,12 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MovFrm_KeyDown);
             this.panel2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel19.ResumeLayout(false);
+            this.panel47.ResumeLayout(false);
+            this.panel50.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel46.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel12.ResumeLayout(false);
             this.panel32.ResumeLayout(false);
@@ -1689,10 +1694,6 @@
             this.panel11.ResumeLayout(false);
             this.panel40.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_DETALLE)).EndInit();
-            this.panel46.ResumeLayout(false);
-            this.tableLayoutPanel19.ResumeLayout(false);
-            this.panel47.ResumeLayout(false);
-            this.panel50.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

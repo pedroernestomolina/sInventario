@@ -131,6 +131,17 @@ namespace ModInventario.AdmMovPend
             DGV.Refresh();
             Actualizar();
         }
+        private void DGV_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if (e.ColumnIndex >= 0)
+                {
+                    GenerarMov();
+                }
+            }
+        }
+
 
         public void setControlador(IAdmMovPend ctr)
         {
@@ -233,24 +244,10 @@ namespace ModInventario.AdmMovPend
         {
             //_controlador.Filtros();
         }
-        private void DGV_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0) 
-            {
-                if (e.ColumnIndex >= 0)
-                {
-                    GenerarMov();
-                }
-            }
-        }
         private void GenerarMov()
         {
             _controlador.GenerarMov();
+            Actualizar();
         }
-        private void VerAnulacion()
-        {
-        }
-
     }
-
 }

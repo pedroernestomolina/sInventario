@@ -52,5 +52,6 @@ namespace ModInventario.src.MovInventario.Tools.CapturaMov
         void Inicializa();
         bool ValidarParaProcesarIsOk();
         void CargarEmpaques();
+        void CargarTipoMovAjuste();
     }
 }

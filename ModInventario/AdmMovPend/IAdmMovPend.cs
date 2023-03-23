@@ -8,10 +8,8 @@ using System.Windows.Forms;
 
 namespace ModInventario.AdmMovPend
 {
-    
     public interface IAdmMovPend: IAdministrador 
     {
-
         bool LimpiarFiltrosIsOk { get; }
         bool AnularIsOk { get; }
         BindingSource TipoDocSource { get; }
@@ -19,12 +17,7 @@ namespace ModInventario.AdmMovPend
 
 
         void GenerarMov();
-        void setMovTrasladoxNivel(MovimientoInvTipo.ITipo mTraslxNivel);
-        void setMovTraslado(MovimientoInvTipo.ITipoxDev mTraslado);
-        void setMovAjuste(MovimientoInvTipo.ITipo mAjuste);
         void LimpiarFiltros();
         void setTipoDoc(string id);
-
     }
-
 }

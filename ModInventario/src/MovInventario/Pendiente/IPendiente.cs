@@ -13,7 +13,7 @@ namespace ModInventario.src.MovInventario.Pendiente
         IListaPend Pendiente { get; }
 
         void setTipoDocumentoTrabajar(enumerados.enumTipoDocAbrirPend tipoDoc);
-        void setTipoMovTraslado(enumerados.enumTipoMovTraslado tipoTraslado);
+        void setTipoMovTrasladoAjuste(enumerados.enumTipoMovTraslado tipoTrasladoAjuste);
 
         void Inicializa();
         void CargarData();

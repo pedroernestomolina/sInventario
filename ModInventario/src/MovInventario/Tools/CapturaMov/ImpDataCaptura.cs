@@ -115,5 +115,9 @@ namespace ModInventario.src.MovInventario.Tools.CapturaMov
         {
             _empaque.CargarData();
         }
+        public void CargarTipoMovAjuste()
+        {
+            _tipMov.CargarData();
+        }
     }
 }

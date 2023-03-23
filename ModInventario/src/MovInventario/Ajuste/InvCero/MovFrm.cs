@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace ModInventario.src.MovInventario.Ajuste.Inv
+namespace ModInventario.src.MovInventario.Ajuste.InvCero
 {
     public partial class MovFrm : Form
     {
-        private IAjusteInv _controlador;
+        private IAjusteInvEnCero _controlador;
         
         
         public MovFrm()
@@ -158,11 +158,9 @@ namespace ModInventario.src.MovInventario.Ajuste.Inv
             CB_SUCURSAL.ValueMember = "id";
             CB_DEP_ORIGEN.DisplayMember = "desc";
             CB_DEP_ORIGEN.ValueMember = "id";
-            CB_METODO_BUSQ.DisplayMember = "desc";
-            CB_METODO_BUSQ.ValueMember = "id";
         }
 
-        public void setControlador(IAjusteInv ctr)
+        public void setControlador(IAjusteInvEnCero ctr)
         {
             _controlador = ctr;
         }
@@ -176,7 +174,6 @@ namespace ModInventario.src.MovInventario.Ajuste.Inv
             TB_MOTIVO.Text = _controlador.GetEnt_Motivo;
             TB_AUTORIZADO_POR.Text = _controlador.GetEnt_AutorizadoPor;
             DTP_FECHA.Value = _controlador.GetFechaSistema;
-            CB_METODO_BUSQ.DataSource = _controlador.MetBusProducto.GetSource;
             CB_CONCEPTO.DataSource = _controlador.Concepto.GetSource;
             CB_SUCURSAL.DataSource = _controlador.SucOrigen.GetSource;
             CB_DEP_ORIGEN.DataSource = _controlador.DepOrigen.GetSource;
@@ -211,38 +208,13 @@ namespace ModInventario.src.MovInventario.Ajuste.Inv
             }
         }
 
-
-        private void BT_FILTRAR_Click(object sender, EventArgs e)
+        private void BT_CAPTURAR_APLICAR_Click(object sender, EventArgs e)
         {
-            ActivarFiltros();
-        }
-        private void BT_LIMPIAR_FILTROS_Click(object sender, EventArgs e)
-        {
-            LimpiarFiltros();
-        }
-        private void BT_BUSCAR_PRODUCTO_Click(object sender, EventArgs e)
-        {
-            BuscarProducto();
-        }
-        private void BT_EDITAR_ITEM_Click(object sender, EventArgs e)
-        {
-            EditarItem();
-        }
-        private void BT_ELIMINAR_ITEM_Click(object sender, EventArgs e)
-        {
-            EliminarItem();
+            CapturarAjuste();
         }
         private void BT_LIMPIAR_Click(object sender, EventArgs e)
         {
             LimpiarVista();
-        }
-        private void BT_LISTA_PEND_Click(object sender, EventArgs e)
-        {
-            ListaPendientes();
-        }
-        private void BT_DEJAR_PENDIENTE_Click(object sender, EventArgs e)
-        {
-            DejarEnPendiente();
         }
         private void BT_PROCESAR_Click(object sender, EventArgs e)
         {
@@ -296,15 +268,6 @@ namespace ModInventario.src.MovInventario.Ajuste.Inv
                 _controlador.DepOrigen.setId(CB_DEP_ORIGEN.SelectedValue.ToString());
             }
         }
-        private void CB_METODO_BUSQ_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (_modoInicio) return;
-            _controlador.MetBusProducto.setMetodoBusq("");
-            if (CB_METODO_BUSQ.SelectedIndex != -1)
-            {
-                _controlador.MetBusProducto.setMetodoBusq(CB_METODO_BUSQ.SelectedValue.ToString());
-            }
-        }
 
 
         private void TB_AUTORIZADO_POR_Leave(object sender, EventArgs e)
@@ -315,10 +278,6 @@ namespace ModInventario.src.MovInventario.Ajuste.Inv
         {
             _controlador.setMotivo(TB_MOTIVO.Text.Trim().ToUpper());
         }
-        private void TB_CADENA_BUSQ_Leave(object sender, EventArgs e)
-        {
-            _controlador.MetBusProducto.setCadenaBusqueda(TB_CADENA_BUSQ.Text.Trim().ToUpper());
-        }
 
 
         private void L_CONCEPTO_Click(object sender, EventArgs e)
@@ -327,60 +286,18 @@ namespace ModInventario.src.MovInventario.Ajuste.Inv
         }
 
 
-        private void ActivarFiltros()
+        private void CapturarAjuste()
         {
             IrFocoBusqueda();
-            _controlador.MetBusProducto.ActivarFiltros();
-        }
-        private void LimpiarFiltros()
-        {
-            IrFocoBusqueda();
-            _controlador.MetBusProducto.LimpiarFiltros();
-            RefrescarBusqueda();
-        }
-        private void BuscarProducto()
-        {
-            IrFocoBusqueda();
-            _controlador.BuscarProducto();
-            ActualizarImporte();
-            TB_CADENA_BUSQ.Text = _controlador.MetBusProducto.GetCadenaBusq;
-        }
-        private void EliminarItem()
-        {
-            IrFocoBusqueda();
-            _controlador.EliminarItem();
-            ActualizarImporte();
-        }
-        private void EditarItem()
-        {
-            IrFocoBusqueda();
-            _controlador.EditarItem();
-            ActualizarImporte();
-            DGV_DETALLE.Refresh();
-        }
-        private void ListaPendientes()
-        {
-            IrFocoBusqueda();
-            _controlador.ListaPendienteVisualizar();
-            Limpiar();
-            ActualizarImporte();
-        }
-        private void DejarEnPendiente()
-        {
-            IrFocoBusqueda();
-            _controlador.DejarEnPendiente();
-            if (_controlador.DejarEnPendienteIsOk)
+            _controlador.CapturarDataAjusteInvCero();
+            if (_controlador.CapturarDataAjusteInvCeroIsOk)
             {
-                Limpiar();
                 ActualizarImporte();
             }
         }
-        private void MaestroConcepto()
-        {
-            //_controlador.ConceptoMaestro();
-        }
         private void Procesar()
         {
+            IrFocoBusqueda();
             _controlador.ProcesarFicha();
             if (_controlador.ProcesarIsOk)
             {
@@ -390,6 +307,7 @@ namespace ModInventario.src.MovInventario.Ajuste.Inv
         }
         private void Abandonar()
         {
+            IrFocoBusqueda();
             _controlador.AbandonarFicha();
             if (_controlador.AbandonarIsOk)
             {
@@ -413,11 +331,9 @@ namespace ModInventario.src.MovInventario.Ajuste.Inv
             TB_MOTIVO.Text = _controlador.GetEnt_Motivo;
             TB_AUTORIZADO_POR.Text = _controlador.GetEnt_AutorizadoPor;
             DTP_FECHA.Value = _controlador.GetFechaSistema;
-            CB_METODO_BUSQ.SelectedValue = _controlador.MetBusProducto.GetId;
             CB_CONCEPTO.SelectedValue = _controlador.Concepto.GetId;
             CB_SUCURSAL.SelectedValue = _controlador.SucOrigen.GetId;
             CB_DEP_ORIGEN.SelectedValue = _controlador.DepOrigen.GetId;
-            TB_CADENA_BUSQ.Text = _controlador.MetBusProducto.GetCadenaBusq;
             DGV_DETALLE.Refresh();
             _modoInicio = false;
         }
@@ -435,16 +351,12 @@ namespace ModInventario.src.MovInventario.Ajuste.Inv
         {
             L_MONTO.Text = "(Bs) " + _controlador.ListaItems.GetImporte_MonedaLocal.ToString("n2") + "/ ($) " + _controlador.ListaItems.GetImporte_MonedaOtra.ToString("n2");
             L_ITEMS.Text = "Total Items: " + Environment.NewLine + _controlador.ListaItems.GetCtnItems.ToString();
-            L_ITEMS_PEND.Text = "DOC PEND ( " + _controlador.Pendiente.CntDoc.ToString("n0") + " )";
         }
         private void IrFocoBusqueda()
         {
-            TB_CADENA_BUSQ.Focus();
         }
         private void RefrescarBusqueda()
         {
-            TB_CADENA_BUSQ.Text = _controlador.MetBusProducto.GetCadenaBusq;
-            CB_METODO_BUSQ.SelectedValue = _controlador.MetBusProducto.GetId; 
         }
     }
 }

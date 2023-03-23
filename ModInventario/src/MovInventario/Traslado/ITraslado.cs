@@ -17,5 +17,6 @@ namespace ModInventario.src.MovInventario.Traslado
         void ListaPendienteVisualizar();
         bool DejarEnPendienteIsOk { get; }
         void DejarEnPendiente();
+        void CargarPendiente(int idMovCargar);
     }
 }

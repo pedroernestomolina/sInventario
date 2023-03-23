@@ -8,10 +8,8 @@ using System.Windows.Forms;
 
 namespace ModInventario
 {
-    
     public interface IListaAdm
     {
-
         BindingSource Source { get; }
         int CntItems { get; }
         IEnumerable <object> Items { get; }
@@ -24,7 +22,6 @@ namespace ModInventario
         void ActAgregarListaItem(IEnumerable<object> lst);
         void ActActualizarItem(object itemActual, object itemNuevo);
         void ActLimpiarLista();
-
+        void ActualizarCntItems();
     }
-
 }

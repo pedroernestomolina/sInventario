@@ -16,6 +16,7 @@ namespace ModInventario.src.MovInventario.Traslado
         private bool _productoSeleccionadoIsOk;
         private Tools.CapturaMov.ICapturaMov _capturaMov;
         private Tools.Deposito.IDeposito _depDestino;
+        private int _idMovPendCargar;
 
 
         public Tools.Deposito.IDeposito DepDestino { get { return _depDestino; } }
@@ -33,6 +34,7 @@ namespace ModInventario.src.MovInventario.Traslado
             _productoSeleccionadoIsOk = false;
             _capturaMov = new CapturaMov.ImpCapturaMovTraslado();
             _depDestino = new Tools.Deposito.ImpDeposito();
+            _idMovPendCargar = -1;
         }
 
 
@@ -45,12 +47,18 @@ namespace ModInventario.src.MovInventario.Traslado
             _activarDepDestinoPredeterminado = false;
             _productoSeleccionadoIsOk = false;
             _busqPrd.setHabilitarFiltroDeposito(false);
+            _idMovPendCargar = -1;
         }
         private MovFrm frm;
         public override void Inicia()
         {
             if (CargarData())
             {
+                if (_idMovPendCargar != -1) 
+                {
+                    AbrirDocumentoPend(_idMovPendCargar);
+                    _pendiente.ActualizarContador();
+                }
                 if (frm == null)
                 {
                     frm = new MovFrm();
@@ -207,7 +215,7 @@ namespace ModInventario.src.MovInventario.Traslado
             {
                 base.CargarData();
                 _pendiente.setTipoDocumentoTrabajar(MovInventario.Pendiente.enumerados.enumTipoDocAbrirPend.Trasalado);
-                _pendiente.setTipoMovTraslado(MovInventario.Pendiente.enumerados.enumTipoMovTraslado.TrasladoEntreDepositos);
+                _pendiente.setTipoMovTrasladoAjuste(MovInventario.Pendiente.enumerados.enumTipoMovTraslado.TrasladoEntreDepositos);
                 _pendiente.CargarData();
                 _depDestino.CargarData();
                 if (_activarDepDestinoPredeterminado)
@@ -637,6 +645,10 @@ namespace ModInventario.src.MovInventario.Traslado
             };
             _pendiente.DejarEnPendiente(fichaOOB);
             limpiarTodo();
+        }
+        public void CargarPendiente(int idMovCargar)
+        {
+            _idMovPendCargar = idMovCargar;
         }
     }
 }

@@ -115,6 +115,7 @@
     <Compile Include="Gestion\IProcesar.cs" />
     <Compile Include="Gestion\IProcesarSalir.cs" />
     <Compile Include="Helpers\Filtro.cs" />
+    <Compile Include="Helpers\GenerarMov.cs" />
     <Compile Include="Helpers\VerificarPermiso.cs" />
     <Compile Include="Identificacion\ILogin.cs" />
     <Compile Include="IListaAdm.cs" />
@@ -902,6 +903,14 @@
     <Compile Include="src\Inicio\ModoSucursal\Principal.designer.cs">
       <DependentUpon>Principal.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\MovInventario\Ajuste\InvCero\IAjusteInvEnCero.cs" />
+    <Compile Include="src\MovInventario\Ajuste\InvCero\ImpAjusteInvEnCero.cs" />
+    <Compile Include="src\MovInventario\Ajuste\InvCero\MovFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\MovInventario\Ajuste\InvCero\MovFrm.Designer.cs">
+      <DependentUpon>MovFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\MovInventario\Ajuste\Inv\CapturaMov\Frm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1597,6 +1606,9 @@
     <EmbeddedResource Include="src\Inicio\ModoSucursal\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\MovInventario\Ajuste\InvCero\MovFrm.resx">
+      <DependentUpon>MovFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\MovInventario\Ajuste\Inv\CapturaMov\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1947,7 +1959,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Reportes\Filtros\MaestroPrecio\" />
-    <Folder Include="src\MovInventario\Ajuste\InvCero\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

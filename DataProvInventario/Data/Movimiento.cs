@@ -980,7 +980,6 @@ namespace DataProvInventario.Data
             Producto_Movimiento_AjusteInventarioCero_Capture(OOB.LibInventario.Movimiento.AjusteInvCero.Capture.Filtro filtro)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Movimiento.AjusteInvCero.Capture.Ficha>();
-
             var filtroDto = new DtoLibInventario.Movimiento.AjusteInvCero.Capture.Filtro()
             {
                 idDeposito = filtro.idDeposito,
@@ -988,11 +987,8 @@ namespace DataProvInventario.Data
             var r01 = MyData.Producto_Movimiento_AjusteInventarioCero_Capture(filtroDto);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                throw new Exception(r01.Mensaje);
             }
-
             var lst = new List<OOB.LibInventario.Movimiento.AjusteInvCero.Capture.Data>();
             if (r01.Entidad.data != null)
             {
@@ -1027,7 +1023,6 @@ namespace DataProvInventario.Data
             {
                 data = lst,
             };
-
             return rt;
         }
         //ANULAR

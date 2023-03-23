@@ -73,7 +73,8 @@ namespace ModInventario.AdmMovPend
             }
             _bs.CurrencyManager.Refresh();
         }
-
+        public void ActualizarCntItems()
+        {
+        }
     }
-
 }

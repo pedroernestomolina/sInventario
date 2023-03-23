@@ -18,6 +18,7 @@ namespace ModInventario.src.MovInventario.Traslado.PorNIvel
         private Tools.Deposito.IDeposito _depDestino;
         private Tools.Sucursal.ISucursal _sucDestino;
         private Tools.Departamento.IDepartamento _departamento;
+        private int _idMovPendCargar;
 
 
         public Tools.Sucursal.ISucursal SucDestino { get { return _sucDestino; } }
@@ -39,6 +40,7 @@ namespace ModInventario.src.MovInventario.Traslado.PorNIvel
             _depDestino = new Tools.Deposito.ImpDeposito();
             _sucDestino = new Tools.Sucursal.ImpSucursal();
             _departamento = new Tools.Departamento.ImpDepartamento();
+            _idMovPendCargar = -1;
         }
 
 
@@ -53,12 +55,18 @@ namespace ModInventario.src.MovInventario.Traslado.PorNIvel
             _activarDepDestinoPredeterminado = false;
             _productoSeleccionadoIsOk = false;
             _busqPrd.setHabilitarFiltroDeposito(false);
+            _idMovPendCargar = -1;
         }
         private MovFrm frm;
         public override void Inicia()
         {
             if (CargarData())
             {
+                if (_idMovPendCargar != -1) 
+                {
+                    AbrirDocumentoPend(_idMovPendCargar);
+                    _pendiente.ActualizarContador();
+                }
                 if (frm == null)
                 {
                     frm = new MovFrm();
@@ -195,7 +203,7 @@ namespace ModInventario.src.MovInventario.Traslado.PorNIvel
             {
                 base.CargarData();
                 _pendiente.setTipoDocumentoTrabajar(MovInventario.Pendiente.enumerados.enumTipoDocAbrirPend.Trasalado);
-                _pendiente.setTipoMovTraslado(MovInventario.Pendiente.enumerados.enumTipoMovTraslado.TrasladoPorNivelMinimo);
+                _pendiente.setTipoMovTrasladoAjuste(MovInventario.Pendiente.enumerados.enumTipoMovTraslado.TrasladoPorNivelMinimo);
                 _pendiente.CargarData();
                 _depOrigen.CargarData();
                 _depDestino.CargarData();
@@ -600,6 +608,7 @@ namespace ModInventario.src.MovInventario.Traslado.PorNIvel
                 Concepto.setId(mov.idConcepto);
                 SucOrigenSetId(mov.idSucOrigen);
                 SucDestinoSetId(mov.idSucDestino);
+                DepOrigen.CargarData();
                 DepOrigen.setId(mov.idDeOrigen);
                 DepDestino.setId(mov.idDepDestino);
                 foreach (var r in r01.Entidad.detalles.OrderBy(o => o.nombreProd).ToList())
@@ -743,6 +752,10 @@ namespace ModInventario.src.MovInventario.Traslado.PorNIvel
         public void EliminarItemsDondeExistenciaEnDepOrigenSeaCero()
         {
             _listaMov.EliminarItemsDondeExistenciaEnDepOrigenSeaCero();
+        }
+        public void CargarPendiente(int idMovCargar)
+        {
+            _idMovPendCargar = idMovCargar;
         }
     }
 }

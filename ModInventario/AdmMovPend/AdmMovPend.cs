@@ -30,7 +30,6 @@ namespace ModInventario.AdmMovPend
 
         public AdmMovPend(
             IListaAdm lista, 
-            ModInventario.MovimientoInvTipo.IGestionTipo tipoMov,
             ISeguridadAccesoSistema accesoSist 
             )
         {

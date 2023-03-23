@@ -116,6 +116,7 @@
     <Compile Include="Gestion\IProcesarSalir.cs" />
     <Compile Include="Helpers\Filtro.cs" />
     <Compile Include="Helpers\GenerarMov.cs" />
+    <Compile Include="Helpers\Reportes.cs" />
     <Compile Include="Helpers\VerificarPermiso.cs" />
     <Compile Include="Identificacion\ILogin.cs" />
     <Compile Include="IListaAdm.cs" />
@@ -367,97 +368,6 @@
     <Compile Include="MaestrosInv\UnidadEmpaque\Editar\Gestion.cs" />
     <Compile Include="MaestrosInv\UnidadEmpaque\Gestion.cs" />
     <Compile Include="MaestrosInv\UnidadEmpaque\IAgregarEditar.cs" />
-    <Compile Include="MovimientoInvTipo\AjusteInvCero\Gestion.cs" />
-    <Compile Include="MovimientoInvTipo\AjusteInvCero\MovFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MovimientoInvTipo\AjusteInvCero\MovFrm.Designer.cs">
-      <DependentUpon>MovFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MovimientoInvTipo\Ajuste\Captura\EntradaFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MovimientoInvTipo\Ajuste\Captura\EntradaFrm.Designer.cs">
-      <DependentUpon>EntradaFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MovimientoInvTipo\Ajuste\Captura\Gestion.cs" />
-    <Compile Include="MovimientoInvTipo\Ajuste\Gestion.cs" />
-    <Compile Include="MovimientoInvTipo\Ajuste\MovFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MovimientoInvTipo\Ajuste\MovFrm.Designer.cs">
-      <DependentUpon>MovFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MovimientoInvTipo\Cargo\Captura\EntradaFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MovimientoInvTipo\Cargo\Captura\EntradaFrm.Designer.cs">
-      <DependentUpon>EntradaFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MovimientoInvTipo\Cargo\Captura\Gestion.cs" />
-    <Compile Include="MovimientoInvTipo\Cargo\Gestion.cs" />
-    <Compile Include="MovimientoInvTipo\Cargo\MovFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MovimientoInvTipo\Cargo\MovFrm.Designer.cs">
-      <DependentUpon>MovFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MovimientoInvTipo\data.cs" />
-    <Compile Include="MovimientoInvTipo\dataItem.cs" />
-    <Compile Include="MovimientoInvTipo\Descargo\Captura\EntradaFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MovimientoInvTipo\Descargo\Captura\EntradaFrm.Designer.cs">
-      <DependentUpon>EntradaFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MovimientoInvTipo\Descargo\Gestion.cs" />
-    <Compile Include="MovimientoInvTipo\Descargo\MovFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MovimientoInvTipo\Descargo\MovFrm.Designer.cs">
-      <DependentUpon>MovFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MovimientoInvTipo\Descargo\Captura\Gestion.cs" />
-    <Compile Include="MovimientoInvTipo\enumerados.cs" />
-    <Compile Include="MovimientoInvTipo\Gestion.cs" />
-    <Compile Include="MovimientoInvTipo\ICapturaMovAjuste.cs" />
-    <Compile Include="MovimientoInvTipo\IGestionTipo.cs" />
-    <Compile Include="MovimientoInvTipo\ILista.cs" />
-    <Compile Include="MovimientoInvTipo\ICaptura.cs" />
-    <Compile Include="MovimientoInvTipo\ITipo.cs" />
-    <Compile Include="MovimientoInvTipo\ITipoSeguridad.cs" />
-    <Compile Include="MovimientoInvTipo\ITipoxDev.cs" />
-    <Compile Include="MovimientoInvTipo\Lista.cs" />
-    <Compile Include="MovimientoInvTipo\Transito\data.cs" />
-    <Compile Include="MovimientoInvTipo\Transito\Gestion.cs" />
-    <Compile Include="MovimientoInvTipo\Transito\ITransito.cs" />
-    <Compile Include="MovimientoInvTipo\Transito\ListaSelFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MovimientoInvTipo\Transito\ListaSelFrm.Designer.cs">
-      <DependentUpon>ListaSelFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MovimientoInvTipo\TrasladoPorNivelMinimo\Gestion.cs" />
-    <Compile Include="MovimientoInvTipo\TrasladoPorNivelMinimo\MovFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MovimientoInvTipo\TrasladoPorNivelMinimo\MovFrm.Designer.cs">
-      <DependentUpon>MovFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MovimientoInvTipo\Traslado\Captura\EntradaFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MovimientoInvTipo\Traslado\Captura\EntradaFrm.Designer.cs">
-      <DependentUpon>EntradaFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MovimientoInvTipo\Traslado\Captura\Gestion.cs" />
-    <Compile Include="MovimientoInvTipo\Traslado\Gestion.cs" />
-    <Compile Include="MovimientoInvTipo\Traslado\MovFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MovimientoInvTipo\Traslado\MovFrm.Designer.cs">
-      <DependentUpon>MovFrm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Producto\Costo\Editar\costo.cs" />
     <Compile Include="Producto\Costo\Editar\EditarFrm.cs">
       <SubType>Form</SubType>
@@ -1373,39 +1283,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Kardex\Movimiento\KardexFrm.resx">
       <DependentUpon>KardexFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MovimientoInvTipo\AjusteInvCero\MovFrm.resx">
-      <DependentUpon>MovFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MovimientoInvTipo\Ajuste\Captura\EntradaFrm.resx">
-      <DependentUpon>EntradaFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MovimientoInvTipo\Ajuste\MovFrm.resx">
-      <DependentUpon>MovFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MovimientoInvTipo\Cargo\Captura\EntradaFrm.resx">
-      <DependentUpon>EntradaFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MovimientoInvTipo\Cargo\MovFrm.resx">
-      <DependentUpon>MovFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MovimientoInvTipo\Descargo\Captura\EntradaFrm.resx">
-      <DependentUpon>EntradaFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MovimientoInvTipo\Descargo\MovFrm.resx">
-      <DependentUpon>MovFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MovimientoInvTipo\Transito\ListaSelFrm.resx">
-      <DependentUpon>ListaSelFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MovimientoInvTipo\TrasladoPorNivelMinimo\MovFrm.resx">
-      <DependentUpon>MovFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MovimientoInvTipo\Traslado\Captura\EntradaFrm.resx">
-      <DependentUpon>EntradaFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MovimientoInvTipo\Traslado\MovFrm.resx">
-      <DependentUpon>MovFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Producto\Costo\Editar\EditarFrm.resx">
       <DependentUpon>EditarFrm.cs</DependentUpon>

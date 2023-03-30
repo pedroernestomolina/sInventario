@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace ModInventario.Reportes.Graficas.Top20
 {
-    
     public class GestionRep
     {
 
@@ -50,7 +49,5 @@ namespace ModInventario.Reportes.Graficas.Top20
             frp.Path = pt;
             frp.ShowDialog();
         }
-
     }
-
 }

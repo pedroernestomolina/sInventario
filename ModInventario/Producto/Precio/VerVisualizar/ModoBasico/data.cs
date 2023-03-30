@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModInventario.Producto.Precio.VerVisualizar.ModoBasico
 {
-    
     public class data
     {
-
         public string Producto { get; set; }
         public dataEmp emp1_1 { get; set; }
         public dataEmp emp1_2 { get; set; }
@@ -39,7 +37,5 @@ namespace ModInventario.Producto.Precio.VerVisualizar.ModoBasico
         public string AdmDivisa { get; set; }
         public string ProductoAdmDivisa { get { return AdmDivisa.Trim().ToUpper() == "1" ? "Si" : "No"; } }
         public string ProductoIva { get { return TasaIva > 0m ? TasaIva.ToString("n2") + "%" : "Exento"; } }
-
     }
-
 }

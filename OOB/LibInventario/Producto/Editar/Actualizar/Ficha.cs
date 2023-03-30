@@ -50,6 +50,7 @@ namespace OOB.LibInventario.Producto.Editar.Actualizar
         public int contEmpVentaTipo_3 { get; set; }
         //
         public FichaTallaColorSabor tallaColorSabor { get; set; }
+        public FichaHndEmpVenta hndEmpVenta { get; set; }
 
 
         public Ficha() 

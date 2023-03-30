@@ -771,7 +771,27 @@ namespace DataProvInventario.Data
                     ListaTallaColorSabor = _lst,
                 };
             }
+
+            fichaDTO.hndEmpVenta = null;
+            if (ficha.hndEmpVenta != null)
+            {
+                var _lst = ficha.hndEmpVenta.ListaEmpVenta.Select(s =>
+                {
+                    var nr = new DtoLibInventario.Producto.Editar.Actualizar.HndEmpVenta()
+                    {
+                        id= s.id,
+                        autoEmp = s.autoEmp,
+                        contEmp = s.contEmp,
+                    };
+                    return nr;
+                }).ToList();
+                fichaDTO.hndEmpVenta = new DtoLibInventario.Producto.Editar.Actualizar.FichaHndEmpVenta()
+                {
+                    ListaEmpVenta = _lst,
+                };
+            }
             //
+
             var r01 = MyData.Producto_Editar_Actualizar(fichaDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
@@ -846,7 +866,50 @@ namespace DataProvInventario.Data
                     ListaTallaColorSabor = _lst,
                 };
             }
+            fichaDTO.hndEmpVenta = null;
+            if (ficha.hndEmpVenta != null) 
+            {
+                var _lst = ficha.hndEmpVenta.ListaEmpVenta.Select(s =>
+                {
+                    var nr = new DtoLibInventario.Producto.Agregar.HndEmpVenta()
+                    {
+                        autoEmp = s.autoEmp,
+                        contEmp = s.contEmp,
+                        tipoEmp = s.tipoEmp
+                    };
+                    return nr;
+                }).ToList();
+                fichaDTO.hndEmpVenta = new DtoLibInventario.Producto.Agregar.FichaHndEmpVenta()
+                {
+                    ListaEmpVenta = _lst,
+                };
+            }
+            fichaDTO.hndPrecioVenta = null;
+            if (ficha.hndPrecioVenta != null) 
+            {
+                var _lst = ficha.hndPrecioVenta.ListaPrecioVenta.Select(s =>
+                {
+                    var nr = new DtoLibInventario.Producto.Agregar.HndPrecioVenta()
+                    {
+                        fullDivisa = s.fullDivisa,
+                        idHndTipoPrecio = s.idHndTipoPrecio,
+                        netoMonedaLocal = s.netoMonedaLocal,
+                        ofertaDesde = s.ofertaDesde,
+                        ofertaEstatus = s.ofertaEstatus,
+                        ofertaHasta = s.ofertaHasta,
+                        ofertaPorc = s.ofertaPorc,
+                        tipoEmp = s.tipoEmp,
+                        utilidadPorc = s.utilidadPorc,
+                    };
+                    return nr;
+                }).ToList();
+                fichaDTO.hndPrecioVenta = new DtoLibInventario.Producto.Agregar.FichaHndPrecioVenta()
+                {
+                    ListaPrecioVenta = _lst,
+                };
+            }
             //
+
             var r01 = MyData.Producto_Nuevo_Agregar(fichaDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {

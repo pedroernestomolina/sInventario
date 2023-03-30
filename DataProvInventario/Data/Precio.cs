@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace DataProvInventario.Data
 {
-
     public partial class DataProv : IData
     {
-
         public OOB.ResultadoEntidad<OOB.LibInventario.Precio.Historico.Ficha> 
             HistoricoPrecio_GetLista(OOB.LibInventario.Precio.Historico.Filtro filtro)
         {
@@ -439,7 +437,5 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
     }
-
 }

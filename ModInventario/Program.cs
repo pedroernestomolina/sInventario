@@ -49,6 +49,9 @@ namespace ModInventario
                             case DataProvInventario.Enumerados.modoConfInventario.BasicoFoxSystem:
                                 fabrica = new src.FabModoBasicoFoxSystem();
                                 break;
+                            case DataProvInventario.Enumerados.modoConfInventario.Administrativo:
+                                fabrica = new src.FabModoAdministrativo();
+                                break;
                             default:
                                 throw new Exception("NO SE HA DEFINIDO UN MODO DE CONFIGURACION PARA INVENTARIO");
                         }

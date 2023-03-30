@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModInventario.Producto.Precio.EditarCambiar
 {
-    
     public class dataProducto
     {
-
         private string _codigo;
         private string _desc;
         private string _auto;
@@ -19,7 +17,6 @@ namespace ModInventario.Producto.Precio.EditarCambiar
         private decimal _costoEmpCompra;
         private string _metodoCalculoUT;
         private decimal _tasaCambio;
-        private string _admDivisaDesc;
         private decimal _tasaIva;
         private string _fechaUltAct;
         private bool _esAdmDivisa;
@@ -30,7 +27,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar
         public decimal InfCostoEmpCompra { get { return _costoEmpCompra; } }
         public string InfMetodoCalculoUt { get { return _metodoCalculoUT; } }
         public decimal InfTasaCambio { get { return _tasaCambio; } }
-        public string InfAdmDivisaDesc { get { return _admDivisaDesc; } }
+        public string InfAdmDivisaDesc { get { return _esAdmDivisa ? "SI" : "NO"; } }
         public decimal InfTasaIva { get { return _tasaIva; } }
         public string InfFechaUltAct { get { return _fechaUltAct; } }
         public bool InfEsAdmDivisa { get { return _esAdmDivisa; } }
@@ -89,10 +86,6 @@ namespace ModInventario.Producto.Precio.EditarCambiar
         {
             _tasaCambio = p;
         }
-        public void setAdmDivisaDesc(string p)
-        {
-            _admDivisaDesc = p;
-        }
         public void setTasaIvaPrd(decimal p)
         {
             _tasaIva = p;
@@ -116,12 +109,9 @@ namespace ModInventario.Producto.Precio.EditarCambiar
             _contEmpCompra = 0;
             _metodoCalculoUT = "";
             _tasaCambio = 0m;
-            _admDivisaDesc = "";
             _tasaIva = 0m;
             _fechaUltAct = "";
             _esAdmDivisa = false;
         }
-
     }
-
 }

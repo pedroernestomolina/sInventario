@@ -69,6 +69,7 @@
     <Compile Include="Data\Permisos.cs" />
     <Compile Include="Data\Precio.cs" />
     <Compile Include="Data\Producto.cs" />
+    <Compile Include="Data\Producto_ModoAdm.cs" />
     <Compile Include="Data\Proveedor.cs" />
     <Compile Include="Data\Reportes.cs" />
     <Compile Include="Data\Sistema.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="InfraEstructura\IPermisos.cs" />
     <Compile Include="InfraEstructura\IPrecio.cs" />
     <Compile Include="InfraEstructura\IProducto.cs" />
+    <Compile Include="InfraEstructura\IProducto_ModoAdm.cs" />
     <Compile Include="InfraEstructura\IProveedor.cs" />
     <Compile Include="InfraEstructura\IReportes.cs" />
     <Compile Include="InfraEstructura\ISistema.cs" />

@@ -74,6 +74,7 @@ namespace DataProvInventario.Data
                             descripcion = s.descripcion.Trim(),
                             codigo = s.codigo.Trim(),
                             id = s.id.ToString().ToString(),
+                            idValue=s.id,
                         };
                         return nr;
                     }).ToList();

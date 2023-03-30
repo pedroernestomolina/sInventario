@@ -154,7 +154,6 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoBasico
                 _dataPrd.setCostoEmpCompra(costo);
                 _dataPrd.setMetodoCalculoUt(_metodoCalculoDesc);
                 _dataPrd.setTasaCambioPrd(_tasaCambio);
-                _dataPrd.setAdmDivisaDesc(admDivisa);
                 _dataPrd.setTasaIvaPrd(prd.tasaIva);
                 _dataPrd.setFechaUltActPrd(new DateTime(2022, 05, 03).ToShortDateString());
                 _dataPrd.setEsAdmDivisa(prd.EsAdmDivisa);

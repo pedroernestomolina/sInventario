@@ -438,6 +438,16 @@
     <Compile Include="Producto\Precio\EditarCambiar\IEditar.cs" />
     <Compile Include="Producto\Precio\EditarCambiar\dataPrecio.cs" />
     <Compile Include="Producto\Precio\EditarCambiar\dataProducto.cs" />
+    <Compile Include="Producto\Precio\EditarCambiar\ModoAdministrativo\ImpEditarAdm.cs" />
+    <Compile Include="Producto\Precio\EditarCambiar\ModoAdministrativo\IEditarAdm.cs" />
+    <Compile Include="Producto\Precio\EditarCambiar\ModoAdministrativo\ImpVta.cs" />
+    <Compile Include="Producto\Precio\EditarCambiar\ModoAdministrativo\IVta.cs" />
+    <Compile Include="Producto\Precio\EditarCambiar\ModoAdministrativo\PrecioEditarFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Producto\Precio\EditarCambiar\ModoAdministrativo\PrecioEditarFrm.Designer.cs">
+      <DependentUpon>PrecioEditarFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Producto\Precio\EditarCambiar\ModoSucursal\Editar.cs" />
     <Compile Include="Producto\Precio\EditarCambiar\ModoSucursal\IEditarSucursal.cs" />
     <Compile Include="Producto\Precio\EditarCambiar\ModoSucursal\PrecioEditarFrm.cs">
@@ -465,6 +475,7 @@
     <Compile Include="Producto\Precio\Historico\ModoSucursal\ImpSucursal.cs" />
     <Compile Include="Producto\Precio\Historico\ModoSucursal\ISucursal.cs" />
     <Compile Include="Producto\Precio\VerVisualizar\IVisual.cs" />
+    <Compile Include="Producto\Precio\VerVisualizar\ModoAdm\ImpVisualAdm.cs" />
     <Compile Include="Producto\Precio\VerVisualizar\ModoBasico\data.cs" />
     <Compile Include="Producto\Precio\VerVisualizar\dataEmp.cs" />
     <Compile Include="Producto\Precio\VerVisualizar\ModoBasico\IVisualBasico.cs" />
@@ -699,11 +710,11 @@
     <Compile Include="src\Buscar\ModoBasico\BusquedaFrm.Designer.cs">
       <DependentUpon>BusquedaFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\FabModoAdministrativo.cs" />
     <Compile Include="src\FabModoBasico.cs" />
     <Compile Include="src\FabModoBasicoFoxSystem.cs" />
     <Compile Include="src\FabModoSoloReporte.cs" />
     <Compile Include="src\FabModoSucursal.cs" />
-    <Compile Include="src\Fabrica.cs" />
     <Compile Include="src\FiltroBusqAdm\dataFiltro.cs" />
     <Compile Include="src\FiltroBusqAdm\Enumerados.cs" />
     <Compile Include="src\FiltroBusqAdm\IFiltroPrd.cs" />
@@ -915,6 +926,12 @@
     <Compile Include="src\MovInventario\Traslado\PorNIvel\MovFrm.Designer.cs">
       <DependentUpon>MovFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Producto\AgregarEditar\ModoAdm\Agregar\dataAgregar.cs" />
+    <Compile Include="src\Producto\AgregarEditar\ModoAdm\Agregar\IAgregar.cs" />
+    <Compile Include="src\Producto\AgregarEditar\ModoAdm\Agregar\ImpAgregar.cs" />
+    <Compile Include="src\Producto\AgregarEditar\ModoAdm\Editar\dataEditar.cs" />
+    <Compile Include="src\Producto\AgregarEditar\ModoAdm\Editar\IEditar.cs" />
+    <Compile Include="src\Producto\AgregarEditar\ModoAdm\Editar\ImpEditar.cs" />
     <Compile Include="src\Tools\Buscar\dataExportar.cs" />
     <Compile Include="src\Tools\Buscar\IBuscar.cs" />
     <Compile Include="src\Tools\Buscar\ImpBuscar.cs" />
@@ -1307,6 +1324,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Producto\Plu\PluFrm.resx">
       <DependentUpon>PluFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Producto\Precio\EditarCambiar\ModoAdministrativo\PrecioEditarFrm.resx">
+      <DependentUpon>PrecioEditarFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Producto\Precio\EditarCambiar\ModoSucursal\PrecioEditarFrm.resx">
       <DependentUpon>PrecioEditarFrm.cs</DependentUpon>

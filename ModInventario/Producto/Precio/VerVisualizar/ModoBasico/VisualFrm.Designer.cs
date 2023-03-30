@@ -638,6 +638,7 @@
             // 
             // L_CONT_1_1
             // 
+            this.L_CONT_1_1.BackColor = System.Drawing.Color.CadetBlue;
             this.L_CONT_1_1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.L_CONT_1_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_CONT_1_1.Location = new System.Drawing.Point(2, 2);
@@ -660,6 +661,7 @@
             // 
             // L_UT_1_1
             // 
+            this.L_UT_1_1.BackColor = System.Drawing.Color.CadetBlue;
             this.L_UT_1_1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.L_UT_1_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_UT_1_1.Location = new System.Drawing.Point(2, 2);
@@ -682,6 +684,7 @@
             // 
             // L_NETO_DIV_1_1
             // 
+            this.L_NETO_DIV_1_1.BackColor = System.Drawing.Color.CadetBlue;
             this.L_NETO_DIV_1_1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.L_NETO_DIV_1_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_NETO_DIV_1_1.Location = new System.Drawing.Point(2, 2);
@@ -727,6 +730,7 @@
             // 
             // L_FULL_DIV_1_1
             // 
+            this.L_FULL_DIV_1_1.BackColor = System.Drawing.Color.CadetBlue;
             this.L_FULL_DIV_1_1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.L_FULL_DIV_1_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_FULL_DIV_1_1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -795,6 +799,7 @@
             // 
             // L_CONT_1_2
             // 
+            this.L_CONT_1_2.BackColor = System.Drawing.Color.CadetBlue;
             this.L_CONT_1_2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.L_CONT_1_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_CONT_1_2.Location = new System.Drawing.Point(2, 2);
@@ -817,6 +822,7 @@
             // 
             // L_UT_1_2
             // 
+            this.L_UT_1_2.BackColor = System.Drawing.Color.CadetBlue;
             this.L_UT_1_2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.L_UT_1_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_UT_1_2.Location = new System.Drawing.Point(2, 2);
@@ -839,6 +845,7 @@
             // 
             // L_NETO_DIV_1_2
             // 
+            this.L_NETO_DIV_1_2.BackColor = System.Drawing.Color.CadetBlue;
             this.L_NETO_DIV_1_2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.L_NETO_DIV_1_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_NETO_DIV_1_2.Location = new System.Drawing.Point(2, 2);
@@ -884,6 +891,7 @@
             // 
             // L_FULL_DIV_1_2
             // 
+            this.L_FULL_DIV_1_2.BackColor = System.Drawing.Color.CadetBlue;
             this.L_FULL_DIV_1_2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.L_FULL_DIV_1_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_FULL_DIV_1_2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -952,6 +960,7 @@
             // 
             // L_CONT_1_3
             // 
+            this.L_CONT_1_3.BackColor = System.Drawing.Color.CadetBlue;
             this.L_CONT_1_3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.L_CONT_1_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_CONT_1_3.Location = new System.Drawing.Point(2, 2);
@@ -974,6 +983,7 @@
             // 
             // L_UT_1_3
             // 
+            this.L_UT_1_3.BackColor = System.Drawing.Color.CadetBlue;
             this.L_UT_1_3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.L_UT_1_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_UT_1_3.Location = new System.Drawing.Point(2, 2);
@@ -996,6 +1006,7 @@
             // 
             // L_NETO_DIV_1_3
             // 
+            this.L_NETO_DIV_1_3.BackColor = System.Drawing.Color.CadetBlue;
             this.L_NETO_DIV_1_3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.L_NETO_DIV_1_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_NETO_DIV_1_3.Location = new System.Drawing.Point(2, 2);
@@ -1041,6 +1052,7 @@
             // 
             // L_FULL_DIV_1_3
             // 
+            this.L_FULL_DIV_1_3.BackColor = System.Drawing.Color.CadetBlue;
             this.L_FULL_DIV_1_3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.L_FULL_DIV_1_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_FULL_DIV_1_3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;

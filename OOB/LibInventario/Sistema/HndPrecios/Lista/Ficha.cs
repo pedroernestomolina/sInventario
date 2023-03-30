@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace OOB.LibInventario.Sistema.HndPrecios.Lista
 {
-    
     public class Ficha
     {
-
         public string id { get; set; }
         public string codigo { get; set; }
         public string descripcion { get; set; }
+        public int idValue { get; set; }
 
 
         public Ficha()
@@ -22,7 +21,5 @@ namespace OOB.LibInventario.Sistema.HndPrecios.Lista
             codigo = "";
             descripcion = "";
         }
-
     }
-
 }

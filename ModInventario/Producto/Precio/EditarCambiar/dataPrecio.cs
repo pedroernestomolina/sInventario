@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModInventario.Producto.Precio.EditarCambiar
 {
-    
     public class dataPrecio
     {
-
         public enum enumMetCalUtilidad { SinDefinir = -1, Financiero = 1, Lineal };
 
 
@@ -25,6 +23,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar
         private enumMetCalUtilidad _metodoCalculoUtilidad;
         private decimal _pn;
         private decimal _pf;
+        private string _empaqueDesc;
 
 
         public int Contenido { get { return _contenido; } }
@@ -49,6 +48,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar
             _metodoCalculoUtilidad = enumMetCalUtilidad.SinDefinir;
             _pn = 0m;
             _pf = 0m;
+            _empaqueDesc = "";
         }
 
         public void Inicializa()
@@ -192,7 +192,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar
                 {
                     _pf = monto;
                     _pn = calculaNeto(monto);
-                    var c = 1 - (CostoEmpCompraUnd / monto);
+                    var c = 1 - (CostoEmpCompraUnd / _pn);
                     c *= 100m;
                     _utilidadNueva = c;
                 }
@@ -212,7 +212,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar
                     _utilidadNueva = 0m;
                     if (CostoEmpCompraUnd > 0) 
                     {
-                        var c = (monto / CostoEmpCompraUnd) - 1;
+                        var c = (_pn / CostoEmpCompraUnd) - 1;
                         c *= 100m;
                         _utilidadNueva = c;
                     }
@@ -225,12 +225,14 @@ namespace ModInventario.Producto.Precio.EditarCambiar
         {
             var rt = 0m;
             rt = monto / ((_tasaIva / 100) + 1);
+            rt = Math.Round(rt, 2, MidpointRounding.AwayFromZero);
             return rt;
         }
         private decimal calculaFull(decimal monto)
         {
             var rt = 0m;
             rt = monto + (monto * _tasaIva / 100);
+            rt = Math.Round(rt, 2, MidpointRounding.AwayFromZero);
             return rt;
         }
 
@@ -281,7 +283,44 @@ namespace ModInventario.Producto.Precio.EditarCambiar
 
 
         public decimal TasaCambio { get { return _tasaCambio; } }
+        public string EmpaqueDesc { get { return _empaqueDesc; } }
+        public void setEmpDescVenta(string desc)
+        {
+            _empaqueDesc = desc;
+        }
+        public decimal Neto_OtraMoneda { get { return CalculaNetoOtraMoneda(); } }
+        private decimal CalculaNetoOtraMoneda()
+        {
+            var rt = 0m;
+            if (_admDivisa)
+            {
+                rt = Neto * _tasaCambio;
+            }
+            else 
+            {
+                if (_tasaCambio > 0) 
+                {
+                    rt = Neto / _tasaCambio;
+                }
+            }
+            rt = Math.Round(rt, 2, MidpointRounding.AwayFromZero);
+            return rt;
+        }
+        public decimal Full_OtraMoneda { get { return CalculaFullOtraMoneda(); } }
+        private decimal CalculaFullOtraMoneda()
+        {
+            var _full = 0m;
+            _full = CalculaIva(CalculaNetoOtraMoneda());
+            return _full;
+        }
+        private decimal CalculaIva(decimal monto)
+        {
+            var rt = 0m;
+            rt = (monto * _tasaIva) / 100m;
+            rt += monto;
+            rt = Math.Round(rt, 2, MidpointRounding.AwayFromZero);
+            return rt;
+        }
 
     }
-
 }

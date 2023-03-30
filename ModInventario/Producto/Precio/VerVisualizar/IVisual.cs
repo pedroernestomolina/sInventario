@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModInventario.Producto.Precio.VerVisualizar
 {
-    
     public interface IVisual: IGestion
     {
-
         void setFichaVisualizar(string idPrd);
 
         string GetProductoInfo { get; }
@@ -18,7 +16,5 @@ namespace ModInventario.Producto.Precio.VerVisualizar
         string GetProductoIva { get; }
         decimal GetTasaCambio { get; }
         string GetMetodoCalculoUtilidad { get; }
-
     }
-
 }

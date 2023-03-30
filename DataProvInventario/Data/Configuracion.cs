@@ -20,7 +20,6 @@ namespace DataProvInventario.Data
             {
                 throw new Exception(r01.Mensaje);
             }
-
             Enumerados.modoConfInventario _modo = Enumerados.modoConfInventario.SinDefinir;
             var _dato=r01.Entidad;
             switch(_dato.Trim().ToUpper())
@@ -34,9 +33,11 @@ namespace DataProvInventario.Data
                 case "BASICO_FOX":
                     _modo = Enumerados.modoConfInventario.BasicoFoxSystem;
                     break;
+                case "ADMINISTRATIVO":
+                    _modo = Enumerados.modoConfInventario.Administrativo;
+                    break;
             }
             rt.Entidad = _modo;
-
             return rt;
         }
         public OOB.ResultadoEntidad<OOB.LibInventario.Configuracion.Enumerados.EnumPreferenciaBusqueda> 
@@ -56,7 +57,6 @@ namespace DataProvInventario.Data
             Configuracion_MetodoCalculoUtilidad()
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Configuracion.Enumerados.EnumMetodoCalculoUtilidad>();
-
             var r01 = MyData.Configuracion_MetodoCalculoUtilidad();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
@@ -64,17 +64,14 @@ namespace DataProvInventario.Data
                 rt.Result = OOB.Enumerados.EnumResult.isError;
                 return rt;
             }
-
             var s = r01.Entidad;
             rt.Entidad = (OOB.LibInventario.Configuracion.Enumerados.EnumMetodoCalculoUtilidad)s;
-
             return rt;
         }
         public OOB.ResultadoEntidad<decimal> 
             Configuracion_TasaCambioActual()
         {
             var rt = new OOB.ResultadoEntidad<decimal>();
-
             var r01 = MyData.Configuracion_TasaCambioActual();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
@@ -82,7 +79,6 @@ namespace DataProvInventario.Data
                 rt.Result = OOB.Enumerados.EnumResult.isError;
                 return rt;
             }
-
             var cnf = r01.Entidad;
             var m1 = 0.0m;
             if (cnf.Trim() != "")
@@ -93,7 +89,6 @@ namespace DataProvInventario.Data
                 Decimal.TryParse(cnf, style, culture, out m1);
             }
             rt.Entidad = m1;
-
             return rt;
         }
         public OOB.ResultadoEntidad<OOB.LibInventario.Configuracion.Enumerados.EnumForzarRedondeoPrecioVenta> 

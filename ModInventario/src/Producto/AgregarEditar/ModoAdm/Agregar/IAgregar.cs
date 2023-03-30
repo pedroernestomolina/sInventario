@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ModInventario.src
+
+namespace ModInventario.src.Producto.AgregarEditar.ModoAdm.Agregar
 {
-    class Fabrica
+    public interface IAgregar: ModoSucursal.IAgregarEditar
     {
     }
 }

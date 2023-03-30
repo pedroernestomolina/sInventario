@@ -466,6 +466,7 @@
       <DependentUpon>PrecioEditarFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Producto\Precio\Historico\IHistorico.cs" />
+    <Compile Include="Producto\Precio\Historico\ModoAdm\ImpModoAdm.cs" />
     <Compile Include="Producto\Precio\Historico\ModoSucursal\HistoricoPrecioFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -473,7 +474,6 @@
       <DependentUpon>HistoricoPrecioFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Producto\Precio\Historico\ModoSucursal\ImpSucursal.cs" />
-    <Compile Include="Producto\Precio\Historico\ModoSucursal\ISucursal.cs" />
     <Compile Include="Producto\Precio\VerVisualizar\IVisual.cs" />
     <Compile Include="Producto\Precio\VerVisualizar\ModoAdm\ImpVisualAdm.cs" />
     <Compile Include="Producto\Precio\VerVisualizar\ModoBasico\data.cs" />
@@ -567,6 +567,8 @@
     <Compile Include="Reportes\Filtros\MaestroPrecioSoloReporte\GestionRep.cs" />
     <Compile Include="Reportes\Filtros\MaestroPrecioSucursal\Filtros.cs" />
     <Compile Include="Reportes\Filtros\MaestroPrecioSucursal\GestionRep.cs" />
+    <Compile Include="Reportes\Filtros\MaestroPrecio\ModoAdm\Filtros.cs" />
+    <Compile Include="Reportes\Filtros\MaestroPrecio\ModoAdm\GestionRep.cs" />
     <Compile Include="Reportes\Filtros\MaestroProducto\Filtros.cs" />
     <Compile Include="Reportes\Filtros\MaestroProducto\GestionRep.cs" />
     <Compile Include="Reportes\Filtros\NivelMInimo\Filtro.cs" />
@@ -800,6 +802,12 @@
     <Compile Include="src\Filtro\IFiltro.cs" />
     <Compile Include="src\IFabrica.cs" />
     <Compile Include="src\ILista.cs" />
+    <Compile Include="src\Inicio\ModoAdm\Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Inicio\ModoAdm\Principal.designer.cs">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Inicio\ModoBasicoFox\Principal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1491,6 +1499,9 @@
     <EmbeddedResource Include="src\Filtro\FiltroRep\ModoSucursal\FiltrosFrm.resx">
       <DependentUpon>FiltrosFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\Inicio\ModoAdm\Principal.resx">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\Inicio\ModoBasicoFox\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
@@ -1854,9 +1865,7 @@
       <Name>OOB</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Reportes\Filtros\MaestroPrecio\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

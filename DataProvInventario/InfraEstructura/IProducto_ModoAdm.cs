@@ -17,5 +17,7 @@ namespace DataProvInventario.InfraEstructura
             Producto_ModoAdm_GetCosto_By(string autoPrd);
         OOB.Resultado
             Producto_ModoAdm_ActualizarPrecio(OOB.LibInventario.Producto.ActualizarPrecio.ModoAdm.Ficha ficha);
+        OOB.ResultadoEntidad<OOB.LibInventario.Producto.HistoricoPrecio.ModoAdm.Ficha>
+            Producto_ModoAdm_HistoricoPrecio_By(OOB.LibInventario.Producto.HistoricoPrecio.Filtro filtro);
     }
 }

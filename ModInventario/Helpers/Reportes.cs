@@ -18,10 +18,13 @@ namespace ModInventario.Helpers
             filtro.Inicia();
             if (filtro.FiltrosIsOK)
             {
-                if (filtro.dataFiltrar.Precio == null)
+                if (fabrica.ReporteMaestroPrecio_Validar_SeleccionarPrecio)
                 {
-                    Helpers.Msg.Alerta("Debes Indicar El Tipo De Precio A Listar");
-                    return;
+                    if (filtro.dataFiltrar.Precio == null)
+                    {
+                        Helpers.Msg.Alerta("Debes Indicar El Tipo De Precio A Listar");
+                        return;
+                    }
                 }
                 var rp = fabrica.CreateInstancia_RepMasterPrecio();
                 rp.setFiltros(filtro.dataFiltrar);

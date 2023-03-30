@@ -155,6 +155,12 @@ namespace ModInventario.src
         {
             return new Reportes.Filtros.MaestroPrecioSoloReporte.Filtros();
         }
+
+
+        public bool ReporteMaestroPrecio_Validar_SeleccionarPrecio
+        {
+            get { return true; }
+        }
     }
 
 }

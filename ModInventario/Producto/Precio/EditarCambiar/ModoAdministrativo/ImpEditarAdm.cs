@@ -248,43 +248,48 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoAdministrativo
             _lstPrecio.Add(p1);
             _lstPrecio.Add(p2);
             _lstPrecio.Add(p3);
-            var h1 = new OOB.LibInventario.Producto.ActualizarPrecio.ModoAdm.Historia ()
+            var h1 = new OOB.LibInventario.Producto.ActualizarPrecio.ModoAdm.Historia()
             {
-                nota = "",
-                precio = Vta1.NetoGrabar,
-                precio_id = "1",
-                empaque = Vta1.Get_EmpaqueDesc ,
-                contenido = Vta1.Get_EmpaqueCont,
-                factorCambio = GetInfTasaCambioPrd,
+                empCont = Vta1.Get_EmpaqueCont,
+                empDesc = Vta1.Get_EmpaqueDesc,
+                fullDivisa = Vta1.FullDivisaGrabar,
+                netoMonLocal = Vta1.NetoGrabar,
+                tipoEmpaqueVenta = "1",
+                tipoPrecioVenta = "1",
             };
             var h2 = new OOB.LibInventario.Producto.ActualizarPrecio.ModoAdm.Historia()
             {
-                nota = "",
-                precio = Vta2.NetoGrabar,
-                precio_id = "2",
-                empaque = Vta2.Get_EmpaqueDesc,
-                contenido = Vta2.Get_EmpaqueCont,
-                factorCambio = GetInfTasaCambioPrd,
+                empCont = Vta2.Get_EmpaqueCont,
+                empDesc = Vta2.Get_EmpaqueDesc,
+                fullDivisa = Vta2.FullDivisaGrabar,
+                netoMonLocal = Vta2.NetoGrabar,
+                tipoEmpaqueVenta = "2",
+                tipoPrecioVenta = "1",
             };
             var h3 = new OOB.LibInventario.Producto.ActualizarPrecio.ModoAdm.Historia()
             {
-                nota = "",
-                precio = Vta3.NetoGrabar,
-                precio_id = "3",
-                empaque = Vta3.Get_EmpaqueDesc,
-                contenido = Vta3.Get_EmpaqueCont,
-                factorCambio = GetInfTasaCambioPrd,
+                empCont = Vta3.Get_EmpaqueCont,
+                empDesc = Vta3.Get_EmpaqueDesc,
+                fullDivisa = Vta3.FullDivisaGrabar,
+                netoMonLocal = Vta3.NetoGrabar,
+                tipoEmpaqueVenta = "3",
+                tipoPrecioVenta = "1",
             };
             _lstHistoria.Add(h1);
             _lstHistoria.Add(h2);
             _lstHistoria.Add(h3);
             var ficha = new OOB.LibInventario.Producto.ActualizarPrecio.ModoAdm.Ficha()
             {
-                 autoPrd= _idProducto,
-                 estacion = Environment.MachineName,
-                 nombreUsuario = Sistema.UsuarioP.nombreUsu,
-                 precios= _lstPrecio,
-                 historia=_lstHistoria,
+                autoPrd = _idProducto,
+                factorCambio = GetInfTasaCambioPrd,
+                nota = "",
+                prdCodigo = _dataPrd.prdCodigo,
+                prdDesc = _dataPrd.prdDescripcion,
+                usuCodigo = Sistema.UsuarioP.codigoUsu,
+                usuNombre = Sistema.UsuarioP.nombreUsu,
+                estacion = Environment.MachineName,
+                precios = _lstPrecio,
+                historia = _lstHistoria,
             };
             try
             {

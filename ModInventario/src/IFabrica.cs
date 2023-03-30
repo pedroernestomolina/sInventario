@@ -50,6 +50,7 @@ namespace ModInventario.src
         object BuscarPrd { get; }
         void CreateInstancia_BuscarPrd(ModInventario.Buscar.Gestion gestion);
         void ShowBuscarPrd();
-    }
 
+        bool ReporteMaestroPrecio_Validar_SeleccionarPrecio { get;  }
+    }
 }

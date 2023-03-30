@@ -8,10 +8,8 @@ using System.Windows.Forms;
 
 namespace ModInventario.Producto.Precio.Historico.ModoSucursal
 {
-    
-    public class ImpSucursal: ISucursal
+    public class ImpSucursal: IHistorico
     {
-
         private string _autoPrd;
         private List<dataHist> _lst;
         private BindingSource _bs;
@@ -153,7 +151,5 @@ namespace ModInventario.Producto.Precio.Historico.ModoSucursal
         public BindingSource GetDataSource { get { return _bs; } }
         public string GetProducto_Desc { get { return _prdCodigo + Environment.NewLine + _prdDesc; } }
         public string GetNota { get { return _bs.Current != null ? ((dataHist)_bs.Current).nota : ""; } }
-
     }
-
 }

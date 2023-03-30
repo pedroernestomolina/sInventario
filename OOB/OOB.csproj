@@ -228,6 +228,9 @@
     <Compile Include="LibInventario\Producto\Estatus\Actual\Ficha.cs" />
     <Compile Include="LibInventario\Producto\Estatus\Lista\Ficha.cs" />
     <Compile Include="LibInventario\Producto\Filtro.cs" />
+    <Compile Include="LibInventario\Producto\HistoricoPrecio\Filtro.cs" />
+    <Compile Include="LibInventario\Producto\HistoricoPrecio\ModoAdm\Data.cs" />
+    <Compile Include="LibInventario\Producto\HistoricoPrecio\ModoAdm\Ficha.cs" />
     <Compile Include="LibInventario\Producto\Oferta\Ficha.cs" />
     <Compile Include="LibInventario\Producto\Origen\Ficha.cs" />
     <Compile Include="LibInventario\Producto\Pesado\Ficha.cs" />
@@ -257,6 +260,7 @@
     <Compile Include="LibInventario\Reportes\MaestroPrecio\Ficha.cs" />
     <Compile Include="LibInventario\Reportes\MaestroPrecio\FichaFox.cs" />
     <Compile Include="LibInventario\Reportes\MaestroPrecio\Filtro.cs" />
+    <Compile Include="LibInventario\Reportes\MaestroPrecio\ModoAdm\Ficha.cs" />
     <Compile Include="LibInventario\Reportes\MaestroProducto\Ficha.cs" />
     <Compile Include="LibInventario\Reportes\MaestroProducto\Filtro.cs" />
     <Compile Include="LibInventario\Reportes\NivelMinimo\Ficha.cs" />

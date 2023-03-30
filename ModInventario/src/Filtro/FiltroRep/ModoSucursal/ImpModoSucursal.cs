@@ -237,7 +237,6 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
             _gPrecio.setFicha(id);
             _data.Precio = _gPrecio.Item;
         }
-
     }
 
 }

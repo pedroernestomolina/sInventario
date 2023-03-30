@@ -11,7 +11,7 @@ namespace ModInventario.src
     {
         public void Iniciar_FrmPrincipal(GestionInv ctr)
         {
-            var frm = new ModInventario.src.Inicio.ModoSucursal.Principal();
+            var frm = new ModInventario.src.Inicio.ModoAdm.Principal();
             frm.setControlador(ctr);
             frm.ShowDialog();
         }
@@ -39,7 +39,7 @@ namespace ModInventario.src
         public ModInventario.Producto.Precio.Historico.IHistorico
             CreateInstancia_HistoricoPrecio()
         {
-            return new ModInventario.Producto.Precio.Historico.ModoSucursal.ImpSucursal();
+            return new ModInventario.Producto.Precio.Historico.ModoAdm.ImpModoAdm();
         }
         public Producto.AgregarEditar.IBaseAgregarEditar
             CreateInstancia_AgregarPrd()
@@ -181,12 +181,12 @@ namespace ModInventario.src
         public Reporte.IReporte
             CreateInstancia_RepMasterPrecio()
         {
-            return new Reportes.Filtros.MaestroPrecioSucursal.GestionRep();
+            return new Reportes.Filtros.MaestroPrecio.ModoAdm.GestionRep();
         }
         public Reportes.Filtros.IFiltros
             CreateInstancia_RepMasterPrecio_Filtros()
         {
-            return new Reportes.Filtros.MaestroPrecioSucursal.Filtros();
+            return new Reportes.Filtros.MaestroPrecio.ModoAdm.Filtros();
         }
         private TallaColorSabor.Visualizar.IVer
             CreateInstancia_TallaColorSabor()
@@ -211,6 +211,12 @@ namespace ModInventario.src
             CreateInstancia_VisualizarDeposito()
         {
             return new src.Producto.Deposito.Visualizar.ImpVisualizar();
+        }
+
+
+        public bool ReporteMaestroPrecio_Validar_SeleccionarPrecio
+        {
+            get { return false; }
         }
     }
 }

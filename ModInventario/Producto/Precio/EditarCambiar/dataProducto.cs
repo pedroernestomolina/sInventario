@@ -22,6 +22,8 @@ namespace ModInventario.Producto.Precio.EditarCambiar
         private bool _esAdmDivisa;
 
 
+        public string prdCodigo { get { return _codigo; } }
+        public string prdDescripcion { get { return _desc; } }
         public string InfPrd { get { return _codigo + Environment.NewLine + _desc; } }
         public string InfEmpCompra { get { return _empCompraDesc + "(" + _contEmpCompra.ToString() + ")"; } }
         public decimal InfCostoEmpCompra { get { return _costoEmpCompra; } }

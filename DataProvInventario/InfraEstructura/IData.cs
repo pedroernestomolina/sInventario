@@ -11,7 +11,8 @@ namespace DataProvInventario.InfraEstructura
         ITool, IDepartamento, IGrupo, IMarca, IEmpaqueMedida,
         IProducto, ITasaImpuesto, IConfiguracion, IPrecio, ICosto, IKardex,
         IProveedor, IVisor, IReportes, IPermisos, IAnalisis, IAuditoria, ISistema,
-        IMovTransito, IMovPendiente, IEmpresa, ITallaColorSabor, IProducto_ModoAdm
+        IMovTransito, IMovPendiente, IEmpresa, ITallaColorSabor, IProducto_ModoAdm,
+        IReportes_ModoAdm
     {
         OOB.ResultadoEntidad<DateTime> 
             FechaServidor();

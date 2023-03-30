@@ -211,5 +211,10 @@ namespace ModInventario.src
         {
             return new src.Producto.Deposito.Visualizar.ImpVisualizar();
         }
+
+        public bool ReporteMaestroPrecio_Validar_SeleccionarPrecio
+        {
+            get { return true; }
+        }
     }
 }

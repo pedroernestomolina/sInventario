@@ -11,11 +11,9 @@ using System.Windows.Forms;
 
 namespace ModInventario.Producto.Precio.Historico.ModoSucursal
 {
-    
     public partial class HistoricoPrecioFrm : Form
     {
-
-        private ISucursal _controlador;
+        private IHistorico _controlador;
 
 
         public HistoricoPrecioFrm()
@@ -24,12 +22,18 @@ namespace ModInventario.Producto.Precio.Historico.ModoSucursal
             InicializarGrid();
         }
 
+        public void setControlador(IHistorico ctr)
+        {
+            _controlador = ctr;
+        }
+
         private void InicializarGrid()
         {
             var f = new Font("Serif", 8, FontStyle.Bold);
             var f1 = new Font("Serif", 8, FontStyle.Regular);
             var f2 = new Font("Serif", 9, FontStyle.Regular);
 
+            DGV.RowHeadersVisible = false;
             DGV.AllowUserToAddRows = false;
             DGV.AllowUserToDeleteRows = false;
             DGV.AutoGenerateColumns = false;
@@ -46,7 +50,8 @@ namespace ModInventario.Producto.Precio.Historico.ModoSucursal
             c1.Visible = true;
             c1.HeaderCell.Style.Font = f;
             c1.DefaultCellStyle.Font = f1;
-            c1.MinimumWidth = 90;
+            c1.MinimumWidth = 110;
+            c1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             var c2 = new DataGridViewTextBoxColumn();
             c2.DataPropertyName = "UsuarioEstacion";
@@ -112,15 +117,6 @@ namespace ModInventario.Producto.Precio.Historico.ModoSucursal
             DGV.Columns.Add(c6);
         }
 
-        private void BT_SALIR_Click(object sender, EventArgs e)
-        {
-            Salir();
-        }
-        private void Salir()
-        {
-            this.Close();
-        }
-
         private void HistoricoPrecioFrm_Load(object sender, EventArgs e)
         {
             var ds = _controlador.GetDataSource;
@@ -129,32 +125,29 @@ namespace ModInventario.Producto.Precio.Historico.ModoSucursal
             L_PRODUCTO.Text = _controlador.GetProducto_Desc;
             L_NOTA.Text = _controlador.GetNota;
         }
-
         private void ds_CurrentChanged(object sender, EventArgs e)
         {
             L_NOTA.Text = _controlador.GetNota;
         }
 
-        public void ActualizarItem()
-        {
-            L_NOTA.Text = _controlador.GetNota;
-        }
 
         private void BT_IMPRIMIR_Click(object sender, EventArgs e)
         {
             Imprimir();
         }
+        private void BT_SALIR_Click(object sender, EventArgs e)
+        {
+            Salir();
+        }
+
+
         private void Imprimir()
         {
             _controlador.Imprimir();
         }
-
-
-        public void setControlador(ISucursal ctr)
+        private void Salir()
         {
-            _controlador = ctr;
+            this.Close();
         }
-
-    }
-
+   }
 }

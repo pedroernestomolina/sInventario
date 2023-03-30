@@ -148,7 +148,21 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>EMPAQUE(1)</Value>
+                              <Value>EMPVTA</Value>
+                              <Style>
+                                <FontSize>7pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>(1)</Value>
                               <Style>
                                 <FontSize>7pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -185,7 +199,21 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>EMPAQUE(2)</Value>
+                              <Value>EMP/VTA</Value>
+                              <Style>
+                                <FontSize>7pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>(2)</Value>
                               <Style>
                                 <FontSize>7pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -222,7 +250,21 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>EMPAQUE(3)</Value>
+                              <Value>EMP/VTA</Value>
+                              <Style>
+                                <FontSize>7pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>(3)</Value>
                               <Style>
                                 <FontSize>7pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -668,7 +710,7 @@
         <DataSetName>MaestroPrecioBasico</DataSetName>
         <Top>0.10583cm</Top>
         <Height>1.33229cm</Height>
-        <Width>19.46573cm</Width>
+        <Width>19.46575cm</Width>
         <Style>
           <Border>
             <Style>None</Style>

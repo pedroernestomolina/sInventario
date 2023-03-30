@@ -69,7 +69,5 @@ namespace ModInventario.src.Filtro.FiltroRep
         void setGestion(Reportes.Filtros.IFiltros filtros);
         bool FiltrosIsOK { get; }
         FiltrosGen.Reportes.data dataFiltrar { get; }
-
     }
-
 }

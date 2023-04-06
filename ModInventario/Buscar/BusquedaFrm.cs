@@ -251,6 +251,15 @@ namespace ModInventario.Buscar
         {
             VerPrecios();
         }
+        private void BT_PRECIO_DSCTO_Click(object sender, EventArgs e)
+        {
+            DsctoOferta();
+        }
+
+        private void DsctoOferta()
+        {
+            _controlador.DsctoOferta();
+        }
         private void VerPrecios()
         {
             _controlador.VerPrecios();

@@ -204,5 +204,10 @@ namespace ModInventario.src
         {
             get { return false; }
         }
+        public Producto.ActualizarOferta.IActOferta 
+            CreateInstancia_OfertaDscto()
+        {
+            return null;
+        }
     }
 }

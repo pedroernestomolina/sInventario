@@ -213,10 +213,11 @@ namespace ModInventario.src
             return new src.Producto.Deposito.Visualizar.ImpVisualizar();
         }
 
-
-        public bool ReporteMaestroPrecio_Validar_SeleccionarPrecio
+        public bool ReporteMaestroPrecio_Validar_SeleccionarPrecio { get { return false; } }
+        public Producto.ActualizarOferta.IActOferta
+            CreateInstancia_OfertaDscto()
         {
-            get { return false; }
+            return new ModInventario.src.Producto.ActualizarOferta.ModoAdm.ImpModoAdm();
         }
     }
 }

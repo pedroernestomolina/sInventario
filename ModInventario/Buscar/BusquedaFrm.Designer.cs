@@ -194,6 +194,8 @@
             this.BT_PRECIO = new System.Windows.Forms.Button();
             this.panel38 = new System.Windows.Forms.Panel();
             this.BT_PRECIO_EDITAR = new System.Windows.Forms.Button();
+            this.panel78 = new System.Windows.Forms.Panel();
+            this.BT_PRECIO_DSCTO = new System.Windows.Forms.Button();
             this.panel22 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
             this.panel50 = new System.Windows.Forms.Panel();
@@ -335,6 +337,7 @@
             this.panel39.SuspendLayout();
             this.panel37.SuspendLayout();
             this.panel38.SuspendLayout();
+            this.panel78.SuspendLayout();
             this.panel22.SuspendLayout();
             this.tableLayoutPanel15.SuspendLayout();
             this.panel50.SuspendLayout();
@@ -2348,6 +2351,7 @@
             this.tableLayoutPanel11.Controls.Add(this.panel39, 0, 1);
             this.tableLayoutPanel11.Controls.Add(this.panel37, 0, 0);
             this.tableLayoutPanel11.Controls.Add(this.panel38, 1, 0);
+            this.tableLayoutPanel11.Controls.Add(this.panel78, 1, 1);
             this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel11.Location = new System.Drawing.Point(1, 1);
             this.tableLayoutPanel11.Margin = new System.Windows.Forms.Padding(1);
@@ -2438,6 +2442,33 @@
             this.toolTip1.SetToolTip(this.BT_PRECIO_EDITAR, "Editar / Cambiar Precios");
             this.BT_PRECIO_EDITAR.UseVisualStyleBackColor = true;
             this.BT_PRECIO_EDITAR.Click += new System.EventHandler(this.BT_PRECIO_EDITAR_Click);
+            // 
+            // panel78
+            // 
+            this.panel78.Controls.Add(this.BT_PRECIO_DSCTO);
+            this.panel78.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel78.Location = new System.Drawing.Point(38, 43);
+            this.panel78.Margin = new System.Windows.Forms.Padding(1);
+            this.panel78.Name = "panel78";
+            this.panel78.Padding = new System.Windows.Forms.Padding(2);
+            this.panel78.Size = new System.Drawing.Size(36, 41);
+            this.panel78.TabIndex = 3;
+            // 
+            // BT_PRECIO_DSCTO
+            // 
+            this.BT_PRECIO_DSCTO.BackgroundImage = global::ModInventario.Properties.Resources.bt_discount_48;
+            this.BT_PRECIO_DSCTO.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BT_PRECIO_DSCTO.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_PRECIO_DSCTO.FlatAppearance.BorderSize = 0;
+            this.BT_PRECIO_DSCTO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_PRECIO_DSCTO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_PRECIO_DSCTO.Location = new System.Drawing.Point(2, 2);
+            this.BT_PRECIO_DSCTO.Name = "BT_PRECIO_DSCTO";
+            this.BT_PRECIO_DSCTO.Size = new System.Drawing.Size(32, 37);
+            this.BT_PRECIO_DSCTO.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.BT_PRECIO_DSCTO, "Descuento / Ofertas");
+            this.BT_PRECIO_DSCTO.UseVisualStyleBackColor = true;
+            this.BT_PRECIO_DSCTO.Click += new System.EventHandler(this.BT_PRECIO_DSCTO_Click);
             // 
             // panel22
             // 
@@ -2999,6 +3030,7 @@
             this.panel39.ResumeLayout(false);
             this.panel37.ResumeLayout(false);
             this.panel38.ResumeLayout(false);
+            this.panel78.ResumeLayout(false);
             this.panel22.ResumeLayout(false);
             this.tableLayoutPanel15.ResumeLayout(false);
             this.panel50.ResumeLayout(false);
@@ -3222,5 +3254,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel77;
         private System.Windows.Forms.Button BT_TALLA_COLOR_SABOR;
+        private System.Windows.Forms.Panel panel78;
+        private System.Windows.Forms.Button BT_PRECIO_DSCTO;
     }
 }

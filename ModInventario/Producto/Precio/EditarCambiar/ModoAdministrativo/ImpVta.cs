@@ -50,6 +50,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoAdministrativo
             _precio.setMetodoCalculoUtilidad((dataPrecio.enumMetCalUtilidad)dat.metodoCalculoUt);
             _precio.setNeto(dat.neto);
             _precio.setEmpDescVenta(dat.descEmpVenta);
+            _precio.ReCalcular();
             _idPrecioVenta = dat.idPrecio;
         }
         public void setUtilidad(decimal monto)

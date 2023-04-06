@@ -172,6 +172,8 @@
     <Compile Include="LibInventario\Precio\Historico\Ficha.cs" />
     <Compile Include="LibInventario\Precio\Historico\Filtro.cs" />
     <Compile Include="LibInventario\Precio\PrecioCosto\Ficha.cs" />
+    <Compile Include="LibInventario\Producto\ActualizarOferta\ModoAdm\Actualizar\Ficha.cs" />
+    <Compile Include="LibInventario\Producto\ActualizarOferta\ModoAdm\Actualizar\Precio.cs" />
     <Compile Include="LibInventario\Producto\ActualizarPrecio\ModoAdm\Ficha.cs" />
     <Compile Include="LibInventario\Producto\ActualizarPrecio\ModoAdm\Historia.cs" />
     <Compile Include="LibInventario\Producto\ActualizarPrecio\ModoAdm\Precio.cs" />

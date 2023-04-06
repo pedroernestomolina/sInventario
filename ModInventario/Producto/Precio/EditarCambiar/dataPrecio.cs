@@ -24,6 +24,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar
         private decimal _pn;
         private decimal _pf;
         private string _empaqueDesc;
+        private bool _isError; 
 
 
         public int Contenido { get { return _contenido; } }
@@ -32,11 +33,12 @@ namespace ModInventario.Producto.Precio.EditarCambiar
         public decimal  Neto { get { return _pn; } }
         public decimal Full { get { return _pf; } }
         public decimal CostoEmpCompraUnd { get { return (_costoEmpCompra / _contEmpCompra) * _contenido; } }
-        public bool IsError { get { return _utilidadNueva < 0m; } }
+        public bool IsError { get { return _utilidadNueva < 0m  || _isError; } }
 
 
         public dataPrecio() 
         {
+            _isError = false;
             _contenido=0;
             _utilidadNueva=0m;
             _utilidadActual = 0m;
@@ -53,6 +55,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar
 
         public void Inicializa()
         {
+            _isError = false;
             _contenido = 0;
             _utilidadNueva = 0m;
             _utilidadActual = 0m;
@@ -102,6 +105,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar
         }
         public void setUtilidadNueva(decimal ut)
         {
+            _isError = false;
             if (_metodoCalculoUtilidad == enumMetCalUtilidad.Financiero)
             {
                 if (ut >= 100m || ut <= 0m)
@@ -136,6 +140,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar
         }
         public void setNeto(decimal monto)
         {
+            _isError = false;
             if (_metodoCalculoUtilidad == enumMetCalUtilidad.Financiero)
             {
                 if (monto <= 0m)
@@ -177,6 +182,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar
         }
         public void setFull(decimal monto)
         {
+            _isError = false;
             if (_metodoCalculoUtilidad == enumMetCalUtilidad.Financiero)
             {
                 if (monto < 0m)
@@ -278,6 +284,12 @@ namespace ModInventario.Producto.Precio.EditarCambiar
                 msgError = "MARGEN UTILIDAD INCORRECTO";
                 return false;
             }
+            ReCalcular();
+            if (_isError) 
+            {
+                msgError = "PRECIO INCORRECTO";
+                return false;
+            }
             return rt;
         }
 
@@ -321,6 +333,14 @@ namespace ModInventario.Producto.Precio.EditarCambiar
             rt = Math.Round(rt, 2, MidpointRounding.AwayFromZero);
             return rt;
         }
-
+        public void ReCalcular()
+        {
+            _isError = false;
+            if (_pn>0m && CostoEmpCompraUnd > _pn)
+            {
+                _isError = true;
+                msgError = "PRECIO INCORRECTO";
+            }
+        }
     }
 }

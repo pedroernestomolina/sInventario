@@ -212,5 +212,32 @@ namespace DataProvInventario.Data
             rt.Entidad = ficha;
             return rt;
         }
+        public OOB.Resultado 
+            Producto_ModoAdm_ActualizarOferta(OOB.LibInventario.Producto.ActualizarOferta.ModoAdm.Actualizar.Ficha ficha)
+        {
+            var rt = new OOB.Resultado();
+            var fichaDTO = new DtoLibInventario.Producto.ActualizarOferta.ModoAdm.Actualizar.Ficha ()
+            {
+                autoPrd = ficha.autoPrd,
+                 ofertas = ficha.ofertas.Select(s =>
+                {
+                    var nr = new DtoLibInventario.Producto.ActualizarOferta.ModoAdm.Actualizar.Precio()
+                    {
+                        desde = s.desde,
+                        estatus = s.estatus,
+                        hasta = s.hasta,
+                        idPrecioVta = s.idPrecioVta,
+                        portc = s.portc,
+                    };
+                    return nr;
+                }).ToList(),
+            };
+            var r01 = MyData.Producto_ModoAdm_ActualizarOferta(fichaDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            return rt;
+        }
     }
 }

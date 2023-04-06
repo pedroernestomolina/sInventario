@@ -934,6 +934,15 @@
     <Compile Include="src\MovInventario\Traslado\PorNIvel\MovFrm.Designer.cs">
       <DependentUpon>MovFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Producto\ActualizarOferta\IActOferta.cs" />
+    <Compile Include="src\Producto\ActualizarOferta\ModoAdm\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Producto\ActualizarOferta\ModoAdm\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Producto\ActualizarOferta\ModoAdm\IModoAdm.cs" />
+    <Compile Include="src\Producto\ActualizarOferta\ModoAdm\ImpModoAdm.cs" />
     <Compile Include="src\Producto\AgregarEditar\ModoAdm\Agregar\dataAgregar.cs" />
     <Compile Include="src\Producto\AgregarEditar\ModoAdm\Agregar\IAgregar.cs" />
     <Compile Include="src\Producto\AgregarEditar\ModoAdm\Agregar\ImpAgregar.cs" />
@@ -1547,6 +1556,9 @@
     <EmbeddedResource Include="src\MovInventario\Traslado\PorNIvel\MovFrm.resx">
       <DependentUpon>MovFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\Producto\ActualizarOferta\ModoAdm\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\Producto\AgregarEditar\ModoBasico\AgregarEditarFrm.resx">
       <DependentUpon>AgregarEditarFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1769,6 +1781,7 @@
     <Content Include="Imagenes\bt_consulta.png" />
     <Content Include="Imagenes\bt_costo.png" />
     <Content Include="Imagenes\bt_dashboard.png" />
+    <Content Include="Imagenes\bt_discount_48.png" />
     <Content Include="Imagenes\bt_documento.png" />
     <Content Include="Imagenes\bt_dollar.png" />
     <Content Include="Imagenes\bt_editar_32.png" />
@@ -1839,6 +1852,7 @@
     <Content Include="Imagenes\TOOLS.ico" />
     <Content Include="Imagenes\transferencia.png" />
     <Content Include="Imagenes\warehouse.png" />
+    <None Include="Resources\bt_discount_48.png" />
     <None Include="Resources\bt_paleta_colores_2_48.png" />
     <None Include="Resources\bt_paleta_colores_48.png" />
     <None Include="Resources\bt_refrescar_48.png" />

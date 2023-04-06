@@ -564,6 +564,7 @@ namespace ModInventario.Buscar
             }
         }
 
+
         public string ET_INV_EMP_COMPRA { get { return Item.GetEtiqueta_InvEmpCompra; } }
         public string ET_INV_EMP_INV { get { return Item.GetEtiqueta_InvEmpInv; } }
         public string ET_INV_EMP_UND { get { return Item.GetEtiqueta_InvEmpUnd; } }
@@ -668,6 +669,22 @@ namespace ModInventario.Buscar
                 _gVerDepositos.setIdPrd(Item.identidad.auto);
                 _gVerDepositos.setIdDeposito(_filtroIdDeposito);
                 _gVerDepositos.Inicia();
+            }
+        }
+
+
+        src.Producto.ActualizarOferta.IActOferta _ofertaDscto;
+        public void DsctoOferta()
+        {
+            if (Item != null)
+            {
+                if (_ofertaDscto == null)
+                {
+                    _ofertaDscto = _fabrica.CreateInstancia_OfertaDscto();
+                }
+                _ofertaDscto.Inicializa();
+                _ofertaDscto.setFichaByIdPrd(Item.AutoId);
+                _ofertaDscto.Inicia();
             }
         }
     }

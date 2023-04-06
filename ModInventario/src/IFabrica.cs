@@ -52,5 +52,8 @@ namespace ModInventario.src
         void ShowBuscarPrd();
 
         bool ReporteMaestroPrecio_Validar_SeleccionarPrecio { get;  }
+
+        ModInventario.src.Producto.ActualizarOferta.IActOferta 
+            CreateInstancia_OfertaDscto();
     }
 }

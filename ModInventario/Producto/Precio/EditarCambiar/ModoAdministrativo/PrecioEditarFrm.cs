@@ -49,9 +49,9 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoAdministrativo
             L_EMP_2.Text = _controlador.Vta2.Get_EmpaqueDesc;
             L_EMP_3.Text = _controlador.Vta3.Get_EmpaqueDesc;
 
-            L_CONT_1.Text = _controlador.Vta1.Get_EmpaqueCont.ToString().Trim();
-            L_CONT_2.Text = _controlador.Vta2.Get_EmpaqueCont.ToString().Trim();
-            L_CONT_3.Text = _controlador.Vta3.Get_EmpaqueCont.ToString().Trim();
+            L_CONT_1.Text = "( " + _controlador.Vta1.Get_EmpaqueCont.ToString().Trim() + " )";
+            L_CONT_2.Text = "( " + _controlador.Vta2.Get_EmpaqueCont.ToString().Trim() + " )";
+            L_CONT_3.Text = "( " + _controlador.Vta3.Get_EmpaqueCont.ToString().Trim() + " )";
 
             TB_UT_1.Text = _controlador.Vta1.Get_UtilidadNueva.ToString("n2").Replace(".", "");
             TB_UT_2.Text = _controlador.Vta2.Get_UtilidadNueva.ToString("n2").Replace(".", "");

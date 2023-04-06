@@ -155,12 +155,11 @@ namespace ModInventario.src
         {
             return new Reportes.Filtros.MaestroPrecioSoloReporte.Filtros();
         }
-
-
-        public bool ReporteMaestroPrecio_Validar_SeleccionarPrecio
+        public bool ReporteMaestroPrecio_Validar_SeleccionarPrecio { get { return true; } }
+        public Producto.ActualizarOferta.IActOferta
+            CreateInstancia_OfertaDscto()
         {
-            get { return true; }
+            return null;
         }
     }
-
 }

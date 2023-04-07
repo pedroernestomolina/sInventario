@@ -31,14 +31,15 @@ namespace DataProvInventario.Data
             var filtroDto = new DtoLibInventario.Reportes.MaestroProducto.Filtro()
             {
                 autoDepartamento = filtro.autoDepartamento,
-                autoDeposito=filtro.autoDeposito,
+                autoDeposito = filtro.autoDeposito,
                 autoTasa = filtro.autoTasa,
-                autoGrupo=filtro.autoGrupo,
+                autoGrupo = filtro.autoGrupo,
                 admDivisa = (DtoLibInventario.Reportes.enumerados.EnumAdministradorPorDivisa)filtro.admDivisa,
                 categoria = (DtoLibInventario.Reportes.enumerados.EnumCategoria)filtro.categoria,
                 estatus = (DtoLibInventario.Reportes.enumerados.EnumEstatus)filtro.estatus,
                 origen = (DtoLibInventario.Reportes.enumerados.EnumOrigen)filtro.origen,
                 pesado = (DtoLibInventario.Reportes.enumerados.EnumPesado)filtro.pesado,
+                estatusOferta = filtro.estatusOferta,
             };
             var r01 = MyData.Reportes_MaestroProducto(filtroDto);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)

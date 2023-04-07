@@ -26,6 +26,8 @@ namespace ModInventario.Reportes.Filtros.MaestroExistenciaInventario
         public bool ActivarPesado { get { return false; } }
         public bool ActivarEntreFechas { get { return false; } }
         public bool ActivarEmpaquePrecio { get { return false; } }
+        public bool ActivarOferta { get { return false; } }
+
 
         public Filtros()
         {

@@ -38,7 +38,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoAdministrativo
             L_EMPAQUE_COMPRA.Text = "Empaque: "+_controlador.GetInfEmpCompraPrd;
             L_COSTO_EMP_COMPRA.Text = "Costo: "+_controlador.GetInfCostoEmpCompraPrd.ToString("n2");
             L_METODO_CALCULO_UT.Text = _controlador.GetInfMetodoCalculoUt;
-            L_TASA_CAMBIO.Text = _controlador.GetInfTasaCambioPrd.ToString("n4");
+            L_TASA_CAMBIO.Text = _controlador.GetInfTasaCambioPrd.ToString("n3");
             L_ADM_DIVISA.Text = _controlador.GetInfAdmDivisaPrd;
             L_TASA_IVA.Text = _controlador.GetInfTasaIvaPrd.ToString("n2");
             L_COSTO_UNIDAD.Text = _controlador.GetInfCostoUndPrd.ToString("n2");

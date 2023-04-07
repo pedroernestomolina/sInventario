@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModInventario.FiltrosGen.Reportes
 {
-
     public class data
     {
-        
         private bool _validarFecha;
 
 
@@ -30,6 +28,7 @@ namespace ModInventario.FiltrosGen.Reportes
         public ficha Pesado { get; set; }
         public ficha Precio { get; set; }
         public ficha EmpqPrecio { get; set; }
+        public ficha Oferta { get; set; }
 
 
         public data() 
@@ -65,6 +64,7 @@ namespace ModInventario.FiltrosGen.Reportes
             if (Categoria != null) return true;
             if (Producto != null) return true;
             if (Sucursal!= null) return true;
+            if (Oferta != null) return true;
             if (_validarFecha)
             {
                 if (Desde.HasValue) return true;
@@ -89,6 +89,7 @@ namespace ModInventario.FiltrosGen.Reportes
             Pesado = null;
             Precio = null;
             EmpqPrecio = null;
+            Oferta = null;
             Desde = DateTime.Now.Date;
             Hasta = DateTime.Now.Date;
         }
@@ -112,6 +113,7 @@ namespace ModInventario.FiltrosGen.Reportes
             if (Pesado != null) t += ", Pesado: " + Pesado.desc;
             if (Precio != null) t += ", Precio: " + Precio.desc;
             if (EmpqPrecio != null) t += ", Empaque Precio: " + EmpqPrecio.desc;
+            if (Oferta != null) t += ", Oferta: " + Oferta.desc;
             return t;
         }
 
@@ -120,5 +122,4 @@ namespace ModInventario.FiltrosGen.Reportes
             _validarFecha = p;
         }
     }
-
 }

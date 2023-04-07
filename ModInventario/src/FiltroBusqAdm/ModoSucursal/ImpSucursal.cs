@@ -18,6 +18,10 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
         private IOpcion _gCatalogo;
         private IOpcion _gExistencia;
         private IOpcion _gTCS;
+        private Tools.Filtros.Oferta.IOferta _oferta;
+
+
+        public Tools.Filtros.Oferta.IOferta Oferta { get { return _oferta; } }
 
 
         public ImpSucursal(IBuscar buscarProv)
@@ -36,7 +40,8 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
             _gCategoria = new FiltrosGen.Opcion.Gestion();
             _gCatalogo = new FiltrosGen.Opcion.Gestion();
             _gExistencia = new FiltrosGen.Opcion.Gestion();
-            _gTCS = new FiltrosGen.Opcion.Gestion(); 
+            _gTCS = new FiltrosGen.Opcion.Gestion();
+            _oferta = new Tools.Filtros.Oferta.ImpOferta();
             reset();
         }
 
@@ -65,6 +70,7 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
             _data.Existencia = _gExistencia.Item;
             _data.Proveedor = _buscarProv.ItemSeleccionado;
             _data.TCS = _gTCS.Item;
+            _data.Oferta= _oferta.GetItem;
             return _data.FiltrarIsOk();
         }
 
@@ -78,6 +84,7 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
             _gExistencia.Inicializa();
             _buscarProv.Inicializa();
             _gTCS.Inicializa();
+            _oferta.Inicializa();
         }
         override protected bool CargarData() 
         {
@@ -128,6 +135,7 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
                     lstTCS.Add(new ficha("2", "", "NO"));
                     _gTCS.setData(lstTCS);
 
+                    _oferta.CargarData();
                     return true;
                 }
                 catch (Exception e)

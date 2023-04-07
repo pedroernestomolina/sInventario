@@ -68,6 +68,10 @@ namespace ModInventario.Reportes.Filtros.MaestroPrecio.ModoAdm
             {
                 filtro.autoTasa = dataFiltros.TasaIva.id;
             }
+            if (dataFiltros.Oferta != null)
+            {
+                filtro.estatusOferta = dataFiltros.Oferta.desc.Trim().ToUpper() == "SI" ? "1" : "0";
+            }
             try
             {
                 var r01 = Sistema.MyData.Reportes_ModoAdm_MaestroPrecio(filtro);

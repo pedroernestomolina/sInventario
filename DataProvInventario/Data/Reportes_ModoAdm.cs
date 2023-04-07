@@ -26,6 +26,7 @@ namespace DataProvInventario.Data
                 precio = (DtoLibInventario.Reportes.enumerados.EnumPrecio)filtro.precio,
                 pesado = (DtoLibInventario.Reportes.enumerados.EnumPesado)filtro.pesado,
                 autoDepositoPrincipal = filtro.autoDepositoPrincipal,
+                estatusOferta = filtro.estatusOferta,
             };
             var r01 = MyData.Reportes_ModAdm_MaestroPrecio(filtroDto);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)

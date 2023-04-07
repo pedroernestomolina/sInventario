@@ -46,15 +46,21 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.L_UT_ACTUAL_3 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
+            this.TB_PF_3 = new LibControles.NumeroDecimal();
             this.panel12 = new System.Windows.Forms.Panel();
+            this.TB_PN_3 = new LibControles.NumeroDecimal();
             this.panel13 = new System.Windows.Forms.Panel();
+            this.TB_UT_3 = new LibControles.NumeroDecimal();
             this.panel14 = new System.Windows.Forms.Panel();
             this.L_CONT_3 = new System.Windows.Forms.Label();
             this.panel15 = new System.Windows.Forms.Panel();
             this.L_UT_ACTUAL_2 = new System.Windows.Forms.Label();
             this.panel16 = new System.Windows.Forms.Panel();
+            this.TB_PF_2 = new LibControles.NumeroDecimal();
             this.panel17 = new System.Windows.Forms.Panel();
+            this.TB_PN_2 = new LibControles.NumeroDecimal();
             this.panel18 = new System.Windows.Forms.Panel();
+            this.TB_UT_2 = new LibControles.NumeroDecimal();
             this.panel19 = new System.Windows.Forms.Panel();
             this.L_CONT_2 = new System.Windows.Forms.Label();
             this.panel20 = new System.Windows.Forms.Panel();
@@ -62,8 +68,11 @@
             this.panel21 = new System.Windows.Forms.Panel();
             this.L_UT_ACTUAL_1 = new System.Windows.Forms.Label();
             this.panel22 = new System.Windows.Forms.Panel();
+            this.TB_PF_1 = new LibControles.NumeroDecimal();
             this.panel23 = new System.Windows.Forms.Panel();
+            this.TB_PN_1 = new LibControles.NumeroDecimal();
             this.panel24 = new System.Windows.Forms.Panel();
+            this.TB_UT_1 = new LibControles.NumeroDecimal();
             this.panel25 = new System.Windows.Forms.Panel();
             this.L_CONT_1 = new System.Windows.Forms.Label();
             this.panel26 = new System.Windows.Forms.Panel();
@@ -139,15 +148,6 @@
             this.panel53 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.TB_PF_3 = new LibControles.NumeroDecimal();
-            this.TB_PN_3 = new LibControles.NumeroDecimal();
-            this.TB_UT_3 = new LibControles.NumeroDecimal();
-            this.TB_PF_2 = new LibControles.NumeroDecimal();
-            this.TB_PN_2 = new LibControles.NumeroDecimal();
-            this.TB_UT_2 = new LibControles.NumeroDecimal();
-            this.TB_PF_1 = new LibControles.NumeroDecimal();
-            this.TB_PN_1 = new LibControles.NumeroDecimal();
-            this.TB_UT_1 = new LibControles.NumeroDecimal();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -487,6 +487,22 @@
             this.panel11.Size = new System.Drawing.Size(118, 28);
             this.panel11.TabIndex = 22;
             // 
+            // TB_PF_3
+            // 
+            this.TB_PF_3.BackColor = System.Drawing.Color.Yellow;
+            this.TB_PF_3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.TB_PF_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_PF_3.Location = new System.Drawing.Point(2, 2);
+            this.TB_PF_3.MaxLength = 14;
+            this.TB_PF_3.Name = "TB_PF_3";
+            this.TB_PF_3.Size = new System.Drawing.Size(95, 24);
+            this.TB_PF_3.TabIndex = 4;
+            this.TB_PF_3.Text = "0";
+            this.TB_PF_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_PF_3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_KeyDown);
+            this.TB_PF_3.Leave += new System.EventHandler(this.TB_PF_3_Leave);
+            this.TB_PF_3.Validating += new System.ComponentModel.CancelEventHandler(this.TB_PF_3_Validating);
+            // 
             // panel12
             // 
             this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -499,6 +515,22 @@
             this.panel12.Size = new System.Drawing.Size(118, 28);
             this.panel12.TabIndex = 21;
             // 
+            // TB_PN_3
+            // 
+            this.TB_PN_3.BackColor = System.Drawing.Color.Yellow;
+            this.TB_PN_3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.TB_PN_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_PN_3.Location = new System.Drawing.Point(2, 2);
+            this.TB_PN_3.MaxLength = 14;
+            this.TB_PN_3.Name = "TB_PN_3";
+            this.TB_PN_3.Size = new System.Drawing.Size(95, 24);
+            this.TB_PN_3.TabIndex = 3;
+            this.TB_PN_3.Text = "0";
+            this.TB_PN_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_PN_3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_KeyDown);
+            this.TB_PN_3.Leave += new System.EventHandler(this.TB_PN_3_Leave);
+            this.TB_PN_3.Validating += new System.ComponentModel.CancelEventHandler(this.TB_PN_3_Validating);
+            // 
             // panel13
             // 
             this.panel13.Controls.Add(this.TB_UT_3);
@@ -509,6 +541,21 @@
             this.panel13.Padding = new System.Windows.Forms.Padding(2);
             this.panel13.Size = new System.Drawing.Size(90, 28);
             this.panel13.TabIndex = 20;
+            // 
+            // TB_UT_3
+            // 
+            this.TB_UT_3.BackColor = System.Drawing.Color.Yellow;
+            this.TB_UT_3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_UT_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_UT_3.Location = new System.Drawing.Point(2, 2);
+            this.TB_UT_3.MaxLength = 6;
+            this.TB_UT_3.Name = "TB_UT_3";
+            this.TB_UT_3.Size = new System.Drawing.Size(86, 24);
+            this.TB_UT_3.TabIndex = 2;
+            this.TB_UT_3.Text = "0";
+            this.TB_UT_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_UT_3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_KeyDown);
+            this.TB_UT_3.Leave += new System.EventHandler(this.TB_UT_3_Leave);
             // 
             // panel14
             // 
@@ -566,6 +613,22 @@
             this.panel16.Size = new System.Drawing.Size(118, 26);
             this.panel16.TabIndex = 16;
             // 
+            // TB_PF_2
+            // 
+            this.TB_PF_2.BackColor = System.Drawing.Color.Yellow;
+            this.TB_PF_2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.TB_PF_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_PF_2.Location = new System.Drawing.Point(2, 2);
+            this.TB_PF_2.MaxLength = 14;
+            this.TB_PF_2.Name = "TB_PF_2";
+            this.TB_PF_2.Size = new System.Drawing.Size(95, 24);
+            this.TB_PF_2.TabIndex = 3;
+            this.TB_PF_2.Text = "0";
+            this.TB_PF_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_PF_2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_KeyDown);
+            this.TB_PF_2.Leave += new System.EventHandler(this.TB_PF_2_Leave);
+            this.TB_PF_2.Validating += new System.ComponentModel.CancelEventHandler(this.TB_PF_2_Validating);
+            // 
             // panel17
             // 
             this.panel17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -578,6 +641,22 @@
             this.panel17.Size = new System.Drawing.Size(118, 26);
             this.panel17.TabIndex = 15;
             // 
+            // TB_PN_2
+            // 
+            this.TB_PN_2.BackColor = System.Drawing.Color.Yellow;
+            this.TB_PN_2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.TB_PN_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_PN_2.Location = new System.Drawing.Point(2, 2);
+            this.TB_PN_2.MaxLength = 14;
+            this.TB_PN_2.Name = "TB_PN_2";
+            this.TB_PN_2.Size = new System.Drawing.Size(95, 24);
+            this.TB_PN_2.TabIndex = 2;
+            this.TB_PN_2.Text = "0";
+            this.TB_PN_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_PN_2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_KeyDown);
+            this.TB_PN_2.Leave += new System.EventHandler(this.TB_PN_2_Leave);
+            this.TB_PN_2.Validating += new System.ComponentModel.CancelEventHandler(this.TB_PN_2_Validating);
+            // 
             // panel18
             // 
             this.panel18.Controls.Add(this.TB_UT_2);
@@ -588,6 +667,21 @@
             this.panel18.Padding = new System.Windows.Forms.Padding(2);
             this.panel18.Size = new System.Drawing.Size(90, 26);
             this.panel18.TabIndex = 14;
+            // 
+            // TB_UT_2
+            // 
+            this.TB_UT_2.BackColor = System.Drawing.Color.Yellow;
+            this.TB_UT_2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_UT_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_UT_2.Location = new System.Drawing.Point(2, 2);
+            this.TB_UT_2.MaxLength = 6;
+            this.TB_UT_2.Name = "TB_UT_2";
+            this.TB_UT_2.Size = new System.Drawing.Size(86, 24);
+            this.TB_UT_2.TabIndex = 1;
+            this.TB_UT_2.Text = "0";
+            this.TB_UT_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_UT_2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_KeyDown);
+            this.TB_UT_2.Leave += new System.EventHandler(this.TB_UT_2_Leave);
             // 
             // panel19
             // 
@@ -667,6 +761,22 @@
             this.panel22.Size = new System.Drawing.Size(118, 26);
             this.panel22.TabIndex = 10;
             // 
+            // TB_PF_1
+            // 
+            this.TB_PF_1.BackColor = System.Drawing.Color.Yellow;
+            this.TB_PF_1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.TB_PF_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_PF_1.Location = new System.Drawing.Point(2, 2);
+            this.TB_PF_1.MaxLength = 14;
+            this.TB_PF_1.Name = "TB_PF_1";
+            this.TB_PF_1.Size = new System.Drawing.Size(95, 24);
+            this.TB_PF_1.TabIndex = 2;
+            this.TB_PF_1.Text = "0";
+            this.TB_PF_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_PF_1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_KeyDown);
+            this.TB_PF_1.Leave += new System.EventHandler(this.TB_PF_1_Leave);
+            this.TB_PF_1.Validating += new System.ComponentModel.CancelEventHandler(this.TB_PF_1_Validating);
+            // 
             // panel23
             // 
             this.panel23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -679,6 +789,22 @@
             this.panel23.Size = new System.Drawing.Size(118, 26);
             this.panel23.TabIndex = 9;
             // 
+            // TB_PN_1
+            // 
+            this.TB_PN_1.BackColor = System.Drawing.Color.Yellow;
+            this.TB_PN_1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.TB_PN_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_PN_1.Location = new System.Drawing.Point(2, 2);
+            this.TB_PN_1.MaxLength = 14;
+            this.TB_PN_1.Name = "TB_PN_1";
+            this.TB_PN_1.Size = new System.Drawing.Size(95, 24);
+            this.TB_PN_1.TabIndex = 3;
+            this.TB_PN_1.Text = "0";
+            this.TB_PN_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_PN_1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_KeyDown);
+            this.TB_PN_1.Leave += new System.EventHandler(this.TB_PN_1_Leave);
+            this.TB_PN_1.Validating += new System.ComponentModel.CancelEventHandler(this.TB_PN_1_Validating);
+            // 
             // panel24
             // 
             this.panel24.Controls.Add(this.TB_UT_1);
@@ -689,6 +815,21 @@
             this.panel24.Padding = new System.Windows.Forms.Padding(2);
             this.panel24.Size = new System.Drawing.Size(90, 26);
             this.panel24.TabIndex = 8;
+            // 
+            // TB_UT_1
+            // 
+            this.TB_UT_1.BackColor = System.Drawing.Color.Yellow;
+            this.TB_UT_1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_UT_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_UT_1.Location = new System.Drawing.Point(2, 2);
+            this.TB_UT_1.MaxLength = 6;
+            this.TB_UT_1.Name = "TB_UT_1";
+            this.TB_UT_1.Size = new System.Drawing.Size(86, 24);
+            this.TB_UT_1.TabIndex = 0;
+            this.TB_UT_1.Text = "0";
+            this.TB_UT_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_UT_1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_KeyDown);
+            this.TB_UT_1.Leave += new System.EventHandler(this.TB_UT_1_Leave);
             // 
             // panel25
             // 
@@ -1267,11 +1408,11 @@
             // 
             this.panel63.Controls.Add(this.L_FECHA_ULT_ACT);
             this.panel63.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel63.Location = new System.Drawing.Point(383, 41);
+            this.panel63.Location = new System.Drawing.Point(382, 41);
             this.panel63.Margin = new System.Windows.Forms.Padding(1);
             this.panel63.Name = "panel63";
             this.panel63.Padding = new System.Windows.Forms.Padding(2);
-            this.panel63.Size = new System.Drawing.Size(70, 34);
+            this.panel63.Size = new System.Drawing.Size(69, 34);
             this.panel63.TabIndex = 12;
             // 
             // L_FECHA_ULT_ACT
@@ -1280,7 +1421,7 @@
             this.L_FECHA_ULT_ACT.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_FECHA_ULT_ACT.Location = new System.Drawing.Point(2, 2);
             this.L_FECHA_ULT_ACT.Name = "L_FECHA_ULT_ACT";
-            this.L_FECHA_ULT_ACT.Size = new System.Drawing.Size(66, 30);
+            this.L_FECHA_ULT_ACT.Size = new System.Drawing.Size(65, 30);
             this.L_FECHA_ULT_ACT.TabIndex = 1;
             this.L_FECHA_ULT_ACT.Text = "99/99/9999";
             this.L_FECHA_ULT_ACT.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1289,7 +1430,7 @@
             // 
             this.panel62.Controls.Add(this.L_COSTO_UNIDAD);
             this.panel62.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel62.Location = new System.Drawing.Point(285, 41);
+            this.panel62.Location = new System.Drawing.Point(284, 41);
             this.panel62.Margin = new System.Windows.Forms.Padding(1);
             this.panel62.Name = "panel62";
             this.panel62.Padding = new System.Windows.Forms.Padding(2);
@@ -1311,7 +1452,7 @@
             // 
             this.panel61.Controls.Add(this.L_TASA_IVA);
             this.panel61.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel61.Location = new System.Drawing.Point(224, 41);
+            this.panel61.Location = new System.Drawing.Point(223, 41);
             this.panel61.Margin = new System.Windows.Forms.Padding(1);
             this.panel61.Name = "panel61";
             this.panel61.Padding = new System.Windows.Forms.Padding(2);
@@ -1333,7 +1474,7 @@
             // 
             this.panel60.Controls.Add(this.L_ADM_DIVISA);
             this.panel60.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel60.Location = new System.Drawing.Point(179, 41);
+            this.panel60.Location = new System.Drawing.Point(178, 41);
             this.panel60.Margin = new System.Windows.Forms.Padding(1);
             this.panel60.Name = "panel60";
             this.panel60.Padding = new System.Windows.Forms.Padding(2);
@@ -1359,7 +1500,7 @@
             this.panel59.Margin = new System.Windows.Forms.Padding(1);
             this.panel59.Name = "panel59";
             this.panel59.Padding = new System.Windows.Forms.Padding(2);
-            this.panel59.Size = new System.Drawing.Size(87, 34);
+            this.panel59.Size = new System.Drawing.Size(86, 34);
             this.panel59.TabIndex = 8;
             // 
             // L_TASA_CAMBIO
@@ -1368,7 +1509,7 @@
             this.L_TASA_CAMBIO.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_TASA_CAMBIO.Location = new System.Drawing.Point(2, 2);
             this.L_TASA_CAMBIO.Name = "L_TASA_CAMBIO";
-            this.L_TASA_CAMBIO.Size = new System.Drawing.Size(83, 30);
+            this.L_TASA_CAMBIO.Size = new System.Drawing.Size(82, 30);
             this.L_TASA_CAMBIO.TabIndex = 1;
             this.L_TASA_CAMBIO.Text = "999,999,999.99";
             this.L_TASA_CAMBIO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1399,12 +1540,12 @@
             // 
             this.panel57.Controls.Add(this.BT_MODO_PRECIO);
             this.panel57.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel57.Location = new System.Drawing.Point(455, 1);
+            this.panel57.Location = new System.Drawing.Point(453, 1);
             this.panel57.Margin = new System.Windows.Forms.Padding(1);
             this.panel57.Name = "panel57";
             this.panel57.Padding = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel4.SetRowSpan(this.panel57, 2);
-            this.panel57.Size = new System.Drawing.Size(151, 74);
+            this.panel57.Size = new System.Drawing.Size(153, 74);
             this.panel57.TabIndex = 6;
             // 
             // BT_MODO_PRECIO
@@ -1416,7 +1557,7 @@
             this.BT_MODO_PRECIO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BT_MODO_PRECIO.Location = new System.Drawing.Point(2, 2);
             this.BT_MODO_PRECIO.Name = "BT_MODO_PRECIO";
-            this.BT_MODO_PRECIO.Size = new System.Drawing.Size(147, 70);
+            this.BT_MODO_PRECIO.Size = new System.Drawing.Size(149, 70);
             this.BT_MODO_PRECIO.TabIndex = 1;
             this.BT_MODO_PRECIO.UseVisualStyleBackColor = true;
             this.BT_MODO_PRECIO.Click += new System.EventHandler(this.BT_MODO_PRECIO_Click);
@@ -1425,11 +1566,11 @@
             // 
             this.panel56.Controls.Add(this.label14);
             this.panel56.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel56.Location = new System.Drawing.Point(383, 1);
+            this.panel56.Location = new System.Drawing.Point(382, 1);
             this.panel56.Margin = new System.Windows.Forms.Padding(1);
             this.panel56.Name = "panel56";
             this.panel56.Padding = new System.Windows.Forms.Padding(2);
-            this.panel56.Size = new System.Drawing.Size(70, 38);
+            this.panel56.Size = new System.Drawing.Size(69, 38);
             this.panel56.TabIndex = 5;
             // 
             // label14
@@ -1437,7 +1578,7 @@
             this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label14.Location = new System.Drawing.Point(2, 2);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(66, 34);
+            this.label14.Size = new System.Drawing.Size(65, 34);
             this.label14.TabIndex = 5;
             this.label14.Text = "F/Ultima\r\nAct/Costo";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1446,7 +1587,7 @@
             // 
             this.panel55.Controls.Add(this.label13);
             this.panel55.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel55.Location = new System.Drawing.Point(285, 1);
+            this.panel55.Location = new System.Drawing.Point(284, 1);
             this.panel55.Margin = new System.Windows.Forms.Padding(1);
             this.panel55.Name = "panel55";
             this.panel55.Padding = new System.Windows.Forms.Padding(2);
@@ -1467,7 +1608,7 @@
             // 
             this.panel54.Controls.Add(this.label12);
             this.panel54.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel54.Location = new System.Drawing.Point(224, 1);
+            this.panel54.Location = new System.Drawing.Point(223, 1);
             this.panel54.Margin = new System.Windows.Forms.Padding(1);
             this.panel54.Name = "panel54";
             this.panel54.Padding = new System.Windows.Forms.Padding(2);
@@ -1492,7 +1633,7 @@
             this.panel52.Margin = new System.Windows.Forms.Padding(1);
             this.panel52.Name = "panel52";
             this.panel52.Padding = new System.Windows.Forms.Padding(2);
-            this.panel52.Size = new System.Drawing.Size(87, 38);
+            this.panel52.Size = new System.Drawing.Size(86, 38);
             this.panel52.TabIndex = 1;
             // 
             // label10
@@ -1500,7 +1641,7 @@
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label10.Location = new System.Drawing.Point(2, 2);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(83, 34);
+            this.label10.Size = new System.Drawing.Size(82, 34);
             this.label10.TabIndex = 1;
             this.label10.Text = "Tasa\r\nCambio";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1530,7 +1671,7 @@
             // 
             this.panel53.Controls.Add(this.label11);
             this.panel53.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel53.Location = new System.Drawing.Point(179, 1);
+            this.panel53.Location = new System.Drawing.Point(178, 1);
             this.panel53.Margin = new System.Windows.Forms.Padding(1);
             this.panel53.Name = "panel53";
             this.panel53.Padding = new System.Windows.Forms.Padding(2);
@@ -1550,147 +1691,6 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // TB_PF_3
-            // 
-            this.TB_PF_3.BackColor = System.Drawing.Color.Yellow;
-            this.TB_PF_3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.TB_PF_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_PF_3.Location = new System.Drawing.Point(2, 2);
-            this.TB_PF_3.MaxLength = 14;
-            this.TB_PF_3.Name = "TB_PF_3";
-            this.TB_PF_3.Size = new System.Drawing.Size(95, 24);
-            this.TB_PF_3.TabIndex = 4;
-            this.TB_PF_3.Text = "0";
-            this.TB_PF_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TB_PF_3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_KeyDown);
-            this.TB_PF_3.Leave += new System.EventHandler(this.TB_PF_3_Leave);
-            this.TB_PF_3.Validating += new System.ComponentModel.CancelEventHandler(this.TB_PF_3_Validating);
-            // 
-            // TB_PN_3
-            // 
-            this.TB_PN_3.BackColor = System.Drawing.Color.Yellow;
-            this.TB_PN_3.Dock = System.Windows.Forms.DockStyle.Left;
-            this.TB_PN_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_PN_3.Location = new System.Drawing.Point(2, 2);
-            this.TB_PN_3.MaxLength = 14;
-            this.TB_PN_3.Name = "TB_PN_3";
-            this.TB_PN_3.Size = new System.Drawing.Size(95, 24);
-            this.TB_PN_3.TabIndex = 3;
-            this.TB_PN_3.Text = "0";
-            this.TB_PN_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TB_PN_3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_KeyDown);
-            this.TB_PN_3.Leave += new System.EventHandler(this.TB_PN_3_Leave);
-            this.TB_PN_3.Validating += new System.ComponentModel.CancelEventHandler(this.TB_PN_3_Validating);
-            // 
-            // TB_UT_3
-            // 
-            this.TB_UT_3.BackColor = System.Drawing.Color.Yellow;
-            this.TB_UT_3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TB_UT_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_UT_3.Location = new System.Drawing.Point(2, 2);
-            this.TB_UT_3.MaxLength = 6;
-            this.TB_UT_3.Name = "TB_UT_3";
-            this.TB_UT_3.Size = new System.Drawing.Size(86, 24);
-            this.TB_UT_3.TabIndex = 2;
-            this.TB_UT_3.Text = "0";
-            this.TB_UT_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TB_UT_3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_KeyDown);
-            this.TB_UT_3.Leave += new System.EventHandler(this.TB_UT_3_Leave);
-            // 
-            // TB_PF_2
-            // 
-            this.TB_PF_2.BackColor = System.Drawing.Color.Yellow;
-            this.TB_PF_2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.TB_PF_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_PF_2.Location = new System.Drawing.Point(2, 2);
-            this.TB_PF_2.MaxLength = 14;
-            this.TB_PF_2.Name = "TB_PF_2";
-            this.TB_PF_2.Size = new System.Drawing.Size(95, 24);
-            this.TB_PF_2.TabIndex = 3;
-            this.TB_PF_2.Text = "0";
-            this.TB_PF_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TB_PF_2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_KeyDown);
-            this.TB_PF_2.Leave += new System.EventHandler(this.TB_PF_2_Leave);
-            this.TB_PF_2.Validating += new System.ComponentModel.CancelEventHandler(this.TB_PF_2_Validating);
-            // 
-            // TB_PN_2
-            // 
-            this.TB_PN_2.BackColor = System.Drawing.Color.Yellow;
-            this.TB_PN_2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.TB_PN_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_PN_2.Location = new System.Drawing.Point(2, 2);
-            this.TB_PN_2.MaxLength = 14;
-            this.TB_PN_2.Name = "TB_PN_2";
-            this.TB_PN_2.Size = new System.Drawing.Size(95, 24);
-            this.TB_PN_2.TabIndex = 2;
-            this.TB_PN_2.Text = "0";
-            this.TB_PN_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TB_PN_2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_KeyDown);
-            this.TB_PN_2.Leave += new System.EventHandler(this.TB_PN_2_Leave);
-            this.TB_PN_2.Validating += new System.ComponentModel.CancelEventHandler(this.TB_PN_2_Validating);
-            // 
-            // TB_UT_2
-            // 
-            this.TB_UT_2.BackColor = System.Drawing.Color.Yellow;
-            this.TB_UT_2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TB_UT_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_UT_2.Location = new System.Drawing.Point(2, 2);
-            this.TB_UT_2.MaxLength = 6;
-            this.TB_UT_2.Name = "TB_UT_2";
-            this.TB_UT_2.Size = new System.Drawing.Size(86, 24);
-            this.TB_UT_2.TabIndex = 1;
-            this.TB_UT_2.Text = "0";
-            this.TB_UT_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TB_UT_2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_KeyDown);
-            this.TB_UT_2.Leave += new System.EventHandler(this.TB_UT_2_Leave);
-            // 
-            // TB_PF_1
-            // 
-            this.TB_PF_1.BackColor = System.Drawing.Color.Yellow;
-            this.TB_PF_1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.TB_PF_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_PF_1.Location = new System.Drawing.Point(2, 2);
-            this.TB_PF_1.MaxLength = 14;
-            this.TB_PF_1.Name = "TB_PF_1";
-            this.TB_PF_1.Size = new System.Drawing.Size(95, 24);
-            this.TB_PF_1.TabIndex = 2;
-            this.TB_PF_1.Text = "0";
-            this.TB_PF_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TB_PF_1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_KeyDown);
-            this.TB_PF_1.Leave += new System.EventHandler(this.TB_PF_1_Leave);
-            this.TB_PF_1.Validating += new System.ComponentModel.CancelEventHandler(this.TB_PF_1_Validating);
-            // 
-            // TB_PN_1
-            // 
-            this.TB_PN_1.BackColor = System.Drawing.Color.Yellow;
-            this.TB_PN_1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.TB_PN_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_PN_1.Location = new System.Drawing.Point(2, 2);
-            this.TB_PN_1.MaxLength = 14;
-            this.TB_PN_1.Name = "TB_PN_1";
-            this.TB_PN_1.Size = new System.Drawing.Size(95, 24);
-            this.TB_PN_1.TabIndex = 3;
-            this.TB_PN_1.Text = "0";
-            this.TB_PN_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TB_PN_1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_KeyDown);
-            this.TB_PN_1.Leave += new System.EventHandler(this.TB_PN_1_Leave);
-            this.TB_PN_1.Validating += new System.ComponentModel.CancelEventHandler(this.TB_PN_1_Validating);
-            // 
-            // TB_UT_1
-            // 
-            this.TB_UT_1.BackColor = System.Drawing.Color.Yellow;
-            this.TB_UT_1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TB_UT_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_UT_1.Location = new System.Drawing.Point(2, 2);
-            this.TB_UT_1.MaxLength = 6;
-            this.TB_UT_1.Name = "TB_UT_1";
-            this.TB_UT_1.Size = new System.Drawing.Size(86, 24);
-            this.TB_UT_1.TabIndex = 0;
-            this.TB_UT_1.Text = "0";
-            this.TB_UT_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TB_UT_1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TB_KeyDown);
-            this.TB_UT_1.Leave += new System.EventHandler(this.TB_UT_1_Leave);
             // 
             // PrecioEditarFrm
             // 

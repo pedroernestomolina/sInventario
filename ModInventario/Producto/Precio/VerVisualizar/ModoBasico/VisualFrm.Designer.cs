@@ -1358,6 +1358,8 @@
             this.ClientSize = new System.Drawing.Size(774, 341);
             this.Controls.Add(this.P_PRINCIPAL);
             this.KeyPreview = true;
+            this.MaximumSize = new System.Drawing.Size(790, 380);
+            this.MinimumSize = new System.Drawing.Size(790, 380);
             this.Name = "VisualFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.VisualFrm_Load);

@@ -19,6 +19,8 @@ namespace OOB.LibInventario.Reportes.MaestroPrecio
         public enumerados.EnumPrecio precio { get; set; }
         public enumerados.EnumPesado pesado { get; set; }
         public string autoDepositoPrincipal { get; set; }
+        public string estatusOferta { get; set; }
+
 
         public Filtro()
         {
@@ -32,6 +34,7 @@ namespace OOB.LibInventario.Reportes.MaestroPrecio
             autoDepartamento = "";
             autoTasa = "";
             autoDepositoPrincipal = "";
+            estatusOferta = "";
         }
     }
 }

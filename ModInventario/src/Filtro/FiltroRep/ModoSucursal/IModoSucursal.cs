@@ -11,6 +11,9 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
 
     public interface IModoSucursal: IFiltroRep
     {
+        Tools.Filtros.Oferta.IOfertaRep Oferta { get; }
+
+
         BindingSource GetSucursal_Source { get; }
         BindingSource GetCategoria_Source { get; }
         BindingSource GetOrigen_Source { get; }
@@ -45,5 +48,4 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
         bool GetHabilitarPrecio { get;  }
         void setPrecio(string id);
     }
-
 }

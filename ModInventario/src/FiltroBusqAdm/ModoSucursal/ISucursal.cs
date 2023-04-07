@@ -12,5 +12,6 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
                                 PorCatalogo.ICatalogo, PorCategoria.ICategoria,
                                 PorExistencia.IExistencia, PorProveedor.IProveedor
     {
+        Tools.Filtros.Oferta.IOferta Oferta { get; }
     }
 }

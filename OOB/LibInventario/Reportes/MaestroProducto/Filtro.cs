@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace OOB.LibInventario.Reportes.MaestroProducto
 {
-    
     public class Filtro
     {
-
         public string autoDeposito { get; set; }
         public string autoDepartamento { get; set; }
         public string autoGrupo { get; set; }
@@ -20,6 +18,7 @@ namespace OOB.LibInventario.Reportes.MaestroProducto
         public enumerados.EnumCategoria categoria { get; set; }
         public enumerados.EnumEstatus estatus { get; set; }
         public enumerados.EnumPesado pesado { get; set; }
+        public string estatusOferta { get; set; }
 
 
         public Filtro()
@@ -33,8 +32,7 @@ namespace OOB.LibInventario.Reportes.MaestroProducto
             autoDeposito = "";
             autoTasa = "";
             autoGrupo = "";
+            estatusOferta = "";
         }
-
     }
-
 }

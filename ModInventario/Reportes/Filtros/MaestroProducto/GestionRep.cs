@@ -71,6 +71,10 @@ namespace ModInventario.Reportes.Filtros.MaestroProducto
             {
                 filtro.autoTasa = dataFiltros.TasaIva.id;
             }
+            if (dataFiltros.Oferta != null)
+            {
+                filtro.estatusOferta = dataFiltros.Oferta.desc.Trim().ToUpper()=="SI"?"1":"0";
+            }
             try
             {
                 var r01 = Sistema.MyData.Reportes_MaestroProducto(filtro);
@@ -117,7 +121,5 @@ namespace ModInventario.Reportes.Filtros.MaestroProducto
             frp.Path = pt;
             frp.ShowDialog();
         }
-
     }
-
 }

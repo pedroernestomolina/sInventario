@@ -31,7 +31,7 @@ namespace ModInventario.Producto.Precio.VerVisualizar.ModoBasico
         private void VisualFrm_Load(object sender, EventArgs e)
         {
             L_PRODUCTO.Text = _controlador.GetProductoInfo;
-            L_TASA_CAMBIO.Text = _controlador.GetTasaCambio.ToString("n2");
+            L_TASA_CAMBIO.Text = _controlador.GetTasaCambio.ToString("n3");
             L_METODO.Text = _controlador.GetMetodoCalculoUtilidad;
             L_ADM_DIVISA.Text = _controlador.GetProductoAdmDivisa;
             L_TASA_IVA.Text = _controlador.GetProductoIva;
@@ -63,9 +63,6 @@ namespace ModInventario.Producto.Precio.VerVisualizar.ModoBasico
             L_FULL_1_1.Text = _controlador.Emp1_1.pFull.ToString("n2");
             L_FULL_1_2.Text = _controlador.Emp1_2.pFull.ToString("n2");
             L_FULL_1_3.Text = _controlador.Emp1_3.pFull.ToString("n2");
-
         }
-
     }
-
 }

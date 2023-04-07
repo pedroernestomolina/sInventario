@@ -11,10 +11,8 @@ using System.Windows.Forms;
 
 namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
 {
-
     public partial class FiltrosFrm : Form
     {
-
         private IModoSucursal _controlador;
 
 
@@ -50,6 +48,8 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
             CB_PESADO.ValueMember = "id";
             CB_PRECIO.DisplayMember = "desc";
             CB_PRECIO.ValueMember = "id";
+            CB_OFERTA.DisplayMember = "desc";
+            CB_OFERTA.ValueMember = "id";
         }
 
         bool _modoInicializar;
@@ -68,7 +68,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
             CB_CATEGORIA.DataSource = _controlador.GetCategoria_Source;
             CB_ORIGEN.DataSource = _controlador.GetOrigen_Source;
             CB_PRECIO.DataSource = _controlador.GetPrecio_Source;
-
+            CB_OFERTA.DataSource = _controlador.Oferta.GetSource;
 
             CB_DEPOSITO.SelectedValue = _controlador.GetDeposito_Id;
             CB_DEPARTAMENTO.SelectedValue = _controlador.GetDepartamento_Id;
@@ -82,11 +82,11 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
             CB_CATEGORIA.SelectedValue = _controlador.GetCategoria_Id;
             CB_ORIGEN.SelectedValue = _controlador.GetOrigen_Id;
             CB_PRECIO.SelectedValue = _controlador.GetPrecio_Id;
+            CB_OFERTA.SelectedValue = _controlador.Oferta.GetId;
             DTP_DESDE.Value = _controlador.GetDesde;
             DTP_HASTA.Value = _controlador.GetHasta;
             TB_PRODUCTO.Text = _controlador.GetProducto;
-
-
+            
             CB_DEPOSITO.Enabled = _controlador.GetHabilitarDeposito;
             CB_DEPARTAMENTO.Enabled = _controlador.GetHabilitarDepartamento;
             CB_GRUPO.Enabled = false;
@@ -99,6 +99,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
             CB_ORIGEN.Enabled = _controlador.GetHabilitarOrigen;
             CB_CATEGORIA.Enabled = _controlador.GetHabilitarCategoria;
             CB_PRECIO.Enabled = _controlador.GetHabilitarPrecio;
+            CB_OFERTA.Enabled = _controlador.Oferta.GetHabilitar;
             DTP_DESDE.Enabled = _controlador.GetHabilitarFechaDesde;
             DTP_HASTA.Enabled = _controlador.GetHabilitarFechaHasta;
             TB_PRODUCTO.Enabled = _controlador.GetHabilitarProducto;
@@ -230,6 +231,15 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
                 _controlador.setPrecio(CB_PRECIO.SelectedValue.ToString());
             }
         }
+        private void CB_OFERTA_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_modoInicializar) { return; }
+            _controlador.Oferta.setId("");
+            if (CB_OFERTA.SelectedIndex != -1)
+            {
+                _controlador.Oferta.setId(CB_OFERTA.SelectedValue.ToString());
+            }
+        }
 
 
         private void DTP_DESDE_ValueChanged(object sender, EventArgs e)
@@ -309,6 +319,10 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
         private void L_PRECIO_Click(object sender, EventArgs e)
         {
             CB_PRECIO.SelectedIndex = -1;
+        }
+        private void L_OFERTA_Click(object sender, EventArgs e)
+        {
+            CB_OFERTA.SelectedIndex = -1;
         }
 
 
@@ -410,7 +424,5 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
                 e.Cancel = false;
             }
         }
-    
     }
-
 }

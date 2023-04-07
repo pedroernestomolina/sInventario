@@ -2456,7 +2456,7 @@
             // 
             // BT_PRECIO_DSCTO
             // 
-            this.BT_PRECIO_DSCTO.BackgroundImage = global::ModInventario.Properties.Resources.bt_discount_48;
+            this.BT_PRECIO_DSCTO.BackgroundImage = global::ModInventario.Properties.Resources.bt_descuento_64;
             this.BT_PRECIO_DSCTO.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.BT_PRECIO_DSCTO.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BT_PRECIO_DSCTO.FlatAppearance.BorderSize = 0;

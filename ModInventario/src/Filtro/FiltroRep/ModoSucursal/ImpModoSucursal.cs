@@ -8,10 +8,8 @@ using System.Windows.Forms;
 
 namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
 {
-    
     public class ImpModoSucursal: baseFiltro, IModoSucursal
     {
-
         private FiltrosGen.IOpcion _gSucursal;
         private FiltrosGen.IOpcion _gCategoria;
         private FiltrosGen.IOpcion _gOrigen;
@@ -35,6 +33,10 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
         public bool GetHabilitarCategoria { get { return _filtros.ActivarOrigen; } }
         public bool GetHabilitarProducto { get { return _filtros.ActivarProducto; } }
 
+
+        private Tools.Filtros.Oferta.IOfertaRep _oferta;
+        public Tools.Filtros.Oferta.IOfertaRep Oferta { get { return _oferta; } }
+
         
         public ImpModoSucursal(FiltrosGen.IBuscar filtroBusPrd)
             :base(_data=new dataFiltrar())
@@ -53,6 +55,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
             _gCategoria = new FiltrosGen.Opcion.Gestion();
             _gOrigen = new FiltrosGen.Opcion.Gestion();
             _gPrecio = new FiltrosGen.Opcion.Gestion();
+            _oferta = new Tools.Filtros.Oferta.ImpOfertaRep();
             _filtroBusPrd = filtroBusPrd;
         }
 
@@ -65,6 +68,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
             _gOrigen.Inicializa();
             _gPrecio.Inicializa();
             _filtroBusPrd.Inicializa();
+            _oferta.Inicializa();
             _data.Limpiar();
         }
         FiltrosFrm frm;
@@ -120,6 +124,9 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
                         lPrecio.Add(new ficha(rg.id, "", rg.descripcion));
                     }
                     _gPrecio.setData(lPrecio);
+
+                    _oferta.CargarData();
+                    _oferta.setActivarFiltro(_filtros.ActivarOferta);
                     return true;
                 }
                 catch (Exception e)
@@ -137,6 +144,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
             _gCategoria.Inicializa();
             _gOrigen.Inicializa();
             _gPrecio.Inicializa();
+            _oferta.Inicializa();
             _filtroBusPrd.Inicializa();
         }
 
@@ -186,6 +194,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
                 Producto = _data.Producto,
                 Sucursal = _data.Sucursal,
                 Precio = _data.Precio,
+                Oferta= _oferta.GetItem,
             };
             return rg;
         }
@@ -238,5 +247,4 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
             _data.Precio = _gPrecio.Item;
         }
     }
-
 }

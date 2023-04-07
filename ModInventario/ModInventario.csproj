@@ -943,6 +943,10 @@
     </Compile>
     <Compile Include="src\Producto\ActualizarOferta\ModoAdm\IModoAdm.cs" />
     <Compile Include="src\Producto\ActualizarOferta\ModoAdm\ImpModoAdm.cs" />
+    <Compile Include="src\Producto\ActualizarOferta\ModoAdm\imp_prd.cs" />
+    <Compile Include="src\Producto\ActualizarOferta\ModoAdm\imp_vta.cs" />
+    <Compile Include="src\Producto\ActualizarOferta\ModoAdm\IPrd.cs" />
+    <Compile Include="src\Producto\ActualizarOferta\ModoAdm\IVta.cs" />
     <Compile Include="src\Producto\AgregarEditar\ModoAdm\Agregar\dataAgregar.cs" />
     <Compile Include="src\Producto\AgregarEditar\ModoAdm\Agregar\IAgregar.cs" />
     <Compile Include="src\Producto\AgregarEditar\ModoAdm\Agregar\ImpAgregar.cs" />
@@ -1106,6 +1110,10 @@
     <Compile Include="src\Tools\Filtros\IFiltro.cs" />
     <Compile Include="src\Tools\Filtros\Marca\IMarca.cs" />
     <Compile Include="src\Tools\Filtros\Marca\ImpMarca.cs" />
+    <Compile Include="src\Tools\Filtros\Oferta\ImpOferta.cs" />
+    <Compile Include="src\Tools\Filtros\Oferta\ImpOfertaRep.cs" />
+    <Compile Include="src\Tools\Filtros\Oferta\IOferta.cs" />
+    <Compile Include="src\Tools\Filtros\Oferta\IOfertaRep.cs" />
     <Compile Include="src\Tools\Filtros\Origen\IOrigen.cs" />
     <Compile Include="src\Tools\Filtros\Origen\ImpOrigen.cs" />
     <Compile Include="src\Tools\Filtros\Pesado\ImpPesado.cs" />
@@ -1781,6 +1789,7 @@
     <Content Include="Imagenes\bt_consulta.png" />
     <Content Include="Imagenes\bt_costo.png" />
     <Content Include="Imagenes\bt_dashboard.png" />
+    <Content Include="Imagenes\bt_descuento_64.png" />
     <Content Include="Imagenes\bt_discount_48.png" />
     <Content Include="Imagenes\bt_documento.png" />
     <Content Include="Imagenes\bt_dollar.png" />
@@ -1852,6 +1861,7 @@
     <Content Include="Imagenes\TOOLS.ico" />
     <Content Include="Imagenes\transferencia.png" />
     <Content Include="Imagenes\warehouse.png" />
+    <None Include="Resources\bt_descuento_64.png" />
     <None Include="Resources\bt_discount_48.png" />
     <None Include="Resources\bt_paleta_colores_2_48.png" />
     <None Include="Resources\bt_paleta_colores_48.png" />

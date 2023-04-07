@@ -10,6 +10,7 @@ namespace OOB.LibInventario.Producto.ActualizarOferta.ModoAdm.Actualizar
     public class Ficha
     {
         public string autoPrd { get; set; }
+        public string estatusOferta { get; set; }
         public List<Precio> ofertas { get; set; }
     }
 }

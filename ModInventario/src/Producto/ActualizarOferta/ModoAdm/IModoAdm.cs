@@ -9,5 +9,6 @@ namespace ModInventario.src.Producto.ActualizarOferta.ModoAdm
 {
     public interface IModoAdm: IActOferta
     {
+        IPrd Prd { get; }
     }
 }

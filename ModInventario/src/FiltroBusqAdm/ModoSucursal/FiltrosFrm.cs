@@ -52,6 +52,8 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
             CB_EXISTENCIA.ValueMember = "id";
             CB_CATALOGO.DisplayMember = "desc";
             CB_CATALOGO.ValueMember = "id";
+            CB_OFERTA.DisplayMember = "desc";
+            CB_OFERTA.ValueMember = "id";
         }
 
         private bool _modoInicializar;
@@ -71,6 +73,7 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
             CB_CATALOGO.DataSource = _controlador.SourceCatalogo;
             CB_EXISTENCIA.DataSource = _controlador.SourceExistencia;
             CB_TCS.DataSource = _controlador.SourceTCS;
+            CB_OFERTA.DataSource = _controlador.Oferta.GetSource;
 
             P_PROVEEDOR.Enabled = !_controlador.ProveedorIsOk;
             TB_PROVEEDOR.Text = _controlador.GetProveedorNombreFiltrar;
@@ -87,6 +90,7 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
             CB_EXISTENCIA.SelectedValue = _controlador.GetIdExistencia;
             CB_TCS.SelectedValue = _controlador.GetIdTCS;
             CB_CATALOGO.SelectedValue = _controlador.GetIdCatalogo;
+            CB_OFERTA.SelectedValue = _controlador.Oferta.GetId;
             if (_controlador.GetDepartamentoId == "")
             {
                 CB_GRUPO.Enabled = false;
@@ -225,6 +229,15 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
                 _controlador.setIdTCS(CB_TCS.SelectedValue.ToString());
             }
         }
+        private void CB_OFERTA_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_modoInicializar) return;
+            _controlador.Oferta.setId("");
+            if (CB_OFERTA.SelectedIndex != -1)
+            {
+                _controlador.Oferta.setId(CB_OFERTA.SelectedValue.ToString());
+            }
+        }
 
 
         private void BT_LIMPIAR_Click(object sender, EventArgs e)
@@ -310,6 +323,10 @@ namespace ModInventario.src.FiltroBusqAdm.ModoSucursal
         private void L_TCS_Click(object sender, EventArgs e)
         {
             CB_TCS.SelectedIndex = -1;
+        }
+        private void L_OFERTA_Click(object sender, EventArgs e)
+        {
+            CB_OFERTA.SelectedIndex = -1;
         }
 
 

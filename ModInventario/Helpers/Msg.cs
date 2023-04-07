@@ -47,6 +47,9 @@ namespace ModInventario.Helpers
             return MessageBox.Show(msg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes;
         }
 
+        public static bool ProcesarGuardar(string msg = "Procesar/Guardar Cambios Realizados ?")
+        {
+            return MessageBox.Show(msg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes;
+        }
     }
-
 }

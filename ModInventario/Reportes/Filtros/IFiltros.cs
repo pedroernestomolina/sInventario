@@ -26,5 +26,7 @@ namespace ModInventario.Reportes.Filtros
         bool ActivarPesado { get; }
         bool ActivarEntreFechas { get; }
         bool ActivarEmpaquePrecio { get; }
+        //
+        bool ActivarOferta { get; }
     }
 }

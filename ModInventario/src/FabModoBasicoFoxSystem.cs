@@ -130,12 +130,14 @@ namespace ModInventario.src
         {
             return new Reportes.Filtros.MaestroPrecioFox.Filtros();
         }
-        public bool ReporteMaestroPrecio_Validar_SeleccionarPrecio
-        {
-            get { return false; }
-        }
+        public bool ReporteMaestroPrecio_Validar_SeleccionarPrecio { get { return false; } }
         public Producto.ActualizarOferta.IActOferta 
             CreateInstancia_OfertaDscto()
+        {
+            return null;
+        }
+        public Producto.ActualizarOfertaMasiva.IOferta
+            CreateInstancia_AsginacionMasivaOferta()
         {
             return null;
         }

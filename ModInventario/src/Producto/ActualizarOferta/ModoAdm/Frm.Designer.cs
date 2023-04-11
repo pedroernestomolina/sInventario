@@ -142,6 +142,7 @@
             this.panel45 = new System.Windows.Forms.Panel();
             this.DTP_HASTA_1 = new System.Windows.Forms.DateTimePicker();
             this.panel46 = new System.Windows.Forms.Panel();
+            this.TB_PORCT_OFERTA_1 = new LibControles.NumeroDecimal();
             this.panel47 = new System.Windows.Forms.Panel();
             this.CHB_EST_1 = new System.Windows.Forms.CheckBox();
             this.panel48 = new System.Windows.Forms.Panel();
@@ -150,6 +151,34 @@
             this.L_FULL_DIVISA_CON_OFERTA_1 = new System.Windows.Forms.Label();
             this.panel52 = new System.Windows.Forms.Panel();
             this.BT_ANULAR_OFERTA_1 = new System.Windows.Forms.Button();
+            this.panel51 = new System.Windows.Forms.Panel();
+            this.DTP_DESDE_2 = new System.Windows.Forms.DateTimePicker();
+            this.panel53 = new System.Windows.Forms.Panel();
+            this.DTP_HASTA_2 = new System.Windows.Forms.DateTimePicker();
+            this.panel54 = new System.Windows.Forms.Panel();
+            this.TB_PORCT_OFERTA_2 = new LibControles.NumeroDecimal();
+            this.panel55 = new System.Windows.Forms.Panel();
+            this.CHB_EST_2 = new System.Windows.Forms.CheckBox();
+            this.panel56 = new System.Windows.Forms.Panel();
+            this.L_FULL_MON_LOCAL_CON_OFERTA_2 = new System.Windows.Forms.Label();
+            this.panel57 = new System.Windows.Forms.Panel();
+            this.L_FULL_DIVISA_CON_OFERTA_2 = new System.Windows.Forms.Label();
+            this.panel58 = new System.Windows.Forms.Panel();
+            this.BT_ANULAR_OFERTA_2 = new System.Windows.Forms.Button();
+            this.panel59 = new System.Windows.Forms.Panel();
+            this.DTP_DESDE_3 = new System.Windows.Forms.DateTimePicker();
+            this.panel60 = new System.Windows.Forms.Panel();
+            this.DTP_HASTA_3 = new System.Windows.Forms.DateTimePicker();
+            this.panel61 = new System.Windows.Forms.Panel();
+            this.TB_PORCT_OFERTA_3 = new LibControles.NumeroDecimal();
+            this.panel62 = new System.Windows.Forms.Panel();
+            this.CHB_EST_3 = new System.Windows.Forms.CheckBox();
+            this.panel63 = new System.Windows.Forms.Panel();
+            this.L_FULL_MON_LOCAL_CON_OFERTA_3 = new System.Windows.Forms.Label();
+            this.panel64 = new System.Windows.Forms.Panel();
+            this.L_FULL_DIVISA_CON_OFERTA_3 = new System.Windows.Forms.Label();
+            this.panel65 = new System.Windows.Forms.Panel();
+            this.BT_ANULAR_OFERTA_3 = new System.Windows.Forms.Button();
             this.P_PIE = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -157,35 +186,6 @@
             this.panel50 = new System.Windows.Forms.Panel();
             this.BT_PROCESAR = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.panel51 = new System.Windows.Forms.Panel();
-            this.panel53 = new System.Windows.Forms.Panel();
-            this.panel54 = new System.Windows.Forms.Panel();
-            this.panel55 = new System.Windows.Forms.Panel();
-            this.panel56 = new System.Windows.Forms.Panel();
-            this.panel57 = new System.Windows.Forms.Panel();
-            this.panel58 = new System.Windows.Forms.Panel();
-            this.DTP_DESDE_2 = new System.Windows.Forms.DateTimePicker();
-            this.DTP_HASTA_2 = new System.Windows.Forms.DateTimePicker();
-            this.CHB_EST_2 = new System.Windows.Forms.CheckBox();
-            this.L_FULL_MON_LOCAL_CON_OFERTA_2 = new System.Windows.Forms.Label();
-            this.L_FULL_DIVISA_CON_OFERTA_2 = new System.Windows.Forms.Label();
-            this.BT_ANULAR_OFERTA_2 = new System.Windows.Forms.Button();
-            this.panel59 = new System.Windows.Forms.Panel();
-            this.panel60 = new System.Windows.Forms.Panel();
-            this.panel61 = new System.Windows.Forms.Panel();
-            this.panel62 = new System.Windows.Forms.Panel();
-            this.panel63 = new System.Windows.Forms.Panel();
-            this.panel64 = new System.Windows.Forms.Panel();
-            this.panel65 = new System.Windows.Forms.Panel();
-            this.DTP_DESDE_3 = new System.Windows.Forms.DateTimePicker();
-            this.DTP_HASTA_3 = new System.Windows.Forms.DateTimePicker();
-            this.CHB_EST_3 = new System.Windows.Forms.CheckBox();
-            this.L_FULL_MON_LOCAL_CON_OFERTA_3 = new System.Windows.Forms.Label();
-            this.L_FULL_DIVISA_CON_OFERTA_3 = new System.Windows.Forms.Label();
-            this.BT_ANULAR_OFERTA_3 = new System.Windows.Forms.Button();
-            this.TB_PORCT_OFERTA_1 = new LibControles.NumeroDecimal();
-            this.TB_PORCT_OFERTA_2 = new LibControles.NumeroDecimal();
-            this.TB_PORCT_OFERTA_3 = new LibControles.NumeroDecimal();
             this.tableLayoutPanel1.SuspendLayout();
             this.P_TITULO.SuspendLayout();
             this.P_DATA.SuspendLayout();
@@ -255,10 +255,6 @@
             this.panel48.SuspendLayout();
             this.panel49.SuspendLayout();
             this.panel52.SuspendLayout();
-            this.P_PIE.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel50.SuspendLayout();
             this.panel51.SuspendLayout();
             this.panel53.SuspendLayout();
             this.panel54.SuspendLayout();
@@ -273,6 +269,10 @@
             this.panel63.SuspendLayout();
             this.panel64.SuspendLayout();
             this.panel65.SuspendLayout();
+            this.P_PIE.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel50.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -1702,6 +1702,21 @@
             this.panel46.Size = new System.Drawing.Size(78, 25);
             this.panel46.TabIndex = 9;
             // 
+            // TB_PORCT_OFERTA_1
+            // 
+            this.TB_PORCT_OFERTA_1.BackColor = System.Drawing.Color.Yellow;
+            this.TB_PORCT_OFERTA_1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_PORCT_OFERTA_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_PORCT_OFERTA_1.Location = new System.Drawing.Point(1, 1);
+            this.TB_PORCT_OFERTA_1.MaxLength = 6;
+            this.TB_PORCT_OFERTA_1.Name = "TB_PORCT_OFERTA_1";
+            this.TB_PORCT_OFERTA_1.Size = new System.Drawing.Size(76, 22);
+            this.TB_PORCT_OFERTA_1.TabIndex = 0;
+            this.TB_PORCT_OFERTA_1.Text = "0";
+            this.TB_PORCT_OFERTA_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_PORCT_OFERTA_1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
+            this.TB_PORCT_OFERTA_1.Leave += new System.EventHandler(this.TB_PORCT_OFERTA_1_Leave);
+            // 
             // panel47
             // 
             this.panel47.Controls.Add(this.CHB_EST_1);
@@ -1802,6 +1817,358 @@
             this.BT_ANULAR_OFERTA_1.UseVisualStyleBackColor = true;
             this.BT_ANULAR_OFERTA_1.Click += new System.EventHandler(this.BT_ANULAR_OFERTA_1_Click);
             // 
+            // panel51
+            // 
+            this.panel51.Controls.Add(this.DTP_DESDE_2);
+            this.panel51.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel51.Location = new System.Drawing.Point(1, 55);
+            this.panel51.Margin = new System.Windows.Forms.Padding(1);
+            this.panel51.Name = "panel51";
+            this.panel51.Padding = new System.Windows.Forms.Padding(1);
+            this.panel51.Size = new System.Drawing.Size(110, 25);
+            this.panel51.TabIndex = 15;
+            // 
+            // DTP_DESDE_2
+            // 
+            this.DTP_DESDE_2.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DTP_DESDE_2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DTP_DESDE_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DTP_DESDE_2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DTP_DESDE_2.Location = new System.Drawing.Point(1, 1);
+            this.DTP_DESDE_2.Name = "DTP_DESDE_2";
+            this.DTP_DESDE_2.Size = new System.Drawing.Size(108, 22);
+            this.DTP_DESDE_2.TabIndex = 1;
+            this.DTP_DESDE_2.ValueChanged += new System.EventHandler(this.DTP_DESDE_2_ValueChanged);
+            this.DTP_DESDE_2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
+            this.DTP_DESDE_2.Leave += new System.EventHandler(this.DTP_DESDE_2_Leave);
+            // 
+            // panel53
+            // 
+            this.panel53.Controls.Add(this.DTP_HASTA_2);
+            this.panel53.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel53.Location = new System.Drawing.Point(113, 55);
+            this.panel53.Margin = new System.Windows.Forms.Padding(1);
+            this.panel53.Name = "panel53";
+            this.panel53.Padding = new System.Windows.Forms.Padding(1);
+            this.panel53.Size = new System.Drawing.Size(110, 25);
+            this.panel53.TabIndex = 16;
+            // 
+            // DTP_HASTA_2
+            // 
+            this.DTP_HASTA_2.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DTP_HASTA_2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DTP_HASTA_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DTP_HASTA_2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DTP_HASTA_2.Location = new System.Drawing.Point(1, 1);
+            this.DTP_HASTA_2.Name = "DTP_HASTA_2";
+            this.DTP_HASTA_2.Size = new System.Drawing.Size(108, 22);
+            this.DTP_HASTA_2.TabIndex = 1;
+            this.DTP_HASTA_2.ValueChanged += new System.EventHandler(this.DTP_HASTA_2_ValueChanged);
+            this.DTP_HASTA_2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
+            this.DTP_HASTA_2.Leave += new System.EventHandler(this.DTP_HASTA_2_Leave);
+            // 
+            // panel54
+            // 
+            this.panel54.Controls.Add(this.TB_PORCT_OFERTA_2);
+            this.panel54.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel54.Location = new System.Drawing.Point(225, 55);
+            this.panel54.Margin = new System.Windows.Forms.Padding(1);
+            this.panel54.Name = "panel54";
+            this.panel54.Padding = new System.Windows.Forms.Padding(1);
+            this.panel54.Size = new System.Drawing.Size(78, 25);
+            this.panel54.TabIndex = 17;
+            // 
+            // TB_PORCT_OFERTA_2
+            // 
+            this.TB_PORCT_OFERTA_2.BackColor = System.Drawing.Color.Yellow;
+            this.TB_PORCT_OFERTA_2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_PORCT_OFERTA_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_PORCT_OFERTA_2.Location = new System.Drawing.Point(1, 1);
+            this.TB_PORCT_OFERTA_2.MaxLength = 6;
+            this.TB_PORCT_OFERTA_2.Name = "TB_PORCT_OFERTA_2";
+            this.TB_PORCT_OFERTA_2.Size = new System.Drawing.Size(76, 22);
+            this.TB_PORCT_OFERTA_2.TabIndex = 1;
+            this.TB_PORCT_OFERTA_2.Text = "0";
+            this.TB_PORCT_OFERTA_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_PORCT_OFERTA_2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
+            this.TB_PORCT_OFERTA_2.Leave += new System.EventHandler(this.TB_PORCT_OFERTA_2_Leave);
+            // 
+            // panel55
+            // 
+            this.panel55.Controls.Add(this.CHB_EST_2);
+            this.panel55.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel55.Location = new System.Drawing.Point(305, 55);
+            this.panel55.Margin = new System.Windows.Forms.Padding(1);
+            this.panel55.Name = "panel55";
+            this.panel55.Padding = new System.Windows.Forms.Padding(1);
+            this.panel55.Size = new System.Drawing.Size(28, 25);
+            this.panel55.TabIndex = 18;
+            // 
+            // CHB_EST_2
+            // 
+            this.CHB_EST_2.AutoSize = true;
+            this.CHB_EST_2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CHB_EST_2.Enabled = false;
+            this.CHB_EST_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CHB_EST_2.Location = new System.Drawing.Point(1, 1);
+            this.CHB_EST_2.Name = "CHB_EST_2";
+            this.CHB_EST_2.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.CHB_EST_2.Size = new System.Drawing.Size(26, 23);
+            this.CHB_EST_2.TabIndex = 1;
+            this.CHB_EST_2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CHB_EST_2.UseVisualStyleBackColor = true;
+            // 
+            // panel56
+            // 
+            this.panel56.Controls.Add(this.L_FULL_MON_LOCAL_CON_OFERTA_2);
+            this.panel56.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel56.Location = new System.Drawing.Point(335, 55);
+            this.panel56.Margin = new System.Windows.Forms.Padding(1);
+            this.panel56.Name = "panel56";
+            this.panel56.Padding = new System.Windows.Forms.Padding(1);
+            this.panel56.Size = new System.Drawing.Size(110, 25);
+            this.panel56.TabIndex = 19;
+            // 
+            // L_FULL_MON_LOCAL_CON_OFERTA_2
+            // 
+            this.L_FULL_MON_LOCAL_CON_OFERTA_2.BackColor = System.Drawing.Color.CadetBlue;
+            this.L_FULL_MON_LOCAL_CON_OFERTA_2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_FULL_MON_LOCAL_CON_OFERTA_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_FULL_MON_LOCAL_CON_OFERTA_2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.L_FULL_MON_LOCAL_CON_OFERTA_2.Location = new System.Drawing.Point(1, 1);
+            this.L_FULL_MON_LOCAL_CON_OFERTA_2.Name = "L_FULL_MON_LOCAL_CON_OFERTA_2";
+            this.L_FULL_MON_LOCAL_CON_OFERTA_2.Size = new System.Drawing.Size(108, 23);
+            this.L_FULL_MON_LOCAL_CON_OFERTA_2.TabIndex = 3;
+            this.L_FULL_MON_LOCAL_CON_OFERTA_2.Text = "label47";
+            this.L_FULL_MON_LOCAL_CON_OFERTA_2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // panel57
+            // 
+            this.panel57.Controls.Add(this.L_FULL_DIVISA_CON_OFERTA_2);
+            this.panel57.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel57.Location = new System.Drawing.Point(447, 55);
+            this.panel57.Margin = new System.Windows.Forms.Padding(1);
+            this.panel57.Name = "panel57";
+            this.panel57.Padding = new System.Windows.Forms.Padding(1);
+            this.panel57.Size = new System.Drawing.Size(110, 25);
+            this.panel57.TabIndex = 20;
+            // 
+            // L_FULL_DIVISA_CON_OFERTA_2
+            // 
+            this.L_FULL_DIVISA_CON_OFERTA_2.BackColor = System.Drawing.Color.CadetBlue;
+            this.L_FULL_DIVISA_CON_OFERTA_2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_FULL_DIVISA_CON_OFERTA_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_FULL_DIVISA_CON_OFERTA_2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.L_FULL_DIVISA_CON_OFERTA_2.Location = new System.Drawing.Point(1, 1);
+            this.L_FULL_DIVISA_CON_OFERTA_2.Name = "L_FULL_DIVISA_CON_OFERTA_2";
+            this.L_FULL_DIVISA_CON_OFERTA_2.Size = new System.Drawing.Size(108, 23);
+            this.L_FULL_DIVISA_CON_OFERTA_2.TabIndex = 3;
+            this.L_FULL_DIVISA_CON_OFERTA_2.Text = "label42";
+            this.L_FULL_DIVISA_CON_OFERTA_2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // panel58
+            // 
+            this.panel58.Controls.Add(this.BT_ANULAR_OFERTA_2);
+            this.panel58.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel58.Location = new System.Drawing.Point(559, 55);
+            this.panel58.Margin = new System.Windows.Forms.Padding(1);
+            this.panel58.Name = "panel58";
+            this.panel58.Padding = new System.Windows.Forms.Padding(1);
+            this.panel58.Size = new System.Drawing.Size(20, 25);
+            this.panel58.TabIndex = 21;
+            // 
+            // BT_ANULAR_OFERTA_2
+            // 
+            this.BT_ANULAR_OFERTA_2.BackgroundImage = global::ModInventario.Properties.Resources.bt_eliminar;
+            this.BT_ANULAR_OFERTA_2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BT_ANULAR_OFERTA_2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_ANULAR_OFERTA_2.FlatAppearance.BorderSize = 0;
+            this.BT_ANULAR_OFERTA_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_ANULAR_OFERTA_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_ANULAR_OFERTA_2.Location = new System.Drawing.Point(1, 1);
+            this.BT_ANULAR_OFERTA_2.Name = "BT_ANULAR_OFERTA_2";
+            this.BT_ANULAR_OFERTA_2.Size = new System.Drawing.Size(18, 23);
+            this.BT_ANULAR_OFERTA_2.TabIndex = 7;
+            this.toolTip1.SetToolTip(this.BT_ANULAR_OFERTA_2, "Eliminar Oferta");
+            this.BT_ANULAR_OFERTA_2.UseVisualStyleBackColor = true;
+            this.BT_ANULAR_OFERTA_2.Click += new System.EventHandler(this.BT_ANULAR_OFERTA_2_Click);
+            // 
+            // panel59
+            // 
+            this.panel59.Controls.Add(this.DTP_DESDE_3);
+            this.panel59.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel59.Location = new System.Drawing.Point(1, 82);
+            this.panel59.Margin = new System.Windows.Forms.Padding(1);
+            this.panel59.Name = "panel59";
+            this.panel59.Padding = new System.Windows.Forms.Padding(1);
+            this.panel59.Size = new System.Drawing.Size(110, 28);
+            this.panel59.TabIndex = 22;
+            // 
+            // DTP_DESDE_3
+            // 
+            this.DTP_DESDE_3.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DTP_DESDE_3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DTP_DESDE_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DTP_DESDE_3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DTP_DESDE_3.Location = new System.Drawing.Point(1, 1);
+            this.DTP_DESDE_3.Name = "DTP_DESDE_3";
+            this.DTP_DESDE_3.Size = new System.Drawing.Size(108, 22);
+            this.DTP_DESDE_3.TabIndex = 2;
+            this.DTP_DESDE_3.ValueChanged += new System.EventHandler(this.DTP_DESDE_3_ValueChanged);
+            this.DTP_DESDE_3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
+            this.DTP_DESDE_3.Leave += new System.EventHandler(this.DTP_DESDE_3_Leave);
+            // 
+            // panel60
+            // 
+            this.panel60.Controls.Add(this.DTP_HASTA_3);
+            this.panel60.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel60.Location = new System.Drawing.Point(113, 82);
+            this.panel60.Margin = new System.Windows.Forms.Padding(1);
+            this.panel60.Name = "panel60";
+            this.panel60.Padding = new System.Windows.Forms.Padding(1);
+            this.panel60.Size = new System.Drawing.Size(110, 28);
+            this.panel60.TabIndex = 23;
+            // 
+            // DTP_HASTA_3
+            // 
+            this.DTP_HASTA_3.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DTP_HASTA_3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DTP_HASTA_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DTP_HASTA_3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.DTP_HASTA_3.Location = new System.Drawing.Point(1, 1);
+            this.DTP_HASTA_3.Name = "DTP_HASTA_3";
+            this.DTP_HASTA_3.Size = new System.Drawing.Size(108, 22);
+            this.DTP_HASTA_3.TabIndex = 2;
+            this.DTP_HASTA_3.ValueChanged += new System.EventHandler(this.DTP_HASTA_3_ValueChanged);
+            this.DTP_HASTA_3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
+            this.DTP_HASTA_3.Leave += new System.EventHandler(this.DTP_HASTA_3_Leave);
+            // 
+            // panel61
+            // 
+            this.panel61.Controls.Add(this.TB_PORCT_OFERTA_3);
+            this.panel61.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel61.Location = new System.Drawing.Point(225, 82);
+            this.panel61.Margin = new System.Windows.Forms.Padding(1);
+            this.panel61.Name = "panel61";
+            this.panel61.Padding = new System.Windows.Forms.Padding(1);
+            this.panel61.Size = new System.Drawing.Size(78, 28);
+            this.panel61.TabIndex = 24;
+            // 
+            // TB_PORCT_OFERTA_3
+            // 
+            this.TB_PORCT_OFERTA_3.BackColor = System.Drawing.Color.Yellow;
+            this.TB_PORCT_OFERTA_3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TB_PORCT_OFERTA_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_PORCT_OFERTA_3.Location = new System.Drawing.Point(1, 1);
+            this.TB_PORCT_OFERTA_3.MaxLength = 6;
+            this.TB_PORCT_OFERTA_3.Name = "TB_PORCT_OFERTA_3";
+            this.TB_PORCT_OFERTA_3.Size = new System.Drawing.Size(76, 22);
+            this.TB_PORCT_OFERTA_3.TabIndex = 2;
+            this.TB_PORCT_OFERTA_3.Text = "0";
+            this.TB_PORCT_OFERTA_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TB_PORCT_OFERTA_3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
+            this.TB_PORCT_OFERTA_3.Leave += new System.EventHandler(this.TB_PORCT_OFERTA_3_Leave);
+            // 
+            // panel62
+            // 
+            this.panel62.Controls.Add(this.CHB_EST_3);
+            this.panel62.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel62.Location = new System.Drawing.Point(305, 82);
+            this.panel62.Margin = new System.Windows.Forms.Padding(1);
+            this.panel62.Name = "panel62";
+            this.panel62.Padding = new System.Windows.Forms.Padding(1);
+            this.panel62.Size = new System.Drawing.Size(28, 28);
+            this.panel62.TabIndex = 25;
+            // 
+            // CHB_EST_3
+            // 
+            this.CHB_EST_3.AutoSize = true;
+            this.CHB_EST_3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CHB_EST_3.Enabled = false;
+            this.CHB_EST_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CHB_EST_3.Location = new System.Drawing.Point(1, 1);
+            this.CHB_EST_3.Name = "CHB_EST_3";
+            this.CHB_EST_3.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.CHB_EST_3.Size = new System.Drawing.Size(26, 26);
+            this.CHB_EST_3.TabIndex = 2;
+            this.CHB_EST_3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.CHB_EST_3.UseVisualStyleBackColor = true;
+            // 
+            // panel63
+            // 
+            this.panel63.Controls.Add(this.L_FULL_MON_LOCAL_CON_OFERTA_3);
+            this.panel63.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel63.Location = new System.Drawing.Point(335, 82);
+            this.panel63.Margin = new System.Windows.Forms.Padding(1);
+            this.panel63.Name = "panel63";
+            this.panel63.Padding = new System.Windows.Forms.Padding(1);
+            this.panel63.Size = new System.Drawing.Size(110, 28);
+            this.panel63.TabIndex = 26;
+            // 
+            // L_FULL_MON_LOCAL_CON_OFERTA_3
+            // 
+            this.L_FULL_MON_LOCAL_CON_OFERTA_3.BackColor = System.Drawing.Color.CadetBlue;
+            this.L_FULL_MON_LOCAL_CON_OFERTA_3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_FULL_MON_LOCAL_CON_OFERTA_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_FULL_MON_LOCAL_CON_OFERTA_3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.L_FULL_MON_LOCAL_CON_OFERTA_3.Location = new System.Drawing.Point(1, 1);
+            this.L_FULL_MON_LOCAL_CON_OFERTA_3.Name = "L_FULL_MON_LOCAL_CON_OFERTA_3";
+            this.L_FULL_MON_LOCAL_CON_OFERTA_3.Size = new System.Drawing.Size(108, 26);
+            this.L_FULL_MON_LOCAL_CON_OFERTA_3.TabIndex = 4;
+            this.L_FULL_MON_LOCAL_CON_OFERTA_3.Text = "label47";
+            this.L_FULL_MON_LOCAL_CON_OFERTA_3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // panel64
+            // 
+            this.panel64.Controls.Add(this.L_FULL_DIVISA_CON_OFERTA_3);
+            this.panel64.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel64.Location = new System.Drawing.Point(447, 82);
+            this.panel64.Margin = new System.Windows.Forms.Padding(1);
+            this.panel64.Name = "panel64";
+            this.panel64.Padding = new System.Windows.Forms.Padding(1);
+            this.panel64.Size = new System.Drawing.Size(110, 28);
+            this.panel64.TabIndex = 27;
+            // 
+            // L_FULL_DIVISA_CON_OFERTA_3
+            // 
+            this.L_FULL_DIVISA_CON_OFERTA_3.BackColor = System.Drawing.Color.CadetBlue;
+            this.L_FULL_DIVISA_CON_OFERTA_3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_FULL_DIVISA_CON_OFERTA_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_FULL_DIVISA_CON_OFERTA_3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.L_FULL_DIVISA_CON_OFERTA_3.Location = new System.Drawing.Point(1, 1);
+            this.L_FULL_DIVISA_CON_OFERTA_3.Name = "L_FULL_DIVISA_CON_OFERTA_3";
+            this.L_FULL_DIVISA_CON_OFERTA_3.Size = new System.Drawing.Size(108, 26);
+            this.L_FULL_DIVISA_CON_OFERTA_3.TabIndex = 4;
+            this.L_FULL_DIVISA_CON_OFERTA_3.Text = "label42";
+            this.L_FULL_DIVISA_CON_OFERTA_3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // panel65
+            // 
+            this.panel65.Controls.Add(this.BT_ANULAR_OFERTA_3);
+            this.panel65.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel65.Location = new System.Drawing.Point(559, 82);
+            this.panel65.Margin = new System.Windows.Forms.Padding(1);
+            this.panel65.Name = "panel65";
+            this.panel65.Padding = new System.Windows.Forms.Padding(1);
+            this.panel65.Size = new System.Drawing.Size(20, 28);
+            this.panel65.TabIndex = 28;
+            // 
+            // BT_ANULAR_OFERTA_3
+            // 
+            this.BT_ANULAR_OFERTA_3.BackgroundImage = global::ModInventario.Properties.Resources.bt_eliminar;
+            this.BT_ANULAR_OFERTA_3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BT_ANULAR_OFERTA_3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_ANULAR_OFERTA_3.FlatAppearance.BorderSize = 0;
+            this.BT_ANULAR_OFERTA_3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_ANULAR_OFERTA_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_ANULAR_OFERTA_3.Location = new System.Drawing.Point(1, 1);
+            this.BT_ANULAR_OFERTA_3.Name = "BT_ANULAR_OFERTA_3";
+            this.BT_ANULAR_OFERTA_3.Size = new System.Drawing.Size(18, 26);
+            this.BT_ANULAR_OFERTA_3.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.BT_ANULAR_OFERTA_3, "Eliminar Oferta");
+            this.BT_ANULAR_OFERTA_3.UseVisualStyleBackColor = true;
+            this.BT_ANULAR_OFERTA_3.Click += new System.EventHandler(this.BT_ANULAR_OFERTA_3_Click);
+            // 
             // P_PIE
             // 
             this.P_PIE.BackColor = System.Drawing.SystemColors.ControlDarkDark;
@@ -1885,373 +2252,6 @@
             this.BT_PROCESAR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.BT_PROCESAR.UseVisualStyleBackColor = true;
             this.BT_PROCESAR.Click += new System.EventHandler(this.BT_PROCESAR_Click);
-            // 
-            // panel51
-            // 
-            this.panel51.Controls.Add(this.DTP_DESDE_2);
-            this.panel51.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel51.Location = new System.Drawing.Point(1, 55);
-            this.panel51.Margin = new System.Windows.Forms.Padding(1);
-            this.panel51.Name = "panel51";
-            this.panel51.Padding = new System.Windows.Forms.Padding(1);
-            this.panel51.Size = new System.Drawing.Size(110, 25);
-            this.panel51.TabIndex = 15;
-            // 
-            // panel53
-            // 
-            this.panel53.Controls.Add(this.DTP_HASTA_2);
-            this.panel53.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel53.Location = new System.Drawing.Point(113, 55);
-            this.panel53.Margin = new System.Windows.Forms.Padding(1);
-            this.panel53.Name = "panel53";
-            this.panel53.Padding = new System.Windows.Forms.Padding(1);
-            this.panel53.Size = new System.Drawing.Size(110, 25);
-            this.panel53.TabIndex = 16;
-            // 
-            // panel54
-            // 
-            this.panel54.Controls.Add(this.TB_PORCT_OFERTA_2);
-            this.panel54.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel54.Location = new System.Drawing.Point(225, 55);
-            this.panel54.Margin = new System.Windows.Forms.Padding(1);
-            this.panel54.Name = "panel54";
-            this.panel54.Padding = new System.Windows.Forms.Padding(1);
-            this.panel54.Size = new System.Drawing.Size(78, 25);
-            this.panel54.TabIndex = 17;
-            // 
-            // panel55
-            // 
-            this.panel55.Controls.Add(this.CHB_EST_2);
-            this.panel55.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel55.Location = new System.Drawing.Point(305, 55);
-            this.panel55.Margin = new System.Windows.Forms.Padding(1);
-            this.panel55.Name = "panel55";
-            this.panel55.Padding = new System.Windows.Forms.Padding(1);
-            this.panel55.Size = new System.Drawing.Size(28, 25);
-            this.panel55.TabIndex = 18;
-            // 
-            // panel56
-            // 
-            this.panel56.Controls.Add(this.L_FULL_MON_LOCAL_CON_OFERTA_2);
-            this.panel56.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel56.Location = new System.Drawing.Point(335, 55);
-            this.panel56.Margin = new System.Windows.Forms.Padding(1);
-            this.panel56.Name = "panel56";
-            this.panel56.Padding = new System.Windows.Forms.Padding(1);
-            this.panel56.Size = new System.Drawing.Size(110, 25);
-            this.panel56.TabIndex = 19;
-            // 
-            // panel57
-            // 
-            this.panel57.Controls.Add(this.L_FULL_DIVISA_CON_OFERTA_2);
-            this.panel57.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel57.Location = new System.Drawing.Point(447, 55);
-            this.panel57.Margin = new System.Windows.Forms.Padding(1);
-            this.panel57.Name = "panel57";
-            this.panel57.Padding = new System.Windows.Forms.Padding(1);
-            this.panel57.Size = new System.Drawing.Size(110, 25);
-            this.panel57.TabIndex = 20;
-            // 
-            // panel58
-            // 
-            this.panel58.Controls.Add(this.BT_ANULAR_OFERTA_2);
-            this.panel58.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel58.Location = new System.Drawing.Point(559, 55);
-            this.panel58.Margin = new System.Windows.Forms.Padding(1);
-            this.panel58.Name = "panel58";
-            this.panel58.Padding = new System.Windows.Forms.Padding(1);
-            this.panel58.Size = new System.Drawing.Size(20, 25);
-            this.panel58.TabIndex = 21;
-            // 
-            // DTP_DESDE_2
-            // 
-            this.DTP_DESDE_2.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DTP_DESDE_2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DTP_DESDE_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DTP_DESDE_2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DTP_DESDE_2.Location = new System.Drawing.Point(1, 1);
-            this.DTP_DESDE_2.Name = "DTP_DESDE_2";
-            this.DTP_DESDE_2.Size = new System.Drawing.Size(108, 22);
-            this.DTP_DESDE_2.TabIndex = 1;
-            this.DTP_DESDE_2.ValueChanged += new System.EventHandler(this.DTP_DESDE_2_ValueChanged);
-            this.DTP_DESDE_2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
-            this.DTP_DESDE_2.Leave += new System.EventHandler(this.DTP_DESDE_2_Leave);
-            // 
-            // DTP_HASTA_2
-            // 
-            this.DTP_HASTA_2.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DTP_HASTA_2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DTP_HASTA_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DTP_HASTA_2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DTP_HASTA_2.Location = new System.Drawing.Point(1, 1);
-            this.DTP_HASTA_2.Name = "DTP_HASTA_2";
-            this.DTP_HASTA_2.Size = new System.Drawing.Size(108, 22);
-            this.DTP_HASTA_2.TabIndex = 1;
-            this.DTP_HASTA_2.ValueChanged += new System.EventHandler(this.DTP_HASTA_2_ValueChanged);
-            this.DTP_HASTA_2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
-            this.DTP_HASTA_2.Leave += new System.EventHandler(this.DTP_HASTA_2_Leave);
-            // 
-            // CHB_EST_2
-            // 
-            this.CHB_EST_2.AutoSize = true;
-            this.CHB_EST_2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CHB_EST_2.Enabled = false;
-            this.CHB_EST_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHB_EST_2.Location = new System.Drawing.Point(1, 1);
-            this.CHB_EST_2.Name = "CHB_EST_2";
-            this.CHB_EST_2.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.CHB_EST_2.Size = new System.Drawing.Size(26, 23);
-            this.CHB_EST_2.TabIndex = 1;
-            this.CHB_EST_2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.CHB_EST_2.UseVisualStyleBackColor = true;
-            // 
-            // L_FULL_MON_LOCAL_CON_OFERTA_2
-            // 
-            this.L_FULL_MON_LOCAL_CON_OFERTA_2.BackColor = System.Drawing.Color.CadetBlue;
-            this.L_FULL_MON_LOCAL_CON_OFERTA_2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_FULL_MON_LOCAL_CON_OFERTA_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_FULL_MON_LOCAL_CON_OFERTA_2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.L_FULL_MON_LOCAL_CON_OFERTA_2.Location = new System.Drawing.Point(1, 1);
-            this.L_FULL_MON_LOCAL_CON_OFERTA_2.Name = "L_FULL_MON_LOCAL_CON_OFERTA_2";
-            this.L_FULL_MON_LOCAL_CON_OFERTA_2.Size = new System.Drawing.Size(108, 23);
-            this.L_FULL_MON_LOCAL_CON_OFERTA_2.TabIndex = 3;
-            this.L_FULL_MON_LOCAL_CON_OFERTA_2.Text = "label47";
-            this.L_FULL_MON_LOCAL_CON_OFERTA_2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // L_FULL_DIVISA_CON_OFERTA_2
-            // 
-            this.L_FULL_DIVISA_CON_OFERTA_2.BackColor = System.Drawing.Color.CadetBlue;
-            this.L_FULL_DIVISA_CON_OFERTA_2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_FULL_DIVISA_CON_OFERTA_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_FULL_DIVISA_CON_OFERTA_2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.L_FULL_DIVISA_CON_OFERTA_2.Location = new System.Drawing.Point(1, 1);
-            this.L_FULL_DIVISA_CON_OFERTA_2.Name = "L_FULL_DIVISA_CON_OFERTA_2";
-            this.L_FULL_DIVISA_CON_OFERTA_2.Size = new System.Drawing.Size(108, 23);
-            this.L_FULL_DIVISA_CON_OFERTA_2.TabIndex = 3;
-            this.L_FULL_DIVISA_CON_OFERTA_2.Text = "label42";
-            this.L_FULL_DIVISA_CON_OFERTA_2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // BT_ANULAR_OFERTA_2
-            // 
-            this.BT_ANULAR_OFERTA_2.BackgroundImage = global::ModInventario.Properties.Resources.bt_eliminar;
-            this.BT_ANULAR_OFERTA_2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.BT_ANULAR_OFERTA_2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BT_ANULAR_OFERTA_2.FlatAppearance.BorderSize = 0;
-            this.BT_ANULAR_OFERTA_2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BT_ANULAR_OFERTA_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BT_ANULAR_OFERTA_2.Location = new System.Drawing.Point(1, 1);
-            this.BT_ANULAR_OFERTA_2.Name = "BT_ANULAR_OFERTA_2";
-            this.BT_ANULAR_OFERTA_2.Size = new System.Drawing.Size(18, 23);
-            this.BT_ANULAR_OFERTA_2.TabIndex = 7;
-            this.toolTip1.SetToolTip(this.BT_ANULAR_OFERTA_2, "Eliminar Oferta");
-            this.BT_ANULAR_OFERTA_2.UseVisualStyleBackColor = true;
-            this.BT_ANULAR_OFERTA_2.Click += new System.EventHandler(this.BT_ANULAR_OFERTA_2_Click);
-            // 
-            // panel59
-            // 
-            this.panel59.Controls.Add(this.DTP_DESDE_3);
-            this.panel59.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel59.Location = new System.Drawing.Point(1, 82);
-            this.panel59.Margin = new System.Windows.Forms.Padding(1);
-            this.panel59.Name = "panel59";
-            this.panel59.Padding = new System.Windows.Forms.Padding(1);
-            this.panel59.Size = new System.Drawing.Size(110, 28);
-            this.panel59.TabIndex = 22;
-            // 
-            // panel60
-            // 
-            this.panel60.Controls.Add(this.DTP_HASTA_3);
-            this.panel60.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel60.Location = new System.Drawing.Point(113, 82);
-            this.panel60.Margin = new System.Windows.Forms.Padding(1);
-            this.panel60.Name = "panel60";
-            this.panel60.Padding = new System.Windows.Forms.Padding(1);
-            this.panel60.Size = new System.Drawing.Size(110, 28);
-            this.panel60.TabIndex = 23;
-            // 
-            // panel61
-            // 
-            this.panel61.Controls.Add(this.TB_PORCT_OFERTA_3);
-            this.panel61.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel61.Location = new System.Drawing.Point(225, 82);
-            this.panel61.Margin = new System.Windows.Forms.Padding(1);
-            this.panel61.Name = "panel61";
-            this.panel61.Padding = new System.Windows.Forms.Padding(1);
-            this.panel61.Size = new System.Drawing.Size(78, 28);
-            this.panel61.TabIndex = 24;
-            // 
-            // panel62
-            // 
-            this.panel62.Controls.Add(this.CHB_EST_3);
-            this.panel62.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel62.Location = new System.Drawing.Point(305, 82);
-            this.panel62.Margin = new System.Windows.Forms.Padding(1);
-            this.panel62.Name = "panel62";
-            this.panel62.Padding = new System.Windows.Forms.Padding(1);
-            this.panel62.Size = new System.Drawing.Size(28, 28);
-            this.panel62.TabIndex = 25;
-            // 
-            // panel63
-            // 
-            this.panel63.Controls.Add(this.L_FULL_MON_LOCAL_CON_OFERTA_3);
-            this.panel63.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel63.Location = new System.Drawing.Point(335, 82);
-            this.panel63.Margin = new System.Windows.Forms.Padding(1);
-            this.panel63.Name = "panel63";
-            this.panel63.Padding = new System.Windows.Forms.Padding(1);
-            this.panel63.Size = new System.Drawing.Size(110, 28);
-            this.panel63.TabIndex = 26;
-            // 
-            // panel64
-            // 
-            this.panel64.Controls.Add(this.L_FULL_DIVISA_CON_OFERTA_3);
-            this.panel64.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel64.Location = new System.Drawing.Point(447, 82);
-            this.panel64.Margin = new System.Windows.Forms.Padding(1);
-            this.panel64.Name = "panel64";
-            this.panel64.Padding = new System.Windows.Forms.Padding(1);
-            this.panel64.Size = new System.Drawing.Size(110, 28);
-            this.panel64.TabIndex = 27;
-            // 
-            // panel65
-            // 
-            this.panel65.Controls.Add(this.BT_ANULAR_OFERTA_3);
-            this.panel65.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel65.Location = new System.Drawing.Point(559, 82);
-            this.panel65.Margin = new System.Windows.Forms.Padding(1);
-            this.panel65.Name = "panel65";
-            this.panel65.Padding = new System.Windows.Forms.Padding(1);
-            this.panel65.Size = new System.Drawing.Size(20, 28);
-            this.panel65.TabIndex = 28;
-            // 
-            // DTP_DESDE_3
-            // 
-            this.DTP_DESDE_3.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DTP_DESDE_3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DTP_DESDE_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DTP_DESDE_3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DTP_DESDE_3.Location = new System.Drawing.Point(1, 1);
-            this.DTP_DESDE_3.Name = "DTP_DESDE_3";
-            this.DTP_DESDE_3.Size = new System.Drawing.Size(108, 22);
-            this.DTP_DESDE_3.TabIndex = 2;
-            this.DTP_DESDE_3.ValueChanged += new System.EventHandler(this.DTP_DESDE_3_ValueChanged);
-            this.DTP_DESDE_3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
-            this.DTP_DESDE_3.Leave += new System.EventHandler(this.DTP_DESDE_3_Leave);
-            // 
-            // DTP_HASTA_3
-            // 
-            this.DTP_HASTA_3.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DTP_HASTA_3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DTP_HASTA_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DTP_HASTA_3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DTP_HASTA_3.Location = new System.Drawing.Point(1, 1);
-            this.DTP_HASTA_3.Name = "DTP_HASTA_3";
-            this.DTP_HASTA_3.Size = new System.Drawing.Size(108, 22);
-            this.DTP_HASTA_3.TabIndex = 2;
-            this.DTP_HASTA_3.ValueChanged += new System.EventHandler(this.DTP_HASTA_3_ValueChanged);
-            this.DTP_HASTA_3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
-            this.DTP_HASTA_3.Leave += new System.EventHandler(this.DTP_HASTA_3_Leave);
-            // 
-            // CHB_EST_3
-            // 
-            this.CHB_EST_3.AutoSize = true;
-            this.CHB_EST_3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CHB_EST_3.Enabled = false;
-            this.CHB_EST_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHB_EST_3.Location = new System.Drawing.Point(1, 1);
-            this.CHB_EST_3.Name = "CHB_EST_3";
-            this.CHB_EST_3.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.CHB_EST_3.Size = new System.Drawing.Size(26, 26);
-            this.CHB_EST_3.TabIndex = 2;
-            this.CHB_EST_3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.CHB_EST_3.UseVisualStyleBackColor = true;
-            // 
-            // L_FULL_MON_LOCAL_CON_OFERTA_3
-            // 
-            this.L_FULL_MON_LOCAL_CON_OFERTA_3.BackColor = System.Drawing.Color.CadetBlue;
-            this.L_FULL_MON_LOCAL_CON_OFERTA_3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_FULL_MON_LOCAL_CON_OFERTA_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_FULL_MON_LOCAL_CON_OFERTA_3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.L_FULL_MON_LOCAL_CON_OFERTA_3.Location = new System.Drawing.Point(1, 1);
-            this.L_FULL_MON_LOCAL_CON_OFERTA_3.Name = "L_FULL_MON_LOCAL_CON_OFERTA_3";
-            this.L_FULL_MON_LOCAL_CON_OFERTA_3.Size = new System.Drawing.Size(108, 26);
-            this.L_FULL_MON_LOCAL_CON_OFERTA_3.TabIndex = 4;
-            this.L_FULL_MON_LOCAL_CON_OFERTA_3.Text = "label47";
-            this.L_FULL_MON_LOCAL_CON_OFERTA_3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // L_FULL_DIVISA_CON_OFERTA_3
-            // 
-            this.L_FULL_DIVISA_CON_OFERTA_3.BackColor = System.Drawing.Color.CadetBlue;
-            this.L_FULL_DIVISA_CON_OFERTA_3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_FULL_DIVISA_CON_OFERTA_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_FULL_DIVISA_CON_OFERTA_3.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.L_FULL_DIVISA_CON_OFERTA_3.Location = new System.Drawing.Point(1, 1);
-            this.L_FULL_DIVISA_CON_OFERTA_3.Name = "L_FULL_DIVISA_CON_OFERTA_3";
-            this.L_FULL_DIVISA_CON_OFERTA_3.Size = new System.Drawing.Size(108, 26);
-            this.L_FULL_DIVISA_CON_OFERTA_3.TabIndex = 4;
-            this.L_FULL_DIVISA_CON_OFERTA_3.Text = "label42";
-            this.L_FULL_DIVISA_CON_OFERTA_3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // BT_ANULAR_OFERTA_3
-            // 
-            this.BT_ANULAR_OFERTA_3.BackgroundImage = global::ModInventario.Properties.Resources.bt_eliminar;
-            this.BT_ANULAR_OFERTA_3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.BT_ANULAR_OFERTA_3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BT_ANULAR_OFERTA_3.FlatAppearance.BorderSize = 0;
-            this.BT_ANULAR_OFERTA_3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BT_ANULAR_OFERTA_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BT_ANULAR_OFERTA_3.Location = new System.Drawing.Point(1, 1);
-            this.BT_ANULAR_OFERTA_3.Name = "BT_ANULAR_OFERTA_3";
-            this.BT_ANULAR_OFERTA_3.Size = new System.Drawing.Size(18, 26);
-            this.BT_ANULAR_OFERTA_3.TabIndex = 8;
-            this.toolTip1.SetToolTip(this.BT_ANULAR_OFERTA_3, "Eliminar Oferta");
-            this.BT_ANULAR_OFERTA_3.UseVisualStyleBackColor = true;
-            this.BT_ANULAR_OFERTA_3.Click += new System.EventHandler(this.BT_ANULAR_OFERTA_3_Click);
-            // 
-            // TB_PORCT_OFERTA_1
-            // 
-            this.TB_PORCT_OFERTA_1.BackColor = System.Drawing.Color.Yellow;
-            this.TB_PORCT_OFERTA_1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TB_PORCT_OFERTA_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_PORCT_OFERTA_1.Location = new System.Drawing.Point(1, 1);
-            this.TB_PORCT_OFERTA_1.MaxLength = 6;
-            this.TB_PORCT_OFERTA_1.Name = "TB_PORCT_OFERTA_1";
-            this.TB_PORCT_OFERTA_1.Size = new System.Drawing.Size(76, 22);
-            this.TB_PORCT_OFERTA_1.TabIndex = 0;
-            this.TB_PORCT_OFERTA_1.Text = "0";
-            this.TB_PORCT_OFERTA_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TB_PORCT_OFERTA_1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
-            this.TB_PORCT_OFERTA_1.Leave += new System.EventHandler(this.TB_PORCT_OFERTA_1_Leave);
-            // 
-            // TB_PORCT_OFERTA_2
-            // 
-            this.TB_PORCT_OFERTA_2.BackColor = System.Drawing.Color.Yellow;
-            this.TB_PORCT_OFERTA_2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TB_PORCT_OFERTA_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_PORCT_OFERTA_2.Location = new System.Drawing.Point(1, 1);
-            this.TB_PORCT_OFERTA_2.MaxLength = 6;
-            this.TB_PORCT_OFERTA_2.Name = "TB_PORCT_OFERTA_2";
-            this.TB_PORCT_OFERTA_2.Size = new System.Drawing.Size(76, 22);
-            this.TB_PORCT_OFERTA_2.TabIndex = 1;
-            this.TB_PORCT_OFERTA_2.Text = "0";
-            this.TB_PORCT_OFERTA_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TB_PORCT_OFERTA_2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
-            this.TB_PORCT_OFERTA_2.Leave += new System.EventHandler(this.TB_PORCT_OFERTA_2_Leave);
-            // 
-            // TB_PORCT_OFERTA_3
-            // 
-            this.TB_PORCT_OFERTA_3.BackColor = System.Drawing.Color.Yellow;
-            this.TB_PORCT_OFERTA_3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TB_PORCT_OFERTA_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_PORCT_OFERTA_3.Location = new System.Drawing.Point(1, 1);
-            this.TB_PORCT_OFERTA_3.MaxLength = 6;
-            this.TB_PORCT_OFERTA_3.Name = "TB_PORCT_OFERTA_3";
-            this.TB_PORCT_OFERTA_3.Size = new System.Drawing.Size(76, 22);
-            this.TB_PORCT_OFERTA_3.TabIndex = 2;
-            this.TB_PORCT_OFERTA_3.Text = "0";
-            this.TB_PORCT_OFERTA_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TB_PORCT_OFERTA_3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
-            this.TB_PORCT_OFERTA_3.Leave += new System.EventHandler(this.TB_PORCT_OFERTA_3_Leave);
             // 
             // Frm
             // 
@@ -2338,10 +2338,6 @@
             this.panel48.ResumeLayout(false);
             this.panel49.ResumeLayout(false);
             this.panel52.ResumeLayout(false);
-            this.P_PIE.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel50.ResumeLayout(false);
             this.panel51.ResumeLayout(false);
             this.panel53.ResumeLayout(false);
             this.panel54.ResumeLayout(false);
@@ -2360,6 +2356,10 @@
             this.panel63.ResumeLayout(false);
             this.panel64.ResumeLayout(false);
             this.panel65.ResumeLayout(false);
+            this.P_PIE.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel50.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

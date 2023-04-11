@@ -219,5 +219,10 @@ namespace ModInventario.src
         {
             return new ModInventario.src.Producto.ActualizarOferta.ModoAdm.ImpModoAdm();
         }
+        public Producto.ActualizarOfertaMasiva.IOferta 
+            CreateInstancia_AsginacionMasivaOferta()
+        {
+            return new src.Producto.ActualizarOfertaMasiva.ModoAdm.ImpMasiva();
+        }
     }
 }

@@ -473,6 +473,7 @@ namespace ModInventario.src.Inicio.ModoAdm
             _controlador.AsignacionMasivaProductoDeposito();
         }
 
+
         private void TSM_CONFIGURACION_PERMITIR_CAMBIAR_PRECIO_AL_MODIFICAR_COSTO_Click(object sender, EventArgs e)
         {
             PermitirCambiarPrecioAlModificarCosto();
@@ -480,6 +481,15 @@ namespace ModInventario.src.Inicio.ModoAdm
         private void PermitirCambiarPrecioAlModificarCosto()
         {
             _controlador.PermitirCambiarPrecioAlModificarCosto();
+        }
+
+        private void TSM_AJSUTES_ASIGNACION_MASIVA_OFERTAS_Click(object sender, EventArgs e)
+        {
+            AsignacionMasivaOfertas();
+        }
+        private void AsignacionMasivaOfertas()
+        {
+            _controlador.AsignacionMasivaOfertas();
         }
     }
 }

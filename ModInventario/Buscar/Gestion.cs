@@ -676,15 +676,30 @@ namespace ModInventario.Buscar
         src.Producto.ActualizarOferta.IActOferta _ofertaDscto;
         public void DsctoOferta()
         {
-            if (Item != null)
+            try
             {
-                if (_ofertaDscto == null)
+                var r01 = Sistema.MyData.Permiso_AsignarOfertaProducto(Sistema.UsuarioP.autoGru);
+                if (r01.Result == OOB.Enumerados.EnumResult.isError)
                 {
-                    _ofertaDscto = _fabrica.CreateInstancia_OfertaDscto();
+                    throw new Exception(r01.Mensaje);
                 }
-                _ofertaDscto.Inicializa();
-                _ofertaDscto.setFichaByIdPrd(Item.AutoId);
-                _ofertaDscto.Inicia();
+                if (_gAccesoSistema.Verificar(r01.Entidad))
+                {
+                    if (Item != null)
+                    {
+                        if (_ofertaDscto == null)
+                        {
+                            _ofertaDscto = _fabrica.CreateInstancia_OfertaDscto();
+                        }
+                        _ofertaDscto.Inicializa();
+                        _ofertaDscto.setFichaByIdPrd(Item.AutoId);
+                        _ofertaDscto.Inicia();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
             }
         }
     }

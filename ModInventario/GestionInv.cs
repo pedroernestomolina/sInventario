@@ -565,5 +565,27 @@ namespace ModInventario
         {
             return Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_ConfiguracionSistema, Sistema.UsuarioP.autoGru, _seguridad);
         }
+
+        private src.Producto.ActualizarOfertaMasiva.IOferta _asignacionMasivaOferta;
+        public void AsignacionMasivaOfertas()
+        {
+            try
+            {
+                var r00 = Sistema.MyData.Permiso_AsignarOfertaProducto(Sistema.UsuarioP.autoGru);
+                if (_seguridad.Verificar(r00.Entidad))
+                {
+                    if (_asignacionMasivaOferta == null) 
+                    {
+                        _asignacionMasivaOferta = _fabrica.CreateInstancia_AsginacionMasivaOferta();
+                    }
+                    _asignacionMasivaOferta.Inicializa();
+                    _asignacionMasivaOferta.Inicia(); 
+                }
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
+            }
+        }
     }
 }

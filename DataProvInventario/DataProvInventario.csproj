@@ -62,6 +62,7 @@
     <Compile Include="Data\EmpaqueMedida.cs" />
     <Compile Include="Data\Empresa.cs" />
     <Compile Include="Data\Grupo.cs" />
+    <Compile Include="Data\Helpers.cs" />
     <Compile Include="Data\Kardex.cs" />
     <Compile Include="Data\Marca.cs" />
     <Compile Include="Data\Movimiento.cs" />

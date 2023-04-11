@@ -60,6 +60,8 @@ namespace ModInventario.src.Producto.ActualizarOferta.ModoAdm
             L_FULL_DIV_3.Text = _controlador.Prd.Vta3.GetFullDivisaDesc;
             L_FULL_3.Text = _controlador.Prd.Vta3.GetFullMonLocalDesc;
             ActualizarOferta(3);
+
+            this.Refresh();
         }
         private void Frm_FormClosing(object sender, FormClosingEventArgs e)
         {

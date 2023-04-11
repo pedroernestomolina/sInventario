@@ -7,18 +7,14 @@ using System.Threading.Tasks;
 
 namespace DataProvInventario.InfraEstructura
 {
-    
     public interface IPermisos
     {
-
-
         OOB.ResultadoEntidad<string> 
             Permiso_PedirClaveAcceso_NivelMaximo();
         OOB.ResultadoEntidad<string> 
             Permiso_PedirClaveAcceso_NivelMedio();
         OOB.ResultadoEntidad<string> 
             Permiso_PedirClaveAcceso_NivelMinimo();
-
 
         OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha> 
             Permiso_CrearProducto(string autoGrupoUsuario);
@@ -129,6 +125,7 @@ namespace DataProvInventario.InfraEstructura
         OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha>
             Permiso_CambioMovimientoMasivoPrecio(string autoGrupoUsuario);
 
+        OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha>
+            Permiso_AsignarOfertaProducto(string autoGrupoUsuario);
     }
-
 }

@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace DataProvInventario.Data
 {
-    
     public partial class DataProv: IData
     {
-
         public OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha> 
             Permiso_CrearProducto(string autoGrupoUsuario)
         {
@@ -193,7 +191,6 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
 
         public OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha> 
             Permiso_Departamento(string autoGrupoUsuario)
@@ -660,7 +657,6 @@ namespace DataProvInventario.Data
             return rt;
         }
 
-
         public OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha> 
             Permiso_ToolInventario(string autoGrupoUsuario)
         {
@@ -679,7 +675,6 @@ namespace DataProvInventario.Data
             rt.Entidad = nr;
             return rt;
         }
-
 
         public OOB.ResultadoEntidad<string>
             Permiso_PedirClaveAcceso_NivelMaximo()
@@ -729,7 +724,6 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
 
         public OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha> 
             Permiso_MovimientoCargoInventario(string autoGrupoUsuario)
@@ -1001,7 +995,6 @@ namespace DataProvInventario.Data
             return rt;
         }
 
-
         public OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha> 
             Permiso_Reportes(string autoGrupoUsuario)
         {
@@ -1160,6 +1153,10 @@ namespace DataProvInventario.Data
             return rt;
         }
 
+        public OOB.ResultadoEntidad<OOB.LibInventario.Permiso.Ficha> 
+            Permiso_AsignarOfertaProducto(string autoGrupoUsuario)
+        {
+            return Helpers.PedirPermiso(MyData.Permiso_AsignarOfertaProducto, autoGrupoUsuario);
+        }
     }
-
 }

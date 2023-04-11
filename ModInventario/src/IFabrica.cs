@@ -55,5 +55,8 @@ namespace ModInventario.src
 
         ModInventario.src.Producto.ActualizarOferta.IActOferta 
             CreateInstancia_OfertaDscto();
+
+        ModInventario.src.Producto.ActualizarOfertaMasiva.IOferta 
+            CreateInstancia_AsginacionMasivaOferta();
     }
 }

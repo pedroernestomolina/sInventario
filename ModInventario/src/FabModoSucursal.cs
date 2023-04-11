@@ -218,5 +218,11 @@ namespace ModInventario.src
         {
             return null;
         }
+
+        public Producto.ActualizarOfertaMasiva.IOferta
+            CreateInstancia_AsginacionMasivaOferta()
+        {
+            return null;
+        }
     }
 }

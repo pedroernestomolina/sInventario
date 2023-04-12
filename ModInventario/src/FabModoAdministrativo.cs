@@ -222,7 +222,7 @@ namespace ModInventario.src
         public Producto.ActualizarOfertaMasiva.IOferta 
             CreateInstancia_AsginacionMasivaOferta()
         {
-            return new src.Producto.ActualizarOfertaMasiva.ModoAdm.ImpMasiva();
+            return new src.Producto.ActualizarOfertaMasiva.ModoAdm.ImpMasiva(CreateInstancia_FiltroPrdAdm());
         }
     }
 }

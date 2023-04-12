@@ -21,5 +21,9 @@ namespace DataProvInventario.InfraEstructura
             Producto_ModoAdm_HistoricoPrecio_By(OOB.LibInventario.Producto.HistoricoPrecio.Filtro filtro);
         OOB.Resultado
             Producto_ModoAdm_ActualizarOferta(OOB.LibInventario.Producto.ActualizarOferta.ModoAdm.Actualizar.Ficha ficha);
+        OOB.ResultadoLista<OOB.LibInventario.Producto.ActualizarOfertaMasiva.ModoAdm.Capturar.Ficha>
+            Producto_ModoAdm_OfertaMasiva_Capturar(OOB.LibInventario.Producto.ActualizarOfertaMasiva.ModoAdm.Capturar.Filtro filtro);
+        OOB.Resultado
+            Producto_ModoAdm_OfertaMasiva_Actualizar(OOB.LibInventario.Producto.ActualizarOfertaMasiva.ModoAdm.Actualizar.Ficha ficha);
     }
 }

@@ -199,27 +199,28 @@ namespace ModInventario.src.Producto.ActualizarOferta.ModoAdm
                     DTP_DESDE_1.Value = _controlador.Prd.Vta1.GetOfertaDesde;
                     DTP_HASTA_1.Value = _controlador.Prd.Vta1.GetOfertaHasta;
                     TB_PORCT_OFERTA_1.Text = _controlador.Prd.Vta1.GetOfertaPorctDesc;
+                    CHB_EST_1.Checked = _controlador.Prd.Vta1.EstatusOfertaOk;
                     L_FULL_MON_LOCAL_CON_OFERTA_1.Text = _controlador.Prd.Vta1.GetFullMonLocalConOfertaDesc;
                     L_FULL_DIVISA_CON_OFERTA_1.Text = _controlador.Prd.Vta1.GetFullDivisaConOfertaDesc;
-                    CHB_EST_1.Checked = _controlador.Prd.Vta1.EstatusOfertaOk;
                     break;
                 case 2:
                     DTP_DESDE_2.Value = _controlador.Prd.Vta2.GetOfertaDesde;
                     DTP_HASTA_2.Value = _controlador.Prd.Vta2.GetOfertaHasta;
                     TB_PORCT_OFERTA_2.Text = _controlador.Prd.Vta2.GetOfertaPorctDesc;
+                    CHB_EST_2.Checked = _controlador.Prd.Vta2.EstatusOfertaOk;
                     L_FULL_MON_LOCAL_CON_OFERTA_2.Text = _controlador.Prd.Vta2.GetFullMonLocalConOfertaDesc;
                     L_FULL_DIVISA_CON_OFERTA_2.Text = _controlador.Prd.Vta2.GetFullDivisaConOfertaDesc;
-                    CHB_EST_2.Checked = _controlador.Prd.Vta2.EstatusOfertaOk;
                     break;
                 case 3:
                     DTP_DESDE_3.Value = _controlador.Prd.Vta3.GetOfertaDesde;
                     DTP_HASTA_3.Value = _controlador.Prd.Vta3.GetOfertaHasta;
                     TB_PORCT_OFERTA_3.Text = _controlador.Prd.Vta3.GetOfertaPorctDesc;
+                    CHB_EST_3.Checked = _controlador.Prd.Vta3.EstatusOfertaOk;
                     L_FULL_MON_LOCAL_CON_OFERTA_3.Text = _controlador.Prd.Vta3.GetFullMonLocalConOfertaDesc;
                     L_FULL_DIVISA_CON_OFERTA_3.Text = _controlador.Prd.Vta3.GetFullDivisaConOfertaDesc;
-                    CHB_EST_3.Checked = _controlador.Prd.Vta3.EstatusOfertaOk;
                     break;
             }
+            this.Refresh();
         }
         private void ProcesarFcha()
         {

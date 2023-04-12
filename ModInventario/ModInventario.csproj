@@ -114,6 +114,7 @@
     <Compile Include="Gestion\ILista.cs" />
     <Compile Include="Gestion\IProcesar.cs" />
     <Compile Include="Gestion\IProcesarSalir.cs" />
+    <Compile Include="Helpers\BusquedaAdmPrd.cs" />
     <Compile Include="Helpers\Filtro.cs" />
     <Compile Include="Helpers\GenerarMov.cs" />
     <Compile Include="Helpers\Reportes.cs" />
@@ -935,6 +936,8 @@
       <DependentUpon>MovFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Producto\ActualizarOfertaMasiva\IOferta.cs" />
+    <Compile Include="src\Producto\ActualizarOfertaMasiva\Items\data.cs" />
+    <Compile Include="src\Producto\ActualizarOfertaMasiva\ModoAdm\data.cs" />
     <Compile Include="src\Producto\ActualizarOfertaMasiva\ModoAdm\Frm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -943,6 +946,8 @@
     </Compile>
     <Compile Include="src\Producto\ActualizarOfertaMasiva\ModoAdm\IMasiva.cs" />
     <Compile Include="src\Producto\ActualizarOfertaMasiva\ModoAdm\ImpMasiva.cs" />
+    <Compile Include="src\Producto\ActualizarOfertaMasiva\Precio\ImpPrecio.cs" />
+    <Compile Include="src\Producto\ActualizarOfertaMasiva\Precio\IPrecio.cs" />
     <Compile Include="src\Producto\ActualizarOferta\IActOferta.cs" />
     <Compile Include="src\Producto\ActualizarOferta\ModoAdm\Frm.cs">
       <SubType>Form</SubType>
@@ -1086,6 +1091,8 @@
     <Compile Include="src\TallaColorSabor\Visualizar\VerTallaColorSaborFrm.Designer.cs">
       <DependentUpon>VerTallaColorSaborFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Tools\Busqueda\IBusqueda.cs" />
+    <Compile Include="src\Tools\Busqueda\ImpBusqueda.cs" />
     <Compile Include="src\Tools\FiltrosPara\Enumerados.cs" />
     <Compile Include="src\Tools\FiltrosPara\IFiltrosPara.cs" />
     <Compile Include="src\Tools\FiltrosPara\Productos\basePrd.cs" />
@@ -1142,6 +1149,8 @@
     <Compile Include="src\Tools\Filtros\TCS\ITCS.cs" />
     <Compile Include="src\Tools\Filtros\TCS\ImpTCS.cs" />
     <Compile Include="src\Tools\IListaSeleccion.cs" />
+    <Compile Include="src\Producto\ActualizarOfertaMasiva\Items\ImpItems.cs" />
+    <Compile Include="src\Producto\ActualizarOfertaMasiva\Items\IItems.cs" />
     <Compile Include="src\Tools\ListaSelProducto\IListaSelProducto.cs" />
     <Compile Include="src\Tools\ListaSelProducto\ImpListaSelProducto.cs" />
     <Compile Include="src\Tools\ListaSelProducto\Frm.cs">

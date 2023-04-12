@@ -240,5 +240,70 @@ namespace DataProvInventario.Data
             }
             return rt;
         }
+        public OOB.ResultadoLista<OOB.LibInventario.Producto.ActualizarOfertaMasiva.ModoAdm.Capturar.Ficha> 
+            Producto_ModoAdm_OfertaMasiva_Capturar(OOB.LibInventario.Producto.ActualizarOfertaMasiva.ModoAdm.Capturar.Filtro filtro)
+        {
+            var rt = new OOB.ResultadoLista<OOB.LibInventario.Producto.ActualizarOfertaMasiva.ModoAdm.Capturar.Ficha >();
+            var filtroDTO = new DtoLibInventario.Producto.ActualizarOfertaMasiva.ModoAdm.Capturar.Filtro()
+            {
+                tipoEmpaque = filtro.tipoEmpaque,
+                tipoPrecio = filtro.tipoPrecio,
+                listadPrd = filtro.listadPrd,
+            };
+            var r01 = MyData.Producto_ModoAdm_OfertaMasiva_Capturar(filtroDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var _lst = new List<OOB.LibInventario.Producto.ActualizarOfertaMasiva.ModoAdm.Capturar.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    _lst = r01.Lista.Select(s =>
+                    {
+                        var nr = new OOB.LibInventario.Producto.ActualizarOfertaMasiva.ModoAdm.Capturar.Ficha()
+                        {
+                            contEmpVta = s.contEmpVta,
+                            costoUnd = s.costoUnd,
+                            idPrd = s.idPrd,
+                            pnetoVtaUnd = s.pnetoVtaUnd,
+                            idPrecioVta=s.idPrecio,
+                        };
+                        return nr;
+                    }).ToList();
+                }
+            }
+            rt.Lista = _lst;
+            return rt;
+        }
+        public OOB.Resultado 
+            Producto_ModoAdm_OfertaMasiva_Actualizar(OOB.LibInventario.Producto.ActualizarOfertaMasiva.ModoAdm.Actualizar.Ficha ficha)
+        {
+            var rt = new OOB.Resultado();
+            var fichaDTO = new DtoLibInventario.Producto.ActualizarOfertaMasiva.ModoAdm.Actualizar.Ficha()
+            {
+                ofertas = ficha.ofertas.Select(s =>
+                {
+                    var nr = new DtoLibInventario.Producto.ActualizarOfertaMasiva.ModoAdm.Actualizar.Oferta()
+                    {
+                        desde = s.desde,
+                        estatus = s.estatus,
+                        hasta = s.hasta,
+                        idPrecioVta = s.idPrecioVta,
+                        portc = s.portc,
+                        autoPrd = s.autoPrd,
+                        estatusOferta = s.estatusOferta,
+                    };
+                    return nr;
+                }).ToList(),
+            };
+            var r01 = MyData.Producto_ModoAdm_OfertaMasiva_Actualizar(fichaDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            return rt;
+        }
     }
 }

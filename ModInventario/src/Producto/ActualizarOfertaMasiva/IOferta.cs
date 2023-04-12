@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ModInventario.src.Producto.ActualizarOfertaMasiva
 {
-    public interface IOferta: IGestion
+    public interface IOferta: IGestion, Gestion.IAbandonar, Gestion.IProcesar
     {
     }
 }

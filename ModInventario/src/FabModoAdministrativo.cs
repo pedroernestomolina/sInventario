@@ -73,6 +73,8 @@ namespace ModInventario.src
         {
             return new ModInventario.Producto.ListaSel.Gestion();
         }
+
+
         public AdmDocumentos.IAdmDoc
             CreateInstancia_AdmDocumentos()
         {
@@ -82,6 +84,17 @@ namespace ModInventario.src
                 CreateInstancia_AuditoriaDoc(),
                 CreateInstancia_AnularDoc());
         }
+        Utils.FiltrosPara.AdmDocumentos.IAdmDoc _filtrosParaAdmDoc;
+        private Utils.FiltrosPara.AdmDocumentos.IAdmDoc
+            CreateInstancia_FiltrosAdmDoc()
+        {
+            if (_filtrosParaAdmDoc == null)
+            {
+                _filtrosParaAdmDoc = new Utils.FiltrosPara.AdmDocumentos.ModoSucursal.ImpModoSucursal();
+            }
+            return _filtrosParaAdmDoc;
+        }
+
 
         ModInventario.Buscar.BusquedaFrm _frm;
         public object BuscarPrd
@@ -106,12 +119,6 @@ namespace ModInventario.src
             SeguridadSist.ISeguridad _gSecurity = new SeguridadSist.Gestion();
             _gSecurity.setGestionTipo(_gModoNivelAcceso);
             return _gSecurity;
-        }
-        private Filtro.FiltroAdmDoc.IAdmDoc
-            CreateInstancia_FiltrosAdmDoc()
-        {
-            var filtroBusPrd = CreateInstancia_FiltroBusqProducto();
-            return new ModInventario.src.Filtro.FiltroAdmDoc.ModoSucursal.ImpModoSucursal(filtroBusPrd);
         }
         private ModInventario.src.AdmDocumentos.IListaAdmDoc
             CreateInstancia_ListaAdmDoc()
@@ -223,6 +230,17 @@ namespace ModInventario.src
             CreateInstancia_AsginacionMasivaOferta()
         {
             return new src.Producto.ActualizarOfertaMasiva.ModoAdm.ImpMasiva(CreateInstancia_FiltroPrdAdm());
+        }
+
+        private Utils.FiltrosPara.Reportes.IFiltroRep _filtrosParaReportes;
+        public Utils.FiltrosPara.Reportes.IFiltroRep
+            CreateInstancia_FiltrosParaReportes()
+        {
+            if (_filtrosParaReportes == null)
+            {
+                _filtrosParaReportes = new Utils.FiltrosPara.Reportes.ModoSucursal.ImpModo();
+            }
+            return _filtrosParaReportes;
         }
     }
 }

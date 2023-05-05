@@ -967,7 +967,7 @@ namespace DataProvInventario.Data
                             depositoOrigen=s.depositoOrigen,
                             depositoDestino=s.depositoDestino,
                             idDepOrigen=s.idDepOrigen,
-                            idDepDestino=s.idDepestino,
+                            idDepDestino=s.idDepDestino,
                         };
                     }).ToList();
                 }

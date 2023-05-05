@@ -91,8 +91,7 @@ namespace ModInventario.src.FiltroBusqAdm
                 var r0A = Sistema.MyData.Producto_Pesado_Lista();
                 if (r0A.Result == OOB.Enumerados.EnumResult.isError)
                 {
-                    Helpers.Msg.Error(r0A.Mensaje);
-                    return false;
+                    throw new Exception(r0A.Mensaje);
                 }
                 var lstPesado = new List<ficha>();
                 foreach (var rg in r0A.Lista.OrderBy(o => o.Descripcion).ToList())

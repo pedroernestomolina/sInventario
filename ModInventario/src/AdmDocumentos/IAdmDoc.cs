@@ -8,16 +8,12 @@ using System.Windows.Forms;
 
 namespace ModInventario.src.AdmDocumentos
 {
-    
     public interface IAdmDoc: IGestion
     {
-
         string GetTitulo { get; }
         BindingSource GetData_Source { get; }
-        BindingSource GetTipoDoc_Source { get; }
-        DateTime GetFechaDesde { get;  }
-        DateTime GetFechaHasta { get; }
-        string GetTipoDoc_Id { get;  }
+        LibUtilitis.CtrlCB.ICtrl TipoDoc { get; }
+        Utils.Filtros.DesdeHasta.IFiltro DesdeHasta { get; }
         int GetCntItems { get; }
 
 
@@ -29,13 +25,6 @@ namespace ModInventario.src.AdmDocumentos
         void Imprimir();
         void Filtros();
         void VerAnulacion();
-        void setTipoDoc(string id);
-        void setFechaDesde(DateTime fecha);
-        void setFechaDesdeEstatusOff();
-        void setFechaHasta(DateTime dateTime);
-        void setFechaHastaEstatusOff();
         void Visualizar();
-
     }
-
 }

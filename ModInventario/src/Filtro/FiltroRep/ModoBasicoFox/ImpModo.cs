@@ -34,6 +34,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoBasicoFox
         public bool GetHabilitarOrigen { get { return _filtros.ActivarCategoria; } }
         public bool GetHabilitarCategoria { get { return _filtros.ActivarOrigen; } }
         public bool GetHabilitarProducto { get { return _filtros.ActivarProducto; } }
+        public bool GetHabilitarGrupo { get { return false; } }
 
         
         public ImpModo(FiltrosGen.IBuscar filtroBusPrd)
@@ -238,7 +239,5 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoBasicoFox
             _gPrecio.setFicha(id);
             _data.Precio = _gPrecio.Item;
         }
-
     }
-
 }

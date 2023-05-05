@@ -58,5 +58,8 @@ namespace ModInventario.src
 
         ModInventario.src.Producto.ActualizarOfertaMasiva.IOferta 
             CreateInstancia_AsginacionMasivaOferta();
+
+        Utils.FiltrosPara.Reportes.IFiltroRep
+            CreateInstancia_FiltrosParaReportes();
     }
 }

@@ -21,16 +21,30 @@ namespace ModInventario.Reportes.Filtros.MaestroPrecioSucursal
         public bool ActivarOrigen { get { return true; } }
         public bool ActivarCategoria { get { return true; } }
         public bool ActivarMarca { get { return true; } }
-        public bool ActivarGrupo { get { return ActivarDepartamento; } }
         public bool ActivarPrecio { get { return true; } }
         public bool ActivarPesado { get { return true; } }
         public bool ActivarEntreFechas { get { return false; } }
         public bool ActivarEmpaquePrecio { get { return true; } }
-        public bool ActivarOferta { get { return true; } }
-
-
-        public Filtros()
-        {
-        }
+        public bool ActivarOferta { get { return false; } }
+        public bool ActivarConcepto { get { return false; } }
+        //
+        public bool IsRequeridoProducto { get { return false; } }
+        public bool IsRequeridoDepartamento { get { return false; } }
+        public bool IsRequeridoDeposito { get { return false; } }
+        public bool IsRequeridoSucursal { get { return false; } }
+        public bool IsRequeridoTasaIva { get { return false; } }
+        public bool IsRequeridoAdmDivisa { get { return false; } }
+        public bool IsRequeridoDesde { get { return false; } }
+        public bool IsRequeridoHasta { get { return false; } }
+        public bool IsRequeridoEstatus { get { return false; } }
+        public bool IsRequeridoOrigen { get { return false; } }
+        public bool IsRequeridoCategoria { get { return false; } }
+        public bool IsRequeridoMarca { get { return false; } }
+        public bool IsRequeridoPesado { get { return false; } }
+        public bool IsRequeridoEntreFechas { get { return false; } }
+        public bool IsRequeridoEmpaquePrecio { get { return false; } }
+        public bool IsRequeridoOferta { get { return false; } }
+        public bool IsRequeridoConcepto { get { return false; } }
+        public bool IsRequeridoPrecio { get { return true; } }
     }
 }

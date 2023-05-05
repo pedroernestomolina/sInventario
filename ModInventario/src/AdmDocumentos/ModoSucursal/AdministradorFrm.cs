@@ -11,11 +11,8 @@ using System.Windows.Forms;
 
 namespace ModInventario.src.AdmDocumentos.ModoSucursal
 {
-
     public partial class AdministradorFrm : Form
     {
-
-
         private ISucursal _controlador;
 
 
@@ -205,12 +202,12 @@ namespace ModInventario.src.AdmDocumentos.ModoSucursal
             _modoInicializar = true;
             L_TITULO.Text = _controlador.GetTitulo;
             DGV.DataSource = _controlador.GetData_Source;
-            CB_SUCURSAL.DataSource = _controlador.GetSucursal_Source;
-            CB_TIPO_DOC.DataSource = _controlador.GetTipoDoc_Source;
-            DTP_DESDE.Value = _controlador.GetFechaDesde;
-            DTP_HASTA.Value = _controlador.GetFechaHasta;
-            CB_SUCURSAL.SelectedValue = _controlador.GetSucursal_Id;
-            CB_TIPO_DOC.SelectedValue = _controlador.GetTipoDoc_Id;
+            CB_SUCURSAL.DataSource = _controlador.Sucursal.GetSource;
+            CB_TIPO_DOC.DataSource = _controlador.TipoDoc.GetSource;
+            DTP_DESDE.Value = _controlador.DesdeHasta.Desde.GetFecha;
+            DTP_HASTA.Value = _controlador.DesdeHasta.Hasta.GetFecha;
+            CB_SUCURSAL.SelectedValue = _controlador.Sucursal.GetId;
+            CB_TIPO_DOC.SelectedValue = _controlador.TipoDoc.GetId;
             DGV.Refresh();
             _modoInicializar = false;
 
@@ -282,11 +279,11 @@ namespace ModInventario.src.AdmDocumentos.ModoSucursal
             if (_modoInicializar) { return; }
             if (DTP_DESDE.Checked)
             {
-                _controlador.setFechaDesde(DTP_DESDE.Value);
+                _controlador.DesdeHasta.Desde.setFecha(DTP_DESDE.Value);
             }
             else
             {
-                _controlador.setFechaDesdeEstatusOff();
+                _controlador.DesdeHasta.Desde.setHabilitarOff();
             }
         }
         private void DTP_HASTA_ValueChanged(object sender, EventArgs e)
@@ -294,29 +291,31 @@ namespace ModInventario.src.AdmDocumentos.ModoSucursal
             if (_modoInicializar) { return; }
             if (DTP_HASTA.Checked)
             {
-                _controlador.setFechaHasta(DTP_HASTA.Value);
+                _controlador.DesdeHasta.Hasta.setFecha(DTP_HASTA.Value);
             }
             else
             {
-                _controlador.setFechaHastaEstatusOff();
+                _controlador.DesdeHasta.Hasta.setHabilitarOff();
             }
         }
+
+
         private void CB_TIPO_DOC_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_modoInicializar) { return; }
-            _controlador.setTipoDoc("");
+            _controlador.TipoDoc.setFichaById("");
             if (CB_TIPO_DOC.SelectedIndex != -1)
             {
-                _controlador.setTipoDoc(CB_TIPO_DOC.SelectedValue.ToString());
+                _controlador.TipoDoc.setFichaById(CB_TIPO_DOC.SelectedValue.ToString());
             }
         }
         private void CB_SUCURSAL_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_modoInicializar) { return; }
-            _controlador.setSucursal("");
+            _controlador.Sucursal.setFichaById("");
             if (CB_SUCURSAL.SelectedIndex != -1)
             {
-                _controlador.setSucursal(CB_SUCURSAL.SelectedValue.ToString());
+                _controlador.Sucursal.setFichaById(CB_SUCURSAL.SelectedValue.ToString());
             }
         }
 
@@ -362,10 +361,12 @@ namespace ModInventario.src.AdmDocumentos.ModoSucursal
         {
             _controlador.LimpiarFiltros();
             _modoInicializar = true;
-            DTP_DESDE.Value = _controlador.GetFechaDesde;
-            DTP_HASTA.Value = _controlador.GetFechaHasta;
-            CB_TIPO_DOC.SelectedValue = _controlador.GetTipoDoc_Id;
-            CB_SUCURSAL.SelectedValue = _controlador.GetSucursal_Id;
+            DTP_DESDE.Value = _controlador.DesdeHasta.Desde.GetFecha;
+            DTP_HASTA.Value = _controlador.DesdeHasta.Hasta.GetFecha;
+            DTP_DESDE.Checked = true;
+            DTP_HASTA.Checked = true;
+            CB_TIPO_DOC.SelectedValue = _controlador.TipoDoc.GetId;
+            CB_SUCURSAL.SelectedValue = _controlador.Sucursal.GetId;
             _modoInicializar = false;
         }
         private void LimpiarData()
@@ -381,7 +382,5 @@ namespace ModInventario.src.AdmDocumentos.ModoSucursal
         {
             _controlador.Imprimir();
         }
-
     }
-
 }

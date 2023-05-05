@@ -32,6 +32,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSucursal
         public bool GetHabilitarOrigen { get { return _filtros.ActivarCategoria; } }
         public bool GetHabilitarCategoria { get { return _filtros.ActivarOrigen; } }
         public bool GetHabilitarProducto { get { return _filtros.ActivarProducto; } }
+        public bool GetHabilitarGrupo { get { return false; } }
 
 
         private Tools.Filtros.Oferta.IOfertaRep _oferta;

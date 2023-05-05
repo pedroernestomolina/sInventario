@@ -7,12 +7,10 @@ using System.Threading.Tasks;
 
 namespace DataProvInventario.InfraEstructura
 {
-    
     public interface IProveedor
     {
-
-        OOB.ResultadoLista<OOB.LibInventario.Proveedor.Lista.Ficha> Proveedor_GetLista(OOB.LibInventario.Proveedor.Lista.Filtro filtro);
-
+        OOB.ResultadoLista<OOB.LibInventario.Proveedor.Lista.Ficha> 
+            Proveedor_GetLista(OOB.LibInventario.Proveedor.Lista.Filtro filtro);
     }
 
 }

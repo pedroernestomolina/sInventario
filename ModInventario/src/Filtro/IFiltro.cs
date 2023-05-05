@@ -8,9 +8,7 @@ using System.Windows.Forms;
 
 namespace ModInventario.src.Filtro
 {
-    
     public interface IFiltro: IGestion, Gestion.IAbandonar, Gestion.IProcesar
     {
     }
-
 }

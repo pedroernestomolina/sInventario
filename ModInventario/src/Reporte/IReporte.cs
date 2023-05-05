@@ -9,7 +9,7 @@ namespace ModInventario.src.Reporte
 {
     public interface IReporte
     {
-        void setFiltros(FiltrosGen.Reportes.data data);
+        void setFiltros(FiltrosGen.Reportes.IData data);
         void Generar();
     }
 }

@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ModInventario
 {
-    
     public class ficha
     {
+        private LibUtilitis.Opcion.IData data;
 
 
         public string id { get; set; }
@@ -37,11 +37,19 @@ namespace ModInventario
         {
         }
 
+        public ficha(LibUtilitis.Opcion.IData fic)
+        {
+            if (fic != null)
+            {
+                this.id = fic.id;
+                this.codigo = fic.codigo;
+                this.desc = fic.desc;
+            }
+        }
+
         public override string ToString()
         {
             return desc.Trim() + "(" + codigo.Trim() + ")";
         }
-
     }
-
 }

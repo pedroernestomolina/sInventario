@@ -12,6 +12,9 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoBasico
     public class ImpModoBasico: baseFiltro, IModoBasico
     {
 
+        public bool GetHabilitarGrupo { get { return false; } }
+
+
         public ImpModoBasico()
             :base(new dataFiltrar())
         {
@@ -102,7 +105,5 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoBasico
             };
             return rg;
         }
-
     }
-
 }

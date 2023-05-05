@@ -56,15 +56,28 @@ namespace ModInventario.src
         {
             return new ModInventario.src.Filtro.FiltroRep.ModoBasico.ImpModoBasico();
         }
-        public AdmDocumentos.IAdmDoc 
+
+
+        public AdmDocumentos.IAdmDoc
             CreateInstancia_AdmDocumentos()
         {
-            return new ModInventario.src.AdmDocumentos.ModoBasico.ImpModoBasico(
-                CreateInstancia_FiltrosAdmDoc(), 
+            return new ModInventario.src.AdmDocumentos.ModoSucursal.ImpModoSucursal(
+                CreateInstancia_FiltrosAdmDoc(),
                 CreateInstancia_ListaAdmDoc(),
                 CreateInstancia_AuditoriaDoc(),
                 CreateInstancia_AnularDoc());
         }
+        Utils.FiltrosPara.AdmDocumentos.IAdmDoc _filtrosParaAdmDoc;
+        private Utils.FiltrosPara.AdmDocumentos.IAdmDoc
+            CreateInstancia_FiltrosAdmDoc()
+        {
+            if (_filtrosParaAdmDoc == null)
+            {
+                _filtrosParaAdmDoc = new Utils.FiltrosPara.AdmDocumentos.ModoSucursal.ImpModoSucursal();
+            }
+            return _filtrosParaAdmDoc;
+        }
+
 
         ModInventario.src.Buscar.ModoBasico.BusquedaFrm _frm;
         public object BuscarPrd
@@ -84,12 +97,6 @@ namespace ModInventario.src
             _frm.ShowDialog();
         }
 
-        private Filtro.FiltroAdmDoc.IAdmDoc
-            CreateInstancia_FiltrosAdmDoc()
-        {
-            var filtroBusPrd = CreateInstancia_FiltroBusqProducto();
-            return new ModInventario.src.Filtro.FiltroAdmDoc.ModoBasico.ImpModoBasico(filtroBusPrd);
-        }
         private FiltrosGen.IBuscar 
             CreateInstancia_FiltroBusqProducto()
         {
@@ -210,6 +217,18 @@ namespace ModInventario.src
             CreateInstancia_AsginacionMasivaOferta()
         {
             return null;
+        }
+
+
+        private Utils.FiltrosPara.Reportes.IFiltroRep _filtrosParaReportes;
+        public Utils.FiltrosPara.Reportes.IFiltroRep
+            CreateInstancia_FiltrosParaReportes()
+        {
+            if (_filtrosParaReportes == null)
+            {
+                _filtrosParaReportes = new Utils.FiltrosPara.Reportes.ModoSucursal.ImpModo();
+            }
+            return _filtrosParaReportes;
         }
     }
 }

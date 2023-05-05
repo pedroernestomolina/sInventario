@@ -11,11 +11,10 @@ namespace DataProvInventario.Data
     
     public partial class DataProv: IData
     {
-
-        public OOB.ResultadoLista<OOB.LibInventario.Proveedor.Lista.Ficha> Proveedor_GetLista(OOB.LibInventario.Proveedor.Lista.Filtro filtro)
+        public OOB.ResultadoLista<OOB.LibInventario.Proveedor.Lista.Ficha> 
+            Proveedor_GetLista(OOB.LibInventario.Proveedor.Lista.Filtro filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Proveedor.Lista.Ficha>();
-
             var filtroDto = new DtoLibInventario.Proveedor.Lista.Filtro ()
             {
                 cadena = filtro.cadena,
@@ -46,10 +45,7 @@ namespace DataProvInventario.Data
                 }
             }
             rt.Lista = list;
-
             return rt;
         }
-
     }
-
 }

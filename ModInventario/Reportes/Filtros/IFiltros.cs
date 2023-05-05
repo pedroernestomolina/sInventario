@@ -21,12 +21,30 @@ namespace ModInventario.Reportes.Filtros
         bool ActivarOrigen { get; }
         bool ActivarCategoria { get; }
         bool ActivarMarca { get; }
-        bool ActivarGrupo { get; }
         bool ActivarPrecio { get; }
         bool ActivarPesado { get; }
         bool ActivarEntreFechas { get; }
         bool ActivarEmpaquePrecio { get; }
-        //
         bool ActivarOferta { get; }
+        bool ActivarConcepto { get; }
+        //
+        bool IsRequeridoProducto { get; }
+        bool IsRequeridoDepartamento { get; }
+        bool IsRequeridoDeposito { get; }
+        bool IsRequeridoSucursal { get; }
+        bool IsRequeridoTasaIva { get; }
+        bool IsRequeridoAdmDivisa { get; }
+        bool IsRequeridoDesde { get; }
+        bool IsRequeridoHasta { get; }
+        bool IsRequeridoEstatus { get; }
+        bool IsRequeridoOrigen { get; }
+        bool IsRequeridoCategoria { get; }
+        bool IsRequeridoMarca { get; }
+        bool IsRequeridoPrecio { get; }
+        bool IsRequeridoPesado { get; }
+        bool IsRequeridoEntreFechas { get; }
+        bool IsRequeridoEmpaquePrecio { get; }
+        bool IsRequeridoOferta { get; }
+        bool IsRequeridoConcepto { get; }
     }
 }

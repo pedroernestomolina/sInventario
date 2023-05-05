@@ -194,10 +194,10 @@ namespace ModInventario.src.AdmDocumentos.ModoBasico
             _modoInicializar = true;
             L_TITULO.Text = _controlador.GetTitulo;
             DGV.DataSource = _controlador.GetData_Source;
-            CB_TIPO_DOC.DataSource = _controlador.GetTipoDoc_Source;
-            DTP_DESDE.Value =  _controlador.GetFechaDesde;
-            DTP_HASTA.Value =  _controlador.GetFechaHasta;
-            CB_TIPO_DOC.SelectedValue = _controlador.GetTipoDoc_Id;
+            //CB_TIPO_DOC.DataSource = _controlador.GetTipoDoc_Source;
+            //DTP_DESDE.Value =  _controlador.GetFechaDesde;
+            //DTP_HASTA.Value =  _controlador.GetFechaHasta;
+            //CB_TIPO_DOC.SelectedValue = _controlador.GetTipoDoc_Id;
             DGV.Refresh();
             _modoInicializar = false;
 
@@ -262,11 +262,11 @@ namespace ModInventario.src.AdmDocumentos.ModoBasico
             if (_modoInicializar) { return; }
             if (DTP_DESDE.Checked)
             {
-                _controlador.setFechaDesde(DTP_DESDE.Value);
+                //_controlador.setFechaDesde(DTP_DESDE.Value);
             }
             else 
             {
-                _controlador.setFechaDesdeEstatusOff();
+                //_controlador.setFechaDesdeEstatusOff();
             }
         }
         private void DTP_HASTA_ValueChanged(object sender, EventArgs e)
@@ -274,21 +274,21 @@ namespace ModInventario.src.AdmDocumentos.ModoBasico
             if (_modoInicializar) { return; }
             if (DTP_HASTA.Checked)
             {
-                _controlador.setFechaHasta(DTP_HASTA.Value);
+                //_controlador.setFechaHasta(DTP_HASTA.Value);
             }
             else
             {
-                _controlador.setFechaHastaEstatusOff();
+                //_controlador.setFechaHastaEstatusOff();
             }
         }
         private void CB_TIPO_DOC_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (_modoInicializar) { return; }
-            _controlador.setTipoDoc("");
-            if (CB_TIPO_DOC.SelectedIndex != -1)
-            {
-                _controlador.setTipoDoc(CB_TIPO_DOC.SelectedValue.ToString());
-            }
+            //if (_modoInicializar) { return; }
+            //_controlador.setTipoDoc("");
+            //if (CB_TIPO_DOC.SelectedIndex != -1)
+            //{
+            //    _controlador.setTipoDoc(CB_TIPO_DOC.SelectedValue.ToString());
+            //}
         }
 
 
@@ -329,9 +329,9 @@ namespace ModInventario.src.AdmDocumentos.ModoBasico
         {
             _controlador.LimpiarFiltros();
             _modoInicializar = true;
-            DTP_DESDE.Value = _controlador.GetFechaDesde;
-            DTP_HASTA.Value = _controlador.GetFechaHasta;
-            CB_TIPO_DOC.SelectedValue = _controlador.GetTipoDoc_Id;
+            //DTP_DESDE.Value = _controlador.GetFechaDesde;
+            //DTP_HASTA.Value = _controlador.GetFechaHasta;
+            //CB_TIPO_DOC.SelectedValue = _controlador.GetTipoDoc_Id;
             _modoInicializar = false;
         }
         private void LimpiarData()

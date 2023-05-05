@@ -9,11 +9,9 @@ using System.Threading.Tasks;
 
 namespace ModInventario.Reportes.Filtros.MaestroPrecioSoloReporte
 {
-
     public class GestionRep: src.Reporte.IReporte
     {
-
-        private FiltrosGen.Reportes.data dataFiltros;
+        private FiltrosGen.Reportes.IData dataFiltros;
 
 
         public GestionRep()
@@ -21,10 +19,11 @@ namespace ModInventario.Reportes.Filtros.MaestroPrecioSoloReporte
         }
 
 
-        public void setFiltros(FiltrosGen.Reportes.data data)
+        public void setFiltros(FiltrosGen.Reportes.IData data)
         {
             dataFiltros = data;
         }
+
 
         public void Generar()
         {
@@ -70,6 +69,31 @@ namespace ModInventario.Reportes.Filtros.MaestroPrecioSoloReporte
             }
             try
             {
+                var r00 = Sistema.MyData.Empresa_Sucursal_TipoPrecioManejar(Sistema.Negocio.CodigoEmpresa);
+                var _idPrecioManejar = r00.Entidad;
+                switch (_idPrecioManejar)
+                {
+                    case "1":
+                        filtro.precio = OOB.LibInventario.Reportes.enumerados.EnumPrecio.P1;
+                        dataFiltros.Precio = new ficha() { id = "1", codigo = "", desc = "Precio 1" };
+                        break;
+                    case "2":
+                        filtro.precio = OOB.LibInventario.Reportes.enumerados.EnumPrecio.P2;
+                        dataFiltros.Precio = new ficha() { id = "2", codigo = "", desc = "Precio 2" };
+                        break;
+                    case "3":
+                        filtro.precio = OOB.LibInventario.Reportes.enumerados.EnumPrecio.P3;
+                        dataFiltros.Precio = new ficha() { id = "3", codigo = "", desc = "Precio 3" };
+                        break;
+                    case "4":
+                        filtro.precio = OOB.LibInventario.Reportes.enumerados.EnumPrecio.P4;
+                        dataFiltros.Precio = new ficha() { id = "4", codigo = "", desc = "Precio 4" };
+                        break;
+                    case "5":
+                        filtro.precio = OOB.LibInventario.Reportes.enumerados.EnumPrecio.P5;
+                        dataFiltros.Precio = new ficha() { id = "5", codigo = "", desc = "Precio 5" };
+                        break;
+                }
                 var r01 = Sistema.MyData.Reportes_MaestroPrecio(filtro);
                 Imprimir(r01.Lista, dataFiltros.ToString(), dataFiltros.Precio);
             }
@@ -232,7 +256,5 @@ namespace ModInventario.Reportes.Filtros.MaestroPrecioSoloReporte
             var p = pNeto;
             return p + (pNeto * tasaIva / 100);
         }
-
     }
-
 }

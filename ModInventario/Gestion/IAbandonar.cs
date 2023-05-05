@@ -7,13 +7,9 @@ using System.Threading.Tasks;
 
 namespace ModInventario.Gestion
 {
-    
     public interface IAbandonar
     {
-
         bool AbandonarIsOk { get; }
         void AbandonarFicha();
-
     }
-
 }

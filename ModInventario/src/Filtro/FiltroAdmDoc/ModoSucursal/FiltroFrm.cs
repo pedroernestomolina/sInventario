@@ -11,11 +11,8 @@ using System.Windows.Forms;
 
 namespace ModInventario.src.Filtro.FiltroAdmDoc.ModoSucursal
 {
-
     public partial class FiltroFrm : Form
     {
-
-
         private IAdmDoc _controlador;
 
 
@@ -24,6 +21,7 @@ namespace ModInventario.src.Filtro.FiltroAdmDoc.ModoSucursal
             InitializeComponent();
             InicializaControles();
         }
+
 
         private void InicializaControles()
         {
@@ -37,22 +35,39 @@ namespace ModInventario.src.Filtro.FiltroAdmDoc.ModoSucursal
             CB_CONCEPTO.ValueMember = "id";
         }
 
+
         private bool _modoInicializa; 
         private void FiltroFrm_Load(object sender, EventArgs e)
         {
             _modoInicializa = true;
-            CB_DEP_ORIGEN.DataSource=_controlador.GetDepOrigen_Source;
-            CB_DEP_DESTINO.DataSource = _controlador.GetDepDestino_Source;
-            CB_ESTATUS.DataSource = _controlador.GetEstatus_Source;
-            CB_CONCEPTO.DataSource = _controlador.GetConcepto_Source;
+            CB_DEP_ORIGEN.DataSource = _controlador.DepositoOrigen.GetSource;
+            CB_DEP_DESTINO.DataSource = _controlador.DepositoDestino.GetSource;
+            CB_ESTATUS.DataSource = _controlador.Estatus.GetSource;
+            CB_CONCEPTO.DataSource = _controlador.Concepto.GetSource;
 
-            CB_DEP_ORIGEN.SelectedValue = _controlador.GetDepOrigen_Id;
-            CB_DEP_DESTINO.SelectedValue = _controlador.GetDepDestino_Id;
-            CB_CONCEPTO.SelectedValue = _controlador.GetConcepto_Id;
-            CB_ESTATUS.SelectedValue = _controlador.GetEstatus_Id;
-            TB_PRODUCTO.Text = _controlador.GetProducto_Desc;
-            P_PRODUCTO.Enabled = !_controlador.GetHabilitarProducto;
+            CB_DEP_ORIGEN.SelectedValue = _controlador.DepositoOrigen.GetId;
+            CB_DEP_DESTINO.SelectedValue = _controlador.DepositoDestino.GetId;
+            CB_ESTATUS.SelectedValue = _controlador.Estatus.GetId;
+            CB_CONCEPTO.SelectedValue = _controlador.Concepto.GetId;
+
+            TB_PRODUCTO.Text = _controlador.PorProducto.GetDescripcion;
+            P_PRODUCTO.Enabled = _controlador.PorProducto.GetHabilitado;
             _modoInicializa = false;
+        }
+        private void FiltroFrm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            if (_controlador.ProcesarIsOk || _controlador.AbandonarIsOk)
+            {
+                e.Cancel = false;
+            }
+        }
+        private void Ctr_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                this.SelectNextControl((Control)sender, true, true, true, true);
+            }
         }
 
         public void setControlador(IAdmDoc ctr)
@@ -64,43 +79,44 @@ namespace ModInventario.src.Filtro.FiltroAdmDoc.ModoSucursal
         private void CB_DEP_ORIGEN_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_modoInicializa) { return; }
-
-            _controlador.setDepOrigen("");
+            _controlador.DepositoOrigen.setFichaById("");
             if (CB_DEP_ORIGEN.SelectedIndex != -1)
             {
-                _controlador.setDepOrigen(CB_DEP_ORIGEN.SelectedValue.ToString());
+                _controlador.DepositoOrigen.setFichaById(CB_DEP_ORIGEN.SelectedValue.ToString());
             }
         }
         private void CB_DEP_DESTINO_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_modoInicializa) { return; }
-            _controlador.setDepDestino("");
+            _controlador.DepositoDestino.setFichaById("");
             if (CB_DEP_DESTINO.SelectedIndex != -1)
             {
-                _controlador.setDepDestino(CB_DEP_DESTINO.SelectedValue.ToString());
+                _controlador.DepositoDestino.setFichaById(CB_DEP_DESTINO.SelectedValue.ToString());
             }
         }
         private void CB_ESTATUS_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_modoInicializa) { return; }
-            _controlador.setEstatus("");
+            _controlador.Estatus.setFichaById("");
             if (CB_ESTATUS.SelectedIndex != -1)
             {
-                _controlador.setEstatus(CB_ESTATUS.SelectedValue.ToString());
+                _controlador.Estatus.setFichaById(CB_ESTATUS.SelectedValue.ToString());
             }
         }
         private void CB_CONCEPTO_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_modoInicializa) { return; }
-            _controlador.setConcepto("");
+            _controlador.Concepto.setFichaById("");
             if (CB_CONCEPTO.SelectedIndex != -1)
             {
-                _controlador.setConcepto(CB_CONCEPTO.SelectedValue.ToString());
+                _controlador.Concepto.setFichaById(CB_CONCEPTO.SelectedValue.ToString());
             }
         }
+
+
         private void TB_PRODUCTO_Leave(object sender, EventArgs e)
         {
-            _controlador.setProductoBuscar(TB_PRODUCTO.Text.Trim().ToUpper());
+            _controlador.PorProducto.setCadenaBuscar(TB_PRODUCTO.Text.Trim().ToUpper());
         }
 
 
@@ -144,9 +160,9 @@ namespace ModInventario.src.Filtro.FiltroAdmDoc.ModoSucursal
         }
         private void LimpiarProducto()
         {
-            _controlador.LimpiarProducto();
-            TB_PRODUCTO.Text = _controlador.GetProducto_Desc;
-            P_PRODUCTO.Enabled = !_controlador.GetHabilitarProducto;
+            _controlador.PorProducto.Limpiar();
+            TB_PRODUCTO.Text = _controlador.PorProducto.GetDescripcion;
+            P_PRODUCTO.Enabled = _controlador.PorProducto.GetHabilitado;
         }
 
 
@@ -186,21 +202,6 @@ namespace ModInventario.src.Filtro.FiltroAdmDoc.ModoSucursal
         {
             this.Close();
         }
-        private void FiltroFrm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            e.Cancel = true;
-            if (_controlador.ProcesarIsOk || _controlador.AbandonarIsOk)
-            {
-                e.Cancel = false;
-            }
-        }
-        private void Ctr_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                this.SelectNextControl((Control)sender, true, true, true, true);
-            }
-        }
         private void LimpiarFiltros()
         {
             LimpiarDepOrigen();
@@ -211,11 +212,12 @@ namespace ModInventario.src.Filtro.FiltroAdmDoc.ModoSucursal
         }
         private void BuscarProducto()
         {
-            _controlador.BuscarProducto();
-            P_PRODUCTO.Enabled = !_controlador.GetHabilitarProducto;
-            TB_PRODUCTO.Text = _controlador.GetProducto_Desc;
+            _controlador.PorProducto.Buscar();
+            if (_controlador.PorProducto.BuscarIsOk) 
+            {
+                TB_PRODUCTO.Text = _controlador.PorProducto.GetDescripcion;
+                P_PRODUCTO.Enabled = _controlador.PorProducto.GetHabilitado;
+            }
         }
-
     }
-
 }

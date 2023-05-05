@@ -21,16 +21,31 @@ namespace ModInventario.Reportes.Filtros.MaestroInventarioBasico
         public bool ActivarOrigen { get { return false; } }
         public bool ActivarCategoria { get { return false; } }
         public bool ActivarMarca { get { return false; } }
-        public bool ActivarGrupo { get { return false; } }
         public bool ActivarPrecio { get { return false; } }
         public bool ActivarPesado { get { return false; } }
         public bool ActivarEntreFechas { get { return false; } }
         public bool ActivarEmpaquePrecio { get { return false; } }
         public bool ActivarOferta { get { return false; } }
-
-
-        public Filtros()
-        {
-        }
+        public bool ActivarConcepto { get { return false; } }
+        //
+        public bool IsReqeridoPrecio { get { return false; } }
+        public bool IsRequeridoProducto { get { return false; } }
+        public bool IsRequeridoDepartamento { get { return false; } }
+        public bool IsRequeridoDeposito { get { return false; } }
+        public bool IsRequeridoSucursal { get { return false; } }
+        public bool IsRequeridoTasaIva { get { return false; } }
+        public bool IsRequeridoAdmDivisa { get { return false; } }
+        public bool IsRequeridoDesde { get { return false; } }
+        public bool IsRequeridoHasta { get { return false; } }
+        public bool IsRequeridoEstatus { get { return false; } }
+        public bool IsRequeridoOrigen { get { return false; } }
+        public bool IsRequeridoCategoria { get { return false; } }
+        public bool IsRequeridoMarca { get { return false; } }
+        public bool IsRequeridoPrecio { get { return false; } }
+        public bool IsRequeridoPesado { get { return false; } }
+        public bool IsRequeridoEntreFechas { get { return false; } }
+        public bool IsRequeridoEmpaquePrecio { get { return false; } }
+        public bool IsRequeridoOferta { get { return false; } }
+        public bool IsRequeridoConcepto { get { return false; } }
     }
 }

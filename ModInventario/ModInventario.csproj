@@ -47,6 +47,9 @@
       <HintPath>..\packages\QrCode.Net.0.4.0.0\lib\net45\Gma.QrCodeNet.Encoding.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="LibUtilitis">
+      <HintPath>..\..\..\LibUtilitis\LibUtilitis\bin\Debug\LibUtilitis.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="MySql.Data, Version=6.8.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
@@ -72,26 +75,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Administrador\AdministradorFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Administrador\AdministradorFrm.Designer.cs">
-      <DependentUpon>AdministradorFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Administrador\enumerados.cs" />
-    <Compile Include="Administrador\Gestion.cs" />
-    <Compile Include="Administrador\IGestion.cs" />
-    <Compile Include="Administrador\IGestionListaDetalle.cs" />
-    <Compile Include="Administrador\Movimiento\data.cs" />
-    <Compile Include="Administrador\Movimiento\Gestion.cs" />
-    <Compile Include="Administrador\Movimiento\GestionListaDetalle.cs" />
-    <Compile Include="Administrador\Tomas\Gestion.cs" />
-    <Compile Include="Administrador\Tomas\TomasFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Administrador\Tomas\TomasFrm.Designer.cs">
-      <DependentUpon>TomasFrm.cs</DependentUpon>
-    </Compile>
     <Compile Include="AdmMovPend\AdmMovPend.cs" />
     <Compile Include="AdmMovPend\AdmMovPendFrm.cs">
       <SubType>Form</SubType>
@@ -110,6 +93,19 @@
       <DependentUpon>ConfigurarFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Configuracion\CambiarPreciosAlModificarCosto\IConf.cs" />
+    <Compile Include="FiltrosGen\Reportes\IData.cs" />
+    <Compile Include="FiltrosGen\Reportes\data.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FiltrosGen\Reportes\FiltrosFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FiltrosGen\Reportes\FiltrosFrm.Designer.cs">
+      <DependentUpon>FiltrosFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FiltrosGen\Reportes\Gestion.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Gestion\IAbandonar.cs" />
     <Compile Include="Gestion\ILista.cs" />
     <Compile Include="Gestion\IProcesar.cs" />
@@ -231,20 +227,11 @@
     <Compile Include="Configuracion\RegistroPrecio\Gestion.cs" />
     <Compile Include="ficha.cs" />
     <Compile Include="fichaSeleccion.cs" />
-    <Compile Include="FiltrosGen\AdmDoc\data.cs" />
-    <Compile Include="FiltrosGen\AdmDoc\FiltroFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FiltrosGen\AdmDoc\FiltroFrm.Designer.cs">
-      <DependentUpon>FiltroFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FiltrosGen\AdmDoc\Gestion.cs" />
     <Compile Include="FiltrosGen\AdmProducto\data.cs" />
     <Compile Include="FiltrosGen\AdmSelecciona\Gestion.cs" />
     <Compile Include="FiltrosGen\BuscarProducto\Gestion.cs" />
     <Compile Include="FiltrosGen\BuscarProveedor\Gestion.cs" />
     <Compile Include="FiltrosGen\Fecha\Gestion.cs" />
-    <Compile Include="FiltrosGen\IAdmDoc.cs" />
     <Compile Include="FiltrosGen\AdmProducto\IAdmProducto.cs" />
     <Compile Include="FiltrosGen\IAdmSelecciona.cs" />
     <Compile Include="FiltrosGen\IBuscar.cs" />
@@ -252,14 +239,6 @@
     <Compile Include="FiltrosGen\IFiltro.cs" />
     <Compile Include="FiltrosGen\IOpcion.cs" />
     <Compile Include="FiltrosGen\Opcion\Gestion.cs" />
-    <Compile Include="FiltrosGen\Reportes\data.cs" />
-    <Compile Include="FiltrosGen\Reportes\FiltrosFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FiltrosGen\Reportes\FiltrosFrm.Designer.cs">
-      <DependentUpon>FiltrosFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FiltrosGen\Reportes\Gestion.cs" />
     <Compile Include="GestionInv.cs" />
     <Compile Include="Graficas\data.cs" />
     <Compile Include="Graficas\Gestion.cs" />
@@ -681,8 +660,10 @@
     <Compile Include="src\AdmDocumentos\ModoSoloReporte\AdministradorFrm.Designer.cs">
       <DependentUpon>AdministradorFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\AdmDocumentos\ModoSoloReporte\ImpModo.cs" />
-    <Compile Include="src\AdmDocumentos\ModoSoloReporte\IModo.cs" />
+    <Compile Include="src\AdmDocumentos\ModoSoloReporte\ImpModo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\AdmDocumentos\ModoSoloReporte\ImpModoReporte.cs" />
     <Compile Include="src\AdmDocumentos\ModoSucursal\AdministradorFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -744,23 +725,6 @@
     <Compile Include="src\FiltroBusqAdm\PorExistencia\IExistencia.cs" />
     <Compile Include="src\FiltroBusqAdm\PorProveedor\IProveedor.cs" />
     <Compile Include="src\FiltroBusqAdm\PorTCS\ITCS.cs" />
-    <Compile Include="src\Filtro\FiltroAdmDoc\baseAdmDoc.cs" />
-    <Compile Include="src\Filtro\FiltroAdmDoc\dataExportar.cs" />
-    <Compile Include="src\Filtro\FiltroAdmDoc\IAdmDoc.cs" />
-    <Compile Include="src\Filtro\FiltroAdmDoc\ModoBasico\FiltroFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\Filtro\FiltroAdmDoc\ModoBasico\FiltroFrm.Designer.cs">
-      <DependentUpon>FiltroFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="src\Filtro\FiltroAdmDoc\ModoBasico\ImpModoBasico.cs" />
-    <Compile Include="src\Filtro\FiltroAdmDoc\ModoSucursal\FiltroFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\Filtro\FiltroAdmDoc\ModoSucursal\FiltroFrm.Designer.cs">
-      <DependentUpon>FiltroFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="src\Filtro\FiltroAdmDoc\ModoSucursal\ImpModoSucursal.cs" />
     <Compile Include="src\Filtro\FiltroRep\baseData.cs" />
     <Compile Include="src\Filtro\FiltroRep\baseFiltro.cs" />
     <Compile Include="src\Filtro\FiltroRep\IFiltroRep.cs" />
@@ -1233,6 +1197,101 @@
       <DependentUpon>CambioMasivoFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Tool\CambioMasivoPrecio\ICambio.cs" />
+    <Compile Include="Utils\FiltrosPara\AdmDocumentos\baseAdmDoc.cs" />
+    <Compile Include="Utils\FiltrosPara\AdmDocumentos\dataExportar.cs" />
+    <Compile Include="Utils\FiltrosPara\AdmDocumentos\IAdmDoc.cs" />
+    <Compile Include="Utils\FiltrosPara\AdmDocumentos\IDataExportar.cs" />
+    <Compile Include="Utils\FiltrosPara\AdmDocumentos\ModoSucursal\FiltroFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\FiltrosPara\AdmDocumentos\ModoSucursal\FiltroFrm.Designer.cs">
+      <DependentUpon>FiltroFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\FiltrosPara\AdmDocumentos\ModoSucursal\ImpDataExportar.cs" />
+    <Compile Include="Utils\FiltrosPara\AdmDocumentos\ModoSucursal\ImpModoSucursal.cs" />
+    <Compile Include="Utils\FiltrosPara\IFiltro.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\baseModo.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\Categoria.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\Concepto.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\Departamento.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\DepartamentoGrupo.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\Fecha.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\Empaque.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\EstatusDivisa.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\EstatusDocumento.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\EstatusPesado.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\ICtrlHabilitarFecha.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\DataExportar.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\tools\ImpFecha.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\Grupo.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\ICtrlHabilitarBusqPor.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\ICtrlHabilitarLink.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\IDepartamentoGrupo.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\tools\IFecha.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\Marca.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\Deposito.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\IFiltroRep.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\ICtrlHabilitar.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\ModoSucursal\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\FiltrosPara\Reportes\ModoSucursal\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\FiltrosPara\Reportes\ModoSucursal\ImpModo.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\Oferta.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\Origen.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\Precio.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\Producto.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\Sucursal.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\TasaIva.cs" />
+    <Compile Include="Utils\Filtros\BuscarPor\ListaSelecciona\PorProducto\data.cs" />
+    <Compile Include="Utils\Filtros\BuscarPor\IFiltro.cs" />
+    <Compile Include="Utils\Filtros\BuscarPor\Idata.cs" />
+    <Compile Include="Utils\Filtros\BuscarPor\ListaSelecciona\ILista.cs" />
+    <Compile Include="Utils\Filtros\BuscarPor\ListaSelecciona\PorProducto\ImpLista.cs" />
+    <Compile Include="Utils\Filtros\BuscarPor\ListaSelecciona\PorProducto\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\Filtros\BuscarPor\ListaSelecciona\PorProducto\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Filtros\BuscarPor\ListaSelecciona\PorProveedor\data.cs" />
+    <Compile Include="Utils\Filtros\BuscarPor\ListaSelecciona\PorProveedor\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\Filtros\BuscarPor\ListaSelecciona\PorProveedor\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\Filtros\BuscarPor\ListaSelecciona\PorProveedor\ImpLista.cs" />
+    <Compile Include="Utils\Filtros\BuscarPor\PorProveedor\ImpFiltro.cs" />
+    <Compile Include="Utils\Filtros\Catalogo.cs" />
+    <Compile Include="Utils\Filtros\Categoria.cs" />
+    <Compile Include="Utils\Filtros\Concepto.cs" />
+    <Compile Include="Utils\Filtros\dataFiltro.cs" />
+    <Compile Include="Utils\Filtros\Departamento.cs" />
+    <Compile Include="Utils\Filtros\Deposito.cs" />
+    <Compile Include="Utils\Filtros\DesdeHasta\IFiltro.cs" />
+    <Compile Include="Utils\Filtros\DesdeHasta\ImpFiltro.cs" />
+    <Compile Include="Utils\Filtros\Empaque.cs" />
+    <Compile Include="Utils\Filtros\EstatusDivisa.cs" />
+    <Compile Include="Utils\Filtros\EstatusDocumento.cs" />
+    <Compile Include="Utils\Filtros\EstatusOferta.cs" />
+    <Compile Include="Utils\Filtros\EstatusPesado.cs" />
+    <Compile Include="Utils\Filtros\EstatusTallaColorSabor.cs" />
+    <Compile Include="Utils\Filtros\Existencia.cs" />
+    <Compile Include="Utils\Filtros\Fecha\IFiltro.cs" />
+    <Compile Include="Utils\Filtros\Fecha\ImpFiltro.cs" />
+    <Compile Include="Utils\Filtros\Grupo.cs" />
+    <Compile Include="Utils\Filtros\IFiltro.cs" />
+    <Compile Include="Utils\Filtros\BuscarPor\PorProducto\ImpFiltro.cs" />
+    <Compile Include="Utils\Filtros\IFiltroLink.cs" />
+    <Compile Include="Utils\Filtros\Marca.cs" />
+    <Compile Include="Utils\Filtros\Origen.cs" />
+    <Compile Include="Utils\Filtros\Precio.cs" />
+    <Compile Include="Utils\Filtros\Sucursal.cs" />
+    <Compile Include="Utils\Filtros\TasaIva.cs" />
+    <Compile Include="Utils\Filtros\TipoDocumento.cs" />
     <Compile Include="Visor\CostoEdad\CostoEdadFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1278,12 +1337,6 @@
     <Compile Include="Visor\Precio\PrecioFrm.Designer.cs">
       <DependentUpon>PrecioFrm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Administrador\AdministradorFrm.resx">
-      <DependentUpon>AdministradorFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Administrador\Tomas\TomasFrm.resx">
-      <DependentUpon>TomasFrm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AdmMovPend\AdmMovPendFrm.resx">
       <DependentUpon>AdmMovPendFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1325,9 +1378,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Configuracion\RegistroPrecio\ConfigurarFrm.resx">
       <DependentUpon>ConfigurarFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FiltrosGen\AdmDoc\FiltroFrm.resx">
-      <DependentUpon>FiltroFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FiltrosGen\Reportes\FiltrosFrm.resx">
       <DependentUpon>FiltrosFrm.cs</DependentUpon>
@@ -1516,12 +1566,6 @@
     <EmbeddedResource Include="src\FiltroBusqAdm\ModoSucursal\FiltrosFrm.resx">
       <DependentUpon>FiltrosFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Filtro\FiltroAdmDoc\ModoBasico\FiltroFrm.resx">
-      <DependentUpon>FiltroFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\Filtro\FiltroAdmDoc\ModoSucursal\FiltroFrm.resx">
-      <DependentUpon>FiltroFrm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\Filtro\FiltroRep\ModoBasicoFox\FiltrosFrm.resx">
       <DependentUpon>FiltrosFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1647,6 +1691,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\CambioMasivoPrecio\CambioMasivoFrm.resx">
       <DependentUpon>CambioMasivoFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\FiltrosPara\AdmDocumentos\ModoSucursal\FiltroFrm.resx">
+      <DependentUpon>FiltroFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\FiltrosPara\Reportes\ModoSucursal\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\Filtros\BuscarPor\ListaSelecciona\PorProducto\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\Filtros\BuscarPor\ListaSelecciona\PorProveedor\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Visor\CostoEdad\CostoEdadFrm.resx">
       <DependentUpon>CostoEdadFrm.cs</DependentUpon>
@@ -1910,7 +1966,10 @@
       <Name>OOB</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Utils\FiltrosPara\BusqProducto\ModoAdm\" />
+    <Folder Include="Utils\FiltrosPara\BusqProducto\ModoSucursal\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

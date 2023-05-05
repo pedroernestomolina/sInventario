@@ -34,6 +34,7 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSoloReporte
         public bool GetHabilitarOrigen { get { return _filtros.ActivarCategoria; } }
         public bool GetHabilitarCategoria { get { return _filtros.ActivarOrigen; } }
         public bool GetHabilitarProducto { get { return _filtros.ActivarProducto; } }
+        public bool GetHabilitarGrupo { get { return false; } }
 
         
         public ImpModo(FiltrosGen.IBuscar filtroBusPrd)
@@ -262,7 +263,5 @@ namespace ModInventario.src.Filtro.FiltroRep.ModoSoloReporte
             _gEmpaquePrecio.setFicha(id);
             _data.EmpqPrecio = _gEmpaquePrecio.Item;
         }
-
     }
-
 }

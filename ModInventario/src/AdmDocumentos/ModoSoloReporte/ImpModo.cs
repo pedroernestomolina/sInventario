@@ -8,18 +8,15 @@ using System.Windows.Forms;
 
 namespace ModInventario.src.AdmDocumentos.ModoSoloReporte
 {
-
-    public class ImpModo: baseAdmDoc, IModo 
+    public class ImpModo: baseAdmDoc
     {
-        
+       
 
         public ImpModo(
-            Filtro.FiltroAdmDoc.IAdmDoc filtroAdmDoc,
             IListaAdmDoc listaAdmDoc,
             Auditoria.Visualizar.IVisualizar auditoria, 
             ModInventario.src.AnularDoc.IAnular anularDoc)
         {
-            _admFiltroDoc = filtroAdmDoc;
             _listaDoc = listaAdmDoc;
             _auditoria = auditoria;
             _anularDoc = anularDoc;
@@ -37,8 +34,8 @@ namespace ModInventario.src.AdmDocumentos.ModoSoloReporte
             {
                 if (frm == null)
                 {
-                    frm = new AdministradorFrm();
-                    frm.setControlador(this);
+                    //frm = new AdministradorFrm();
+                    //frm.setControlador(this);
                 }
                 frm.ShowDialog();
             }
@@ -110,62 +107,65 @@ namespace ModInventario.src.AdmDocumentos.ModoSoloReporte
         private string _filtrosBusq;
         private List<OOB.LibInventario.Movimiento.Lista.Ficha> RealizarBusqueda()
         {
-            var lst = new List<OOB.LibInventario.Movimiento.Lista.Ficha>();
-            var _dataFiltrar = _admFiltroDoc.ExportarData();
-            _filtrosBusq = _dataFiltrar.FiltrosDesc;
-            if (_dataFiltrar.IsOk())
-            {
-                var _estatus = _dataFiltrar.GetEstatus_Desc;
-                var _tipoDocumento = _dataFiltrar.GetTipoDoc_Desc;
-                var filtro = new OOB.LibInventario.Movimiento.Lista.Filtro()
-                {
-                    Desde = _dataFiltrar.Desde,
-                    Hasta = _dataFiltrar.Hasta,
-                    IdConcepto = _dataFiltrar.GetConcepto_Id,
-                    IdDepDestino = _dataFiltrar.GetDepDestino_Id,
-                    IdDepOrigen = _dataFiltrar.GetDepOrigen_Id,
-                    IdProducto = _dataFiltrar.GetProducto_Id,
-                    CodigoSucursal= _dataFiltrar.GetSucursal_Codigo,
-                };
-                switch (_dataFiltrar.GetTipoDoc_Desc)
-                {
-                    case "CARGO":
-                        filtro.TipoDocumento = OOB.LibInventario.Movimiento.enumerados.EnumTipoDocumento.Cargo;
-                        break;
-                    case "DESCARGO":
-                        filtro.TipoDocumento = OOB.LibInventario.Movimiento.enumerados.EnumTipoDocumento.Descargo;
-                        break;
-                    case "TRASLADO":
-                        filtro.TipoDocumento = OOB.LibInventario.Movimiento.enumerados.EnumTipoDocumento.Traslado;
-                        break;
-                    case "AJUSTE":
-                        filtro.TipoDocumento = OOB.LibInventario.Movimiento.enumerados.EnumTipoDocumento.Ajuste;
-                        break;
-                }
-                switch (_dataFiltrar.GetEstatus_Desc)
-                {
-                    case "ACTIVO":
-                        filtro.Estatus = OOB.LibInventario.Movimiento.enumerados.EnumEstatus.Activo;
-                        break;
-                    case "ANULADO":
-                        filtro.Estatus = OOB.LibInventario.Movimiento.enumerados.EnumEstatus.Anulado;
-                        break;
-                }
-                try
-                {
-                    var rt0 = Sistema.MyData.Configuracion_CantDocVisualizar();
-                    var rt1 = Sistema.MyData.Producto_Movimiento_GetLista(filtro);
-                    lst = rt1.Lista.
-                        Where(w=>1==1 && (w.idDepOrigen== Sistema.Negocio.CodigoDepositoPrincipal || w.idDepDestino==Sistema.Negocio.CodigoDepositoPrincipal)).
-                        OrderByDescending(o => o.fecha).ThenByDescending(o => o.docNro).
-                        Take(rt0.Entidad).
-                        ToList();
-                }
-                catch (Exception e)
-                {
-                    Helpers.Msg.Error(e.Message);
-                }
+            if (_admFiltroDoc.DataExportar.IsOk)
+            { 
             }
+            var lst = new List<OOB.LibInventario.Movimiento.Lista.Ficha>();
+            //var _dataFiltrar = _admFiltroDoc.ExportarData();
+            //_filtrosBusq = _dataFiltrar.FiltrosDesc;
+            //if (_dataFiltrar.IsOk())
+            //{
+            //    var _estatus = _dataFiltrar.GetEstatus_Desc;
+            //    var _tipoDocumento = _dataFiltrar.GetTipoDoc_Desc;
+            //    var filtro = new OOB.LibInventario.Movimiento.Lista.Filtro()
+            //    {
+            //        Desde = _dataFiltrar.Desde,
+            //        Hasta = _dataFiltrar.Hasta,
+            //        IdConcepto = _dataFiltrar.GetConcepto_Id,
+            //        IdDepDestino = _dataFiltrar.GetDepDestino_Id,
+            //        IdDepOrigen = _dataFiltrar.GetDepOrigen_Id,
+            //        IdProducto = _dataFiltrar.GetProducto_Id,
+            //        CodigoSucursal= _dataFiltrar.GetSucursal_Codigo,
+            //    };
+            //    switch (_dataFiltrar.GetTipoDoc_Desc)
+            //    {
+            //        case "CARGO":
+            //            filtro.TipoDocumento = OOB.LibInventario.Movimiento.enumerados.EnumTipoDocumento.Cargo;
+            //            break;
+            //        case "DESCARGO":
+            //            filtro.TipoDocumento = OOB.LibInventario.Movimiento.enumerados.EnumTipoDocumento.Descargo;
+            //            break;
+            //        case "TRASLADO":
+            //            filtro.TipoDocumento = OOB.LibInventario.Movimiento.enumerados.EnumTipoDocumento.Traslado;
+            //            break;
+            //        case "AJUSTE":
+            //            filtro.TipoDocumento = OOB.LibInventario.Movimiento.enumerados.EnumTipoDocumento.Ajuste;
+            //            break;
+            //    }
+            //    switch (_dataFiltrar.GetEstatus_Desc)
+            //    {
+            //        case "ACTIVO":
+            //            filtro.Estatus = OOB.LibInventario.Movimiento.enumerados.EnumEstatus.Activo;
+            //            break;
+            //        case "ANULADO":
+            //            filtro.Estatus = OOB.LibInventario.Movimiento.enumerados.EnumEstatus.Anulado;
+            //            break;
+            //    }
+            //    try
+            //    {
+            //        var rt0 = Sistema.MyData.Configuracion_CantDocVisualizar();
+            //        var rt1 = Sistema.MyData.Producto_Movimiento_GetLista(filtro);
+            //        lst = rt1.Lista.
+            //            Where(w=>1==1 && (w.idDepOrigen== Sistema.Negocio.CodigoDepositoPrincipal || w.idDepDestino==Sistema.Negocio.CodigoDepositoPrincipal)).
+            //            OrderByDescending(o => o.fecha).ThenByDescending(o => o.docNro).
+            //            Take(rt0.Entidad).
+            //            ToList();
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        Helpers.Msg.Error(e.Message);
+            //    }
+            //}
             return lst;
         }
         private void Anular()
@@ -204,11 +204,11 @@ namespace ModInventario.src.AdmDocumentos.ModoSoloReporte
         }
 
 
-        public BindingSource GetSucursal_Source { get { return _admFiltroDoc.GetSucursal_Source; } }
-        public string GetSucursal_Id { get { return _admFiltroDoc.GetSucursal_Id; } }
+        public BindingSource GetSucursal_Source { get { return _admFiltroDoc.Sucursal.GetSource; } }
+        public string GetSucursal_Id { get { return _admFiltroDoc.Sucursal.GetId; } }
         public void setSucursal(string id)
         {
-            _admFiltroDoc.setSucursal(id);
+            _admFiltroDoc.Sucursal.setFichaById(id);
         }
 
 
@@ -250,7 +250,5 @@ namespace ModInventario.src.AdmDocumentos.ModoSoloReporte
                 Helpers.Msg.Error(e.Message);
             }
         }
-
     }
-
 }

@@ -141,5 +141,13 @@ namespace ModInventario.src
         {
             return null;
         }
+
+
+        private Utils.FiltrosPara.Reportes.IFiltroRep _filtrosParaReportes;
+        public Utils.FiltrosPara.Reportes.IFiltroRep
+            CreateInstancia_FiltrosParaReportes()
+        {
+            return null;
+        }
     }
 }

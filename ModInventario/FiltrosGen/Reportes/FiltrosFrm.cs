@@ -88,7 +88,7 @@ namespace ModInventario.FiltrosGen.Reportes
             CB_ORIGEN.Enabled = _controlador.Filtros.ActivarOrigen;
             CB_CATEGORIA.Enabled = _controlador.Filtros.ActivarCategoria;
             CB_MARCA.Enabled = _controlador.Filtros.ActivarMarca;
-            CB_GRUPO.Enabled = _controlador.Filtros.ActivarGrupo;
+            //CB_GRUPO.Enabled = _controlador.Filtros.ActivarGrupo;
             DTP_DESDE.Enabled = _controlador.Filtros.ActivarDesde;
             DTP_HASTA.Enabled = _controlador.Filtros.ActivarHasta;
             _modoInicializar = false;

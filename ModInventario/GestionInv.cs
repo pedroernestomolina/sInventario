@@ -26,7 +26,7 @@ namespace ModInventario
         //
         private Buscar.INotificarSeleccion _gListaSelPrd;
         private FiltrosGen.IAdmSelecciona _gAdmSelPrd;
-        private Administrador.IGestion _gAdmDoc;
+        //private Administrador.IGestion _gAdmDoc;
 
         //
         private ISeguridadAccesoSistema _seguridad;
@@ -391,11 +391,35 @@ namespace ModInventario
 
         public void ReporteMaestroPrecio()
         {
-            if (VerificarPermisoReportes()) 
+            if (VerificarPermisoReportes())
             {
-                Helpers.HndReportes.MaestroPrecio(_fabrica, _gestionReporteFiltros);
+                Reporte(_fabrica.CreateInstancia_RepMasterPrecio(), _fabrica.CreateInstancia_RepMasterPrecio_Filtros());
+            }
+
+            //if (VerificarPermisoReportes())
+            //{
+            //    Helpers.HndReportes.MaestroPrecio(_fabrica, _gestionReporteFiltros);
+            //}
+        }
+
+        Utils.FiltrosPara.Reportes.IFiltroRep _filtrRep;
+        private void Reporte(src.Reporte.IReporte reporte, Reportes.Filtros.IFiltros filtros)
+        {
+            var _filtrRep = _fabrica.CreateInstancia_FiltrosParaReportes();
+            if (_filtrRep != null)
+            {
+                _filtrRep.Inicializa();
+                _filtrRep.setFiltrosHab(filtros);
+                _filtrRep.Inicia();
+                if (_filtrRep.ProcesarIsOk)
+                {
+                    reporte.setFiltros(_filtrRep.DataExportar);
+                    reporte.Generar();
+                }
             }
         }
+
+
         public void ReporteResumenCostoInventario()
         {
             if (VerificarPermisoReportes())

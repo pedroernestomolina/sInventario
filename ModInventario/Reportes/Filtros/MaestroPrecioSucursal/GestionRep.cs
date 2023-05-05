@@ -9,11 +9,9 @@ using System.Threading.Tasks;
 
 namespace ModInventario.Reportes.Filtros.MaestroPrecioSucursal
 {
-
     public class GestionRep: src.Reporte.IReporte
     {
-
-        private FiltrosGen.Reportes.data dataFiltros;
+        private FiltrosGen.Reportes.IData dataFiltros;
 
 
         public GestionRep()
@@ -21,10 +19,11 @@ namespace ModInventario.Reportes.Filtros.MaestroPrecioSucursal
         }
 
 
-        public void setFiltros(FiltrosGen.Reportes.data data)
+        public void setFiltros(FiltrosGen.Reportes.IData data)
         {
             dataFiltros = data;
         }
+
 
         public void Generar()
         {
@@ -254,7 +253,5 @@ namespace ModInventario.Reportes.Filtros.MaestroPrecioSucursal
             var p = pNeto;
             return p + (pNeto * tasaIva / 100);
         }
-
     }
-
 }

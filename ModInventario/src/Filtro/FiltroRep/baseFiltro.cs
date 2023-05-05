@@ -223,7 +223,7 @@ namespace ModInventario.src.Filtro.FiltroRep
 
         public bool GetHabilitarDeposito { get { return _filtros.ActivarDeposito; } }
         public bool GetHabilitarDepartamento { get { return _filtros.ActivarDepartamento; } }
-        public bool GetHabilitarGrupo { get { return _filtros.ActivarGrupo; } }
+        //public bool GetHabilitarGrupo { get { return _filtros.ActivarGrupo; } }
         public bool GetHabilitarMarca { get { return _filtros.ActivarMarca; } }
         public bool GetHabilitarAdmDivisa { get { return _filtros.ActivarAdmDivisa; } }
         public bool GetHabilitarImpuesto { get { return _filtros.ActivarTasaIva; } }

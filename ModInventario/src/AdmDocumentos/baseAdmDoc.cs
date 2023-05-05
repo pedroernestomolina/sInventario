@@ -8,11 +8,9 @@ using System.Windows.Forms;
 
 namespace ModInventario.src.AdmDocumentos
 {
-
     abstract public class baseAdmDoc : IAdmDoc
     {
-
-        protected Filtro.FiltroAdmDoc.IAdmDoc _admFiltroDoc;
+        protected Utils.FiltrosPara.AdmDocumentos.IAdmDoc _admFiltroDoc;
         protected IListaAdmDoc _listaDoc;
         protected Auditoria.Visualizar.IVisualizar _auditoria;
         protected AnularDoc.IAnular _anularDoc;
@@ -21,11 +19,9 @@ namespace ModInventario.src.AdmDocumentos
         public data ItemActual { get { return (data)_listaDoc.ItemActual; } }
         public string GetTitulo { get { return "Administrador De Documentos de Inventario"; } }
         public BindingSource GetData_Source { get { return _listaDoc.GetSource; } }
-        public BindingSource GetTipoDoc_Source { get { return _admFiltroDoc.GetTipoDoc_Source; } }
-        public string GetTipoDoc_Id { get { return _admFiltroDoc.GetTipoDoc_Id; } }
-        public DateTime GetFechaDesde { get { return _admFiltroDoc.GetFechaDesde; } }
-        public DateTime GetFechaHasta { get { return _admFiltroDoc.GetFechaHasta; } }
         public int GetCntItems { get { return _listaDoc.GetCtnItems; } }
+        public LibUtilitis.CtrlCB.ICtrl TipoDoc { get { return _admFiltroDoc.TipoDoc; } }
+        public Utils.Filtros.DesdeHasta.IFiltro DesdeHasta { get { return _admFiltroDoc.DesdeHasta; } }
 
 
         abstract public void Inicia();
@@ -51,7 +47,7 @@ namespace ModInventario.src.AdmDocumentos
 
         public void LimpiarFiltros()
         {
-            _admFiltroDoc.Inicializa();
+            _admFiltroDoc.LimpiarFiltros();
         }
         public void LimpiarData()
         {
@@ -66,28 +62,6 @@ namespace ModInventario.src.AdmDocumentos
             _auditoria.Inicializa();
             _auditoria.setData(ItemActual);
             _auditoria.Inicia();
-        }
-
-
-        public void setTipoDoc(string id)
-        {
-            _admFiltroDoc.setTipoDoc(id);
-        }
-        public void setFechaDesde(DateTime fecha)
-        {
-            _admFiltroDoc.setFechaDesde(fecha);
-        }
-        public void setFechaDesdeEstatusOff()
-        {
-            _admFiltroDoc.setFechaDesdeEstatusOff();
-        }
-        public void setFechaHasta(DateTime fecha)
-        {
-            _admFiltroDoc.setFechaHasta(fecha);
-        }
-        public void setFechaHastaEstatusOff()
-        {
-            _admFiltroDoc.setFechaHastaEstatusOff();
         }
 
 
@@ -305,7 +279,5 @@ namespace ModInventario.src.AdmDocumentos
                 Helpers.Msg.Error(e.Message);
             }
         }
-
     }
-
 }

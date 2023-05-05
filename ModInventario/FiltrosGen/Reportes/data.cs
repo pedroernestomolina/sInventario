@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ModInventario.FiltrosGen.Reportes
 {
-    public class data
+    public class data: IData
     {
         private bool _validarFecha;
 

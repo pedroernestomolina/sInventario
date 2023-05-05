@@ -8,23 +8,21 @@ using System.Windows.Forms;
 
 namespace ModInventario.src.Filtro.FiltroAdmDoc.ModoSucursal
 {
-    
     public class ImpModoSucursal: baseAdmDoc, IAdmDoc
     {
-        
+        public override IDataExportar DataExportar { get { return miDataExportar(); } }
+
 
         public ImpModoSucursal(FiltrosGen.IBuscar filtroBusPrd)
         {
-            _dataExportar = new dataExportar();
-            _concepto = new FiltrosGen.Opcion.Gestion();
-            _depOrigen = new FiltrosGen.Opcion.Gestion();
-            _depDestino = new FiltrosGen.Opcion.Gestion();
-            _estatus = new FiltrosGen.Opcion.Gestion();
-            _tipoDoc = new FiltrosGen.Opcion.Gestion();
-            _desde = new FiltrosGen.Fecha.Gestion();
-            _hasta= new FiltrosGen.Fecha.Gestion();
-            _sucursal = new FiltrosGen.Opcion.Gestion();
-            _filtroBusPrd = filtroBusPrd;
+            _depositoOrigen = new Utils.Filtros.Deposito();
+            _depositoDestino = new Utils.Filtros.Deposito();
+            _estatus = new Utils.Filtros.EstatusDocumento();
+            _concepto = new Utils.Filtros.Concepto();
+            _tipoDoc = new Utils.Filtros.TipoDocumento();
+            _sucursal = new Utils.Filtros.Sucursal();
+            _desdeHasta = new Utils.Filtros.DesdeHasta.ImpFiltro();
+            _porProducto = new Utils.Filtros.BuscarPor.PorProducto.ImpFiltro();
         }
 
 
@@ -39,6 +37,22 @@ namespace ModInventario.src.Filtro.FiltroAdmDoc.ModoSucursal
             frm.ShowDialog();
         }
 
-    }
 
+        private IDataExportar miDataExportar()
+        {
+            var rt = new ImpDataExportar()
+            {
+                DepOrigen = _depositoOrigen.Ctrl.GetItem,
+                DepDestino = _depositoDestino.Ctrl.GetItem,
+                Concepto = _concepto.Ctrl.GetItem,
+                Desde = _desdeHasta.Desde.Valor,
+                Estatus = _estatus.Ctrl.GetItem,
+                Hasta = _desdeHasta.Hasta.Valor,
+                Producto = _porProducto.ItemSeleccionado,
+                Sucursal = _sucursal.Ctrl.GetItem,
+                TipoDoc = _tipoDoc.Ctrl.GetItem,
+            };
+            return rt;
+        }
+    }
 }

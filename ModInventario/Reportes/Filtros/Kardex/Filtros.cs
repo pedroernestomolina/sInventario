@@ -21,7 +21,6 @@ namespace ModInventario.Reportes.Filtros.Kardex
         public bool ActivarOrigen { get { return false; } }
         public bool ActivarCategoria { get { return false; } }
         public bool ActivarMarca { get { return false; } }
-        public bool ActivarGrupo { get { return ActivarDepartamento; } }
         public bool ActivarPrecio { get { return false; } }
         public bool ActivarPesado { get { return false; } }
         public bool ActivarEntreFechas { get { return false; } }

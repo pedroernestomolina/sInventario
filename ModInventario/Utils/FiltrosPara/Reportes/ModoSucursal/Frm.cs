@@ -272,10 +272,10 @@ namespace ModInventario.Utils.FiltrosPara.Reportes.ModoSucursal
         private void CB_CONCEPTO_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_modoInicializar) { return; }
-            _controlador.Concepto.Ctrl.setFichaById(""); 
-            if (CB_OFERTA.SelectedIndex != -1)
+            _controlador.Concepto.Ctrl.setFichaById("");
+            if (CB_CONCEPTO.SelectedIndex != -1)
             {
-                _controlador.Concepto.Ctrl.setFichaById(CB_OFERTA.SelectedValue.ToString());
+                _controlador.Concepto.Ctrl.setFichaById(CB_CONCEPTO.SelectedValue.ToString());
             }
         }
 

@@ -186,16 +186,6 @@ namespace ModInventario.src
         {
             return null;
         }
-        public Reporte.IReporte 
-            CreateInstancia_RepMasterPrecio()
-        {
-            return new Reportes.Filtros.MaestroPrecioSucursal.GestionRep();
-        }
-        public Reportes.Filtros.IFiltros 
-            CreateInstancia_RepMasterPrecio_Filtros()
-        {
-            return new Reportes.Filtros.MaestroPrecioSucursal.Filtros();
-        }
         private TallaColorSabor.Visualizar.IVer 
             CreateInstancia_TallaColorSabor()
         {
@@ -233,6 +223,8 @@ namespace ModInventario.src
             return null;
         }
 
+
+        //
         private Utils.FiltrosPara.Reportes.IFiltroRep _filtrosParaReportes;
         public Utils.FiltrosPara.Reportes.IFiltroRep 
             CreateInstancia_FiltrosParaReportes()
@@ -242,6 +234,99 @@ namespace ModInventario.src
                 _filtrosParaReportes = new Utils.FiltrosPara.Reportes.ModoSucursal.ImpModo();
             }
             return _filtrosParaReportes;
+        }
+
+        public Reportes.Filtros.IFiltros CreateInstancia_RepMasterProductos_Filtros()
+        {
+            return new Reportes.Filtros.MaestroProducto.Filtros();
+        }
+        public Reporte.IReporte CreateInstancia_RepMasterProductos()
+        {
+            return new Reportes.Filtros.MaestroProducto.GestionRep();
+        }
+        public Reportes.Filtros.IFiltros CreateInstancia_RepMasterPrecio_Filtros()
+        {
+            return new Reportes.Filtros.MaestroPrecioSucursal.Filtros();
+        }
+        public Reporte.IReporte CreateInstancia_RepMasterPrecio()
+        {
+            return new Reportes.Filtros.MaestroPrecioSucursal.GestionRep();
+        }
+        public Reportes.Filtros.IFiltros CreateInstancia_RepMaestroInventario_Filtros()
+        {
+            return new Reportes.Filtros.MaestroInventario.Filtros();
+        }
+        public Reporte.IReporte CreateInstancia_RepMaestroInventario()
+        {
+            return new Reportes.Filtros.MaestroInventario.GestionRep();
+        }
+        public Reportes.Filtros.IFiltros CreateInstancia_RepMaestroExistenciaDetalle_Filtros()
+        {
+            return new Reportes.Filtros.MaestroExistencia.Filtros();
+        }
+        public Reporte.IReporte CreateInstancia_RepMaestroExistenciaDetalle()
+        {
+            return new Reportes.Filtros.MaestroExistencia.GestionRep();
+        }
+        public Reportes.Filtros.IFiltros CreateInstancia_RepMaestroExistenciaInventario_Filtros()
+        {
+            return new Reportes.Filtros.MaestroExistenciaInventario.Filtros();
+        }
+        public Reporte.IReporte CreateInstancia_RepMaestroExistenciaInventario()
+        {
+            return new Reportes.Filtros.MaestroExistenciaInventario.GestionRep();
+        }
+        public Reporte.IReporte CreateInstancia_RepMaestroDepositoResumen()
+        {
+            return new Reportes.Filtros.DepositoResumen.GestionRep();
+        }
+        public Reportes.Filtros.IFiltros CreateInstancia_RepNivelMinimo_Filtros()
+        {
+            return new Reportes.Filtros.NivelMInimo.Filtro();
+        }
+        public Reporte.IReporte CreateInstancia_RepNivelMinimo()
+        {
+            return new Reportes.Filtros.NivelMInimo.GestionRep();
+        }
+        public Reportes.Filtros.IFiltros CreateInstancia_RepKardex_Filtros()
+        {
+            return new Reportes.Filtros.Kardex.Filtros();
+        }
+        public Reporte.IReporte CreateInstancia_RepKardex()
+        {
+            return new Reportes.Filtros.Kardex.GestionRep();
+        }
+        public Reportes.Filtros.IFiltros CreateInstancia_RepKardexResumenMov_Filtros()
+        {
+            return new Reportes.Filtros.KardexResumen.Filtros();
+        }
+        public Reporte.IReporte CreateInstancia_RepKardexResumenMov()
+        {
+            return new Reportes.Filtros.KardexResumen.GestionRep();
+        }
+        public Reportes.Filtros.IFiltros CreateInstancia_RepValorizacionInventario_Filtros()
+        {
+            return new Reportes.Filtros.Valorizacion.Filtros();
+        }
+        public Reporte.IReporte CreateInstancia_RepValorizacionInventario()
+        {
+            return new Reportes.Filtros.Valorizacion.GestionRep();
+        }
+        public Reportes.Filtros.IFiltros CreateInstancia_RepRelacionCompraVenta_Filtros()
+        {
+            return new Reportes.Filtros.RelacionCompraVenta.Filtros();
+        }
+        public Reporte.IReporte CreateInstancia_RepRelacionCompraVenta()
+        {
+            return new Reportes.Filtros.RelacionCompraVenta.GestionRep();
+        }
+        public Reportes.Filtros.IFiltros CreateInstancia_RepResumenCostoInventario_Filtros()
+        {
+            return new Reportes.Filtros.ResumenCostoInventario.Filtros();
+        }
+        public Reporte.IReporte CreateInstancia_RepResumenCostoInventario()
+        {
+            return new Reportes.Filtros.ResumenCostoInventario.GestionRep();
         }
     }
 }

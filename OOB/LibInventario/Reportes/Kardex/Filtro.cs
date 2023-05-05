@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace OOB.LibInventario.Reportes.Kardex
 {
-    
     public class Filtro
     {
-
         public string autoProducto { get; set; }
         public string autoDeposito { get; set; }
+        public string autoConcepto { get; set; }
         public DateTime desde { get; set; }
         public DateTime hasta { get; set; }
 
@@ -21,10 +20,9 @@ namespace OOB.LibInventario.Reportes.Kardex
         {
             autoProducto = "";
             autoDeposito = "";
+            autoConcepto = "";
             desde = DateTime.Now.Date;
             hasta = DateTime.Now.Date;
         }
-
     }
-
 }

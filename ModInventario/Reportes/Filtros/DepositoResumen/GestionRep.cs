@@ -9,12 +9,14 @@ using System.Threading.Tasks;
 
 namespace ModInventario.Reportes.Filtros.DepositoResumen
 {
-    
-    public class GestionRep
+    public class GestionRep: src.Reporte.IReporte
     {
-
-
         public GestionRep()
+        {
+        }
+
+
+        public void setFiltros(FiltrosGen.Reportes.IData data)
         {
         }
 
@@ -83,7 +85,5 @@ namespace ModInventario.Reportes.Filtros.DepositoResumen
             frp.Path = pt;
             frp.ShowDialog();
         }
-
     }
-
 }

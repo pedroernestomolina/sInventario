@@ -198,6 +198,10 @@ namespace ModInventario.Utils.FiltrosPara.Reportes
                     Precio = _precio.Ctrl.GetItem == null ? null : new ficha(_precio.Ctrl.GetItem),
                     Sucursal = _sucursal.Ctrl.GetItem == null ? null : new ficha(_sucursal.Ctrl.GetItem),
                     TasaIva = _tasaIva.Ctrl.GetItem == null ? null : new ficha(_tasaIva.Ctrl.GetItem),
+                    Concepto = _concepto.Ctrl.GetItem == null ? null : new ficha(_concepto.Ctrl.GetItem),
+                    Producto = _producto.ItemSeleccionado == null ? null : new ficha(_producto.ItemSeleccionado),
+                    Desde = _desde.GetHabilitar ? _desde.GetFecha : (DateTime?)null,
+                    Hasta = _hasta.GetHabilitar ? _hasta.GetFecha : (DateTime?)null,
                 };
             }
             return null;

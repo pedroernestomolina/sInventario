@@ -9,11 +9,9 @@ using System.Threading.Tasks;
 
 namespace ModInventario.Reportes.Filtros.ResumenCostoInventario
 {
-    
-    public class GestionRep
+    public class GestionRep: src.Reporte.IReporte
     {
-
-        private FiltrosGen.Reportes.data dataFiltros;
+        private FiltrosGen.Reportes.IData dataFiltros;
         private List<data> _ldata;
 
 
@@ -23,10 +21,11 @@ namespace ModInventario.Reportes.Filtros.ResumenCostoInventario
         }
 
 
-        public void setFiltros(FiltrosGen.Reportes.data data)
+        public void setFiltros(FiltrosGen.Reportes.IData data)
         {
             dataFiltros = data;
         }
+
 
         public void Generar()
         {
@@ -166,7 +165,5 @@ namespace ModInventario.Reportes.Filtros.ResumenCostoInventario
             frp.Path = pt;
             frp.ShowDialog();
         }
-
     }
-
 }

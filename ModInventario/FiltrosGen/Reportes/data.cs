@@ -29,7 +29,7 @@ namespace ModInventario.FiltrosGen.Reportes
         public ficha Precio { get; set; }
         public ficha EmpqPrecio { get; set; }
         public ficha Oferta { get; set; }
-
+        public ficha Concepto { get; set; }
 
         public data() 
         {

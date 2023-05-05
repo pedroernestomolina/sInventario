@@ -340,6 +340,7 @@ namespace DataProvInventario.Data
                 autoProducto = filtro.autoProducto,
                 desde = filtro.desde,
                 hasta = filtro.hasta,
+                autoConcepto=filtro.autoConcepto,
             };
             var r01 = MyData.Reportes_Kardex(filtroDto);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
@@ -952,5 +953,4 @@ namespace DataProvInventario.Data
             return rt;
         }
     }
-
 }

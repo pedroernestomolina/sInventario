@@ -528,6 +528,7 @@
       <DependentUpon>DS.xsd</DependentUpon>
     </Compile>
     <Compile Include="Reportes\Filtros\IFiltros.cs" />
+    <Compile Include="Reportes\Filtros\KardexResumen\Filtros.cs" />
     <Compile Include="Reportes\Filtros\KardexResumen\GestionRep.cs" />
     <Compile Include="Reportes\Filtros\Kardex\Filtros.cs" />
     <Compile Include="Reportes\Filtros\Kardex\GestionRep.cs" />

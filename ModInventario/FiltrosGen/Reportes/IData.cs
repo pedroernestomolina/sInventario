@@ -26,5 +26,6 @@ namespace ModInventario.FiltrosGen.Reportes
         ficha Precio { get; set; }
         ficha EmpqPrecio { get; set; }
         ficha Oferta { get; set; }
+        ficha Concepto { get; set; }
     }
 }

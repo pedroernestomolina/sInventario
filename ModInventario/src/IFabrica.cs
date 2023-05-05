@@ -43,10 +43,7 @@ namespace ModInventario.src
             CreateInstancia_VisorPrecio();
         ModInventario.src.Visor.EntradaxCompra.IEntradaxCompra 
             CreateInstancia_VisorEntradaxCompra();
-        ModInventario.src.Reporte.IReporte 
-            CreateInstancia_RepMasterPrecio();
-        ModInventario.Reportes.Filtros.IFiltros
-            CreateInstancia_RepMasterPrecio_Filtros();
+
         object BuscarPrd { get; }
         void CreateInstancia_BuscarPrd(ModInventario.Buscar.Gestion gestion);
         void ShowBuscarPrd();
@@ -59,7 +56,66 @@ namespace ModInventario.src
         ModInventario.src.Producto.ActualizarOfertaMasiva.IOferta 
             CreateInstancia_AsginacionMasivaOferta();
 
+        //
         Utils.FiltrosPara.Reportes.IFiltroRep
             CreateInstancia_FiltrosParaReportes();
+        //
+        Reportes.Filtros.IFiltros 
+            CreateInstancia_RepMasterProductos_Filtros();
+        Reporte.IReporte
+            CreateInstancia_RepMasterProductos();
+
+        Reportes.Filtros.IFiltros 
+            CreateInstancia_RepMasterPrecio_Filtros();
+        Reporte.IReporte 
+            CreateInstancia_RepMasterPrecio();
+
+        Reportes.Filtros.IFiltros 
+            CreateInstancia_RepMaestroInventario_Filtros();
+        Reporte.IReporte 
+            CreateInstancia_RepMaestroInventario();
+
+        Reportes.Filtros.IFiltros 
+            CreateInstancia_RepMaestroExistenciaDetalle_Filtros();
+        Reporte.IReporte 
+            CreateInstancia_RepMaestroExistenciaDetalle();
+
+        Reportes.Filtros.IFiltros 
+            CreateInstancia_RepMaestroExistenciaInventario_Filtros();
+        Reporte.IReporte 
+            CreateInstancia_RepMaestroExistenciaInventario();
+
+        Reporte.IReporte 
+            CreateInstancia_RepMaestroDepositoResumen();
+
+        Reportes.Filtros.IFiltros 
+            CreateInstancia_RepNivelMinimo_Filtros();
+        Reporte.IReporte 
+            CreateInstancia_RepNivelMinimo();
+
+        Reportes.Filtros.IFiltros 
+            CreateInstancia_RepKardex_Filtros();
+        Reporte.IReporte 
+            CreateInstancia_RepKardex();
+
+        Reportes.Filtros.IFiltros
+            CreateInstancia_RepKardexResumenMov_Filtros();
+        Reporte.IReporte 
+            CreateInstancia_RepKardexResumenMov();
+
+        Reportes.Filtros.IFiltros 
+            CreateInstancia_RepValorizacionInventario_Filtros();
+        Reporte.IReporte 
+            CreateInstancia_RepValorizacionInventario();
+
+        Reportes.Filtros.IFiltros 
+            CreateInstancia_RepRelacionCompraVenta_Filtros();
+        Reporte.IReporte 
+            CreateInstancia_RepRelacionCompraVenta();
+
+        Reportes.Filtros.IFiltros 
+            CreateInstancia_RepResumenCostoInventario_Filtros();
+        Reporte.IReporte 
+            CreateInstancia_RepResumenCostoInventario();
     }
 }

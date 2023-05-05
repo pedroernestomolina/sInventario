@@ -26,6 +26,7 @@ namespace ModInventario.Utils.FiltrosPara.Reportes
         public ficha Precio { get; set; }
         public ficha EmpqPrecio { get; set; }
         public ficha Oferta { get; set; }
+        public ficha Concepto { get; set; }
 
 
         public override string ToString()
@@ -48,6 +49,7 @@ namespace ModInventario.Utils.FiltrosPara.Reportes
             if (Precio != null) t += ", Precio: " + Precio.desc;
             if (EmpqPrecio != null) t += ", Empaque Precio: " + EmpqPrecio.desc;
             if (Oferta != null) t += ", Oferta: " + Oferta.desc;
+            if (Concepto != null) t += ", Concepto: " + Concepto.desc;
             return t;
         }
     }

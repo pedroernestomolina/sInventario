@@ -284,7 +284,6 @@ namespace ModInventario.src.Inicio.ModoSucursal
         {
             ReporteMaestroPrecio();
         }
-
         private void ReporteMaestroPrecio()
         {
             _controlador.ReporteMaestroPrecio();
@@ -294,7 +293,6 @@ namespace ModInventario.src.Inicio.ModoSucursal
         {
             Kardex();
         }
-
         private void Kardex()
         {
             _controlador.Kardex();
@@ -304,7 +302,6 @@ namespace ModInventario.src.Inicio.ModoSucursal
         {
             ReporteRelacionCompraVenta();
         }
-
         private void ReporteRelacionCompraVenta()
         {
             _controlador.ReporteRelacionCompraVenta(); 
@@ -323,7 +320,6 @@ namespace ModInventario.src.Inicio.ModoSucursal
         {
             MaestroNivelMinimo();
         }
-
         private void MaestroNivelMinimo()
         {
             _controlador.MaestroNivelMinimo();
@@ -383,7 +379,6 @@ namespace ModInventario.src.Inicio.ModoSucursal
         {
             ReporteValorizacionInventario();
         }
-
         private void ReporteValorizacionInventario()
         {
             _controlador.ReporteValorizacionInventario();
@@ -473,7 +468,6 @@ namespace ModInventario.src.Inicio.ModoSucursal
         {
             _controlador.ReporteResumenCostoInventario();
         }
-
         private void rotaciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
         }

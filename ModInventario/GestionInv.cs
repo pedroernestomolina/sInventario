@@ -395,13 +395,134 @@ namespace ModInventario
             {
                 Reporte(_fabrica.CreateInstancia_RepMasterPrecio(), _fabrica.CreateInstancia_RepMasterPrecio_Filtros());
             }
-
             //if (VerificarPermisoReportes())
             //{
             //    Helpers.HndReportes.MaestroPrecio(_fabrica, _gestionReporteFiltros);
             //}
         }
-
+        public void ReporteMaestroProductos()
+        {
+            if (VerificarPermisoReportes())
+            {
+                Reporte(_fabrica.CreateInstancia_RepMasterProductos(), _fabrica.CreateInstancia_RepMasterProductos_Filtros());
+            }
+            //if (VerificarPermisoReportes())
+            //{
+               //Helpers.HndReportes.MaestroProductos(_fabrica, _gestionReporteFiltros);
+            //}
+        }
+        public void ReporteMaestroInventario()
+        {
+            if (VerificarPermisoReportes())
+            {
+                Reporte(_fabrica.CreateInstancia_RepMaestroInventario(), _fabrica.CreateInstancia_RepMaestroInventario_Filtros());
+            }
+            //if (VerificarPermisoReportes())
+            //{
+              //Helpers.HndReportes.MaestroInventario(_fabrica, _gestionReporteFiltros);
+            //}
+        }
+        public void ReporteMaestroExistenciaDetalle()
+        {
+            if (VerificarPermisoReportes())
+            {
+                Reporte(_fabrica.CreateInstancia_RepMaestroExistenciaDetalle(), _fabrica.CreateInstancia_RepMaestroExistenciaDetalle_Filtros());
+            }
+            //if (VerificarPermisoReportes())
+            //{
+            //    Helpers.HndReportes.MaestroExistenciaDetalle(_fabrica, _gestionReporteFiltros);
+            //}
+        }
+        public void ReporteMaestroExistenciaInventario()
+        {
+            if (VerificarPermisoReportes())
+            {
+                Reporte(_fabrica.CreateInstancia_RepMaestroExistenciaInventario(), _fabrica.CreateInstancia_RepMaestroExistenciaInventario_Filtros());
+            }
+            //if (VerificarPermisoReportes())
+            //{
+                //Helpers.HndReportes.MaestroExistenciaInventario(_fabrica, _gestionReporteFiltros);
+            //}
+        }
+        public void ReporteMaestroDepositoResumen()
+        {
+            if (VerificarPermisoReportes())
+            {
+                var rp = _fabrica.CreateInstancia_RepMaestroDepositoResumen();
+                rp.Generar();
+            }
+            //if (VerificarPermisoReportes())
+            //{
+            //var rp = new Reportes.Filtros.DepositoResumen.GestionRep();
+            //    rp.Generar();
+            //}
+        }
+        public void MaestroNivelMinimo()
+        {
+            if (VerificarPermisoReportes())
+            {
+                Reporte(_fabrica.CreateInstancia_RepNivelMinimo(), _fabrica.CreateInstancia_RepNivelMinimo_Filtros());
+            }
+            //if (VerificarPermisoReportes())
+            //{
+            //Helpers.HndReportes.NivelMinimo(_fabrica, _gestionReporteFiltros);
+            //}
+        }
+        public void Kardex()
+        {
+            if (VerificarPermisoReportes())
+            {
+                Reporte(_fabrica.CreateInstancia_RepKardex(), _fabrica.CreateInstancia_RepKardex_Filtros());
+            }
+            //if (VerificarPermisoReportes())
+            //{
+            //Helpers.HndReportes.Kardex(_fabrica, _gestionReporteFiltros);
+            //}
+        }
+        public void Kardex_Resumen_Mov()
+        {
+            if (VerificarPermisoReportes())
+            {
+                Reporte(_fabrica.CreateInstancia_RepKardexResumenMov(), _fabrica.CreateInstancia_RepKardexResumenMov_Filtros());
+            }
+            //if (VerificarPermisoReportes())
+            //{
+            //    Helpers.HndReportes.KardexResumenMov(_fabrica, _gestionReporteFiltros);
+            //}
+        }
+        public void ReporteValorizacionInventario()
+        {
+            if (VerificarPermisoReportes())
+            {
+                Reporte(_fabrica.CreateInstancia_RepValorizacionInventario(), _fabrica.CreateInstancia_RepValorizacionInventario_Filtros());
+            }
+            //if (VerificarPermisoReportes())
+            //{
+            //Helpers.HndReportes.ValorizacionInventario(_fabrica, _gestionReporteFiltros);
+            //}
+        }
+        public void ReporteRelacionCompraVenta()
+        {
+            if (VerificarPermisoReportes())
+            {
+                Reporte(_fabrica.CreateInstancia_RepRelacionCompraVenta(), _fabrica.CreateInstancia_RepRelacionCompraVenta_Filtros());
+            }
+            //if (VerificarPermisoReportes())
+            //{
+            //Helpers.HndReportes.RelacionCompraVenta(_fabrica, _gestionReporteFiltros);
+            //}
+        }
+        public void ReporteResumenCostoInventario()
+        {
+            if (VerificarPermisoReportes())
+            {
+                Reporte(_fabrica.CreateInstancia_RepResumenCostoInventario(), _fabrica.CreateInstancia_RepResumenCostoInventario_Filtros());
+            }
+            //if (VerificarPermisoReportes())
+            //{
+            //Helpers.HndReportes.ResumenCostoInventario(_fabrica, _gestionReporteFiltros);
+            //}
+        }
         Utils.FiltrosPara.Reportes.IFiltroRep _filtrRep;
         private void Reporte(src.Reporte.IReporte reporte, Reportes.Filtros.IFiltros filtros)
         {
@@ -419,90 +540,11 @@ namespace ModInventario
             }
         }
 
-
-        public void ReporteResumenCostoInventario()
-        {
-            if (VerificarPermisoReportes())
-            {
-                Helpers.HndReportes.ResumenCostoInventario(_fabrica, _gestionReporteFiltros);
-            }
-        }
-        public void ReporteMaestroProductos()
-        {
-            if (VerificarPermisoReportes())
-            {
-                Helpers.HndReportes.MaestroProductos(_fabrica, _gestionReporteFiltros);
-            }
-        }
-        public void ReporteRelacionCompraVenta()
-        {
-            if (VerificarPermisoReportes())
-            {
-                Helpers.HndReportes.RelacionCompraVenta(_fabrica, _gestionReporteFiltros);
-            }
-        }
-        public void ReporteValorizacionInventario()
-        {
-            if (VerificarPermisoReportes())
-            {
-                Helpers.HndReportes.ValorizacionInventario(_fabrica, _gestionReporteFiltros);
-            }
-        }
-        public void Kardex_Resumen_Mov()
-        {
-            if (VerificarPermisoReportes())
-            {
-                Helpers.HndReportes.KardexResumenMov(_fabrica, _gestionReporteFiltros);
-            }
-        }
-        public void Kardex()
-        {
-            if (VerificarPermisoReportes())
-            {
-                Helpers.HndReportes.Kardex(_fabrica, _gestionReporteFiltros);
-            }
-        }
-        public void MaestroNivelMinimo()
-        {
-            if (VerificarPermisoReportes())
-            {
-                Helpers.HndReportes.NivelMinimo(_fabrica, _gestionReporteFiltros);
-            }
-        }
         public void ReporteMaestroInventarioBasico()
         {
             if (VerificarPermisoReportes())
             {
                 Helpers.HndReportes.MaestroInventarioBasico(_fabrica, _gestionReporteFiltros);
-            }
-        }
-        public void ReporteMaestroInventario()
-        {
-            if (VerificarPermisoReportes())
-            {
-                Helpers.HndReportes.MaestroInventario(_fabrica, _gestionReporteFiltros);
-            }
-        }
-        public void ReporteMaestroExistenciaDetalle()
-        {
-            if (VerificarPermisoReportes())
-            {
-                Helpers.HndReportes.MaestroExistenciaDetalle(_fabrica, _gestionReporteFiltros);
-            }
-        }
-        public void ReporteMaestroExistenciaInventario()
-        {
-            if (VerificarPermisoReportes())
-            {
-                Helpers.HndReportes.MaestroExistenciaInventario(_fabrica, _gestionReporteFiltros);
-            }
-        }
-        public void ReporteMaestroDepositoResumen()
-        {
-            if (VerificarPermisoReportes())
-            {
-                var rp = new Reportes.Filtros.DepositoResumen.GestionRep();
-                rp.Generar();
             }
         }
         public bool VerificarPermisoReportes()

@@ -9,11 +9,9 @@ using System.Threading.Tasks;
 
 namespace ModInventario.Reportes.Filtros.Kardex
 {
-    
-    public class GestionRep
+    public class GestionRep: src.Reporte.IReporte
     {
-
-        private FiltrosGen.Reportes.data dataFiltros;
+        private FiltrosGen.Reportes.IData dataFiltros;
 
 
         public GestionRep()
@@ -21,10 +19,11 @@ namespace ModInventario.Reportes.Filtros.Kardex
         }
 
 
-        public void setFiltros(FiltrosGen.Reportes.data data)
+        public void setFiltros(FiltrosGen.Reportes.IData data)
         {
             dataFiltros = data;
         }
+
 
         public void Generar()
         {
@@ -44,6 +43,10 @@ namespace ModInventario.Reportes.Filtros.Kardex
             if (dataFiltros.Producto !=null)
             {
                 filtro.autoProducto = dataFiltros.Producto.id;
+            }
+            if (dataFiltros.Concepto != null)
+            {
+                filtro.autoConcepto = dataFiltros.Concepto.id;
             }
             try
             {
@@ -116,7 +119,5 @@ namespace ModInventario.Reportes.Filtros.Kardex
             frp.Path = pt;
             frp.ShowDialog();
         }
-
     }
-
 }

@@ -9,11 +9,9 @@ using System.Threading.Tasks;
 
 namespace ModInventario.Reportes.Filtros.MaestroProducto
 {
-
-    public class GestionRep
+    public class GestionRep: src.Reporte.IReporte
     {
-
-        private FiltrosGen.Reportes.data dataFiltros;
+        private FiltrosGen.Reportes.IData dataFiltros;
 
 
         public GestionRep()
@@ -21,7 +19,7 @@ namespace ModInventario.Reportes.Filtros.MaestroProducto
         }
 
 
-        public void setFiltros(FiltrosGen.Reportes.data data)
+        public void setFiltros(FiltrosGen.Reportes.IData data)
         {
             dataFiltros = data;
         }

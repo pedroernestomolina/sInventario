@@ -21,7 +21,6 @@ namespace ModInventario.Reportes.Filtros.ResumenCostoInventario
         public bool ActivarOrigen { get { return false; } }
         public bool ActivarCategoria { get { return false; } }
         public bool ActivarMarca { get { return false; } }
-        public bool ActivarGrupo { get { return ActivarDepartamento;; } }
         public bool ActivarPrecio { get { return false; } }
         public bool ActivarPesado { get { return false; } }
         public bool ActivarEntreFechas { get { return false; } }
@@ -32,7 +31,7 @@ namespace ModInventario.Reportes.Filtros.ResumenCostoInventario
         public bool IsReqeridoPrecio { get { return false; } }
         public bool IsRequeridoProducto { get { return false; } }
         public bool IsRequeridoDepartamento { get { return false; } }
-        public bool IsRequeridoDeposito { get { return false; } }
+        public bool IsRequeridoDeposito { get { return true; } }
         public bool IsRequeridoSucursal { get { return false; } }
         public bool IsRequeridoTasaIva { get { return false; } }
         public bool IsRequeridoAdmDivisa { get { return false; } }

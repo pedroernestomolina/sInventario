@@ -98,12 +98,14 @@ namespace ModInventario.src
         {
             return new src.Visor.EntradaxCompra.ModoSoloReporte.ImpSoloReporte();
         }
-        public Filtro.FiltroRep.IFiltroRep 
-            CreateInstancia_FiltrosReporte()
-        {
-            var filtroBusPrd = CreateInstancia_FiltroBusqProducto();
-            return new src.Filtro.FiltroRep.ModoSoloReporte.ImpModo(filtroBusPrd);
-        }
+
+        //public Filtro.FiltroRep.IFiltroRep 
+        //    CreateInstancia_FiltrosReporte()
+        //{
+        //    var filtroBusPrd = CreateInstancia_FiltroBusqProducto();
+        //    return new src.Filtro.FiltroRep.ModoSoloReporte.ImpModo(filtroBusPrd);
+        //}
+
         private FiltrosGen.IBuscar
             CreateInstancia_FiltroBusqProducto()
         {
@@ -187,13 +189,13 @@ namespace ModInventario.src
             return new Reportes.Filtros.MaestroProducto.GestionRep();
         }
 
-        public Reporte.IReporte CreateInstancia_RepMasterPrecio()
-        {
-            return new Reportes.Filtros.MaestroPrecioSoloReporte.GestionRep();
-        }
         public Reportes.Filtros.IFiltros CreateInstancia_RepMasterPrecio_Filtros()
         {
             return new Reportes.Filtros.MaestroPrecioSoloReporte.Filtros();
+        }
+        public Reporte.IReporte CreateInstancia_RepMasterPrecio()
+        {
+            return new Reportes.Filtros.MaestroPrecioSoloReporte.GestionRep();
         }
 
         public Reportes.Filtros.IFiltros CreateInstancia_RepMaestroInventario_Filtros()
@@ -216,11 +218,11 @@ namespace ModInventario.src
 
         public Reportes.Filtros.IFiltros CreateInstancia_RepMaestroExistenciaInventario_Filtros()
         {
-            return null;
+            return new Reportes.Filtros.MaestroExistenciaInventario.FiltrosModoSoloReporte();
         }
         public Reporte.IReporte CreateInstancia_RepMaestroExistenciaInventario()
         {
-            return null;
+            return new Reportes.Filtros.MaestroExistenciaInventario.GestionRep();
         }
 
         public Reporte.IReporte CreateInstancia_RepMaestroDepositoResumen()
@@ -230,29 +232,29 @@ namespace ModInventario.src
 
         public Reportes.Filtros.IFiltros CreateInstancia_RepNivelMinimo_Filtros()
         {
-            return null;
+            return new Reportes.Filtros.NivelMInimo.FiltrosModoSoloReporte();
         }
         public Reporte.IReporte CreateInstancia_RepNivelMinimo()
         {
-            return null;
+            return new Reportes.Filtros.NivelMInimo.GestionRep();
         }
 
         public Reportes.Filtros.IFiltros CreateInstancia_RepKardex_Filtros()
         {
-            return null;
+            return new Reportes.Filtros.Kardex.FiltrosModoSoloReporte();
         }
         public Reporte.IReporte CreateInstancia_RepKardex()
         {
-            return null;
+            return new Reportes.Filtros.Kardex.GestionRep();
         }
 
         public Reportes.Filtros.IFiltros CreateInstancia_RepKardexResumenMov_Filtros()
         {
-            return null;
+            return new Reportes.Filtros.KardexResumen.FiltrosModoSoloReporte();
         }
         public Reporte.IReporte CreateInstancia_RepKardexResumenMov()
         {
-            return null;
+            return new Reportes.Filtros.KardexResumen.GestionRep();
         }
 
         public Reportes.Filtros.IFiltros CreateInstancia_RepValorizacionInventario_Filtros()

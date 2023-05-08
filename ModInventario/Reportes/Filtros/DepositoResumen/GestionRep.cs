@@ -16,7 +16,7 @@ namespace ModInventario.Reportes.Filtros.DepositoResumen
         }
 
 
-        public void setFiltros(FiltrosGen.Reportes.IData data)
+        public void setFiltros(ModInventario.src.Reporte.IData data)
         {
         }
 

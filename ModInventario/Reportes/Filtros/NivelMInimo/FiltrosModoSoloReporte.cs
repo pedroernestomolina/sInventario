@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModInventario.Reportes.Filtros.MaestroInventarioBasico
+namespace ModInventario.Reportes.Filtros.NivelMInimo
 {
-    public class Filtros: IFiltros
+    public class FiltrosModoSoloReporte: IFiltros
     {
         public bool ActivarDepartamento { get { return true; } }
         public bool ActivarDeposito { get { return true; } }

@@ -31,8 +31,8 @@ namespace ModInventario.src
             CreateInstancia_ImagenProducto();
         ModInventario.src.Producto.QR.IQR
             CreateInstancia_ImagenQRProducto();
-        Filtro.FiltroRep.IFiltroRep 
-            CreateInstancia_FiltrosReporte();
+        //Filtro.FiltroRep.IFiltroRep 
+        //    CreateInstancia_FiltrosReporte();
         ModInventario.Buscar.Gestion 
             CreateInstancia_HndProducto(ISeguridadAccesoSistema _seguridad, IFabrica _fabrica);
         ModInventario.src.Visor.Traslado.IVisorTraslado 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ModInventario.Utils.FiltrosPara.Reportes
 {
-    public class DataExportar: FiltrosGen.Reportes.IData
+    public class DataExportar: ModInventario.src.Reporte.IData
     {
         public ficha Depart { get; set; }
         public ficha Deposito { get; set; }

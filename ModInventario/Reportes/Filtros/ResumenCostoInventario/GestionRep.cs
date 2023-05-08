@@ -11,7 +11,7 @@ namespace ModInventario.Reportes.Filtros.ResumenCostoInventario
 {
     public class GestionRep: src.Reporte.IReporte
     {
-        private FiltrosGen.Reportes.IData dataFiltros;
+        private ModInventario.src.Reporte.IData dataFiltros;
         private List<data> _ldata;
 
 
@@ -21,7 +21,7 @@ namespace ModInventario.Reportes.Filtros.ResumenCostoInventario
         }
 
 
-        public void setFiltros(FiltrosGen.Reportes.IData data)
+        public void setFiltros(ModInventario.src.Reporte.IData data)
         {
             dataFiltros = data;
         }

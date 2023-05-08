@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModInventario.FiltrosGen.Reportes
+namespace ModInventario.src.Reporte
 {
-    public interface IDatas
+    public interface IData
     {
         ficha Depart { get; set; }
         ficha Deposito { get; set; }

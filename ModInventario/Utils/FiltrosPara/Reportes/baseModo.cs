@@ -46,7 +46,7 @@ namespace ModInventario.Utils.FiltrosPara.Reportes
         public ICtrlHabilitarBusqPor Producto { get { return _producto; } }
         public ICtrlHabilitarFecha Desde { get { return _desde; } }
         public ICtrlHabilitarFecha Hasta { get { return _hasta; } }
-        public FiltrosGen.Reportes.IData DataExportar { get { return exportarData(); } }
+        public ModInventario.src.Reporte.IData DataExportar { get { return exportarData(); } }
 
 
         virtual public void Inicializa()
@@ -178,7 +178,7 @@ namespace ModInventario.Utils.FiltrosPara.Reportes
         }
 
 
-        private FiltrosGen.Reportes.IData exportarData()
+        private ModInventario.src.Reporte.IData exportarData()
         {
             if (_procesarIsOk)
             {

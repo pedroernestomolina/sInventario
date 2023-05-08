@@ -51,11 +51,12 @@ namespace ModInventario.src
         {
             return new Producto.Visualizar.ModoBasico.Gestion();
         }
-        public Filtro.FiltroRep.IFiltroRep 
-            CreateInstancia_FiltrosReporte()
-        {
-            return new ModInventario.src.Filtro.FiltroRep.ModoBasico.ImpModoBasico();
-        }
+
+        //public Filtro.FiltroRep.IFiltroRep 
+        //    CreateInstancia_FiltrosReporte()
+        //{
+        //    return new ModInventario.src.Filtro.FiltroRep.ModoBasico.ImpModoBasico();
+        //}
 
 
         public AdmDocumentos.IAdmDoc

@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModInventario.Reportes.Filtros.MaestroInventarioBasico
+namespace ModInventario.Reportes.Filtros.NivelMInimo
 {
-    public class Filtros: IFiltros
+    public class FiltrosModoSucursal : IFiltros
     {
         public bool ActivarDepartamento { get { return true; } }
         public bool ActivarDeposito { get { return true; } }
@@ -31,7 +31,7 @@ namespace ModInventario.Reportes.Filtros.MaestroInventarioBasico
         public bool IsReqeridoPrecio { get { return false; } }
         public bool IsRequeridoProducto { get { return false; } }
         public bool IsRequeridoDepartamento { get { return false; } }
-        public bool IsRequeridoDeposito { get { return true; } }
+        public bool IsRequeridoDeposito { get { return false; } }
         public bool IsRequeridoSucursal { get { return false; } }
         public bool IsRequeridoTasaIva { get { return false; } }
         public bool IsRequeridoAdmDivisa { get { return false; } }

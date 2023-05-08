@@ -5,17 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModInventario.Reportes.Filtros.NivelMInimo
+namespace ModInventario.Reportes.Filtros.Kardex
 {
-    public class Filtro : IFiltros
+    public class FiltrosModoSoloReporte: IFiltros
     {
-        public bool ActivarDepartamento { get { return true; } }
+        public bool ActivarDepartamento { get { return false; } }
         public bool ActivarDeposito { get { return true; } }
         public bool ActivarSucursal { get { return false; } }
         public bool ActivarAdmDivisa { get { return false; } }
-        public bool ActivarProducto { get { return false; } }
-        public bool ActivarDesde { get { return false; } }
-        public bool ActivarHasta { get { return false; } }
+        public bool ActivarProducto { get { return true; } }
+        public bool ActivarDesde { get { return true; } }
+        public bool ActivarHasta { get { return true; } }
         public bool ActivarTasaIva { get { return false; } }
         public bool ActivarEstatus { get { return false; } }
         public bool ActivarOrigen { get { return false; } }
@@ -26,12 +26,12 @@ namespace ModInventario.Reportes.Filtros.NivelMInimo
         public bool ActivarEntreFechas { get { return false; } }
         public bool ActivarEmpaquePrecio { get { return false; } }
         public bool ActivarOferta { get { return false; } }
-        public bool ActivarConcepto { get { return false; } }
+        public bool ActivarConcepto { get { return true; } }
         //
         public bool IsReqeridoPrecio { get { return false; } }
         public bool IsRequeridoProducto { get { return false; } }
         public bool IsRequeridoDepartamento { get { return false; } }
-        public bool IsRequeridoDeposito { get { return false; } }
+        public bool IsRequeridoDeposito { get { return true; } }
         public bool IsRequeridoSucursal { get { return false; } }
         public bool IsRequeridoTasaIva { get { return false; } }
         public bool IsRequeridoAdmDivisa { get { return false; } }

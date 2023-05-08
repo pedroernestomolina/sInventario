@@ -9,11 +9,9 @@ using System.Threading.Tasks;
 
 namespace ModInventario.Reportes.Filtros.MaestroInventarioBasico
 {
-    
-    public class GestionRep
+    public class GestionRep: src.Reporte.IReporte
     {
-
-        private FiltrosGen.Reportes.data  dataFiltros;
+        private ModInventario.src.Reporte.IData dataFiltros;
 
 
         public GestionRep()
@@ -21,10 +19,11 @@ namespace ModInventario.Reportes.Filtros.MaestroInventarioBasico
         }
 
 
-        public void setFiltros(FiltrosGen.Reportes.data data)
+        public void setFiltros(src.Reporte.IData data)
         {
             dataFiltros = data;
         }
+
 
         public void Generar()
         {
@@ -125,7 +124,5 @@ namespace ModInventario.Reportes.Filtros.MaestroInventarioBasico
             frp.Path = pt;
             frp.ShowDialog();
         }
-
     }
-
 }

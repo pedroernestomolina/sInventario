@@ -56,12 +56,14 @@ namespace ModInventario.src
         {
             return new ModInventario.Producto.VisualizarFicha.Gestion();
         }
-        public Filtro.FiltroRep.IFiltroRep 
-            CreateInstancia_FiltrosReporte()
-        {
-            var filtroBusPrd = CreateInstancia_FiltroBusqProducto();
-            return new ModInventario.src.Filtro.FiltroRep.ModoSucursal.ImpModoSucursal(filtroBusPrd);
-        }
+
+        //public Filtro.FiltroRep.IFiltroRep 
+        //    CreateInstancia_FiltrosReporte()
+        //{
+        //    var filtroBusPrd = CreateInstancia_FiltroBusqProducto();
+        //    return new ModInventario.src.Filtro.FiltroRep.ModoSucursal.ImpModoSucursal(filtroBusPrd);
+        //}
+
         private FiltrosGen.IBuscar 
             CreateInstancia_FiltroBusqProducto()
         {
@@ -270,7 +272,7 @@ namespace ModInventario.src
         }
         public Reportes.Filtros.IFiltros CreateInstancia_RepMaestroExistenciaInventario_Filtros()
         {
-            return new Reportes.Filtros.MaestroExistenciaInventario.Filtros();
+            return new Reportes.Filtros.MaestroExistenciaInventario.FiltrosModoSucursal();
         }
         public Reporte.IReporte CreateInstancia_RepMaestroExistenciaInventario()
         {
@@ -282,7 +284,7 @@ namespace ModInventario.src
         }
         public Reportes.Filtros.IFiltros CreateInstancia_RepNivelMinimo_Filtros()
         {
-            return new Reportes.Filtros.NivelMInimo.Filtro();
+            return new Reportes.Filtros.NivelMInimo.FiltrosModoSucursal();
         }
         public Reporte.IReporte CreateInstancia_RepNivelMinimo()
         {
@@ -290,7 +292,7 @@ namespace ModInventario.src
         }
         public Reportes.Filtros.IFiltros CreateInstancia_RepKardex_Filtros()
         {
-            return new Reportes.Filtros.Kardex.Filtros();
+            return new Reportes.Filtros.Kardex.FiltrosModoSucursal();
         }
         public Reporte.IReporte CreateInstancia_RepKardex()
         {
@@ -298,7 +300,7 @@ namespace ModInventario.src
         }
         public Reportes.Filtros.IFiltros CreateInstancia_RepKardexResumenMov_Filtros()
         {
-            return new Reportes.Filtros.KardexResumen.Filtros();
+            return new Reportes.Filtros.KardexResumen.FiltrosModoSucursal();
         }
         public Reporte.IReporte CreateInstancia_RepKardexResumenMov()
         {

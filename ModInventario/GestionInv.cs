@@ -86,7 +86,8 @@ namespace ModInventario
 
 
         private src.IFabrica _fabrica;
-        ModInventario.src.Filtro.FiltroRep.IFiltroRep _gestionReporteFiltros;
+        //ModInventario.src.Filtro.FiltroRep.IFiltroRep _gestionReporteFiltros;
+
         ModInventario.src.AdmDocumentos.IAdmDoc _hndAdmDoc;
         private Buscar.Gestion _gHndProducto;
         ModInventario.src.Visor.Traslado.IVisorTraslado _gVisorTraslado;
@@ -99,7 +100,9 @@ namespace ModInventario
             _fabrica = fabrica;
             Producto.Precio.EditarCambiar.IEditar _hndEditarPrecio = _fabrica.CreateInstancia_EditarCambiarPrecio();
             _hndFiltroAdmProducto = _fabrica.CreateInstancia_FiltroPrdAdm();
-            _gestionReporteFiltros = _fabrica.CreateInstancia_FiltrosReporte();
+
+            //_gestionReporteFiltros = _fabrica.CreateInstancia_FiltrosReporte();
+
             _hndAdmDoc = _fabrica.CreateInstancia_AdmDocumentos();
             //VISOR
             _gVisorTraslado = _fabrica.CreateInstancia_VisorTraslado();
@@ -540,13 +543,14 @@ namespace ModInventario
             }
         }
 
-        public void ReporteMaestroInventarioBasico()
-        {
-            if (VerificarPermisoReportes())
-            {
-                Helpers.HndReportes.MaestroInventarioBasico(_fabrica, _gestionReporteFiltros);
-            }
-        }
+        //public void ReporteMaestroInventarioBasico()
+        //{
+        //    if (VerificarPermisoReportes())
+        //    {
+        //        // Helpers.HndReportes.MaestroInventarioBasico(_fabrica, _gestionReporteFiltros);
+        //    }
+        //}
+
         public bool VerificarPermisoReportes()
         {
             return Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_Reportes, Sistema.UsuarioP.autoGru, _seguridad);

@@ -56,12 +56,14 @@ namespace ModInventario.src
         {
             return new ModInventario.Producto.VisualizarFicha.Gestion();
         }
-        public Filtro.FiltroRep.IFiltroRep
-            CreateInstancia_FiltrosReporte()
-        {
-            var filtroBusPrd = CreateInstancia_FiltroBusqProducto();
-            return new ModInventario.src.Filtro.FiltroRep.ModoSucursal.ImpModoSucursal(filtroBusPrd);
-        }
+
+        //public Filtro.FiltroRep.IFiltroRep
+        //    CreateInstancia_FiltrosReporte()
+        //{
+        //    var filtroBusPrd = CreateInstancia_FiltroBusqProducto();
+        //    return new ModInventario.src.Filtro.FiltroRep.ModoSucursal.ImpModoSucursal(filtroBusPrd);
+        //}
+
         private FiltrosGen.IBuscar
             CreateInstancia_FiltroBusqProducto()
         {
@@ -255,88 +257,88 @@ namespace ModInventario.src
 
         public Reportes.Filtros.IFiltros CreateInstancia_RepMaestroInventario_Filtros()
         {
-            return null;
+            return new Reportes.Filtros.MaestroInventario.Filtros();
         }
         public Reporte.IReporte CreateInstancia_RepMaestroInventario()
         {
-            return null;
+            return new Reportes.Filtros.MaestroInventario.GestionRep();
         }
 
         public Reportes.Filtros.IFiltros CreateInstancia_RepMaestroExistenciaDetalle_Filtros()
         {
-            return null;
+            return new Reportes.Filtros.MaestroExistencia.Filtros();
         }
         public Reporte.IReporte CreateInstancia_RepMaestroExistenciaDetalle()
         {
-            return null;
+            return new Reportes.Filtros.MaestroExistencia.GestionRep();
         }
 
         public Reportes.Filtros.IFiltros CreateInstancia_RepMaestroExistenciaInventario_Filtros()
         {
-            return null;
+            return new Reportes.Filtros.MaestroExistenciaInventario.FiltrosModoSucursal();
         }
         public Reporte.IReporte CreateInstancia_RepMaestroExistenciaInventario()
         {
-            return null;
+            return new Reportes.Filtros.MaestroExistenciaInventario.GestionRep();
         }
 
         public Reporte.IReporte CreateInstancia_RepMaestroDepositoResumen()
         {
-            return null;
+            return new Reportes.Filtros.DepositoResumen.GestionRep();
         }
 
         public Reportes.Filtros.IFiltros CreateInstancia_RepNivelMinimo_Filtros()
         {
-            return null;
+            return new Reportes.Filtros.NivelMInimo.FiltrosModoSucursal();
         }
         public Reporte.IReporte CreateInstancia_RepNivelMinimo()
         {
-            return null;
+            return new Reportes.Filtros.NivelMInimo.GestionRep();
         }
 
         public Reportes.Filtros.IFiltros CreateInstancia_RepKardex_Filtros()
         {
-            return null; 
+            return new Reportes.Filtros.Kardex.FiltrosModoSucursal();
         }
         public Reporte.IReporte CreateInstancia_RepKardex()
         {
-            return null;
+            return new Reportes.Filtros.Kardex.GestionRep();
         }
 
         public Reportes.Filtros.IFiltros CreateInstancia_RepKardexResumenMov_Filtros()
         {
-            return null;
+            return new Reportes.Filtros.KardexResumen.FiltrosModoSucursal();
         }
         public Reporte.IReporte CreateInstancia_RepKardexResumenMov()
         {
-            return null;
+            return new Reportes.Filtros.KardexResumen.GestionRep();
         }
 
         public Reportes.Filtros.IFiltros CreateInstancia_RepValorizacionInventario_Filtros()
         {
-            return null;
+            return new Reportes.Filtros.Valorizacion.Filtros();
         }
         public Reporte.IReporte CreateInstancia_RepValorizacionInventario()
         {
-            return null;
+            return new Reportes.Filtros.Valorizacion.GestionRep();
         }
 
         public Reportes.Filtros.IFiltros CreateInstancia_RepRelacionCompraVenta_Filtros()
         {
-            return null;
+            return new Reportes.Filtros.RelacionCompraVenta.Filtros();
         }
         public Reporte.IReporte CreateInstancia_RepRelacionCompraVenta()
         {
-            return null;
+            return new Reportes.Filtros.RelacionCompraVenta.GestionRep();
         }
 
         public Reportes.Filtros.IFiltros CreateInstancia_RepResumenCostoInventario_Filtros()
         {
-            return null;
+            return new Reportes.Filtros.ResumenCostoInventario.Filtros();
         }
         public Reporte.IReporte CreateInstancia_RepResumenCostoInventario()
         {
-            return null;
+            return new Reportes.Filtros.ResumenCostoInventario.GestionRep();
         }
     }
 }

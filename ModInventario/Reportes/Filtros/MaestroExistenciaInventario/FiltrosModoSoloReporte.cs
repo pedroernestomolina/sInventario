@@ -5,17 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModInventario.Reportes.Filtros.KardexResumen
+namespace ModInventario.Reportes.Filtros.MaestroExistenciaInventario
 {
-    public class Filtros: IFiltros
+    public class FiltrosModoSoloReporte: IFiltros
     {
-        public bool ActivarDepartamento { get { return false; } }
+        public bool ActivarDepartamento { get { return true; } }
         public bool ActivarDeposito { get { return true; } }
         public bool ActivarSucursal { get { return false; } }
         public bool ActivarAdmDivisa { get { return false; } }
-        public bool ActivarProducto { get { return true; } }
-        public bool ActivarDesde { get { return true; } }
-        public bool ActivarHasta { get { return true; } }
+        public bool ActivarProducto { get { return false; } }
+        public bool ActivarDesde { get { return false; } }
+        public bool ActivarHasta { get { return false; } }
         public bool ActivarTasaIva { get { return false; } }
         public bool ActivarEstatus { get { return false; } }
         public bool ActivarOrigen { get { return false; } }
@@ -29,14 +29,14 @@ namespace ModInventario.Reportes.Filtros.KardexResumen
         public bool ActivarConcepto { get { return false; } }
         //
         public bool IsReqeridoPrecio { get { return false; } }
-        public bool IsRequeridoProducto { get { return true; } }
+        public bool IsRequeridoProducto { get { return false; } }
         public bool IsRequeridoDepartamento { get { return false; } }
-        public bool IsRequeridoDeposito { get { return false; } }
+        public bool IsRequeridoDeposito { get { return true; } }
         public bool IsRequeridoSucursal { get { return false; } }
         public bool IsRequeridoTasaIva { get { return false; } }
         public bool IsRequeridoAdmDivisa { get { return false; } }
-        public bool IsRequeridoDesde { get { return true; } }
-        public bool IsRequeridoHasta { get { return true; } }
+        public bool IsRequeridoDesde { get { return false; } }
+        public bool IsRequeridoHasta { get { return false; } }
         public bool IsRequeridoEstatus { get { return false; } }
         public bool IsRequeridoOrigen { get { return false; } }
         public bool IsRequeridoCategoria { get { return false; } }

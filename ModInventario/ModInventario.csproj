@@ -93,19 +93,6 @@
       <DependentUpon>ConfigurarFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Configuracion\CambiarPreciosAlModificarCosto\IConf.cs" />
-    <Compile Include="FiltrosGen\Reportes\IData.cs" />
-    <Compile Include="FiltrosGen\Reportes\data.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="FiltrosGen\Reportes\FiltrosFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FiltrosGen\Reportes\FiltrosFrm.Designer.cs">
-      <DependentUpon>FiltrosFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FiltrosGen\Reportes\Gestion.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Gestion\IAbandonar.cs" />
     <Compile Include="Gestion\ILista.cs" />
     <Compile Include="Gestion\IProcesar.cs" />
@@ -264,7 +251,6 @@
       <DependentUpon>IdentificacionFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="IGestion.cs" />
-    <Compile Include="IGestionRep.cs" />
     <Compile Include="IListaSeleccion.cs" />
     <Compile Include="INotificarSeleccion.cs" />
     <Compile Include="ISeguridadAccesoSistema.cs" />
@@ -528,11 +514,14 @@
       <DependentUpon>DS.xsd</DependentUpon>
     </Compile>
     <Compile Include="Reportes\Filtros\IFiltros.cs" />
-    <Compile Include="Reportes\Filtros\KardexResumen\Filtros.cs" />
+    <Compile Include="Reportes\Filtros\KardexResumen\FiltrosModoSoloReporte.cs" />
+    <Compile Include="Reportes\Filtros\KardexResumen\FiltrosModoSucursal.cs" />
     <Compile Include="Reportes\Filtros\KardexResumen\GestionRep.cs" />
-    <Compile Include="Reportes\Filtros\Kardex\Filtros.cs" />
+    <Compile Include="Reportes\Filtros\Kardex\FiltrosModoSoloReporte.cs" />
+    <Compile Include="Reportes\Filtros\Kardex\FiltrosModoSucursal.cs" />
     <Compile Include="Reportes\Filtros\Kardex\GestionRep.cs" />
-    <Compile Include="Reportes\Filtros\MaestroExistenciaInventario\Filtros.cs" />
+    <Compile Include="Reportes\Filtros\MaestroExistenciaInventario\FiltrosModoSoloReporte.cs" />
+    <Compile Include="Reportes\Filtros\MaestroExistenciaInventario\FiltrosModoSucursal.cs" />
     <Compile Include="Reportes\Filtros\MaestroExistenciaInventario\GestionRep.cs" />
     <Compile Include="Reportes\Filtros\MaestroExistencia\Filtros.cs" />
     <Compile Include="Reportes\Filtros\MaestroExistencia\GestionRep.cs" />
@@ -552,7 +541,8 @@
     <Compile Include="Reportes\Filtros\MaestroPrecio\ModoAdm\GestionRep.cs" />
     <Compile Include="Reportes\Filtros\MaestroProducto\Filtros.cs" />
     <Compile Include="Reportes\Filtros\MaestroProducto\GestionRep.cs" />
-    <Compile Include="Reportes\Filtros\NivelMInimo\Filtro.cs" />
+    <Compile Include="Reportes\Filtros\NivelMInimo\FiltrosModoSoloReporte.cs" />
+    <Compile Include="Reportes\Filtros\NivelMInimo\FiltrosModoSucursal.cs" />
     <Compile Include="Reportes\Filtros\NivelMInimo\GestionRep.cs" />
     <Compile Include="Reportes\Filtros\RelacionCompraVenta\Filtros.cs" />
     <Compile Include="Reportes\Filtros\RelacionCompraVenta\GestionRep.cs" />
@@ -726,46 +716,6 @@
     <Compile Include="src\FiltroBusqAdm\PorExistencia\IExistencia.cs" />
     <Compile Include="src\FiltroBusqAdm\PorProveedor\IProveedor.cs" />
     <Compile Include="src\FiltroBusqAdm\PorTCS\ITCS.cs" />
-    <Compile Include="src\Filtro\FiltroRep\baseData.cs" />
-    <Compile Include="src\Filtro\FiltroRep\baseFiltro.cs" />
-    <Compile Include="src\Filtro\FiltroRep\IFiltroRep.cs" />
-    <Compile Include="src\Filtro\FiltroRep\ModoBasicoFox\dataFiltrar.cs" />
-    <Compile Include="src\Filtro\FiltroRep\ModoBasicoFox\FiltrosFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\Filtro\FiltroRep\ModoBasicoFox\FiltrosFrm.Designer.cs">
-      <DependentUpon>FiltrosFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="src\Filtro\FiltroRep\ModoBasicoFox\IModo.cs" />
-    <Compile Include="src\Filtro\FiltroRep\ModoBasicoFox\ImpModo.cs" />
-    <Compile Include="src\Filtro\FiltroRep\ModoBasico\dataFiltrar.cs" />
-    <Compile Include="src\Filtro\FiltroRep\ModoBasico\FiltrosFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\Filtro\FiltroRep\ModoBasico\FiltrosFrm.Designer.cs">
-      <DependentUpon>FiltrosFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="src\Filtro\FiltroRep\ModoBasico\ImpModoBasico.cs" />
-    <Compile Include="src\Filtro\FiltroRep\ModoBasico\IModoBasico.cs" />
-    <Compile Include="src\Filtro\FiltroRep\ModoSoloReporte\dataFiltrar.cs" />
-    <Compile Include="src\Filtro\FiltroRep\ModoSoloReporte\FiltrosFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\Filtro\FiltroRep\ModoSoloReporte\FiltrosFrm.Designer.cs">
-      <DependentUpon>FiltrosFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="src\Filtro\FiltroRep\ModoSoloReporte\IModo.cs" />
-    <Compile Include="src\Filtro\FiltroRep\ModoSoloReporte\ImpModo.cs" />
-    <Compile Include="src\Filtro\FiltroRep\ModoSucursal\dataFiltrar.cs" />
-    <Compile Include="src\Filtro\FiltroRep\ModoSucursal\FiltrosFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\Filtro\FiltroRep\ModoSucursal\FiltrosFrm.Designer.cs">
-      <DependentUpon>FiltrosFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="src\Filtro\FiltroRep\ModoSucursal\IModoSucursal.cs" />
-    <Compile Include="src\Filtro\FiltroRep\ModoSucursal\ImpModoSucursal.cs" />
-    <Compile Include="src\Filtro\IFiltro.cs" />
     <Compile Include="src\IFabrica.cs" />
     <Compile Include="src\ILista.cs" />
     <Compile Include="src\Inicio\ModoAdm\Principal.cs">
@@ -932,6 +882,7 @@
     <Compile Include="src\Producto\AgregarEditar\ModoAdm\Editar\dataEditar.cs" />
     <Compile Include="src\Producto\AgregarEditar\ModoAdm\Editar\IEditar.cs" />
     <Compile Include="src\Producto\AgregarEditar\ModoAdm\Editar\ImpEditar.cs" />
+    <Compile Include="src\Reporte\IData.cs" />
     <Compile Include="src\Tools\Buscar\dataExportar.cs" />
     <Compile Include="src\Tools\Buscar\IBuscar.cs" />
     <Compile Include="src\Tools\Buscar\ImpBuscar.cs" />
@@ -1380,9 +1331,6 @@
     <EmbeddedResource Include="Configuracion\RegistroPrecio\ConfigurarFrm.resx">
       <DependentUpon>ConfigurarFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FiltrosGen\Reportes\FiltrosFrm.resx">
-      <DependentUpon>FiltrosFrm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Graficas\GraficaFrm.resx">
       <DependentUpon>GraficaFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1565,18 +1513,6 @@
       <DependentUpon>FiltrosFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\FiltroBusqAdm\ModoSucursal\FiltrosFrm.resx">
-      <DependentUpon>FiltrosFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\Filtro\FiltroRep\ModoBasicoFox\FiltrosFrm.resx">
-      <DependentUpon>FiltrosFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\Filtro\FiltroRep\ModoBasico\FiltrosFrm.resx">
-      <DependentUpon>FiltrosFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\Filtro\FiltroRep\ModoSoloReporte\FiltrosFrm.resx">
-      <DependentUpon>FiltrosFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\Filtro\FiltroRep\ModoSucursal\FiltrosFrm.resx">
       <DependentUpon>FiltrosFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Inicio\ModoAdm\Principal.resx">

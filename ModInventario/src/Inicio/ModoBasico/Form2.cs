@@ -512,9 +512,7 @@ namespace ModInventario.src.Inicio.ModoBasico
         }
         private void ReporteMaestroInventarioBasico()
         {
-            _controlador.ReporteMaestroInventarioBasico();
+            //_controlador.ReporteMaestroInventarioBasico();
         }
-
     }
-
 }

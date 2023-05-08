@@ -27,8 +27,7 @@ namespace ModInventario.Utils.FiltrosPara.Reportes
         ICtrlHabilitarBusqPor Producto { get; }
         ICtrlHabilitarFecha Desde { get; }
         ICtrlHabilitarFecha Hasta { get; }
-        FiltrosGen.Reportes.IData DataExportar { get; }
-
+        ModInventario.src.Reporte.IData DataExportar { get; }
 
         void setFiltrosHab(ModInventario.Reportes.Filtros.IFiltros filtHab);
         void LimpiarFiltros();

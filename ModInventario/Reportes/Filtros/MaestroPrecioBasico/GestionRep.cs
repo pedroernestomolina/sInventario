@@ -11,8 +11,7 @@ namespace ModInventario.Reportes.Filtros.MaestroPrecioBasico
 {
     public class GestionRep: src.Reporte.IReporte
     {
-
-        private FiltrosGen.Reportes.IData dataFiltros;
+        private ModInventario.src.Reporte.IData dataFiltros;
 
 
         public GestionRep()
@@ -20,7 +19,7 @@ namespace ModInventario.Reportes.Filtros.MaestroPrecioBasico
         }
 
 
-        public void setFiltros(FiltrosGen.Reportes.IData data)
+        public void setFiltros(ModInventario.src.Reporte.IData data)
         {
             dataFiltros = data;
         }

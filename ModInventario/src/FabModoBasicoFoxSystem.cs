@@ -66,12 +66,14 @@ namespace ModInventario.src
         {
             return null;
         }
-        public Filtro.FiltroRep.IFiltroRep 
-            CreateInstancia_FiltrosReporte()
-        {
-            var filtroBusPrd = CreateInstancia_FiltroBusqProducto();
-            return new src.Filtro.FiltroRep.ModoBasicoFox.ImpModo(filtroBusPrd);
-        }
+
+        //public Filtro.FiltroRep.IFiltroRep 
+        //    CreateInstancia_FiltrosReporte()
+        //{
+        //    var filtroBusPrd = CreateInstancia_FiltroBusqProducto();
+        //    return new src.Filtro.FiltroRep.ModoBasicoFox.ImpModo(filtroBusPrd);
+        //}
+
         private FiltrosGen.IBuscar
             CreateInstancia_FiltroBusqProducto()
         {

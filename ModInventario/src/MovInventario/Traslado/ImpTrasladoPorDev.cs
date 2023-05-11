@@ -17,12 +17,14 @@ namespace ModInventario.src.MovInventario.Traslado
         private Tools.CapturaMov.ICapturaMov _capturaMov;
         private Tools.Deposito.IDeposito _depDestino;
         private int _idMovPendCargar;
+        private Utils.FiltrosPara.BusqProducto.Busqueda.IComp _compBusqProducto;
 
 
         public Tools.Deposito.IDeposito DepDestino { get { return _depDestino; } }
         public bool ProductoSeleccionadoIsOk { get { return _productoSeleccionadoIsOk; } }
         public override string GetInf_TipoMovimiento { get { return "TRASLADO X DEVOLUCION"; } }
         public bool ActivarDepPreDeterminadoParaDevolucion { get { return _activarDepDestinoPredeterminado; } }
+        public Utils.FiltrosPara.BusqProducto.Busqueda.IComp CompBusqProducto { get { return _compBusqProducto; } }
 
 
         public ImpTrasladoPorDev(ISeguridadAccesoSistema ctrSeguridad)
@@ -35,6 +37,9 @@ namespace ModInventario.src.MovInventario.Traslado
             _capturaMov = new CapturaMov.ImpCapturaMovTraslado();
             _depDestino = new Tools.Deposito.ImpDeposito();
             _idMovPendCargar = -1;
+            //
+            _compBusqProducto = new Utils.FiltrosPara.BusqProducto.Busqueda.ImpComp();
+            _compBusqProducto.setFiltros(new MovInventario.FiltrosActivar());
         }
 
 
@@ -46,8 +51,8 @@ namespace ModInventario.src.MovInventario.Traslado
             _idConceptoPredeterminadoParaDev = "";
             _activarDepDestinoPredeterminado = false;
             _productoSeleccionadoIsOk = false;
-            _busqPrd.setHabilitarFiltroDeposito(false);
             _idMovPendCargar = -1;
+            _compBusqProducto.Inicializa();
         }
         private MovFrm frm;
         public override void Inicia()
@@ -71,7 +76,6 @@ namespace ModInventario.src.MovInventario.Traslado
         {
             _productoSeleccionadoIsOk = false;
             CargarSeleccionarProducto(CargarFiltros());
-            _busqPrd.setCadenaBusqueda("");
         }
 
 
@@ -95,7 +99,12 @@ namespace ModInventario.src.MovInventario.Traslado
 
         private OOB.LibInventario.Producto.Filtro CargarFiltros()
         {
-            var filtros = _busqPrd.BuscarFiltros();
+            if (!_compBusqProducto.HayParametrosBusqueda)
+            {
+                Helpers.Msg.Alerta("NO HAY PAREMTROS SELECCIONADOS PARA REALIZAR LA BUSQUEDA");
+                return null;
+            }
+            var filtros = _compBusqProducto.DataExportar();
             if (filtros != null)
             {
                 if (DepOrigen.GetId == "")
@@ -226,6 +235,7 @@ namespace ModInventario.src.MovInventario.Traslado
                     _depDestino.setId(_idDepPredeterminadoParaDev);
                     _concepto.setId(_idConceptoPredeterminadoParaDev);
                 }
+                _compBusqProducto.CargarData();
                 return true;
             }
             catch (Exception e)
@@ -243,6 +253,7 @@ namespace ModInventario.src.MovInventario.Traslado
                 _depDestino.setId(_idDepPredeterminadoParaDev);
                 _concepto.setId(_idConceptoPredeterminadoParaDev);
             }
+            _compBusqProducto.Limpiar();
         }
 
         private bool _procesarIsOk;
@@ -649,11 +660,6 @@ namespace ModInventario.src.MovInventario.Traslado
         public void CargarPendiente(int idMovCargar)
         {
             _idMovPendCargar = idMovCargar;
-        }
-
-        public Utils.FiltrosPara.BusqProducto.Busqueda.IComp CompBusqProducto
-        {
-            get { throw new NotImplementedException(); }
         }
     }
 }

@@ -194,7 +194,10 @@ namespace ModInventario.src.MovInventario.Traslado.PorNIvel
             TB_MOTIVO.Text = _controlador.GetEnt_Motivo;
             TB_AUTORIZADO_POR.Text = _controlador.GetEnt_AutorizadoPor;
             DTP_FECHA.Value = _controlador.GetFechaSistema;
-            CB_METODO_BUSQ.DataSource = _controlador.MetBusProducto.GetSource;
+
+            CB_METODO_BUSQ.DataSource = _controlador.CompBusqProducto.MetodoBusqueda_GetSource;
+            CB_METODO_BUSQ.SelectedValue = _controlador.CompBusqProducto.MetodoBusqueda_GetId;
+
             CB_CONCEPTO.DataSource = _controlador.Concepto.GetSource;
             CB_SUC_ORIGEN.DataSource = _controlador.SucOrigen.GetSource;
             CB_SUC_DESTINO.DataSource = _controlador.SucDestino.GetSource;
@@ -343,10 +346,10 @@ namespace ModInventario.src.MovInventario.Traslado.PorNIvel
         private void CB_METODO_BUSQ_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_modoInicio) return;
-            _controlador.MetBusProducto.setMetodoBusq("");
+            _controlador.CompBusqProducto.setMetodo("");
             if (CB_METODO_BUSQ.SelectedIndex != -1)
             {
-                _controlador.MetBusProducto.setMetodoBusq(CB_METODO_BUSQ.SelectedValue.ToString());
+                _controlador.CompBusqProducto.setMetodo(CB_METODO_BUSQ.SelectedValue.ToString());
             }
         }
 
@@ -361,7 +364,7 @@ namespace ModInventario.src.MovInventario.Traslado.PorNIvel
         }
         private void TB_CADENA_BUSQ_Leave(object sender, EventArgs e)
         {
-            _controlador.MetBusProducto.setCadenaBusqueda(TB_CADENA_BUSQ.Text.Trim().ToUpper());
+            _controlador.CompBusqProducto.setCadenaBuscar(TB_CADENA_BUSQ.Text.Trim().ToUpper());
         }
 
 
@@ -378,12 +381,12 @@ namespace ModInventario.src.MovInventario.Traslado.PorNIvel
         private void ActivarFiltros()
         {
             IrFocoBusqueda();
-            _controlador.MetBusProducto.ActivarFiltros();
+            _controlador.CompBusqProducto.MostrarFiltros();
         }
         private void LimpiarFiltros()
         {
             IrFocoBusqueda();
-            _controlador.MetBusProducto.LimpiarFiltros();
+            _controlador.CompBusqProducto.Limpiar();
             RefrescarBusqueda();
         }
         private void BuscarProducto()
@@ -391,7 +394,7 @@ namespace ModInventario.src.MovInventario.Traslado.PorNIvel
             IrFocoBusqueda();
             _controlador.BuscarProducto();
             ActualizarImporte();
-            TB_CADENA_BUSQ.Text = _controlador.MetBusProducto.GetCadenaBusq;
+            TB_CADENA_BUSQ.Text = _controlador.CompBusqProducto.GetCadena;
         }
         private void CapturarProductosConExistenciaPorDebajoNivelMinimo()
         {

@@ -19,6 +19,7 @@ namespace ModInventario.Utils.Filtros
         public Existencia()
         {
             _ctrl = new ImpCB();
+            _habilitar = true;
         }
 
 
@@ -29,6 +30,14 @@ namespace ModInventario.Utils.Filtros
             _lst.Add(new dataFiltro() { id = "2", codigo = "02", desc = "Igual Cero" });
             _lst.Add(new dataFiltro() { id = "3", codigo = "03", desc = "Menor A Cero" });
             _ctrl.CargarData(_lst);
+        }
+
+
+        private bool _habilitar;
+        public bool GetHabilitar { get { return _habilitar; } }
+        public void setHabilitar(bool hab)
+        {
+            _habilitar = hab;
         }
     }
 }

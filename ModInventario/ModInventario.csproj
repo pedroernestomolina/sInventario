@@ -800,6 +800,7 @@
     <Compile Include="src\MovInventario\Descargo\MovFrm.Designer.cs">
       <DependentUpon>MovFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\MovInventario\FiltrosActivar.cs" />
     <Compile Include="src\MovInventario\Pendiente\dataDoc.cs" />
     <Compile Include="src\MovInventario\Pendiente\enumerados.cs" />
     <Compile Include="src\MovInventario\Pendiente\IListaPend.cs" />
@@ -1161,6 +1162,19 @@
     </Compile>
     <Compile Include="Utils\FiltrosPara\AdmDocumentos\ModoSucursal\ImpDataExportar.cs" />
     <Compile Include="Utils\FiltrosPara\AdmDocumentos\ModoSucursal\ImpModoSucursal.cs" />
+    <Compile Include="Utils\FiltrosPara\BusqProducto\Busqueda\IComp.cs" />
+    <Compile Include="Utils\FiltrosPara\BusqProducto\Busqueda\ImpComp.cs" />
+    <Compile Include="Utils\FiltrosPara\BusqProducto\CtrlMetodoBusq\IComp.cs" />
+    <Compile Include="Utils\FiltrosPara\BusqProducto\CtrlMetodoBusq\ImpComp.cs" />
+    <Compile Include="Utils\FiltrosPara\BusqProducto\Filtro\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\FiltrosPara\BusqProducto\Filtro\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\FiltrosPara\BusqProducto\Filtro\ICompFiltro.cs" />
+    <Compile Include="Utils\FiltrosPara\BusqProducto\Filtro\ImpComp.cs" />
+    <Compile Include="Utils\FiltrosPara\BusqProducto\Filtro\IFiltrosActivar.cs" />
     <Compile Include="Utils\FiltrosPara\IFiltro.cs" />
     <Compile Include="Utils\FiltrosPara\Reportes\baseModo.cs" />
     <Compile Include="Utils\FiltrosPara\Reportes\Categoria.cs" />
@@ -1222,6 +1236,7 @@
     <Compile Include="Utils\Filtros\Concepto.cs" />
     <Compile Include="Utils\Filtros\dataFiltro.cs" />
     <Compile Include="Utils\Filtros\Departamento.cs" />
+    <Compile Include="Utils\Filtros\DepartamentoGrupo.cs" />
     <Compile Include="Utils\Filtros\Deposito.cs" />
     <Compile Include="Utils\Filtros\DesdeHasta\IFiltro.cs" />
     <Compile Include="Utils\Filtros\DesdeHasta\ImpFiltro.cs" />
@@ -1230,15 +1245,18 @@
     <Compile Include="Utils\Filtros\EstatusDocumento.cs" />
     <Compile Include="Utils\Filtros\EstatusOferta.cs" />
     <Compile Include="Utils\Filtros\EstatusPesado.cs" />
+    <Compile Include="Utils\Filtros\EstatusProducto.cs" />
     <Compile Include="Utils\Filtros\EstatusTallaColorSabor.cs" />
     <Compile Include="Utils\Filtros\Existencia.cs" />
     <Compile Include="Utils\Filtros\Fecha\IFiltro.cs" />
     <Compile Include="Utils\Filtros\Fecha\ImpFiltro.cs" />
     <Compile Include="Utils\Filtros\Grupo.cs" />
+    <Compile Include="Utils\Filtros\IDepartamentoGrupo.cs" />
     <Compile Include="Utils\Filtros\IFiltro.cs" />
     <Compile Include="Utils\Filtros\BuscarPor\PorProducto\ImpFiltro.cs" />
     <Compile Include="Utils\Filtros\IFiltroLink.cs" />
     <Compile Include="Utils\Filtros\Marca.cs" />
+    <Compile Include="Utils\Filtros\Oferta.cs" />
     <Compile Include="Utils\Filtros\Origen.cs" />
     <Compile Include="Utils\Filtros\Precio.cs" />
     <Compile Include="Utils\Filtros\Sucursal.cs" />
@@ -1632,6 +1650,9 @@
     <EmbeddedResource Include="Utils\FiltrosPara\AdmDocumentos\ModoSucursal\FiltroFrm.resx">
       <DependentUpon>FiltroFrm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Utils\FiltrosPara\BusqProducto\Filtro\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Utils\FiltrosPara\Reportes\ModoSucursal\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1903,10 +1924,7 @@
       <Name>OOB</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Utils\FiltrosPara\BusqProducto\ModoAdm\" />
-    <Folder Include="Utils\FiltrosPara\BusqProducto\ModoSucursal\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

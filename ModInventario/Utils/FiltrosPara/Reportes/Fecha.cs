@@ -9,17 +9,15 @@ namespace ModInventario.Utils.FiltrosPara.Reportes
 {
     public class Fecha: tools.ImpFecha, ICtrlHabilitarFecha
     {
-        private bool _habilitar;
-
-
-        public bool GetHabilitar { get { return _habilitar; } }
-
-
         public Fecha()
             :base()
         {
+            _habilitar = true;
         }
 
+
+        private bool _habilitar;
+        public bool GetHabilitar { get { return _habilitar; } }
         public void setHabilitar(bool hab)
         {
             _habilitar = hab;

@@ -11,7 +11,9 @@ namespace ModInventario.Utils.Filtros
     public interface IFiltro
     {
         ICtrl Ctrl { get; }
+        bool GetHabilitar { get; }
 
+        void setHabilitar(bool hab);
         void CargarData();
     }
 }

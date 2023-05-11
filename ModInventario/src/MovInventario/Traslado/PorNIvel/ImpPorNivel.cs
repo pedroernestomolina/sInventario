@@ -757,5 +757,10 @@ namespace ModInventario.src.MovInventario.Traslado.PorNIvel
         {
             _idMovPendCargar = idMovCargar;
         }
+
+        public Utils.FiltrosPara.BusqProducto.Busqueda.IComp CompBusqProducto
+        {
+            get { throw new NotImplementedException(); }
+        }
     }
 }

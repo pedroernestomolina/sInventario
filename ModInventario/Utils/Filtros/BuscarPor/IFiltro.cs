@@ -20,5 +20,11 @@ namespace ModInventario.Utils.Filtros.BuscarPor
         void Buscar();
 
         void Inicializa();
+
+        string ValorSeleccionado { get; }
+
+
+        bool GetHabilitar { get; }
+        void setHabilitar(bool hab);
     }
 }

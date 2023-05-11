@@ -9,9 +9,6 @@ namespace ModInventario.Utils.FiltrosPara.Reportes
 {
     public interface ICtrlHabilitarBusqPor: Utils.Filtros.BuscarPor.IFiltro
     {
-        bool GetHabilitar { get;  }
-        void setHabilitar(bool hab);
-
         bool GetIsRequerido { get; }
         void setIsRequerido(bool req);
 

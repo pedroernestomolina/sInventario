@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ModInventario.Utils.Filtros
 {
-    public class Departamento: IFiltro
+    public class EstatusProducto: IFiltro
     {
         private ICtrl _ctrl;
 
@@ -16,7 +16,7 @@ namespace ModInventario.Utils.Filtros
         public ICtrl Ctrl { get { return _ctrl; } }
 
 
-        public Departamento()
+        public EstatusProducto()
         {
             _ctrl = new ImpCB();
             _habilitar = true;
@@ -26,16 +26,13 @@ namespace ModInventario.Utils.Filtros
         public void CargarData()
         {
             var _lst = new List<LibUtilitis.Opcion.IData>();
-            var xr1 = Sistema.MyData.Departamento_GetLista();
-            foreach (var rg in xr1.Lista.OrderBy(o => o.nombre).ToList())
-            {
-                _lst.Add(new dataFiltro() { id = rg.auto, codigo = rg.codigo, desc = rg.nombre });
-            }
+            _lst.Add(new dataFiltro() { id = "1", codigo = "01", desc = "ACTIVO" });
+            _lst.Add(new dataFiltro() { id = "2", codigo = "02", desc = "INACTIVO" });
             _ctrl.CargarData(_lst);
         }
 
 
-        protected bool _habilitar;
+        private bool _habilitar;
         public bool GetHabilitar { get { return _habilitar; } }
         public void setHabilitar(bool hab)
         {

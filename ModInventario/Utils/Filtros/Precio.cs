@@ -19,6 +19,7 @@ namespace ModInventario.Utils.Filtros
         public Precio()
         {
             _ctrl = new ImpCB();
+            _habilitar = true;
         }
 
 
@@ -31,6 +32,14 @@ namespace ModInventario.Utils.Filtros
             _lst.Add(new dataFiltro() { id = "4", codigo = "04", desc = "Precio 4" });
             _lst.Add(new dataFiltro() { id = "5", codigo = "05", desc = "Precio 5" });
             _ctrl.CargarData(_lst);
+        }
+
+
+        protected bool _habilitar;
+        public bool GetHabilitar { get { return _habilitar; } }
+        public void setHabilitar(bool hab)
+        {
+            _habilitar = hab;
         }
     }
 }

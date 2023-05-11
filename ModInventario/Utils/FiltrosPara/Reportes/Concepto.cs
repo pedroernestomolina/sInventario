@@ -17,13 +17,6 @@ namespace ModInventario.Utils.FiltrosPara.Reportes
         }
 
 
-        private bool _habilitar;
-        public bool GetHabilitar { get { return _habilitar; } }
-        public void setHabilitar(bool hab)
-        {
-            _habilitar = hab;
-        }
-
         private bool _isRequerido;
         public bool GetIsRequerido { get { return _isRequerido; } }
         public void setIsRequerido(bool req)

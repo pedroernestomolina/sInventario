@@ -10,6 +10,7 @@ namespace ModInventario.src.MovInventario.Traslado
 {
     public interface ITraslado: IMov
     {
+        Utils.FiltrosPara.BusqProducto.Busqueda.IComp CompBusqProducto { get; }
         Tools.Deposito.IDeposito DepDestino { get; }
         void SucOrigenSetId(string id);
         void ActivarDepDestinoPreDeterminado(bool modo);

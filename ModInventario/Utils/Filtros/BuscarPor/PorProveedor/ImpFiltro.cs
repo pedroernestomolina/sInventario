@@ -17,10 +17,24 @@ namespace ModInventario.Utils.Filtros.BuscarPor.PorProveedor
         public bool GetHabilitado { get { return !_lista.ItemSeleccionadoIsOk; } }
         public bool BuscarIsOk { get { return _lista.ItemSeleccionadoIsOk;} }
         public LibUtilitis.Opcion.IData ItemSeleccionado { get { return itemSeleccionado(); } }
+        public string ValorSeleccionado 
+        { 
+            get 
+            {
+                var _id = "";
+                var _item = itemSeleccionado();
+                if (_item != null) 
+                {
+                    _id = _item.id;
+                }
+                return _id;
+            } 
+        }
 
 
         public ImpFiltro()
         {
+            _habilitar = true;
             _cadena = "";
             _lista = new ListaSelecciona.PorProveedor.ImpLista();
         }
@@ -91,6 +105,14 @@ namespace ModInventario.Utils.Filtros.BuscarPor.PorProveedor
                     id = _lista.ItemSeleccionado.id,
                 };
             }
+        }
+
+
+        protected bool _habilitar;
+        public bool GetHabilitar { get { return _habilitar; } }
+        public void setHabilitar(bool hab)
+        {
+            _habilitar = hab;
         }
     }
 }

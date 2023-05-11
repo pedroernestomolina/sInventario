@@ -9,7 +9,5 @@ namespace ModInventario.Utils.FiltrosPara.Reportes
 {
     public interface ICtrlHabilitarLink: Utils.Filtros.IFiltroLink
     {
-        bool GetHabilitar { get;  }
-        void setHabilitar(bool hab);
     }
 }

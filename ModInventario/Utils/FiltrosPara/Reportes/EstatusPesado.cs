@@ -12,17 +12,9 @@ namespace ModInventario.Utils.FiltrosPara.Reportes
         public EstatusPesado()
             :base()
         {
-            _habilitar = true;
             _isRequerido = false;
         }
 
-
-        private bool _habilitar;
-        public bool GetHabilitar { get { return _habilitar; } }
-        public void setHabilitar(bool hab)
-        {
-            _habilitar = hab;
-        }
 
         private bool _isRequerido;
         public bool GetIsRequerido { get { return _isRequerido; } }

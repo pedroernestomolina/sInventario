@@ -201,7 +201,7 @@
             this.BT_LIMPIAR.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BT_LIMPIAR.Location = new System.Drawing.Point(2, 2);
             this.BT_LIMPIAR.Name = "BT_LIMPIAR";
-            this.BT_LIMPIAR.Size = new System.Drawing.Size(59, 34);
+            this.BT_LIMPIAR.Size = new System.Drawing.Size(60, 34);
             this.BT_LIMPIAR.TabIndex = 0;
             this.toolTip1.SetToolTip(this.BT_LIMPIAR, "LImpiar Filtros de Busqueda");
             this.BT_LIMPIAR.UseVisualStyleBackColor = true;
@@ -213,7 +213,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.94268F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.05732F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 64F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
             this.tableLayoutPanel1.Controls.Add(this.panel8, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.panel22, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.panel7, 0, 3);
@@ -248,7 +248,7 @@
             this.panel8.Margin = new System.Windows.Forms.Padding(1);
             this.panel8.Name = "panel8";
             this.panel8.Padding = new System.Windows.Forms.Padding(2);
-            this.panel8.Size = new System.Drawing.Size(193, 28);
+            this.panel8.Size = new System.Drawing.Size(192, 28);
             this.panel8.TabIndex = 6;
             // 
             // CB_DEP_DESTINO
@@ -259,7 +259,7 @@
             this.CB_DEP_DESTINO.FormattingEnabled = true;
             this.CB_DEP_DESTINO.Location = new System.Drawing.Point(2, 2);
             this.CB_DEP_DESTINO.Name = "CB_DEP_DESTINO";
-            this.CB_DEP_DESTINO.Size = new System.Drawing.Size(189, 23);
+            this.CB_DEP_DESTINO.Size = new System.Drawing.Size(188, 23);
             this.CB_DEP_DESTINO.TabIndex = 1;
             this.CB_DEP_DESTINO.SelectedIndexChanged += new System.EventHandler(this.CB_DEP_DESTINO_SelectedIndexChanged);
             this.CB_DEP_DESTINO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
@@ -322,7 +322,7 @@
             this.panel6.Margin = new System.Windows.Forms.Padding(1);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(2);
-            this.panel6.Size = new System.Drawing.Size(193, 28);
+            this.panel6.Size = new System.Drawing.Size(192, 28);
             this.panel6.TabIndex = 4;
             // 
             // CB_DEP_ORIGEN
@@ -333,7 +333,7 @@
             this.CB_DEP_ORIGEN.FormattingEnabled = true;
             this.CB_DEP_ORIGEN.Location = new System.Drawing.Point(2, 2);
             this.CB_DEP_ORIGEN.Name = "CB_DEP_ORIGEN";
-            this.CB_DEP_ORIGEN.Size = new System.Drawing.Size(189, 23);
+            this.CB_DEP_ORIGEN.Size = new System.Drawing.Size(188, 23);
             this.CB_DEP_ORIGEN.TabIndex = 0;
             this.CB_DEP_ORIGEN.SelectedIndexChanged += new System.EventHandler(this.CB_DEP_ORIGEN_SelectedIndexChanged);
             this.CB_DEP_ORIGEN.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
@@ -367,11 +367,11 @@
             // 
             this.panel16.Controls.Add(this.BT_LIMPIAR);
             this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel16.Location = new System.Drawing.Point(310, 1);
+            this.panel16.Location = new System.Drawing.Point(309, 1);
             this.panel16.Margin = new System.Windows.Forms.Padding(1);
             this.panel16.Name = "panel16";
             this.panel16.Padding = new System.Windows.Forms.Padding(2);
-            this.panel16.Size = new System.Drawing.Size(63, 38);
+            this.panel16.Size = new System.Drawing.Size(64, 38);
             this.panel16.TabIndex = 1;
             // 
             // panel23
@@ -382,7 +382,7 @@
             this.panel23.Margin = new System.Windows.Forms.Padding(1);
             this.panel23.Name = "panel23";
             this.panel23.Padding = new System.Windows.Forms.Padding(2);
-            this.panel23.Size = new System.Drawing.Size(193, 28);
+            this.panel23.Size = new System.Drawing.Size(192, 28);
             this.panel23.TabIndex = 10;
             // 
             // CB_ESTATUS
@@ -393,7 +393,7 @@
             this.CB_ESTATUS.FormattingEnabled = true;
             this.CB_ESTATUS.Location = new System.Drawing.Point(2, 2);
             this.CB_ESTATUS.Name = "CB_ESTATUS";
-            this.CB_ESTATUS.Size = new System.Drawing.Size(189, 23);
+            this.CB_ESTATUS.Size = new System.Drawing.Size(188, 23);
             this.CB_ESTATUS.TabIndex = 5;
             this.CB_ESTATUS.SelectedIndexChanged += new System.EventHandler(this.CB_ESTATUS_SelectedIndexChanged);
             this.CB_ESTATUS.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
@@ -431,7 +431,7 @@
             this.panel10.Margin = new System.Windows.Forms.Padding(1);
             this.panel10.Name = "panel10";
             this.panel10.Padding = new System.Windows.Forms.Padding(2);
-            this.panel10.Size = new System.Drawing.Size(193, 28);
+            this.panel10.Size = new System.Drawing.Size(192, 28);
             this.panel10.TabIndex = 8;
             // 
             // CB_CONCEPTO
@@ -442,7 +442,7 @@
             this.CB_CONCEPTO.FormattingEnabled = true;
             this.CB_CONCEPTO.Location = new System.Drawing.Point(2, 2);
             this.CB_CONCEPTO.Name = "CB_CONCEPTO";
-            this.CB_CONCEPTO.Size = new System.Drawing.Size(189, 23);
+            this.CB_CONCEPTO.Size = new System.Drawing.Size(188, 23);
             this.CB_CONCEPTO.TabIndex = 2;
             this.CB_CONCEPTO.SelectedIndexChanged += new System.EventHandler(this.CB_CONCEPTO_SelectedIndexChanged);
             this.CB_CONCEPTO.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Ctr_KeyDown);
@@ -480,7 +480,7 @@
             this.P_PRODUCTO.Margin = new System.Windows.Forms.Padding(1);
             this.P_PRODUCTO.Name = "P_PRODUCTO";
             this.P_PRODUCTO.Padding = new System.Windows.Forms.Padding(2);
-            this.P_PRODUCTO.Size = new System.Drawing.Size(193, 28);
+            this.P_PRODUCTO.Size = new System.Drawing.Size(192, 28);
             this.P_PRODUCTO.TabIndex = 2;
             // 
             // tableLayoutPanel4
@@ -496,7 +496,7 @@
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(189, 24);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(188, 24);
             this.tableLayoutPanel4.TabIndex = 2;
             // 
             // panel32
@@ -507,7 +507,7 @@
             this.panel32.Margin = new System.Windows.Forms.Padding(0);
             this.panel32.Name = "panel32";
             this.panel32.Padding = new System.Windows.Forms.Padding(1);
-            this.panel32.Size = new System.Drawing.Size(27, 24);
+            this.panel32.Size = new System.Drawing.Size(26, 24);
             this.panel32.TabIndex = 1;
             // 
             // BT_PRODUCTO_BUSCAR
@@ -519,7 +519,7 @@
             this.BT_PRODUCTO_BUSCAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BT_PRODUCTO_BUSCAR.Location = new System.Drawing.Point(1, 1);
             this.BT_PRODUCTO_BUSCAR.Name = "BT_PRODUCTO_BUSCAR";
-            this.BT_PRODUCTO_BUSCAR.Size = new System.Drawing.Size(25, 22);
+            this.BT_PRODUCTO_BUSCAR.Size = new System.Drawing.Size(24, 22);
             this.BT_PRODUCTO_BUSCAR.TabIndex = 0;
             this.BT_PRODUCTO_BUSCAR.UseVisualStyleBackColor = true;
             this.BT_PRODUCTO_BUSCAR.Click += new System.EventHandler(this.BT_PRODUCTO_BUSCAR_Click);

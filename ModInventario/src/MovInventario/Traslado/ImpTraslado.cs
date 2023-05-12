@@ -101,7 +101,7 @@ namespace ModInventario.src.MovInventario.Traslado
         {
             if (!_compBusqProducto.HayParametrosBusqueda)
             {
-                Helpers.Msg.Alerta("NO HAY PAREMTROS SELECCIONADOS PARA REALIZAR LA BUSQUEDA");
+                Helpers.Msg.Alerta("NO HAY PARAMETROS SELECCIONADOS PARA REALIZAR LA BUSQUEDA");
                 return null;
             }
             var filtros = _compBusqProducto.DataExportar();

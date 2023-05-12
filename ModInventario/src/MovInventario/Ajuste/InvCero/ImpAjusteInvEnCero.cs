@@ -30,7 +30,6 @@ namespace ModInventario.src.MovInventario.Ajuste.InvCero
         {
             base.Inicializa();
             _productoSeleccionadoIsOk = false;
-            _busqPrd.setHabilitarFiltroDeposito(false);
         }
         private MovFrm frm;
         public override void Inicia()

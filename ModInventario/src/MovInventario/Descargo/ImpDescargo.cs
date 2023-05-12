@@ -12,10 +12,12 @@ namespace ModInventario.src.MovInventario.Descargo
     {
         private bool _productoSeleccionadoIsOk;
         private Tools.CapturaMov.ICapturaMov _capturaMov;
+        private Utils.FiltrosPara.BusqProducto.Busqueda.IComp _compBusqProducto;
 
 
         public bool ProductoSeleccionadoIsOk { get { return _productoSeleccionadoIsOk; } }
         public override string GetInf_TipoMovimiento { get { return "DESCARGO"; } }
+        public Utils.FiltrosPara.BusqProducto.Busqueda.IComp CompBusqProducto { get { return _compBusqProducto; } }
 
 
         public ImpDescargo(ISeguridadAccesoSistema ctrSeguridad)
@@ -23,6 +25,9 @@ namespace ModInventario.src.MovInventario.Descargo
         {
             _productoSeleccionadoIsOk = false;
             _capturaMov = new CapturaMov.ImpCapturaMovDescargo();
+            //
+            _compBusqProducto = new Utils.FiltrosPara.BusqProducto.Busqueda.ImpComp();
+            _compBusqProducto.setFiltros(new MovInventario.FiltrosActivar());
         }
 
 
@@ -30,7 +35,7 @@ namespace ModInventario.src.MovInventario.Descargo
         {
             base.Inicializa();
             _productoSeleccionadoIsOk = false;
-            _busqPrd.setHabilitarFiltroDeposito(false);
+            _compBusqProducto.Inicializa();
         }
         private MovFrm frm;
         public override void Inicia()
@@ -45,11 +50,25 @@ namespace ModInventario.src.MovInventario.Descargo
                 frm.ShowDialog();
             }
         }
+        protected override bool CargarData()
+        {
+            try
+            {
+                base.CargarData();
+                _compBusqProducto.CargarData();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
+                return false;
+            }
+        }
+
         public override void BuscarProducto()
         {
             _productoSeleccionadoIsOk = false;
             CargarSeleccionarProducto(CargarFiltros());
-            _busqPrd.setCadenaBusqueda("");
         }
 
 
@@ -69,7 +88,12 @@ namespace ModInventario.src.MovInventario.Descargo
 
         private OOB.LibInventario.Producto.Filtro CargarFiltros()
         {
-            var filtros = _busqPrd.BuscarFiltros();
+            if (!_compBusqProducto.HayParametrosBusqueda)
+            {
+                Helpers.Msg.Alerta("NO HAY PARAMETROS SELECCIONADOS PARA REALIZAR LA BUSQUEDA");
+                return null;
+            }
+            var filtros = _compBusqProducto.DataExportar();
             if (filtros != null)
             {
                 if (DepOrigen.GetId == "")
@@ -324,6 +348,12 @@ namespace ModInventario.src.MovInventario.Descargo
             NotificarDocumentoGenerado(r01.Auto);
             _procesarIsOk = true;
             limpiarTodo();
+        }
+
+        protected override void limpiarTodo()
+        {
+            base.limpiarTodo();
+            _compBusqProducto.Limpiar();
         }
     }
 }

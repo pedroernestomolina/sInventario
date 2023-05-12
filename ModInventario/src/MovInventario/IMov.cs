@@ -19,7 +19,6 @@ namespace ModInventario.src.MovInventario
         Tools.Concepto.IConcepto Concepto { get; }
         Tools.Deposito.IDeposito DepOrigen { get; }
         Tools.ListaMov.IListaMov ListaItems { get; }
-        src.Tools.BusqProducto.IBusqProducto MetBusProducto { get; }
         src.MovInventario.Pendiente.IPendiente Pendiente { get; }
 
 

@@ -15,5 +15,6 @@ namespace ModInventario.src.MovInventario.Ajuste.Inv
         bool DejarEnPendienteIsOk { get; }
         void DejarEnPendiente();
         void CargarPendiente(int idMovCargar);
+        Utils.FiltrosPara.BusqProducto.Busqueda.IComp CompBusqProducto { get; }
     }
 }

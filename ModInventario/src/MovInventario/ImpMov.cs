@@ -22,7 +22,7 @@ namespace ModInventario.src.MovInventario
 
 
         protected decimal _tasaCambio;
-        protected src.Tools.BusqProducto.IBusqProducto _busqPrd;
+        //protected src.Tools.BusqProducto.IBusqProducto _busqPrd;
         protected Tools.Sucursal.ISucursal _sucOrigen;
         protected Tools.Deposito.IDeposito _depOrigen;
         protected Tools.Concepto.IConcepto _concepto;
@@ -41,7 +41,7 @@ namespace ModInventario.src.MovInventario
         public Tools.Deposito.IDeposito DepOrigen { get { return _depOrigen; } }
         public Tools.Concepto.IConcepto Concepto { get { return _concepto; } }
         public Tools.ListaMov.IListaMov ListaItems { get { return _listaMov; } }
-        public src.Tools.BusqProducto.IBusqProducto MetBusProducto { get { return _busqPrd; } }
+        //public src.Tools.BusqProducto.IBusqProducto MetBusProducto { get { return _busqPrd; } }
         public Pendiente.IPendiente Pendiente { get { return _pendiente; } }
         //
         public object ItemActual { get { return _listaMov.ItemActual; } }
@@ -58,7 +58,7 @@ namespace ModInventario.src.MovInventario
             _concepto = new Tools.Concepto.ImpConcepto();
             _sucOrigen = new Tools.Sucursal.ImpSucursal();
             _depOrigen = new Tools.Deposito.ImpDeposito();
-            _busqPrd = new src.Tools.BusqProducto.ImpBusqProducto();
+            //_busqPrd = new src.Tools.BusqProducto.ImpBusqProducto();
             _listaMov = new Tools.ListaMov.ImpListaMov();
             _listaSelPrd = new src.Tools.ListaSelProducto.ImpListaSelProducto();
             _nuevoConcepto = new ModInventario.MaestrosInv.Concepto.Agregar.Gestion();
@@ -78,7 +78,7 @@ namespace ModInventario.src.MovInventario
             _depOrigen.Inicializa();
             _sucOrigen.Inicializa();
             _listaMov.Inicializa();
-            _busqPrd.Inicializa();
+            //_busqPrd.Inicializa();
             _pendiente.Inicializa();
         }
 
@@ -110,7 +110,7 @@ namespace ModInventario.src.MovInventario
                 _tasaCambio = r02.Entidad;
                 _fechaServidor = r01.Entidad;
                 _sucOrigen.CargarData();
-                _busqPrd.CargarData();
+                //_busqPrd.CargarData();
                 _concepto.CargarData();
                 return true;
             }
@@ -275,7 +275,7 @@ namespace ModInventario.src.MovInventario
             _depOrigen.Inicializa();
             _sucOrigen.Inicializa();
             _listaMov.Inicializa();
-            _busqPrd.LimpiarCargarMetBusPreferido();
+            //_busqPrd.LimpiarCargarMetBusPreferido();
             _depOrigen.LimpiarLista();
         }
 

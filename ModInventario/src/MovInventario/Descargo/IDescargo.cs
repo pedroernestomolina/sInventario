@@ -11,5 +11,6 @@ namespace ModInventario.src.MovInventario.Descargo
     public interface IDescargo: IMov
     {
         void SucOrigenSetId(string id);
+        Utils.FiltrosPara.BusqProducto.Busqueda.IComp CompBusqProducto { get; }
     }
 }

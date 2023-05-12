@@ -395,13 +395,14 @@ namespace ModInventario.src.MovInventario.Traslado
             TB_MOTIVO.Text = _controlador.GetEnt_Motivo;
             TB_AUTORIZADO_POR.Text = _controlador.GetEnt_AutorizadoPor;
             DTP_FECHA.Value = _controlador.GetFechaSistema;
+
             CB_METODO_BUSQ.SelectedValue = _controlador.CompBusqProducto.MetodoBusqueda_GetId;
+            TB_CADENA_BUSQ.Text = _controlador.CompBusqProducto.GetCadena;
 
             CB_CONCEPTO.SelectedValue = _controlador.Concepto.GetId;
             CB_SUCURSAL.SelectedValue = _controlador.SucOrigen.GetId;
             CB_DEP_ORIGEN.SelectedValue = _controlador.DepOrigen.GetId;
             CB_DEP_DESTINO.SelectedValue = _controlador.DepDestino.GetId;
-            TB_CADENA_BUSQ.Text = _controlador.MetBusProducto.GetCadenaBusq;
             CB_CONCEPTO.Enabled = !_controlador.ActivarDepPreDeterminadoParaDevolucion;
             CB_DEP_DESTINO.Enabled = !_controlador.ActivarDepPreDeterminadoParaDevolucion;
             DGV_DETALLE.Refresh();

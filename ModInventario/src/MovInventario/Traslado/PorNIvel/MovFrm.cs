@@ -475,12 +475,14 @@ namespace ModInventario.src.MovInventario.Traslado.PorNIvel
             TB_MOTIVO.Text = _controlador.GetEnt_Motivo;
             TB_AUTORIZADO_POR.Text = _controlador.GetEnt_AutorizadoPor;
             DTP_FECHA.Value = _controlador.GetFechaSistema;
-            CB_METODO_BUSQ.SelectedValue = _controlador.MetBusProducto.GetId;
+
+            CB_METODO_BUSQ.SelectedValue = _controlador.CompBusqProducto.MetodoBusqueda_GetId;
+            TB_CADENA_BUSQ.Text = _controlador.CompBusqProducto.GetCadena;
+
             CB_CONCEPTO.SelectedValue = _controlador.Concepto.GetId;
             CB_SUC_ORIGEN.SelectedValue = _controlador.SucOrigen.GetId;
             CB_SUC_DESTINO.SelectedValue = _controlador.SucDestino.GetId;
             CB_DEPARTAMENTO.SelectedValue = _controlador.Departamento.GetId;
-            TB_CADENA_BUSQ.Text = _controlador.MetBusProducto.GetCadenaBusq;
             CB_CONCEPTO.Enabled = !_controlador.ActivarDepPreDeterminadoParaDevolucion;
             CB_DEPARTAMENTO.Enabled = !_controlador.ActivarDepPreDeterminadoParaDevolucion;
             DGV_DETALLE.Refresh();
@@ -508,8 +510,8 @@ namespace ModInventario.src.MovInventario.Traslado.PorNIvel
         }
         private void RefrescarBusqueda()
         {
-            TB_CADENA_BUSQ.Text = _controlador.MetBusProducto.GetCadenaBusq;
-            CB_METODO_BUSQ.SelectedValue = _controlador.MetBusProducto.GetId; 
+            TB_CADENA_BUSQ.Text = _controlador.CompBusqProducto.GetCadena;
+            CB_METODO_BUSQ.SelectedValue = _controlador.CompBusqProducto.MetodoBusqueda_GetId; 
         }
     }
 }

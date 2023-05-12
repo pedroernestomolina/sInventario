@@ -59,7 +59,6 @@ namespace ModInventario.src.MovInventario.Traslado.PorNIvel
             _idConceptoPredeterminadoParaDev = "";
             _activarDepDestinoPredeterminado = false;
             _productoSeleccionadoIsOk = false;
-            _busqPrd.setHabilitarFiltroDeposito(false);
             _idMovPendCargar = -1;
             _compBusqProducto.Inicializa();
         }
@@ -135,7 +134,7 @@ namespace ModInventario.src.MovInventario.Traslado.PorNIvel
         {
             if (!_compBusqProducto.HayParametrosBusqueda)
             {
-                Helpers.Msg.Alerta("NO HAY PAREMTROS SELECCIONADOS PARA REALIZAR LA BUSQUEDA");
+                Helpers.Msg.Alerta("NO HAY PARAMETROS SELECCIONADOS PARA REALIZAR LA BUSQUEDA");
                 return null;
             }
             var filtros = _compBusqProducto.DataExportar();

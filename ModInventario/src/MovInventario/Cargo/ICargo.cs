@@ -10,6 +10,7 @@ namespace ModInventario.src.MovInventario.Cargo
 {
     public interface ICargo: IMov
     {
+        Utils.FiltrosPara.BusqProducto.Busqueda.IComp CompBusqProducto { get; }
         void SucOrigenSetId(string id);
     }
 }

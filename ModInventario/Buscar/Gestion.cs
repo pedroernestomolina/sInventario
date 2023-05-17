@@ -690,6 +690,11 @@ namespace ModInventario.Buscar
                         if (_ofertaDscto == null)
                         {
                             _ofertaDscto = _fabrica.CreateInstancia_OfertaDscto();
+                            if (_ofertaDscto == null)
+                            {
+                                Helpers.Msg.Alerta("OPCION NO IMPLEMENTADA PARA ESTE MODULO");
+                                return;
+                            }
                         }
                         _ofertaDscto.Inicializa();
                         _ofertaDscto.setFichaByIdPrd(Item.AutoId);

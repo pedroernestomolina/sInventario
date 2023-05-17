@@ -15,12 +15,12 @@ namespace ModInventario.src.MovInventario.Traslado
         private bool _activarDepDestinoPredeterminado;
         private bool _productoSeleccionadoIsOk;
         private Tools.CapturaMov.ICapturaMov _capturaMov;
-        private Tools.Deposito.IDeposito _depDestino;
+        private Tools.ICtrl _depDestino;
         private int _idMovPendCargar;
         private Utils.FiltrosPara.BusqProducto.Busqueda.IComp _compBusqProducto;
 
 
-        public Tools.Deposito.IDeposito DepDestino { get { return _depDestino; } }
+        public Tools.ICtrl DepDestino { get { return _depDestino; } }
         public bool ProductoSeleccionadoIsOk { get { return _productoSeleccionadoIsOk; } }
         public override string GetInf_TipoMovimiento { get { return "TRASLADO / DEPÓSITOS"; } }
         public bool ActivarDepPreDeterminadoParaDevolucion { get { return _activarDepDestinoPredeterminado; } }
@@ -35,7 +35,7 @@ namespace ModInventario.src.MovInventario.Traslado
             _activarDepDestinoPredeterminado = false;
             _productoSeleccionadoIsOk = false;
             _capturaMov = new CapturaMov.ImpCapturaMovTraslado();
-            _depDestino = new Tools.Deposito.ImpDeposito();
+            _depDestino = new Tools.Deposito.Imp();
             _idMovPendCargar = -1;
             //
             _compBusqProducto = new Utils.FiltrosPara.BusqProducto.Busqueda.ImpComp();
@@ -84,7 +84,7 @@ namespace ModInventario.src.MovInventario.Traslado
             base.setSucOrigen(id);
             if (id != "")
             {
-                _depOrigen.CargarDataByIdSucursal(id);
+                _depOrigen.CargarDataByIdLink(id);
             }
             else
             {

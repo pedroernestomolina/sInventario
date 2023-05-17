@@ -75,7 +75,7 @@ namespace ModInventario.src.MovInventario.Ajuste.Inv
             base.setSucOrigen(id);
             if (id != "")
             {
-                _depOrigen.CargarDataByIdSucursal(id);
+                _depOrigen.CargarDataByIdLink(id);
             }
             else
             {

@@ -822,10 +822,15 @@
     <Compile Include="src\MovInventario\Tools\CapturaMov\ImpDataPrd.cs" />
     <Compile Include="src\MovInventario\Tools\CapturaMov\ImpTipMov.cs" />
     <Compile Include="src\MovInventario\Tools\CapturaMov\ITipMov.cs" />
-    <Compile Include="src\MovInventario\Tools\Departamento\IDepartamento.cs" />
-    <Compile Include="src\MovInventario\Tools\Departamento\ImpDepartamento.cs" />
+    <Compile Include="src\MovInventario\Tools\Concepto\Imp.cs" />
+    <Compile Include="src\MovInventario\Tools\dataUtils.cs" />
+    <Compile Include="src\MovInventario\Tools\Deposito\Imp.cs" />
+    <Compile Include="src\MovInventario\Tools\ICtrlLink.cs" />
+    <Compile Include="src\MovInventario\Tools\Departamento\Imp.cs" />
+    <Compile Include="src\MovInventario\Tools\ICtrl.cs" />
     <Compile Include="src\MovInventario\Tools\ListaMov\IListaMov.cs" />
     <Compile Include="src\MovInventario\Tools\ListaMov\ImpListaMov.cs" />
+    <Compile Include="src\MovInventario\Tools\Sucursal\Imp.cs" />
     <Compile Include="src\MovInventario\Traslado\CapturaMov\Frm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -897,17 +902,11 @@
       <DependentUpon>MovFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Tools\BusqProducto\IBusqProducto.cs" />
-    <Compile Include="src\MovInventario\Tools\Concepto\IConcepto.cs" />
-    <Compile Include="src\MovInventario\Tools\Concepto\ImpConcepto.cs" />
-    <Compile Include="src\MovInventario\Tools\Deposito\IDeposito.cs" />
-    <Compile Include="src\MovInventario\Tools\Deposito\ImpDeposito.cs" />
     <Compile Include="src\MovInventario\IDepOrigen.cs" />
     <Compile Include="src\MovInventario\ImpMov.cs" />
     <Compile Include="src\MovInventario\IMov.cs" />
     <Compile Include="src\MovInventario\IBaseMov.cs" />
     <Compile Include="src\MovInventario\ISucOrigen.cs" />
-    <Compile Include="src\MovInventario\Tools\Sucursal\ImpSucursal.cs" />
-    <Compile Include="src\MovInventario\Tools\Sucursal\ISucursal.cs" />
     <Compile Include="src\Producto\AgregarEditar\BaseAgregarEditar.cs" />
     <Compile Include="src\Producto\AgregarEditar\baseDataAgregarEditar.cs" />
     <Compile Include="src\Producto\AgregarEditar\IBaseAgregarEditar.cs" />

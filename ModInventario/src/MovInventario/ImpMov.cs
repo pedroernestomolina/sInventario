@@ -22,10 +22,9 @@ namespace ModInventario.src.MovInventario
 
 
         protected decimal _tasaCambio;
-        //protected src.Tools.BusqProducto.IBusqProducto _busqPrd;
-        protected Tools.Sucursal.ISucursal _sucOrigen;
-        protected Tools.Deposito.IDeposito _depOrigen;
-        protected Tools.Concepto.IConcepto _concepto;
+        protected Tools.ICtrl _sucOrigen;
+        protected Tools.ICtrlLink _depOrigen;
+        protected Tools.ICtrl _concepto;
         protected Tools.ListaMov.IListaMov _listaMov;
         protected src.Tools.ListaSelProducto.IListaSelProducto _listaSelPrd;
         protected ISeguridadAccesoSistema _seguridad;
@@ -37,11 +36,10 @@ namespace ModInventario.src.MovInventario
         public string GetEnt_AutorizadoPor { get { return _autorizadoPor; } }
         public DateTime GetFechaSistema { get { return _fechaServidor; } }
         //
-        public Tools.Sucursal.ISucursal SucOrigen { get { return _sucOrigen; } }
-        public Tools.Deposito.IDeposito DepOrigen { get { return _depOrigen; } }
-        public Tools.Concepto.IConcepto Concepto { get { return _concepto; } }
+        public Tools.ICtrl SucOrigen { get { return _sucOrigen; } }
+        public Tools.ICtrlLink DepOrigen { get { return _depOrigen; } }
+        public Tools.ICtrl Concepto { get { return _concepto; } }
         public Tools.ListaMov.IListaMov ListaItems { get { return _listaMov; } }
-        //public src.Tools.BusqProducto.IBusqProducto MetBusProducto { get { return _busqPrd; } }
         public Pendiente.IPendiente Pendiente { get { return _pendiente; } }
         //
         public object ItemActual { get { return _listaMov.ItemActual; } }
@@ -55,10 +53,9 @@ namespace ModInventario.src.MovInventario
             _tasaCambio = 0m;
             _fechaServidor = DateTime.Now.Date;
             _limpiezaGeneralIsOk=false;
-            _concepto = new Tools.Concepto.ImpConcepto();
-            _sucOrigen = new Tools.Sucursal.ImpSucursal();
-            _depOrigen = new Tools.Deposito.ImpDeposito();
-            //_busqPrd = new src.Tools.BusqProducto.ImpBusqProducto();
+            _concepto = new Tools.Concepto.Imp();
+            _sucOrigen = new Tools.Sucursal.Imp();
+            _depOrigen = new Tools.Deposito.Imp();
             _listaMov = new Tools.ListaMov.ImpListaMov();
             _listaSelPrd = new src.Tools.ListaSelProducto.ImpListaSelProducto();
             _nuevoConcepto = new ModInventario.MaestrosInv.Concepto.Agregar.Gestion();
@@ -78,7 +75,6 @@ namespace ModInventario.src.MovInventario
             _depOrigen.Inicializa();
             _sucOrigen.Inicializa();
             _listaMov.Inicializa();
-            //_busqPrd.Inicializa();
             _pendiente.Inicializa();
         }
 
@@ -110,7 +106,6 @@ namespace ModInventario.src.MovInventario
                 _tasaCambio = r02.Entidad;
                 _fechaServidor = r01.Entidad;
                 _sucOrigen.CargarData();
-                //_busqPrd.CargarData();
                 _concepto.CargarData();
                 return true;
             }
@@ -275,8 +270,7 @@ namespace ModInventario.src.MovInventario
             _depOrigen.Inicializa();
             _sucOrigen.Inicializa();
             _listaMov.Inicializa();
-            //_busqPrd.LimpiarCargarMetBusPreferido();
-            _depOrigen.LimpiarLista();
+            //_depOrigen.LimpiarLista();
         }
 
 

@@ -87,7 +87,7 @@ namespace ModInventario.src.MovInventario.Cargo
             base.setSucOrigen(id);
             if (id != "")
             {
-                _depOrigen.CargarDataByIdSucursal(id);
+                _depOrigen.CargarDataByIdLink(id);
             }
             else
             {

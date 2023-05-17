@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace ModInventario.src.MovInventario.Tools.Concepto
+namespace ModInventario.src.MovInventario.Tools
 {
-    public interface IConcepto
+    public interface ICtrl
     {
         BindingSource GetSource { get; }
         string GetId { get; }

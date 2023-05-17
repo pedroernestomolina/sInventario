@@ -15,16 +15,16 @@ namespace ModInventario.src.MovInventario.Traslado.PorNIvel
         private bool _activarDepDestinoPredeterminado;
         private bool _productoSeleccionadoIsOk;
         private Tools.CapturaMov.ICapturaMov _capturaMov;
-        private Tools.Deposito.IDeposito _depDestino;
-        private Tools.Sucursal.ISucursal _sucDestino;
-        private Tools.Departamento.IDepartamento _departamento;
+        private Tools.ICtrl _depDestino;
+        private Tools.ICtrl _sucDestino;
+        private Tools.ICtrl _departamento;
         private int _idMovPendCargar;
         private Utils.FiltrosPara.BusqProducto.Busqueda.IComp _compBusqProducto;
 
 
-        public Tools.Sucursal.ISucursal SucDestino { get { return _sucDestino; } }
-        public Tools.Departamento.IDepartamento Departamento { get { return _departamento; } }
-        public Tools.Deposito.IDeposito DepDestino { get { return _depDestino; } }
+        public Tools.ICtrl SucDestino { get { return _sucDestino; } }
+        public Tools.ICtrl Departamento { get { return _departamento; } }
+        public Tools.ICtrl DepDestino { get { return _depDestino; } }
         public bool ProductoSeleccionadoIsOk { get { return _productoSeleccionadoIsOk; } }
         public override string GetInf_TipoMovimiento { get { return "TRASLADO x NIVEL MÍNIMO"; } }
         public bool ActivarDepPreDeterminadoParaDevolucion { get { return _activarDepDestinoPredeterminado; } }
@@ -39,9 +39,9 @@ namespace ModInventario.src.MovInventario.Traslado.PorNIvel
             _activarDepDestinoPredeterminado = false;
             _productoSeleccionadoIsOk = false;
             _capturaMov = new CapturaMov.ImpCapturaMovTraslado();
-            _depDestino = new Tools.Deposito.ImpDeposito();
-            _sucDestino = new Tools.Sucursal.ImpSucursal();
-            _departamento = new Tools.Departamento.ImpDepartamento();
+            _depDestino = new Tools.Deposito.Imp();
+            _sucDestino = new Tools.Sucursal.Imp();
+            _departamento = new Tools.Departamento.Imp();
             _idMovPendCargar = -1;
             //
             _compBusqProducto = new Utils.FiltrosPara.BusqProducto.Busqueda.ImpComp();

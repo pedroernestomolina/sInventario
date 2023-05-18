@@ -970,23 +970,6 @@
     <Compile Include="src\TallaColorSabor\Visualizar\VerTallaColorSaborFrm.Designer.cs">
       <DependentUpon>VerTallaColorSaborFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Tools\Filtros\Grupo\IGrupo.cs" />
-    <Compile Include="src\Tools\Filtros\Grupo\ImpGrupo.cs" />
-    <Compile Include="src\Tools\Filtros\IFiltro.cs" />
-    <Compile Include="src\Tools\Filtros\Oferta\ImpOferta.cs" />
-    <Compile Include="src\Tools\Filtros\Oferta\ImpOfertaRep.cs" />
-    <Compile Include="src\Tools\Filtros\Oferta\IOferta.cs" />
-    <Compile Include="src\Tools\Filtros\Oferta\IOfertaRep.cs" />
-    <Compile Include="src\Tools\Filtros\Proveedor\ImpProveedor.cs" />
-    <Compile Include="src\Tools\Filtros\Proveedor\IProveedor.cs" />
-    <Compile Include="src\Tools\Filtros\Proveedor\Lista\ImpListaPrv.cs" />
-    <Compile Include="src\Tools\Filtros\Proveedor\Lista\IListaPrv.cs" />
-    <Compile Include="src\Tools\Filtros\Proveedor\Lista\Frm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\Tools\Filtros\Proveedor\Lista\Frm.Designer.cs">
-      <DependentUpon>Frm.cs</DependentUpon>
-    </Compile>
     <Compile Include="src\Tools\IListaSeleccion.cs" />
     <Compile Include="src\Producto\ActualizarOfertaMasiva\Items\ImpItems.cs" />
     <Compile Include="src\Producto\ActualizarOfertaMasiva\Items\IItems.cs" />
@@ -1529,9 +1512,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\TallaColorSabor\Visualizar\VerTallaColorSaborFrm.resx">
       <DependentUpon>VerTallaColorSaborFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\Tools\Filtros\Proveedor\Lista\Frm.resx">
-      <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Tools\ListaSelProducto\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>

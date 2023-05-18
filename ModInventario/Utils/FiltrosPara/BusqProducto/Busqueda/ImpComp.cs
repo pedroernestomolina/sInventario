@@ -48,8 +48,13 @@ namespace ModInventario.Utils.FiltrosPara.BusqProducto.Busqueda
         {
             _ctrMetBusqueda.CargarData();
             _ctrlFiltro.CargarData();
-
         }
+        public void CargarData(bool forzarCargaData)
+        {
+            _ctrlFiltro.setForzarCargarData(forzarCargaData);
+            CargarData();
+        }
+
 
         public void MostrarFiltros()
         {
@@ -225,11 +230,7 @@ namespace ModInventario.Utils.FiltrosPara.BusqProducto.Busqueda
                         _filtros.estatusTCS = "0";
                         break;
                 }
-                if (!_activarProductosInactivos)
-                {
-                    _filtros.estatus = OOB.LibInventario.Producto.Enumerados.EnumEstatus.Activo;
-                }
-                else
+                if (_ctrlFiltro.Estatus.GetHabilitar)
                 {
                     switch (_ctrlFiltro.Estatus.Ctrl.GetId)
                     {
@@ -237,7 +238,7 @@ namespace ModInventario.Utils.FiltrosPara.BusqProducto.Busqueda
                             _filtros.estatus = OOB.LibInventario.Producto.Enumerados.EnumEstatus.Activo;
                             break;
                         case "2":
-                            _filtros.estatus = OOB.LibInventario.Producto.Enumerados.EnumEstatus.Activo;
+                            _filtros.estatus = OOB.LibInventario.Producto.Enumerados.EnumEstatus.Suspendido;
                             break;
                         case "3":
                             _filtros.estatus = OOB.LibInventario.Producto.Enumerados.EnumEstatus.Inactivo;
@@ -245,6 +246,13 @@ namespace ModInventario.Utils.FiltrosPara.BusqProducto.Busqueda
                         default:
                             _filtros.estatus = OOB.LibInventario.Producto.Enumerados.EnumEstatus.SnDefinir;
                             break;
+                    }
+                }
+                else 
+                {
+                    if (!_activarProductosInactivos)
+                    {
+                        _filtros.estatus = OOB.LibInventario.Producto.Enumerados.EnumEstatus.Activo;
                     }
                 }
                 return _filtros;

@@ -9,10 +9,10 @@ namespace ModInventario.src.Producto.ActualizarOfertaMasiva.ModoAdm
 {
     public interface IMasiva: IOferta
     {
-        Tools.Busqueda.IBusqueda Busqueda { get; }
+        //Tools.Busqueda.IBusqueda Busqueda { get; }
         Items.IItems Items { get; }
         Precio.IPrecio Precio { get; }
-        bool BuscarIsOk { get; }
+        //bool BuscarIsOk { get; }
         DateTime GetDesde { get; }
         DateTime GetHasta { get; }
         string GetPorctDesc { get; }
@@ -23,6 +23,5 @@ namespace ModInventario.src.Producto.ActualizarOfertaMasiva.ModoAdm
 
         void LimpiarTodo();
         void Buscar();
-
     }
 }

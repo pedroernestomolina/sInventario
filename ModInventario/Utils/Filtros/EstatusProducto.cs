@@ -27,7 +27,8 @@ namespace ModInventario.Utils.Filtros
         {
             var _lst = new List<LibUtilitis.Opcion.IData>();
             _lst.Add(new dataFiltro() { id = "1", codigo = "01", desc = "ACTIVO" });
-            _lst.Add(new dataFiltro() { id = "2", codigo = "02", desc = "INACTIVO" });
+            _lst.Add(new dataFiltro() { id = "2", codigo = "02", desc = "SUSPENDIDO" });
+            _lst.Add(new dataFiltro() { id = "3", codigo = "03", desc = "INACTIVO" });
             _ctrl.CargarData(_lst);
         }
 

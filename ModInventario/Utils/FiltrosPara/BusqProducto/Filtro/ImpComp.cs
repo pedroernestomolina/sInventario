@@ -131,6 +131,13 @@ namespace ModInventario.Utils.FiltrosPara.BusqProducto.Filtro
         }
 
 
+        public void setForzarCargarData(bool forzarCargaData)
+        {
+            if (forzarCargaData)
+            {
+                _dataYaSeCargo = false;
+            }
+        }
         public bool CargarData()
         {
             if (_dataYaSeCargo) { return true; }

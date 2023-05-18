@@ -238,7 +238,7 @@ namespace ModInventario.src.Buscar.ModoBasico
         private void ActualizarBusqueda()
         {
             L_ITEMS.Text = _controlador.Items.ToString("n0");
-            TB_CADENA.Text = _controlador.CadenaBusqProducto;
+            //TB_CADENA.Text = _controlador.CadenaBusqProducto;
             TB_CADENA.Focus();
         }
 
@@ -290,7 +290,7 @@ namespace ModInventario.src.Buscar.ModoBasico
         private void Limpiar()
         {
             _controlador.Limpiar();
-            TB_CADENA.Text = _controlador.CadenaBusqProducto;
+            //TB_CADENA.Text = _controlador.CadenaBusqProducto;
             TB_CADENA.Focus();
             L_ITEMS.Text = _controlador.Items.ToString("n0");
         }

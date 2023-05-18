@@ -31,21 +31,21 @@ namespace ModInventario.src.Producto.ActualizarOfertaMasiva.Items
         }
 
 
-        public void setData(FiltroBusqAdm.dataFiltro filtros)
-        {
-            _bl.Clear();
-            var _lst = Helpers.BusquedaAdmPrd.CargarBusqueda(filtros);
-            foreach (var rg in _lst.OrderBy(o => o.DescripcionPrd).ToList()) 
-            {
-                var it = new data()
-                {
-                    codPrd = rg.CodigoPrd,
-                    descPrd = rg.DescripcionPrd,
-                    idPrd = rg.AutoId,
-                };
-                _bl.Add(it);
-            }
-        }
+        //public void setData(FiltroBusqAdm.dataFiltro filtros)
+        //{
+        //    _bl.Clear();
+        //    var _lst = Helpers.BusquedaAdmPrd.CargarBusqueda(filtros);
+        //    foreach (var rg in _lst.OrderBy(o => o.DescripcionPrd).ToList()) 
+        //    {
+        //        var it = new data()
+        //        {
+        //            codPrd = rg.CodigoPrd,
+        //            descPrd = rg.DescripcionPrd,
+        //            idPrd = rg.AutoId,
+        //        };
+        //        _bl.Add(it);
+        //    }
+        //}
 
         public void Inicializa()
         {

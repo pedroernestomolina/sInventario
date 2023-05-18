@@ -26,11 +26,13 @@ namespace ModInventario.src
         {
             return new ModInventario.Producto.Precio.EditarCambiar.ModoBasico.Editar();
         }
-        public FiltrosGen.AdmProducto.IAdmProducto 
-            CreateInstancia_FiltroPrdAdm()
-        {
-            return new src.FiltroBusqAdm.ModoBasico.ImpBasico();
-        }
+
+        //public FiltrosGen.AdmProducto.IAdmProducto 
+        //    CreateInstancia_FiltroPrdAdm()
+        //{
+        //    return new src.FiltroBusqAdm.ModoBasico.ImpBasico();
+        //}
+
         public ModInventario.Producto.Precio.Historico.IHistorico 
             CreateInstancia_HistoricoPrecio()
         {
@@ -98,12 +100,13 @@ namespace ModInventario.src
             _frm.ShowDialog();
         }
 
-        private FiltrosGen.IBuscar 
-            CreateInstancia_FiltroBusqProducto()
-        {
-            var listaPrdSel = CreateInstancia_ListaSeleccionableProducto();
-            return new FiltrosGen.BuscarProducto.Gestion(listaPrdSel);
-        }
+        //private FiltrosGen.IBuscar 
+        //    CreateInstancia_FiltroBusqProducto()
+        //{
+        //    var listaPrdSel = CreateInstancia_ListaSeleccionableProducto();
+        //    return new FiltrosGen.BuscarProducto.Gestion(listaPrdSel);
+        //}
+
         private ModInventario.Buscar.INotificarSeleccion 
             CreateInstancia_ListaSeleccionableProducto()
         {
@@ -139,7 +142,7 @@ namespace ModInventario.src
         {
             var hndTCS = CreateInstancia_TallaColorSabor();
             return new ModInventario.Buscar.Gestion(
-                CreateInstancia_FiltroPrdAdm(),
+                //CreateInstancia_FiltroPrdAdm(),
                 _seguridad,
                 CreateInstancia_ImagenQRProducto(),
                 CreateInstancia_ImagenProducto(),

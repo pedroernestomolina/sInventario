@@ -25,17 +25,19 @@ namespace ModInventario.src
         {
             return new ModInventario.Producto.Precio.EditarCambiar.ModoSucursal.Editar();
         }
-        public FiltrosGen.AdmProducto.IAdmProducto 
-            CreateInstancia_FiltroPrdAdm()
-        {
-            var BuscarProv = CreateInstancia_BusquedaProveedor();
-            return new src.FiltroBusqAdm.ModoSucursal.ImpSucursal(BuscarProv);
-        }
-        private FiltrosGen.IBuscar 
-            CreateInstancia_BusquedaProveedor()
-        {
-            return new FiltrosGen.BuscarProveedor.Gestion(new Proveedor.ListaSel.Gestion());
-        }
+
+        //public FiltrosGen.AdmProducto.IAdmProducto 
+        //    CreateInstancia_FiltroPrdAdm()
+        //{
+        //    var BuscarProv = CreateInstancia_BusquedaProveedor();
+        //    return new src.FiltroBusqAdm.ModoSucursal.ImpSucursal(BuscarProv);
+        //}
+        //private FiltrosGen.IBuscar
+        //    CreateInstancia_BusquedaProveedor()
+        //{
+        //    return new FiltrosGen.BuscarProveedor.Gestion(new Proveedor.ListaSel.Gestion());
+        //}
+
         public ModInventario.Producto.Precio.Historico.IHistorico 
             CreateInstancia_HistoricoPrecio()
         {
@@ -63,13 +65,13 @@ namespace ModInventario.src
         //    var filtroBusPrd = CreateInstancia_FiltroBusqProducto();
         //    return new ModInventario.src.Filtro.FiltroRep.ModoSucursal.ImpModoSucursal(filtroBusPrd);
         //}
+        //private FiltrosGen.IBuscar 
+        //    CreateInstancia_FiltroBusqProducto()
+        //{
+        //    var listaPrdSel = CreateInstancia_ListaSeleccionableProducto();
+        //    return new FiltrosGen.BuscarProducto.Gestion(listaPrdSel);
+        //}
 
-        private FiltrosGen.IBuscar 
-            CreateInstancia_FiltroBusqProducto()
-        {
-            var listaPrdSel = CreateInstancia_ListaSeleccionableProducto();
-            return new FiltrosGen.BuscarProducto.Gestion(listaPrdSel);
-        }
         private ModInventario.Buscar.INotificarSeleccion 
             CreateInstancia_ListaSeleccionableProducto()
         {
@@ -153,7 +155,7 @@ namespace ModInventario.src
         {
             var hndTCS = CreateInstancia_TallaColorSabor();
             return new ModInventario.Buscar.Gestion(
-                CreateInstancia_FiltroPrdAdm(),
+                //CreateInstancia_FiltroPrdAdm(),
                 _seguridad,
                 CreateInstancia_ImagenQRProducto(),
                 CreateInstancia_ImagenProducto(),

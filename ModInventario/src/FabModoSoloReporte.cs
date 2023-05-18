@@ -105,13 +105,13 @@ namespace ModInventario.src
         //    var filtroBusPrd = CreateInstancia_FiltroBusqProducto();
         //    return new src.Filtro.FiltroRep.ModoSoloReporte.ImpModo(filtroBusPrd);
         //}
+        //private FiltrosGen.IBuscar
+        //    CreateInstancia_FiltroBusqProducto()
+        //{
+        //    var listaPrdSel = CreateInstancia_ListaSeleccionableProducto();
+        //    return new FiltrosGen.BuscarProducto.Gestion(listaPrdSel);
+        //}
 
-        private FiltrosGen.IBuscar
-            CreateInstancia_FiltroBusqProducto()
-        {
-            var listaPrdSel = CreateInstancia_ListaSeleccionableProducto();
-            return new FiltrosGen.BuscarProducto.Gestion(listaPrdSel);
-        }
         private ModInventario.Buscar.INotificarSeleccion
             CreateInstancia_ListaSeleccionableProducto()
         {

@@ -19,6 +19,7 @@ namespace ModInventario.Utils.FiltrosPara.BusqProducto.Busqueda
 
         void Inicializa();
         void CargarData();
+        void CargarData(bool fozarCargaData);
 
         void MostrarFiltros();
         void Buscar();

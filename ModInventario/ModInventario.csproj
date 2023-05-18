@@ -85,6 +85,7 @@
     <Compile Include="AdmMovPend\dataItem.cs" />
     <Compile Include="AdmMovPend\IAdmMovPend.cs" />
     <Compile Include="AdmMovPend\IListaAdmMovPend.cs" />
+    <Compile Include="Buscar\FiltrosActivar.cs" />
     <Compile Include="Configuracion\CambiarPreciosAlModificarCosto\Conf.cs" />
     <Compile Include="Configuracion\CambiarPreciosAlModificarCosto\ConfigurarFrm.cs">
       <SubType>Form</SubType>
@@ -215,14 +216,7 @@
     <Compile Include="ficha.cs" />
     <Compile Include="fichaSeleccion.cs" />
     <Compile Include="FiltrosGen\AdmProducto\data.cs" />
-    <Compile Include="FiltrosGen\AdmSelecciona\Gestion.cs" />
-    <Compile Include="FiltrosGen\BuscarProducto\Gestion.cs" />
-    <Compile Include="FiltrosGen\BuscarProveedor\Gestion.cs" />
-    <Compile Include="FiltrosGen\Fecha\Gestion.cs" />
     <Compile Include="FiltrosGen\AdmProducto\IAdmProducto.cs" />
-    <Compile Include="FiltrosGen\IAdmSelecciona.cs" />
-    <Compile Include="FiltrosGen\IBuscar.cs" />
-    <Compile Include="FiltrosGen\IFecha.cs" />
     <Compile Include="FiltrosGen\IFiltro.cs" />
     <Compile Include="FiltrosGen\IOpcion.cs" />
     <Compile Include="FiltrosGen\Opcion\Gestion.cs" />
@@ -690,32 +684,6 @@
     <Compile Include="src\FabModoBasicoFoxSystem.cs" />
     <Compile Include="src\FabModoSoloReporte.cs" />
     <Compile Include="src\FabModoSucursal.cs" />
-    <Compile Include="src\FiltroBusqAdm\dataFiltro.cs" />
-    <Compile Include="src\FiltroBusqAdm\Enumerados.cs" />
-    <Compile Include="src\FiltroBusqAdm\IFiltroPrd.cs" />
-    <Compile Include="src\FiltroBusqAdm\BaseImpFiltroPrd.cs" />
-    <Compile Include="src\FiltroBusqAdm\ModoBasico\FiltrosFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\FiltroBusqAdm\ModoBasico\FiltrosFrm.Designer.cs">
-      <DependentUpon>FiltrosFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="src\FiltroBusqAdm\ModoBasico\ImpBasico.cs" />
-    <Compile Include="src\FiltroBusqAdm\ModoBasico\IBasico.cs" />
-    <Compile Include="src\FiltroBusqAdm\ModoSucursal\FiltrosFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\FiltroBusqAdm\ModoSucursal\FiltrosFrm.Designer.cs">
-      <DependentUpon>FiltrosFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="src\FiltroBusqAdm\ModoSucursal\ImpSucursal.cs" />
-    <Compile Include="src\FiltroBusqAdm\ModoSucursal\ISucursal.cs" />
-    <Compile Include="src\FiltroBusqAdm\PorCatalogo\ICatalogo.cs" />
-    <Compile Include="src\FiltroBusqAdm\PorCategoria\ICategoria.cs" />
-    <Compile Include="src\FiltroBusqAdm\PorDeposito\IDeposito.cs" />
-    <Compile Include="src\FiltroBusqAdm\PorExistencia\IExistencia.cs" />
-    <Compile Include="src\FiltroBusqAdm\PorProveedor\IProveedor.cs" />
-    <Compile Include="src\FiltroBusqAdm\PorTCS\ITCS.cs" />
     <Compile Include="src\IFabrica.cs" />
     <Compile Include="src\ILista.cs" />
     <Compile Include="src\Inicio\ModoAdm\Principal.cs">
@@ -892,7 +860,6 @@
     <Compile Include="src\Tools\Buscar\dataExportar.cs" />
     <Compile Include="src\Tools\Buscar\IBuscar.cs" />
     <Compile Include="src\Tools\Buscar\ImpBuscar.cs" />
-    <Compile Include="src\Tools\BusqProducto\ImpBusqProducto.cs" />
     <Compile Include="src\MovInventario\Cargo\ICargo.cs" />
     <Compile Include="src\MovInventario\Cargo\ImpCargo.cs" />
     <Compile Include="src\MovInventario\Cargo\MovFrm.cs">
@@ -901,7 +868,6 @@
     <Compile Include="src\MovInventario\Cargo\MovFrm.Designer.cs">
       <DependentUpon>MovFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Tools\BusqProducto\IBusqProducto.cs" />
     <Compile Include="src\MovInventario\IDepOrigen.cs" />
     <Compile Include="src\MovInventario\ImpMov.cs" />
     <Compile Include="src\MovInventario\IMov.cs" />
@@ -1007,22 +973,6 @@
     <Compile Include="src\TallaColorSabor\Visualizar\VerTallaColorSaborFrm.Designer.cs">
       <DependentUpon>VerTallaColorSaborFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Tools\Busqueda\IBusqueda.cs" />
-    <Compile Include="src\Tools\Busqueda\ImpBusqueda.cs" />
-    <Compile Include="src\Tools\FiltrosPara\Enumerados.cs" />
-    <Compile Include="src\Tools\FiltrosPara\IFiltrosPara.cs" />
-    <Compile Include="src\Tools\FiltrosPara\Productos\basePrd.cs" />
-    <Compile Include="src\Tools\FiltrosPara\Productos\filtrosExportar.cs" />
-    <Compile Include="src\Tools\FiltrosPara\dataExportar.cs" />
-    <Compile Include="src\Tools\FiltrosPara\Productos\IProducto.cs" />
-    <Compile Include="src\Tools\FiltrosPara\Productos\ModoSucursal\Frm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="src\Tools\FiltrosPara\Productos\ModoSucursal\Frm.Designer.cs">
-      <DependentUpon>Frm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="src\Tools\FiltrosPara\Productos\ModoSucursal\ImpSucursal.cs" />
-    <Compile Include="src\Tools\FiltrosPara\Productos\ModoSucursal\ISucursal.cs" />
     <Compile Include="src\Tools\Filtros\Catalogo\ICatalogo.cs" />
     <Compile Include="src\Tools\Filtros\Catalogo\ImpCatalogo.cs" />
     <Compile Include="src\Tools\Filtros\Categoria\ICategoria.cs" />
@@ -1526,12 +1476,6 @@
     <EmbeddedResource Include="src\Buscar\ModoBasico\BusquedaFrm.resx">
       <DependentUpon>BusquedaFrm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\FiltroBusqAdm\ModoBasico\FiltrosFrm.resx">
-      <DependentUpon>FiltrosFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\FiltroBusqAdm\ModoSucursal\FiltrosFrm.resx">
-      <DependentUpon>FiltrosFrm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\Inicio\ModoAdm\Principal.resx">
       <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
@@ -1612,9 +1556,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\TallaColorSabor\Visualizar\VerTallaColorSaborFrm.resx">
       <DependentUpon>VerTallaColorSaborFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="src\Tools\FiltrosPara\Productos\ModoSucursal\Frm.resx">
-      <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Tools\Filtros\Proveedor\Lista\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>

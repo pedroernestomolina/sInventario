@@ -162,12 +162,9 @@ namespace ModInventario.Buscar
         private void BusquedaFrm_Load(object sender, EventArgs e)
         {
             _modoInicializar = true;
-            //
-            TB_CADENA.Text = _controlador.CompBusqProducto.GetCadena;
-            CB_TIPO_BUSQUEDA.DataSource = _controlador.CompBusqProducto.MetodoBusqueda_GetSource;
-            CB_TIPO_BUSQUEDA.SelectedValue = _controlador.CompBusqProducto.MetodoBusqueda_GetId;
-            //
-
+            TB_CADENA.Text = _controlador.CadenaBusqProducto;
+            CB_TIPO_BUSQUEDA.DataSource = _controlador.GeTipoBusqueda_Source;
+            CB_TIPO_BUSQUEDA.SelectedValue = _controlador.GetTipoBusqueda_Id;
             DGV.DataSource = _controlador.Source;
             _controlador.Source.CurrentChanged += Source_CurrentChanged;
             L_ITEMS.Text = _controlador.Items.ToString("n0");
@@ -409,10 +406,9 @@ namespace ModInventario.Buscar
         private void Limpiar()
         {
             _controlador.Limpiar();
-            L_ITEMS.Text = _controlador.Items.ToString("n0");
-            CB_TIPO_BUSQUEDA.SelectedValue = _controlador.CompBusqProducto.MetodoBusqueda_GetId;
-            TB_CADENA.Text = _controlador.CompBusqProducto.GetCadena;
+            TB_CADENA.Text = _controlador.CadenaBusqProducto;
             TB_CADENA.Focus();
+            L_ITEMS.Text = _controlador.Items.ToString("n0");
         }
         private void Buscar()
         {
@@ -434,7 +430,7 @@ namespace ModInventario.Buscar
         private void ActualizarBusqueda()
         {
             L_ITEMS.Text = _controlador.Items.ToString("n0");
-            TB_CADENA.Text = _controlador.CompBusqProducto.GetCadena;
+            TB_CADENA.Text = _controlador.CadenaBusqProducto;
             TB_CADENA.Focus();
         }
         public void ActualizarItem()

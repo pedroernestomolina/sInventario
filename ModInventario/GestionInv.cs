@@ -25,9 +25,6 @@ namespace ModInventario
 
         //
         private Buscar.INotificarSeleccion _gListaSelPrd;
-        private FiltrosGen.IAdmSelecciona _gAdmSelPrd;
-        //private Administrador.IGestion _gAdmDoc;
-
         //
         private ISeguridadAccesoSistema _seguridad;
         private SeguridadSist.ISeguridad _gSecurity;
@@ -86,43 +83,31 @@ namespace ModInventario
 
 
         private src.IFabrica _fabrica;
-        //ModInventario.src.Filtro.FiltroRep.IFiltroRep _gestionReporteFiltros;
-
         ModInventario.src.AdmDocumentos.IAdmDoc _hndAdmDoc;
         private Buscar.Gestion _gHndProducto;
         ModInventario.src.Visor.Traslado.IVisorTraslado _gVisorTraslado;
         ModInventario.src.Visor.GananciaPerdida.IVisorGanPerd _gVisorGanPerd;
         ModInventario.src.Visor.Precios.IPrecio _gVisorPrecio;
         ModInventario.src.Visor.EntradaxCompra.IEntradaxCompra _gVisorEntradaxCompra;
-        FiltrosGen.AdmProducto.IAdmProducto _hndFiltroAdmProducto;
         public GestionInv(src.IFabrica fabrica)
         {
             _fabrica = fabrica;
             Producto.Precio.EditarCambiar.IEditar _hndEditarPrecio = _fabrica.CreateInstancia_EditarCambiarPrecio();
-            _hndFiltroAdmProducto = _fabrica.CreateInstancia_FiltroPrdAdm();
-
-            //_gestionReporteFiltros = _fabrica.CreateInstancia_FiltrosReporte();
 
             _hndAdmDoc = _fabrica.CreateInstancia_AdmDocumentos();
+
             //VISOR
             _gVisorTraslado = _fabrica.CreateInstancia_VisorTraslado();
             _gVisorGanPerd = _fabrica.CreateInstancia_VisorGananciaPerdida();
             _gVisorPrecio = _fabrica.CreateInstancia_VisorPrecio();
             _gVisorEntradaxCompra = _fabrica.CreateInstancia_VisorEntradaxCompra();
-            //REPORTES
-
 
             _gSecurity= new SeguridadSist.Gestion();
             _gSecurityModoUsuario = new SeguridadSist.Usuario.Gestion();
             _gSecurityNivelAcceso= new SeguridadSist.NivelAcceso.Gestion();
             _seguridad = new Helpers.Seguridad(_gSecurityNivelAcceso, _gSecurity);
 
-
             _gListaSelPrd = new Producto.ListaSel.Gestion();
-            _gAdmSelPrd = new FiltrosGen.AdmSelecciona.Gestion(
-                _hndFiltroAdmProducto,
-                _gListaSelPrd);
-
 
             //
             _gAgregarDepart = new MaestrosInv.Departamento.Agregar.Gestion();
@@ -398,10 +383,6 @@ namespace ModInventario
             {
                 Reporte(_fabrica.CreateInstancia_RepMasterPrecio(), _fabrica.CreateInstancia_RepMasterPrecio_Filtros());
             }
-            //if (VerificarPermisoReportes())
-            //{
-            //    Helpers.HndReportes.MaestroPrecio(_fabrica, _gestionReporteFiltros);
-            //}
         }
         public void ReporteMaestroProductos()
         {
@@ -409,10 +390,6 @@ namespace ModInventario
             {
                 Reporte(_fabrica.CreateInstancia_RepMasterProductos(), _fabrica.CreateInstancia_RepMasterProductos_Filtros());
             }
-            //if (VerificarPermisoReportes())
-            //{
-               //Helpers.HndReportes.MaestroProductos(_fabrica, _gestionReporteFiltros);
-            //}
         }
         public void ReporteMaestroInventario()
         {
@@ -420,10 +397,6 @@ namespace ModInventario
             {
                 Reporte(_fabrica.CreateInstancia_RepMaestroInventario(), _fabrica.CreateInstancia_RepMaestroInventario_Filtros());
             }
-            //if (VerificarPermisoReportes())
-            //{
-              //Helpers.HndReportes.MaestroInventario(_fabrica, _gestionReporteFiltros);
-            //}
         }
         public void ReporteMaestroExistenciaDetalle()
         {
@@ -431,10 +404,6 @@ namespace ModInventario
             {
                 Reporte(_fabrica.CreateInstancia_RepMaestroExistenciaDetalle(), _fabrica.CreateInstancia_RepMaestroExistenciaDetalle_Filtros());
             }
-            //if (VerificarPermisoReportes())
-            //{
-            //    Helpers.HndReportes.MaestroExistenciaDetalle(_fabrica, _gestionReporteFiltros);
-            //}
         }
         public void ReporteMaestroExistenciaInventario()
         {
@@ -442,10 +411,6 @@ namespace ModInventario
             {
                 Reporte(_fabrica.CreateInstancia_RepMaestroExistenciaInventario(), _fabrica.CreateInstancia_RepMaestroExistenciaInventario_Filtros());
             }
-            //if (VerificarPermisoReportes())
-            //{
-                //Helpers.HndReportes.MaestroExistenciaInventario(_fabrica, _gestionReporteFiltros);
-            //}
         }
         public void ReporteMaestroDepositoResumen()
         {
@@ -454,11 +419,6 @@ namespace ModInventario
                 var rp = _fabrica.CreateInstancia_RepMaestroDepositoResumen();
                 rp.Generar();
             }
-            //if (VerificarPermisoReportes())
-            //{
-            //var rp = new Reportes.Filtros.DepositoResumen.GestionRep();
-            //    rp.Generar();
-            //}
         }
         public void MaestroNivelMinimo()
         {
@@ -466,10 +426,6 @@ namespace ModInventario
             {
                 Reporte(_fabrica.CreateInstancia_RepNivelMinimo(), _fabrica.CreateInstancia_RepNivelMinimo_Filtros());
             }
-            //if (VerificarPermisoReportes())
-            //{
-            //Helpers.HndReportes.NivelMinimo(_fabrica, _gestionReporteFiltros);
-            //}
         }
         public void Kardex()
         {
@@ -477,10 +433,6 @@ namespace ModInventario
             {
                 Reporte(_fabrica.CreateInstancia_RepKardex(), _fabrica.CreateInstancia_RepKardex_Filtros());
             }
-            //if (VerificarPermisoReportes())
-            //{
-            //Helpers.HndReportes.Kardex(_fabrica, _gestionReporteFiltros);
-            //}
         }
         public void Kardex_Resumen_Mov()
         {
@@ -488,10 +440,6 @@ namespace ModInventario
             {
                 Reporte(_fabrica.CreateInstancia_RepKardexResumenMov(), _fabrica.CreateInstancia_RepKardexResumenMov_Filtros());
             }
-            //if (VerificarPermisoReportes())
-            //{
-            //    Helpers.HndReportes.KardexResumenMov(_fabrica, _gestionReporteFiltros);
-            //}
         }
         public void ReporteValorizacionInventario()
         {
@@ -499,10 +447,6 @@ namespace ModInventario
             {
                 Reporte(_fabrica.CreateInstancia_RepValorizacionInventario(), _fabrica.CreateInstancia_RepValorizacionInventario_Filtros());
             }
-            //if (VerificarPermisoReportes())
-            //{
-            //Helpers.HndReportes.ValorizacionInventario(_fabrica, _gestionReporteFiltros);
-            //}
         }
         public void ReporteRelacionCompraVenta()
         {
@@ -510,10 +454,6 @@ namespace ModInventario
             {
                 Reporte(_fabrica.CreateInstancia_RepRelacionCompraVenta(), _fabrica.CreateInstancia_RepRelacionCompraVenta_Filtros());
             }
-            //if (VerificarPermisoReportes())
-            //{
-            //Helpers.HndReportes.RelacionCompraVenta(_fabrica, _gestionReporteFiltros);
-            //}
         }
         public void ReporteResumenCostoInventario()
         {
@@ -521,12 +461,7 @@ namespace ModInventario
             {
                 Reporte(_fabrica.CreateInstancia_RepResumenCostoInventario(), _fabrica.CreateInstancia_RepResumenCostoInventario_Filtros());
             }
-            //if (VerificarPermisoReportes())
-            //{
-            //Helpers.HndReportes.ResumenCostoInventario(_fabrica, _gestionReporteFiltros);
-            //}
         }
-        Utils.FiltrosPara.Reportes.IFiltroRep _filtrRep;
         private void Reporte(src.Reporte.IReporte reporte, Reportes.Filtros.IFiltros filtros)
         {
             var _filtrRep = _fabrica.CreateInstancia_FiltrosParaReportes();
@@ -542,14 +477,6 @@ namespace ModInventario
                 }
             }
         }
-
-        //public void ReporteMaestroInventarioBasico()
-        //{
-        //    if (VerificarPermisoReportes())
-        //    {
-        //        // Helpers.HndReportes.MaestroInventarioBasico(_fabrica, _gestionReporteFiltros);
-        //    }
-        //}
 
         public bool VerificarPermisoReportes()
         {

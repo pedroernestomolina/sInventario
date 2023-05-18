@@ -27,5 +27,6 @@ namespace ModInventario.Utils.FiltrosPara.BusqProducto.Filtro
 
         bool CargarData();
         void LimpiarFiltros();
+        void setForzarCargarData(bool forzarCargaData);
     }
 }

@@ -15,8 +15,10 @@ namespace ModInventario.src
             CreateInstancia_VisualizarPrecio();
         ModInventario.Producto.Precio.EditarCambiar.IEditar 
             CreateInstancia_EditarCambiarPrecio();
-        FiltrosGen.AdmProducto.IAdmProducto 
-            CreateInstancia_FiltroPrdAdm();
+
+        //FiltrosGen.AdmProducto.IAdmProducto 
+        //    CreateInstancia_FiltroPrdAdm();
+
         ModInventario.Producto.Precio.Historico.IHistorico 
             CreateInstancia_HistoricoPrecio();
         ModInventario.src.Producto.AgregarEditar.IBaseAgregarEditar 

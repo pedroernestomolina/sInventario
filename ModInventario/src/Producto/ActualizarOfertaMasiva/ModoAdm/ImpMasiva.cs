@@ -12,7 +12,7 @@ namespace ModInventario.src.Producto.ActualizarOfertaMasiva.ModoAdm
     {
         private bool _abandonarIsOk;
         private bool _procesarIsOK;
-        private Tools.Busqueda.IBusqueda _busqueda;
+        //private Tools.Busqueda.IBusqueda _busqueda;
         private Items.IItems _items;
         private Precio.IPrecio _precio;
         private DateTime _desde;
@@ -20,22 +20,22 @@ namespace ModInventario.src.Producto.ActualizarOfertaMasiva.ModoAdm
         private decimal _porct;
 
 
-        public Tools.Busqueda.IBusqueda Busqueda { get { return _busqueda; ; } }
+        //public Tools.Busqueda.IBusqueda Busqueda { get { return _busqueda; ; } }
         public Items.IItems Items { get { return _items; } }
-        public bool BuscarIsOk { get { return _busqueda.BuscarIsOk; } }
+        //public bool BuscarIsOk { get { return _busqueda.BuscarIsOk; } }
         public Precio.IPrecio Precio { get { return _precio; } }
         public DateTime GetDesde { get { return _desde; } }
         public DateTime GetHasta { get { return _hasta; } }
         public string GetPorctDesc { get { return _porct.ToString("n2", CultureInfo.CurrentCulture); } }
 
 
-        public ImpMasiva(FiltrosGen.AdmProducto.IAdmProducto filtro)
+        public ImpMasiva()
         {
             _desde = DateTime.Now.Date;
             _hasta = DateTime.Now.Date;
             _abandonarIsOk = false;
             _procesarIsOK = false;
-            _busqueda = new Tools.Busqueda.ImpBusqueda(filtro);
+            //_busqueda = new Tools.Busqueda.ImpBusqueda(filtro);
             _precio = new Precio.ImpPrecio();
             _items = new Items.ImpItems();
         }
@@ -47,7 +47,7 @@ namespace ModInventario.src.Producto.ActualizarOfertaMasiva.ModoAdm
             _hasta = DateTime.Now.Date;
             _abandonarIsOk = false;
             _procesarIsOK = false;
-            _busqueda.Inicializa();
+            //_busqueda.Inicializa();
             _precio.Inicializa();
             _items.Inicializa();
         }
@@ -67,15 +67,15 @@ namespace ModInventario.src.Producto.ActualizarOfertaMasiva.ModoAdm
         }
         public void Buscar()
         {
-            _busqueda.Buscar();
-            if (_busqueda.BuscarIsOk) 
-            {
-                _items.setData((src.FiltroBusqAdm.dataFiltro)_busqueda.FiltrosExportar);
-            }
+            //_busqueda.Buscar();
+            //if (_busqueda.BuscarIsOk) 
+            //{
+            //    //_items.setData((src.FiltroBusqAdm.dataFiltro)_busqueda.FiltrosExportar);
+            //}
         }
         public void LimpiarTodo()
         {
-            _busqueda.LimpiarTodo();
+            //_busqueda.LimpiarTodo();
             _items.LimpiarTodo();
         }
 
@@ -119,7 +119,7 @@ namespace ModInventario.src.Producto.ActualizarOfertaMasiva.ModoAdm
         {
             try
             {
-                _busqueda.CargarData();
+                //_busqueda.CargarData();
                 _precio.CargarData();
                 return true;
             }

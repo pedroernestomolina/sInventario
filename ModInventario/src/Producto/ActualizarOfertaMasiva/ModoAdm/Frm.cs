@@ -89,9 +89,9 @@ namespace ModInventario.src.Producto.ActualizarOfertaMasiva.ModoAdm
         {
             _modoInicializar = true;
             TB_CADENA.Focus();
-            TB_CADENA.Text = _controlador.Busqueda.GetCadenaBusqueda;
-            CB_TIPO_BUSQUEDA.DataSource = _controlador.Busqueda.GetMetBusquedaSource;
-            CB_TIPO_BUSQUEDA.SelectedValue = _controlador.Busqueda.GetMetBusquedaId;
+            //TB_CADENA.Text = _controlador.Busqueda.GetCadenaBusqueda;
+            //CB_TIPO_BUSQUEDA.DataSource = _controlador.Busqueda.GetMetBusquedaSource;
+            //CB_TIPO_BUSQUEDA.SelectedValue = _controlador.Busqueda.GetMetBusquedaId;
             CB_PRECIO.DataSource = _controlador.Precio.GetSource;
             CB_PRECIO.SelectedValue = _controlador.Precio.GetId;
             DTP_DESDE.Value = _controlador.GetDesde;
@@ -121,10 +121,10 @@ namespace ModInventario.src.Producto.ActualizarOfertaMasiva.ModoAdm
         private void CB_TIPO_BUSQUEDA_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_modoInicializar) { return; }
-            _controlador.Busqueda.setMetBusqueda("");
+            //_controlador.Busqueda.setMetBusqueda("");
             if (CB_TIPO_BUSQUEDA.SelectedIndex != -1)
             {
-                _controlador.Busqueda.setMetBusqueda(CB_TIPO_BUSQUEDA.SelectedValue.ToString());
+                //_controlador.Busqueda.setMetBusqueda(CB_TIPO_BUSQUEDA.SelectedValue.ToString());
             }
         }
         private void CB_PRECIO_SelectedIndexChanged(object sender, EventArgs e)
@@ -157,7 +157,7 @@ namespace ModInventario.src.Producto.ActualizarOfertaMasiva.ModoAdm
 
         private void TB_CADENA_Leave(object sender, EventArgs e)
         {
-            _controlador.Busqueda.setCadenaBusqueda(TB_CADENA.Text.Trim().ToUpper());
+            //_controlador.Busqueda.setCadenaBusqueda(TB_CADENA.Text.Trim().ToUpper());
         }
         private void TB_PORCT_Leave(object sender, EventArgs e)
         {
@@ -198,29 +198,29 @@ namespace ModInventario.src.Producto.ActualizarOfertaMasiva.ModoAdm
 
         private void FiltrarBusqueda()
         {
-            _controlador.Busqueda.ActivarFiltros();
+            //_controlador.Busqueda.ActivarFiltros();
         }
         private void LimpiarBusqueda()
         {
             TB_CADENA.Focus();
             _controlador.LimpiarTodo();
-            TB_CADENA.Text = _controlador.Busqueda.GetCadenaBusqueda;
-            CB_TIPO_BUSQUEDA.SelectedValue = _controlador.Busqueda.GetMetBusquedaId;
+            //TB_CADENA.Text = _controlador.Busqueda.GetCadenaBusqueda;
+            //CB_TIPO_BUSQUEDA.SelectedValue = _controlador.Busqueda.GetMetBusquedaId;
             L_ITEMS.Text = _controlador.Items.GetCntDesc;
         }
         private void Buscar()
         {
             TB_CADENA.Focus();
             _controlador.Buscar();
-            if (_controlador.BuscarIsOk) 
-            {
-                Actualizar();
-            }
+            //if (_controlador.BuscarIsOk) 
+            //{
+            //    Actualizar();
+            //}
         }
         private void Actualizar()
         {
             L_ITEMS.Text = _controlador.Items.GetCntDesc;
-            TB_CADENA.Text = _controlador.Busqueda.GetCadenaBusqueda;
+            //TB_CADENA.Text = _controlador.Busqueda.GetCadenaBusqueda;
             TB_CADENA.Focus();
         }
         private void Salir()

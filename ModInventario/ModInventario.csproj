@@ -215,9 +215,6 @@
     <Compile Include="Configuracion\RegistroPrecio\Gestion.cs" />
     <Compile Include="ficha.cs" />
     <Compile Include="fichaSeleccion.cs" />
-    <Compile Include="FiltrosGen\AdmProducto\data.cs" />
-    <Compile Include="FiltrosGen\AdmProducto\IAdmProducto.cs" />
-    <Compile Include="FiltrosGen\IFiltro.cs" />
     <Compile Include="FiltrosGen\IOpcion.cs" />
     <Compile Include="FiltrosGen\Opcion\Gestion.cs" />
     <Compile Include="GestionInv.cs" />
@@ -245,7 +242,6 @@
       <DependentUpon>IdentificacionFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="IGestion.cs" />
-    <Compile Include="IListaSeleccion.cs" />
     <Compile Include="INotificarSeleccion.cs" />
     <Compile Include="ISeguridadAccesoSistema.cs" />
     <Compile Include="Kardex\Detalle\data.cs" />
@@ -379,13 +375,6 @@
       <DependentUpon>EstatusFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="Producto\Estatus\Gestion.cs" />
-    <Compile Include="Producto\ListaSel\Gestion.cs" />
-    <Compile Include="Producto\ListaSel\ListaSelFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Producto\ListaSel\ListaSelFrm.Designer.cs">
-      <DependentUpon>ListaSelFrm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Producto\Plu\data.cs" />
     <Compile Include="Producto\Plu\Gestion.cs" />
     <Compile Include="Producto\Plu\IPlu.cs" />
@@ -1283,9 +1272,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Producto\Estatus\EstatusFrm.resx">
       <DependentUpon>EstatusFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Producto\ListaSel\ListaSelFrm.resx">
-      <DependentUpon>ListaSelFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Producto\Plu\PluFrm.resx">
       <DependentUpon>PluFrm.cs</DependentUpon>

@@ -11,7 +11,6 @@ namespace ModInventario.src.Tools
     {
         ficha GetItemSeleccionado { get; }
         bool ItemSeleccionadoIsOk { get; }
-
         void SeleccionarItem();
     }
 }

@@ -4,13 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace ModInventario
 {
- 
-    
     public class fichaSeleccion: ficha
     {
-        
         public bool isAnulado {get;set;}
         public string estatus { get { return isAnulado ? "INACTIVO" : ""; } }
 
@@ -29,7 +27,5 @@ namespace ModInventario
             this.desc = des;
             this.isAnulado = isAnuladoInactivo;
         }
-
     }
-
 }

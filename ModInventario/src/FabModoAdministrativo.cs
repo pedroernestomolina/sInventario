@@ -71,13 +71,11 @@ namespace ModInventario.src
         //    var listaPrdSel = CreateInstancia_ListaSeleccionableProducto();
         //    return new FiltrosGen.BuscarProducto.Gestion(listaPrdSel);
         //}
-
-        private ModInventario.Buscar.INotificarSeleccion
-            CreateInstancia_ListaSeleccionableProducto()
-        {
-            return new ModInventario.Producto.ListaSel.Gestion();
-        }
-
+        //private ModInventario.Buscar.INotificarSeleccion
+        //    CreateInstancia_ListaSeleccionableProducto()
+        //{
+        //    return new ModInventario.Producto.ListaSel.Gestion();
+        //}
 
         public AdmDocumentos.IAdmDoc
             CreateInstancia_AdmDocumentos()

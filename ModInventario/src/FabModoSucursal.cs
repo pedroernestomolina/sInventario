@@ -71,12 +71,11 @@ namespace ModInventario.src
         //    var listaPrdSel = CreateInstancia_ListaSeleccionableProducto();
         //    return new FiltrosGen.BuscarProducto.Gestion(listaPrdSel);
         //}
-
-        private ModInventario.Buscar.INotificarSeleccion 
-            CreateInstancia_ListaSeleccionableProducto()
-        {
-            return new ModInventario.Producto.ListaSel.Gestion();
-        }
+        //private ModInventario.Buscar.INotificarSeleccion 
+        //    CreateInstancia_ListaSeleccionableProducto()
+        //{
+        //    return new ModInventario.Producto.ListaSel.Gestion();
+        //}
 
         ModInventario.Buscar.BusquedaFrm _frm;
         public object BuscarPrd

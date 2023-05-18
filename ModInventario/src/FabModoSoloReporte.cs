@@ -26,11 +26,13 @@ namespace ModInventario.src
         {
             return null;
         }
-        public FiltrosGen.AdmProducto.IAdmProducto 
-            CreateInstancia_FiltroPrdAdm()
-        {
-            return null;
-        }
+
+        //public FiltrosGen.AdmProducto.IAdmProducto 
+        //    CreateInstancia_FiltroPrdAdm()
+        //{
+        //    return null;
+        //}
+
         public ModInventario.Producto.Precio.Historico.IHistorico 
             CreateInstancia_HistoricoPrecio()
         {
@@ -111,12 +113,11 @@ namespace ModInventario.src
         //    var listaPrdSel = CreateInstancia_ListaSeleccionableProducto();
         //    return new FiltrosGen.BuscarProducto.Gestion(listaPrdSel);
         //}
-
-        private ModInventario.Buscar.INotificarSeleccion
-            CreateInstancia_ListaSeleccionableProducto()
-        {
-            return new ModInventario.Producto.ListaSel.Gestion();
-        }
+        //private ModInventario.Buscar.INotificarSeleccion
+        //    CreateInstancia_ListaSeleccionableProducto()
+        //{
+        //    return new ModInventario.Producto.ListaSel.Gestion();
+        //}
 
 
         public AdmDocumentos.IAdmDoc

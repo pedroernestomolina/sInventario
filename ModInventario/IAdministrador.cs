@@ -8,11 +8,8 @@ using System.Windows.Forms;
 
 namespace ModInventario
 {
-    
     public interface IAdministrador : IGestion 
     {
-
-
         string GetTitulo { get; }
         BindingSource GetSource { get; }
         int GetCntItems { get; }
@@ -24,8 +21,5 @@ namespace ModInventario
         void ActImprimir();
         void ActFiltrar();
         void ActBuscar();
-
-
     }
-
 }

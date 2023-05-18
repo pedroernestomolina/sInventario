@@ -22,9 +22,6 @@ namespace ModInventario
         private Configuracion.MetodoCalculoUtilidad.Gestion _gestionConfMetodoCalUtilidad;
         private Auditoria.Visualizar.Gestion _gestionAuditoria;
         private Configuracion.DepositoPreDeterminado.Gestion _gConfDepPredeterminado;
-
-        //
-        private Buscar.INotificarSeleccion _gListaSelPrd;
         //
         private ISeguridadAccesoSistema _seguridad;
         private SeguridadSist.ISeguridad _gSecurity;
@@ -106,8 +103,6 @@ namespace ModInventario
             _gSecurityModoUsuario = new SeguridadSist.Usuario.Gestion();
             _gSecurityNivelAcceso= new SeguridadSist.NivelAcceso.Gestion();
             _seguridad = new Helpers.Seguridad(_gSecurityNivelAcceso, _gSecurity);
-
-            _gListaSelPrd = new Producto.ListaSel.Gestion();
 
             //
             _gAgregarDepart = new MaestrosInv.Departamento.Agregar.Gestion();

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ModInventario.src.Tools.ListaSelProducto
 {
-    public interface IListaSelProducto: IListaSeleccion
+    public interface IListaSelProducto : IListaSeleccion
     {
         event EventHandler Notificar;
         bool CerrarVentanaAlSeleccionarItem { get; }

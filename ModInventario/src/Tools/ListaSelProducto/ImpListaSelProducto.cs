@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ModInventario.src.Tools.ListaSelProducto
 {
-    public class ImpListaSelProducto: IListaSelProducto
+    public class ImpListaSelProducto : IListaSelProducto
     {
         public event EventHandler Notificar;
         private bool _cerrarVentanaAlSeleccionar;
@@ -19,14 +19,14 @@ namespace ModInventario.src.Tools.ListaSelProducto
 
         public bool ItemSeleccionadoIsOk { get { return _itemSeleccionado == null ? false : true; } }
         public BindingSource GetSource { get { return _bs; } }
-        public int GetCtnItems{ get { return _bs.Count; } }
+        public int GetCtnItems { get { return _bs.Count; } }
         public object ItemActual { get { return _bs.Current; } }
         public IEnumerable<object> GetListaItems { get { return (IEnumerable<object>)_bs.List; } }
         public ficha GetItemSeleccionado { get { return _itemSeleccionado; } }
         public bool CerrarVentanaAlSeleccionarItem { get { return _cerrarVentanaAlSeleccionar; } }
 
 
-        public ImpListaSelProducto() 
+        public ImpListaSelProducto()
         {
             _cerrarVentanaAlSeleccionar = true;
             _lst = new List<fichaSeleccion>();
@@ -54,7 +54,7 @@ namespace ModInventario.src.Tools.ListaSelProducto
         Frm frm;
         public void Inicia()
         {
-            if (CargarData()) 
+            if (CargarData())
             {
                 if (frm == null)
                 {

@@ -98,10 +98,7 @@
     <Compile Include="Gestion\ILista.cs" />
     <Compile Include="Gestion\IProcesar.cs" />
     <Compile Include="Gestion\IProcesarSalir.cs" />
-    <Compile Include="Helpers\BusquedaAdmPrd.cs" />
-    <Compile Include="Helpers\Filtro.cs" />
     <Compile Include="Helpers\GenerarMov.cs" />
-    <Compile Include="Helpers\Reportes.cs" />
     <Compile Include="Helpers\VerificarPermiso.cs" />
     <Compile Include="Identificacion\ILogin.cs" />
     <Compile Include="IListaAdm.cs" />
@@ -152,8 +149,6 @@
     </Compile>
     <Compile Include="Buscar\Gestion.cs" />
     <Compile Include="Buscar\GestionLista.cs" />
-    <Compile Include="Buscar\IListaSeleccion.cs" />
-    <Compile Include="Buscar\INotificarSeleccion.cs" />
     <Compile Include="Configuracion\BusquedaPredeterminada\ConfigurarFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -242,7 +237,6 @@
       <DependentUpon>IdentificacionFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="IGestion.cs" />
-    <Compile Include="INotificarSeleccion.cs" />
     <Compile Include="ISeguridadAccesoSistema.cs" />
     <Compile Include="Kardex\Detalle\data.cs" />
     <Compile Include="Kardex\Detalle\DetalleFrm.cs">
@@ -462,22 +456,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Proveedor\Buscar\BuscarFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Proveedor\Buscar\BuscarFrm.Designer.cs">
-      <DependentUpon>BuscarFrm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Proveedor\Buscar\Gestion.cs" />
-    <Compile Include="Proveedor\Buscar\Lista\data.cs" />
-    <Compile Include="Proveedor\Buscar\Lista\Gestion.cs" />
-    <Compile Include="Proveedor\ListaSel\Gestion.cs" />
-    <Compile Include="Proveedor\ListaSel\ListaSelFrm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Proveedor\ListaSel\ListaSelFrm.Designer.cs">
-      <DependentUpon>ListaSelFrm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Reportes\Documentos\data.cs" />
     <Compile Include="Reportes\Documentos\dataDetalle.cs" />
     <Compile Include="Reportes\Documentos\dsDocumento1.Designer.cs">
@@ -1310,12 +1288,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Proveedor\Buscar\BuscarFrm.resx">
-      <DependentUpon>BuscarFrm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Proveedor\ListaSel\ListaSelFrm.resx">
-      <DependentUpon>ListaSelFrm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Documentos\MovTraslado.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>

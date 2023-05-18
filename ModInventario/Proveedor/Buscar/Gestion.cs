@@ -8,11 +8,8 @@ using System.Windows.Forms;
 
 namespace ModInventario.Proveedor.Buscar
 {
-    
     public class Gestion
     {
-
-
         private Lista.Gestion _gestionLista;
 
 
@@ -80,7 +77,5 @@ namespace ModInventario.Proveedor.Buscar
         {
             _gestionLista.SeleccionarItem();
         }
-
     }
-
 }

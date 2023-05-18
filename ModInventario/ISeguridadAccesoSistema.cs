@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModInventario
 {
-    
     public interface ISeguridadAccesoSistema
     {
-
         bool Verificar(OOB.LibInventario.Permiso.Ficha ficha);
     }
-
 }

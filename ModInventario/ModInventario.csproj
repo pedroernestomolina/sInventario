@@ -857,9 +857,6 @@
     <Compile Include="src\Producto\AgregarEditar\ModoAdm\Editar\IEditar.cs" />
     <Compile Include="src\Producto\AgregarEditar\ModoAdm\Editar\ImpEditar.cs" />
     <Compile Include="src\Reporte\IData.cs" />
-    <Compile Include="src\Tools\Buscar\dataExportar.cs" />
-    <Compile Include="src\Tools\Buscar\IBuscar.cs" />
-    <Compile Include="src\Tools\Buscar\ImpBuscar.cs" />
     <Compile Include="src\MovInventario\Cargo\ICargo.cs" />
     <Compile Include="src\MovInventario\Cargo\ImpCargo.cs" />
     <Compile Include="src\MovInventario\Cargo\MovFrm.cs">
@@ -973,33 +970,13 @@
     <Compile Include="src\TallaColorSabor\Visualizar\VerTallaColorSaborFrm.Designer.cs">
       <DependentUpon>VerTallaColorSaborFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Tools\Filtros\Catalogo\ICatalogo.cs" />
-    <Compile Include="src\Tools\Filtros\Catalogo\ImpCatalogo.cs" />
-    <Compile Include="src\Tools\Filtros\Categoria\ICategoria.cs" />
-    <Compile Include="src\Tools\Filtros\Categoria\ImpCategoria.cs" />
-    <Compile Include="src\Tools\Filtros\Departamento\IDepartamento.cs" />
-    <Compile Include="src\Tools\Filtros\Departamento\ImpDepartamento.cs" />
-    <Compile Include="src\Tools\Filtros\Deposito\IDeposito.cs" />
-    <Compile Include="src\Tools\Filtros\Deposito\ImpDeposito.cs" />
-    <Compile Include="src\Tools\Filtros\Divisa\IDivisa.cs" />
-    <Compile Include="src\Tools\Filtros\Divisa\ImpDivisa.cs" />
-    <Compile Include="src\Tools\Filtros\Estatus\IEstatus.cs" />
-    <Compile Include="src\Tools\Filtros\Estatus\ImpEstatus.cs" />
-    <Compile Include="src\Tools\Filtros\Existencia\IExistencia.cs" />
-    <Compile Include="src\Tools\Filtros\Existencia\ImpExistencia.cs" />
     <Compile Include="src\Tools\Filtros\Grupo\IGrupo.cs" />
     <Compile Include="src\Tools\Filtros\Grupo\ImpGrupo.cs" />
     <Compile Include="src\Tools\Filtros\IFiltro.cs" />
-    <Compile Include="src\Tools\Filtros\Marca\IMarca.cs" />
-    <Compile Include="src\Tools\Filtros\Marca\ImpMarca.cs" />
     <Compile Include="src\Tools\Filtros\Oferta\ImpOferta.cs" />
     <Compile Include="src\Tools\Filtros\Oferta\ImpOfertaRep.cs" />
     <Compile Include="src\Tools\Filtros\Oferta\IOferta.cs" />
     <Compile Include="src\Tools\Filtros\Oferta\IOfertaRep.cs" />
-    <Compile Include="src\Tools\Filtros\Origen\IOrigen.cs" />
-    <Compile Include="src\Tools\Filtros\Origen\ImpOrigen.cs" />
-    <Compile Include="src\Tools\Filtros\Pesado\ImpPesado.cs" />
-    <Compile Include="src\Tools\Filtros\Pesado\IPesado.cs" />
     <Compile Include="src\Tools\Filtros\Proveedor\ImpProveedor.cs" />
     <Compile Include="src\Tools\Filtros\Proveedor\IProveedor.cs" />
     <Compile Include="src\Tools\Filtros\Proveedor\Lista\ImpListaPrv.cs" />
@@ -1010,10 +987,6 @@
     <Compile Include="src\Tools\Filtros\Proveedor\Lista\Frm.Designer.cs">
       <DependentUpon>Frm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Tools\Filtros\TasaIva\ImpTasaIva.cs" />
-    <Compile Include="src\Tools\Filtros\TasaIva\ITasaIva.cs" />
-    <Compile Include="src\Tools\Filtros\TCS\ITCS.cs" />
-    <Compile Include="src\Tools\Filtros\TCS\ImpTCS.cs" />
     <Compile Include="src\Tools\IListaSeleccion.cs" />
     <Compile Include="src\Producto\ActualizarOfertaMasiva\Items\ImpItems.cs" />
     <Compile Include="src\Producto\ActualizarOfertaMasiva\Items\IItems.cs" />

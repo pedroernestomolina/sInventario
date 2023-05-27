@@ -110,7 +110,6 @@ namespace DataProvInventario.Data
                             codigoPrd = s.codigoPrd,
                             departamento = s.departamento,
                             grupo = s.grupo,
-                            estatus = (OOB.LibInventario.Reportes.enumerados.EnumEstatus)s.estatus,
                             modeloPrd = s.modeloPrd,
                             nombrePrd = s.nombrePrd,
                             referenciaPrd = s.referenciaPrd,

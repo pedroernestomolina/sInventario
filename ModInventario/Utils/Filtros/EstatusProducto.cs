@@ -33,7 +33,7 @@ namespace ModInventario.Utils.Filtros
         }
 
 
-        private bool _habilitar;
+        protected bool _habilitar;
         public bool GetHabilitar { get { return _habilitar; } }
         public void setHabilitar(bool hab)
         {

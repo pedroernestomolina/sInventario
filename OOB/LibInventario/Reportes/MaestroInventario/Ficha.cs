@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace OOB.LibInventario.Reportes.MaestroInventario
 {
-    
     public class Ficha
     {
-
         public string codigoPrd { get; set; }
         public string nombrePrd { get; set; }
         public string referenciaPrd { get; set; }
@@ -30,8 +28,5 @@ namespace OOB.LibInventario.Reportes.MaestroInventario
         public string nombreGrupo { get; set; }
         public string precioId { get; set; }
         public enumerados.EnumAdministradorPorDivisa admDivisa { get; set; }
-        public enumerados.EnumEstatus estatus {get;set;}
-
     }
-
 }

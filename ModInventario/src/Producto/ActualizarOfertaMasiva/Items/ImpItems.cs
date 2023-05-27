@@ -17,7 +17,6 @@ namespace ModInventario.src.Producto.ActualizarOfertaMasiva.Items
 
 
         public int GetCnt { get { return _bs.Count; } }
-        public string GetCntDesc { get { return GetCnt.ToString("n0"); } }
         public BindingSource GetSource { get { return _bs; } }
         public IEnumerable<data> GetLista { get { return _bl.ToList(); } }
 
@@ -31,21 +30,14 @@ namespace ModInventario.src.Producto.ActualizarOfertaMasiva.Items
         }
 
 
-        //public void setData(FiltroBusqAdm.dataFiltro filtros)
-        //{
-        //    _bl.Clear();
-        //    var _lst = Helpers.BusquedaAdmPrd.CargarBusqueda(filtros);
-        //    foreach (var rg in _lst.OrderBy(o => o.DescripcionPrd).ToList()) 
-        //    {
-        //        var it = new data()
-        //        {
-        //            codPrd = rg.CodigoPrd,
-        //            descPrd = rg.DescripcionPrd,
-        //            idPrd = rg.AutoId,
-        //        };
-        //        _bl.Add(it);
-        //    }
-        //}
+        public void setData(List<data> lst)
+        {
+            _bl.Clear();
+            foreach (var rg in lst)
+            {
+                _bl.Add(rg);
+            }
+        }
 
         public void Inicializa()
         {

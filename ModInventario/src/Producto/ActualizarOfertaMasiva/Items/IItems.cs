@@ -11,13 +11,12 @@ namespace ModInventario.src.Producto.ActualizarOfertaMasiva.Items
     public interface IItems
     {
         int GetCnt { get; }
-        string GetCntDesc { get; }
         BindingSource GetSource { get; }
         IEnumerable<data> GetLista { get; }
 
-        //void setData(FiltroBusqAdm.dataFiltro filtros);
-
         void Inicializa();
         void LimpiarTodo();
+
+        void setData(List<data> _lst);
     }
 }

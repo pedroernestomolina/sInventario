@@ -26,18 +26,6 @@ namespace ModInventario.src
             return new ModInventario.Producto.Precio.EditarCambiar.ModoAdministrativo.ImpEditarAdm();
         }
 
-        //public FiltrosGen.AdmProducto.IAdmProducto
-        //    CreateInstancia_FiltroPrdAdm()
-        //{
-        //    var BuscarProv = CreateInstancia_BusquedaProveedor();
-        //    return new src.FiltroBusqAdm.ModoSucursal.ImpSucursal(BuscarProv);
-        //}
-        //private FiltrosGen.IBuscar
-        //    CreateInstancia_BusquedaProveedor()
-        //{
-        //    return new FiltrosGen.BuscarProveedor.Gestion(new Proveedor.ListaSel.Gestion());
-        //}
-
         public ModInventario.Producto.Precio.Historico.IHistorico
             CreateInstancia_HistoricoPrecio()
         {
@@ -58,24 +46,6 @@ namespace ModInventario.src
         {
             return new ModInventario.Producto.VisualizarFicha.Gestion();
         }
-
-        //public Filtro.FiltroRep.IFiltroRep
-        //    CreateInstancia_FiltrosReporte()
-        //{
-        //    var filtroBusPrd = CreateInstancia_FiltroBusqProducto();
-        //    return new ModInventario.src.Filtro.FiltroRep.ModoSucursal.ImpModoSucursal(filtroBusPrd);
-        //}
-        //private FiltrosGen.IBuscar
-        //    CreateInstancia_FiltroBusqProducto()
-        //{
-        //    var listaPrdSel = CreateInstancia_ListaSeleccionableProducto();
-        //    return new FiltrosGen.BuscarProducto.Gestion(listaPrdSel);
-        //}
-        //private ModInventario.Buscar.INotificarSeleccion
-        //    CreateInstancia_ListaSeleccionableProducto()
-        //{
-        //    return new ModInventario.Producto.ListaSel.Gestion();
-        //}
 
         public AdmDocumentos.IAdmDoc
             CreateInstancia_AdmDocumentos()
@@ -152,7 +122,6 @@ namespace ModInventario.src
         {
             var hndTCS = CreateInstancia_TallaColorSabor();
             return new ModInventario.Buscar.Gestion(
-                //CreateInstancia_FiltroPrdAdm(),
                 _seguridad,
                 CreateInstancia_ImagenQRProducto(),
                 CreateInstancia_ImagenProducto(),
@@ -218,10 +187,17 @@ namespace ModInventario.src
         {
             return new ModInventario.src.Producto.ActualizarOferta.ModoAdm.ImpModoAdm();
         }
+
+
+        private Producto.ActualizarOfertaMasiva.IOferta _asginacionMasivaOferta;
         public Producto.ActualizarOfertaMasiva.IOferta 
             CreateInstancia_AsginacionMasivaOferta()
         {
-            return new src.Producto.ActualizarOfertaMasiva.ModoAdm.ImpMasiva();
+            if (_asginacionMasivaOferta == null) 
+            {
+                _asginacionMasivaOferta = new src.Producto.ActualizarOfertaMasiva.ModoAdm.ImpMasiva();
+            }
+            return _asginacionMasivaOferta;
         }
 
 

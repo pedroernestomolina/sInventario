@@ -27,12 +27,6 @@ namespace ModInventario.src
             return new ModInventario.Producto.Precio.EditarCambiar.ModoBasico.Editar();
         }
 
-        //public FiltrosGen.AdmProducto.IAdmProducto 
-        //    CreateInstancia_FiltroPrdAdm()
-        //{
-        //    return new src.FiltroBusqAdm.ModoBasico.ImpBasico();
-        //}
-
         public ModInventario.Producto.Precio.Historico.IHistorico 
             CreateInstancia_HistoricoPrecio()
         {
@@ -53,13 +47,6 @@ namespace ModInventario.src
         {
             return new Producto.Visualizar.ModoBasico.Gestion();
         }
-
-        //public Filtro.FiltroRep.IFiltroRep 
-        //    CreateInstancia_FiltrosReporte()
-        //{
-        //    return new ModInventario.src.Filtro.FiltroRep.ModoBasico.ImpModoBasico();
-        //}
-
 
         public AdmDocumentos.IAdmDoc
             CreateInstancia_AdmDocumentos()
@@ -99,18 +86,6 @@ namespace ModInventario.src
         {
             _frm.ShowDialog();
         }
-
-        //private FiltrosGen.IBuscar 
-        //    CreateInstancia_FiltroBusqProducto()
-        //{
-        //    var listaPrdSel = CreateInstancia_ListaSeleccionableProducto();
-        //    return new FiltrosGen.BuscarProducto.Gestion(listaPrdSel);
-        //}
-        //private ModInventario.Buscar.INotificarSeleccion 
-        //    CreateInstancia_ListaSeleccionableProducto()
-        //{
-        //    return new ModInventario.Producto.ListaSel.Gestion();
-        //}
 
         private ModInventario.src.AdmDocumentos.IListaAdmDoc
             CreateInstancia_ListaAdmDoc()
@@ -212,7 +187,6 @@ namespace ModInventario.src
         {
             return null;
         }
-
 
         //
         private Utils.FiltrosPara.Reportes.IFiltroRep _filtrosParaReportes;

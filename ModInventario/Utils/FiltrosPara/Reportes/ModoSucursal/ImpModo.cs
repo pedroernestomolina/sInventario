@@ -15,7 +15,7 @@ namespace ModInventario.Utils.FiltrosPara.Reportes.ModoSucursal
             _marca= new Marca();
             _estatusDivisa = new EstatusDivisa();
             _sucursal = new Sucursal();
-            _estatusDoc = new EstatusDocumento();
+            _estatusPrd = new EstatusProducto();
             _tasaIva = new TasaIva();
             _categoria = new Categoria();
             _origen = new Origen();
@@ -54,7 +54,7 @@ namespace ModInventario.Utils.FiltrosPara.Reportes.ModoSucursal
                 _marca.CargarData();
                 _estatusDivisa.CargarData();
                 _sucursal.CargarData();
-                _estatusDoc.CargarData();
+                _estatusPrd.CargarData();
                 _tasaIva.CargarData();
                 _categoria.CargarData();
                 _origen.CargarData();

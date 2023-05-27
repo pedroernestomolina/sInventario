@@ -14,7 +14,7 @@ namespace ModInventario.Utils.FiltrosPara.Reportes
         protected ICtrlHabilitar _marca;
         protected ICtrlHabilitar _estatusDivisa;
         protected ICtrlHabilitar _sucursal;
-        protected ICtrlHabilitar _estatusDoc;
+        protected ICtrlHabilitar _estatusPrd;
         protected ICtrlHabilitar _tasaIva;
         protected ICtrlHabilitar _categoria;
         protected ICtrlHabilitar _origen;
@@ -33,7 +33,7 @@ namespace ModInventario.Utils.FiltrosPara.Reportes
         public ICtrlHabilitar Marca { get { return _marca; } }
         public ICtrlHabilitar Sucursal { get { return _sucursal; } }
         public ICtrlHabilitar EstatusDivisa { get { return _estatusDivisa; } }
-        public ICtrlHabilitar EstatusDocumento { get { return _estatusDoc; } }
+        public ICtrlHabilitar Estatus { get { return _estatusPrd; } }
         public ICtrlHabilitar TasaIva { get { return _tasaIva; } }
         public ICtrlHabilitar Categoria { get { return _categoria; } }
         public ICtrlHabilitar Origen { get { return _origen; } }
@@ -57,7 +57,7 @@ namespace ModInventario.Utils.FiltrosPara.Reportes
             _marca.Ctrl.Inicializa();
             _estatusDivisa.Ctrl.Inicializa();
             _sucursal.Ctrl.Inicializa();
-            _estatusDoc.Ctrl.Inicializa();
+            _estatusPrd.Ctrl.Inicializa();
             _tasaIva.Ctrl.Inicializa();
             _categoria.Ctrl.Inicializa();
             _origen.Ctrl.Inicializa();
@@ -80,7 +80,7 @@ namespace ModInventario.Utils.FiltrosPara.Reportes
             _marca.setHabilitar(filtHab.ActivarMarca);
             _estatusDivisa.setHabilitar(filtHab.ActivarAdmDivisa);
             _sucursal.setHabilitar(filtHab.ActivarSucursal);
-            _estatusDoc.setHabilitar(filtHab.ActivarEstatus);
+            _estatusPrd.setHabilitar(filtHab.ActivarEstatus);
             _tasaIva.setHabilitar(filtHab.ActivarTasaIva);
             _categoria.setHabilitar(filtHab.ActivarCategoria);
             _origen.setHabilitar(filtHab.ActivarOrigen);
@@ -98,7 +98,7 @@ namespace ModInventario.Utils.FiltrosPara.Reportes
             _marca.setIsRequerido(filtHab.IsRequeridoMarca);
             _estatusDivisa.setIsRequerido(filtHab.IsRequeridoAdmDivisa);
             _sucursal.setIsRequerido(filtHab.IsRequeridoSucursal);
-            _estatusDoc.setIsRequerido(filtHab.IsRequeridoEstatus);
+            _estatusPrd.setIsRequerido(filtHab.IsRequeridoEstatus);
             _tasaIva.setIsRequerido(filtHab.IsRequeridoTasaIva);
             _categoria.setIsRequerido(filtHab.IsRequeridoCategoria);
             _origen.setIsRequerido(filtHab.IsRequeridoOrigen);
@@ -133,7 +133,7 @@ namespace ModInventario.Utils.FiltrosPara.Reportes
             _marca.Ctrl.LimpiarOpcion();
             _estatusDivisa.Ctrl.LimpiarOpcion();
             _sucursal.Ctrl.LimpiarOpcion();
-            _estatusDoc.Ctrl.LimpiarOpcion();
+            _estatusPrd.Ctrl.LimpiarOpcion();
             _tasaIva.Ctrl.LimpiarOpcion();
             _categoria.Ctrl.LimpiarOpcion();
             _origen.Ctrl.LimpiarOpcion();
@@ -155,7 +155,7 @@ namespace ModInventario.Utils.FiltrosPara.Reportes
             if (!_marca.IsOk()) return false;
             if (!_estatusDivisa.IsOk()) return false;
             if (!_sucursal.IsOk()) return false;
-            if (!_estatusDoc.IsOk()) return false;
+            if (!_estatusPrd.IsOk()) return false;
             if (!_tasaIva.IsOk()) return false;
             if (!_categoria.IsOk()) return false;
             if (!_origen.IsOk()) return false;
@@ -189,7 +189,7 @@ namespace ModInventario.Utils.FiltrosPara.Reportes
                     Deposito = _deposito.Ctrl.GetItem == null ? null : new ficha(_deposito.Ctrl.GetItem),
                     Divisa = _estatusDivisa.Ctrl.GetItem == null ? null : new ficha(_estatusDivisa.Ctrl.GetItem),
                     EmpqPrecio = _empaque.Ctrl.GetItem == null ? null : new ficha(_empaque.Ctrl.GetItem),
-                    Estatus = _estatusDoc.Ctrl.GetItem == null ? null : new ficha(_estatusDoc.Ctrl.GetItem),
+                    Estatus = _estatusPrd.Ctrl.GetItem == null ? null : new ficha(_estatusPrd.Ctrl.GetItem),
                     Grupo = _departGrupo.Grupo.Ctrl.GetItem == null ? null : new ficha(_departGrupo.Grupo.Ctrl.GetItem),
                     Marca = _marca.Ctrl.GetItem == null ? null : new ficha(_marca.Ctrl.GetItem),
                     Oferta = _oferta.Ctrl.GetItem == null ? null : new ficha(_oferta.Ctrl.GetItem),

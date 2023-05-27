@@ -512,6 +512,7 @@
                               <Style>
                                 <FontSize>6pt</FontSize>
                                 <Format>n2</Format>
+                                <Color>=IIF(Fields!venta.Value&lt;Fields!importeDivisa.Value,"White","Black")</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -524,6 +525,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>=IIF(Fields!venta.Value&lt;Fields!importeDivisa.Value,"Red","No Color")</BackgroundColor>
                         <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>

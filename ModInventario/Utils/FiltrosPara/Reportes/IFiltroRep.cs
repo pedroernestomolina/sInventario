@@ -14,7 +14,7 @@ namespace ModInventario.Utils.FiltrosPara.Reportes
         ICtrlHabilitar Marca { get; }
         ICtrlHabilitar Sucursal { get; }
         ICtrlHabilitar EstatusDivisa { get; }
-        ICtrlHabilitar EstatusDocumento { get; }
+        ICtrlHabilitar Estatus { get; }
         ICtrlHabilitar TasaIva { get; }
         ICtrlHabilitar Categoria { get; }
         ICtrlHabilitar Origen { get; }

@@ -27,12 +27,6 @@ namespace ModInventario.src
             return null;
         }
 
-        //public FiltrosGen.AdmProducto.IAdmProducto 
-        //    CreateInstancia_FiltroPrdAdm()
-        //{
-        //    return null;
-        //}
-
         public ModInventario.Producto.Precio.Historico.IHistorico 
             CreateInstancia_HistoricoPrecio()
         {
@@ -68,24 +62,6 @@ namespace ModInventario.src
         {
             return null;
         }
-
-        //public Filtro.FiltroRep.IFiltroRep 
-        //    CreateInstancia_FiltrosReporte()
-        //{
-        //    var filtroBusPrd = CreateInstancia_FiltroBusqProducto();
-        //    return new src.Filtro.FiltroRep.ModoBasicoFox.ImpModo(filtroBusPrd);
-        //}
-        //private FiltrosGen.IBuscar
-        //    CreateInstancia_FiltroBusqProducto()
-        //{
-        //    var listaPrdSel = CreateInstancia_ListaSeleccionableProducto();
-        //    return new FiltrosGen.BuscarProducto.Gestion(listaPrdSel);
-        //}
-        //private ModInventario.Buscar.INotificarSeleccion
-        //    CreateInstancia_ListaSeleccionableProducto()
-        //{
-        //    return new ModInventario.Producto.ListaSel.Gestion();
-        //}
 
         public ModInventario.Buscar.Gestion 
             CreateInstancia_HndProducto(ISeguridadAccesoSistema _seguridad, IFabrica _fabrica)

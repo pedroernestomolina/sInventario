@@ -60,9 +60,6 @@ namespace ModInventario.Utils.FiltrosPara.BusqProducto.Busqueda
         {
             _ctrlFiltro.Inicia();
         }
-        public void Buscar()
-        {
-        }
         public void Limpiar()
         {
             _cadenaBusqueda = "";

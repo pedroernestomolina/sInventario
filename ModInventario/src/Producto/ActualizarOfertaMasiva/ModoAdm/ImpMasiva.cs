@@ -8,25 +8,24 @@ using System.Threading.Tasks;
 
 namespace ModInventario.src.Producto.ActualizarOfertaMasiva.ModoAdm
 {
-    public class ImpMasiva: IMasiva
+    public class ImpMasiva : IMasiva
     {
         private bool _abandonarIsOk;
         private bool _procesarIsOK;
-        //private Tools.Busqueda.IBusqueda _busqueda;
         private Items.IItems _items;
         private Precio.IPrecio _precio;
         private DateTime _desde;
         private DateTime _hasta;
         private decimal _porct;
+        private Utils.FiltrosPara.BusqProducto.Busqueda.IComp _compBusqProducto;
 
 
-        //public Tools.Busqueda.IBusqueda Busqueda { get { return _busqueda; ; } }
         public Items.IItems Items { get { return _items; } }
-        //public bool BuscarIsOk { get { return _busqueda.BuscarIsOk; } }
         public Precio.IPrecio Precio { get { return _precio; } }
         public DateTime GetDesde { get { return _desde; } }
         public DateTime GetHasta { get { return _hasta; } }
         public string GetPorctDesc { get { return _porct.ToString("n2", CultureInfo.CurrentCulture); } }
+        public Utils.FiltrosPara.BusqProducto.Busqueda.IComp CompBusqProducto { get { return _compBusqProducto; } }
 
 
         public ImpMasiva()
@@ -35,21 +34,21 @@ namespace ModInventario.src.Producto.ActualizarOfertaMasiva.ModoAdm
             _hasta = DateTime.Now.Date;
             _abandonarIsOk = false;
             _procesarIsOK = false;
-            //_busqueda = new Tools.Busqueda.ImpBusqueda(filtro);
             _precio = new Precio.ImpPrecio();
             _items = new Items.ImpItems();
+            _compBusqProducto = new Utils.FiltrosPara.BusqProducto.Busqueda.ImpComp();
         }
 
 
-        public void Inicializa() 
+        public void Inicializa()
         {
             _desde = DateTime.Now.Date;
             _hasta = DateTime.Now.Date;
             _abandonarIsOk = false;
             _procesarIsOK = false;
-            //_busqueda.Inicializa();
             _precio.Inicializa();
             _items.Inicializa();
+            _compBusqProducto.Inicializa();
         }
 
         private Frm frm;
@@ -67,6 +66,36 @@ namespace ModInventario.src.Producto.ActualizarOfertaMasiva.ModoAdm
         }
         public void Buscar()
         {
+            if (!_compBusqProducto.HayParametrosBusqueda)
+            {
+                Helpers.Msg.Alerta("NO HAY PARAMETROS SELECCIONADOS PARA REALIZAR LA BUSQUEDA");
+                return;
+            }
+            try
+            {
+                var r01 = Sistema.MyData.Producto_GetLista(_compBusqProducto.DataExportar());
+                if (r01.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    throw new Exception(r01.Mensaje);
+                }
+                var _lst = new List<Items.data>();
+                foreach (var rg in r01.Lista.OrderBy(o => o.DescripcionPrd).ToList())
+                {
+                    var it = new Items.data()
+                    {
+                        codPrd = rg.CodigoPrd,
+                        descPrd = rg.DescripcionPrd,
+                        idPrd = rg.AutoId,
+                    };
+                    _lst.Add(it);
+                }
+                _items.setData(_lst);
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
+            }
+
             //_busqueda.Buscar();
             //if (_busqueda.BuscarIsOk) 
             //{
@@ -75,8 +104,8 @@ namespace ModInventario.src.Producto.ActualizarOfertaMasiva.ModoAdm
         }
         public void LimpiarTodo()
         {
-            //_busqueda.LimpiarTodo();
             _items.LimpiarTodo();
+            _compBusqProducto.Limpiar();
         }
 
 
@@ -104,22 +133,22 @@ namespace ModInventario.src.Producto.ActualizarOfertaMasiva.ModoAdm
         public void ProcesarFicha()
         {
             _procesarIsOK = false;
-            if (ValidarIsOk()) 
+            if (ValidarIsOk())
             {
                 var _rt = Helpers.Msg.ProcesarGuardar();
-                if (_rt) 
+                if (_rt)
                 {
                     Procesar();
                 }
             }
         }
 
-        
+
         private bool CargarData()
         {
             try
             {
-                //_busqueda.CargarData();
+                _compBusqProducto.CargarData();
                 _precio.CargarData();
                 return true;
             }
@@ -136,7 +165,7 @@ namespace ModInventario.src.Producto.ActualizarOfertaMasiva.ModoAdm
                 Helpers.Msg.Alerta("NO HAY ITEMS QUE ASIGNAR OFERTAS");
                 return false;
             }
-            if (_precio.GetId=="") 
+            if (_precio.GetId == "")
             {
                 Helpers.Msg.Alerta("DEBES INDICAR UN PRECIO PARA LA OFERTA");
                 return false;
@@ -146,7 +175,7 @@ namespace ModInventario.src.Producto.ActualizarOfertaMasiva.ModoAdm
                 Helpers.Msg.Alerta("PROBLEMA DE FECHAS INCORRECTAS");
                 return false;
             }
-            if (_porct==0m)
+            if (_porct == 0m)
             {
                 Helpers.Msg.Alerta("DEBES INDICAR UN PORCENTANJE PARA LA OFERTA");
                 return false;
@@ -157,17 +186,17 @@ namespace ModInventario.src.Producto.ActualizarOfertaMasiva.ModoAdm
         {
             try
             {
-                var _tipoEmp="";
+                var _tipoEmp = "";
                 switch (_precio.GetId)
                 {
                     case "01":
-                        _tipoEmp="1";
+                        _tipoEmp = "1";
                         break;
                     case "02":
-                        _tipoEmp="2";
+                        _tipoEmp = "2";
                         break;
                     case "03":
-                        _tipoEmp="3";
+                        _tipoEmp = "3";
                         break;
                 }
                 var _lst = new List<string>();
@@ -183,14 +212,14 @@ namespace ModInventario.src.Producto.ActualizarOfertaMasiva.ModoAdm
                 };
                 var r01 = Sistema.MyData.Producto_ModoAdm_OfertaMasiva_Capturar(filtroOOB);
                 var ldata = new List<data>();
-                foreach (var rg in r01.Lista) 
+                foreach (var rg in r01.Lista)
                 {
                     var nr = new data(rg, _porct);
                     ldata.Add(nr);
                 }
 
                 var ofertasOOB = new List<OOB.LibInventario.Producto.ActualizarOfertaMasiva.ModoAdm.Actualizar.Oferta>();
-                foreach (var rg in ldata.Where(f=>f.IsOk()))
+                foreach (var rg in ldata.Where(f => f.IsOk()))
                 {
                     var ni = new OOB.LibInventario.Producto.ActualizarOfertaMasiva.ModoAdm.Actualizar.Oferta()
                     {

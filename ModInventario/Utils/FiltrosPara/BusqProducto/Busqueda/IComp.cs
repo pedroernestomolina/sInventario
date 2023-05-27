@@ -22,7 +22,6 @@ namespace ModInventario.Utils.FiltrosPara.BusqProducto.Busqueda
         void CargarData(bool fozarCargaData);
 
         void MostrarFiltros();
-        void Buscar();
         void Limpiar();
 
         bool HayParametrosBusqueda { get; }

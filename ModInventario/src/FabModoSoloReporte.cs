@@ -27,12 +27,6 @@ namespace ModInventario.src
             return null;
         }
 
-        //public FiltrosGen.AdmProducto.IAdmProducto 
-        //    CreateInstancia_FiltroPrdAdm()
-        //{
-        //    return null;
-        //}
-
         public ModInventario.Producto.Precio.Historico.IHistorico 
             CreateInstancia_HistoricoPrecio()
         {
@@ -100,25 +94,6 @@ namespace ModInventario.src
         {
             return new src.Visor.EntradaxCompra.ModoSoloReporte.ImpSoloReporte();
         }
-
-        //public Filtro.FiltroRep.IFiltroRep 
-        //    CreateInstancia_FiltrosReporte()
-        //{
-        //    var filtroBusPrd = CreateInstancia_FiltroBusqProducto();
-        //    return new src.Filtro.FiltroRep.ModoSoloReporte.ImpModo(filtroBusPrd);
-        //}
-        //private FiltrosGen.IBuscar
-        //    CreateInstancia_FiltroBusqProducto()
-        //{
-        //    var listaPrdSel = CreateInstancia_ListaSeleccionableProducto();
-        //    return new FiltrosGen.BuscarProducto.Gestion(listaPrdSel);
-        //}
-        //private ModInventario.Buscar.INotificarSeleccion
-        //    CreateInstancia_ListaSeleccionableProducto()
-        //{
-        //    return new ModInventario.Producto.ListaSel.Gestion();
-        //}
-
 
         public AdmDocumentos.IAdmDoc
             CreateInstancia_AdmDocumentos()

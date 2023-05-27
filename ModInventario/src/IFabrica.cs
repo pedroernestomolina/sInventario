@@ -16,9 +16,6 @@ namespace ModInventario.src
         ModInventario.Producto.Precio.EditarCambiar.IEditar 
             CreateInstancia_EditarCambiarPrecio();
 
-        //FiltrosGen.AdmProducto.IAdmProducto 
-        //    CreateInstancia_FiltroPrdAdm();
-
         ModInventario.Producto.Precio.Historico.IHistorico 
             CreateInstancia_HistoricoPrecio();
         ModInventario.src.Producto.AgregarEditar.IBaseAgregarEditar 
@@ -33,8 +30,7 @@ namespace ModInventario.src
             CreateInstancia_ImagenProducto();
         ModInventario.src.Producto.QR.IQR
             CreateInstancia_ImagenQRProducto();
-        //Filtro.FiltroRep.IFiltroRep 
-        //    CreateInstancia_FiltrosReporte();
+
         ModInventario.Buscar.Gestion 
             CreateInstancia_HndProducto(ISeguridadAccesoSistema _seguridad, IFabrica _fabrica);
         ModInventario.src.Visor.Traslado.IVisorTraslado 

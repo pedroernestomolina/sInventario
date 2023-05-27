@@ -561,22 +561,14 @@ namespace ModInventario
         private src.Producto.ActualizarOfertaMasiva.IOferta _asignacionMasivaOferta;
         public void AsignacionMasivaOfertas()
         {
-            try
+            if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_AsignacionMasivaProductosDeposito, Sistema.UsuarioP.autoGru, _seguridad))
             {
-                var r00 = Sistema.MyData.Permiso_AsignarOfertaProducto(Sistema.UsuarioP.autoGru);
-                if (_seguridad.Verificar(r00.Entidad))
+                if (_asignacionMasivaOferta == null)
                 {
-                    if (_asignacionMasivaOferta == null) 
-                    {
-                        _asignacionMasivaOferta = _fabrica.CreateInstancia_AsginacionMasivaOferta();
-                    }
-                    _asignacionMasivaOferta.Inicializa();
-                    _asignacionMasivaOferta.Inicia(); 
+                    _asignacionMasivaOferta = _fabrica.CreateInstancia_AsginacionMasivaOferta();
                 }
-            }
-            catch (Exception e)
-            {
-                Helpers.Msg.Error(e.Message);
+                _asignacionMasivaOferta.Inicializa();
+                _asignacionMasivaOferta.Inicia(); 
             }
         }
     }

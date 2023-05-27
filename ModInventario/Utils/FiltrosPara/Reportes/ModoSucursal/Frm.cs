@@ -66,7 +66,7 @@ namespace ModInventario.Utils.FiltrosPara.Reportes.ModoSucursal
             CB_MARCA.DataSource = _controlador.Marca.Ctrl.GetSource;
             CB_ADMDIVISA.DataSource = _controlador.EstatusDivisa.Ctrl.GetSource;
             CB_IMPUESTO.DataSource = _controlador.TasaIva.Ctrl.GetSource;
-            CB_ESTATUS.DataSource = _controlador.EstatusDocumento.Ctrl.GetSource;
+            CB_ESTATUS.DataSource = _controlador.Estatus.Ctrl.GetSource;
             CB_PESADO.DataSource = _controlador.EstatusPesado.Ctrl.GetSource; 
             CB_SUCURSAL.DataSource = _controlador.Sucursal.Ctrl.GetSource;
             CB_CATEGORIA.DataSource = _controlador.Categoria.Ctrl.GetSource;
@@ -82,7 +82,7 @@ namespace ModInventario.Utils.FiltrosPara.Reportes.ModoSucursal
             CB_MARCA.SelectedValue = _controlador.Marca.Ctrl.GetId;
             CB_ADMDIVISA.SelectedValue = _controlador.EstatusDivisa.Ctrl.GetId;
             CB_IMPUESTO.SelectedValue = _controlador.TasaIva.Ctrl.GetId;
-            CB_ESTATUS.SelectedValue = _controlador.EstatusDocumento.Ctrl.GetId;
+            CB_ESTATUS.SelectedValue = _controlador.Estatus.Ctrl.GetId;
             CB_PESADO.SelectedValue = _controlador.EstatusPesado.Ctrl.GetId;
             CB_SUCURSAL.SelectedValue = _controlador.Sucursal.Ctrl.GetId ;
             CB_CATEGORIA.SelectedValue = _controlador.Categoria.Ctrl.GetSource;
@@ -101,7 +101,7 @@ namespace ModInventario.Utils.FiltrosPara.Reportes.ModoSucursal
             CB_MARCA.Enabled = _controlador.Marca.GetHabilitar;
             CB_ADMDIVISA.Enabled = _controlador.EstatusDivisa.GetHabilitar;
             CB_IMPUESTO.Enabled = _controlador.TasaIva.GetHabilitar;
-            CB_ESTATUS.Enabled = _controlador.EstatusDocumento.GetHabilitar;
+            CB_ESTATUS.Enabled = _controlador.Estatus.GetHabilitar;
             CB_PESADO.Enabled = _controlador.EstatusPesado.GetHabilitar;
             CB_SUCURSAL.Enabled = _controlador.Sucursal.GetHabilitar;
             CB_ORIGEN.Enabled = _controlador.Origen.GetHabilitar;
@@ -200,10 +200,10 @@ namespace ModInventario.Utils.FiltrosPara.Reportes.ModoSucursal
         private void CB_ESTATUS_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (_modoInicializar) { return; }
-            _controlador.EstatusDocumento.Ctrl.setFichaById("");
+            _controlador.Estatus.Ctrl.setFichaById("");
             if (CB_ESTATUS.SelectedIndex != -1)
             {
-                _controlador.EstatusDocumento.Ctrl.setFichaById(CB_ESTATUS.SelectedValue.ToString());
+                _controlador.Estatus.Ctrl.setFichaById(CB_ESTATUS.SelectedValue.ToString());
             }
         }
         private void CB_PESADO_SelectedIndexChanged(object sender, EventArgs e)
@@ -388,7 +388,7 @@ namespace ModInventario.Utils.FiltrosPara.Reportes.ModoSucursal
             CB_MARCA.SelectedValue = _controlador.Marca.Ctrl.GetId;
             CB_ADMDIVISA.SelectedValue = _controlador.EstatusDivisa.Ctrl.GetId;
             CB_IMPUESTO.SelectedValue = _controlador.TasaIva.Ctrl.GetId;
-            CB_ESTATUS.SelectedValue = _controlador.EstatusDocumento.Ctrl.GetId;
+            CB_ESTATUS.SelectedValue = _controlador.Estatus.Ctrl.GetId;
             CB_PESADO.SelectedValue = _controlador.EstatusPesado.Ctrl.GetId; ;
             CB_SUCURSAL.SelectedValue = _controlador.Sucursal.Ctrl.GetId;
             CB_CATEGORIA.SelectedValue = _controlador.Categoria.Ctrl.GetSource;

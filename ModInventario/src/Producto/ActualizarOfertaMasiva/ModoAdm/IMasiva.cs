@@ -9,6 +9,8 @@ namespace ModInventario.src.Producto.ActualizarOfertaMasiva.ModoAdm
 {
     public interface IMasiva: IOferta
     {
+        Utils.FiltrosPara.BusqProducto.Busqueda.IComp CompBusqProducto { get; }
+
         //Tools.Busqueda.IBusqueda Busqueda { get; }
         Items.IItems Items { get; }
         Precio.IPrecio Precio { get; }

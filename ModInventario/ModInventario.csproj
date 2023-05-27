@@ -1053,6 +1053,7 @@
     <Compile Include="Utils\FiltrosPara\Reportes\Concepto.cs" />
     <Compile Include="Utils\FiltrosPara\Reportes\Departamento.cs" />
     <Compile Include="Utils\FiltrosPara\Reportes\DepartamentoGrupo.cs" />
+    <Compile Include="Utils\FiltrosPara\Reportes\EstatusProducto.cs" />
     <Compile Include="Utils\FiltrosPara\Reportes\Fecha.cs" />
     <Compile Include="Utils\FiltrosPara\Reportes\Empaque.cs" />
     <Compile Include="Utils\FiltrosPara\Reportes\EstatusDivisa.cs" />

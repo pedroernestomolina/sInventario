@@ -10,5 +10,6 @@ namespace ModInventario.src.MovInventario.Traslado.CapturaMov
 {
     public interface ICapturaMovTraslado: Tools.CapturaMov.ICapturaMov
     {
+        void InfDepDestino();
     }
 }

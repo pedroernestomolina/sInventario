@@ -20,6 +20,7 @@ namespace ModInventario.src.MovInventario.Cargo.CapturaMov
         private bool _procesarIsOk;
         private bool _abandonarIsOk;
         private Tools.CapturaMov.IDataCaptura _dataMov;
+        private Tools.InfPrd.IPrdInf _infPrd;
 
 
         public Tools.CapturaMov.IDataCaptura Captura { get { return _dataMov; } }
@@ -32,6 +33,7 @@ namespace ModInventario.src.MovInventario.Cargo.CapturaMov
             _procesarIsOk = false;
             _abandonarIsOk = false;
             _itEditar = null;
+            _infPrd = new Tools.InfPrd.ImpPrdInf();
         }
 
 

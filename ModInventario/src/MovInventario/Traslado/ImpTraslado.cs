@@ -180,6 +180,8 @@ namespace ModInventario.src.MovInventario.Traslado
                         fechaUltimaActCosto = r.fechaUltActualizacionCosto,
                         contEmpInv = r.contEmpInv,
                         nombreEmpInv = r.nombreEmpInv,
+                        autoDepOrigen = _depOrigen.GetId,
+                        autoDepDestino = _depDestino.GetId,
                     };
                     _capturaMov.ItemCapturado += _capturaMov_ItemCapturado;
                     _capturaMov.Inicializa();

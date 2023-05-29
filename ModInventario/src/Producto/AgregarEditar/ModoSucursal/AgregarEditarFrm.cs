@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -173,10 +174,10 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoSucursal
             TB_CONT_EMP_VENTA_TIPO_2.Text = _controlador.GetContEmpVentaTipo2.ToString();
             TB_CONT_EMP_VENTA_TIPO_3.Text = _controlador.GetContEmpVentaTipo3.ToString();
             TB_PESO.Text = _controlador.GetPeso.ToString();
-            TB_VOLUMEN.Text = _controlador.GetVolumen.ToString();
-            TB_LARGO.Text = _controlador.GetLargo.ToString();
-            TB_ANCHO.Text = _controlador.GetAncho.ToString();
-            TB_ALTO.Text = _controlador.GetAlto.ToString();
+            TB_VOLUMEN.Text = _controlador.GetVolumen.ToString("n3",CultureInfo.CurrentCulture);
+            TB_LARGO.Text = _controlador.GetLargo.ToString("n2", CultureInfo.CurrentCulture);
+            TB_ANCHO.Text = _controlador.GetAncho.ToString("n2", CultureInfo.CurrentCulture);
+            TB_ALTO.Text = _controlador.GetAlto.ToString("n2", CultureInfo.CurrentCulture);
             TB_PLU.Text = _controlador.GetPlu;
             TB_DIAS_EMPAQUE.Text = _controlador.GetDiasEmpaque.ToString();
 
@@ -194,6 +195,7 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoSucursal
             }
 
             TB_TALLA_COLOR_SABOR.Text = _controlador.GetTallaColorSabor_Desc;
+            RB_VOL_OTRO.Checked = true;
             ActualizarTallaColorSabor();
             inicializarData = false;
         }
@@ -254,16 +256,19 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoSucursal
         {
             var _alto = decimal.Parse(TB_ALTO.Text);
             _controlador.setAlto(_alto);
+            ActualizarVolumen();
         }
         private void TB_LARGO_Leave(object sender, EventArgs e)
         {
             var _largo = decimal.Parse(TB_LARGO.Text);
             _controlador.setLargo(_largo);
+            ActualizarVolumen();
         }
         private void TB_ANCHO_Leave(object sender, EventArgs e)
         {
             var _ancho = decimal.Parse(TB_ANCHO.Text);
             _controlador.setAncho(_ancho);
+            ActualizarVolumen();
         }
         private void TB_CONT_EMP_VENTA_TIPO_1_Leave(object sender, EventArgs e)
         {
@@ -630,6 +635,63 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoSucursal
         private void RefreshTallaColorSabor()
         {
             _controlador.RefrescaTallaColorSabor();
+        }
+
+        private void rb_vol_rect_Leave(object sender, EventArgs e)
+        {
+            _controlador.setTipoVolumenCajaRect();
+            ActualizarVolumen();
+        }
+        private void rb_vol_cil_Leave(object sender, EventArgs e)
+        {
+            _controlador.setTipoVolumenCilindro();
+            ActualizarVolumen();
+        }
+        private void rd_vol_cono_Leave(object sender, EventArgs e)
+        {
+            _controlador.setTipoVolumenCono();
+            ActualizarVolumen();
+        }
+        private void RB_VOL_ESF_Leave(object sender, EventArgs e)
+        {
+            _controlador.setTipoVolumenEsfera();
+            ActualizarVolumen();
+        }
+        private void RB_VOL_OTRO_Leave(object sender, EventArgs e)
+        {
+            _controlador.setTipoVolumenOtro();
+            ActualizarVolumen();
+        }
+
+        private void rb_vol_rect_CheckedChanged(object sender, EventArgs e)
+        {
+            _controlador.setTipoVolumenCajaRect();
+            ActualizarVolumen();
+        }
+        private void rb_vol_cil_CheckedChanged(object sender, EventArgs e)
+        {
+            _controlador.setTipoVolumenCilindro();
+            ActualizarVolumen();
+        }
+        private void rd_vol_cono_CheckedChanged(object sender, EventArgs e)
+        {
+            _controlador.setTipoVolumenCono();
+            ActualizarVolumen();
+        }
+        private void RB_VOL_ESF_CheckedChanged(object sender, EventArgs e)
+        {
+            _controlador.setTipoVolumenEsfera();
+            ActualizarVolumen();
+        }
+        private void RB_VOL_OTRO_CheckedChanged(object sender, EventArgs e)
+        {
+            _controlador.setTipoVolumenOtro();
+            ActualizarVolumen();
+        }
+
+        private void ActualizarVolumen()
+        {
+            TB_VOLUMEN.Text = _controlador.GetVolumen.ToString("n3",CultureInfo.CurrentCulture);
         }
     }
 }

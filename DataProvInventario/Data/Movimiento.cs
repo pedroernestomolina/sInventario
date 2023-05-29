@@ -968,6 +968,7 @@ namespace DataProvInventario.Data
                             depositoDestino=s.depositoDestino,
                             idDepOrigen=s.idDepOrigen,
                             idDepDestino=s.idDepDestino,
+                            montoDivisa= s.montoDivisa.HasValue?s.montoDivisa.Value: 0m,
                         };
                     }).ToList();
                 }

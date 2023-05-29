@@ -60,5 +60,11 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoSucursal
         bool EditarCodigoIsOk { get; }
 
         void RefrescaTallaColorSabor();
+
+        void setTipoVolumenCajaRect();
+        void setTipoVolumenCilindro();
+        void setTipoVolumenCono();
+        void setTipoVolumenEsfera();
+        void setTipoVolumenOtro();
     }
 }

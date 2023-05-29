@@ -763,6 +763,15 @@
     <Compile Include="src\MovInventario\Tools\ICtrlLink.cs" />
     <Compile Include="src\MovInventario\Tools\Departamento\Imp.cs" />
     <Compile Include="src\MovInventario\Tools\ICtrl.cs" />
+    <Compile Include="src\MovInventario\Tools\InfPrd\data.cs" />
+    <Compile Include="src\MovInventario\Tools\InfPrd\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\MovInventario\Tools\InfPrd\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\MovInventario\Tools\InfPrd\ImpPrdInf.cs" />
+    <Compile Include="src\MovInventario\Tools\InfPrd\IPrdInf.cs" />
     <Compile Include="src\MovInventario\Tools\ListaMov\IListaMov.cs" />
     <Compile Include="src\MovInventario\Tools\ListaMov\ImpListaMov.cs" />
     <Compile Include="src\MovInventario\Tools\Sucursal\Imp.cs" />
@@ -823,6 +832,11 @@
     <Compile Include="src\Producto\AgregarEditar\ModoAdm\Editar\dataEditar.cs" />
     <Compile Include="src\Producto\AgregarEditar\ModoAdm\Editar\IEditar.cs" />
     <Compile Include="src\Producto\AgregarEditar\ModoAdm\Editar\ImpEditar.cs" />
+    <Compile Include="src\Producto\AgregarEditar\ModoSucursal\ImpVolCajaRect.cs" />
+    <Compile Include="src\Producto\AgregarEditar\ModoSucursal\ImpVolEsferico.cs" />
+    <Compile Include="src\Producto\AgregarEditar\ModoSucursal\ImpVolumenCilindro.cs" />
+    <Compile Include="src\Producto\AgregarEditar\ModoSucursal\ImpVolumenCono.cs" />
+    <Compile Include="src\Producto\AgregarEditar\ModoSucursal\IVolumen.cs" />
     <Compile Include="src\Reporte\IData.cs" />
     <Compile Include="src\MovInventario\Cargo\ICargo.cs" />
     <Compile Include="src\MovInventario\Cargo\ImpCargo.cs" />
@@ -1428,6 +1442,9 @@
       <DependentUpon>MovFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\MovInventario\Pendiente\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\MovInventario\Tools\InfPrd\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\MovInventario\Traslado\CapturaMov\Frm.resx">

@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace OOB.LibInventario.Movimiento.Lista
 {
-    
     public class Ficha
     {
         public string autoId { get; set; }
@@ -28,6 +27,6 @@ namespace OOB.LibInventario.Movimiento.Lista
         public string depositoDestino { get; set; }
         public string idDepOrigen { get; set; }
         public string idDepDestino { get; set; }
+        public decimal montoDivisa { get; set; }
     }
-
 }

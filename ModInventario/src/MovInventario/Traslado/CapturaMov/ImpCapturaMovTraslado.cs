@@ -20,6 +20,9 @@ namespace ModInventario.src.MovInventario.Traslado.CapturaMov
         private bool _procesarIsOk;
         private bool _abandonarIsOk;
         private Tools.CapturaMov.IDataCaptura _dataMov;
+        private Tools.InfPrd.IPrdInf _infPrd;
+        private string _idDepOrigen;
+        private string _idDepDestino;
 
 
         public Tools.CapturaMov.IDataCaptura Captura { get { return _dataMov; } }
@@ -32,6 +35,9 @@ namespace ModInventario.src.MovInventario.Traslado.CapturaMov
             _procesarIsOk = false;
             _abandonarIsOk = false;
             _itEditar = null;
+            _infPrd = new Tools.InfPrd.ImpPrdInf();
+            _idDepDestino = "";
+            _idDepOrigen = "";
         }
 
 
@@ -61,6 +67,8 @@ namespace ModInventario.src.MovInventario.Traslado.CapturaMov
 
         public void setData(data dat)
         {
+            _idDepOrigen = dat.autoDepOrigen;
+            _idDepDestino = dat.autoDepDestino;
             _dataMov.setFicha(dat);
         }
         public void setDataEditar(Tools.CapturaMov.IDataCaptura it)
@@ -114,6 +122,15 @@ namespace ModInventario.src.MovInventario.Traslado.CapturaMov
                 _dataMov.setTasaCambio(_itEditar.TasaCambio);
             }
             return true;
+        }
+
+
+        public void InfDepDestino()
+        {
+            _infPrd.Inicializa();
+            _infPrd.setIdPrd(_dataMov.AutoPrd);
+            _infPrd.setIdDeposito(_idDepDestino);
+            _infPrd.Inicia();
         }
     }
 }

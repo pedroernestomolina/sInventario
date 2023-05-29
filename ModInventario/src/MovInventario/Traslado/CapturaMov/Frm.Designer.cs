@@ -327,14 +327,17 @@
             // 
             // L_PRODUCTO
             // 
+            this.L_PRODUCTO.Cursor = System.Windows.Forms.Cursors.Hand;
             this.L_PRODUCTO.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_PRODUCTO.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_PRODUCTO.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_PRODUCTO.ForeColor = System.Drawing.Color.Blue;
             this.L_PRODUCTO.Location = new System.Drawing.Point(0, 0);
             this.L_PRODUCTO.Name = "L_PRODUCTO";
             this.L_PRODUCTO.Size = new System.Drawing.Size(322, 74);
             this.L_PRODUCTO.TabIndex = 2;
             this.L_PRODUCTO.Text = "label9";
             this.L_PRODUCTO.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.L_PRODUCTO.Click += new System.EventHandler(this.L_PRODUCTO_Click);
             // 
             // panel7
             // 

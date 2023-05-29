@@ -139,5 +139,10 @@ namespace ModInventario.src.MovInventario.Traslado.CapturaMov
         {
             this.Close();
         }
+
+        private void L_PRODUCTO_Click(object sender, EventArgs e)
+        {
+            _controlador.InfDepDestino();
+        }
     }
 }

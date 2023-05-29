@@ -18,6 +18,8 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoSucursal
         protected MaestrosInv.Marca.IAgregarEditar _agregarMarca;
         protected SeguridadSist.ISeguridad _seguridad;
         new protected baseDataAgregarEditarModoSucursal _data;
+        //
+        protected IVolumen _volumenPrd;
 
 
         public BaseAgregarEditarModoSucursal(baseDataAgregarEditarModoSucursal data, SeguridadSist.ISeguridad seguridad)
@@ -71,14 +73,17 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoSucursal
         public void setAlto(decimal v)
         {
             _data.setAlto(v);
+            CalculaVolumen();
         }
         public void setLargo(decimal v)
         {
             _data.setLargo(v);
+            CalculaVolumen();
         }
         public void setAncho(decimal v)
         {
             _data.setAncho(v);
+            CalculaVolumen();
         }
         public void setImagen(Image img)
         {
@@ -250,5 +255,37 @@ namespace ModInventario.src.Producto.AgregarEditar.ModoSucursal
             _gTallaColorSabor.CargarData(lst);
         }
         abstract public void RefrescaTallaColorSabor();
+
+
+        public void setTipoVolumenCajaRect()
+        {
+            _volumenPrd = new ImpVolCajaRect();
+            CalculaVolumen();
+        }
+        public void setTipoVolumenCilindro()
+        {
+            _volumenPrd = new ImpVolumenCilindro();
+            CalculaVolumen();
+        }
+        public void setTipoVolumenCono()
+        {
+            _volumenPrd = new ImpVolumenCono();
+            CalculaVolumen();
+        }
+        public void setTipoVolumenEsfera()
+        {
+            _volumenPrd = new ImpVolEsferico();
+            CalculaVolumen();
+        }
+        public void setTipoVolumenOtro()
+        {
+        }
+        public void CalculaVolumen()
+        {
+            if (_volumenPrd != null)
+            {
+                setVolumen(_volumenPrd.Calcula(GetAlto, GetLargo, GetAncho));
+            }
+        }
     }
 }

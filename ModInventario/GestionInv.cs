@@ -571,5 +571,52 @@ namespace ModInventario
                 _asignacionMasivaOferta.Inicia(); 
             }
         }
+
+        public void GenerarTomaInv()
+        {
+            var filtro = new OOB.LibInventario.TomaInv.ObtenerToma.Filtro()
+            {
+                idDeposito = "0000000023",
+                periodoDias = 45,
+                idDepartExcluir = new List<string>() { "0000000004" },
+            };
+            var r01 = Sistema.MyData.TomaInv_GetListaPrd(filtro);
+            if (r01.Result != OOB.Enumerados.EnumResult.isError)
+            {
+                var _lst = new List<TomaInv.data>();
+                foreach (var r in r01.Lista) 
+                {
+                    var rg = new TomaInv.data() { cnt = r.cnt, codigoPrd = r.codigoPrd, costoPrd = r.costoPrd, descPrd = r.descPrd, idPrd = r.idPrd, margen = r.margen };
+                    _lst.Add(rg);
+                }
+                _lst.Sort();
+                _lst.Reverse();
+                //var _toma = _lst.Where(w=> w.descPrd.Contains("HARINA")).Take(200).ToList();
+
+
+                var _lstPrd =_lst.Take(500).ToList().Select(s=>
+                {
+                    var nr = new OOB.LibInventario.TomaInv.GenerarToma.PrdToma()
+                    {
+                         IdPrd= s.idPrd,
+                    };
+                    return nr;
+                }).ToList();
+                var ficha = new OOB.LibInventario.TomaInv.GenerarToma.Ficha()
+                {
+                    idDepositoTomaInv = "0000000023",
+                    ProductosTomaInv = _lstPrd,
+                };
+                var r02 =Sistema.MyData.TomaInv_GenerarToma(ficha);
+            }
+        }
+
+        public void TomaInv_AdmDocumentos()
+        {
+            TomaInv.Analisis.IAnalisis _analsisTomaInv = new TomaInv.Analisis.ImpAnalisis();
+            _analsisTomaInv.Inicializa();
+            _analsisTomaInv.setTomaInvAnalizar(1);
+            _analsisTomaInv.Inicia();
+        }
     }
 }

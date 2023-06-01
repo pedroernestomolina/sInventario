@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,9 +41,17 @@ namespace ModInventario.src.MovInventario.Tools.InfPrd
             c1.DataPropertyName = "FechaHora";
             c1.HeaderText = "Fecha";
             c1.Visible = true;
-            c1.Width = 80;
+            c1.Width = 110;
             c1.HeaderCell.Style.Font = f;
             c1.DefaultCellStyle.Font = f1;
+
+            var c6 = new DataGridViewTextBoxColumn();
+            c6.DataPropertyName = "DocumentoNro";
+            c6.HeaderText = "Doc/Nro";
+            c6.Visible = true;
+            c6.Width = 100;
+            c6.HeaderCell.Style.Font = f;
+            c6.DefaultCellStyle.Font = f1;
 
             var c2 = new DataGridViewTextBoxColumn();
             c2.DataPropertyName = "STipoDoc";
@@ -99,6 +108,7 @@ namespace ModInventario.src.MovInventario.Tools.InfPrd
             c5B.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             DGV.Columns.Add(c1);
+            DGV.Columns.Add(c6);
             DGV.Columns.Add(c2);
             DGV.Columns.Add(c3);
             DGV.Columns.Add(c4);
@@ -115,15 +125,29 @@ namespace ModInventario.src.MovInventario.Tools.InfPrd
 
         private void Frm_Load(object sender, EventArgs e)
         {
+            var cult = CultureInfo.CurrentCulture;
             L_ET_INV_EMP_COMPRA.Text = _controlador.GetInvEmpCompra;
             L_ET_INV_EMP_INV.Text = _controlador.GetInvEmpInv;
             L_ET_INV_EMP_UND.Text = _controlador.GetInvEmpUnd;
-            L_INV_EMP_COMPRA.Text = _controlador.GetEx_InvEmpCompra.ToString();
-            L_INV_EMP_INV.Text = _controlador.GetEx_InvEmpInv.ToString();
-            L_INV_EMP_UND.Text = _controlador.GetEx_InvEmpUnd.ToString();
+            L_INV_EMP_COMPRA.Text = _controlador.GetEx_InvEmpCompra.ToString("n1",cult);
+            L_INV_EMP_INV.Text = _controlador.GetEx_InvEmpInv.ToString("n1",cult);
+            L_INV_EMP_UND.Text = _controlador.GetEx_InvEmpUnd.ToString("n1",cult);
+            L_INV_TOTAL.Text = _controlador.GetEx_Total.ToString("n1",cult);
             //
             DGV.DataSource = _controlador.GetSource;
             DGV.Refresh();
+        }
+
+
+        private void BT_SALIR_Click(object sender, EventArgs e)
+        {
+            Salir();
+        }
+
+
+        private void Salir()
+        {
+            this.Close();
         }
     }
 }

@@ -78,6 +78,7 @@
     <Compile Include="Data\Sucursal.cs" />
     <Compile Include="Data\TallaColorSabor.cs" />
     <Compile Include="Data\TasaImpuesto.cs" />
+    <Compile Include="Data\TomaInv.cs" />
     <Compile Include="Data\Tool.cs" />
     <Compile Include="Data\MovTransito.cs" />
     <Compile Include="Data\Usuario.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="InfraEstructura\ISucursal.cs" />
     <Compile Include="InfraEstructura\ITallaColorSabor.cs" />
     <Compile Include="InfraEstructura\ITasaImpuesto.cs" />
+    <Compile Include="InfraEstructura\ITomaInv.cs" />
     <Compile Include="InfraEstructura\ITool.cs" />
     <Compile Include="InfraEstructura\IUsuario.cs" />
     <Compile Include="InfraEstructura\IVisor.cs" />

@@ -1012,6 +1012,18 @@
     <Compile Include="Sucursal\Lista\ListaFrm.Designer.cs">
       <DependentUpon>ListaFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TomaInv\Analisis\data.cs" />
+    <Compile Include="TomaInv\Analisis\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TomaInv\Analisis\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TomaInv\Analisis\IAnalisis.cs" />
+    <Compile Include="TomaInv\Analisis\ILista.cs" />
+    <Compile Include="TomaInv\Analisis\ImpAnalisis.cs" />
+    <Compile Include="TomaInv\Analisis\ImpLista.cs" />
+    <Compile Include="TomaInv\data.cs" />
     <Compile Include="Tool\AjusteNivelMinimoMaximoProducto\AjustarFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1506,6 +1518,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sucursal\Lista\ListaFrm.resx">
       <DependentUpon>ListaFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TomaInv\Analisis\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\AjusteNivelMinimoMaximoProducto\AjustarFrm.resx">
       <DependentUpon>AjustarFrm.cs</DependentUpon>

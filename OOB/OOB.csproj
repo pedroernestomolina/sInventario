@@ -290,6 +290,12 @@
     <Compile Include="LibInventario\TallaColorSabor\Existencia\Ficha.cs" />
     <Compile Include="LibInventario\TallaColorSabor\Existencia\Filtro.cs" />
     <Compile Include="LibInventario\TasaImpuesto\Ficha.cs" />
+    <Compile Include="LibInventario\TomaInv\Analisis\Ficha.cs" />
+    <Compile Include="LibInventario\TomaInv\Analisis\Item.cs" />
+    <Compile Include="LibInventario\TomaInv\GenerarToma\Ficha.cs" />
+    <Compile Include="LibInventario\TomaInv\GenerarToma\PrdToma.cs" />
+    <Compile Include="LibInventario\TomaInv\ObtenerToma\Ficha.cs" />
+    <Compile Include="LibInventario\TomaInv\ObtenerToma\Filtro.cs" />
     <Compile Include="LibInventario\Tool\AjusteNivelMinimoMaximoProducto\Ajustar\Ficha.cs" />
     <Compile Include="LibInventario\Tool\AjusteNivelMinimoMaximoProducto\Capturar\Ficha.cs" />
     <Compile Include="LibInventario\Tool\AjusteNivelMinimoMaximoProducto\Capturar\Filtro.cs" />

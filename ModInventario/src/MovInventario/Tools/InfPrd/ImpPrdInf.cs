@@ -29,11 +29,12 @@ namespace ModInventario.src.MovInventario.Tools.InfPrd
         public string GetInvEmpCompra { get { return "Emp" + Environment.NewLine + "(COMPRA/" + _contEmpComp.ToString() + ")"; } }
         public string GetInvEmpInv { get { return "Emp" + Environment.NewLine + "(INV/" + _contEmpInv.ToString() + ")"; } }
         public string GetInvEmpUnd { get { return "Emp" + Environment.NewLine + "(UNIDAD/" + 1.ToString() + ")"; } }
-        public int GetEx_InvEmpCompra
+        public decimal GetEx_Total { get { return _exTotal; } }
+        public decimal GetEx_InvEmpCompra
         {
             get
             {
-                var rt = 0;
+                var rt = 0m;
                 if (_contEmpComp > 0)
                 {
                     rt = (int)(_exTotal/ _contEmpComp);
@@ -41,7 +42,7 @@ namespace ModInventario.src.MovInventario.Tools.InfPrd
                 return rt;
             }
         }
-        public int GetEx_InvEmpInv
+        public decimal GetEx_InvEmpInv
         {
             get
             {
@@ -54,7 +55,7 @@ namespace ModInventario.src.MovInventario.Tools.InfPrd
                 return rt;
             }
         }
-        public int GetEx_InvEmpUnd
+        public decimal GetEx_InvEmpUnd
         {
             get
             {
@@ -174,7 +175,7 @@ namespace ModInventario.src.MovInventario.Tools.InfPrd
         public void setLista(List<OOB.LibInventario.Movimiento.Lista.Ficha> lst)
         {
             _bl.Clear();
-            foreach (var rg in lst)
+            foreach (var rg in lst.OrderByDescending(o=>o.fecha).ToList())
             {
                 var dt = new data(rg);
                 _bl.Add(dt);

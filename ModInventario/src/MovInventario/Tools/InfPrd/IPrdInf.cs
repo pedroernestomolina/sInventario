@@ -15,9 +15,10 @@ namespace ModInventario.src.MovInventario.Tools.InfPrd
         string GetInvEmpCompra { get; }
         string GetInvEmpInv { get; }
         string GetInvEmpUnd { get; }
-        int GetEx_InvEmpCompra { get; }
-        int GetEx_InvEmpInv { get; }
-        int GetEx_InvEmpUnd { get; }
+        decimal GetEx_InvEmpCompra { get; }
+        decimal GetEx_InvEmpInv { get; }
+        decimal GetEx_InvEmpUnd { get; }
+        decimal GetEx_Total { get; }
 
         void setIdPrd(string idPrd);
         void setIdDeposito(string idDep);

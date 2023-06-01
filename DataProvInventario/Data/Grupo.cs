@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace DataProvInventario.Data
 {
-
     public partial class DataProv: IData
     {
-
         public OOB.ResultadoLista<OOB.LibInventario.Grupo.Ficha> 
             Grupo_GetLista()
         {
@@ -155,7 +153,5 @@ namespace DataProvInventario.Data
 
             return rt;
         }
-
     }
-
 }

@@ -515,6 +515,9 @@ namespace ModInventario.src.Inicio.ModoSoloReporte
             _controlador.PermitirCambiarPrecioAlModificarCosto();
         }
 
+        private void TOMA_INV_ADM_DOC_Click(object sender, EventArgs e)
+        {
+            _controlador.TomaInv_AdmDocumentos();
+        }
     }
-
 }

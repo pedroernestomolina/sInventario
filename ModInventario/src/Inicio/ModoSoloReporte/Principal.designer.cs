@@ -96,6 +96,8 @@
             this.TSM_VISOR_EXISTENCIA = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_VISOR_COSTO_EXISTENCIA = new System.Windows.Forms.ToolStripMenuItem();
             this.rotaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripSeparator();
+            this.TSM_VISOR_ENTRADAS_POR_COMPRA = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_REPORTE_MAESTRO_PRODUCTO = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_REPORTE_MAESTRO_INVENTARIO = new System.Windows.Forms.ToolStripMenuItem();
@@ -139,8 +141,8 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.toolStripMenuItem13 = new System.Windows.Forms.ToolStripSeparator();
-            this.TSM_VISOR_ENTRADAS_POR_COMPRA = new System.Windows.Forms.ToolStripMenuItem();
+            this.tomaInventarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TOMA_INV_ADM_DOC = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -205,11 +207,11 @@
             // 
             this.panel2.Controls.Add(this.BT_SALIR);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(685, 1);
+            this.panel2.Location = new System.Drawing.Point(684, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(1);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(2);
-            this.panel2.Size = new System.Drawing.Size(198, 52);
+            this.panel2.Size = new System.Drawing.Size(199, 52);
             this.panel2.TabIndex = 0;
             // 
             // BT_SALIR
@@ -220,7 +222,7 @@
             this.BT_SALIR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.BT_SALIR.Location = new System.Drawing.Point(2, 2);
             this.BT_SALIR.Name = "BT_SALIR";
-            this.BT_SALIR.Size = new System.Drawing.Size(194, 48);
+            this.BT_SALIR.Size = new System.Drawing.Size(195, 48);
             this.BT_SALIR.TabIndex = 0;
             this.BT_SALIR.Text = "Salir";
             this.BT_SALIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -235,7 +237,7 @@
             this.panel7.Margin = new System.Windows.Forms.Padding(1);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(2);
-            this.panel7.Size = new System.Drawing.Size(359, 52);
+            this.panel7.Size = new System.Drawing.Size(358, 52);
             this.panel7.TabIndex = 1;
             // 
             // tableLayoutPanel6
@@ -254,7 +256,7 @@
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(355, 48);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(354, 48);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // panel13
@@ -288,7 +290,7 @@
             this.panel14.Margin = new System.Windows.Forms.Padding(1);
             this.panel14.Name = "panel14";
             this.panel14.Padding = new System.Windows.Forms.Padding(2);
-            this.panel14.Size = new System.Drawing.Size(269, 22);
+            this.panel14.Size = new System.Drawing.Size(268, 22);
             this.panel14.TabIndex = 3;
             // 
             // L_FECHA
@@ -298,7 +300,7 @@
             this.L_FECHA.ForeColor = System.Drawing.Color.Yellow;
             this.L_FECHA.Location = new System.Drawing.Point(2, 2);
             this.L_FECHA.Name = "L_FECHA";
-            this.L_FECHA.Size = new System.Drawing.Size(265, 18);
+            this.L_FECHA.Size = new System.Drawing.Size(264, 18);
             this.L_FECHA.TabIndex = 5;
             this.L_FECHA.Text = "Hoy";
             this.L_FECHA.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -334,7 +336,7 @@
             this.panel16.Margin = new System.Windows.Forms.Padding(1);
             this.panel16.Name = "panel16";
             this.panel16.Padding = new System.Windows.Forms.Padding(2);
-            this.panel16.Size = new System.Drawing.Size(269, 22);
+            this.panel16.Size = new System.Drawing.Size(268, 22);
             this.panel16.TabIndex = 4;
             // 
             // L_HOST
@@ -344,7 +346,7 @@
             this.L_HOST.ForeColor = System.Drawing.Color.Yellow;
             this.L_HOST.Location = new System.Drawing.Point(2, 2);
             this.L_HOST.Name = "L_HOST";
-            this.L_HOST.Size = new System.Drawing.Size(265, 18);
+            this.L_HOST.Size = new System.Drawing.Size(264, 18);
             this.L_HOST.TabIndex = 4;
             this.L_HOST.Text = "label2";
             this.L_HOST.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -353,7 +355,7 @@
             // 
             this.panel17.Controls.Add(this.tableLayoutPanel7);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(362, 1);
+            this.panel17.Location = new System.Drawing.Point(361, 1);
             this.panel17.Margin = new System.Windows.Forms.Padding(1);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(200, 52);
@@ -425,7 +427,7 @@
             // 
             this.panel20.Controls.Add(this.tableLayoutPanel8);
             this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel20.Location = new System.Drawing.Point(564, 1);
+            this.panel20.Location = new System.Drawing.Point(563, 1);
             this.panel20.Margin = new System.Windows.Forms.Padding(1);
             this.panel20.Name = "panel20";
             this.panel20.Padding = new System.Windows.Forms.Padding(2);
@@ -476,9 +478,10 @@
             this.menuStrip1.BackColor = System.Drawing.Color.Yellow;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
+            this.movimientosToolStripMenuItem,
+            this.tomaInventarioToolStripMenuItem,
             this.maestrosToolStripMenuItem,
             this.ajustesToolStripMenuItem,
-            this.movimientosToolStripMenuItem,
             this.visorToolStripMenuItem,
             this.reportesToolStripMenuItem,
             this.estadisticasToolStripMenuItem,
@@ -838,6 +841,19 @@
             this.rotaciónToolStripMenuItem.Text = "Rotación";
             this.rotaciónToolStripMenuItem.Visible = false;
             this.rotaciónToolStripMenuItem.Click += new System.EventHandler(this.rotaciónToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem13
+            // 
+            this.toolStripMenuItem13.Name = "toolStripMenuItem13";
+            this.toolStripMenuItem13.Size = new System.Drawing.Size(206, 6);
+            // 
+            // TSM_VISOR_ENTRADAS_POR_COMPRA
+            // 
+            this.TSM_VISOR_ENTRADAS_POR_COMPRA.Image = global::ModInventario.Properties.Resources.bt_visor;
+            this.TSM_VISOR_ENTRADAS_POR_COMPRA.Name = "TSM_VISOR_ENTRADAS_POR_COMPRA";
+            this.TSM_VISOR_ENTRADAS_POR_COMPRA.Size = new System.Drawing.Size(209, 22);
+            this.TSM_VISOR_ENTRADAS_POR_COMPRA.Text = "Entradas Por Compras";
+            this.TSM_VISOR_ENTRADAS_POR_COMPRA.Click += new System.EventHandler(this.TSM_VISOR_ENTRADAS_POR_COMPRA_Click);
             // 
             // reportesToolStripMenuItem
             // 
@@ -1279,18 +1295,20 @@
             this.panel10.Size = new System.Drawing.Size(246, 350);
             this.panel10.TabIndex = 0;
             // 
-            // toolStripMenuItem13
+            // tomaInventarioToolStripMenuItem
             // 
-            this.toolStripMenuItem13.Name = "toolStripMenuItem13";
-            this.toolStripMenuItem13.Size = new System.Drawing.Size(206, 6);
+            this.tomaInventarioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TOMA_INV_ADM_DOC});
+            this.tomaInventarioToolStripMenuItem.Name = "tomaInventarioToolStripMenuItem";
+            this.tomaInventarioToolStripMenuItem.Size = new System.Drawing.Size(106, 20);
+            this.tomaInventarioToolStripMenuItem.Text = "Toma Inventario";
             // 
-            // TSM_VISOR_ENTRADAS_POR_COMPRA
+            // TOMA_INV_ADM_DOC
             // 
-            this.TSM_VISOR_ENTRADAS_POR_COMPRA.Image = global::ModInventario.Properties.Resources.bt_visor;
-            this.TSM_VISOR_ENTRADAS_POR_COMPRA.Name = "TSM_VISOR_ENTRADAS_POR_COMPRA";
-            this.TSM_VISOR_ENTRADAS_POR_COMPRA.Size = new System.Drawing.Size(209, 22);
-            this.TSM_VISOR_ENTRADAS_POR_COMPRA.Text = "Entradas Por Compras";
-            this.TSM_VISOR_ENTRADAS_POR_COMPRA.Click += new System.EventHandler(this.TSM_VISOR_ENTRADAS_POR_COMPRA_Click);
+            this.TOMA_INV_ADM_DOC.Name = "TOMA_INV_ADM_DOC";
+            this.TOMA_INV_ADM_DOC.Size = new System.Drawing.Size(237, 22);
+            this.TOMA_INV_ADM_DOC.Text = "Administrador de Documentos";
+            this.TOMA_INV_ADM_DOC.Click += new System.EventHandler(this.TOMA_INV_ADM_DOC_Click);
             // 
             // Principal
             // 
@@ -1452,6 +1470,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem12;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem13;
         private System.Windows.Forms.ToolStripMenuItem TSM_VISOR_ENTRADAS_POR_COMPRA;
+        private System.Windows.Forms.ToolStripMenuItem tomaInventarioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem TOMA_INV_ADM_DOC;
     }
 }
 

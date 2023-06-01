@@ -17,6 +17,7 @@ namespace ModInventario.TomaInv.Analisis
 
 
         public BindingSource GetDataSource { get { return _bs; } }
+        public List<data> GetLista { get { return _bl.ToList(); } }
 
 
         public ImpLista()
@@ -40,6 +41,22 @@ namespace ModInventario.TomaInv.Analisis
             _lst.Clear();
             _lst.AddRange(lst);
             _bs.CurrencyManager.Refresh();
+        }
+        public void setEliminarItems(IEnumerable<data> lst)
+        {
+            foreach (var rg in lst)
+            {
+                rg.setConteoNull();
+            }
+            _bs.CurrencyManager.Refresh();
+        }
+        public void setMarcarTodas(bool m)
+        {
+            foreach (var rg in _lst)
+            {
+                rg.Marcar(m);
+                _bs.CurrencyManager.Refresh();
+            }
         }
     }
 }

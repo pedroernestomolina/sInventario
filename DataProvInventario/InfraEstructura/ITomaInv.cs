@@ -15,5 +15,7 @@ namespace DataProvInventario.InfraEstructura
             TomaInv_GenerarToma(OOB.LibInventario.TomaInv.GenerarToma.Ficha Ficha);
         OOB.ResultadoEntidad<OOB.LibInventario.TomaInv.Analisis.Ficha>
             TomaInv_Analisis(int idToma);
+        OOB.Resultado
+            TomaInv_RechazarItemToma(OOB.LibInventario.TomaInv.RechazarItem.Ficha ficha);
     }
 }

@@ -18,7 +18,7 @@ namespace ModInventario.TomaInv.Analisis
         public OOB.LibInventario.TomaInv.Analisis.Item itemAnalisis { get { return _itemAnalisis; } }
         public string CodigoPrd { get { return _itemAnalisis.codPrd; } }
         public string DescPrd { get { return _itemAnalisis.descPrd; } }
-        public decimal Diferencia { get { return _diferencia; } }
+        public decimal Diferencia { get { return Math.Abs(_diferencia); } }
         public enumAnalisis Estado { get { return _analisis; } }
         public bool Eliminar { get; set; }
 
@@ -48,6 +48,17 @@ namespace ModInventario.TomaInv.Analisis
             {
                 _analisis = enumAnalisis.SinDefinir;
             }
+        }
+
+        public void setConteoNull()
+        {
+            _diferencia = 0;
+            _analisis = enumAnalisis.SinDefinir;
+            Eliminar = false;
+        }
+        public void Marcar(bool m)
+        {
+            Eliminar = m;
         }
     }
 }

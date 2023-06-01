@@ -11,9 +11,12 @@ namespace ModInventario.TomaInv.Analisis
     public interface ILista
     {
         BindingSource GetDataSource { get; }
+        List<data> GetLista { get;}
 
 
         void Inicializa();
         void setDataListar(List<data> lst);
+        void setEliminarItems(IEnumerable<data> lst);
+        void setMarcarTodas(bool m);
     }
 }

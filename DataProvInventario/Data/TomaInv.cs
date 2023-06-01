@@ -113,5 +113,28 @@ namespace DataProvInventario.Data
             };
             return rt;
         }
+        public OOB.Resultado 
+            TomaInv_RechazarItemToma(OOB.LibInventario.TomaInv.RechazarItem.Ficha ficha)
+        {
+            var rt = new OOB.Resultado();
+            var fichaDTO = new DtoLibInventario.TomaInv.RechazarItem.Ficha()
+            {
+                IdToma = ficha.IdToma,
+                Items = ficha.Items.Select(s =>
+                {
+                    var nr = new DtoLibInventario.TomaInv.RechazarItem.Item()
+                    {
+                        IdPrd = s.IdPrd,
+                    };
+                    return nr;
+                }).ToList(),
+            };
+            var r01 = MyData.TomaInv_RechazarItemsToma (fichaDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            return rt;
+        }
     }
 }

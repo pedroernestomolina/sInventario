@@ -13,5 +13,7 @@ namespace ModInventario.TomaInv.Analisis
         BindingSource GetSource { get; }
 
         void setTomaInvAnalizar(int idToma);
+        void EliminarTomas();
+        void setMarcarTodas(bool m);
     }
 }

@@ -57,12 +57,14 @@ namespace ModInventario.TomaInv.Analisis
 
             var c3 = new DataGridViewTextBoxColumn();
             c3.DataPropertyName = "Diferencia";
-            c3.HeaderText = "Diferencia";
+            c3.HeaderText = "Diferencia (UND)";
             c3.Visible = true;
             c3.HeaderCell.Style.Font = f;
             c3.DefaultCellStyle.Font = f1;
-            c3.Width = 120;
+            c3.Width = 80;
             c3.ReadOnly = true;
+            c3.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            c3.DefaultCellStyle.Format = "n1";
 
             var c4 = new DataGridViewTextBoxColumn();
             c4.DataPropertyName = "Estado";
@@ -72,6 +74,7 @@ namespace ModInventario.TomaInv.Analisis
             c4.DefaultCellStyle.Font = f1;
             c4.Width = 100;
             c4.ReadOnly = true;
+            c4.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
             var c5 = new DataGridViewCheckBoxColumn();
             c5.DataPropertyName = "Eliminar";
@@ -98,6 +101,23 @@ namespace ModInventario.TomaInv.Analisis
         public void setControlador(IAnalisis ctr)
         {
             _controlador = ctr;
+        }
+
+
+        private void BT_TOMA_ELIMINAR_Click(object sender, EventArgs e)
+        {
+            EliminarTomas();
+        }
+
+
+        private void EliminarTomas()
+        {
+            _controlador.EliminarTomas();
+        }
+
+        private void CHB_MARCAR_CheckedChanged(object sender, EventArgs e)
+        {
+            _controlador.setMarcarTodas(CHB_MARCAR.Checked);
         }
     }
 }

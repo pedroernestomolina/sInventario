@@ -49,6 +49,39 @@ namespace ModInventario.TomaInv.Analisis
         }
 
 
+        public void EliminarTomas()
+        {
+            var msg = "Eliminar Estos Conteos ?";
+            var resp = MessageBox.Show(msg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (resp == DialogResult.No) 
+            {
+                return;
+            }
+            var _lst = _lista.GetLista.Where(w => w.Eliminar && w.Estado != data.enumAnalisis.SinDefinir);
+            var ficha = new OOB.LibInventario.TomaInv.RechazarItem.Ficha()
+            {
+                IdToma = _idTomaAnalizar,
+                Items = _lst.Select(s =>
+                {
+                    var nr = new OOB.LibInventario.TomaInv.RechazarItem.Item()
+                    {
+                        IdPrd = s.itemAnalisis.idPrd,
+                    };
+                    return nr;
+                }).ToList(),
+            };
+            try
+            {
+                var r01 = Sistema.MyData.TomaInv_RechazarItemToma(ficha);
+                _lista.setEliminarItems(_lst);
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
+            }
+        }
+
+
         private bool CargarData()
         {
             try
@@ -67,6 +100,11 @@ namespace ModInventario.TomaInv.Analisis
                 Helpers.Msg.Error(e.Message);
                 return false;
             }
+        }
+
+        public void setMarcarTodas(bool m)
+        {
+            _lista.setMarcarTodas(m);
         }
     }
 }

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace ModInventario.src.MovInventario.Tools.Sucursal
+namespace ModInventario.Utils.Tools.Concepto
 {
     public class Imp: ICtrl
     {
-        private Utils.Filtros.Sucursal _ctrl;
+        private Utils.Filtros.Concepto _ctrl;
 
 
         public BindingSource GetSource { get { return _ctrl.Ctrl.GetSource; } }
@@ -20,7 +20,7 @@ namespace ModInventario.src.MovInventario.Tools.Sucursal
 
         public Imp()
         {
-            _ctrl = new Utils.Filtros.Sucursal();
+            _ctrl = new Utils.Filtros.Concepto();
         }
 
 
@@ -35,14 +35,7 @@ namespace ModInventario.src.MovInventario.Tools.Sucursal
         }
         public void CargarData()
         {
-            var filtroOOB = new OOB.LibInventario.Sucursal.Filtro() { };
-            var r01 = Sistema.MyData.Sucursal_GetLista(filtroOOB);
-            var _list = new List<LibUtilitis.Opcion.IData>();
-            foreach (var rg in r01.Lista.Where(w => w.IsActivo).OrderBy(o => o.nombre).ToList())
-            {
-                _list.Add(new dataUtils() { id = rg.auto, codigo = rg.codigo, desc = rg.nombre });
-            }
-            _ctrl.Ctrl.CargarData(_list);
+            _ctrl.CargarData();
         }
         public void LimpiarItemSeleccion()
         {

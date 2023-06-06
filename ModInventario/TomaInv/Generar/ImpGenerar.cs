@@ -20,6 +20,7 @@ namespace ModInventario.TomaInv.Generar
         private DateTime _fechaSist;
         private decimal _cntDias;
         private ILista _lista;
+        private Tools.ExcluirDepart.IExcluir _excluir;
 
 
         public string GetEnt_Motivo { get { return _motivo; } }
@@ -29,6 +30,8 @@ namespace ModInventario.TomaInv.Generar
         public ICtrlLink DepOrigen { get { return _depOrigen; } }
         public decimal GetCntDias { get { return _cntDias; } }
         public BindingSource GetSource { get { return _lista.GetDataSource; } }
+        public decimal DiasMov { get { return 45m; } }
+        public int CntItems { get { return _lista.CntItem; } }
 
 
         public ImpGenerar()
@@ -40,8 +43,9 @@ namespace ModInventario.TomaInv.Generar
             _motivo = "";
             _sucOrigen = new Utils.Tools.Sucursal.Imp();
             _depOrigen = new Utils.Tools.Deposito.Imp();
-            _cntDias = 45m;
+            _cntDias = DiasMov;
             _lista = new ImpLista();
+            _excluir = new Tools.ExcluirDepart.ImpExcluir();
         }
 
 
@@ -56,6 +60,7 @@ namespace ModInventario.TomaInv.Generar
             _depOrigen.Inicializa();
             _cntDias = 45m;
             _lista.Inicializa();
+            _excluir.Inicializa();
         }
         Frm frm;
         public void Inicia()
@@ -83,14 +88,17 @@ namespace ModInventario.TomaInv.Generar
         {
             if (_autorizadoPor.Trim() == "") 
             {
+                Helpers.Msg.Alerta("CAMPO AUTORIZADO NO PUEDE ESTAR VACIO");
                 return;
             }
             if (_motivo.Trim() == "")
             {
+                Helpers.Msg.Alerta("CAMPO MOTIVO NO PUEDE ESTAR VACIO");
                 return;
             }
             if (_lista.GetLista.Count<=0)
             {
+                Helpers.Msg.Alerta("NO HAY ITEMS PARA LA SOLICITUD");
                 return;
             }
             var resp = Helpers.Msg.ProcesarGuardar();
@@ -131,21 +139,25 @@ namespace ModInventario.TomaInv.Generar
         {
             if (_sucOrigen.GetItem == null)
             {
+                Helpers.Msg.Alerta("SUCURSAL NO PUEDE ESTAR VACIA");
                 return;
             }
             if (_depOrigen.GetItem == null)
             {
+                Helpers.Msg.Alerta("DEPOSITO NO PUEDE ESTAR VACIO");
                 return;
             }
             if (_cntDias <= 0m)
             {
+                Helpers.Msg.Alerta("CANTIDAD DIAS MOVIMIENTOS NO PUEDE SER CERO(0)");
                 return;
             }
+            var _lstId = _excluir.GetLista.Where(w=>w.IsSeleccionado).Select(s=>s.Departamento.auto).ToList();
             var filtro = new OOB.LibInventario.TomaInv.ObtenerToma.Filtro()
             {
                 idDeposito = _depOrigen.GetId,
                 periodoDias = (int)_cntDias,
-                idDepartExcluir = new List<string>() { "0000000004" },
+                idDepartExcluir = _lstId, 
             };
             var r01 = Sistema.MyData.TomaInv_GetListaPrd(filtro);
             if (r01.Result != OOB.Enumerados.EnumResult.isError)
@@ -189,9 +201,13 @@ namespace ModInventario.TomaInv.Generar
                 _motivo = "";
                 _sucOrigen.LimpiarItemSeleccion();
                 _depOrigen.LimpiarItemSeleccion();
-                _cntDias = 45m;
+                _cntDias = DiasMov;
                 _lista.Inicializa();
             }
+        }
+        public void DepartamentosExcluir()
+        {
+            _excluir.Inicia();
         }
         private void Procesar()
         {
@@ -206,13 +222,13 @@ namespace ModInventario.TomaInv.Generar
                 }
                 var _lstPrd = _lista.GetLista.ToList().Select(s =>
                 {
-                    var nr = new OOB.LibInventario.TomaInv.GenerarToma.PrdToma()
+                    var nr = new OOB.LibInventario.TomaInv.Solicitud.Generar.PrdToma()
                     {
                         IdPrd = s.PrdToma.idPrd,
                     };
                     return nr;
                 }).ToList();
-                var ficha = new OOB.LibInventario.TomaInv.GenerarToma.Ficha()
+                var ficha = new OOB.LibInventario.TomaInv.Solicitud.Generar.Ficha()
                 {
                     idDeposito = _depOrigen.GetId,
                     autorizadoPor = _autorizadoPor,
@@ -225,13 +241,18 @@ namespace ModInventario.TomaInv.Generar
                     motivo = _motivo,
                     ProductosTomaInv = _lstPrd,
                 };
-                var r01 = Sistema.MyData.TomaInv_GenerarToma(ficha);
+                var r01 = Sistema.MyData.TomaInv_GenerarSolcitud(ficha);
                 _procesarIsOk = true;
+                Helpers.Msg.AgregarOk();
             }
             catch (Exception e)
             {
                 Helpers.Msg.Error(e.Message);
             }
+        }
+        public void EliminarItem()
+        {
+            _lista.EiminarItem();
         }
     }
 }

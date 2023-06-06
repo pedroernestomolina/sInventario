@@ -508,9 +508,13 @@ namespace ModInventario.src.Inicio.ModoSucursal
             _controlador.PermitirCambiarPrecioAlModificarCosto();
         }
 
-        private void TOMAINV_GENERAR_TOMA_Click(object sender, EventArgs e)
+        private void TOMAINV_GENERAR_SOLICITUD_Click(object sender, EventArgs e)
         {
-            _controlador.GenerarTomaInv();
+            _controlador.TomaInv_GenerarSolicitud();
+        }
+        private void TOMAINV_CONVERTIR_SOLICITUD_TOMA_Click(object sender, EventArgs e)
+        {
+            _controlador.TomaInv_ConvertirSolicitudEnToma();
         }
     }
 }

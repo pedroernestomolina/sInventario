@@ -15,13 +15,11 @@ namespace DataProvInventario.Data
             Departamento_GetLista()
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Departamento.Ficha>();
-
             var r01 = MyData.Departamento_GetLista();
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
                 throw new Exception(r01.Mensaje);
             }
-
             var list = new List<OOB.LibInventario.Departamento.Ficha>();
             if (r01.Lista != null)
             {
@@ -39,7 +37,6 @@ namespace DataProvInventario.Data
                 }
             }
             rt.Lista = list;
-
             return rt;
         }
         public OOB.ResultadoEntidad<OOB.LibInventario.Departamento.Ficha> 

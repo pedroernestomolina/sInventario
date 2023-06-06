@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ModInventario.src.MovInventario.Tools
+namespace OOB.LibInventario.TomaInv.Solicitud.Generar
 {
-    public interface ICtrlLink: ICtrl
+    public class PrdToma
     {
-        void CargarDataByIdLink(string id);
+        public string IdPrd { get; set; }
     }
 }

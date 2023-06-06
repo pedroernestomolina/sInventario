@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace ModInventario.TomaInv.Generar
+namespace ModInventario.TomaInv.Tools.ExcluirDepart
 {
     public interface ILista
     {
         BindingSource GetDataSource { get; }
-        List<data> GetLista { get;}
+        IEnumerable <Object> GetLista { get;}
         int CntItem { get; }
 
 
         void Inicializa();
-        void setDataListar(List<TomaInv.data> lst);
-        void EiminarItem();
+        void setDataListar(IEnumerable<Object> lst);
     }
 }

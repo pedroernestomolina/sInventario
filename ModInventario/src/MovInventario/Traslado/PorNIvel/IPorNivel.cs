@@ -10,8 +10,8 @@ namespace ModInventario.src.MovInventario.Traslado.PorNIvel
 {
     public interface IPorNIvel: ITraslado
     {
-        Tools.ICtrl SucDestino { get; }
-        Tools.ICtrl Departamento { get; }
+        Utils.Tools.ICtrl SucDestino { get; }
+        Utils.Tools.ICtrl Departamento { get; }
         void SucDestinoSetId(string id);
         void CapturarProductosConExistenciaPorDebajoNivelMinimo();
         void EliminarItemsDondeExistenciaEnDepOrigenSeaCero();

@@ -22,9 +22,9 @@ namespace ModInventario.src.MovInventario
 
 
         protected decimal _tasaCambio;
-        protected Tools.ICtrl _sucOrigen;
-        protected Tools.ICtrlLink _depOrigen;
-        protected Tools.ICtrl _concepto;
+        protected Utils.Tools.ICtrl _sucOrigen;
+        protected Utils.Tools.ICtrlLink _depOrigen;
+        protected Utils.Tools.ICtrl _concepto;
         protected Tools.ListaMov.IListaMov _listaMov;
         protected src.Tools.ListaSelProducto.IListaSelProducto _listaSelPrd;
         protected ISeguridadAccesoSistema _seguridad;
@@ -36,9 +36,9 @@ namespace ModInventario.src.MovInventario
         public string GetEnt_AutorizadoPor { get { return _autorizadoPor; } }
         public DateTime GetFechaSistema { get { return _fechaServidor; } }
         //
-        public Tools.ICtrl SucOrigen { get { return _sucOrigen; } }
-        public Tools.ICtrlLink DepOrigen { get { return _depOrigen; } }
-        public Tools.ICtrl Concepto { get { return _concepto; } }
+        public Utils.Tools.ICtrl SucOrigen { get { return _sucOrigen; } }
+        public Utils.Tools.ICtrlLink DepOrigen { get { return _depOrigen; } }
+        public Utils.Tools.ICtrl Concepto { get { return _concepto; } }
         public Tools.ListaMov.IListaMov ListaItems { get { return _listaMov; } }
         public Pendiente.IPendiente Pendiente { get { return _pendiente; } }
         //
@@ -53,9 +53,9 @@ namespace ModInventario.src.MovInventario
             _tasaCambio = 0m;
             _fechaServidor = DateTime.Now.Date;
             _limpiezaGeneralIsOk=false;
-            _concepto = new Tools.Concepto.Imp();
-            _sucOrigen = new Tools.Sucursal.Imp();
-            _depOrigen = new Tools.Deposito.Imp();
+            _concepto = new Utils.Tools.Concepto.Imp();
+            _sucOrigen = new Utils.Tools.Sucursal.Imp();
+            _depOrigen = new Utils.Tools.Deposito.Imp();
             _listaMov = new Tools.ListaMov.ImpListaMov();
             _listaSelPrd = new src.Tools.ListaSelProducto.ImpListaSelProducto();
             _nuevoConcepto = new ModInventario.MaestrosInv.Concepto.Agregar.Gestion();

@@ -757,12 +757,6 @@
     <Compile Include="src\MovInventario\Tools\CapturaMov\ImpDataPrd.cs" />
     <Compile Include="src\MovInventario\Tools\CapturaMov\ImpTipMov.cs" />
     <Compile Include="src\MovInventario\Tools\CapturaMov\ITipMov.cs" />
-    <Compile Include="src\MovInventario\Tools\Concepto\Imp.cs" />
-    <Compile Include="src\MovInventario\Tools\dataUtils.cs" />
-    <Compile Include="src\MovInventario\Tools\Deposito\Imp.cs" />
-    <Compile Include="src\MovInventario\Tools\ICtrlLink.cs" />
-    <Compile Include="src\MovInventario\Tools\Departamento\Imp.cs" />
-    <Compile Include="src\MovInventario\Tools\ICtrl.cs" />
     <Compile Include="src\MovInventario\Tools\InfPrd\data.cs" />
     <Compile Include="src\MovInventario\Tools\InfPrd\Frm.cs">
       <SubType>Form</SubType>
@@ -774,7 +768,6 @@
     <Compile Include="src\MovInventario\Tools\InfPrd\IPrdInf.cs" />
     <Compile Include="src\MovInventario\Tools\ListaMov\IListaMov.cs" />
     <Compile Include="src\MovInventario\Tools\ListaMov\ImpListaMov.cs" />
-    <Compile Include="src\MovInventario\Tools\Sucursal\Imp.cs" />
     <Compile Include="src\MovInventario\Traslado\CapturaMov\Frm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1021,6 +1014,7 @@
     <Compile Include="TomaInv\Analisis\ILista.cs" />
     <Compile Include="TomaInv\Analisis\ImpAnalisis.cs" />
     <Compile Include="TomaInv\Analisis\ImpLista.cs" />
+    <Compile Include="TomaInv\ConvertirSolicitud\Imp.cs" />
     <Compile Include="TomaInv\data.cs" />
     <Compile Include="TomaInv\Generar\data.cs" />
     <Compile Include="TomaInv\Generar\Frm.cs">
@@ -1033,6 +1027,19 @@
     <Compile Include="TomaInv\Generar\ILista.cs" />
     <Compile Include="TomaInv\Generar\ImpGenerar.cs" />
     <Compile Include="TomaInv\Generar\ImpLista.cs" />
+    <Compile Include="TomaInv\Tools\ExcluirDepart\data.cs" />
+    <Compile Include="TomaInv\Tools\ExcluirDepart\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TomaInv\Tools\ExcluirDepart\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TomaInv\Tools\ExcluirDepart\IExcluir.cs" />
+    <Compile Include="TomaInv\Tools\ExcluirDepart\ILista.cs" />
+    <Compile Include="TomaInv\Tools\ExcluirDepart\IListaSeleccion.cs" />
+    <Compile Include="TomaInv\Tools\ExcluirDepart\ImpExcluir.cs" />
+    <Compile Include="TomaInv\Tools\ExcluirDepart\ImpListaSeleccion.cs" />
+    <Compile Include="TomaInv\Tools\ExcluirDepart\ISelecciona.cs" />
     <Compile Include="Tool\AjusteNivelMinimoMaximoProducto\AjustarFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1170,7 +1177,9 @@
     <Compile Include="Utils\Filtros\Sucursal.cs" />
     <Compile Include="Utils\Filtros\TasaIva.cs" />
     <Compile Include="Utils\Filtros\TipoDocumento.cs" />
+    <Compile Include="Utils\Tools\Concepto\Imp.cs" />
     <Compile Include="Utils\Tools\dataUtils.cs" />
+    <Compile Include="Utils\Tools\Departamento\Imp.cs" />
     <Compile Include="Utils\Tools\Deposito\Imp.cs" />
     <Compile Include="Utils\Tools\ICtrl.cs" />
     <Compile Include="Utils\Tools\ICtrlLink.cs" />
@@ -1537,6 +1546,9 @@
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TomaInv\Generar\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TomaInv\Tools\ExcluirDepart\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\AjusteNivelMinimoMaximoProducto\AjustarFrm.resx">

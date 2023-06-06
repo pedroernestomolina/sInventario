@@ -18,6 +18,7 @@ namespace ModInventario.TomaInv.Generar
         ICtrlLink DepOrigen { get; }
         decimal GetCntDias { get; }
         BindingSource GetSource { get; }
+        int CntItems { get; }
 
 
         void GenerarToma();
@@ -26,5 +27,7 @@ namespace ModInventario.TomaInv.Generar
         void setMotivo(string desc);
         void setCntDias(decimal cnt);
         void Limpiar();
+        void DepartamentosExcluir();
+        void EliminarItem();
     }
 }

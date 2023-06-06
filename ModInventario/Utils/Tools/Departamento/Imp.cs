@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace ModInventario.src.MovInventario.Tools.Concepto
+namespace ModInventario.Utils.Tools.Departamento
 {
     public class Imp: ICtrl
     {
-        private Utils.Filtros.Concepto _ctrl;
+        private Utils.Filtros.Departamento _ctrl;
 
 
         public BindingSource GetSource { get { return _ctrl.Ctrl.GetSource; } }
@@ -20,7 +20,7 @@ namespace ModInventario.src.MovInventario.Tools.Concepto
 
         public Imp()
         {
-            _ctrl = new Utils.Filtros.Concepto();
+            _ctrl = new Utils.Filtros.Departamento();
         }
 
 

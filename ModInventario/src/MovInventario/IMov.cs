@@ -15,9 +15,9 @@ namespace ModInventario.src.MovInventario
         string GetEnt_Motivo { get; }
         string GetEnt_AutorizadoPor { get; }
         DateTime GetFechaSistema { get; }
-        Tools.ICtrl SucOrigen { get; }
-        Tools.ICtrl Concepto { get; }
-        Tools.ICtrlLink DepOrigen { get; }
+        Utils.Tools.ICtrl SucOrigen { get; }
+        Utils.Tools.ICtrl Concepto { get; }
+        Utils.Tools.ICtrlLink DepOrigen { get; }
         Tools.ListaMov.IListaMov ListaItems { get; }
         src.MovInventario.Pendiente.IPendiente Pendiente { get; }
 

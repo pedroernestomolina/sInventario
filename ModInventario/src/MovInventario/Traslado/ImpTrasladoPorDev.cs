@@ -15,12 +15,12 @@ namespace ModInventario.src.MovInventario.Traslado
         private bool _activarDepDestinoPredeterminado;
         private bool _productoSeleccionadoIsOk;
         private Tools.CapturaMov.ICapturaMov _capturaMov;
-        private Tools.ICtrl _depDestino;
+        private Utils.Tools.ICtrl _depDestino;
         private int _idMovPendCargar;
         private Utils.FiltrosPara.BusqProducto.Busqueda.IComp _compBusqProducto;
 
 
-        public Tools.ICtrl DepDestino { get { return _depDestino; } }
+        public Utils.Tools.ICtrl DepDestino { get { return _depDestino; } }
         public bool ProductoSeleccionadoIsOk { get { return _productoSeleccionadoIsOk; } }
         public override string GetInf_TipoMovimiento { get { return "TRASLADO X DEVOLUCION"; } }
         public bool ActivarDepPreDeterminadoParaDevolucion { get { return _activarDepDestinoPredeterminado; } }
@@ -35,7 +35,7 @@ namespace ModInventario.src.MovInventario.Traslado
             _activarDepDestinoPredeterminado = false;
             _productoSeleccionadoIsOk = false;
             _capturaMov = new CapturaMov.ImpCapturaMovTraslado();
-            _depDestino = new Tools.Deposito.Imp();
+            _depDestino = new Utils.Tools.Deposito.Imp();
             _idMovPendCargar = -1;
             //
             _compBusqProducto = new Utils.FiltrosPara.BusqProducto.Busqueda.ImpComp();

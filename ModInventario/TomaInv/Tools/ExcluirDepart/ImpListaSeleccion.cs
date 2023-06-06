@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace ModInventario.TomaInv.Generar
+namespace ModInventario.TomaInv.Tools.ExcluirDepart
 {
-    public class ImpLista: ILista
+    public class ImpListaSeleccion: IListaSeleccion
     {
         private List<data> _lst;
         private BindingList<data> _bl;
@@ -17,11 +17,11 @@ namespace ModInventario.TomaInv.Generar
 
 
         public BindingSource GetDataSource { get { return _bs; } }
-        public List<data> GetLista { get { return _bl.ToList(); } }
+        public IEnumerable<object> GetLista { get { return _bl.ToList(); } }
         public int CntItem { get { return _bs.Count; } }
 
 
-        public ImpLista()
+        public ImpListaSeleccion()
         {
             _lst = new List<data>();
             _bl = new BindingList<data>(_lst);
@@ -37,22 +37,22 @@ namespace ModInventario.TomaInv.Generar
             _bs.CurrencyManager.Refresh();
         }
 
-        public void setDataListar(List<TomaInv.data> lst)
+        public void setDataListar(IEnumerable<object> lst)
         {
             _lst.Clear();
             foreach (var rg in lst) 
             {
-                _lst.Add(new data(rg));
+                _lst.Add((data)rg);
             }
             _bs.CurrencyManager.Refresh();
         }
-        public void EiminarItem()
+        public void setSeleccionarTodas(bool marcar)
         {
-            if (_bs.Current != null) 
+            foreach (var rg in _bl.ToList())
             {
-                var _item = (data)_bs.Current;
-                _bl.Remove(_item);
+                rg.IsSeleccionado = marcar;
             }
+            _bs.CurrencyManager.Refresh();
         }
     }
 }

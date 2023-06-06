@@ -19,5 +19,10 @@ namespace DataProvInventario.InfraEstructura
             TomaInv_RechazarItemToma(OOB.LibInventario.TomaInv.RechazarItem.Ficha ficha);
         OOB.Resultado
             TomaInv_Procesar(OOB.LibInventario.TomaInv.Procesar.Ficha ficha);
+        //
+        OOB.Resultado
+            TomaInv_GenerarSolcitud(OOB.LibInventario.TomaInv.Solicitud.Generar.Ficha Ficha);
+        OOB.Resultado
+            TomaInv_ConvertirSolicitud_EnToma(string autoSolicitud);
     }
 }

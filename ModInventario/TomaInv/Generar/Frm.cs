@@ -85,9 +85,9 @@ namespace ModInventario.TomaInv.Generar
             CB_SUCURSAL.SelectedValue = _controlador.SucOrigen.GetId;
             CB_DEP_ORIGEN.SelectedValue = _controlador.DepOrigen.GetId;
             ND_CNT_ULT_DIAS.Value = _controlador.GetCntDias;
+            L_ITEMS_ENCONTRADOS.Text = "Total Items Encontrados: " + _controlador.CntItems.ToString();
             _modoInicio = false;
-            //ActualizarImporte();
-            //IrFoco();
+            IrFoco();
         }
         private void Frm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -147,9 +147,17 @@ namespace ModInventario.TomaInv.Generar
         {
             Limpiar();
         }
+        private void BT_DEPART_EXCLUIR_Click(object sender, EventArgs e)
+        {
+            DepartamentosExcluir();
+        }
         private void BT_GENERAR_Click(object sender, EventArgs e)
         {
             GenerarToma();
+        }
+        private void BT_ELIMINAR_ITEM_Click(object sender, EventArgs e)
+        {
+            EliminarItem();
         }
         private void BT_PROCESAR_Click(object sender, EventArgs e)
         {
@@ -161,6 +169,15 @@ namespace ModInventario.TomaInv.Generar
         }
 
 
+        private void DepartamentosExcluir()
+        {
+            _controlador.DepartamentosExcluir();
+        }
+        private void EliminarItem()
+        {
+            _controlador.EliminarItem();
+            L_ITEMS_ENCONTRADOS.Text = "Total Items Encontrados: " + _controlador.CntItems.ToString();
+        }
         private void Limpiar()
         {
             _controlador.Limpiar();
@@ -169,6 +186,7 @@ namespace ModInventario.TomaInv.Generar
         private void GenerarToma()
         {
             _controlador.GenerarToma();
+            L_ITEMS_ENCONTRADOS.Text = "Total Items Encontrados: " + _controlador.CntItems.ToString();
         }
         private void Procesar()
         {
@@ -197,7 +215,12 @@ namespace ModInventario.TomaInv.Generar
             DTP_FECHA.Value = _controlador.GetFechaSistema;
             CB_SUCURSAL.SelectedValue = _controlador.SucOrigen.GetId;
             CB_DEP_ORIGEN.SelectedValue = _controlador.DepOrigen.GetId;
+            L_ITEMS_ENCONTRADOS.Text = "Total Items Encontrados: " + _controlador.CntItems.ToString();
             DGV.Refresh();
+        }
+        private void IrFoco()
+        {
+            TB_AUTORIZADO_POR.Focus();
         }
     }
 }

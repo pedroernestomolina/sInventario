@@ -572,19 +572,23 @@ namespace ModInventario
             }
         }
 
-        public void GenerarTomaInv()
+        public void TomaInv_GenerarSolicitud()
         {
             TomaInv.Generar.IGenerar _generarToma = new TomaInv.Generar.ImpGenerar();
             _generarToma.Inicializa();
             _generarToma.Inicia();
         }
-
         public void TomaInv_AdmDocumentos()
         {
             TomaInv.Analisis.IAnalisis _analsisTomaInv = new TomaInv.Analisis.ImpAnalisis();
             _analsisTomaInv.Inicializa();
             _analsisTomaInv.setTomaInvAnalizar(1);
             _analsisTomaInv.Inicia();
+        }
+        public void TomaInv_ConvertirSolicitudEnToma()
+        {
+            var imp = new TomaInv.ConvertirSolicitud.Imp();
+            imp.Convertir();
         }
     }
 }

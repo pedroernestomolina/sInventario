@@ -173,5 +173,50 @@ namespace DataProvInventario.Data
             }
             return rt;
         }
+        //
+        public OOB.Resultado 
+            TomaInv_GenerarSolcitud(OOB.LibInventario.TomaInv.Solicitud.Generar.Ficha ficha)
+        {
+            var rt = new OOB.Resultado();
+            var lstPrd = new List<DtoLibInventario.TomaInv.Solicitud.Generar.PrdToma>();
+            foreach (var r in ficha.ProductosTomaInv)
+            {
+                var nr = new DtoLibInventario.TomaInv.Solicitud.Generar.PrdToma()
+                {
+                    idPrd = r.IdPrd,
+                };
+                lstPrd.Add(nr);
+            }
+            var fichaDTO = new DtoLibInventario.TomaInv.Solicitud.Generar.Ficha()
+            {
+                autorizadoPor = ficha.autorizadoPor,
+                cantItems = ficha.cantItems,
+                codigoDeposito = ficha.codigoDeposito,
+                codigoSucursal = ficha.codigoSucursal,
+                descDeposito = ficha.descDeposito,
+                descSucursal = ficha.descSucursal,
+                idDeposito = ficha.idDeposito,
+                idSucursal = ficha.idSucursal,
+                motivo = ficha.motivo,
+                ProductosTomarInv = lstPrd,
+            };
+            var r01 = MyData.TomaInv_GenerarSolicitud (fichaDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            return rt;
+        }
+        public OOB.Resultado 
+            TomaInv_ConvertirSolicitud_EnToma(string autoSolicitud)
+        {
+            var rt = new OOB.Resultado();
+            var r01 = MyData.TomaInv_ConvertirSolicitud_EnToma(autoSolicitud);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            return rt;
+        }
     }
 }

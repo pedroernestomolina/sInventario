@@ -37,5 +37,9 @@ namespace ModInventario.src.MovInventario.Tools.Concepto
         {
             _ctrl.CargarData();
         }
+        public void LimpiarItemSeleccion()
+        {
+            _ctrl.Ctrl.LimpiarOpcion();
+        }
     }
 }

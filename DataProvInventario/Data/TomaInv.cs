@@ -62,7 +62,15 @@ namespace DataProvInventario.Data
             }
             var fichaDTO = new DtoLibInventario.TomaInv.GenerarToma.Ficha()
             {
-                IdDepositoTomaInv = ficha.idDepositoTomaInv,
+                autorizadoPor = ficha.autorizadoPor,
+                cantItems = ficha.cantItems,
+                codigoDeposito = ficha.codigoDeposito,
+                codigoSucursal = ficha.codigoSucursal,
+                descDeposito = ficha.descDeposito,
+                descSucursal = ficha.descSucursal,
+                idDeposito = ficha.idDeposito,
+                idSucursal = ficha.idSucursal,
+                motivo = ficha.motivo,
                 ProductosTomarInv = lstPrd,
             };
             var r01 = MyData.TomaInv_GenerarToma (fichaDTO);
@@ -130,6 +138,35 @@ namespace DataProvInventario.Data
                 }).ToList(),
             };
             var r01 = MyData.TomaInv_RechazarItemsToma (fichaDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            return rt;
+        }
+        public OOB.Resultado 
+            TomaInv_Procesar(OOB.LibInventario.TomaInv.Procesar.Ficha ficha)
+        {
+            var rt = new OOB.Resultado();
+            var fichaDTO = new DtoLibInventario.TomaInv.Procesar.Ficha()
+            {
+                autoriza = ficha.autoriza,
+                cntItems = ficha.cntItems,
+                idToma = ficha.idToma,
+                observaciones = ficha.observaciones,
+                items = ficha.items.Select(s =>
+            {
+                var nr = new DtoLibInventario.TomaInv.Procesar.Item()
+                {
+                    diferencia = s.diferencia,
+                    estadoDesc = s.estadoDesc,
+                    idProducto = s.idProducto,
+                    signo = s.signo,
+                };
+                return nr;
+            }).ToList(),
+            };
+            var r01 = MyData.TomaInv_ProcesarToma(fichaDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
                 throw new Exception(r01.Mensaje);

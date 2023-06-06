@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace ModInventario.src.MovInventario.Tools.Sucursal
+namespace ModInventario.Utils.Tools.Sucursal
 {
     public class Imp: ICtrl
     {

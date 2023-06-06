@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace ModInventario.TomaInv.Analisis
+namespace ModInventario.TomaInv.Generar
 {
     public class ImpLista: ILista
     {
@@ -37,27 +37,14 @@ namespace ModInventario.TomaInv.Analisis
             _bs.CurrencyManager.Refresh();
         }
 
-        public void setDataListar(List<data> lst)
+        public void setDataListar(List<TomaInv.data> lst)
         {
             _lst.Clear();
-            _lst.AddRange(lst);
-            _bs.CurrencyManager.Refresh();
-        }
-        public void setEliminarItems(IEnumerable<data> lst)
-        {
-            foreach (var rg in lst)
+            foreach (var rg in lst) 
             {
-                rg.setConteoNull();
+                _lst.Add(new data(rg));
             }
             _bs.CurrencyManager.Refresh();
-        }
-        public void setMarcarTodas(bool m)
-        {
-            foreach (var rg in _lst)
-            {
-                rg.Marcar(m);
-                _bs.CurrencyManager.Refresh();
-            }
         }
     }
 }

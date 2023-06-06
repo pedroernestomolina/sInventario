@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace ModInventario.src.MovInventario.Tools
+namespace ModInventario.Utils.Tools
 {
     public interface ICtrl
     {

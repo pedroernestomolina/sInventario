@@ -11,9 +11,11 @@ namespace ModInventario.TomaInv.Analisis
     public interface IAnalisis: IGestion
     {
         BindingSource GetSource { get; }
+        int CntItem { get; }
 
         void setTomaInvAnalizar(int idToma);
-        void EliminarTomas();
         void setMarcarTodas(bool m);
+        void EliminarTomas();
+        void ProcesarToma();
     }
 }

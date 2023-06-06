@@ -266,11 +266,10 @@ namespace ModInventario.src.MovInventario
         {
             _motivo = "";
             _autorizadoPor = "";
-            _concepto.Inicializa();
-            _depOrigen.Inicializa();
-            _sucOrigen.Inicializa();
+            _concepto.LimpiarItemSeleccion();
+            _depOrigen.LimpiarItemSeleccion();
+            _sucOrigen.LimpiarItemSeleccion();
             _listaMov.Inicializa();
-            //_depOrigen.LimpiarLista();
         }
 
 

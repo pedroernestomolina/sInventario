@@ -15,6 +15,7 @@ namespace ModInventario.TomaInv.Analisis
 
 
         public BindingSource GetSource { get { return _lista.GetDataSource; } }
+        public int CntItem { get { return _lista.CntItem; } }
 
 
         public ImpAnalisis()
@@ -105,6 +106,60 @@ namespace ModInventario.TomaInv.Analisis
         public void setMarcarTodas(bool m)
         {
             _lista.setMarcarTodas(m);
+        }
+        public void ProcesarToma()
+        {
+            if (_lista.GetLista.Count() <= 0) 
+            {
+                Helpers.Msg.Alerta("NO HAY ITEMS");
+                return;
+            }
+            var _cnt = _lista.GetLista.Where(w => w.Estado == data.enumAnalisis.SinDefinir).Count();
+            if (_cnt > 0) 
+            {
+                Helpers.Msg.Alerta("FALTAN PRODUCTOS POR REALIZAR TOMAS");
+                return;
+            }
+            var msg = "Estas De Acuerdo Con Los Datos Suministrados ?";
+            var resp = MessageBox.Show(msg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+            if (resp == DialogResult.No)
+            {
+                return;
+            }
+            var _lst = _lista.GetLista.Where(w => w.Estado == data.enumAnalisis.Falta ||  w.Estado == data.enumAnalisis.Sobra).ToList();
+            var ficha = new OOB.LibInventario.TomaInv.Procesar.Ficha()
+            {
+                autoriza = "ALEX",
+                cntItems = _lst.Count,
+                idToma = _idTomaAnalizar,
+                observaciones = "TODO OK",
+                items = _lst.Select(s =>
+                {
+                    var _signo = -1;
+                    if (s.Estado == data.enumAnalisis.Sobra)
+                    {
+                        _signo = 1;
+                    }
+                    var nr = new OOB.LibInventario.TomaInv.Procesar.Item()
+                    {
+                        diferencia = Math.Abs(s.Diferencia),
+                        estadoDesc = s.Estado.ToString(),
+                        idProducto = s.itemAnalisis.idPrd,
+                        signo = _signo,
+                    };
+                    return nr;
+                }).ToList(),
+            };
+            try
+            {
+                var r01 = Sistema.MyData.TomaInv_Procesar(ficha);
+                Helpers.Msg.AgregarOk();
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
+                return;
+            }
         }
     }
 }

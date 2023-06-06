@@ -296,6 +296,8 @@
     <Compile Include="LibInventario\TomaInv\GenerarToma\PrdToma.cs" />
     <Compile Include="LibInventario\TomaInv\ObtenerToma\Ficha.cs" />
     <Compile Include="LibInventario\TomaInv\ObtenerToma\Filtro.cs" />
+    <Compile Include="LibInventario\TomaInv\Procesar\Ficha.cs" />
+    <Compile Include="LibInventario\TomaInv\Procesar\Item.cs" />
     <Compile Include="LibInventario\TomaInv\RechazarItem\Ficha.cs" />
     <Compile Include="LibInventario\TomaInv\RechazarItem\Item.cs" />
     <Compile Include="LibInventario\Tool\AjusteNivelMinimoMaximoProducto\Ajustar\Ficha.cs" />

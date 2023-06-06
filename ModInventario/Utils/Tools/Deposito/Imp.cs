@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace ModInventario.src.MovInventario.Tools.Deposito
+namespace ModInventario.Utils.Tools.Deposito
 {
     public class Imp: ICtrlLink
     {

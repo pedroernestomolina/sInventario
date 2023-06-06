@@ -249,7 +249,7 @@ namespace ModInventario.src.MovInventario.Traslado
         protected override void limpiarTodo()
         {
             base.limpiarTodo();
-            _depDestino.Inicializa();
+            _depDestino.LimpiarItemSeleccion();
             if (_activarDepDestinoPredeterminado)
             {
                 _depDestino.setId(_idDepPredeterminadoParaDev);

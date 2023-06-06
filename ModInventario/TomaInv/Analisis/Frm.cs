@@ -96,6 +96,7 @@ namespace ModInventario.TomaInv.Analisis
         {
             DGV.DataSource = _controlador.GetSource;
             DGV.Refresh();
+            L_ITEMS.Text = "Items Encontrados: " + _controlador.CntItem.ToString("n0");
         }
 
         public void setControlador(IAnalisis ctr)
@@ -108,6 +109,10 @@ namespace ModInventario.TomaInv.Analisis
         {
             EliminarTomas();
         }
+        private void BT_PROCESAR_Click(object sender, EventArgs e)
+        {
+            ProcesarToma();
+        }
 
 
         private void EliminarTomas()
@@ -118,6 +123,12 @@ namespace ModInventario.TomaInv.Analisis
         private void CHB_MARCAR_CheckedChanged(object sender, EventArgs e)
         {
             _controlador.setMarcarTodas(CHB_MARCAR.Checked);
+        }
+
+
+        private void ProcesarToma()
+        {
+            _controlador.ProcesarToma();
         }
     }
 }

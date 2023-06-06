@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace ModInventario.TomaInv.Analisis
+namespace ModInventario.TomaInv.Generar
 {
     public interface ILista
     {
@@ -16,8 +16,6 @@ namespace ModInventario.TomaInv.Analisis
 
 
         void Inicializa();
-        void setDataListar(List<data> lst);
-        void setEliminarItems(IEnumerable<data> lst);
-        void setMarcarTodas(bool m);
+        void setDataListar(List<TomaInv.data> lst);
     }
 }

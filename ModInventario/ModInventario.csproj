@@ -846,11 +846,9 @@
     <Compile Include="src\MovInventario\Cargo\MovFrm.Designer.cs">
       <DependentUpon>MovFrm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\MovInventario\IDepOrigen.cs" />
     <Compile Include="src\MovInventario\ImpMov.cs" />
     <Compile Include="src\MovInventario\IMov.cs" />
     <Compile Include="src\MovInventario\IBaseMov.cs" />
-    <Compile Include="src\MovInventario\ISucOrigen.cs" />
     <Compile Include="src\Producto\AgregarEditar\BaseAgregarEditar.cs" />
     <Compile Include="src\Producto\AgregarEditar\baseDataAgregarEditar.cs" />
     <Compile Include="src\Producto\AgregarEditar\IBaseAgregarEditar.cs" />
@@ -1024,6 +1022,17 @@
     <Compile Include="TomaInv\Analisis\ImpAnalisis.cs" />
     <Compile Include="TomaInv\Analisis\ImpLista.cs" />
     <Compile Include="TomaInv\data.cs" />
+    <Compile Include="TomaInv\Generar\data.cs" />
+    <Compile Include="TomaInv\Generar\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TomaInv\Generar\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TomaInv\Generar\IGenerar.cs" />
+    <Compile Include="TomaInv\Generar\ILista.cs" />
+    <Compile Include="TomaInv\Generar\ImpGenerar.cs" />
+    <Compile Include="TomaInv\Generar\ImpLista.cs" />
     <Compile Include="Tool\AjusteNivelMinimoMaximoProducto\AjustarFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1161,6 +1170,11 @@
     <Compile Include="Utils\Filtros\Sucursal.cs" />
     <Compile Include="Utils\Filtros\TasaIva.cs" />
     <Compile Include="Utils\Filtros\TipoDocumento.cs" />
+    <Compile Include="Utils\Tools\dataUtils.cs" />
+    <Compile Include="Utils\Tools\Deposito\Imp.cs" />
+    <Compile Include="Utils\Tools\ICtrl.cs" />
+    <Compile Include="Utils\Tools\ICtrlLink.cs" />
+    <Compile Include="Utils\Tools\Sucursal\Imp.cs" />
     <Compile Include="Visor\CostoEdad\CostoEdadFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1520,6 +1534,9 @@
       <DependentUpon>ListaFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TomaInv\Analisis\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TomaInv\Generar\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tool\AjusteNivelMinimoMaximoProducto\AjustarFrm.resx">

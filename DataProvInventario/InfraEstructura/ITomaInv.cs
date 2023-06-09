@@ -14,7 +14,7 @@ namespace DataProvInventario.InfraEstructura
         OOB.Resultado
             TomaInv_GenerarToma(OOB.LibInventario.TomaInv.GenerarToma.Ficha Ficha);
         OOB.ResultadoEntidad<OOB.LibInventario.TomaInv.Analisis.Ficha>
-            TomaInv_Analisis(int idToma);
+            TomaInv_Analisis(string idToma);
         OOB.Resultado
             TomaInv_RechazarItemToma(OOB.LibInventario.TomaInv.RechazarItem.Ficha ficha);
         OOB.Resultado
@@ -22,7 +22,11 @@ namespace DataProvInventario.InfraEstructura
         //
         OOB.Resultado
             TomaInv_GenerarSolcitud(OOB.LibInventario.TomaInv.Solicitud.Generar.Ficha Ficha);
+        OOB.ResultadoEntidad<string>
+            TomaInv_EncontrarSolicitudActiva(string codigoEmpSuc);
         OOB.Resultado
-            TomaInv_ConvertirSolicitud_EnToma(string autoSolicitud);
+            TomaInv_ConvertirSolicitud_EnToma(string autoSolicitud, string codigoEmpresaSucursal);
+        OOB.ResultadoEntidad<string>
+            TomaInv_Analizar_TomaDisponible();
     }
 }

@@ -9,7 +9,7 @@ namespace OOB.LibInventario.TomaInv.RechazarItem
 {
     public class Ficha
     {
-        public int IdToma { get; set; }
+        public string IdToma { get; set; }
         public List<Item> Items { get; set; }
     }
 }

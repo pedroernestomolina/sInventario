@@ -13,7 +13,7 @@ namespace ModInventario.TomaInv.Analisis
         BindingSource GetSource { get; }
         int CntItem { get; }
 
-        void setTomaInvAnalizar(int idToma);
+        void setTomaInvAnalizar(string idToma);
         void setMarcarTodas(bool m);
         void EliminarTomas();
         void ProcesarToma();

@@ -582,7 +582,6 @@ namespace ModInventario
         {
             TomaInv.Analisis.IAnalisis _analsisTomaInv = new TomaInv.Analisis.ImpAnalisis();
             _analsisTomaInv.Inicializa();
-            _analsisTomaInv.setTomaInvAnalizar(1);
             _analsisTomaInv.Inicia();
         }
         public void TomaInv_ConvertirSolicitudEnToma()

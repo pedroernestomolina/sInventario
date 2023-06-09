@@ -10,7 +10,7 @@ namespace ModInventario.TomaInv.Analisis
 {
     public class ImpAnalisis: IAnalisis
     {
-        private int _idTomaAnalizar;
+        private string _idTomaAnalizar;
         private ILista _lista;
 
 
@@ -20,14 +20,14 @@ namespace ModInventario.TomaInv.Analisis
 
         public ImpAnalisis()
         {
-            _idTomaAnalizar = -1;
+            _idTomaAnalizar = "";
             _lista = new ImpLista();
         }
 
 
         public void Inicializa()
         {
-            _idTomaAnalizar = -1;
+            _idTomaAnalizar = "";
             _lista.Inicializa();
         }
         private Frm frm;
@@ -44,7 +44,7 @@ namespace ModInventario.TomaInv.Analisis
             }
         }
 
-        public void setTomaInvAnalizar(int idToma)
+        public void setTomaInvAnalizar(string idToma)
         {
             _idTomaAnalizar = idToma;
         }
@@ -52,16 +52,22 @@ namespace ModInventario.TomaInv.Analisis
 
         public void EliminarTomas()
         {
+            var _lst = _lista.GetLista.Where(w => w.Eliminar && w.Estado != data.enumAnalisis.SinDefinir).ToList();
+            if (_lst.Count <= 0) 
+            {
+                Helpers.Msg.Alerta("NO HAY ITEMS SELECCIONADOS / DOCUMETOS SELECCIONADOS ESTAN SIN DEFINIR");
+                return;
+            }
+
             var msg = "Eliminar Estos Conteos ?";
             var resp = MessageBox.Show(msg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
             if (resp == DialogResult.No) 
             {
                 return;
             }
-            var _lst = _lista.GetLista.Where(w => w.Eliminar && w.Estado != data.enumAnalisis.SinDefinir);
             var ficha = new OOB.LibInventario.TomaInv.RechazarItem.Ficha()
             {
-                IdToma = _idTomaAnalizar,
+                IdToma = _idTomaAnalizar, 
                 Items = _lst.Select(s =>
                 {
                     var nr = new OOB.LibInventario.TomaInv.RechazarItem.Item()
@@ -87,6 +93,12 @@ namespace ModInventario.TomaInv.Analisis
         {
             try
             {
+                var r00 = Sistema.MyData.TomaInv_Analizar_TomaDisponible();
+                if (r00.Entidad == "") 
+                {
+                    throw new Exception("NO HAY TOMAS DISPONIBLE QUE ANALIZAR");
+                }
+                _idTomaAnalizar = r00.Entidad;
                 var r01 = Sistema.MyData.TomaInv_Analisis(_idTomaAnalizar);
                 var _lst = new List<TomaInv.Analisis.data>();
                 foreach (var rg in r01.Entidad.Items)
@@ -126,7 +138,12 @@ namespace ModInventario.TomaInv.Analisis
             {
                 return;
             }
-            var _lst = _lista.GetLista.Where(w => w.Estado == data.enumAnalisis.Falta ||  w.Estado == data.enumAnalisis.Sobra).ToList();
+            //Procesar();
+
+        }
+        private void Procesar()
+        {
+            var _lst = _lista.GetLista.Where(w => w.Estado == data.enumAnalisis.Falta || w.Estado == data.enumAnalisis.Sobra).ToList();
             var ficha = new OOB.LibInventario.TomaInv.Procesar.Ficha()
             {
                 autoriza = "ALEX",

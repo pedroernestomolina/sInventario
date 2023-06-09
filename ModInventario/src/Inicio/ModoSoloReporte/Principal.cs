@@ -519,5 +519,10 @@ namespace ModInventario.src.Inicio.ModoSoloReporte
         {
             _controlador.TomaInv_AdmDocumentos();
         }
+
+        private void TOMAINV_CONVERTIR_SOLICITUD_TOMA_Click(object sender, EventArgs e)
+        {
+            _controlador.TomaInv_ConvertirSolicitudEnToma();
+        }
     }
 }

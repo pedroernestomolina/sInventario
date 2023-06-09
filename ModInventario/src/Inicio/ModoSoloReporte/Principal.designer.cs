@@ -56,6 +56,22 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_ARCHIVO_SALIR = new System.Windows.Forms.ToolStripMenuItem();
+            this.movimientosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.controlDeMovimientosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSM_Movimiento_Control_Cargo = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSM_Movimiento_Control_DesCargo = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
+            this.TSM_Movimiento_Control_Traslado = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSM_Movimiento_Control_Traslado_Devolucion = new System.Windows.Forms.ToolStripMenuItem();
+            this.TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.TSM_MOVIMIENTO_ADMINISTRADOR = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
+            this.TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripSeparator();
+            this.tomaInventarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.TOMAINV_CONVERTIR_SOLICITUD_TOMA = new System.Windows.Forms.ToolStripMenuItem();
+            this.TOMA_INV_ADM_DOC = new System.Windows.Forms.ToolStripMenuItem();
             this.maestrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.productosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_MAESTROS_Departamentos = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,19 +90,6 @@
             this.TSM_AJSUTES_ASIGNACION_MASIVA_PRODUCTOS_DEPOSITO = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_AJUSTES_CAMBIO_MOVIMIENTOS_PRECIOS = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO = new System.Windows.Forms.ToolStripMenuItem();
-            this.movimientosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.controlDeMovimientosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSM_Movimiento_Control_Cargo = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSM_Movimiento_Control_DesCargo = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
-            this.TSM_Movimiento_Control_Traslado = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSM_Movimiento_Control_Traslado_Devolucion = new System.Windows.Forms.ToolStripMenuItem();
-            this.TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.TSM_MOVIMIENTO_ADMINISTRADOR = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
-            this.TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem8 = new System.Windows.Forms.ToolStripSeparator();
             this.visorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TSM_VISOR_PRECIO = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripSeparator();
@@ -141,8 +144,6 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.tomaInventarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.TOMA_INV_ADM_DOC = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -207,11 +208,11 @@
             // 
             this.panel2.Controls.Add(this.BT_SALIR);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(684, 1);
+            this.panel2.Location = new System.Drawing.Point(682, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(1);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(2);
-            this.panel2.Size = new System.Drawing.Size(199, 52);
+            this.panel2.Size = new System.Drawing.Size(201, 52);
             this.panel2.TabIndex = 0;
             // 
             // BT_SALIR
@@ -222,7 +223,7 @@
             this.BT_SALIR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.BT_SALIR.Location = new System.Drawing.Point(2, 2);
             this.BT_SALIR.Name = "BT_SALIR";
-            this.BT_SALIR.Size = new System.Drawing.Size(195, 48);
+            this.BT_SALIR.Size = new System.Drawing.Size(197, 48);
             this.BT_SALIR.TabIndex = 0;
             this.BT_SALIR.Text = "Salir";
             this.BT_SALIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -237,7 +238,7 @@
             this.panel7.Margin = new System.Windows.Forms.Padding(1);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(2);
-            this.panel7.Size = new System.Drawing.Size(358, 52);
+            this.panel7.Size = new System.Drawing.Size(357, 52);
             this.panel7.TabIndex = 1;
             // 
             // tableLayoutPanel6
@@ -256,7 +257,7 @@
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(354, 48);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(353, 48);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // panel13
@@ -290,7 +291,7 @@
             this.panel14.Margin = new System.Windows.Forms.Padding(1);
             this.panel14.Name = "panel14";
             this.panel14.Padding = new System.Windows.Forms.Padding(2);
-            this.panel14.Size = new System.Drawing.Size(268, 22);
+            this.panel14.Size = new System.Drawing.Size(267, 22);
             this.panel14.TabIndex = 3;
             // 
             // L_FECHA
@@ -300,7 +301,7 @@
             this.L_FECHA.ForeColor = System.Drawing.Color.Yellow;
             this.L_FECHA.Location = new System.Drawing.Point(2, 2);
             this.L_FECHA.Name = "L_FECHA";
-            this.L_FECHA.Size = new System.Drawing.Size(264, 18);
+            this.L_FECHA.Size = new System.Drawing.Size(263, 18);
             this.L_FECHA.TabIndex = 5;
             this.L_FECHA.Text = "Hoy";
             this.L_FECHA.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -336,7 +337,7 @@
             this.panel16.Margin = new System.Windows.Forms.Padding(1);
             this.panel16.Name = "panel16";
             this.panel16.Padding = new System.Windows.Forms.Padding(2);
-            this.panel16.Size = new System.Drawing.Size(268, 22);
+            this.panel16.Size = new System.Drawing.Size(267, 22);
             this.panel16.TabIndex = 4;
             // 
             // L_HOST
@@ -346,7 +347,7 @@
             this.L_HOST.ForeColor = System.Drawing.Color.Yellow;
             this.L_HOST.Location = new System.Drawing.Point(2, 2);
             this.L_HOST.Name = "L_HOST";
-            this.L_HOST.Size = new System.Drawing.Size(264, 18);
+            this.L_HOST.Size = new System.Drawing.Size(263, 18);
             this.L_HOST.TabIndex = 4;
             this.L_HOST.Text = "label2";
             this.L_HOST.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -355,7 +356,7 @@
             // 
             this.panel17.Controls.Add(this.tableLayoutPanel7);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(361, 1);
+            this.panel17.Location = new System.Drawing.Point(360, 1);
             this.panel17.Margin = new System.Windows.Forms.Padding(1);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(200, 52);
@@ -427,11 +428,11 @@
             // 
             this.panel20.Controls.Add(this.tableLayoutPanel8);
             this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel20.Location = new System.Drawing.Point(563, 1);
+            this.panel20.Location = new System.Drawing.Point(562, 1);
             this.panel20.Margin = new System.Windows.Forms.Padding(1);
             this.panel20.Name = "panel20";
             this.panel20.Padding = new System.Windows.Forms.Padding(2);
-            this.panel20.Size = new System.Drawing.Size(119, 52);
+            this.panel20.Size = new System.Drawing.Size(118, 52);
             this.panel20.TabIndex = 3;
             // 
             // tableLayoutPanel8
@@ -447,18 +448,19 @@
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(115, 48);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(114, 48);
             this.tableLayoutPanel8.TabIndex = 0;
             // 
             // panel21
             // 
+            this.tableLayoutPanel8.SetColumnSpan(this.panel21, 2);
             this.panel21.Controls.Add(this.L_HORA);
             this.panel21.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel21.Location = new System.Drawing.Point(1, 1);
             this.panel21.Margin = new System.Windows.Forms.Padding(1);
             this.panel21.Name = "panel21";
             this.panel21.Padding = new System.Windows.Forms.Padding(2);
-            this.panel21.Size = new System.Drawing.Size(76, 46);
+            this.panel21.Size = new System.Drawing.Size(112, 46);
             this.panel21.TabIndex = 0;
             // 
             // L_HORA
@@ -468,7 +470,7 @@
             this.L_HORA.ForeColor = System.Drawing.Color.Black;
             this.L_HORA.Location = new System.Drawing.Point(2, 2);
             this.L_HORA.Name = "L_HORA";
-            this.L_HORA.Size = new System.Drawing.Size(72, 42);
+            this.L_HORA.Size = new System.Drawing.Size(108, 42);
             this.L_HORA.TabIndex = 6;
             this.L_HORA.Text = "Hoy";
             this.L_HORA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -507,6 +509,136 @@
             this.TSM_ARCHIVO_SALIR.Size = new System.Drawing.Size(96, 22);
             this.TSM_ARCHIVO_SALIR.Text = "Salir";
             this.TSM_ARCHIVO_SALIR.Click += new System.EventHandler(this.TSM_ARCHIVO_SALIR_Click);
+            // 
+            // movimientosToolStripMenuItem
+            // 
+            this.movimientosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.controlDeMovimientosToolStripMenuItem,
+            this.TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO,
+            this.toolStripMenuItem2,
+            this.TSM_MOVIMIENTO_ADMINISTRADOR,
+            this.toolStripMenuItem7,
+            this.TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE,
+            this.toolStripMenuItem8});
+            this.movimientosToolStripMenuItem.Name = "movimientosToolStripMenuItem";
+            this.movimientosToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
+            this.movimientosToolStripMenuItem.Text = "Movimientos";
+            // 
+            // controlDeMovimientosToolStripMenuItem
+            // 
+            this.controlDeMovimientosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TSM_Movimiento_Control_Cargo,
+            this.TSM_Movimiento_Control_DesCargo,
+            this.toolStripMenuItem5,
+            this.TSM_Movimiento_Control_Traslado,
+            this.TSM_Movimiento_Control_Traslado_Devolucion});
+            this.controlDeMovimientosToolStripMenuItem.Name = "controlDeMovimientosToolStripMenuItem";
+            this.controlDeMovimientosToolStripMenuItem.Size = new System.Drawing.Size(356, 22);
+            this.controlDeMovimientosToolStripMenuItem.Text = "Control De Movimientos";
+            this.controlDeMovimientosToolStripMenuItem.Visible = false;
+            // 
+            // TSM_Movimiento_Control_Cargo
+            // 
+            this.TSM_Movimiento_Control_Cargo.Image = global::ModInventario.Properties.Resources.fecha_derecha;
+            this.TSM_Movimiento_Control_Cargo.Name = "TSM_Movimiento_Control_Cargo";
+            this.TSM_Movimiento_Control_Cargo.Size = new System.Drawing.Size(203, 22);
+            this.TSM_Movimiento_Control_Cargo.Text = "Cargo";
+            this.TSM_Movimiento_Control_Cargo.Click += new System.EventHandler(this.TSM_Movimiento_Control_Cargo_Click);
+            // 
+            // TSM_Movimiento_Control_DesCargo
+            // 
+            this.TSM_Movimiento_Control_DesCargo.Image = global::ModInventario.Properties.Resources.flecha_izquierda;
+            this.TSM_Movimiento_Control_DesCargo.Name = "TSM_Movimiento_Control_DesCargo";
+            this.TSM_Movimiento_Control_DesCargo.Size = new System.Drawing.Size(203, 22);
+            this.TSM_Movimiento_Control_DesCargo.Text = "Descargo";
+            this.TSM_Movimiento_Control_DesCargo.Click += new System.EventHandler(this.TSM_Movimiento_Control_DesCargo_Click);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(200, 6);
+            // 
+            // TSM_Movimiento_Control_Traslado
+            // 
+            this.TSM_Movimiento_Control_Traslado.Image = global::ModInventario.Properties.Resources.transferencia;
+            this.TSM_Movimiento_Control_Traslado.Name = "TSM_Movimiento_Control_Traslado";
+            this.TSM_Movimiento_Control_Traslado.Size = new System.Drawing.Size(203, 22);
+            this.TSM_Movimiento_Control_Traslado.Text = "Traslado";
+            this.TSM_Movimiento_Control_Traslado.Click += new System.EventHandler(this.TSM_Movimiento_Control_Traslado_Click);
+            // 
+            // TSM_Movimiento_Control_Traslado_Devolucion
+            // 
+            this.TSM_Movimiento_Control_Traslado_Devolucion.Image = global::ModInventario.Properties.Resources.transferencia;
+            this.TSM_Movimiento_Control_Traslado_Devolucion.Name = "TSM_Movimiento_Control_Traslado_Devolucion";
+            this.TSM_Movimiento_Control_Traslado_Devolucion.Size = new System.Drawing.Size(203, 22);
+            this.TSM_Movimiento_Control_Traslado_Devolucion.Text = "Traslado Por Devolución";
+            this.TSM_Movimiento_Control_Traslado_Devolucion.Click += new System.EventHandler(this.TSM_Movimiento_Control_Traslado_Devolucion_Click);
+            // 
+            // TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO
+            // 
+            this.TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO.Image = global::ModInventario.Properties.Resources.transferencia;
+            this.TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO.Name = "TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO";
+            this.TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO.Size = new System.Drawing.Size(356, 22);
+            this.TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO.Text = "Traslado Mercancia Por Existencia Debajo del Minimo";
+            this.TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO.Visible = false;
+            this.TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO.Click += new System.EventHandler(this.TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(353, 6);
+            this.toolStripMenuItem2.Visible = false;
+            // 
+            // TSM_MOVIMIENTO_ADMINISTRADOR
+            // 
+            this.TSM_MOVIMIENTO_ADMINISTRADOR.Image = global::ModInventario.Properties.Resources.administrador;
+            this.TSM_MOVIMIENTO_ADMINISTRADOR.Name = "TSM_MOVIMIENTO_ADMINISTRADOR";
+            this.TSM_MOVIMIENTO_ADMINISTRADOR.Size = new System.Drawing.Size(356, 22);
+            this.TSM_MOVIMIENTO_ADMINISTRADOR.Text = "Administrador De Documentos";
+            this.TSM_MOVIMIENTO_ADMINISTRADOR.Click += new System.EventHandler(this.TSM_MOVIMIENTO_ADMINISTRADOR_Click);
+            // 
+            // toolStripMenuItem7
+            // 
+            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
+            this.toolStripMenuItem7.Size = new System.Drawing.Size(353, 6);
+            // 
+            // TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE
+            // 
+            this.TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE.Image = global::ModInventario.Properties.Resources.administrador;
+            this.TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE.Name = "TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE";
+            this.TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE.Size = new System.Drawing.Size(356, 22);
+            this.TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE.Text = "Admnistrador Movimientos Pendientes";
+            this.TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE.Visible = false;
+            this.TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE.Click += new System.EventHandler(this.TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE_Click);
+            // 
+            // toolStripMenuItem8
+            // 
+            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
+            this.toolStripMenuItem8.Size = new System.Drawing.Size(353, 6);
+            this.toolStripMenuItem8.Visible = false;
+            // 
+            // tomaInventarioToolStripMenuItem
+            // 
+            this.tomaInventarioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TOMAINV_CONVERTIR_SOLICITUD_TOMA,
+            this.TOMA_INV_ADM_DOC});
+            this.tomaInventarioToolStripMenuItem.Name = "tomaInventarioToolStripMenuItem";
+            this.tomaInventarioToolStripMenuItem.Size = new System.Drawing.Size(106, 20);
+            this.tomaInventarioToolStripMenuItem.Text = "Toma Inventario";
+            // 
+            // TOMAINV_CONVERTIR_SOLICITUD_TOMA
+            // 
+            this.TOMAINV_CONVERTIR_SOLICITUD_TOMA.Name = "TOMAINV_CONVERTIR_SOLICITUD_TOMA";
+            this.TOMAINV_CONVERTIR_SOLICITUD_TOMA.Size = new System.Drawing.Size(291, 22);
+            this.TOMAINV_CONVERTIR_SOLICITUD_TOMA.Text = "Verificar Solicitud Pendente Por Procesar ";
+            this.TOMAINV_CONVERTIR_SOLICITUD_TOMA.Click += new System.EventHandler(this.TOMAINV_CONVERTIR_SOLICITUD_TOMA_Click);
+            // 
+            // TOMA_INV_ADM_DOC
+            // 
+            this.TOMA_INV_ADM_DOC.Name = "TOMA_INV_ADM_DOC";
+            this.TOMA_INV_ADM_DOC.Size = new System.Drawing.Size(291, 22);
+            this.TOMA_INV_ADM_DOC.Text = "Analizar Toma Pendiente";
+            this.TOMA_INV_ADM_DOC.Click += new System.EventHandler(this.TOMA_INV_ADM_DOC_Click);
             // 
             // maestrosToolStripMenuItem
             // 
@@ -654,113 +786,6 @@
             this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO.Size = new System.Drawing.Size(378, 22);
             this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO.Text = "Ajustar Productos Con Existencia Pero Sin Precio de Venta";
             this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO.Click += new System.EventHandler(this.TSM_VISOR_PRECIOS_AJUSTAR_PRODUCTOS_CON_EXISTENCIA_PRECIO_CERO_Click);
-            // 
-            // movimientosToolStripMenuItem
-            // 
-            this.movimientosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.controlDeMovimientosToolStripMenuItem,
-            this.TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO,
-            this.toolStripMenuItem2,
-            this.TSM_MOVIMIENTO_ADMINISTRADOR,
-            this.toolStripMenuItem7,
-            this.TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE,
-            this.toolStripMenuItem8});
-            this.movimientosToolStripMenuItem.Name = "movimientosToolStripMenuItem";
-            this.movimientosToolStripMenuItem.Size = new System.Drawing.Size(89, 20);
-            this.movimientosToolStripMenuItem.Text = "Movimientos";
-            // 
-            // controlDeMovimientosToolStripMenuItem
-            // 
-            this.controlDeMovimientosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TSM_Movimiento_Control_Cargo,
-            this.TSM_Movimiento_Control_DesCargo,
-            this.toolStripMenuItem5,
-            this.TSM_Movimiento_Control_Traslado,
-            this.TSM_Movimiento_Control_Traslado_Devolucion});
-            this.controlDeMovimientosToolStripMenuItem.Name = "controlDeMovimientosToolStripMenuItem";
-            this.controlDeMovimientosToolStripMenuItem.Size = new System.Drawing.Size(356, 22);
-            this.controlDeMovimientosToolStripMenuItem.Text = "Control De Movimientos";
-            this.controlDeMovimientosToolStripMenuItem.Visible = false;
-            // 
-            // TSM_Movimiento_Control_Cargo
-            // 
-            this.TSM_Movimiento_Control_Cargo.Image = global::ModInventario.Properties.Resources.fecha_derecha;
-            this.TSM_Movimiento_Control_Cargo.Name = "TSM_Movimiento_Control_Cargo";
-            this.TSM_Movimiento_Control_Cargo.Size = new System.Drawing.Size(203, 22);
-            this.TSM_Movimiento_Control_Cargo.Text = "Cargo";
-            this.TSM_Movimiento_Control_Cargo.Click += new System.EventHandler(this.TSM_Movimiento_Control_Cargo_Click);
-            // 
-            // TSM_Movimiento_Control_DesCargo
-            // 
-            this.TSM_Movimiento_Control_DesCargo.Image = global::ModInventario.Properties.Resources.flecha_izquierda;
-            this.TSM_Movimiento_Control_DesCargo.Name = "TSM_Movimiento_Control_DesCargo";
-            this.TSM_Movimiento_Control_DesCargo.Size = new System.Drawing.Size(203, 22);
-            this.TSM_Movimiento_Control_DesCargo.Text = "Descargo";
-            this.TSM_Movimiento_Control_DesCargo.Click += new System.EventHandler(this.TSM_Movimiento_Control_DesCargo_Click);
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(200, 6);
-            // 
-            // TSM_Movimiento_Control_Traslado
-            // 
-            this.TSM_Movimiento_Control_Traslado.Image = global::ModInventario.Properties.Resources.transferencia;
-            this.TSM_Movimiento_Control_Traslado.Name = "TSM_Movimiento_Control_Traslado";
-            this.TSM_Movimiento_Control_Traslado.Size = new System.Drawing.Size(203, 22);
-            this.TSM_Movimiento_Control_Traslado.Text = "Traslado";
-            this.TSM_Movimiento_Control_Traslado.Click += new System.EventHandler(this.TSM_Movimiento_Control_Traslado_Click);
-            // 
-            // TSM_Movimiento_Control_Traslado_Devolucion
-            // 
-            this.TSM_Movimiento_Control_Traslado_Devolucion.Image = global::ModInventario.Properties.Resources.transferencia;
-            this.TSM_Movimiento_Control_Traslado_Devolucion.Name = "TSM_Movimiento_Control_Traslado_Devolucion";
-            this.TSM_Movimiento_Control_Traslado_Devolucion.Size = new System.Drawing.Size(203, 22);
-            this.TSM_Movimiento_Control_Traslado_Devolucion.Text = "Traslado Por Devolución";
-            this.TSM_Movimiento_Control_Traslado_Devolucion.Click += new System.EventHandler(this.TSM_Movimiento_Control_Traslado_Devolucion_Click);
-            // 
-            // TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO
-            // 
-            this.TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO.Image = global::ModInventario.Properties.Resources.transferencia;
-            this.TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO.Name = "TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO";
-            this.TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO.Size = new System.Drawing.Size(356, 22);
-            this.TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO.Text = "Traslado Mercancia Por Existencia Debajo del Minimo";
-            this.TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO.Visible = false;
-            this.TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO.Click += new System.EventHandler(this.TSM_MOVIMIENTO_TRASLADOMERCANCIAPOREXISTENCIADEBAJOMINIMO_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(353, 6);
-            this.toolStripMenuItem2.Visible = false;
-            // 
-            // TSM_MOVIMIENTO_ADMINISTRADOR
-            // 
-            this.TSM_MOVIMIENTO_ADMINISTRADOR.Image = global::ModInventario.Properties.Resources.administrador;
-            this.TSM_MOVIMIENTO_ADMINISTRADOR.Name = "TSM_MOVIMIENTO_ADMINISTRADOR";
-            this.TSM_MOVIMIENTO_ADMINISTRADOR.Size = new System.Drawing.Size(356, 22);
-            this.TSM_MOVIMIENTO_ADMINISTRADOR.Text = "Administrador De Documentos";
-            this.TSM_MOVIMIENTO_ADMINISTRADOR.Click += new System.EventHandler(this.TSM_MOVIMIENTO_ADMINISTRADOR_Click);
-            // 
-            // toolStripMenuItem7
-            // 
-            this.toolStripMenuItem7.Name = "toolStripMenuItem7";
-            this.toolStripMenuItem7.Size = new System.Drawing.Size(353, 6);
-            // 
-            // TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE
-            // 
-            this.TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE.Image = global::ModInventario.Properties.Resources.administrador;
-            this.TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE.Name = "TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE";
-            this.TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE.Size = new System.Drawing.Size(356, 22);
-            this.TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE.Text = "Admnistrador Movimientos Pendientes";
-            this.TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE.Visible = false;
-            this.TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE.Click += new System.EventHandler(this.TSM_MOVIMIENTO_ADMINISTRADOR_PENDIENTE_Click);
-            // 
-            // toolStripMenuItem8
-            // 
-            this.toolStripMenuItem8.Name = "toolStripMenuItem8";
-            this.toolStripMenuItem8.Size = new System.Drawing.Size(353, 6);
-            this.toolStripMenuItem8.Visible = false;
             // 
             // visorToolStripMenuItem
             // 
@@ -1295,21 +1320,6 @@
             this.panel10.Size = new System.Drawing.Size(246, 350);
             this.panel10.TabIndex = 0;
             // 
-            // tomaInventarioToolStripMenuItem
-            // 
-            this.tomaInventarioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.TOMA_INV_ADM_DOC});
-            this.tomaInventarioToolStripMenuItem.Name = "tomaInventarioToolStripMenuItem";
-            this.tomaInventarioToolStripMenuItem.Size = new System.Drawing.Size(106, 20);
-            this.tomaInventarioToolStripMenuItem.Text = "Toma Inventario";
-            // 
-            // TOMA_INV_ADM_DOC
-            // 
-            this.TOMA_INV_ADM_DOC.Name = "TOMA_INV_ADM_DOC";
-            this.TOMA_INV_ADM_DOC.Size = new System.Drawing.Size(237, 22);
-            this.TOMA_INV_ADM_DOC.Text = "Administrador de Documentos";
-            this.TOMA_INV_ADM_DOC.Click += new System.EventHandler(this.TOMA_INV_ADM_DOC_Click);
-            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1472,6 +1482,7 @@
         private System.Windows.Forms.ToolStripMenuItem TSM_VISOR_ENTRADAS_POR_COMPRA;
         private System.Windows.Forms.ToolStripMenuItem tomaInventarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem TOMA_INV_ADM_DOC;
+        private System.Windows.Forms.ToolStripMenuItem TOMAINV_CONVERTIR_SOLICITUD_TOMA;
     }
 }
 

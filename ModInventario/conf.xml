@@ -2,7 +2,7 @@
 <Configuracion>
   <Servidor>
     <Instancia>localhost</Instancia>
-    <Catalogo>pita</Catalogo>
+    <Catalogo>mscala</Catalogo>
     <Usuario></Usuario>
     <Gestor>mysql</Gestor><!--MySql, SqlServer-->
   </Servidor>

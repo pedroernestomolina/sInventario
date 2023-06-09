@@ -81,7 +81,7 @@ namespace DataProvInventario.Data
             return rt;
         }
         public OOB.ResultadoEntidad<OOB.LibInventario.TomaInv.Analisis.Ficha> 
-            TomaInv_Analisis(int idToma)
+            TomaInv_Analisis(string idToma)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.TomaInv.Analisis.Ficha>();
             var r01 = MyData.TomaInv_AnalizarToma(idToma);
@@ -101,14 +101,15 @@ namespace DataProvInventario.Data
                             var nr = new OOB.LibInventario.TomaInv.Analisis.Item()
                             {
                                 codPrd = s.codPrd,
-                                comp = s.comp.HasValue ? s.comp.Value : 0m,
+                                cntCompra = s.cntCompra.HasValue ? s.cntCompra.Value : 0m,
                                 conteo = s.conteo,
                                 descPrd = s.descPrd,
                                 fisico = s.fisico,
-                                fisicoDep = s.fisicoDep,
+                                exDeposito = s.exDeposito.HasValue? s.exDeposito.Value:0m,
                                 idPrd = s.idPrd,
-                                inv = s.inv.HasValue ? s.inv.Value : 0m,
-                                vtas = s.vtas.HasValue ? s.vtas.Value : 0m,
+                                cntMovInv = s.cntMovInv.HasValue ? s.cntMovInv.Value : 0m,
+                                cntVenta = s.cntVenta.HasValue ? s.cntVenta.Value : 0m,
+                                cntPorDespachar = s.cntPorDespachar.HasValue ? s.cntPorDespachar.Value : 0m,
                             };
                             return nr;
                         }).ToList();
@@ -152,7 +153,7 @@ namespace DataProvInventario.Data
             {
                 autoriza = ficha.autoriza,
                 cntItems = ficha.cntItems,
-                idToma = ficha.idToma,
+                idToma = -1,//ficha.idToma,
                 observaciones = ficha.observaciones,
                 items = ficha.items.Select(s =>
             {
@@ -207,15 +208,44 @@ namespace DataProvInventario.Data
             }
             return rt;
         }
-        public OOB.Resultado 
-            TomaInv_ConvertirSolicitud_EnToma(string autoSolicitud)
+        public OOB.ResultadoEntidad<string> 
+            TomaInv_EncontrarSolicitudActiva(string codigoEmpSuc)
         {
-            var rt = new OOB.Resultado();
-            var r01 = MyData.TomaInv_ConvertirSolicitud_EnToma(autoSolicitud);
+            var rt = new OOB.ResultadoEntidad<string>();
+            var r01 = MyData.TomaInv_EncontrarSolicitudActiva(codigoEmpSuc);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
                 throw new Exception(r01.Mensaje);
             }
+            rt.Entidad = r01.Entidad;
+            return rt;
+        }
+        public OOB.Resultado 
+            TomaInv_ConvertirSolicitud_EnToma(string autoSolic, string codEmpSuc)
+        {
+            var rt = new OOB.Resultado();
+            var ficha = new DtoLibInventario.TomaInv.ConvertirSolicitud.Ficha()
+            {
+                autoSolicitud = autoSolic,
+                codigoEmpSuc = codEmpSuc,
+            };
+            var r01 = MyData.TomaInv_ConvertirSolicitud_EnToma(ficha);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            return rt;
+        }
+        public OOB.ResultadoEntidad<string> 
+            TomaInv_Analizar_TomaDisponible()
+        {
+            var rt = new OOB.ResultadoEntidad<string>();
+            var r01 = MyData.TomaInv_Analizar_TomaDisponible();
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            rt.Entidad = r01.Entidad;
             return rt;
         }
     }

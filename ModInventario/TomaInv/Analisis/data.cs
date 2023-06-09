@@ -27,7 +27,7 @@ namespace ModInventario.TomaInv.Analisis
         {
             Eliminar = false;
             _itemAnalisis = item;
-            var _ex = (_itemAnalisis.fisico + _itemAnalisis.vtas + _itemAnalisis.comp + _itemAnalisis.inv);
+            var _ex = (_itemAnalisis.fisico + _itemAnalisis.cntVenta + _itemAnalisis.cntCompra + _itemAnalisis.cntMovInv+ _itemAnalisis.cntPorDespachar);
             if (_itemAnalisis.conteo.HasValue)
             {
                 _diferencia = _ex - _itemAnalisis.conteo.Value;

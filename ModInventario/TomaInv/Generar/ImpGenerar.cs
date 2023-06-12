@@ -163,7 +163,7 @@ namespace ModInventario.TomaInv.Generar
             if (r01.Result != OOB.Enumerados.EnumResult.isError)
             {
                 var _lst = new List<TomaInv.data>();
-                foreach (var r in r01.Lista)
+                foreach (var r in r01.Lista.Where(w=>w.cntMov >0).ToList())
                 {
                     var rg = new TomaInv.data() { cnt = r.cnt, codigoPrd = r.codigoPrd, costoPrd = r.costoPrd, descPrd = r.descPrd, idPrd = r.idPrd, margen = r.margen };
                     _lst.Add(rg);

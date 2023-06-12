@@ -40,6 +40,7 @@ namespace DataProvInventario.Data
                             descPrd = s.descPrd,
                             idPrd = s.idPrd,
                             margen = s.margen.HasValue ? s.margen.Value : 0m,
+                            cntMov = s.cntMov.HasValue ? s.cntMov.Value:0m,
                         };
                     }).ToList();
                 }

@@ -10,8 +10,11 @@ namespace ModInventario.TomaInv.Analisis
 {
     public class ImpAnalisis: IAnalisis
     {
+        private RecopilarData.IRecopilar _recopilarData;
         private string _idTomaAnalizar;
         private ILista _lista;
+        private bool _procesarIsOk;
+        private bool _abandonarIsOk;
 
 
         public BindingSource GetSource { get { return _lista.GetDataSource; } }
@@ -20,13 +23,18 @@ namespace ModInventario.TomaInv.Analisis
 
         public ImpAnalisis()
         {
+            _procesarIsOk = false;
+            _abandonarIsOk = false;
             _idTomaAnalizar = "";
             _lista = new ImpLista();
+            _recopilarData = new RecopilarData.ImpRecopilar();
         }
 
 
         public void Inicializa()
         {
+            _abandonarIsOk = false;
+            _procesarIsOk = false;
             _idTomaAnalizar = "";
             _lista.Inicializa();
         }
@@ -119,43 +127,83 @@ namespace ModInventario.TomaInv.Analisis
         {
             _lista.setMarcarTodas(m);
         }
+
+        public void RefrescarVista()
+        {
+            try
+            {
+                var r01 = Sistema.MyData.TomaInv_Analisis(_idTomaAnalizar);
+                var _lst = new List<TomaInv.Analisis.data>();
+                foreach (var rg in r01.Entidad.Items)
+                {
+                    _lst.Add(new TomaInv.Analisis.data(rg));
+                }
+                _lista.setDataListar(_lst);
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
+                return;
+            }
+        }
+
+        public bool ProcesarIsOk { get { return _procesarIsOk; } }
+        public void ProcesarFicha()
+        {
+            ProcesarToma();
+        }
+
+        public bool AbandonarIsOk { get { return _abandonarIsOk; } }
+        public void AbandonarFicha()
+        {
+            _abandonarIsOk = true;
+        }
+
+
         public void ProcesarToma()
         {
-            if (_lista.GetLista.Count() <= 0) 
+            _procesarIsOk = false;
+            if (_lista.GetLista.Count() <= 0)
             {
                 Helpers.Msg.Alerta("NO HAY ITEMS");
                 return;
             }
             var _cnt = _lista.GetLista.Where(w => w.Estado == data.enumAnalisis.SinDefinir).Count();
-            if (_cnt > 0) 
+            if (_cnt > 0)
             {
                 Helpers.Msg.Alerta("FALTAN PRODUCTOS POR REALIZAR TOMAS");
                 return;
             }
-            var msg = "Estas De Acuerdo Con Los Datos Suministrados ?";
-            var resp = MessageBox.Show(msg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
-            if (resp == DialogResult.No)
+            _recopilarData.Inicializa();
+            _recopilarData.Inicia();
+            if (_recopilarData.ProcesarIsOk) 
             {
-                return;
+                Procesar();
             }
-            //Procesar();
-
         }
         private void Procesar()
         {
-            var _lst = _lista.GetLista.Where(w => w.Estado == data.enumAnalisis.Falta || w.Estado == data.enumAnalisis.Sobra).ToList();
+            var _lst = _lista.GetLista.ToList();
             var ficha = new OOB.LibInventario.TomaInv.Procesar.Ficha()
             {
-                autoriza = "ALEX",
+                autoriza = _recopilarData.Autorizado_GetData,
                 cntItems = _lst.Count,
                 idToma = _idTomaAnalizar,
-                observaciones = "TODO OK",
+                observaciones = _recopilarData.Motivo_GetData,
                 items = _lst.Select(s =>
                 {
-                    var _signo = -1;
+                    var _signo = 0;
                     if (s.Estado == data.enumAnalisis.Sobra)
                     {
                         _signo = 1;
+                    }
+                    else if (s.Estado == data.enumAnalisis.Falta)
+                    {
+                        _signo = -1;
+                    }
+                    else if (s.Estado == data.enumAnalisis.OK)
+                    {
+                        _signo = 0;
                     }
                     var nr = new OOB.LibInventario.TomaInv.Procesar.Item()
                     {
@@ -163,6 +211,10 @@ namespace ModInventario.TomaInv.Analisis
                         estadoDesc = s.Estado.ToString(),
                         idProducto = s.itemAnalisis.idPrd,
                         signo = _signo,
+                        estatusDivisa= s.itemAnalisis.estatusDivisa,
+                        costoMonDivisa = s.itemAnalisis.costoMonDivisa,
+                        costoMonLocal= s.itemAnalisis.costoMonLocal,
+                        contEmpCompra = s.itemAnalisis.contEmpCompra,
                     };
                     return nr;
                 }).ToList(),
@@ -170,6 +222,7 @@ namespace ModInventario.TomaInv.Analisis
             try
             {
                 var r01 = Sistema.MyData.TomaInv_Procesar(ficha);
+                _procesarIsOk = true;
                 Helpers.Msg.AgregarOk();
             }
             catch (Exception e)

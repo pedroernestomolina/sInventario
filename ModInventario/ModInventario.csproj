@@ -1014,6 +1014,14 @@
     <Compile Include="TomaInv\Analisis\ILista.cs" />
     <Compile Include="TomaInv\Analisis\ImpAnalisis.cs" />
     <Compile Include="TomaInv\Analisis\ImpLista.cs" />
+    <Compile Include="TomaInv\Analisis\RecopilarData\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TomaInv\Analisis\RecopilarData\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TomaInv\Analisis\RecopilarData\ImpRecopilar.cs" />
+    <Compile Include="TomaInv\Analisis\RecopilarData\IRecopilar.cs" />
     <Compile Include="TomaInv\ConvertirSolicitud\Imp.cs" />
     <Compile Include="TomaInv\data.cs" />
     <Compile Include="TomaInv\Generar\data.cs" />
@@ -1543,6 +1551,9 @@
       <DependentUpon>ListaFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TomaInv\Analisis\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TomaInv\Analisis\RecopilarData\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TomaInv\Generar\Frm.resx">

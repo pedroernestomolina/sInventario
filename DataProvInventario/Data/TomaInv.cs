@@ -106,11 +106,15 @@ namespace DataProvInventario.Data
                                 conteo = s.conteo,
                                 descPrd = s.descPrd,
                                 fisico = s.fisico,
-                                exDeposito = s.exDeposito.HasValue? s.exDeposito.Value:0m,
+                                exDeposito = s.exDeposito.HasValue ? s.exDeposito.Value : 0m,
                                 idPrd = s.idPrd,
                                 cntMovInv = s.cntMovInv.HasValue ? s.cntMovInv.Value : 0m,
                                 cntVenta = s.cntVenta.HasValue ? s.cntVenta.Value : 0m,
                                 cntPorDespachar = s.cntPorDespachar.HasValue ? s.cntPorDespachar.Value : 0m,
+                                costoMonDivisa = s.costoMonDivisa,
+                                costoMonLocal = s.costoMonLocal,
+                                contEmpCompra = s.contEmpCompra,
+                                estatusDivisa = s.estatusDivisa,
                             };
                             return nr;
                         }).ToList();
@@ -154,7 +158,7 @@ namespace DataProvInventario.Data
             {
                 autoriza = ficha.autoriza,
                 cntItems = ficha.cntItems,
-                idToma = -1,//ficha.idToma,
+                idToma = ficha.idToma,
                 observaciones = ficha.observaciones,
                 items = ficha.items.Select(s =>
             {
@@ -164,6 +168,10 @@ namespace DataProvInventario.Data
                     estadoDesc = s.estadoDesc,
                     idProducto = s.idProducto,
                     signo = s.signo,
+                    contEmpCompra = s.contEmpCompra,
+                    costoMonDivisa = s.costoMonDivisa,
+                    costoMonLocal = s.costoMonLocal,
+                    estatusDivisa = s.estatusDivisa,
                 };
                 return nr;
             }).ToList(),

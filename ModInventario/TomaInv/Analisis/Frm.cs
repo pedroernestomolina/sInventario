@@ -91,12 +91,19 @@ namespace ModInventario.TomaInv.Analisis
             DGV.Columns.Add(c4);
             DGV.Columns.Add(c5);
         }
-
         private void Frm_Load(object sender, EventArgs e)
         {
             DGV.DataSource = _controlador.GetSource;
             DGV.Refresh();
             L_ITEMS.Text = "Items Encontrados: " + _controlador.CntItem.ToString("n0");
+        }
+        private void Frm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            if (_controlador.ProcesarIsOk || _controlador.AbandonarIsOk)
+            {
+                e.Cancel = false;
+            }
         }
 
         public void setControlador(IAnalisis ctr)
@@ -105,6 +112,10 @@ namespace ModInventario.TomaInv.Analisis
         }
 
 
+        private void BT_REFRESCAR_Click(object sender, EventArgs e)
+        {
+            RefrescarVista();
+        }
         private void BT_TOMA_ELIMINAR_Click(object sender, EventArgs e)
         {
             EliminarTomas();
@@ -113,12 +124,11 @@ namespace ModInventario.TomaInv.Analisis
         {
             ProcesarToma();
         }
-
-
-        private void EliminarTomas()
+        private void BT_SALIR_Click(object sender, EventArgs e)
         {
-            _controlador.EliminarTomas();
+            AbandonarFicha();
         }
+
 
         private void CHB_MARCAR_CheckedChanged(object sender, EventArgs e)
         {
@@ -126,9 +136,34 @@ namespace ModInventario.TomaInv.Analisis
         }
 
 
+
+        private void RefrescarVista()
+        {
+            _controlador.RefrescarVista();
+        }
+        private void EliminarTomas()
+        {
+            _controlador.EliminarTomas();
+        }
         private void ProcesarToma()
         {
-            _controlador.ProcesarToma();
+            _controlador.ProcesarFicha();
+            if (_controlador.ProcesarIsOk) 
+            {
+                Salir();
+            }
+        }
+        private void AbandonarFicha()
+        {
+            _controlador.AbandonarFicha();
+            if (_controlador.AbandonarIsOk)
+            {
+                Salir();
+            }
+        }
+        private void Salir()
+        {
+            this.Close();
         }
     }
 }

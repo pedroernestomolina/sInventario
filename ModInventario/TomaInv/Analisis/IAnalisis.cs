@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ModInventario.TomaInv.Analisis
 {
-    public interface IAnalisis: IGestion
+    public interface IAnalisis: IGestion,  Gestion.IAbandonar, Gestion.IProcesar
     {
         BindingSource GetSource { get; }
         int CntItem { get; }
@@ -16,6 +16,6 @@ namespace ModInventario.TomaInv.Analisis
         void setTomaInvAnalizar(string idToma);
         void setMarcarTodas(bool m);
         void EliminarTomas();
-        void ProcesarToma();
+        void RefrescarVista();
     }
 }

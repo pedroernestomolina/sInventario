@@ -28,16 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.CHB_MARCAR = new System.Windows.Forms.CheckBox();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.L_ITEMS = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.BT_REFRESCAR = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.DGV = new System.Windows.Forms.DataGridView();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -50,9 +55,7 @@
             this.BT_SALIR = new System.Windows.Forms.Button();
             this.panel12 = new System.Windows.Forms.Panel();
             this.BT_PROCESAR = new System.Windows.Forms.Button();
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.L_ITEMS = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -61,6 +64,8 @@
             this.panel5.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.panel10.SuspendLayout();
+            this.panel13.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
             this.panel8.SuspendLayout();
@@ -70,7 +75,6 @@
             this.tableLayoutPanel5.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel12.SuspendLayout();
-            this.panel13.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -111,6 +115,17 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(755, 38);
             this.panel2.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(755, 38);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "ANALISIS / TOMA INVENTARIO";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel3
             // 
@@ -190,12 +205,54 @@
             this.CHB_MARCAR.UseVisualStyleBackColor = true;
             this.CHB_MARCAR.CheckedChanged += new System.EventHandler(this.CHB_MARCAR_CheckedChanged);
             // 
+            // panel13
+            // 
+            this.panel13.Controls.Add(this.L_ITEMS);
+            this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel13.Location = new System.Drawing.Point(1, 1);
+            this.panel13.Margin = new System.Windows.Forms.Padding(1);
+            this.panel13.Name = "panel13";
+            this.panel13.Padding = new System.Windows.Forms.Padding(2);
+            this.panel13.Size = new System.Drawing.Size(565, 39);
+            this.panel13.TabIndex = 1;
+            // 
+            // L_ITEMS
+            // 
+            this.L_ITEMS.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_ITEMS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_ITEMS.Location = new System.Drawing.Point(2, 2);
+            this.L_ITEMS.Name = "L_ITEMS";
+            this.L_ITEMS.Size = new System.Drawing.Size(561, 35);
+            this.L_ITEMS.TabIndex = 0;
+            this.L_ITEMS.Text = "Items Encontrados:";
+            this.L_ITEMS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // panel6
             // 
-            this.panel6.Location = new System.Drawing.Point(712, 3);
+            this.panel6.Controls.Add(this.BT_REFRESCAR);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(710, 1);
+            this.panel6.Margin = new System.Windows.Forms.Padding(1);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(40, 36);
+            this.panel6.Padding = new System.Windows.Forms.Padding(2);
+            this.panel6.Size = new System.Drawing.Size(44, 41);
             this.panel6.TabIndex = 1;
+            // 
+            // BT_REFRESCAR
+            // 
+            this.BT_REFRESCAR.BackgroundImage = global::ModInventario.Properties.Resources.bt_refrescar_48;
+            this.BT_REFRESCAR.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BT_REFRESCAR.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_REFRESCAR.FlatAppearance.BorderSize = 0;
+            this.BT_REFRESCAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_REFRESCAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_REFRESCAR.Location = new System.Drawing.Point(2, 2);
+            this.BT_REFRESCAR.Name = "BT_REFRESCAR";
+            this.BT_REFRESCAR.Size = new System.Drawing.Size(40, 37);
+            this.BT_REFRESCAR.TabIndex = 7;
+            this.toolTip1.SetToolTip(this.BT_REFRESCAR, "Refrescar Vista");
+            this.BT_REFRESCAR.UseVisualStyleBackColor = true;
+            this.BT_REFRESCAR.Click += new System.EventHandler(this.BT_REFRESCAR_Click);
             // 
             // panel7
             // 
@@ -271,6 +328,7 @@
             this.BT_TOMA_ELIMINAR.Name = "BT_TOMA_ELIMINAR";
             this.BT_TOMA_ELIMINAR.Size = new System.Drawing.Size(38, 40);
             this.BT_TOMA_ELIMINAR.TabIndex = 6;
+            this.toolTip1.SetToolTip(this.BT_TOMA_ELIMINAR, "Eliminar Conteo ");
             this.BT_TOMA_ELIMINAR.UseVisualStyleBackColor = true;
             this.BT_TOMA_ELIMINAR.Click += new System.EventHandler(this.BT_TOMA_ELIMINAR_Click);
             // 
@@ -330,6 +388,7 @@
             this.BT_SALIR.Text = "Salir";
             this.BT_SALIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.BT_SALIR.UseVisualStyleBackColor = true;
+            this.BT_SALIR.Click += new System.EventHandler(this.BT_SALIR_Click);
             // 
             // panel12
             // 
@@ -354,53 +413,23 @@
             this.BT_PROCESAR.Name = "BT_PROCESAR";
             this.BT_PROCESAR.Size = new System.Drawing.Size(244, 52);
             this.BT_PROCESAR.TabIndex = 3;
-            this.BT_PROCESAR.Text = "Procesar / Enviar Ajuste";
+            this.BT_PROCESAR.Text = "Procesar y Generar Ajuste";
             this.BT_PROCESAR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.BT_PROCESAR.UseVisualStyleBackColor = true;
             this.BT_PROCESAR.Click += new System.EventHandler(this.BT_PROCESAR_Click);
-            // 
-            // panel13
-            // 
-            this.panel13.Controls.Add(this.L_ITEMS);
-            this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel13.Location = new System.Drawing.Point(1, 1);
-            this.panel13.Margin = new System.Windows.Forms.Padding(1);
-            this.panel13.Name = "panel13";
-            this.panel13.Padding = new System.Windows.Forms.Padding(2);
-            this.panel13.Size = new System.Drawing.Size(565, 39);
-            this.panel13.TabIndex = 1;
-            // 
-            // L_ITEMS
-            // 
-            this.L_ITEMS.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_ITEMS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_ITEMS.Location = new System.Drawing.Point(2, 2);
-            this.L_ITEMS.Name = "L_ITEMS";
-            this.L_ITEMS.Size = new System.Drawing.Size(561, 35);
-            this.L_ITEMS.TabIndex = 0;
-            this.L_ITEMS.Text = "Items Encontrados:";
-            this.L_ITEMS.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(755, 38);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "ANALISIS / TOMA INVENTARIO";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.BT_SALIR;
             this.ClientSize = new System.Drawing.Size(757, 521);
             this.Controls.Add(this.panel1);
+            this.KeyPreview = true;
             this.Name = "Frm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Frm_FormClosing);
             this.Load += new System.EventHandler(this.Frm_Load);
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -411,6 +440,8 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
+            this.panel13.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).EndInit();
             this.panel8.ResumeLayout(false);
@@ -420,7 +451,6 @@
             this.tableLayoutPanel5.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
-            this.panel13.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -452,5 +482,7 @@
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Label L_ITEMS;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button BT_REFRESCAR;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

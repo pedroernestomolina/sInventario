@@ -72,5 +72,12 @@ namespace ModInventario.Helpers
             _gMovCargo.Inicializa();
             _gMovCargo.Inicia();
         }
+        public static void AjustePorToma(ISeguridadAccesoSistema _seguridad)
+        {
+            src.MovInventario.Ajuste.PorToma.IAjuste _gMov;
+            _gMov = new src.MovInventario.Ajuste.PorToma.ImpAjuste(_seguridad);
+            _gMov.Inicializa();
+            _gMov.Inicia();
+        }
     }
 }

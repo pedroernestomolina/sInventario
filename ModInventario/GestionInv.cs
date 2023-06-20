@@ -589,5 +589,12 @@ namespace ModInventario
             var imp = new TomaInv.ConvertirSolicitud.Imp();
             imp.Convertir();
         }
+        public void Ajuste_PorTomaInventario()
+        {
+            if (Helpers.VerificarPermiso.PermitirAcceso(Sistema.MyData.Permiso_MovimientoAjusteInventario, Sistema.UsuarioP.autoGru, _seguridad))
+            {
+                Helpers.GenerarMov.AjustePorToma(_seguridad);
+            }
+        }
     }
 }

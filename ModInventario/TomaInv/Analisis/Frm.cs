@@ -91,6 +91,17 @@ namespace ModInventario.TomaInv.Analisis
             DGV.Columns.Add(c4);
             DGV.Columns.Add(c5);
         }
+        private void DGV_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if (e.ColumnIndex >= 0)
+                {
+                    MostrarConteo();
+                }
+            }
+        }
+
         private void Frm_Load(object sender, EventArgs e)
         {
             DGV.DataSource = _controlador.GetSource;
@@ -116,6 +127,10 @@ namespace ModInventario.TomaInv.Analisis
         {
             RefrescarVista();
         }
+        private void BT_IMPRIMIR_Click(object sender, EventArgs e)
+        {
+            ImprimirAnalisis();
+        }
         private void BT_TOMA_ELIMINAR_Click(object sender, EventArgs e)
         {
             EliminarTomas();
@@ -140,6 +155,14 @@ namespace ModInventario.TomaInv.Analisis
         private void RefrescarVista()
         {
             _controlador.RefrescarVista();
+        }
+        private void MostrarConteo()
+        {
+            _controlador.MostrarConteo();
+        }
+        private void ImprimirAnalisis()
+        {
+            _controlador.ImprimirAnalisis();
         }
         private void EliminarTomas()
         {

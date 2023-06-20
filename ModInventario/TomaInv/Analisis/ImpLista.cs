@@ -19,6 +19,7 @@ namespace ModInventario.TomaInv.Analisis
         public BindingSource GetDataSource { get { return _bs; } }
         public List<data> GetLista { get { return _bl.ToList(); } }
         public int CntItem { get { return _bs.Count; } }
+        public data ItemActual { get { return (data)_bs.Current; } }
 
 
         public ImpLista()

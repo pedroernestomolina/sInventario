@@ -563,6 +563,13 @@
     <Compile Include="Reportes\ReporteFrm.Designer.cs">
       <DependentUpon>ReporteFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\TomaInv\AnalisisResultado\data.cs" />
+    <Compile Include="Reportes\TomaInv\AnalisisResultado\gestionRep.cs" />
+    <Compile Include="Reportes\TomaInv\DS_TOMA.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_TOMA.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\Visor\DSVisor1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -706,6 +713,14 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="src\MovInventario\Ajuste\Inv\MovFrm.Designer.cs">
+      <DependentUpon>MovFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\MovInventario\Ajuste\PorToma\IAjuste.cs" />
+    <Compile Include="src\MovInventario\Ajuste\PorToma\ImpAjuste.cs" />
+    <Compile Include="src\MovInventario\Ajuste\PorToma\MovFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\MovInventario\Ajuste\PorToma\MovFrm.Designer.cs">
       <DependentUpon>MovFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\MovInventario\BaseMov.cs" />
@@ -1418,6 +1433,9 @@
     <EmbeddedResource Include="Reportes\RepProducto\Prd_ExistenciaDeposito.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\TomaInv\TomaResultado.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Visor\Existencia.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -1470,6 +1488,9 @@
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\MovInventario\Ajuste\Inv\MovFrm.resx">
+      <DependentUpon>MovFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\MovInventario\Ajuste\PorToma\MovFrm.resx">
       <DependentUpon>MovFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\MovInventario\Cargo\CapturaMov\Frm.resx">
@@ -1709,6 +1730,17 @@
     </None>
     <None Include="Reportes\RepProducto\DS_VAR.xss">
       <DependentUpon>DS_VAR.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\TomaInv\DS_TOMA.xsc">
+      <DependentUpon>DS_TOMA.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\TomaInv\DS_TOMA.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_TOMA.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\TomaInv\DS_TOMA.xss">
+      <DependentUpon>DS_TOMA.xsd</DependentUpon>
     </None>
     <None Include="Reportes\Visor\DSVisor.xsc">
       <DependentUpon>DSVisor.xsd</DependentUpon>

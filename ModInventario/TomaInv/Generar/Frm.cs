@@ -86,6 +86,8 @@ namespace ModInventario.TomaInv.Generar
             CB_DEP_ORIGEN.SelectedValue = _controlador.DepOrigen.GetId;
             ND_CNT_ULT_DIAS.Value = _controlador.GetCntDias;
             L_ITEMS_ENCONTRADOS.Text = "Total Items Encontrados: " + _controlador.CntItems.ToString();
+            TB_CANT_PRD_TOMAR.Value = 0m;
+            RB_DEFECTO.Checked = true;
             _modoInicio = false;
             IrFoco();
         }
@@ -140,6 +142,28 @@ namespace ModInventario.TomaInv.Generar
         private void ND_CNT_ULT_DIAS_Leave(object sender, EventArgs e)
         {
             _controlador.setCntDias(ND_CNT_ULT_DIAS.Value);
+        }
+
+        private void TB_CANT_PRD_TOMAR_Leave(object sender, EventArgs e)
+        {
+            _controlador.setCantidadPrdTomar(TB_CANT_PRD_TOMAR.Value);
+        }
+
+        private void RB_DEFECTO_CheckedChanged(object sender, EventArgs e)
+        {
+            Lista_PorDefecto();
+        }
+        private void RB_MAS_COSTOSO_CheckedChanged(object sender, EventArgs e)
+        {
+            Lista_PorMayorCosto();
+        }
+        private void RB_MAYOR_MARGEN_CheckedChanged(object sender, EventArgs e)
+        {
+            Lista_PorMayorMargen();
+        }
+        private void RB_MAYOR_DEMANDA_CheckedChanged(object sender, EventArgs e)
+        {
+            Lista_PorMayorDemanda();
         }
 
 
@@ -216,11 +240,29 @@ namespace ModInventario.TomaInv.Generar
             CB_SUCURSAL.SelectedValue = _controlador.SucOrigen.GetId;
             CB_DEP_ORIGEN.SelectedValue = _controlador.DepOrigen.GetId;
             L_ITEMS_ENCONTRADOS.Text = "Total Items Encontrados: " + _controlador.CntItems.ToString();
+            RB_DEFECTO.Checked = true;
+            TB_CANT_PRD_TOMAR.Value = 0m;
             DGV.Refresh();
         }
         private void IrFoco()
         {
             TB_AUTORIZADO_POR.Focus();
+        }
+        private void Lista_PorDefecto()
+        {
+            _controlador.Lista_PorDefecto();
+        }
+        private void Lista_PorMayorCosto()
+        {
+            _controlador.Lista_PorMayorCosto();
+        }
+        private void Lista_PorMayorMargen()
+        {
+            _controlador.Lista_PorMayorMargen();
+        }
+        private void Lista_PorMayorDemanda()
+        {
+            _controlador.Lista_PorMayorDemanda();
         }
     }
 }

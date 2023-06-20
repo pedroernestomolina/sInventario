@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DS_TOMA" targetNamespace="http://tempuri.org/DS_TOMA.xsd" xmlns:mstns="http://tempuri.org/DS_TOMA.xsd" xmlns="http://tempuri.org/DS_TOMA.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DS_TOMA" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DS_TOMA" msprop:Generator_UserDSName="DS_TOMA">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="resultado" msprop:Generator_TableClassName="resultadoDataTable" msprop:Generator_TableVarName="tableresultado" msprop:Generator_RowChangedName="resultadoRowChanged" msprop:Generator_TablePropName="resultado" msprop:Generator_RowDeletingName="resultadoRowDeleting" msprop:Generator_RowChangingName="resultadoRowChanging" msprop:Generator_RowEvHandlerName="resultadoRowChangeEventHandler" msprop:Generator_RowDeletedName="resultadoRowDeleted" msprop:Generator_RowClassName="resultadoRow" msprop:Generator_UserTableName="resultado" msprop:Generator_RowEvArgName="resultadoRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="producto" msprop:Generator_ColumnVarNameInTable="columnproducto" msprop:Generator_ColumnPropNameInRow="producto" msprop:Generator_ColumnPropNameInTable="productoColumn" msprop:Generator_UserColumnName="producto" type="xs:string" minOccurs="0" />
+              <xs:element name="cantidad" msprop:Generator_ColumnVarNameInTable="columncantidad" msprop:Generator_ColumnPropNameInRow="cantidad" msprop:Generator_ColumnPropNameInTable="cantidadColumn" msprop:Generator_UserColumnName="cantidad" type="xs:decimal" minOccurs="0" />
+              <xs:element name="descToma" msprop:Generator_ColumnVarNameInTable="columndescToma" msprop:Generator_ColumnPropNameInRow="descToma" msprop:Generator_ColumnPropNameInTable="descTomaColumn" msprop:Generator_UserColumnName="descToma" type="xs:string" minOccurs="0" />
+              <xs:element name="signo" msprop:Generator_ColumnVarNameInTable="columnsigno" msprop:Generator_ColumnPropNameInRow="signo" msprop:Generator_ColumnPropNameInTable="signoColumn" msprop:Generator_UserColumnName="signo" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

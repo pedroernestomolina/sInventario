@@ -23,6 +23,66 @@ namespace ModInventario.TomaInv.Analisis
         public bool Eliminar { get; set; }
 
 
+        private decimal _conteoGeneral=0m;
+        private decimal _conteoPorEmpCompra= 0m;
+        private decimal _conteoPorEmpInv = 0m;
+        private decimal _conteoPorEmpUnd = 0m;
+        public decimal conteoGeneral 
+        {
+            get 
+            {
+                _conteoGeneral = 0m;
+                _conteoGeneral = _itemAnalisis.conteo.HasValue ? _itemAnalisis.conteo.Value : 0m;
+                return _conteoGeneral;
+            } 
+        }
+        public decimal conteoPorEmpCompra 
+        { 
+            get 
+            {
+                _conteoGeneral = _itemAnalisis.conteo.HasValue ? _itemAnalisis.conteo.Value : 0m;
+                _conteoPorEmpCompra = 0m;
+                if (_conteoGeneral > 0m) 
+                {
+                    if (_itemAnalisis.contEmpCompra > 0) 
+                    {
+                        _conteoPorEmpCompra = (int)(_conteoGeneral / _itemAnalisis.contEmpCompra);
+                    }
+                }
+                return _conteoPorEmpCompra;
+            } 
+        }
+        public string descEmpCompra { get { return _itemAnalisis.descEmpCompra.Trim()+"(" + _itemAnalisis.contEmpCompra.ToString("n0") + ")"; } }
+        public decimal conteoPorEmpInv 
+        {
+            get
+            {
+                _conteoPorEmpInv = 0m;
+                var _cnt = (_conteoGeneral - (_conteoPorEmpCompra * _itemAnalisis.contEmpCompra));
+                if (_cnt > 0m)
+                {
+                    if (_itemAnalisis.contEmpInv > 0)
+                    {
+                        _conteoPorEmpInv = (int)(_cnt/ _itemAnalisis.contEmpInv);
+                    }
+                }
+                return _conteoPorEmpInv;
+            }
+        }
+        public string descEmpInv { get { return _itemAnalisis.descEmpInv.Trim()+"(" + _itemAnalisis.contEmpInv.ToString("n0") + ")"; } }
+        public decimal conteoPorEmpUnd
+        {
+            get 
+            {
+                var _e1= _conteoPorEmpCompra * _itemAnalisis.contEmpCompra;
+                var _e2= _conteoPorEmpInv * _itemAnalisis.contEmpInv;
+                _conteoPorEmpUnd = (int)(_conteoGeneral - (_e1 + _e2));
+                return _conteoPorEmpUnd;
+            }
+        }
+        public string descEmpUnd { get { return "Und (1)"; } }
+
+
         public data(OOB.LibInventario.TomaInv.Analisis.Item item)
         {
             Eliminar = false;

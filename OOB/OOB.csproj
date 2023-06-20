@@ -104,6 +104,12 @@
     <Compile Include="LibInventario\Movimiento\AjusteInvCero\Insertar\FichaMovDeposito.cs" />
     <Compile Include="LibInventario\Movimiento\AjusteInvCero\Insertar\FichaMovDetalle.cs" />
     <Compile Include="LibInventario\Movimiento\AjusteInvCero\Insertar\FichaMovKardex.cs" />
+    <Compile Include="LibInventario\Movimiento\AjustePorToma\Insertar\Ficha.cs" />
+    <Compile Include="LibInventario\Movimiento\AjustePorToma\Insertar\FichaMov.cs" />
+    <Compile Include="LibInventario\Movimiento\AjustePorToma\Insertar\FichaMovDeposito.cs" />
+    <Compile Include="LibInventario\Movimiento\AjustePorToma\Insertar\FichaMovDetalle.cs" />
+    <Compile Include="LibInventario\Movimiento\AjustePorToma\Insertar\FichaMovKardex.cs" />
+    <Compile Include="LibInventario\Movimiento\AjustePorToma\Insertar\FichaPrdToma.cs" />
     <Compile Include="LibInventario\Movimiento\Ajuste\Insertar\Ficha.cs" />
     <Compile Include="LibInventario\Movimiento\Ajuste\Insertar\FichaMov.cs" />
     <Compile Include="LibInventario\Movimiento\Ajuste\Insertar\FichaMovDeposito.cs" />
@@ -300,6 +306,9 @@
     <Compile Include="LibInventario\TomaInv\Procesar\Item.cs" />
     <Compile Include="LibInventario\TomaInv\RechazarItem\Ficha.cs" />
     <Compile Include="LibInventario\TomaInv\RechazarItem\Item.cs" />
+    <Compile Include="LibInventario\TomaInv\Resumen\PorMovAjuste\Ficha.cs" />
+    <Compile Include="LibInventario\TomaInv\Resumen\PorMovAjuste\Filtro.cs" />
+    <Compile Include="LibInventario\TomaInv\Resumen\Resultado\Ficha.cs" />
     <Compile Include="LibInventario\TomaInv\Solicitud\Generar\Ficha.cs" />
     <Compile Include="LibInventario\TomaInv\Solicitud\Generar\PrdToma.cs" />
     <Compile Include="LibInventario\Tool\AjusteNivelMinimoMaximoProducto\Ajustar\Ficha.cs" />

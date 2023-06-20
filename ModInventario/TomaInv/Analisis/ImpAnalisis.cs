@@ -15,6 +15,7 @@ namespace ModInventario.TomaInv.Analisis
         private ILista _lista;
         private bool _procesarIsOk;
         private bool _abandonarIsOk;
+        private OOB.LibInventario.TomaInv.Analisis.Ficha _tomaAnalizar;
 
 
         public BindingSource GetSource { get { return _lista.GetDataSource; } }
@@ -28,6 +29,7 @@ namespace ModInventario.TomaInv.Analisis
             _idTomaAnalizar = "";
             _lista = new ImpLista();
             _recopilarData = new RecopilarData.ImpRecopilar();
+            _tomaAnalizar = null;
         }
 
 
@@ -37,6 +39,7 @@ namespace ModInventario.TomaInv.Analisis
             _procesarIsOk = false;
             _idTomaAnalizar = "";
             _lista.Inicializa();
+            _tomaAnalizar = null;
         }
         private Frm frm;
         public void Inicia()
@@ -97,6 +100,57 @@ namespace ModInventario.TomaInv.Analisis
         }
 
 
+        public void ImprimirAnalisis()
+        {
+            if (_lista.GetLista.Count() <= 0)
+            {
+                Helpers.Msg.Alerta("NO HAY ITEMS");
+                return;
+            }
+            var _cnt = _lista.GetLista.Where(w => w.Estado == data.enumAnalisis.SinDefinir).Count();
+            if (_cnt > 0)
+            {
+                Helpers.Msg.Alerta("FALTAN PRODUCTOS POR REALIZAR TOMAS");
+                return;
+            }
+
+            var _list = _lista.GetLista.ToList().Select(s =>
+            {
+                var _signo = 0;
+                if (s.Estado == data.enumAnalisis.Sobra)
+                {
+                    _signo = 1;
+                }
+                else if (s.Estado == data.enumAnalisis.Falta)
+                {
+                    _signo = -1;
+                }
+                else if (s.Estado == data.enumAnalisis.OK)
+                {
+                    _signo = 0;
+                }
+                var nr = new Reportes.TomaInv.AnalisisResultado.item()
+                {
+                    cant = s.Diferencia,
+                    descToma = s.Estado.ToString(),
+                    producto = s.CodigoPrd.Trim() + Environment.NewLine + s.DescPrd.Trim(),
+                    signo = _signo,
+                };
+                return nr;
+            }).ToList();
+            var ficha = new Reportes.TomaInv.AnalisisResultado.data()
+            {
+                items = _list,
+                solicitudNro = _tomaAnalizar.solicitudNro,
+                sucursal =_tomaAnalizar.sucursal,
+                deposito =_tomaAnalizar.deposito,
+            };
+            var rp = new Reportes.TomaInv.AnalisisResultado.gestionRep();
+            rp.setData(ficha);
+            rp.Generar();
+        }
+
+
         private bool CargarData()
         {
             try
@@ -108,8 +162,10 @@ namespace ModInventario.TomaInv.Analisis
                 }
                 _idTomaAnalizar = r00.Entidad;
                 var r01 = Sistema.MyData.TomaInv_Analisis(_idTomaAnalizar);
+                _tomaAnalizar = r01.Entidad;
+
                 var _lst = new List<TomaInv.Analisis.data>();
-                foreach (var rg in r01.Entidad.Items)
+                foreach (var rg in r01.Entidad.Items.OrderBy(o=>o.descPrd).ToList())
                 {
                     _lst.Add(new TomaInv.Analisis.data(rg));
                 }
@@ -144,6 +200,23 @@ namespace ModInventario.TomaInv.Analisis
             {
                 Helpers.Msg.Error(e.Message);
                 return;
+            }
+        }
+
+        public void MostrarConteo()
+        {
+            if (_lista.ItemActual != null)
+            {
+                var _item = _lista.ItemActual;
+                var _st = new StringBuilder();
+                var s1 = string.Format("{0,6} ", _item.conteoPorEmpCompra) + _item.descEmpCompra;
+                var s2 = string.Format("{0,6} ", _item.conteoPorEmpInv) + _item.descEmpInv;
+                var s3 = string.Format("{0,6} ", _item.conteoPorEmpUnd) + _item.descEmpUnd;
+                _st.AppendLine();
+                _st.AppendLine(s1);
+                _st.AppendLine(s2);
+                _st.AppendLine(s3);
+                MessageBox.Show(_st.ToString());
             }
         }
 

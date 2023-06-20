@@ -17,5 +17,7 @@ namespace ModInventario.TomaInv.Analisis
         void setMarcarTodas(bool m);
         void EliminarTomas();
         void RefrescarVista();
+        void MostrarConteo();
+        void ImprimirAnalisis();
     }
 }

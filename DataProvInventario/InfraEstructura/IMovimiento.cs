@@ -23,6 +23,8 @@ namespace DataProvInventario.InfraEstructura
         OOB.ResultadoAuto Producto_Movimiento_Traslado_Devolucion_Insertar(OOB.LibInventario.Movimiento.Traslado.Insertar.Ficha ficha);
         OOB.ResultadoEntidad<OOB.LibInventario.Movimiento.AjusteInvCero.Capture.Ficha> Producto_Movimiento_AjusteInventarioCero_Capture(OOB.LibInventario.Movimiento.AjusteInvCero.Capture.Filtro filtro);
         OOB.ResultadoAuto Producto_Movimiento_AjusteInventarioCero_Insertar(OOB.LibInventario.Movimiento.AjusteInvCero.Insertar.Ficha ficha);
+        OOB.ResultadoAuto Producto_Movimiento_AjustePorToma_Insertar(OOB.LibInventario.Movimiento.AjustePorToma.Insertar.Ficha ficha);
+
 
 
         // CAPTURAR DATA RELACIONADO AL PRODUCTO PARA REALIZAR DICHO MOVIMIENTO

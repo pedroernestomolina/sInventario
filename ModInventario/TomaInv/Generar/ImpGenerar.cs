@@ -11,6 +11,8 @@ namespace ModInventario.TomaInv.Generar
 {
     public class ImpGenerar : IGenerar
     {
+        private int _cntPrdTomar;
+        private enum enumeradoOrdenLista { PorDefecto, PorMayorCosto, PorMayorMargen, PorMayorDemanda };
         private bool _abandonarIsOk;
         private bool _procesarIsOk;
         private ICtrl _sucOrigen;
@@ -21,6 +23,7 @@ namespace ModInventario.TomaInv.Generar
         private decimal _cntDias;
         private ILista _lista;
         private Tools.ExcluirDepart.IExcluir _excluir;
+        private enumeradoOrdenLista _tipoOrdenLista;
 
 
         public string GetEnt_Motivo { get { return _motivo; } }
@@ -46,6 +49,8 @@ namespace ModInventario.TomaInv.Generar
             _cntDias = DiasMov;
             _lista = new ImpLista();
             _excluir = new Tools.ExcluirDepart.ImpExcluir();
+            _tipoOrdenLista = enumeradoOrdenLista.PorDefecto;
+            _cntPrdTomar = 0;
         }
 
 
@@ -61,6 +66,8 @@ namespace ModInventario.TomaInv.Generar
             _cntDias = 45m;
             _lista.Inicializa();
             _excluir.Inicializa();
+            _tipoOrdenLista = enumeradoOrdenLista.PorDefecto;
+            _cntPrdTomar = 0;
         }
         Frm frm;
         public void Inicia()
@@ -86,7 +93,7 @@ namespace ModInventario.TomaInv.Generar
         public bool ProcesarIsOk { get { return _procesarIsOk; } }
         public void ProcesarFicha()
         {
-            if (_autorizadoPor.Trim() == "") 
+            if (_autorizadoPor.Trim() == "")
             {
                 Helpers.Msg.Alerta("CAMPO AUTORIZADO NO PUEDE ESTAR VACIO");
                 return;
@@ -96,7 +103,7 @@ namespace ModInventario.TomaInv.Generar
                 Helpers.Msg.Alerta("CAMPO MOTIVO NO PUEDE ESTAR VACIO");
                 return;
             }
-            if (_lista.GetLista.Count<=0)
+            if (_lista.GetLista.Count <= 0)
             {
                 Helpers.Msg.Alerta("NO HAY ITEMS PARA LA SOLICITUD");
                 return;
@@ -152,25 +159,58 @@ namespace ModInventario.TomaInv.Generar
                 Helpers.Msg.Alerta("CANTIDAD DIAS MOVIMIENTOS NO PUEDE SER CERO(0)");
                 return;
             }
-            var _lstId = _excluir.GetLista.Where(w=>w.IsSeleccionado).Select(s=>s.Departamento.auto).ToList();
+            var _lstId = _excluir.GetLista.Where(w => w.IsSeleccionado).Select(s => s.Departamento.auto).ToList();
             var filtro = new OOB.LibInventario.TomaInv.ObtenerToma.Filtro()
             {
                 idDeposito = _depOrigen.GetId,
                 periodoDias = (int)_cntDias,
-                idDepartExcluir = _lstId, 
+                idDepartExcluir = _lstId,
             };
             var r01 = Sistema.MyData.TomaInv_GetListaPrd(filtro);
             if (r01.Result != OOB.Enumerados.EnumResult.isError)
             {
                 var _lst = new List<TomaInv.data>();
-                foreach (var r in r01.Lista.Where(w=>w.cntMov >0).ToList())
+                if (_cntPrdTomar == 0) 
                 {
-                    var rg = new TomaInv.data() { cnt = r.cnt, codigoPrd = r.codigoPrd, costoPrd = r.costoPrd, descPrd = r.descPrd, idPrd = r.idPrd, margen = r.margen };
-                    _lst.Add(rg);
+                    _cntPrdTomar = r01.cntRegistro;
                 }
-                _lst.Sort();
-                _lst.Reverse();
-                _lista.setDataListar(_lst);
+                switch (_tipoOrdenLista)
+                {
+                    case enumeradoOrdenLista.PorDefecto:
+                        foreach (var r in r01.Lista.Where(w => w.cntMov > 0).ToList())
+                        {
+                            var rg = new TomaInv.data() { cnt = r.cnt, codigoPrd = r.codigoPrd, costoPrd = r.costoPrd, descPrd = r.descPrd, idPrd = r.idPrd, margen = r.margen };
+                            _lst.Add(rg);
+                        }
+                        _lst.Sort();
+                        _lst.Reverse();
+                        _lista.setDataListar(_lst.Take(_cntPrdTomar).ToList());
+                        break;
+                    case enumeradoOrdenLista.PorMayorCosto:
+                        foreach (var r in r01.Lista.Where(w => w.cntMov > 0).OrderByDescending(o=>o.costoPrd).ToList())
+                        {
+                            var rg = new TomaInv.data() { cnt = r.cnt, codigoPrd = r.codigoPrd, costoPrd = r.costoPrd, descPrd = r.descPrd, idPrd = r.idPrd, margen = r.margen };
+                            _lst.Add(rg);
+                        }
+                        _lista.setDataListar(_lst.Take(_cntPrdTomar).ToList());
+                        break;
+                    case enumeradoOrdenLista.PorMayorMargen:
+                        foreach (var r in r01.Lista.Where(w => w.cntMov > 0).OrderByDescending(o=>o.margen).ToList())
+                        {
+                            var rg = new TomaInv.data() { cnt = r.cnt, codigoPrd = r.codigoPrd, costoPrd = r.costoPrd, descPrd = r.descPrd, idPrd = r.idPrd, margen = r.margen };
+                            _lst.Add(rg);
+                        }
+                        _lista.setDataListar(_lst.Take(_cntPrdTomar).ToList());
+                        break;
+                    case enumeradoOrdenLista.PorMayorDemanda:
+                        foreach (var r in r01.Lista.Where(w => w.cntMov > 0).OrderByDescending(o=>o.cntMov).ToList())
+                        {
+                            var rg = new TomaInv.data() { cnt = r.cnt, codigoPrd = r.codigoPrd, costoPrd = r.costoPrd, descPrd = r.descPrd, idPrd = r.idPrd, margen = r.margen };
+                            _lst.Add(rg);
+                        }
+                        _lista.setDataListar(_lst.Take(_cntPrdTomar).ToList());
+                        break;
+                }
             }
         }
 
@@ -216,7 +256,7 @@ namespace ModInventario.TomaInv.Generar
             {
                 var rt1 = Sistema.MyData.Sucursal_GetFicha(_sucOrigen.GetId);
                 var rt2 = Sistema.MyData.Deposito_GetFicha(_depOrigen.GetId);
-                if (rt2.Result == OOB.Enumerados.EnumResult.isError) 
+                if (rt2.Result == OOB.Enumerados.EnumResult.isError)
                 {
                     throw new Exception(rt2.Mensaje);
                 }
@@ -253,6 +293,27 @@ namespace ModInventario.TomaInv.Generar
         public void EliminarItem()
         {
             _lista.EiminarItem();
+        }
+
+        public void Lista_PorDefecto()
+        {
+            _tipoOrdenLista = enumeradoOrdenLista.PorDefecto;
+        }
+        public void Lista_PorMayorCosto()
+        {
+            _tipoOrdenLista = enumeradoOrdenLista.PorMayorCosto;
+        }
+        public void Lista_PorMayorMargen()
+        {
+            _tipoOrdenLista = enumeradoOrdenLista.PorMayorMargen;
+        }
+        public void Lista_PorMayorDemanda()
+        {
+            _tipoOrdenLista = enumeradoOrdenLista.PorMayorDemanda;
+        }
+        public void setCantidadPrdTomar(decimal cnt)
+        {
+            _cntPrdTomar = (int)cnt;
         }
     }
 }

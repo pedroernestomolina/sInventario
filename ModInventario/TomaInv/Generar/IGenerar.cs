@@ -29,5 +29,10 @@ namespace ModInventario.TomaInv.Generar
         void Limpiar();
         void DepartamentosExcluir();
         void EliminarItem();
+        void Lista_PorDefecto();
+        void Lista_PorMayorCosto();
+        void Lista_PorMayorMargen();
+        void Lista_PorMayorDemanda();
+        void setCantidadPrdTomar(decimal cnt);
     }
 }

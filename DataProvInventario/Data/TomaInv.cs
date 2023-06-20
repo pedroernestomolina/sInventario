@@ -114,6 +114,9 @@ namespace DataProvInventario.Data
                                 costoMonDivisa = s.costoMonDivisa,
                                 costoMonLocal = s.costoMonLocal,
                                 contEmpCompra = s.contEmpCompra,
+                                contEmpInv= s.contEmpInv,
+                                descEmpCompra= s.descEmpCompra,
+                                descEmpInv = s.descEmpInv,
                                 estatusDivisa = s.estatusDivisa,
                             };
                             return nr;
@@ -123,6 +126,10 @@ namespace DataProvInventario.Data
             };
             rt.Entidad = new OOB.LibInventario.TomaInv.Analisis.Ficha()
             {
+                deposito = r01.Entidad.deposito,
+                solicitudNro = r01.Entidad.solicitudNro,
+                sucursal = r01.Entidad.sucursal,
+                tomaNro = r01.Entidad.tomaNro,
                 Items = _lst
             };
             return rt;
@@ -255,6 +262,83 @@ namespace DataProvInventario.Data
                 throw new Exception(r01.Mensaje);
             }
             rt.Entidad = r01.Entidad;
+            return rt;
+        }
+        public OOB.ResultadoLista<OOB.LibInventario.TomaInv.Resumen.PorMovAjuste.Ficha> 
+            TomaInv_GetLista_PorMovAjuste(OOB.LibInventario.TomaInv.Resumen.PorMovAjuste.Filtro filtro)
+        {
+            var rt = new OOB.ResultadoLista<OOB.LibInventario.TomaInv.Resumen.PorMovAjuste.Ficha>();
+            var filtroDTO = new DtoLibInventario.TomaInv.Resumen.PorMovAjuste.Filtro ()
+            {
+                idSucursal = filtro.idSucursal,
+                idDeposito = filtro.idDeposito,
+            };
+            var r01 = MyData.TomaInv_GetLista_PorMovAjuste(filtroDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var list = new List<OOB.LibInventario.TomaInv.Resumen.PorMovAjuste.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    list = r01.Lista.Select(s =>
+                    {
+                        return new OOB.LibInventario.TomaInv.Resumen.PorMovAjuste.Ficha()
+                        {
+                            cntItemResult = s.cntItemResult,
+                            docSolicitudNro = s.docSolicitudNro,
+                            docTomaNro = s.docTomaNro,
+                            fechaEmision = s.fechaEmision,
+                            idToma = s.idToma
+                        };
+                    }).ToList();
+                }
+            }
+            rt.Lista = list;
+            return rt;
+        }
+        public OOB.ResultadoLista<OOB.LibInventario.TomaInv.Resumen.Resultado.Ficha> 
+            TomaInv_GetToma_Resultado(string idToma)
+        {
+            var rt = new OOB.ResultadoLista<OOB.LibInventario.TomaInv.Resumen.Resultado.Ficha>();
+            var r01 = MyData.TomaInv_GetToma_Resultado(idToma);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            var list = new List<OOB.LibInventario.TomaInv.Resumen.Resultado.Ficha>();
+            if (r01.Lista != null)
+            {
+                if (r01.Lista.Count > 0)
+                {
+                    list = r01.Lista.Select(s =>
+                    {
+                        return new OOB.LibInventario.TomaInv.Resumen.Resultado.Ficha()
+                        {
+                            autoDepart = s.autoDepart,
+                            autoGrupo = s.autoGrupo,
+                            autoPrd = s.autoPrd,
+                            autoTasa = s.autoTasa,
+                            cantidadAjustar = s.cantidadAjustar,
+                            catPrd = s.catPrd,
+                            codigoPrd = s.codigoPrd,
+                            contEmp = s.contEmp,
+                            costo = s.costo,
+                            costoDivisa = s.costoDivisa,
+                            descTasa = s.descTasa,
+                            descTipoAjuste = s.descTipoAjuste,
+                            estatusDivisa = s.estatusDivisa,
+                            nombrePrd = s.nombrePrd,
+                            signo = s.signo,
+                            valorTasa = s.valorTasa,
+                            conteo=s.conteo,
+                        };
+                    }).ToList();
+                }
+            }
+            rt.Lista = list;
             return rt;
         }
     }

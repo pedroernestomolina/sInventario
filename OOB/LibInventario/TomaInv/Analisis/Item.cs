@@ -22,6 +22,9 @@ namespace OOB.LibInventario.TomaInv.Analisis
         public decimal costoMonLocal { get; set; }
         public decimal costoMonDivisa { get; set; }
         public int contEmpCompra { get; set; }
+        public int contEmpInv { get; set; }
         public string estatusDivisa { get; set; }
+        public string descEmpCompra { get; set; }
+        public string descEmpInv { get; set; }
     }
 }

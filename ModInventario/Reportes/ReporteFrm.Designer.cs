@@ -45,8 +45,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(767, 549);
             this.Controls.Add(this.reportViewer1);
+            this.KeyPreview = true;
             this.Name = "ReporteFrm";
             this.Padding = new System.Windows.Forms.Padding(2);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.ReporteFrm_Load);
             this.ResumeLayout(false);
 

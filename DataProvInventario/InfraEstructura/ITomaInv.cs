@@ -28,5 +28,9 @@ namespace DataProvInventario.InfraEstructura
             TomaInv_ConvertirSolicitud_EnToma(string autoSolicitud, string codigoEmpresaSucursal);
         OOB.ResultadoEntidad<string>
             TomaInv_Analizar_TomaDisponible();
+        OOB.ResultadoLista<OOB.LibInventario.TomaInv.Resumen.PorMovAjuste.Ficha>
+            TomaInv_GetLista_PorMovAjuste(OOB.LibInventario.TomaInv.Resumen.PorMovAjuste.Filtro filtro);
+        OOB.ResultadoLista<OOB.LibInventario.TomaInv.Resumen.Resultado.Ficha>
+            TomaInv_GetToma_Resultado(string idToma);
     }
 }

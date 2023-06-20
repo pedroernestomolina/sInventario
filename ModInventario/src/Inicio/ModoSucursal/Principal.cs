@@ -508,13 +508,24 @@ namespace ModInventario.src.Inicio.ModoSucursal
             _controlador.PermitirCambiarPrecioAlModificarCosto();
         }
 
+
         private void TOMAINV_GENERAR_SOLICITUD_Click(object sender, EventArgs e)
+        {
+            GenerarSolicitud_ParaTomaInventario();
+        }
+        private void GenerarSolicitud_ParaTomaInventario()
         {
             _controlador.TomaInv_GenerarSolicitud();
         }
-        private void TOMAINV_CONVERTIR_SOLICITUD_TOMA_Click(object sender, EventArgs e)
+
+
+        private void TSM_AJUSTE_POR_TOMAS_INVENTARIO_Click(object sender, EventArgs e)
         {
-            _controlador.TomaInv_ConvertirSolicitudEnToma();
+            Ajuste_PorTomaInventario();
+        }
+        private void Ajuste_PorTomaInventario()
+        {
+            _controlador.Ajuste_PorTomaInventario();
         }
     }
 }

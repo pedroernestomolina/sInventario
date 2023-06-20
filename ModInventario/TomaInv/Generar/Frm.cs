@@ -61,8 +61,29 @@ namespace ModInventario.TomaInv.Generar
             c2.HeaderCell.Style.Font = f;
             c2.DefaultCellStyle.Font = f1;
 
+            var c3 = new DataGridViewTextBoxColumn();
+            c3.DataPropertyName = "SFechaUltToma";
+            c3.HeaderText = "Fecha Ult/Toma";
+            c3.Visible = true;
+            c3.Width = 100;
+            c3.HeaderCell.Style.Font = f;
+            c3.DefaultCellStyle.Font = f1;
+            c3.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            var c4 = new DataGridViewTextBoxColumn();
+            c4.DataPropertyName = "UltimoConteo";
+            c4.HeaderText = "Ultimo Conteo/Und";
+            c4.Visible = true;
+            c4.Width = 100;
+            c4.HeaderCell.Style.Font = f;
+            c4.DefaultCellStyle.Font = f1;
+            c4.DefaultCellStyle.Alignment=  DataGridViewContentAlignment.MiddleRight;
+            c4.DefaultCellStyle.Format= "n1";
+
             DGV.Columns.Add(c1);
             DGV.Columns.Add(c2);
+            DGV.Columns.Add(c3);
+            DGV.Columns.Add(c4);
         }
 
 

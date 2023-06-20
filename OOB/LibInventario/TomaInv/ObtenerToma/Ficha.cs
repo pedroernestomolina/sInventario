@@ -16,5 +16,7 @@ namespace OOB.LibInventario.TomaInv.ObtenerToma
         public decimal margen { get; set; }
         public decimal cnt { get; set; }
         public decimal cntMov { get; set; }
+        public DateTime fechaUltConteo { get; set; }
+        public decimal ultConteo { get; set; }
     }
 }

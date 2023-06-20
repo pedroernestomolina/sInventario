@@ -15,6 +15,8 @@ namespace ModInventario.TomaInv
         public decimal costoPrd { get; set; }
         public decimal margen { get; set; }
         public decimal cnt { get; set; }
+        public DateTime fechaUltToma { get; set; }
+        public decimal ultConteo { get; set; }
 
 
         public int CompareTo(data y)

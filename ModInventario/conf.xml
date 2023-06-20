@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Configuracion>
   <Servidor>
-    <Instancia>localhost</Instancia>
-    <Catalogo>banco</Catalogo>
+    <Instancia>10.10.100.82</Instancia>
+    <Catalogo>00000001</Catalogo>
     <Usuario></Usuario>
     <Gestor>mysql</Gestor><!--MySql, SqlServer-->
   </Servidor>

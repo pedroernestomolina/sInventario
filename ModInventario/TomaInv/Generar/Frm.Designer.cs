@@ -93,6 +93,18 @@
             this.panel37 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.panel38 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel39 = new System.Windows.Forms.Panel();
+            this.L_ITEMS_ENCONTRADOS = new System.Windows.Forms.Label();
+            this.panel41 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.RB_MAYOR_DEMANDA = new System.Windows.Forms.RadioButton();
+            this.RB_MAYOR_MARGEN = new System.Windows.Forms.RadioButton();
+            this.RB_MAS_COSTOSO = new System.Windows.Forms.RadioButton();
+            this.RB_DEFECTO = new System.Windows.Forms.RadioButton();
+            this.panel42 = new System.Windows.Forms.Panel();
+            this.TB_CANT_PRD_TOMAR = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
             this.panel43 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
             this.panel48 = new System.Windows.Forms.Panel();
@@ -108,18 +120,6 @@
             this.BT_SALIR = new System.Windows.Forms.Button();
             this.panel12 = new System.Windows.Forms.Panel();
             this.BT_PROCESAR = new System.Windows.Forms.Button();
-            this.tableLayoutPanel17 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel39 = new System.Windows.Forms.Panel();
-            this.panel41 = new System.Windows.Forms.Panel();
-            this.L_ITEMS_ENCONTRADOS = new System.Windows.Forms.Label();
-            this.RB_DEFECTO = new System.Windows.Forms.RadioButton();
-            this.RB_MAS_COSTOSO = new System.Windows.Forms.RadioButton();
-            this.RB_MAYOR_MARGEN = new System.Windows.Forms.RadioButton();
-            this.RB_MAYOR_DEMANDA = new System.Windows.Forms.RadioButton();
-            this.label9 = new System.Windows.Forms.Label();
-            this.panel42 = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.TB_CANT_PRD_TOMAR = new System.Windows.Forms.NumericUpDown();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -167,6 +167,11 @@
             this.panel37.SuspendLayout();
             this.tableLayoutPanel14.SuspendLayout();
             this.panel38.SuspendLayout();
+            this.tableLayoutPanel17.SuspendLayout();
+            this.panel39.SuspendLayout();
+            this.panel41.SuspendLayout();
+            this.panel42.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TB_CANT_PRD_TOMAR)).BeginInit();
             this.panel43.SuspendLayout();
             this.tableLayoutPanel18.SuspendLayout();
             this.panel49.SuspendLayout();
@@ -177,11 +182,6 @@
             this.tableLayoutPanel5.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel12.SuspendLayout();
-            this.tableLayoutPanel17.SuspendLayout();
-            this.panel39.SuspendLayout();
-            this.panel41.SuspendLayout();
-            this.panel42.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TB_CANT_PRD_TOMAR)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -1019,6 +1019,160 @@
             this.panel38.Size = new System.Drawing.Size(764, 60);
             this.panel38.TabIndex = 0;
             // 
+            // tableLayoutPanel17
+            // 
+            this.tableLayoutPanel17.ColumnCount = 3;
+            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
+            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel17.Controls.Add(this.panel39, 0, 0);
+            this.tableLayoutPanel17.Controls.Add(this.panel41, 2, 0);
+            this.tableLayoutPanel17.Controls.Add(this.panel42, 1, 0);
+            this.tableLayoutPanel17.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel17.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel17.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel17.Name = "tableLayoutPanel17";
+            this.tableLayoutPanel17.RowCount = 1;
+            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel17.Size = new System.Drawing.Size(764, 60);
+            this.tableLayoutPanel17.TabIndex = 0;
+            // 
+            // panel39
+            // 
+            this.panel39.Controls.Add(this.L_ITEMS_ENCONTRADOS);
+            this.panel39.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel39.Location = new System.Drawing.Point(1, 1);
+            this.panel39.Margin = new System.Windows.Forms.Padding(1);
+            this.panel39.Name = "panel39";
+            this.panel39.Padding = new System.Windows.Forms.Padding(2);
+            this.panel39.Size = new System.Drawing.Size(240, 58);
+            this.panel39.TabIndex = 0;
+            // 
+            // L_ITEMS_ENCONTRADOS
+            // 
+            this.L_ITEMS_ENCONTRADOS.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.L_ITEMS_ENCONTRADOS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.L_ITEMS_ENCONTRADOS.Location = new System.Drawing.Point(2, 2);
+            this.L_ITEMS_ENCONTRADOS.Name = "L_ITEMS_ENCONTRADOS";
+            this.L_ITEMS_ENCONTRADOS.Size = new System.Drawing.Size(236, 54);
+            this.L_ITEMS_ENCONTRADOS.TabIndex = 1;
+            this.L_ITEMS_ENCONTRADOS.Text = "Total Items Encontrados: 100";
+            this.L_ITEMS_ENCONTRADOS.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // panel41
+            // 
+            this.panel41.BackColor = System.Drawing.Color.AliceBlue;
+            this.panel41.Controls.Add(this.label9);
+            this.panel41.Controls.Add(this.RB_MAYOR_DEMANDA);
+            this.panel41.Controls.Add(this.RB_MAYOR_MARGEN);
+            this.panel41.Controls.Add(this.RB_MAS_COSTOSO);
+            this.panel41.Controls.Add(this.RB_DEFECTO);
+            this.panel41.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel41.Location = new System.Drawing.Point(403, 1);
+            this.panel41.Margin = new System.Windows.Forms.Padding(1);
+            this.panel41.Name = "panel41";
+            this.panel41.Padding = new System.Windows.Forms.Padding(2);
+            this.panel41.Size = new System.Drawing.Size(360, 58);
+            this.panel41.TabIndex = 1;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(6, 8);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(87, 16);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "Ordena Por";
+            // 
+            // RB_MAYOR_DEMANDA
+            // 
+            this.RB_MAYOR_DEMANDA.AutoSize = true;
+            this.RB_MAYOR_DEMANDA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RB_MAYOR_DEMANDA.Location = new System.Drawing.Point(234, 30);
+            this.RB_MAYOR_DEMANDA.Name = "RB_MAYOR_DEMANDA";
+            this.RB_MAYOR_DEMANDA.Size = new System.Drawing.Size(117, 19);
+            this.RB_MAYOR_DEMANDA.TabIndex = 3;
+            this.RB_MAYOR_DEMANDA.TabStop = true;
+            this.RB_MAYOR_DEMANDA.Text = "Mayor Demanda";
+            this.RB_MAYOR_DEMANDA.UseVisualStyleBackColor = true;
+            this.RB_MAYOR_DEMANDA.CheckedChanged += new System.EventHandler(this.RB_MAYOR_DEMANDA_CheckedChanged);
+            // 
+            // RB_MAYOR_MARGEN
+            // 
+            this.RB_MAYOR_MARGEN.AutoSize = true;
+            this.RB_MAYOR_MARGEN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RB_MAYOR_MARGEN.Location = new System.Drawing.Point(234, 5);
+            this.RB_MAYOR_MARGEN.Name = "RB_MAYOR_MARGEN";
+            this.RB_MAYOR_MARGEN.Size = new System.Drawing.Size(105, 19);
+            this.RB_MAYOR_MARGEN.TabIndex = 2;
+            this.RB_MAYOR_MARGEN.TabStop = true;
+            this.RB_MAYOR_MARGEN.Text = "Mayor Margen";
+            this.RB_MAYOR_MARGEN.UseVisualStyleBackColor = true;
+            this.RB_MAYOR_MARGEN.CheckedChanged += new System.EventHandler(this.RB_MAYOR_MARGEN_CheckedChanged);
+            // 
+            // RB_MAS_COSTOSO
+            // 
+            this.RB_MAS_COSTOSO.AutoSize = true;
+            this.RB_MAS_COSTOSO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RB_MAS_COSTOSO.Location = new System.Drawing.Point(125, 29);
+            this.RB_MAS_COSTOSO.Name = "RB_MAS_COSTOSO";
+            this.RB_MAS_COSTOSO.Size = new System.Drawing.Size(96, 19);
+            this.RB_MAS_COSTOSO.TabIndex = 1;
+            this.RB_MAS_COSTOSO.TabStop = true;
+            this.RB_MAS_COSTOSO.Text = "Mas Costoso";
+            this.RB_MAS_COSTOSO.UseVisualStyleBackColor = true;
+            this.RB_MAS_COSTOSO.CheckedChanged += new System.EventHandler(this.RB_MAS_COSTOSO_CheckedChanged);
+            // 
+            // RB_DEFECTO
+            // 
+            this.RB_DEFECTO.AutoSize = true;
+            this.RB_DEFECTO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RB_DEFECTO.Location = new System.Drawing.Point(125, 4);
+            this.RB_DEFECTO.Name = "RB_DEFECTO";
+            this.RB_DEFECTO.Size = new System.Drawing.Size(89, 19);
+            this.RB_DEFECTO.TabIndex = 0;
+            this.RB_DEFECTO.TabStop = true;
+            this.RB_DEFECTO.Text = "Por Defecto";
+            this.RB_DEFECTO.UseVisualStyleBackColor = true;
+            this.RB_DEFECTO.CheckedChanged += new System.EventHandler(this.RB_DEFECTO_CheckedChanged);
+            // 
+            // panel42
+            // 
+            this.panel42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.panel42.Controls.Add(this.TB_CANT_PRD_TOMAR);
+            this.panel42.Controls.Add(this.label10);
+            this.panel42.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel42.Location = new System.Drawing.Point(243, 1);
+            this.panel42.Margin = new System.Windows.Forms.Padding(1);
+            this.panel42.Name = "panel42";
+            this.panel42.Size = new System.Drawing.Size(158, 58);
+            this.panel42.TabIndex = 2;
+            // 
+            // TB_CANT_PRD_TOMAR
+            // 
+            this.TB_CANT_PRD_TOMAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TB_CANT_PRD_TOMAR.Location = new System.Drawing.Point(65, 26);
+            this.TB_CANT_PRD_TOMAR.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.TB_CANT_PRD_TOMAR.Name = "TB_CANT_PRD_TOMAR";
+            this.TB_CANT_PRD_TOMAR.Size = new System.Drawing.Size(90, 22);
+            this.TB_CANT_PRD_TOMAR.TabIndex = 6;
+            this.TB_CANT_PRD_TOMAR.Leave += new System.EventHandler(this.TB_CANT_PRD_TOMAR_Leave);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(2, 8);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(125, 16);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "Cant Productos ?";
+            // 
             // panel43
             // 
             this.panel43.Controls.Add(this.tableLayoutPanel18);
@@ -1217,160 +1371,6 @@
             this.BT_PROCESAR.UseVisualStyleBackColor = true;
             this.BT_PROCESAR.Click += new System.EventHandler(this.BT_PROCESAR_Click);
             // 
-            // tableLayoutPanel17
-            // 
-            this.tableLayoutPanel17.ColumnCount = 3;
-            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 160F));
-            this.tableLayoutPanel17.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel17.Controls.Add(this.panel39, 0, 0);
-            this.tableLayoutPanel17.Controls.Add(this.panel41, 2, 0);
-            this.tableLayoutPanel17.Controls.Add(this.panel42, 1, 0);
-            this.tableLayoutPanel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel17.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel17.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel17.Name = "tableLayoutPanel17";
-            this.tableLayoutPanel17.RowCount = 1;
-            this.tableLayoutPanel17.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel17.Size = new System.Drawing.Size(764, 60);
-            this.tableLayoutPanel17.TabIndex = 0;
-            // 
-            // panel39
-            // 
-            this.panel39.Controls.Add(this.L_ITEMS_ENCONTRADOS);
-            this.panel39.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel39.Location = new System.Drawing.Point(1, 1);
-            this.panel39.Margin = new System.Windows.Forms.Padding(1);
-            this.panel39.Name = "panel39";
-            this.panel39.Padding = new System.Windows.Forms.Padding(2);
-            this.panel39.Size = new System.Drawing.Size(240, 58);
-            this.panel39.TabIndex = 0;
-            // 
-            // panel41
-            // 
-            this.panel41.BackColor = System.Drawing.Color.AliceBlue;
-            this.panel41.Controls.Add(this.label9);
-            this.panel41.Controls.Add(this.RB_MAYOR_DEMANDA);
-            this.panel41.Controls.Add(this.RB_MAYOR_MARGEN);
-            this.panel41.Controls.Add(this.RB_MAS_COSTOSO);
-            this.panel41.Controls.Add(this.RB_DEFECTO);
-            this.panel41.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel41.Location = new System.Drawing.Point(403, 1);
-            this.panel41.Margin = new System.Windows.Forms.Padding(1);
-            this.panel41.Name = "panel41";
-            this.panel41.Padding = new System.Windows.Forms.Padding(2);
-            this.panel41.Size = new System.Drawing.Size(360, 58);
-            this.panel41.TabIndex = 1;
-            // 
-            // L_ITEMS_ENCONTRADOS
-            // 
-            this.L_ITEMS_ENCONTRADOS.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.L_ITEMS_ENCONTRADOS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.L_ITEMS_ENCONTRADOS.Location = new System.Drawing.Point(2, 2);
-            this.L_ITEMS_ENCONTRADOS.Name = "L_ITEMS_ENCONTRADOS";
-            this.L_ITEMS_ENCONTRADOS.Size = new System.Drawing.Size(236, 54);
-            this.L_ITEMS_ENCONTRADOS.TabIndex = 1;
-            this.L_ITEMS_ENCONTRADOS.Text = "Total Items Encontrados: 100";
-            this.L_ITEMS_ENCONTRADOS.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
-            // RB_DEFECTO
-            // 
-            this.RB_DEFECTO.AutoSize = true;
-            this.RB_DEFECTO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RB_DEFECTO.Location = new System.Drawing.Point(125, 4);
-            this.RB_DEFECTO.Name = "RB_DEFECTO";
-            this.RB_DEFECTO.Size = new System.Drawing.Size(89, 19);
-            this.RB_DEFECTO.TabIndex = 0;
-            this.RB_DEFECTO.TabStop = true;
-            this.RB_DEFECTO.Text = "Por Defecto";
-            this.RB_DEFECTO.UseVisualStyleBackColor = true;
-            this.RB_DEFECTO.CheckedChanged += new System.EventHandler(this.RB_DEFECTO_CheckedChanged);
-            // 
-            // RB_MAS_COSTOSO
-            // 
-            this.RB_MAS_COSTOSO.AutoSize = true;
-            this.RB_MAS_COSTOSO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RB_MAS_COSTOSO.Location = new System.Drawing.Point(125, 29);
-            this.RB_MAS_COSTOSO.Name = "RB_MAS_COSTOSO";
-            this.RB_MAS_COSTOSO.Size = new System.Drawing.Size(96, 19);
-            this.RB_MAS_COSTOSO.TabIndex = 1;
-            this.RB_MAS_COSTOSO.TabStop = true;
-            this.RB_MAS_COSTOSO.Text = "Mas Costoso";
-            this.RB_MAS_COSTOSO.UseVisualStyleBackColor = true;
-            this.RB_MAS_COSTOSO.CheckedChanged += new System.EventHandler(this.RB_MAS_COSTOSO_CheckedChanged);
-            // 
-            // RB_MAYOR_MARGEN
-            // 
-            this.RB_MAYOR_MARGEN.AutoSize = true;
-            this.RB_MAYOR_MARGEN.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RB_MAYOR_MARGEN.Location = new System.Drawing.Point(234, 5);
-            this.RB_MAYOR_MARGEN.Name = "RB_MAYOR_MARGEN";
-            this.RB_MAYOR_MARGEN.Size = new System.Drawing.Size(105, 19);
-            this.RB_MAYOR_MARGEN.TabIndex = 2;
-            this.RB_MAYOR_MARGEN.TabStop = true;
-            this.RB_MAYOR_MARGEN.Text = "Mayor Margen";
-            this.RB_MAYOR_MARGEN.UseVisualStyleBackColor = true;
-            this.RB_MAYOR_MARGEN.CheckedChanged += new System.EventHandler(this.RB_MAYOR_MARGEN_CheckedChanged);
-            // 
-            // RB_MAYOR_DEMANDA
-            // 
-            this.RB_MAYOR_DEMANDA.AutoSize = true;
-            this.RB_MAYOR_DEMANDA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RB_MAYOR_DEMANDA.Location = new System.Drawing.Point(234, 30);
-            this.RB_MAYOR_DEMANDA.Name = "RB_MAYOR_DEMANDA";
-            this.RB_MAYOR_DEMANDA.Size = new System.Drawing.Size(117, 19);
-            this.RB_MAYOR_DEMANDA.TabIndex = 3;
-            this.RB_MAYOR_DEMANDA.TabStop = true;
-            this.RB_MAYOR_DEMANDA.Text = "Mayor Demanda";
-            this.RB_MAYOR_DEMANDA.UseVisualStyleBackColor = true;
-            this.RB_MAYOR_DEMANDA.CheckedChanged += new System.EventHandler(this.RB_MAYOR_DEMANDA_CheckedChanged);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(6, 8);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(87, 16);
-            this.label9.TabIndex = 4;
-            this.label9.Text = "Ordena Por";
-            // 
-            // panel42
-            // 
-            this.panel42.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.panel42.Controls.Add(this.TB_CANT_PRD_TOMAR);
-            this.panel42.Controls.Add(this.label10);
-            this.panel42.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel42.Location = new System.Drawing.Point(243, 1);
-            this.panel42.Margin = new System.Windows.Forms.Padding(1);
-            this.panel42.Name = "panel42";
-            this.panel42.Size = new System.Drawing.Size(158, 58);
-            this.panel42.TabIndex = 2;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(2, 8);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(125, 16);
-            this.label10.TabIndex = 5;
-            this.label10.Text = "Cant Productos ?";
-            // 
-            // TB_CANT_PRD_TOMAR
-            // 
-            this.TB_CANT_PRD_TOMAR.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_CANT_PRD_TOMAR.Location = new System.Drawing.Point(65, 26);
-            this.TB_CANT_PRD_TOMAR.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.TB_CANT_PRD_TOMAR.Name = "TB_CANT_PRD_TOMAR";
-            this.TB_CANT_PRD_TOMAR.Size = new System.Drawing.Size(90, 22);
-            this.TB_CANT_PRD_TOMAR.TabIndex = 6;
-            this.TB_CANT_PRD_TOMAR.Leave += new System.EventHandler(this.TB_CANT_PRD_TOMAR_Leave);
-            // 
             // Frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1432,6 +1432,13 @@
             this.panel37.ResumeLayout(false);
             this.tableLayoutPanel14.ResumeLayout(false);
             this.panel38.ResumeLayout(false);
+            this.tableLayoutPanel17.ResumeLayout(false);
+            this.panel39.ResumeLayout(false);
+            this.panel41.ResumeLayout(false);
+            this.panel41.PerformLayout();
+            this.panel42.ResumeLayout(false);
+            this.panel42.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TB_CANT_PRD_TOMAR)).EndInit();
             this.panel43.ResumeLayout(false);
             this.tableLayoutPanel18.ResumeLayout(false);
             this.panel49.ResumeLayout(false);
@@ -1442,13 +1449,6 @@
             this.tableLayoutPanel5.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
-            this.tableLayoutPanel17.ResumeLayout(false);
-            this.panel39.ResumeLayout(false);
-            this.panel41.ResumeLayout(false);
-            this.panel41.PerformLayout();
-            this.panel42.ResumeLayout(false);
-            this.panel42.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TB_CANT_PRD_TOMAR)).EndInit();
             this.ResumeLayout(false);
 
         }

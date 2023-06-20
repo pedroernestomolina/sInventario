@@ -179,7 +179,7 @@ namespace ModInventario.TomaInv.Generar
                     case enumeradoOrdenLista.PorDefecto:
                         foreach (var r in r01.Lista.Where(w => w.cntMov > 0).ToList())
                         {
-                            var rg = new TomaInv.data() { cnt = r.cnt, codigoPrd = r.codigoPrd, costoPrd = r.costoPrd, descPrd = r.descPrd, idPrd = r.idPrd, margen = r.margen };
+                            var rg = new TomaInv.data() { cnt = r.cnt, codigoPrd = r.codigoPrd, costoPrd = r.costoPrd, descPrd = r.descPrd, idPrd = r.idPrd, margen = r.margen, fechaUltToma=r.fechaUltConteo, ultConteo=r.ultConteo };
                             _lst.Add(rg);
                         }
                         _lst.Sort();
@@ -189,7 +189,7 @@ namespace ModInventario.TomaInv.Generar
                     case enumeradoOrdenLista.PorMayorCosto:
                         foreach (var r in r01.Lista.Where(w => w.cntMov > 0).OrderByDescending(o=>o.costoPrd).ToList())
                         {
-                            var rg = new TomaInv.data() { cnt = r.cnt, codigoPrd = r.codigoPrd, costoPrd = r.costoPrd, descPrd = r.descPrd, idPrd = r.idPrd, margen = r.margen };
+                            var rg = new TomaInv.data() { cnt = r.cnt, codigoPrd = r.codigoPrd, costoPrd = r.costoPrd, descPrd = r.descPrd, idPrd = r.idPrd, margen = r.margen, fechaUltToma=r.fechaUltConteo, ultConteo=r.ultConteo };
                             _lst.Add(rg);
                         }
                         _lista.setDataListar(_lst.Take(_cntPrdTomar).ToList());
@@ -197,15 +197,15 @@ namespace ModInventario.TomaInv.Generar
                     case enumeradoOrdenLista.PorMayorMargen:
                         foreach (var r in r01.Lista.Where(w => w.cntMov > 0).OrderByDescending(o=>o.margen).ToList())
                         {
-                            var rg = new TomaInv.data() { cnt = r.cnt, codigoPrd = r.codigoPrd, costoPrd = r.costoPrd, descPrd = r.descPrd, idPrd = r.idPrd, margen = r.margen };
+                            var rg = new TomaInv.data() { cnt = r.cnt, codigoPrd = r.codigoPrd, costoPrd = r.costoPrd, descPrd = r.descPrd, idPrd = r.idPrd, margen = r.margen, fechaUltToma = r.fechaUltConteo, ultConteo = r.ultConteo };
                             _lst.Add(rg);
                         }
                         _lista.setDataListar(_lst.Take(_cntPrdTomar).ToList());
                         break;
                     case enumeradoOrdenLista.PorMayorDemanda:
-                        foreach (var r in r01.Lista.Where(w => w.cntMov > 0).OrderByDescending(o=>o.cntMov).ToList())
+                        foreach (var r in r01.Lista.Where(w => w.cntMov > 0).OrderByDescending(o=>o.cnt).ToList())
                         {
-                            var rg = new TomaInv.data() { cnt = r.cnt, codigoPrd = r.codigoPrd, costoPrd = r.costoPrd, descPrd = r.descPrd, idPrd = r.idPrd, margen = r.margen };
+                            var rg = new TomaInv.data() { cnt = r.cnt, codigoPrd = r.codigoPrd, costoPrd = r.costoPrd, descPrd = r.descPrd, idPrd = r.idPrd, margen = r.margen, fechaUltToma = r.fechaUltConteo, ultConteo = r.ultConteo };
                             _lst.Add(rg);
                         }
                         _lista.setDataListar(_lst.Take(_cntPrdTomar).ToList());

@@ -100,14 +100,20 @@
             this.panel37 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.panel38 = new System.Windows.Forms.Panel();
-            this.panel43 = new System.Windows.Forms.Panel();
-            this.panel40 = new System.Windows.Forms.Panel();
-            this.DGV_DETALLE = new System.Windows.Forms.DataGridView();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.panel11 = new System.Windows.Forms.Panel();
             this.BT_TOMAS_BUSCAR = new System.Windows.Forms.Button();
+            this.panel43 = new System.Windows.Forms.Panel();
+            this.panel40 = new System.Windows.Forms.Panel();
+            this.DGV_DETALLE = new System.Windows.Forms.DataGridView();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.tableLayoutPanel18 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel48 = new System.Windows.Forms.Panel();
+            this.panel49 = new System.Windows.Forms.Panel();
+            this.BT_ELIMINAR_ITEM = new System.Windows.Forms.Button();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel19.SuspendLayout();
@@ -155,11 +161,15 @@
             this.panel37.SuspendLayout();
             this.tableLayoutPanel14.SuspendLayout();
             this.panel38.SuspendLayout();
-            this.panel40.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_DETALLE)).BeginInit();
             this.tableLayoutPanel15.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             this.panel11.SuspendLayout();
+            this.panel43.SuspendLayout();
+            this.panel40.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_DETALLE)).BeginInit();
+            this.tableLayoutPanel18.SuspendLayout();
+            this.panel49.SuspendLayout();
+            this.panel18.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
@@ -1083,43 +1093,12 @@
             this.panel38.Size = new System.Drawing.Size(732, 60);
             this.panel38.TabIndex = 0;
             // 
-            // panel43
-            // 
-            this.panel43.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel43.Location = new System.Drawing.Point(732, 0);
-            this.panel43.Margin = new System.Windows.Forms.Padding(0);
-            this.panel43.Name = "panel43";
-            this.panel43.Size = new System.Drawing.Size(296, 60);
-            this.panel43.TabIndex = 1;
-            // 
-            // panel40
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.panel40, 2);
-            this.panel40.Controls.Add(this.DGV_DETALLE);
-            this.panel40.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel40.Location = new System.Drawing.Point(2, 196);
-            this.panel40.Margin = new System.Windows.Forms.Padding(1);
-            this.panel40.Name = "panel40";
-            this.panel40.Padding = new System.Windows.Forms.Padding(2);
-            this.panel40.Size = new System.Drawing.Size(1028, 342);
-            this.panel40.TabIndex = 2;
-            // 
-            // DGV_DETALLE
-            // 
-            this.DGV_DETALLE.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGV_DETALLE.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DGV_DETALLE.Location = new System.Drawing.Point(2, 2);
-            this.DGV_DETALLE.Name = "DGV_DETALLE";
-            this.DGV_DETALLE.Size = new System.Drawing.Size(1024, 338);
-            this.DGV_DETALLE.TabIndex = 0;
-            this.DGV_DETALLE.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DGV_DETALLE_CellFormatting);
-            // 
             // tableLayoutPanel15
             // 
             this.tableLayoutPanel15.ColumnCount = 3;
             this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 365F));
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 732F));
             this.tableLayoutPanel15.Controls.Add(this.tableLayoutPanel8, 2, 0);
             this.tableLayoutPanel15.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel15.Location = new System.Drawing.Point(0, 0);
@@ -1168,6 +1147,120 @@
             this.BT_TOMAS_BUSCAR.Text = "Buscar Tomas Pendientes Por Realizar Ajustes";
             this.BT_TOMAS_BUSCAR.UseVisualStyleBackColor = true;
             this.BT_TOMAS_BUSCAR.Click += new System.EventHandler(this.BT_TOMAS_BUSCAR_Click);
+            // 
+            // panel43
+            // 
+            this.panel43.Controls.Add(this.tableLayoutPanel18);
+            this.panel43.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel43.Location = new System.Drawing.Point(732, 0);
+            this.panel43.Margin = new System.Windows.Forms.Padding(0);
+            this.panel43.Name = "panel43";
+            this.panel43.Size = new System.Drawing.Size(296, 60);
+            this.panel43.TabIndex = 1;
+            // 
+            // panel40
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.panel40, 2);
+            this.panel40.Controls.Add(this.DGV_DETALLE);
+            this.panel40.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel40.Location = new System.Drawing.Point(2, 196);
+            this.panel40.Margin = new System.Windows.Forms.Padding(1);
+            this.panel40.Name = "panel40";
+            this.panel40.Padding = new System.Windows.Forms.Padding(2);
+            this.panel40.Size = new System.Drawing.Size(1028, 342);
+            this.panel40.TabIndex = 2;
+            // 
+            // DGV_DETALLE
+            // 
+            this.DGV_DETALLE.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGV_DETALLE.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DGV_DETALLE.Location = new System.Drawing.Point(2, 2);
+            this.DGV_DETALLE.Name = "DGV_DETALLE";
+            this.DGV_DETALLE.Size = new System.Drawing.Size(1024, 338);
+            this.DGV_DETALLE.TabIndex = 0;
+            this.DGV_DETALLE.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DGV_DETALLE_CellFormatting);
+            // 
+            // tableLayoutPanel18
+            // 
+            this.tableLayoutPanel18.ColumnCount = 7;
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel18.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel18.Controls.Add(this.panel48, 5, 1);
+            this.tableLayoutPanel18.Controls.Add(this.panel49, 6, 1);
+            this.tableLayoutPanel18.Controls.Add(this.panel18, 2, 0);
+            this.tableLayoutPanel18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel18.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel18.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel18.Name = "tableLayoutPanel18";
+            this.tableLayoutPanel18.RowCount = 2;
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel18.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel18.Size = new System.Drawing.Size(296, 60);
+            this.tableLayoutPanel18.TabIndex = 1;
+            // 
+            // panel48
+            // 
+            this.panel48.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel48.Location = new System.Drawing.Point(211, 31);
+            this.panel48.Margin = new System.Windows.Forms.Padding(1);
+            this.panel48.Name = "panel48";
+            this.panel48.Padding = new System.Windows.Forms.Padding(2);
+            this.panel48.Size = new System.Drawing.Size(40, 28);
+            this.panel48.TabIndex = 0;
+            // 
+            // panel49
+            // 
+            this.panel49.Controls.Add(this.BT_ELIMINAR_ITEM);
+            this.panel49.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel49.Location = new System.Drawing.Point(253, 31);
+            this.panel49.Margin = new System.Windows.Forms.Padding(1);
+            this.panel49.Name = "panel49";
+            this.panel49.Padding = new System.Windows.Forms.Padding(2);
+            this.panel49.Size = new System.Drawing.Size(42, 28);
+            this.panel49.TabIndex = 1;
+            // 
+            // BT_ELIMINAR_ITEM
+            // 
+            this.BT_ELIMINAR_ITEM.BackgroundImage = global::ModInventario.Properties.Resources.bt_eliminar;
+            this.BT_ELIMINAR_ITEM.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BT_ELIMINAR_ITEM.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_ELIMINAR_ITEM.FlatAppearance.BorderSize = 0;
+            this.BT_ELIMINAR_ITEM.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_ELIMINAR_ITEM.Location = new System.Drawing.Point(2, 2);
+            this.BT_ELIMINAR_ITEM.Name = "BT_ELIMINAR_ITEM";
+            this.BT_ELIMINAR_ITEM.Size = new System.Drawing.Size(38, 24);
+            this.BT_ELIMINAR_ITEM.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.BT_ELIMINAR_ITEM, "Eliminar / Remover / Quitar Item  de la Lista ");
+            this.BT_ELIMINAR_ITEM.UseVisualStyleBackColor = true;
+            this.BT_ELIMINAR_ITEM.Click += new System.EventHandler(this.BT_ELIMINAR_ITEM_Click);
+            // 
+            // panel18
+            // 
+            this.tableLayoutPanel18.SetColumnSpan(this.panel18, 5);
+            this.panel18.Controls.Add(this.label3);
+            this.panel18.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel18.Location = new System.Drawing.Point(85, 1);
+            this.panel18.Margin = new System.Windows.Forms.Padding(1);
+            this.panel18.Name = "panel18";
+            this.panel18.Padding = new System.Windows.Forms.Padding(2);
+            this.panel18.Size = new System.Drawing.Size(210, 28);
+            this.panel18.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(2, 2);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(206, 24);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Opciones Item";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MovFrm
             // 
@@ -1234,11 +1327,15 @@
             this.panel37.ResumeLayout(false);
             this.tableLayoutPanel14.ResumeLayout(false);
             this.panel38.ResumeLayout(false);
-            this.panel40.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DGV_DETALLE)).EndInit();
             this.tableLayoutPanel15.ResumeLayout(false);
             this.tableLayoutPanel8.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
+            this.panel43.ResumeLayout(false);
+            this.panel40.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DGV_DETALLE)).EndInit();
+            this.tableLayoutPanel18.ResumeLayout(false);
+            this.panel49.ResumeLayout(false);
+            this.panel18.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1324,6 +1421,12 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Button BT_TOMAS_BUSCAR;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel18;
+        private System.Windows.Forms.Panel panel48;
+        private System.Windows.Forms.Panel panel49;
+        private System.Windows.Forms.Button BT_ELIMINAR_ITEM;
+        private System.Windows.Forms.Panel panel18;
+        private System.Windows.Forms.Label label3;
 
     }
 }

@@ -14,9 +14,21 @@ namespace ModInventario.TomaInv.Generar
 
         public string CodigoPrd { get { return _prdToma.codigoPrd; } }
         public string DescPrd { get { return _prdToma.descPrd; } }
+        public DateTime FechaUltimaToma { get { return _prdToma.fechaUltToma; } }
+        public decimal UltimoConteo { get { return _prdToma.ultConteo; } }
         public TomaInv.data PrdToma { get { return _prdToma; } }
-
-
+        public string SFechaUltToma
+        {
+            get
+            {
+                var r = "NUNCA";
+                if (_prdToma.fechaUltToma > new DateTime(2000, 1, 1))
+                {
+                    r = _prdToma.fechaUltToma.ToShortDateString();
+                }
+                return r;
+            }
+        }
         public data(TomaInv.data item)
         {
             _prdToma = item;

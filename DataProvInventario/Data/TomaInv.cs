@@ -41,6 +41,8 @@ namespace DataProvInventario.Data
                             idPrd = s.idPrd,
                             margen = s.margen.HasValue ? s.margen.Value : 0m,
                             cntMov = s.cntMov.HasValue ? s.cntMov.Value:0m,
+                            fechaUltConteo=s.fechaUltConteo,
+                            ultConteo=s.ultConteo,
                         };
                     }).ToList();
                 }

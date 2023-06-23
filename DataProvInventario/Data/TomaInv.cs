@@ -120,6 +120,7 @@ namespace DataProvInventario.Data
                                 descEmpCompra= s.descEmpCompra,
                                 descEmpInv = s.descEmpInv,
                                 estatusDivisa = s.estatusDivisa,
+                                motivo= s.motivo,
                             };
                             return nr;
                         }).ToList();
@@ -341,6 +342,43 @@ namespace DataProvInventario.Data
                 }
             }
             rt.Lista = list;
+            return rt;
+        }
+
+
+        //
+        public OOB.ResultadoEntidad<string> 
+            TomaInv_AnalizarToma_GetMotivo(OOB.LibInventario.TomaInv.Analisis.Motivo.Obtener.Ficha ficha)
+        {
+            var rt = new OOB.ResultadoEntidad<string>();
+            var fichaDTO = new DtoLibInventario.TomaInv.Analisis.Motivo.Obtener.Ficha()
+            {
+                idPrd = ficha.idPrd,
+                idToma = ficha.idToma,
+            };
+            var r01 = MyData.TomaInv_AnalizarToma_GetMotivo(fichaDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            rt.Entidad = r01.Entidad;
+            return rt;
+        }
+        public OOB.Resultado 
+            TomaInv_AnalizarToma_SetMotivo(OOB.LibInventario.TomaInv.Analisis.Motivo.Cambiar.Ficha ficha)
+        {
+            var rt = new OOB.Resultado();
+            var fichaDTO = new DtoLibInventario.TomaInv.Analisis.Motivo.Cambiar.Ficha()
+            {
+                idPrd = ficha.idPrd,
+                idToma = ficha.idToma,
+                motivo = ficha.motivo,
+            };
+            var r01 = MyData.TomaInv_AnalizarToma_SetMotivo(fichaDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
             return rt;
         }
     }

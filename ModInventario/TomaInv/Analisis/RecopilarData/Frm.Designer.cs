@@ -31,6 +31,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -53,7 +54,6 @@
             this.BT_SALIR = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
             this.BT_PROCESAR = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -112,6 +112,17 @@
             this.panel2.Padding = new System.Windows.Forms.Padding(2);
             this.panel2.Size = new System.Drawing.Size(455, 38);
             this.panel2.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(2, 2);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(451, 34);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "DATOS DEL ANALISIS";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel3
             // 
@@ -386,17 +397,6 @@
             this.BT_PROCESAR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             this.BT_PROCESAR.UseVisualStyleBackColor = true;
             this.BT_PROCESAR.Click += new System.EventHandler(this.BT_PROCESAR_Click);
-            // 
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(2, 2);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(451, 34);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "DATOS DEL ANALISIS";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Frm
             // 

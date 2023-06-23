@@ -107,14 +107,7 @@ namespace ModInventario.TomaInv.Analisis
                 Helpers.Msg.Alerta("NO HAY ITEMS");
                 return;
             }
-            var _cnt = _lista.GetLista.Where(w => w.Estado == data.enumAnalisis.SinDefinir).Count();
-            if (_cnt > 0)
-            {
-                Helpers.Msg.Alerta("FALTAN PRODUCTOS POR REALIZAR TOMAS");
-                return;
-            }
-
-            var _list = _lista.GetLista.ToList().Select(s =>
+            var _list = _lista.GetLista.Select(s =>
             {
                 var _signo = 0;
                 if (s.Estado == data.enumAnalisis.Sobra)
@@ -135,6 +128,7 @@ namespace ModInventario.TomaInv.Analisis
                     descToma = s.Estado.ToString(),
                     producto = s.CodigoPrd.Trim() + Environment.NewLine + s.DescPrd.Trim(),
                     signo = _signo,
+                    motivo = s.itemAnalisis.motivo,
                 };
                 return nr;
             }).ToList();
@@ -190,7 +184,7 @@ namespace ModInventario.TomaInv.Analisis
             {
                 var r01 = Sistema.MyData.TomaInv_Analisis(_idTomaAnalizar);
                 var _lst = new List<TomaInv.Analisis.data>();
-                foreach (var rg in r01.Entidad.Items)
+                foreach (var rg in r01.Entidad.Items.OrderBy(o => o.descPrd).ToList())
                 {
                     _lst.Add(new TomaInv.Analisis.data(rg));
                 }
@@ -220,6 +214,51 @@ namespace ModInventario.TomaInv.Analisis
             }
         }
 
+        private Motivo.IMotivo _motivo;
+        public void EditarItem()
+        {
+            if (_lista.ItemActual != null) 
+            {
+                var _item = _lista.ItemActual;
+                if (_item.Estado != data.enumAnalisis.SinDefinir) 
+                {
+                    try
+                    {
+                        var fichaOOB = new OOB.LibInventario.TomaInv.Analisis.Motivo.Obtener.Ficha()
+                        {
+                            idPrd = _item.itemAnalisis.idPrd,
+                            idToma = _idTomaAnalizar,
+                        };
+                        var r01 = Sistema.MyData.TomaInv_AnalizarToma_GetMotivo(fichaOOB);
+                        if (_motivo == null)
+                        {
+                            _motivo = new Motivo.ImpMotivo();
+                        }
+                        _motivo.Inicializa();
+                        _motivo.setMotivo(r01.Entidad);
+                        _motivo.Inicia();
+                        if (_motivo.ProcesarIsOk) 
+                        {
+                            var fichaSetOOB = new OOB.LibInventario.TomaInv.Analisis.Motivo.Cambiar.Ficha()
+                            {
+                                idPrd = _item.itemAnalisis.idPrd,
+                                idToma = _idTomaAnalizar,
+                                motivo = _motivo.GetMotivo,
+                            };
+                            var r02 = Sistema.MyData.TomaInv_AnalizarToma_SetMotivo(fichaSetOOB);
+                            _item.setMotivo(_motivo.GetMotivo);
+                            Helpers.Msg.EditarOk();
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Helpers.Msg.Error(e.Message);
+                        return;
+                    }
+                }
+            }
+        }
+
         public bool ProcesarIsOk { get { return _procesarIsOk; } }
         public void ProcesarFicha()
         {
@@ -244,8 +283,12 @@ namespace ModInventario.TomaInv.Analisis
             var _cnt = _lista.GetLista.Where(w => w.Estado == data.enumAnalisis.SinDefinir).Count();
             if (_cnt > 0)
             {
-                Helpers.Msg.Alerta("FALTAN PRODUCTOS POR REALIZAR TOMAS");
-                return;
+                var ms = "!! FALTAN PRODUCTOS POR REALIZAR TOMAS !!!, ESTAS DE ACUERDO EN REALIZAR EL FIN DEL CONTEO ?";
+                var rst = MessageBox.Show(ms, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (rst == DialogResult.No)
+                {
+                    return;
+                }
             }
             _recopilarData.Inicializa();
             _recopilarData.Inicia();
@@ -256,7 +299,7 @@ namespace ModInventario.TomaInv.Analisis
         }
         private void Procesar()
         {
-            var _lst = _lista.GetLista.ToList();
+            var _lst = _lista.GetLista.Where(w=>w.Estado!= data.enumAnalisis.SinDefinir).ToList();
             var ficha = new OOB.LibInventario.TomaInv.Procesar.Ficha()
             {
                 autoriza = _recopilarData.Autorizado_GetData,

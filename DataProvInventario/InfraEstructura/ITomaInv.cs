@@ -32,5 +32,12 @@ namespace DataProvInventario.InfraEstructura
             TomaInv_GetLista_PorMovAjuste(OOB.LibInventario.TomaInv.Resumen.PorMovAjuste.Filtro filtro);
         OOB.ResultadoLista<OOB.LibInventario.TomaInv.Resumen.Resultado.Ficha>
             TomaInv_GetToma_Resultado(string idToma);
+
+
+        //OBTIENE/CAMBIA EL MOTIVO POR EL CUAL SURGE LA DIFERENCIA
+        OOB.ResultadoEntidad<string>
+            TomaInv_AnalizarToma_GetMotivo(OOB.LibInventario.TomaInv.Analisis.Motivo.Obtener.Ficha ficha);
+        OOB.Resultado
+            TomaInv_AnalizarToma_SetMotivo(OOB.LibInventario.TomaInv.Analisis.Motivo.Cambiar.Ficha ficha);
     }
 }

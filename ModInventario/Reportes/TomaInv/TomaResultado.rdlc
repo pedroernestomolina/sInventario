@@ -6,18 +6,21 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>12.98769cm</Width>
+              <Width>7.88442cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.93352cm</Width>
+              <Width>3.0575cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>4.52102cm</Width>
+              <Width>2.46511cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>7.03518cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.6cm</Height>
+              <Height>0.94396cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -65,7 +68,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>DIFERENCIA</Value>
+                              <Value>DIFERENCIA EN UNIDADES / (UND)</Value>
                               <Style>
                                 <FontSize>8pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -130,10 +133,47 @@
                     </Textbox>
                   </CellContents>
                 </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox2">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>motivo</Value>
+                              <Style>
+                                <FontSize>8pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox2</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>LightGrey</BackgroundColor>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.6cm</Height>
+              <Height>0.75875cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -146,7 +186,7 @@
                             <TextRun>
                               <Value>=Fields!producto.Value</Value>
                               <Style>
-                                <FontSize>8pt</FontSize>
+                                <FontSize>7pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -237,12 +277,48 @@
                     </Textbox>
                   </CellContents>
                 </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="motivo">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!motivo.Value</Value>
+                              <Style>
+                                <FontSize>6pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>motivo</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
               </TablixCells>
             </TablixRow>
           </TablixRows>
         </TablixBody>
         <TablixColumnHierarchy>
           <TablixMembers>
+            <TablixMember />
             <TablixMember />
             <TablixMember />
             <TablixMember />
@@ -259,9 +335,8 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>resultado</DataSetName>
-        <Top>0.07056cm</Top>
-        <Left>0cm</Left>
-        <Height>1.2cm</Height>
+        <Top>0.05292cm</Top>
+        <Height>1.70271cm</Height>
         <Width>20.44222cm</Width>
         <Style>
           <Border>
@@ -273,10 +348,10 @@
     <Height>2in</Height>
     <Style />
   </Body>
-  <Width>8.11458in</Width>
+  <Width>8.12491in</Width>
   <Page>
     <PageHeader>
-      <Height>4.04813cm</Height>
+      <Height>5.5298cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -461,7 +536,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox21</rd:DefaultName>
-          <Top>3.23646cm</Top>
+          <Top>4.77105cm</Top>
+          <Left>0.00001cm</Left>
           <Height>0.6cm</Height>
           <Width>6.20442cm</Width>
           <ZIndex>5</ZIndex>
@@ -476,7 +552,8 @@
           </Style>
         </Textbox>
         <Line Name="Line1">
-          <Top>3.9423cm</Top>
+          <Top>5.47689cm</Top>
+          <Left>0.00001cm</Left>
           <Height>0cm</Height>
           <Width>20.44222cm</Width>
           <ZIndex>6</ZIndex>
@@ -504,7 +581,6 @@
           </Paragraphs>
           <rd:DefaultName>EMPRESA_RIF</rd:DefaultName>
           <Top>0.09159cm</Top>
-          <Left>0cm</Left>
           <Height>0.53269cm</Height>
           <Width>5.67839cm</Width>
           <ZIndex>7</ZIndex>
@@ -537,7 +613,6 @@
           </Paragraphs>
           <rd:DefaultName>EMPRESA_NOMBRE</rd:DefaultName>
           <Top>0.69484cm</Top>
-          <Left>0cm</Left>
           <Height>0.6cm</Height>
           <Width>13.99482cm</Width>
           <ZIndex>8</ZIndex>
@@ -570,8 +645,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox13</rd:DefaultName>
-          <Top>1.89535cm</Top>
-          <Left>8.04271cm</Left>
+          <Top>1.9659cm</Top>
+          <Left>0.29042cm</Left>
           <Height>0.6cm</Height>
           <Width>2.68521cm</Width>
           <ZIndex>9</ZIndex>
@@ -605,8 +680,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox13</rd:DefaultName>
-          <Top>2.56591cm</Top>
-          <Left>8.04271cm</Left>
+          <Top>2.63646cm</Top>
+          <Left>0.29042cm</Left>
           <Height>0.6cm</Height>
           <Width>2.68521cm</Width>
           <ZIndex>10</ZIndex>
@@ -640,8 +715,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox13</rd:DefaultName>
-          <Top>3.23646cm</Top>
-          <Left>8.04271cm</Left>
+          <Top>3.30701cm</Top>
+          <Left>0.29042cm</Left>
           <Height>0.6cm</Height>
           <Width>2.68521cm</Width>
           <ZIndex>11</ZIndex>
@@ -673,8 +748,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>SOLICITUD</rd:DefaultName>
-          <Top>1.89535cm</Top>
-          <Left>10.9043cm</Left>
+          <Top>1.9659cm</Top>
+          <Left>3.15201cm</Left>
           <Height>0.6cm</Height>
           <Width>3.96619cm</Width>
           <ZIndex>12</ZIndex>
@@ -706,10 +781,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>SUCURSAL</rd:DefaultName>
-          <Top>2.56591cm</Top>
-          <Left>10.9043cm</Left>
+          <Top>2.63646cm</Top>
+          <Left>3.15201cm</Left>
           <Height>0.6cm</Height>
-          <Width>8.72243cm</Width>
+          <Width>7.10847cm</Width>
           <ZIndex>13</ZIndex>
           <Style>
             <Border>
@@ -739,11 +814,397 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>DEPOSITO</rd:DefaultName>
-          <Top>3.23646cm</Top>
-          <Left>10.86903cm</Left>
+          <Top>3.30701cm</Top>
+          <Left>3.11674cm</Left>
           <Height>0.6cm</Height>
-          <Width>8.7577cm</Width>
+          <Width>7.14374cm</Width>
           <ZIndex>14</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="CNT_ITEMS_ANALIZADOS">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Parameters!CNT_ITEMS_ANALIZADOS.Value</Value>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>CNT_ITEMS_ANALIZADOS</rd:DefaultName>
+          <Top>1.9659cm</Top>
+          <Left>17.91421cm</Left>
+          <Height>0.6cm</Height>
+          <Width>1.83854cm</Width>
+          <ZIndex>15</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="CNT_ITEMS_ANALIZADOS_OK">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Parameters!CNT_ITEMS_ANALIZADOS_OK.Value</Value>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>CNT_ITEMS_ANALIZADOS_OK</rd:DefaultName>
+          <Top>2.60118cm</Top>
+          <Left>17.91422cm</Left>
+          <Height>0.6cm</Height>
+          <Width>1.83854cm</Width>
+          <ZIndex>16</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="CNT_ITEMS_ANALIZADOS_FALTANTES">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Parameters!CNT_ITEMS_ANALIZADOS_FALTANTES.Value</Value>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>CNT_ITEMS_ANALIZADOS_FALTANTES</rd:DefaultName>
+          <Top>3.27174cm</Top>
+          <Left>17.91422cm</Left>
+          <Height>0.6cm</Height>
+          <Width>1.83854cm</Width>
+          <ZIndex>17</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="CNT_ITEMS_ANALIZADOS_SOBRANTES">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Parameters!CNT_ITEMS_ANALIZADOS_SOBRANTES.Value</Value>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>CNT_ITEMS_ANALIZADOS_SOBRANTES</rd:DefaultName>
+          <Top>3.94229cm</Top>
+          <Left>17.91422cm</Left>
+          <Height>0.6cm</Height>
+          <Width>1.83854cm</Width>
+          <ZIndex>18</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="CNT_ITEMS_ANALIZADOS_NO_CONTADOS">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>=Parameters!CNT_ITEMS_ANALIZADOS_NO_CONTADOS.Value</Value>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>CNT_ITEMS_ANALIZADOS_NO_CONTADOS</rd:DefaultName>
+          <Top>4.59466cm</Top>
+          <Left>17.91422cm</Left>
+          <Height>0.6cm</Height>
+          <Width>1.83854cm</Width>
+          <ZIndex>19</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox9">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Item Analizados:</Value>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox9</rd:DefaultName>
+          <Top>1.9659cm</Top>
+          <Left>14.57792cm</Left>
+          <Height>0.6cm</Height>
+          <Width>3.05562cm</Width>
+          <ZIndex>20</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox10">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Items ( OK ):</Value>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox9</rd:DefaultName>
+          <Top>2.60118cm</Top>
+          <Left>14.57792cm</Left>
+          <Height>0.6cm</Height>
+          <Width>3.05562cm</Width>
+          <ZIndex>21</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox11">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Items (FALTANTES):</Value>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox9</rd:DefaultName>
+          <Top>3.27174cm</Top>
+          <Left>14.57792cm</Left>
+          <Height>0.6cm</Height>
+          <Width>3.05562cm</Width>
+          <ZIndex>22</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox12">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Items (SOBRANTES):</Value>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox9</rd:DefaultName>
+          <Top>3.94229cm</Top>
+          <Left>14.57792cm</Left>
+          <Height>0.6cm</Height>
+          <Width>3.05563cm</Width>
+          <ZIndex>23</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox16">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>NO CONTADOS:</Value>
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Right</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox9</rd:DefaultName>
+          <Top>4.59466cm</Top>
+          <Left>14.57791cm</Left>
+          <Height>0.6cm</Height>
+          <Width>3.05563cm</Width>
+          <ZIndex>24</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <VerticalAlign>Middle</VerticalAlign>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Textbox Name="Textbox22">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>RESULTADOS:</Value>
+                  <Style>
+                    <FontSize>12pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox21</rd:DefaultName>
+          <Top>1.9659cm</Top>
+          <Left>10.80665cm</Left>
+          <Height>0.6cm</Height>
+          <Width>3.59488cm</Width>
+          <ZIndex>25</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -804,7 +1265,7 @@
         </Field>
         <Field Name="cantidad">
           <DataField>cantidad</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="descToma">
           <DataField>descToma</DataField>
@@ -812,6 +1273,10 @@
         </Field>
         <Field Name="signo">
           <DataField>signo</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="motivo">
+          <DataField>motivo</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
@@ -847,6 +1312,31 @@
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="DEPOSITO">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CNT_ITEMS_ANALIZADOS">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CNT_ITEMS_ANALIZADOS_OK">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CNT_ITEMS_ANALIZADOS_FALTANTES">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CNT_ITEMS_ANALIZADOS_SOBRANTES">
+      <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CNT_ITEMS_ANALIZADOS_NO_CONTADOS">
       <DataType>String</DataType>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>

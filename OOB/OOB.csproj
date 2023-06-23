@@ -298,6 +298,9 @@
     <Compile Include="LibInventario\TasaImpuesto\Ficha.cs" />
     <Compile Include="LibInventario\TomaInv\Analisis\Ficha.cs" />
     <Compile Include="LibInventario\TomaInv\Analisis\Item.cs" />
+    <Compile Include="LibInventario\TomaInv\Analisis\Motivo\baseFicha.cs" />
+    <Compile Include="LibInventario\TomaInv\Analisis\Motivo\Cambiar\Ficha.cs" />
+    <Compile Include="LibInventario\TomaInv\Analisis\Motivo\Obtener\Ficha.cs" />
     <Compile Include="LibInventario\TomaInv\GenerarToma\Ficha.cs" />
     <Compile Include="LibInventario\TomaInv\GenerarToma\PrdToma.cs" />
     <Compile Include="LibInventario\TomaInv\ObtenerToma\Ficha.cs" />

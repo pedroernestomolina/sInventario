@@ -263,6 +263,36 @@ namespace ModInventario.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bt_editar_32_2__1_ {
+            get {
+                object obj = ResourceManager.GetObject("bt_editar_32_2__1_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bt_editar_32_2__2_ {
+            get {
+                object obj = ResourceManager.GetObject("bt_editar_32_2__2_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap bt_editar_32_2__3_ {
+            get {
+                object obj = ResourceManager.GetObject("bt_editar_32_2__3_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bt_editar_48 {
             get {
                 object obj = ResourceManager.GetObject("bt_editar_48", resourceCulture);

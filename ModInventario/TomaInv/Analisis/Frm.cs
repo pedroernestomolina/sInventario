@@ -127,6 +127,10 @@ namespace ModInventario.TomaInv.Analisis
         {
             RefrescarVista();
         }
+        private void BT_EDITAR_Click(object sender, EventArgs e)
+        {
+            EditarItem();
+        }
         private void BT_IMPRIMIR_Click(object sender, EventArgs e)
         {
             ImprimirAnalisis();
@@ -155,6 +159,10 @@ namespace ModInventario.TomaInv.Analisis
         private void RefrescarVista()
         {
             _controlador.RefrescarVista();
+        }
+        private void EditarItem()
+        {
+            _controlador.EditarItem();
         }
         private void MostrarConteo()
         {

@@ -19,5 +19,6 @@ namespace ModInventario.TomaInv.Analisis
         void RefrescarVista();
         void MostrarConteo();
         void ImprimirAnalisis();
+        void EditarItem();
     }
 }

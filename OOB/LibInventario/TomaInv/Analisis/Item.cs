@@ -26,5 +26,6 @@ namespace OOB.LibInventario.TomaInv.Analisis
         public string estatusDivisa { get; set; }
         public string descEmpCompra { get; set; }
         public string descEmpInv { get; set; }
+        public string motivo { get; set; }
     }
 }

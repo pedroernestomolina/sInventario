@@ -13,6 +13,7 @@ namespace ModInventario.Reportes.TomaInv.AnalisisResultado
         public decimal cant { get; set; }
         public string descToma { get; set; }
         public int signo { get; set; }
+        public string motivo { get; set; }
     }
     public class data
     {

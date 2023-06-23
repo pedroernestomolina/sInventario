@@ -1029,6 +1029,14 @@
     <Compile Include="TomaInv\Analisis\ILista.cs" />
     <Compile Include="TomaInv\Analisis\ImpAnalisis.cs" />
     <Compile Include="TomaInv\Analisis\ImpLista.cs" />
+    <Compile Include="TomaInv\Analisis\Motivo\Frm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TomaInv\Analisis\Motivo\Frm.Designer.cs">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TomaInv\Analisis\Motivo\IMotivo.cs" />
+    <Compile Include="TomaInv\Analisis\Motivo\ImpMotivo.cs" />
     <Compile Include="TomaInv\Analisis\RecopilarData\Frm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1574,6 +1582,9 @@
     <EmbeddedResource Include="TomaInv\Analisis\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TomaInv\Analisis\Motivo\Frm.resx">
+      <DependentUpon>Frm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TomaInv\Analisis\RecopilarData\Frm.resx">
       <DependentUpon>Frm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1785,11 +1796,13 @@
     <Content Include="Imagenes\bt_documento.png" />
     <Content Include="Imagenes\bt_dollar.png" />
     <Content Include="Imagenes\bt_editar_32.png" />
+    <Content Include="Imagenes\bt_editar_32_2 %281%29.png" />
     <Content Include="Imagenes\bt_editar_48.png" />
     <Content Include="Imagenes\bt_editar_ficha.png" />
     <Content Include="Imagenes\bt_eliminar.png" />
     <Content Include="Imagenes\bt_eliminar_2.png" />
     <Content Include="Imagenes\bt_eliminar_3.png" />
+    <Content Include="Imagenes\bt_eliminar_32.png" />
     <Content Include="Imagenes\bt_enEspera.png" />
     <Content Include="Imagenes\bt_exchange.png" />
     <Content Include="Imagenes\bt_exchange_32.png" />
@@ -1805,6 +1818,7 @@
     <Content Include="Imagenes\bt_imprimir.png" />
     <Content Include="Imagenes\bt_imprimir_2.png" />
     <Content Include="Imagenes\bt_imprimir_3.png" />
+    <Content Include="Imagenes\bt_imprimir_32.png" />
     <Content Include="Imagenes\bt_limpiar.png" />
     <Content Include="Imagenes\bt_limpiar_2.png" />
     <Content Include="Imagenes\bt_limpiar_3.png" />
@@ -1852,6 +1866,9 @@
     <Content Include="Imagenes\TOOLS.ico" />
     <Content Include="Imagenes\transferencia.png" />
     <Content Include="Imagenes\warehouse.png" />
+    <None Include="Resources\bt_editar_32_2 %281%29.png" />
+    <None Include="Resources\bt_editar_32_2 %283%29.png" />
+    <None Include="Resources\bt_editar_32_2 %282%29.png" />
     <None Include="Resources\bt_descuento_64.png" />
     <None Include="Resources\bt_discount_48.png" />
     <None Include="Resources\bt_paleta_colores_2_48.png" />

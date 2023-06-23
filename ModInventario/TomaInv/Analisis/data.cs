@@ -120,5 +120,10 @@ namespace ModInventario.TomaInv.Analisis
         {
             Eliminar = m;
         }
+
+        public void setMotivo(string desc)
+        {
+            _itemAnalisis.motivo = desc;
+        }
     }
 }

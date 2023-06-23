@@ -287,6 +287,8 @@ namespace ModInventario.Reportes.TomaInv {
             
             private global::System.Data.DataColumn columnsigno;
             
+            private global::System.Data.DataColumn columnmotivo;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public resultadoDataTable() {
@@ -354,6 +356,14 @@ namespace ModInventario.Reportes.TomaInv {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn motivoColumn {
+                get {
+                    return this.columnmotivo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -389,13 +399,14 @@ namespace ModInventario.Reportes.TomaInv {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public resultadoRow AddresultadoRow(string producto, decimal cantidad, string descToma, int signo) {
+            public resultadoRow AddresultadoRow(string producto, decimal cantidad, string descToma, int signo, string motivo) {
                 resultadoRow rowresultadoRow = ((resultadoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         producto,
                         cantidad,
                         descToma,
-                        signo};
+                        signo,
+                        motivo};
                 rowresultadoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowresultadoRow);
                 return rowresultadoRow;
@@ -422,6 +433,7 @@ namespace ModInventario.Reportes.TomaInv {
                 this.columncantidad = base.Columns["cantidad"];
                 this.columndescToma = base.Columns["descToma"];
                 this.columnsigno = base.Columns["signo"];
+                this.columnmotivo = base.Columns["motivo"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -435,6 +447,8 @@ namespace ModInventario.Reportes.TomaInv {
                 base.Columns.Add(this.columndescToma);
                 this.columnsigno = new global::System.Data.DataColumn("signo", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnsigno);
+                this.columnmotivo = new global::System.Data.DataColumn("motivo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnmotivo);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -641,6 +655,22 @@ namespace ModInventario.Reportes.TomaInv {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string motivo {
+                get {
+                    try {
+                        return ((string)(this[this.tableresultado.motivoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'motivo\' in table \'resultado\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableresultado.motivoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsproductoNull() {
                 return this.IsNull(this.tableresultado.productoColumn);
             }
@@ -685,6 +715,18 @@ namespace ModInventario.Reportes.TomaInv {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetsignoNull() {
                 this[this.tableresultado.signoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsmotivoNull() {
+                return this.IsNull(this.tableresultado.motivoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetmotivoNull() {
+                this[this.tableresultado.motivoColumn] = global::System.Convert.DBNull;
             }
         }
         

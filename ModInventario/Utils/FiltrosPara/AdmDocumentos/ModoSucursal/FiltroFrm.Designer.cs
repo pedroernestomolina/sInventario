@@ -201,7 +201,7 @@
             this.BT_LIMPIAR.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BT_LIMPIAR.Location = new System.Drawing.Point(2, 2);
             this.BT_LIMPIAR.Name = "BT_LIMPIAR";
-            this.BT_LIMPIAR.Size = new System.Drawing.Size(60, 34);
+            this.BT_LIMPIAR.Size = new System.Drawing.Size(61, 34);
             this.BT_LIMPIAR.TabIndex = 0;
             this.toolTip1.SetToolTip(this.BT_LIMPIAR, "LImpiar Filtros de Busqueda");
             this.BT_LIMPIAR.UseVisualStyleBackColor = true;
@@ -213,7 +213,7 @@
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.94268F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.05732F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 66F));
             this.tableLayoutPanel1.Controls.Add(this.panel8, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.panel22, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.panel7, 0, 3);
@@ -244,7 +244,7 @@
             // 
             this.panel8.Controls.Add(this.CB_DEP_DESTINO);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(115, 101);
+            this.panel8.Location = new System.Drawing.Point(114, 101);
             this.panel8.Margin = new System.Windows.Forms.Padding(1);
             this.panel8.Name = "panel8";
             this.panel8.Padding = new System.Windows.Forms.Padding(2);
@@ -272,7 +272,7 @@
             this.panel22.Margin = new System.Windows.Forms.Padding(1);
             this.panel22.Name = "panel22";
             this.panel22.Padding = new System.Windows.Forms.Padding(2);
-            this.panel22.Size = new System.Drawing.Size(112, 28);
+            this.panel22.Size = new System.Drawing.Size(111, 28);
             this.panel22.TabIndex = 9;
             // 
             // L_ESTATUS
@@ -283,7 +283,7 @@
             this.L_ESTATUS.ForeColor = System.Drawing.Color.Blue;
             this.L_ESTATUS.Location = new System.Drawing.Point(2, 2);
             this.L_ESTATUS.Name = "L_ESTATUS";
-            this.L_ESTATUS.Size = new System.Drawing.Size(108, 24);
+            this.L_ESTATUS.Size = new System.Drawing.Size(107, 24);
             this.L_ESTATUS.TabIndex = 4;
             this.L_ESTATUS.Text = "Estatus:";
             this.L_ESTATUS.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -297,7 +297,7 @@
             this.panel7.Margin = new System.Windows.Forms.Padding(1);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(2);
-            this.panel7.Size = new System.Drawing.Size(112, 28);
+            this.panel7.Size = new System.Drawing.Size(111, 28);
             this.panel7.TabIndex = 5;
             // 
             // L_DEP_DESTINO
@@ -308,7 +308,7 @@
             this.L_DEP_DESTINO.ForeColor = System.Drawing.Color.Blue;
             this.L_DEP_DESTINO.Location = new System.Drawing.Point(2, 2);
             this.L_DEP_DESTINO.Name = "L_DEP_DESTINO";
-            this.L_DEP_DESTINO.Size = new System.Drawing.Size(108, 24);
+            this.L_DEP_DESTINO.Size = new System.Drawing.Size(107, 24);
             this.L_DEP_DESTINO.TabIndex = 1;
             this.L_DEP_DESTINO.Text = "Dep/Destinio:";
             this.L_DEP_DESTINO.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -318,7 +318,7 @@
             // 
             this.panel6.Controls.Add(this.CB_DEP_ORIGEN);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(115, 71);
+            this.panel6.Location = new System.Drawing.Point(114, 71);
             this.panel6.Margin = new System.Windows.Forms.Padding(1);
             this.panel6.Name = "panel6";
             this.panel6.Padding = new System.Windows.Forms.Padding(2);
@@ -346,7 +346,7 @@
             this.panel5.Margin = new System.Windows.Forms.Padding(1);
             this.panel5.Name = "panel5";
             this.panel5.Padding = new System.Windows.Forms.Padding(2);
-            this.panel5.Size = new System.Drawing.Size(112, 28);
+            this.panel5.Size = new System.Drawing.Size(111, 28);
             this.panel5.TabIndex = 3;
             // 
             // L_DEP_ORIGEN
@@ -357,7 +357,7 @@
             this.L_DEP_ORIGEN.ForeColor = System.Drawing.Color.Blue;
             this.L_DEP_ORIGEN.Location = new System.Drawing.Point(2, 2);
             this.L_DEP_ORIGEN.Name = "L_DEP_ORIGEN";
-            this.L_DEP_ORIGEN.Size = new System.Drawing.Size(108, 24);
+            this.L_DEP_ORIGEN.Size = new System.Drawing.Size(107, 24);
             this.L_DEP_ORIGEN.TabIndex = 0;
             this.L_DEP_ORIGEN.Text = "Dep/Origen:";
             this.L_DEP_ORIGEN.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -367,18 +367,18 @@
             // 
             this.panel16.Controls.Add(this.BT_LIMPIAR);
             this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel16.Location = new System.Drawing.Point(309, 1);
+            this.panel16.Location = new System.Drawing.Point(308, 1);
             this.panel16.Margin = new System.Windows.Forms.Padding(1);
             this.panel16.Name = "panel16";
             this.panel16.Padding = new System.Windows.Forms.Padding(2);
-            this.panel16.Size = new System.Drawing.Size(64, 38);
+            this.panel16.Size = new System.Drawing.Size(65, 38);
             this.panel16.TabIndex = 1;
             // 
             // panel23
             // 
             this.panel23.Controls.Add(this.CB_ESTATUS);
             this.panel23.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel23.Location = new System.Drawing.Point(115, 161);
+            this.panel23.Location = new System.Drawing.Point(114, 161);
             this.panel23.Margin = new System.Windows.Forms.Padding(1);
             this.panel23.Name = "panel23";
             this.panel23.Padding = new System.Windows.Forms.Padding(2);
@@ -406,7 +406,7 @@
             this.panel4.Margin = new System.Windows.Forms.Padding(1);
             this.panel4.Name = "panel4";
             this.panel4.Padding = new System.Windows.Forms.Padding(2);
-            this.panel4.Size = new System.Drawing.Size(112, 28);
+            this.panel4.Size = new System.Drawing.Size(111, 28);
             this.panel4.TabIndex = 7;
             // 
             // L_CONCEPTO
@@ -417,7 +417,7 @@
             this.L_CONCEPTO.ForeColor = System.Drawing.Color.Blue;
             this.L_CONCEPTO.Location = new System.Drawing.Point(2, 2);
             this.L_CONCEPTO.Name = "L_CONCEPTO";
-            this.L_CONCEPTO.Size = new System.Drawing.Size(108, 24);
+            this.L_CONCEPTO.Size = new System.Drawing.Size(107, 24);
             this.L_CONCEPTO.TabIndex = 2;
             this.L_CONCEPTO.Text = "Concepto:";
             this.L_CONCEPTO.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -427,7 +427,7 @@
             // 
             this.panel10.Controls.Add(this.CB_CONCEPTO);
             this.panel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel10.Location = new System.Drawing.Point(115, 131);
+            this.panel10.Location = new System.Drawing.Point(114, 131);
             this.panel10.Margin = new System.Windows.Forms.Padding(1);
             this.panel10.Name = "panel10";
             this.panel10.Padding = new System.Windows.Forms.Padding(2);
@@ -455,7 +455,7 @@
             this.panel11.Margin = new System.Windows.Forms.Padding(1);
             this.panel11.Name = "panel11";
             this.panel11.Padding = new System.Windows.Forms.Padding(2);
-            this.panel11.Size = new System.Drawing.Size(112, 28);
+            this.panel11.Size = new System.Drawing.Size(111, 28);
             this.panel11.TabIndex = 1;
             // 
             // L_PRODUCTO
@@ -466,7 +466,7 @@
             this.L_PRODUCTO.ForeColor = System.Drawing.Color.Blue;
             this.L_PRODUCTO.Location = new System.Drawing.Point(2, 2);
             this.L_PRODUCTO.Name = "L_PRODUCTO";
-            this.L_PRODUCTO.Size = new System.Drawing.Size(108, 24);
+            this.L_PRODUCTO.Size = new System.Drawing.Size(107, 24);
             this.L_PRODUCTO.TabIndex = 3;
             this.L_PRODUCTO.Text = "Producto:";
             this.L_PRODUCTO.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -476,7 +476,7 @@
             // 
             this.P_PRODUCTO.Controls.Add(this.tableLayoutPanel4);
             this.P_PRODUCTO.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.P_PRODUCTO.Location = new System.Drawing.Point(115, 41);
+            this.P_PRODUCTO.Location = new System.Drawing.Point(114, 41);
             this.P_PRODUCTO.Margin = new System.Windows.Forms.Padding(1);
             this.P_PRODUCTO.Name = "P_PRODUCTO";
             this.P_PRODUCTO.Padding = new System.Windows.Forms.Padding(2);

@@ -12,5 +12,7 @@ namespace ModInventario.src.MovInventario.Ajuste.PorToma
     {
         void SucOrigenSetId(string id);
         void BuscarTomas();
+        void EliminarCargosMayoresCero();
+        void EliminarDesCargosMayoresCero();
     }
 }

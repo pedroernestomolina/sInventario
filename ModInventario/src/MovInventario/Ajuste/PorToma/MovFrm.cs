@@ -288,10 +288,20 @@ namespace ModInventario.src.MovInventario.Ajuste.PorToma
             AgregarConcepto();
         }
 
+
         private void BT_ELIMINAR_ITEM_Click(object sender, EventArgs e)
         {
             EliminarItem();
         }
+        private void BT_ELIMINAR_CARGOS_Click(object sender, EventArgs e)
+        {
+            EliminarCargosMayoresCero();
+        }
+        private void BT_ELIMINAR_DESCARGOS_Click(object sender, EventArgs e)
+        {
+            EliminarDesCargosMayoresCero();
+        }
+
 
         private void Procesar()
         {
@@ -352,6 +362,18 @@ namespace ModInventario.src.MovInventario.Ajuste.PorToma
         private void BuscarTomas()
         {
             _controlador.BuscarTomas();
+            ActualizarImporte();
+        }
+        private void EliminarCargosMayoresCero()
+        {
+            IrFoco();
+            _controlador.EliminarCargosMayoresCero();
+            ActualizarImporte();
+        }
+        private void EliminarDesCargosMayoresCero()
+        {
+            IrFoco();
+            _controlador.EliminarDesCargosMayoresCero();
             ActualizarImporte();
         }
         private void EliminarItem()

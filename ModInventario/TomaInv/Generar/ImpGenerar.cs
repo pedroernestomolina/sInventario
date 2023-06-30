@@ -174,10 +174,17 @@ namespace ModInventario.TomaInv.Generar
                 {
                     _cntPrdTomar = r01.cntRegistro;
                 }
+
+                var _listaPrd = r01.Lista;
+                if (_filtrar_PorPrdSinToma) 
+                {
+                    _listaPrd = _listaPrd.Where(w => w.fechaUltConteo == new DateTime(2000, 1, 1)).ToList();
+                }
+
                 switch (_tipoOrdenLista)
                 {
                     case enumeradoOrdenLista.PorDefecto:
-                        foreach (var r in r01.Lista.Where(w => w.cntMov > 0).ToList())
+                        foreach (var r in _listaPrd.Where(w => w.cntMov > 0).ToList())
                         {
                             var rg = new TomaInv.data() { cnt = r.cnt, codigoPrd = r.codigoPrd, costoPrd = r.costoPrd, descPrd = r.descPrd, idPrd = r.idPrd, margen = r.margen, fechaUltToma=r.fechaUltConteo, ultConteo=r.ultConteo };
                             _lst.Add(rg);
@@ -187,7 +194,7 @@ namespace ModInventario.TomaInv.Generar
                         _lista.setDataListar(_lst.Take(_cntPrdTomar).ToList());
                         break;
                     case enumeradoOrdenLista.PorMayorCosto:
-                        foreach (var r in r01.Lista.Where(w => w.cntMov > 0).OrderByDescending(o=>o.costoPrd).ToList())
+                        foreach (var r in _listaPrd.Where(w => w.cntMov > 0).OrderByDescending(o => o.costoPrd).ToList())
                         {
                             var rg = new TomaInv.data() { cnt = r.cnt, codigoPrd = r.codigoPrd, costoPrd = r.costoPrd, descPrd = r.descPrd, idPrd = r.idPrd, margen = r.margen, fechaUltToma=r.fechaUltConteo, ultConteo=r.ultConteo };
                             _lst.Add(rg);
@@ -195,7 +202,7 @@ namespace ModInventario.TomaInv.Generar
                         _lista.setDataListar(_lst.Take(_cntPrdTomar).ToList());
                         break;
                     case enumeradoOrdenLista.PorMayorMargen:
-                        foreach (var r in r01.Lista.Where(w => w.cntMov > 0).OrderByDescending(o=>o.margen).ToList())
+                        foreach (var r in _listaPrd.Where(w => w.cntMov > 0).OrderByDescending(o => o.margen).ToList())
                         {
                             var rg = new TomaInv.data() { cnt = r.cnt, codigoPrd = r.codigoPrd, costoPrd = r.costoPrd, descPrd = r.descPrd, idPrd = r.idPrd, margen = r.margen, fechaUltToma = r.fechaUltConteo, ultConteo = r.ultConteo };
                             _lst.Add(rg);
@@ -203,7 +210,7 @@ namespace ModInventario.TomaInv.Generar
                         _lista.setDataListar(_lst.Take(_cntPrdTomar).ToList());
                         break;
                     case enumeradoOrdenLista.PorMayorDemanda:
-                        foreach (var r in r01.Lista.Where(w => w.cntMov > 0).OrderByDescending(o=>o.cnt).ToList())
+                        foreach (var r in _listaPrd.Where(w => w.cntMov > 0).OrderByDescending(o => o.cnt).ToList())
                         {
                             var rg = new TomaInv.data() { cnt = r.cnt, codigoPrd = r.codigoPrd, costoPrd = r.costoPrd, descPrd = r.descPrd, idPrd = r.idPrd, margen = r.margen, fechaUltToma = r.fechaUltConteo, ultConteo = r.ultConteo };
                             _lst.Add(rg);
@@ -314,6 +321,13 @@ namespace ModInventario.TomaInv.Generar
         public void setCantidadPrdTomar(decimal cnt)
         {
             _cntPrdTomar = (int)cnt;
+        }
+
+
+        private bool _filtrar_PorPrdSinToma;
+        public void setFiltrarPorProductosSinToma(bool filt)
+        {
+            _filtrar_PorPrdSinToma = filt;
         }
     }
 }

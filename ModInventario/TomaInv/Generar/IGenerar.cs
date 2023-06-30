@@ -34,5 +34,6 @@ namespace ModInventario.TomaInv.Generar
         void Lista_PorMayorMargen();
         void Lista_PorMayorDemanda();
         void setCantidadPrdTomar(decimal cnt);
+        void setFiltrarPorProductosSinToma(bool filt);
     }
 }

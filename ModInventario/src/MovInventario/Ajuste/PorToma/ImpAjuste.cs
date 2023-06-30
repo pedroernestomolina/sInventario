@@ -193,19 +193,27 @@ namespace ModInventario.src.MovInventario.Ajuste.PorToma
                 };
                 return rg;
             }).ToList();
-            var ficha = new OOB.LibInventario.Movimiento.AjustePorToma.Insertar.Ficha()
+
+            var _lstToma = new List<OOB.LibInventario.Movimiento.AjustePorToma.Insertar.FichaPrdToma>();
+            foreach (var rg in _items)
             {
-                idToma = _idToma,
-                prdToma = _resultadoToma.Select(s =>
+                var ent= _resultadoToma.First(f => f.autoPrd == rg.FichaPrd.autoPrd);
+                if (ent != null) 
                 {
                     var nr = new OOB.LibInventario.Movimiento.AjustePorToma.Insertar.FichaPrdToma()
                     {
                         autoDeposito = depOrigen.id,
-                        autoProducto = s.autoPrd ,
-                        resultadoConteo = s.conteo,
+                        autoProducto = ent.autoPrd,
+                        resultadoConteo = ent.conteo,
                     };
-                    return nr;
-                }).ToList(),
+                    _lstToma.Add(nr);
+                }
+            }
+
+            var ficha = new OOB.LibInventario.Movimiento.AjustePorToma.Insertar.Ficha()
+            {
+                idToma = _idToma,
+                prdToma = _lstToma,
                 mov = movOOB,
                 movDeposito = depOOB,
                 movDetalles = detOOB,
@@ -345,6 +353,47 @@ namespace ModInventario.src.MovInventario.Ajuste.PorToma
             catch (Exception e)
             {
                 Helpers.Msg.Error(e.Message);
+            }
+        }
+
+        public void EliminarCargosMayoresCero()
+        {
+            if (_listaMov.GetItems.Count > 0) 
+            {
+                var xmsg = @"Esta Opción Eliminara Todos Aquellos Items Donde Exista Un Cargo Mayor A Cero (0). 
+                            Estas De acuerdo En Realizar Dicho Movimiento ?";
+                var msg = MessageBox.Show(xmsg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (msg == DialogResult.Yes)
+                {
+                    foreach (var rg in _listaMov.GetListaItems)
+                    {
+                        var item = (Tools.CapturaMov.IDataCaptura)rg;
+                        if (item.Cantidad > 0 && item.Signo == 1) 
+                        {
+                            _listaMov.EliminarItem(item.Id);
+                        }
+                    }
+                }
+            }
+        }
+        public void EliminarDesCargosMayoresCero()
+        {
+            if (_listaMov.GetItems.Count > 0)
+            {
+                var xmsg = @"Esta Opción Eliminara Todos Aquellos Items Donde Exista Un Descargo Mayor A Cero (0). 
+                            Estas De acuerdo En Realizar Dicho Movimiento ?";
+                var msg = MessageBox.Show(xmsg, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (msg == DialogResult.Yes)
+                {
+                    foreach (var rg in _listaMov.GetListaItems)
+                    {
+                        var item = (Tools.CapturaMov.IDataCaptura)rg;
+                        if (item.Cantidad > 0 && item.Signo ==-1)
+                        {
+                            _listaMov.EliminarItem(item.Id);
+                        }
+                    }
+                }
             }
         }
 

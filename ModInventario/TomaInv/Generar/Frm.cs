@@ -285,5 +285,13 @@ namespace ModInventario.TomaInv.Generar
         {
             _controlador.Lista_PorMayorDemanda();
         }
+
+        private void CHB_PRODUCTOS_SIN_TOMA_Leave(object sender, EventArgs e)
+        {
+            _controlador.setFiltrarPorProductosSinToma(CHB_PRODUCTOS_SIN_TOMA.Checked);
+        }
+        private void CHB_PRODUCTOS_SIN_TOMA_CheckedChanged(object sender, EventArgs e)
+        {
+        }
     }
 }

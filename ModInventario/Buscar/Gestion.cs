@@ -127,14 +127,23 @@ namespace ModInventario.Buscar
         private void RealizarBusqueda(OOB.LibInventario.Producto.Filtro _filtros)
         {
             _filtroIdDeposito = "";
-            var r01 = Sistema.MyData.Producto_GetLista(_filtros);
-            if (r01.Result == OOB.Enumerados.EnumResult.isError)
+            if (_filtros == null) { return; }
+
+            try
             {
-                Helpers.Msg.Error(r01.Mensaje);
+                var r01 = Sistema.MyData.Producto_GetLista(_filtros);
+                if (r01.Result == OOB.Enumerados.EnumResult.isError)
+                {
+                    throw new Exception(r01.Mensaje);
+                }
+                _filtroIdDeposito = _filtros.autoDeposito;
+                _gestionLista.setLista(r01.Lista);
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
                 return;
             }
-            _filtroIdDeposito = _filtros.autoDeposito;
-            _gestionLista.setLista(r01.Lista);
         }
 
         public void Limpiar()

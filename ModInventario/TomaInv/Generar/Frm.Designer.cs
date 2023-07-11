@@ -97,6 +97,11 @@
             this.panel39 = new System.Windows.Forms.Panel();
             this.L_ITEMS_ENCONTRADOS = new System.Windows.Forms.Label();
             this.panel41 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel44 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.panel45 = new System.Windows.Forms.Panel();
+            this.CHB_PRODUCTOS_SIN_TOMA = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
             this.RB_MAYOR_DEMANDA = new System.Windows.Forms.RadioButton();
             this.RB_MAYOR_MARGEN = new System.Windows.Forms.RadioButton();
@@ -120,11 +125,6 @@
             this.BT_SALIR = new System.Windows.Forms.Button();
             this.panel12 = new System.Windows.Forms.Panel();
             this.BT_PROCESAR = new System.Windows.Forms.Button();
-            this.tableLayoutPanel19 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel44 = new System.Windows.Forms.Panel();
-            this.panel45 = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
-            this.CHB_PRODUCTOS_SIN_TOMA = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -175,6 +175,9 @@
             this.tableLayoutPanel17.SuspendLayout();
             this.panel39.SuspendLayout();
             this.panel41.SuspendLayout();
+            this.tableLayoutPanel19.SuspendLayout();
+            this.panel44.SuspendLayout();
+            this.panel45.SuspendLayout();
             this.panel42.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TB_CANT_PRD_TOMAR)).BeginInit();
             this.panel43.SuspendLayout();
@@ -187,9 +190,6 @@
             this.tableLayoutPanel5.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel12.SuspendLayout();
-            this.tableLayoutPanel19.SuspendLayout();
-            this.panel44.SuspendLayout();
-            this.panel45.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -1084,6 +1084,69 @@
             this.panel41.Size = new System.Drawing.Size(576, 58);
             this.panel41.TabIndex = 1;
             // 
+            // tableLayoutPanel19
+            // 
+            this.tableLayoutPanel19.ColumnCount = 2;
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.84211F));
+            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.15789F));
+            this.tableLayoutPanel19.Controls.Add(this.panel44, 0, 0);
+            this.tableLayoutPanel19.Controls.Add(this.panel45, 1, 0);
+            this.tableLayoutPanel19.Dock = System.Windows.Forms.DockStyle.Right;
+            this.tableLayoutPanel19.Location = new System.Drawing.Point(327, 2);
+            this.tableLayoutPanel19.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel19.Name = "tableLayoutPanel19";
+            this.tableLayoutPanel19.RowCount = 2;
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel19.Size = new System.Drawing.Size(247, 54);
+            this.tableLayoutPanel19.TabIndex = 5;
+            // 
+            // panel44
+            // 
+            this.panel44.Controls.Add(this.label11);
+            this.panel44.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel44.Location = new System.Drawing.Point(1, 1);
+            this.panel44.Margin = new System.Windows.Forms.Padding(1);
+            this.panel44.Name = "panel44";
+            this.panel44.Padding = new System.Windows.Forms.Padding(2);
+            this.panel44.Size = new System.Drawing.Size(89, 25);
+            this.panel44.TabIndex = 0;
+            // 
+            // label11
+            // 
+            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(2, 2);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(85, 21);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "Filtra Por:";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // panel45
+            // 
+            this.panel45.Controls.Add(this.CHB_PRODUCTOS_SIN_TOMA);
+            this.panel45.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel45.Location = new System.Drawing.Point(92, 1);
+            this.panel45.Margin = new System.Windows.Forms.Padding(1);
+            this.panel45.Name = "panel45";
+            this.panel45.Padding = new System.Windows.Forms.Padding(2);
+            this.panel45.Size = new System.Drawing.Size(154, 25);
+            this.panel45.TabIndex = 1;
+            // 
+            // CHB_PRODUCTOS_SIN_TOMA
+            // 
+            this.CHB_PRODUCTOS_SIN_TOMA.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CHB_PRODUCTOS_SIN_TOMA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CHB_PRODUCTOS_SIN_TOMA.Location = new System.Drawing.Point(2, 2);
+            this.CHB_PRODUCTOS_SIN_TOMA.Name = "CHB_PRODUCTOS_SIN_TOMA";
+            this.CHB_PRODUCTOS_SIN_TOMA.Size = new System.Drawing.Size(150, 21);
+            this.CHB_PRODUCTOS_SIN_TOMA.TabIndex = 0;
+            this.CHB_PRODUCTOS_SIN_TOMA.Text = "Productos Sin Toma";
+            this.CHB_PRODUCTOS_SIN_TOMA.UseVisualStyleBackColor = true;
+            this.CHB_PRODUCTOS_SIN_TOMA.CheckedChanged += new System.EventHandler(this.CHB_PRODUCTOS_SIN_TOMA_CheckedChanged);
+            this.CHB_PRODUCTOS_SIN_TOMA.Leave += new System.EventHandler(this.CHB_PRODUCTOS_SIN_TOMA_Leave);
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -1380,69 +1443,6 @@
             this.BT_PROCESAR.UseVisualStyleBackColor = true;
             this.BT_PROCESAR.Click += new System.EventHandler(this.BT_PROCESAR_Click);
             // 
-            // tableLayoutPanel19
-            // 
-            this.tableLayoutPanel19.ColumnCount = 2;
-            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.84211F));
-            this.tableLayoutPanel19.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.15789F));
-            this.tableLayoutPanel19.Controls.Add(this.panel44, 0, 0);
-            this.tableLayoutPanel19.Controls.Add(this.panel45, 1, 0);
-            this.tableLayoutPanel19.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tableLayoutPanel19.Location = new System.Drawing.Point(327, 2);
-            this.tableLayoutPanel19.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel19.Name = "tableLayoutPanel19";
-            this.tableLayoutPanel19.RowCount = 2;
-            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel19.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel19.Size = new System.Drawing.Size(247, 54);
-            this.tableLayoutPanel19.TabIndex = 5;
-            // 
-            // panel44
-            // 
-            this.panel44.Controls.Add(this.label11);
-            this.panel44.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel44.Location = new System.Drawing.Point(1, 1);
-            this.panel44.Margin = new System.Windows.Forms.Padding(1);
-            this.panel44.Name = "panel44";
-            this.panel44.Padding = new System.Windows.Forms.Padding(2);
-            this.panel44.Size = new System.Drawing.Size(89, 25);
-            this.panel44.TabIndex = 0;
-            // 
-            // panel45
-            // 
-            this.panel45.Controls.Add(this.CHB_PRODUCTOS_SIN_TOMA);
-            this.panel45.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel45.Location = new System.Drawing.Point(92, 1);
-            this.panel45.Margin = new System.Windows.Forms.Padding(1);
-            this.panel45.Name = "panel45";
-            this.panel45.Padding = new System.Windows.Forms.Padding(2);
-            this.panel45.Size = new System.Drawing.Size(154, 25);
-            this.panel45.TabIndex = 1;
-            // 
-            // label11
-            // 
-            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(2, 2);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(85, 21);
-            this.label11.TabIndex = 5;
-            this.label11.Text = "Filtra Por:";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // CHB_PRODUCTOS_SIN_TOMA
-            // 
-            this.CHB_PRODUCTOS_SIN_TOMA.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CHB_PRODUCTOS_SIN_TOMA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CHB_PRODUCTOS_SIN_TOMA.Location = new System.Drawing.Point(2, 2);
-            this.CHB_PRODUCTOS_SIN_TOMA.Name = "CHB_PRODUCTOS_SIN_TOMA";
-            this.CHB_PRODUCTOS_SIN_TOMA.Size = new System.Drawing.Size(150, 21);
-            this.CHB_PRODUCTOS_SIN_TOMA.TabIndex = 0;
-            this.CHB_PRODUCTOS_SIN_TOMA.Text = "Productos Sin Toma";
-            this.CHB_PRODUCTOS_SIN_TOMA.UseVisualStyleBackColor = true;
-            this.CHB_PRODUCTOS_SIN_TOMA.CheckedChanged += new System.EventHandler(this.CHB_PRODUCTOS_SIN_TOMA_CheckedChanged);
-            this.CHB_PRODUCTOS_SIN_TOMA.Leave += new System.EventHandler(this.CHB_PRODUCTOS_SIN_TOMA_Leave);
-            // 
             // Frm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1508,6 +1508,9 @@
             this.panel39.ResumeLayout(false);
             this.panel41.ResumeLayout(false);
             this.panel41.PerformLayout();
+            this.tableLayoutPanel19.ResumeLayout(false);
+            this.panel44.ResumeLayout(false);
+            this.panel45.ResumeLayout(false);
             this.panel42.ResumeLayout(false);
             this.panel42.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TB_CANT_PRD_TOMAR)).EndInit();
@@ -1521,9 +1524,6 @@
             this.tableLayoutPanel5.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
-            this.tableLayoutPanel19.ResumeLayout(false);
-            this.panel44.ResumeLayout(false);
-            this.panel45.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

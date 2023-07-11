@@ -20,6 +20,14 @@ namespace ModInventario.TomaInv.Analisis
         {
             InitializeComponent();
             InicializaGrid();
+            InicializaCB();
+        }
+        private void InicializaCB()
+        {
+            CB_TERMINAL.DisplayMember = "desc";
+            CB_TERMINAL.ValueMember = "id";
+            CB_EXISTENCIA.DisplayMember = "desc";
+            CB_EXISTENCIA.ValueMember = "id";
         }
         private void InicializaGrid()
         {
@@ -102,11 +110,18 @@ namespace ModInventario.TomaInv.Analisis
             }
         }
 
+        private bool _modoInicializa;
         private void Frm_Load(object sender, EventArgs e)
         {
+            _modoInicializa = true;
             DGV.DataSource = _controlador.GetSource;
             DGV.Refresh();
             L_ITEMS.Text = "Items Encontrados: " + _controlador.CntItem.ToString("n0");
+            CB_TERMINAL.DataSource = _controlador.Terminal.GetSource;
+            CB_TERMINAL.SelectedValue = _controlador.Terminal.GetId;
+            CB_EXISTENCIA.DataSource = _controlador.ExistenciaFiltro.GetSource;
+            CB_EXISTENCIA.SelectedValue = _controlador.ExistenciaFiltro.GetId;
+            _modoInicializa = false;
         }
         private void Frm_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -159,6 +174,7 @@ namespace ModInventario.TomaInv.Analisis
         private void RefrescarVista()
         {
             _controlador.RefrescarVista();
+            L_ITEMS.Text = "Items Encontrados: " + _controlador.CntItem.ToString("n0");
         }
         private void EditarItem()
         {
@@ -195,6 +211,25 @@ namespace ModInventario.TomaInv.Analisis
         private void Salir()
         {
             this.Close();
+        }
+
+        private void CB_TERMINAL_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_modoInicializa) { return; }
+            _controlador.setTerminalId("");
+            if (CB_TERMINAL.SelectedIndex != -1)
+            {
+                _controlador.setTerminalId(CB_TERMINAL.SelectedValue.ToString());
+            }
+        }
+        private void CB_EXISTENCIA_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (_modoInicializa) { return; }
+            _controlador.setExistenciaFiltroId("");
+            if (CB_EXISTENCIA.SelectedIndex != -1)
+            {
+                _controlador.setExistenciaFiltroId(CB_EXISTENCIA.SelectedValue.ToString());
+            }
         }
     }
 }

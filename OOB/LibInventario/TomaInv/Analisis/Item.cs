@@ -27,5 +27,6 @@ namespace OOB.LibInventario.TomaInv.Analisis
         public string descEmpCompra { get; set; }
         public string descEmpInv { get; set; }
         public string motivo { get; set; }
+        public int idTerminal { get; set; }
     }
 }

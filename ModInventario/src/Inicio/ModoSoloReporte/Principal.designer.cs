@@ -144,6 +144,8 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
+            this.toolStripMenuItem14 = new System.Windows.Forms.ToolStripSeparator();
+            this.TOMA_INV_GENERAR_CONTEO = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -208,11 +210,11 @@
             // 
             this.panel2.Controls.Add(this.BT_SALIR);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(682, 1);
+            this.panel2.Location = new System.Drawing.Point(681, 1);
             this.panel2.Margin = new System.Windows.Forms.Padding(1);
             this.panel2.Name = "panel2";
             this.panel2.Padding = new System.Windows.Forms.Padding(2);
-            this.panel2.Size = new System.Drawing.Size(201, 52);
+            this.panel2.Size = new System.Drawing.Size(202, 52);
             this.panel2.TabIndex = 0;
             // 
             // BT_SALIR
@@ -223,7 +225,7 @@
             this.BT_SALIR.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.BT_SALIR.Location = new System.Drawing.Point(2, 2);
             this.BT_SALIR.Name = "BT_SALIR";
-            this.BT_SALIR.Size = new System.Drawing.Size(197, 48);
+            this.BT_SALIR.Size = new System.Drawing.Size(198, 48);
             this.BT_SALIR.TabIndex = 0;
             this.BT_SALIR.Text = "Salir";
             this.BT_SALIR.TextAlign = System.Drawing.ContentAlignment.BottomRight;
@@ -238,7 +240,7 @@
             this.panel7.Margin = new System.Windows.Forms.Padding(1);
             this.panel7.Name = "panel7";
             this.panel7.Padding = new System.Windows.Forms.Padding(2);
-            this.panel7.Size = new System.Drawing.Size(357, 52);
+            this.panel7.Size = new System.Drawing.Size(356, 52);
             this.panel7.TabIndex = 1;
             // 
             // tableLayoutPanel6
@@ -257,7 +259,7 @@
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(353, 48);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(352, 48);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // panel13
@@ -291,7 +293,7 @@
             this.panel14.Margin = new System.Windows.Forms.Padding(1);
             this.panel14.Name = "panel14";
             this.panel14.Padding = new System.Windows.Forms.Padding(2);
-            this.panel14.Size = new System.Drawing.Size(267, 22);
+            this.panel14.Size = new System.Drawing.Size(266, 22);
             this.panel14.TabIndex = 3;
             // 
             // L_FECHA
@@ -301,7 +303,7 @@
             this.L_FECHA.ForeColor = System.Drawing.Color.Yellow;
             this.L_FECHA.Location = new System.Drawing.Point(2, 2);
             this.L_FECHA.Name = "L_FECHA";
-            this.L_FECHA.Size = new System.Drawing.Size(263, 18);
+            this.L_FECHA.Size = new System.Drawing.Size(262, 18);
             this.L_FECHA.TabIndex = 5;
             this.L_FECHA.Text = "Hoy";
             this.L_FECHA.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -337,7 +339,7 @@
             this.panel16.Margin = new System.Windows.Forms.Padding(1);
             this.panel16.Name = "panel16";
             this.panel16.Padding = new System.Windows.Forms.Padding(2);
-            this.panel16.Size = new System.Drawing.Size(267, 22);
+            this.panel16.Size = new System.Drawing.Size(266, 22);
             this.panel16.TabIndex = 4;
             // 
             // L_HOST
@@ -347,7 +349,7 @@
             this.L_HOST.ForeColor = System.Drawing.Color.Yellow;
             this.L_HOST.Location = new System.Drawing.Point(2, 2);
             this.L_HOST.Name = "L_HOST";
-            this.L_HOST.Size = new System.Drawing.Size(263, 18);
+            this.L_HOST.Size = new System.Drawing.Size(262, 18);
             this.L_HOST.TabIndex = 4;
             this.L_HOST.Text = "label2";
             this.L_HOST.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -356,7 +358,7 @@
             // 
             this.panel17.Controls.Add(this.tableLayoutPanel7);
             this.panel17.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel17.Location = new System.Drawing.Point(360, 1);
+            this.panel17.Location = new System.Drawing.Point(359, 1);
             this.panel17.Margin = new System.Windows.Forms.Padding(1);
             this.panel17.Name = "panel17";
             this.panel17.Size = new System.Drawing.Size(200, 52);
@@ -428,7 +430,7 @@
             // 
             this.panel20.Controls.Add(this.tableLayoutPanel8);
             this.panel20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel20.Location = new System.Drawing.Point(562, 1);
+            this.panel20.Location = new System.Drawing.Point(561, 1);
             this.panel20.Margin = new System.Windows.Forms.Padding(1);
             this.panel20.Name = "panel20";
             this.panel20.Padding = new System.Windows.Forms.Padding(2);
@@ -621,7 +623,9 @@
             // 
             this.tomaInventarioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TOMAINV_CONVERTIR_SOLICITUD_TOMA,
-            this.TOMA_INV_ADM_DOC});
+            this.TOMA_INV_ADM_DOC,
+            this.toolStripMenuItem14,
+            this.TOMA_INV_GENERAR_CONTEO});
             this.tomaInventarioToolStripMenuItem.Name = "tomaInventarioToolStripMenuItem";
             this.tomaInventarioToolStripMenuItem.Size = new System.Drawing.Size(106, 20);
             this.tomaInventarioToolStripMenuItem.Text = "Toma Inventario";
@@ -1320,6 +1324,18 @@
             this.panel10.Size = new System.Drawing.Size(246, 350);
             this.panel10.TabIndex = 0;
             // 
+            // toolStripMenuItem14
+            // 
+            this.toolStripMenuItem14.Name = "toolStripMenuItem14";
+            this.toolStripMenuItem14.Size = new System.Drawing.Size(288, 6);
+            // 
+            // TOMA_INV_GENERAR_CONTEO
+            // 
+            this.TOMA_INV_GENERAR_CONTEO.Name = "TOMA_INV_GENERAR_CONTEO";
+            this.TOMA_INV_GENERAR_CONTEO.Size = new System.Drawing.Size(291, 22);
+            this.TOMA_INV_GENERAR_CONTEO.Text = "Generar Conteo";
+            this.TOMA_INV_GENERAR_CONTEO.Click += new System.EventHandler(this.TOMA_INV_GENERAR_CONTEO_Click);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1483,6 +1499,8 @@
         private System.Windows.Forms.ToolStripMenuItem tomaInventarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem TOMA_INV_ADM_DOC;
         private System.Windows.Forms.ToolStripMenuItem TOMAINV_CONVERTIR_SOLICITUD_TOMA;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem14;
+        private System.Windows.Forms.ToolStripMenuItem TOMA_INV_GENERAR_CONTEO;
     }
 }
 

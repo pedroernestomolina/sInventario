@@ -524,5 +524,13 @@ namespace ModInventario.src.Inicio.ModoSoloReporte
         {
             _controlador.TomaInv_ConvertirSolicitudEnToma();
         }
+        private void TOMA_INV_GENERAR_CONTEO_Click(object sender, EventArgs e)
+        {
+            GenerarConteo();
+        }
+        private void GenerarConteo()
+        {
+            _controlador.TomaInv_GenerarConteo();
+        }
     }
 }

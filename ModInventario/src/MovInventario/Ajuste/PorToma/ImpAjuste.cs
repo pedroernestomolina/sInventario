@@ -219,9 +219,9 @@ namespace ModInventario.src.MovInventario.Ajuste.PorToma
                 movDetalles = detOOB,
                 movKardex = KardexOOB,
             };
-            this.NotificarDocGenerado += VisualizarDocGenerado;
             try
             {
+                this.NotificarDocGenerado += VisualizarDocGenerado;
                 var r01 = Sistema.MyData.Producto_Movimiento_AjustePorToma_Insertar(ficha);
                 if (r01.Result == OOB.Enumerados.EnumResult.isError)
                 {
@@ -230,6 +230,7 @@ namespace ModInventario.src.MovInventario.Ajuste.PorToma
                     throw new Exception(r01.Mensaje);
                 }
                 NotificarDocumentoGenerado(r01.Auto);
+                this.NotificarDocGenerado -= VisualizarDocGenerado;
                 _procesarIsOk = true;
                 limpiarTodo();
             }

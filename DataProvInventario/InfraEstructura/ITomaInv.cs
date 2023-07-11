@@ -39,5 +39,12 @@ namespace DataProvInventario.InfraEstructura
             TomaInv_AnalizarToma_GetMotivo(OOB.LibInventario.TomaInv.Analisis.Motivo.Obtener.Ficha ficha);
         OOB.Resultado
             TomaInv_AnalizarToma_SetMotivo(OOB.LibInventario.TomaInv.Analisis.Motivo.Cambiar.Ficha ficha);
+
+
+        OOB.ResultadoEntidad<int>
+            TomaInv_VerificaSiHayUnaTomaActiva();
+
+        OOB.Resultado
+            TomaInv_GenerarConteo(OOB.LibInventario.TomaInv.Solicitud.Generar.Ficha ficha);
     }
 }

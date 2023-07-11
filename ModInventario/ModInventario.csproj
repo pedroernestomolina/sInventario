@@ -1019,6 +1019,8 @@
       <DependentUpon>ListaFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="TomaInv\Analisis\data.cs" />
+    <Compile Include="TomaInv\Analisis\dataExFiltro.cs" />
+    <Compile Include="TomaInv\Analisis\dataTerminal.cs" />
     <Compile Include="TomaInv\Analisis\Frm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1047,6 +1049,8 @@
     <Compile Include="TomaInv\Analisis\RecopilarData\IRecopilar.cs" />
     <Compile Include="TomaInv\ConvertirSolicitud\Imp.cs" />
     <Compile Include="TomaInv\data.cs" />
+    <Compile Include="TomaInv\GenerarConteo\IConteo.cs" />
+    <Compile Include="TomaInv\GenerarConteo\Imp.cs" />
     <Compile Include="TomaInv\Generar\data.cs" />
     <Compile Include="TomaInv\Generar\Frm.cs">
       <SubType>Form</SubType>

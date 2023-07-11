@@ -596,5 +596,10 @@ namespace ModInventario
                 Helpers.GenerarMov.AjustePorToma(_seguridad);
             }
         }
+        public void TomaInv_GenerarConteo()
+        {
+            TomaInv.GenerarConteo.IConteo _conteo= new TomaInv.GenerarConteo.Imp();
+            _conteo.GenerarConteo();
+        }
     }
 }

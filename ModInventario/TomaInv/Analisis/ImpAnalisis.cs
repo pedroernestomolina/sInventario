@@ -16,10 +16,14 @@ namespace ModInventario.TomaInv.Analisis
         private bool _procesarIsOk;
         private bool _abandonarIsOk;
         private OOB.LibInventario.TomaInv.Analisis.Ficha _tomaAnalizar;
+        private LibUtilitis.CtrlCB.ICtrl _terminal;
+        private LibUtilitis.CtrlCB.ICtrl _existenciaFiltro;
 
 
         public BindingSource GetSource { get { return _lista.GetDataSource; } }
         public int CntItem { get { return _lista.CntItem; } }
+        public LibUtilitis.CtrlCB.ICtrl Terminal { get { return _terminal; } }
+        public LibUtilitis.CtrlCB.ICtrl ExistenciaFiltro { get { return _existenciaFiltro; } }
 
 
         public ImpAnalisis()
@@ -30,6 +34,8 @@ namespace ModInventario.TomaInv.Analisis
             _lista = new ImpLista();
             _recopilarData = new RecopilarData.ImpRecopilar();
             _tomaAnalizar = null;
+            _terminal = new LibUtilitis.CtrlCB.ImpCB();
+            _existenciaFiltro = new LibUtilitis.CtrlCB.ImpCB();
         }
 
 
@@ -40,6 +46,8 @@ namespace ModInventario.TomaInv.Analisis
             _idTomaAnalizar = "";
             _lista.Inicializa();
             _tomaAnalizar = null;
+            _terminal.Inicializa();
+            _existenciaFiltro.Inicializa();
         }
         private Frm frm;
         public void Inicia()
@@ -102,12 +110,18 @@ namespace ModInventario.TomaInv.Analisis
 
         public void ImprimirAnalisis()
         {
-            if (_lista.GetLista.Count() <= 0)
+            var _lista = new List<TomaInv.Analisis.data>();
+            foreach (var rg in _tomaAnalizar.Items.OrderBy(o => o.descPrd).ToList())
+            {
+                _lista.Add(new TomaInv.Analisis.data(rg));
+            }
+
+            if (_lista.Count() <= 0)
             {
                 Helpers.Msg.Alerta("NO HAY ITEMS");
                 return;
             }
-            var _list = _lista.GetLista.Select(s =>
+            var _list = _lista.Select(s =>
             {
                 var _signo = 0;
                 if (s.Estado == data.enumAnalisis.Sobra)
@@ -158,12 +172,31 @@ namespace ModInventario.TomaInv.Analisis
                 var r01 = Sistema.MyData.TomaInv_Analisis(_idTomaAnalizar);
                 _tomaAnalizar = r01.Entidad;
 
+                var lterm= r01.Entidad.Items.GroupBy(g => g.idTerminal).ToList();
+                var _lDataTerm = new List<dataTerminal>();
+                _lDataTerm.Add(new dataTerminal() { codigo = "", id = "-1", desc = "", idTerminal = -1 });
+                foreach (var xr in lterm)
+                {
+                    var nr = new dataTerminal() { codigo = "", id = xr.Key.ToString().Trim(), desc = "TERMINAL # " + xr.Key.ToString().Trim(), idTerminal = xr.Key };
+                    if (nr.idTerminal > 0)
+                    {
+                        _lDataTerm.Add(nr);
+                    }
+                }
+                _terminal.CargarData(_lDataTerm);
+
+                var _lDataExFiltro = new List<dataExFiltro>();
+                _lDataExFiltro.Add(new dataExFiltro() { codigo = "", id = "-1", desc = "" });
+                _lDataExFiltro.Add(new dataExFiltro() { codigo = "", id = "1", desc = "Con Existencia (+)" });
+                _lDataExFiltro.Add(new dataExFiltro() { codigo = "", id = "2", desc = "Con Existencia (-)" });
+                _existenciaFiltro.CargarData(_lDataExFiltro);
+
                 var _lst = new List<TomaInv.Analisis.data>();
-                foreach (var rg in r01.Entidad.Items.OrderBy(o=>o.descPrd).ToList())
+                foreach (var rg in _tomaAnalizar.Items.OrderBy(o=>o.descPrd).ToList())
                 {
                     _lst.Add(new TomaInv.Analisis.data(rg));
                 }
-                _lista.setDataListar(_lst);
+                _lista.setDataListar(_lst.Where(w=>w.Estado!= data.enumAnalisis.SinDefinir).ToList());
                 return true;
             }
             catch (Exception e)
@@ -180,6 +213,15 @@ namespace ModInventario.TomaInv.Analisis
 
         public void RefrescarVista()
         {
+            if (_existenciaFiltro != null && _existenciaFiltro.GetItem != null && _existenciaFiltro.GetId!="-1")
+            {
+                if (_terminal.GetItem != null && _terminal.GetId != "-1")
+                {
+                    Helpers.Msg.Alerta("DEBES QUITAR LA OPCION DE TERMINAL");
+                    return;
+                }
+            }
+
             try
             {
                 var r01 = Sistema.MyData.TomaInv_Analisis(_idTomaAnalizar);
@@ -188,7 +230,29 @@ namespace ModInventario.TomaInv.Analisis
                 {
                     _lst.Add(new TomaInv.Analisis.data(rg));
                 }
-                _lista.setDataListar(_lst);
+                var _entrada = false;
+                if (_terminal.GetItem != null && _terminal.GetId != "-1")
+                {
+                    _lst = _lst.Where(w => w.itemAnalisis.idTerminal == ((dataTerminal)_terminal.GetItem).idTerminal).ToList();
+                    _lista.setDataListar(_lst.Where(w => w.Estado != data.enumAnalisis.SinDefinir).ToList());
+                    _entrada = true;
+                }
+                if (_existenciaFiltro.GetItem != null && _existenciaFiltro.GetId != "-1")
+                {
+                    if (_existenciaFiltro.GetId == "1")
+                    {
+                        _lista.setDataListar(_lst.Where(w => w.itemAnalisis.fisico > 0m).ToList());
+                    }
+                    else 
+                    {
+                        _lista.setDataListar(_lst.Where(w => w.itemAnalisis.fisico < 0m).ToList());
+                    }
+                    _entrada = true;
+                }
+                if (!_entrada) 
+                {
+                    _lista.setDataListar(_lst.Where(w => w.Estado != data.enumAnalisis.SinDefinir).ToList());
+                }
             }
             catch (Exception e)
             {
@@ -346,6 +410,14 @@ namespace ModInventario.TomaInv.Analisis
                 Helpers.Msg.Error(e.Message);
                 return;
             }
+        }
+        public void setTerminalId(string id)
+        {
+            _terminal.setFichaById(id);
+        }
+        public void setExistenciaFiltroId(string id)
+        {
+            _existenciaFiltro.setFichaById(id);
         }
     }
 }

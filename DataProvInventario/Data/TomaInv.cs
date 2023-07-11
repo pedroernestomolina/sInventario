@@ -117,6 +117,7 @@ namespace DataProvInventario.Data
                                 costoMonLocal = s.costoMonLocal,
                                 contEmpCompra = s.contEmpCompra,
                                 contEmpInv= s.contEmpInv,
+                                idTerminal= s.idTerminal.HasValue ? s.idTerminal.Value: 0,
                                 descEmpCompra= s.descEmpCompra,
                                 descEmpInv = s.descEmpInv,
                                 estatusDivisa = s.estatusDivisa,
@@ -375,6 +376,54 @@ namespace DataProvInventario.Data
                 motivo = ficha.motivo,
             };
             var r01 = MyData.TomaInv_AnalizarToma_SetMotivo(fichaDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            return rt;
+        }
+
+
+        public OOB.ResultadoEntidad<int> 
+            TomaInv_VerificaSiHayUnaTomaActiva()
+        {
+            var rt = new OOB.ResultadoEntidad<int>(); 
+            var r01 = MyData.TomaInv_VerificaSiHayUnaTomaActiva();
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            rt.Entidad = r01.Entidad;
+            return rt;
+        }
+
+        public OOB.Resultado 
+            TomaInv_GenerarConteo(OOB.LibInventario.TomaInv.Solicitud.Generar.Ficha ficha)
+        {
+            var rt = new OOB.Resultado();
+            var lstPrd = new List<DtoLibInventario.TomaInv.Solicitud.Generar.PrdToma>();
+            foreach (var r in ficha.ProductosTomaInv)
+            {
+                var nr = new DtoLibInventario.TomaInv.Solicitud.Generar.PrdToma()
+                {
+                    idPrd = r.IdPrd,
+                };
+                lstPrd.Add(nr);
+            }
+            var fichaDTO = new DtoLibInventario.TomaInv.Solicitud.Generar.Ficha()
+            {
+                autorizadoPor = ficha.autorizadoPor,
+                cantItems = ficha.cantItems,
+                codigoDeposito = ficha.codigoDeposito,
+                codigoSucursal = ficha.codigoSucursal,
+                descDeposito = ficha.descDeposito,
+                descSucursal = ficha.descSucursal,
+                idDeposito = ficha.idDeposito,
+                idSucursal = ficha.idSucursal,
+                motivo = ficha.motivo,
+                ProductosTomarInv = lstPrd,
+            };
+            var r01 = MyData.TomaInv_GenerarConteo(fichaDTO);
             if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
             {
                 throw new Exception(r01.Mensaje);

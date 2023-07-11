@@ -495,6 +495,7 @@ namespace ModInventario.src.MovInventario.Traslado
                 throw new Exception(r01.Mensaje);
             }
             NotificarDocumentoGenerado(r01.Auto);
+            this.NotificarDocGenerado -= VisualizarDocGenerado;
             _procesarIsOk = true;
             limpiarTodo();
         }

@@ -9,9 +9,15 @@ namespace ModInventario.TomaInv.ConvertirSolicitud
 {
     public class Imp
     {
+        private bool _convertirIsOk;
+
+
+        public bool ConvertirIsOk { get { return _convertirIsOk; } }
+
 
         public Imp()
         {
+            _convertirIsOk = false;
         }
 
         public void Convertir() 
@@ -26,6 +32,7 @@ namespace ModInventario.TomaInv.ConvertirSolicitud
                 }
                 var autoSolicitud = r01.Entidad;
                 var r02 = Sistema.MyData.TomaInv_ConvertirSolicitud_EnToma(autoSolicitud, Sistema.Negocio.CodigoEmpresa);
+                _convertirIsOk = true;
                 Helpers.Msg.Alerta("SOLICITUD ENCONTRADA, VERIFIQUE POR FAVOR");
             }
             catch (Exception e)

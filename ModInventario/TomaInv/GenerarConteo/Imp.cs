@@ -9,12 +9,20 @@ namespace ModInventario.TomaInv.GenerarConteo
 {
     public class Imp: IConteo
     {
+        private bool _generarConteoIsOk;
+
+
+        public bool GenerarConteoIsOk { get { return _generarConteoIsOk; } }
+
+
         public Imp()
         {
+            _generarConteoIsOk = false;
         }
 
         public void GenerarConteo()
         {
+            _generarConteoIsOk = false;
             if (!verificarExistenciaTomaPendiente()) 
             {
                 generaConteo();
@@ -81,6 +89,7 @@ namespace ModInventario.TomaInv.GenerarConteo
                     ProductosTomaInv = _lstPrd,
                 };
                 var r03 = Sistema.MyData.TomaInv_GenerarConteo(ficha);
+                _generarConteoIsOk = true;
                 Helpers.Msg.OK("CONTEO GENERADO EXITOSAMENTE");
             }
             catch (Exception e)

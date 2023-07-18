@@ -57,12 +57,14 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.BT_EDITAR = new System.Windows.Forms.Button();
+            this.BT_NO_HAY = new System.Windows.Forms.Button();
             this.panel14 = new System.Windows.Forms.Panel();
-            this.BT_TOMA_ELIMINAR = new System.Windows.Forms.Button();
+            this.BT_EDITAR = new System.Windows.Forms.Button();
             this.panel15 = new System.Windows.Forms.Panel();
-            this.BT_IMPRIMIR = new System.Windows.Forms.Button();
+            this.BT_TOMA_ELIMINAR = new System.Windows.Forms.Button();
             this.panel16 = new System.Windows.Forms.Panel();
+            this.BT_IMPRIMIR = new System.Windows.Forms.Button();
+            this.panel22 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel11 = new System.Windows.Forms.Panel();
@@ -93,6 +95,7 @@
             this.panel9.SuspendLayout();
             this.panel14.SuspendLayout();
             this.panel15.SuspendLayout();
+            this.panel16.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.panel11.SuspendLayout();
@@ -428,6 +431,7 @@
             this.tableLayoutPanel3.Controls.Add(this.panel14, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.panel15, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.panel16, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.panel22, 0, 4);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
@@ -446,7 +450,7 @@
             // 
             // panel9
             // 
-            this.panel9.Controls.Add(this.BT_EDITAR);
+            this.panel9.Controls.Add(this.BT_NO_HAY);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel9.Location = new System.Drawing.Point(1, 1);
             this.panel9.Margin = new System.Windows.Forms.Padding(1);
@@ -455,6 +459,33 @@
             this.panel9.Size = new System.Drawing.Size(42, 44);
             this.panel9.TabIndex = 0;
             this.toolTip1.SetToolTip(this.panel9, "Indicar Motivo ");
+            // 
+            // BT_NO_HAY
+            // 
+            this.BT_NO_HAY.BackgroundImage = global::ModInventario.Properties.Resources.bt_caja_vacia_24;
+            this.BT_NO_HAY.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.BT_NO_HAY.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BT_NO_HAY.FlatAppearance.BorderSize = 0;
+            this.BT_NO_HAY.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BT_NO_HAY.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BT_NO_HAY.Location = new System.Drawing.Point(4, 4);
+            this.BT_NO_HAY.Name = "BT_NO_HAY";
+            this.BT_NO_HAY.Size = new System.Drawing.Size(34, 36);
+            this.BT_NO_HAY.TabIndex = 12;
+            this.toolTip1.SetToolTip(this.BT_NO_HAY, "Existencia En Cero (0)");
+            this.BT_NO_HAY.UseVisualStyleBackColor = true;
+            this.BT_NO_HAY.Click += new System.EventHandler(this.BT_NO_HAY_Click);
+            // 
+            // panel14
+            // 
+            this.panel14.Controls.Add(this.BT_EDITAR);
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel14.Location = new System.Drawing.Point(1, 47);
+            this.panel14.Margin = new System.Windows.Forms.Padding(1);
+            this.panel14.Name = "panel14";
+            this.panel14.Padding = new System.Windows.Forms.Padding(4);
+            this.panel14.Size = new System.Drawing.Size(42, 44);
+            this.panel14.TabIndex = 1;
             // 
             // BT_EDITAR
             // 
@@ -467,21 +498,20 @@
             this.BT_EDITAR.Location = new System.Drawing.Point(4, 4);
             this.BT_EDITAR.Name = "BT_EDITAR";
             this.BT_EDITAR.Size = new System.Drawing.Size(34, 36);
-            this.BT_EDITAR.TabIndex = 8;
+            this.BT_EDITAR.TabIndex = 10;
             this.toolTip1.SetToolTip(this.BT_EDITAR, "Indicar Motivo");
             this.BT_EDITAR.UseVisualStyleBackColor = true;
             this.BT_EDITAR.Click += new System.EventHandler(this.BT_EDITAR_Click);
             // 
-            // panel14
+            // panel15
             // 
-            this.panel14.Controls.Add(this.BT_TOMA_ELIMINAR);
-            this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel14.Location = new System.Drawing.Point(1, 47);
-            this.panel14.Margin = new System.Windows.Forms.Padding(1);
-            this.panel14.Name = "panel14";
-            this.panel14.Padding = new System.Windows.Forms.Padding(4);
-            this.panel14.Size = new System.Drawing.Size(42, 44);
-            this.panel14.TabIndex = 1;
+            this.panel15.Controls.Add(this.BT_TOMA_ELIMINAR);
+            this.panel15.Location = new System.Drawing.Point(1, 93);
+            this.panel15.Margin = new System.Windows.Forms.Padding(1);
+            this.panel15.Name = "panel15";
+            this.panel15.Padding = new System.Windows.Forms.Padding(4);
+            this.panel15.Size = new System.Drawing.Size(42, 44);
+            this.panel15.TabIndex = 2;
             // 
             // BT_TOMA_ELIMINAR
             // 
@@ -494,20 +524,21 @@
             this.BT_TOMA_ELIMINAR.Location = new System.Drawing.Point(4, 4);
             this.BT_TOMA_ELIMINAR.Name = "BT_TOMA_ELIMINAR";
             this.BT_TOMA_ELIMINAR.Size = new System.Drawing.Size(34, 36);
-            this.BT_TOMA_ELIMINAR.TabIndex = 8;
+            this.BT_TOMA_ELIMINAR.TabIndex = 10;
             this.toolTip1.SetToolTip(this.BT_TOMA_ELIMINAR, "Eliminar Conteo ");
             this.BT_TOMA_ELIMINAR.UseVisualStyleBackColor = true;
             this.BT_TOMA_ELIMINAR.Click += new System.EventHandler(this.BT_TOMA_ELIMINAR_Click);
             // 
-            // panel15
+            // panel16
             // 
-            this.panel15.Controls.Add(this.BT_IMPRIMIR);
-            this.panel15.Location = new System.Drawing.Point(1, 93);
-            this.panel15.Margin = new System.Windows.Forms.Padding(1);
-            this.panel15.Name = "panel15";
-            this.panel15.Padding = new System.Windows.Forms.Padding(4);
-            this.panel15.Size = new System.Drawing.Size(42, 44);
-            this.panel15.TabIndex = 2;
+            this.panel16.Controls.Add(this.BT_IMPRIMIR);
+            this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel16.Location = new System.Drawing.Point(1, 139);
+            this.panel16.Margin = new System.Windows.Forms.Padding(1);
+            this.panel16.Name = "panel16";
+            this.panel16.Padding = new System.Windows.Forms.Padding(4);
+            this.panel16.Size = new System.Drawing.Size(42, 44);
+            this.panel16.TabIndex = 3;
             // 
             // BT_IMPRIMIR
             // 
@@ -520,20 +551,20 @@
             this.BT_IMPRIMIR.Location = new System.Drawing.Point(4, 4);
             this.BT_IMPRIMIR.Name = "BT_IMPRIMIR";
             this.BT_IMPRIMIR.Size = new System.Drawing.Size(34, 36);
-            this.BT_IMPRIMIR.TabIndex = 8;
+            this.BT_IMPRIMIR.TabIndex = 10;
             this.toolTip1.SetToolTip(this.BT_IMPRIMIR, "Imprimir Resultados");
             this.BT_IMPRIMIR.UseVisualStyleBackColor = true;
             this.BT_IMPRIMIR.Click += new System.EventHandler(this.BT_IMPRIMIR_Click);
             // 
-            // panel16
+            // panel22
             // 
-            this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel16.Location = new System.Drawing.Point(1, 139);
-            this.panel16.Margin = new System.Windows.Forms.Padding(1);
-            this.panel16.Name = "panel16";
-            this.panel16.Padding = new System.Windows.Forms.Padding(4);
-            this.panel16.Size = new System.Drawing.Size(42, 44);
-            this.panel16.TabIndex = 3;
+            this.panel22.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel22.Location = new System.Drawing.Point(1, 185);
+            this.panel22.Margin = new System.Windows.Forms.Padding(1);
+            this.panel22.Name = "panel22";
+            this.panel22.Padding = new System.Windows.Forms.Padding(2);
+            this.panel22.Size = new System.Drawing.Size(42, 42);
+            this.panel22.TabIndex = 4;
             // 
             // panel4
             // 
@@ -658,6 +689,7 @@
             this.panel9.ResumeLayout(false);
             this.panel14.ResumeLayout(false);
             this.panel15.ResumeLayout(false);
+            this.panel16.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.panel11.ResumeLayout(false);
@@ -694,9 +726,6 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Panel panel15;
-        private System.Windows.Forms.Button BT_EDITAR;
-        private System.Windows.Forms.Button BT_TOMA_ELIMINAR;
-        private System.Windows.Forms.Button BT_IMPRIMIR;
         private System.Windows.Forms.Panel panel16;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Panel panel17;
@@ -709,5 +738,10 @@
         private System.Windows.Forms.ComboBox CB_TERMINAL;
         private System.Windows.Forms.ComboBox CB_EXISTENCIA;
         private System.Windows.Forms.Button BT_REFRESCAR;
+        private System.Windows.Forms.Button BT_NO_HAY;
+        private System.Windows.Forms.Button BT_EDITAR;
+        private System.Windows.Forms.Button BT_TOMA_ELIMINAR;
+        private System.Windows.Forms.Button BT_IMPRIMIR;
+        private System.Windows.Forms.Panel panel22;
     }
 }

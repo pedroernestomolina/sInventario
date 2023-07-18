@@ -1790,6 +1790,7 @@
     <Content Include="Imagenes\bt_asignar.png" />
     <Content Include="Imagenes\bt_borrar.png" />
     <Content Include="Imagenes\bt_buscar.png" />
+    <Content Include="Imagenes\bt_caja_vacia_24.png" />
     <Content Include="Imagenes\bt_campana.png" />
     <Content Include="Imagenes\bt_configuracion.png" />
     <Content Include="Imagenes\bt_consulta.png" />
@@ -1870,6 +1871,7 @@
     <Content Include="Imagenes\TOOLS.ico" />
     <Content Include="Imagenes\transferencia.png" />
     <Content Include="Imagenes\warehouse.png" />
+    <None Include="Resources\bt_caja_vacia_24.png" />
     <None Include="Resources\bt_editar_32_2 %281%29.png" />
     <None Include="Resources\bt_editar_32_2 %283%29.png" />
     <None Include="Resources\bt_editar_32_2 %282%29.png" />

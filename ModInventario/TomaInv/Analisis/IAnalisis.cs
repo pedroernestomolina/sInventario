@@ -24,5 +24,7 @@ namespace ModInventario.TomaInv.Analisis
         void EditarItem();
         void setTerminalId(string id);
         void setExistenciaFiltroId(string id);
+
+        void NoHayEnExistencia();
     }
 }

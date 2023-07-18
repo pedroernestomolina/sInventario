@@ -174,6 +174,7 @@ namespace ModInventario.TomaInv.Analisis
         private void RefrescarVista()
         {
             _controlador.RefrescarVista();
+            CB_TERMINAL.SelectedValue = _controlador.Terminal.GetId;
             L_ITEMS.Text = "Items Encontrados: " + _controlador.CntItem.ToString("n0");
         }
         private void EditarItem()
@@ -231,5 +232,15 @@ namespace ModInventario.TomaInv.Analisis
                 _controlador.setExistenciaFiltroId(CB_EXISTENCIA.SelectedValue.ToString());
             }
         }
+
+        private void BT_NO_HAY_Click(object sender, EventArgs e)
+        {
+            NoHayEnExistencia();
+        }
+        private void NoHayEnExistencia()
+        {
+            _controlador.NoHayEnExistencia();
+            DGV.Refresh();
+         }
     }
 }

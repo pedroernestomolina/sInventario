@@ -20,6 +20,5 @@ namespace ModInventario.TomaInv.Analisis
         void setDataListar(List<data> lst);
         void setEliminarItems(IEnumerable<data> lst);
         void setMarcarTodas(bool m);
-
     }
 }

@@ -9,7 +9,7 @@ namespace ModInventario.TomaInv.Analisis
 {
     public class data
     {
-        public enum enumAnalisis { SinDefinir = -1, OK = 0, Falta, Sobra };
+        public enum enumAnalisis { SinDefinir = -1, OK = 0, Falta, Sobra, NoHay };
         private decimal _diferencia;
         private OOB.LibInventario.TomaInv.Analisis.Item _itemAnalisis;
         private enumAnalisis _analisis;
@@ -90,8 +90,14 @@ namespace ModInventario.TomaInv.Analisis
             var _ex = (_itemAnalisis.fisico + _itemAnalisis.cntVenta + _itemAnalisis.cntCompra + _itemAnalisis.cntMovInv+ _itemAnalisis.cntPorDespachar);
             if (_itemAnalisis.conteo.HasValue)
             {
+                if (_itemAnalisis.conteo.Value < 0m)
+                {
+                    _analisis = enumAnalisis.NoHay;
+                    return;
+                }
+
                 _diferencia = _ex - _itemAnalisis.conteo.Value;
-                if (_diferencia == 0m)
+                if (_diferencia == 0m && _itemAnalisis.conteo.Value>0m)
                 {
                     _analisis = enumAnalisis.OK;
                 }
@@ -99,7 +105,7 @@ namespace ModInventario.TomaInv.Analisis
                 {
                     _analisis = enumAnalisis.Falta;
                 }
-                else
+                else if (_diferencia < 0)
                 {
                     _analisis = enumAnalisis.Sobra;
                 }
@@ -124,6 +130,10 @@ namespace ModInventario.TomaInv.Analisis
         public void setMotivo(string desc)
         {
             _itemAnalisis.motivo = desc;
+        }
+        public void setConteoNoHay()
+        {
+            _analisis = enumAnalisis.NoHay;
         }
     }
 }

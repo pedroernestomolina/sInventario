@@ -9,6 +9,7 @@ namespace ModInventario.TomaInv.GenerarConteo
 {
     public interface IConteo
     {
+        bool GenerarConteoIsOk { get; }
         void GenerarConteo();
     }
 }

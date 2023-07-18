@@ -600,6 +600,15 @@ namespace ModInventario
         {
             TomaInv.GenerarConteo.IConteo _conteo= new TomaInv.GenerarConteo.Imp();
             _conteo.GenerarConteo();
+            if (_conteo.GenerarConteoIsOk) 
+            {
+                var imp = new TomaInv.ConvertirSolicitud.Imp();
+                imp.Convertir();
+                if (imp.ConvertirIsOk) 
+                {
+                    TomaInv_AdmDocumentos();
+                }
+            }
         }
     }
 }

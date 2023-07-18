@@ -382,6 +382,22 @@ namespace DataProvInventario.Data
             }
             return rt;
         }
+        public OOB.Resultado
+            TomaInv_AnalizarToma_NoHayExistencia(OOB.LibInventario.TomaInv.Analisis.NoHayExistencia.Ficha ficha)
+        {
+            var rt = new OOB.Resultado();
+            var fichaDTO = new DtoLibInventario.TomaInv.Analisis.NoHayExistencia.Ficha ()
+            {
+                idPrd = ficha.idPrd,
+                idTomaInv  = ficha.idTomaInv,
+            };
+            var r01 = MyData.TomaInv_AnalizarToma_NoHayExistencia(fichaDTO);
+            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            {
+                throw new Exception(r01.Mensaje);
+            }
+            return rt;
+        }
 
 
         public OOB.ResultadoEntidad<int> 

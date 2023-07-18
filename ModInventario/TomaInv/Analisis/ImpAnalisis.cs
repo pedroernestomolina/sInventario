@@ -110,8 +110,10 @@ namespace ModInventario.TomaInv.Analisis
 
         public void ImprimirAnalisis()
         {
+            var r01 = Sistema.MyData.TomaInv_Analisis(_idTomaAnalizar);
+
             var _lista = new List<TomaInv.Analisis.data>();
-            foreach (var rg in _tomaAnalizar.Items.OrderBy(o => o.descPrd).ToList())
+            foreach (var rg in r01.Entidad.Items.OrderBy(o => o.descPrd).ToList())
             {
                 _lista.Add(new TomaInv.Analisis.data(rg));
             }
@@ -225,6 +227,20 @@ namespace ModInventario.TomaInv.Analisis
             try
             {
                 var r01 = Sistema.MyData.TomaInv_Analisis(_idTomaAnalizar);
+
+                var lterm = r01.Entidad.Items.GroupBy(g => g.idTerminal).ToList();
+                var _lDataTerm = new List<dataTerminal>();
+                _lDataTerm.Add(new dataTerminal() { codigo = "", id = "-1", desc = "", idTerminal = -1 });
+                foreach (var xr in lterm)
+                {
+                    var nr = new dataTerminal() { codigo = "", id = xr.Key.ToString().Trim(), desc = "TERMINAL # " + xr.Key.ToString().Trim(), idTerminal = xr.Key };
+                    if (nr.idTerminal > 0)
+                    {
+                        _lDataTerm.Add(nr);
+                    }
+                }
+                _terminal.CargarData(_lDataTerm);
+
                 var _lst = new List<TomaInv.Analisis.data>();
                 foreach (var rg in r01.Entidad.Items.OrderBy(o => o.descPrd).ToList())
                 {
@@ -418,6 +434,40 @@ namespace ModInventario.TomaInv.Analisis
         public void setExistenciaFiltroId(string id)
         {
             _existenciaFiltro.setFichaById(id);
+        }
+
+
+        public void NoHayEnExistencia()
+        {
+            if (_lista.ItemActual != null)
+            {
+                if (_lista.ItemActual.Estado!= data.enumAnalisis.SinDefinir) 
+                {
+                    Helpers.Msg.Alerta("PRODUCTO YA TIENE UN CONTEO REGISTRADO");
+                    return;
+                }
+
+                var ms = "Estas Seguro de No Haber Existencia De Este Producto ?";
+                var rst = MessageBox.Show(ms, "*** ALERTA ***", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (rst == DialogResult.Yes)
+                {
+                    try
+                    {
+                        var item = _lista.ItemActual;
+                        var fichaOOB = new OOB.LibInventario.TomaInv.Analisis.NoHayExistencia.Ficha()
+                        {
+                            idPrd = item.itemAnalisis.idPrd,
+                            idTomaInv = _idTomaAnalizar,
+                        };
+                        var r01 = Sistema.MyData.TomaInv_AnalizarToma_NoHayExistencia(fichaOOB);
+                        item.setConteoNoHay();
+                    }
+                    catch (Exception e)
+                    {
+                        Helpers.Msg.Error(e.Message);
+                    }
+                }
+            }
         }
     }
 }

@@ -220,11 +220,11 @@ namespace ModInventario.src
 
         public Reportes.Filtros.IFiltros CreateInstancia_RepMaestroInventario_Filtros()
         {
-            return null;
+            return new Reportes.Filtros.MaestroExistencia.Filtros();
         }
         public Reporte.IReporte CreateInstancia_RepMaestroInventario()
         {
-            return null;
+            return new Reportes.Filtros.MaestroExistencia.GestionRep();
         }
 
         public Reportes.Filtros.IFiltros CreateInstancia_RepMaestroExistenciaDetalle_Filtros()
@@ -261,11 +261,11 @@ namespace ModInventario.src
 
         public Reportes.Filtros.IFiltros CreateInstancia_RepKardex_Filtros()
         {
-            return null;
+            return new Reportes.Filtros.Kardex.FiltrosModoSucursal();
         }
         public Reporte.IReporte CreateInstancia_RepKardex()
         {
-            return null;
+            return new Reportes.Filtros.Kardex.GestionRep();
         }
 
         public Reportes.Filtros.IFiltros CreateInstancia_RepKardexResumenMov_Filtros()
@@ -279,12 +279,13 @@ namespace ModInventario.src
 
         public Reportes.Filtros.IFiltros CreateInstancia_RepValorizacionInventario_Filtros()
         {
-            return null;
+            return new Reportes.Filtros.Valorizacion.Filtros();
         }
         public Reporte.IReporte CreateInstancia_RepValorizacionInventario()
         {
-            return null;
+            return new Reportes.Filtros.Valorizacion.GestionRep();
         }
+
 
         public Reportes.Filtros.IFiltros CreateInstancia_RepRelacionCompraVenta_Filtros()
         {

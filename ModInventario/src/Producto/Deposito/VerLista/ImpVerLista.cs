@@ -137,6 +137,7 @@ namespace ModInventario.src.Producto.Deposito.VerLista
         {
             if (ItemActual != null)
             {
+                if (_gTCS == null) { return; }
                 _gTCS.Inicializa();
                 _gTCS.setIdPrd(_autoPrd);
                 _gTCS.setIdDeposito(ItemActual.IdDep);

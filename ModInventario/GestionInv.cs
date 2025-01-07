@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,10 +10,8 @@ using System.Windows.Forms;
 
 namespace ModInventario
 {
-
     public class GestionInv
     {
-
         private Visor.Existencia.Gestion _gestionVisorExistencia;
         private Visor.CostoEdad.Gestion _gestionVisorCostoEdad;
         private Visor.CostoExistencia.Gestion _gestionVisorCostoExistencia;
@@ -68,6 +68,7 @@ namespace ModInventario
 
         public string Version { get { return "Ver. 2 - " + Application.ProductVersion; } }
         public string Host { get { return Sistema.MotorDatos.GetHost; } }
+        public System.Drawing.Image EmpresaLogo { get { return logo(); } }
         public string Usuario
         {
             get 
@@ -609,6 +610,20 @@ namespace ModInventario
                     TomaInv_AdmDocumentos();
                 }
             }
+        }
+
+
+        private System.Drawing.Image logo()
+        {
+            if (Sistema.Negocio.logo.Length > 0)
+            {
+                using (MemoryStream ms = new MemoryStream(Sistema.Negocio.logo))
+                {
+                    Image image = Image.FromStream(ms);
+                    return image;
+                }
+            }
+            return null;
         }
     }
 }

@@ -48,6 +48,7 @@ namespace DataProvInventario.Data
                 DireccionFiscal = s.DireccionFiscal,
                 Nombre = s.Nombre,
                 Telefono = s.Telefono,
+                logo=s.logo,
             };
             if (s.extra != null)
             {

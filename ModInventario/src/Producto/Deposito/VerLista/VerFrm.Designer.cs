@@ -661,7 +661,7 @@
             this.BT_TALLA_COLOR_SABOR.Name = "BT_TALLA_COLOR_SABOR";
             this.BT_TALLA_COLOR_SABOR.Size = new System.Drawing.Size(35, 59);
             this.BT_TALLA_COLOR_SABOR.TabIndex = 9;
-            this.toolTip1.SetToolTip(this.BT_TALLA_COLOR_SABOR, "Imprimir Reporte");
+            this.toolTip1.SetToolTip(this.BT_TALLA_COLOR_SABOR, "Ver Depóistos Por Talla / Color / Sabor");
             this.BT_TALLA_COLOR_SABOR.UseVisualStyleBackColor = true;
             this.BT_TALLA_COLOR_SABOR.Click += new System.EventHandler(this.BT_TALLA_COLOR_SABOR_Click);
             // 

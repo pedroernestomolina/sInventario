@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace OOB.LibInventario.Empresa.Data
 {
-    
     public class Ficha
     {
-
         public string Nombre { get; set; }
         public string CiRif { get; set; }
         public string DireccionFiscal { get; set; }
@@ -18,8 +16,7 @@ namespace OOB.LibInventario.Empresa.Data
         public string CodigoEmpresa { get; set; }
         public string CodigoDepositoPrincipal { get; set; }
         public bool EsEmpresaPrincipal { get { return CodigoEmpresa == "01"; } }
-
-
+        public byte[] logo { get; set; }
         public Ficha()
         {
             Nombre = "";
@@ -28,8 +25,7 @@ namespace OOB.LibInventario.Empresa.Data
             Telefono = "";
             CodigoEmpresa = "";
             CodigoDepositoPrincipal = "";
+            logo = new byte[] { };
         }
-
     }
-
 }

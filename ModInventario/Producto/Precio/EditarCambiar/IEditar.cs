@@ -7,14 +7,10 @@ using System.Threading.Tasks;
 
 namespace ModInventario.Producto.Precio.EditarCambiar
 {
-
     public interface IEditar : IGestion, Gestion.IAbandonar, Gestion.IProcesar
     {
-
         bool EditarPrecioIsOk { get; }
-
         void setIdItemEditar(string idAuto);
-
+        void setListaProductosSeleccionadosCambiaPrecio(object productosSeleccionados);
     }
-
 }

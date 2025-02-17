@@ -7,16 +7,14 @@ using System.Threading.Tasks;
 
 namespace OOB.LibInventario.Precio.Editar
 {
-    
     public class Ficha
     {
-
         public string autoProducto { get; set; }
         public string estacion { get; set; }
         public string autoUsuario { get; set; }
         public string codigoUsuario { get; set; }
         public string nombreUsuario { get; set; }
-
+        //
         public FichaPrecio precio_1 { get; set; }
         public FichaPrecio precio_2 { get; set; }
         public FichaPrecio precio_3 { get; set; }
@@ -31,8 +29,9 @@ namespace OOB.LibInventario.Precio.Editar
         public FichaPrecio dsp_3 { get; set; }
         public FichaPrecio dsp_4 { get; set; }
         public List<FichaHistorica> historia { get; set; }
-
-
+        //
+        public List<string> Presentaciones { get; set; }
+        //
         public Ficha()
         {
             autoProducto = "";
@@ -53,9 +52,8 @@ namespace OOB.LibInventario.Precio.Editar
             dsp_2 = null;
             dsp_3 = null;
             dsp_4 = null;
-            historia = null; 
+            historia = null;
+            Presentaciones = new List<string>();
         }
-
     }
-
 }

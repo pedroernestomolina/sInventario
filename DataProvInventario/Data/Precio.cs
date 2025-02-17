@@ -244,7 +244,7 @@ namespace DataProvInventario.Data
             PrecioProducto_Actualizar(OOB.LibInventario.Precio.Editar.Ficha ficha)
         {
             var rt = new OOB.Resultado();
-
+            //
             var fichaDTO = new DtoLibInventario.Precio.Editar.Ficha()
             {
                 autoProducto = ficha.autoProducto,
@@ -252,6 +252,7 @@ namespace DataProvInventario.Data
                 codigoUsuario = ficha.codigoUsuario,
                 estacion = ficha.estacion,
                 nombreUsuario = ficha.nombreUsuario,
+                Presentaciones = ficha.Presentaciones,
             };
             var historia = new List<DtoLibInventario.Precio.Editar.FichaHistorica>();
             if (ficha.historia != null) 
@@ -434,7 +435,7 @@ namespace DataProvInventario.Data
                 rt.Result = OOB.Enumerados.EnumResult.isError;
                 return rt;
             }
-
+            //
             return rt;
         }
     }

@@ -302,5 +302,8 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoAdministrativo
                 Helpers.Msg.Error(e.Message);
             }
         }
+        public void setListaProductosSeleccionadosCambiaPrecio(object productosSeleccionados)
+        {
+        }
     }
 }

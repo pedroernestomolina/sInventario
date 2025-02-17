@@ -950,6 +950,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 codigoUsuario = Sistema.UsuarioP.codigoUsu,
                 estacion = Environment.MachineName,
                 nombreUsuario = Sistema.UsuarioP.nombreUsu,
+                Presentaciones = _listaProductosSeleccionadosCambioPrecio,
             };
             var p1 = new OOB.LibInventario.Precio.Editar.FichaPrecio()
             {
@@ -1349,7 +1350,11 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 Guardar();
             }
         }
-
+        private List<string> _listaProductosSeleccionadosCambioPrecio;
+        public void setListaProductosSeleccionadosCambiaPrecio(object productosSeleccionados)
+        {
+            _listaProductosSeleccionadosCambioPrecio = (List<string>)productosSeleccionados;
+        }
     }
 
 }

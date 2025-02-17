@@ -2005,7 +2005,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.5514F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.59533F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.75875F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 205F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 208F));
             this.tableLayoutPanel4.Controls.Add(this.panel63, 5, 1);
             this.tableLayoutPanel4.Controls.Add(this.panel62, 4, 1);
             this.tableLayoutPanel4.Controls.Add(this.panel61, 3, 1);
@@ -2033,11 +2033,11 @@
             // 
             this.panel63.Controls.Add(this.L_FECHA_ULT_ACT);
             this.panel63.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel63.Location = new System.Drawing.Point(353, 41);
+            this.panel63.Location = new System.Drawing.Point(351, 41);
             this.panel63.Margin = new System.Windows.Forms.Padding(1);
             this.panel63.Name = "panel63";
             this.panel63.Padding = new System.Windows.Forms.Padding(2);
-            this.panel63.Size = new System.Drawing.Size(64, 34);
+            this.panel63.Size = new System.Drawing.Size(63, 34);
             this.panel63.TabIndex = 12;
             // 
             // L_FECHA_ULT_ACT
@@ -2046,7 +2046,7 @@
             this.L_FECHA_ULT_ACT.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_FECHA_ULT_ACT.Location = new System.Drawing.Point(2, 2);
             this.L_FECHA_ULT_ACT.Name = "L_FECHA_ULT_ACT";
-            this.L_FECHA_ULT_ACT.Size = new System.Drawing.Size(60, 30);
+            this.L_FECHA_ULT_ACT.Size = new System.Drawing.Size(59, 30);
             this.L_FECHA_ULT_ACT.TabIndex = 1;
             this.L_FECHA_ULT_ACT.Text = "99/99/9999";
             this.L_FECHA_ULT_ACT.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2055,11 +2055,11 @@
             // 
             this.panel62.Controls.Add(this.L_COSTO_UNIDAD);
             this.panel62.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel62.Location = new System.Drawing.Point(262, 41);
+            this.panel62.Location = new System.Drawing.Point(261, 41);
             this.panel62.Margin = new System.Windows.Forms.Padding(1);
             this.panel62.Name = "panel62";
             this.panel62.Padding = new System.Windows.Forms.Padding(2);
-            this.panel62.Size = new System.Drawing.Size(89, 34);
+            this.panel62.Size = new System.Drawing.Size(88, 34);
             this.panel62.TabIndex = 11;
             // 
             // L_COSTO_UNIDAD
@@ -2068,7 +2068,7 @@
             this.L_COSTO_UNIDAD.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_COSTO_UNIDAD.Location = new System.Drawing.Point(2, 2);
             this.L_COSTO_UNIDAD.Name = "L_COSTO_UNIDAD";
-            this.L_COSTO_UNIDAD.Size = new System.Drawing.Size(85, 30);
+            this.L_COSTO_UNIDAD.Size = new System.Drawing.Size(84, 30);
             this.L_COSTO_UNIDAD.TabIndex = 0;
             this.L_COSTO_UNIDAD.Text = "99,999,999,999.99";
             this.L_COSTO_UNIDAD.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2081,7 +2081,7 @@
             this.panel61.Margin = new System.Windows.Forms.Padding(1);
             this.panel61.Name = "panel61";
             this.panel61.Padding = new System.Windows.Forms.Padding(2);
-            this.panel61.Size = new System.Drawing.Size(55, 34);
+            this.panel61.Size = new System.Drawing.Size(54, 34);
             this.panel61.TabIndex = 10;
             // 
             // L_TASA_IVA
@@ -2090,7 +2090,7 @@
             this.L_TASA_IVA.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.L_TASA_IVA.Location = new System.Drawing.Point(2, 2);
             this.L_TASA_IVA.Name = "L_TASA_IVA";
-            this.L_TASA_IVA.Size = new System.Drawing.Size(51, 30);
+            this.L_TASA_IVA.Size = new System.Drawing.Size(50, 30);
             this.L_TASA_IVA.TabIndex = 1;
             this.L_TASA_IVA.Text = "EXENTO";
             this.L_TASA_IVA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2165,12 +2165,12 @@
             // 
             this.panel57.Controls.Add(this.BT_MODO_PRECIO);
             this.panel57.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel57.Location = new System.Drawing.Point(419, 1);
+            this.panel57.Location = new System.Drawing.Point(416, 1);
             this.panel57.Margin = new System.Windows.Forms.Padding(1);
             this.panel57.Name = "panel57";
             this.panel57.Padding = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel4.SetRowSpan(this.panel57, 2);
-            this.panel57.Size = new System.Drawing.Size(206, 74);
+            this.panel57.Size = new System.Drawing.Size(209, 74);
             this.panel57.TabIndex = 6;
             // 
             // BT_MODO_PRECIO
@@ -2182,7 +2182,7 @@
             this.BT_MODO_PRECIO.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BT_MODO_PRECIO.Location = new System.Drawing.Point(2, 2);
             this.BT_MODO_PRECIO.Name = "BT_MODO_PRECIO";
-            this.BT_MODO_PRECIO.Size = new System.Drawing.Size(202, 70);
+            this.BT_MODO_PRECIO.Size = new System.Drawing.Size(205, 70);
             this.BT_MODO_PRECIO.TabIndex = 1;
             this.BT_MODO_PRECIO.UseVisualStyleBackColor = true;
             this.BT_MODO_PRECIO.Click += new System.EventHandler(this.BT_MODO_PRECIO_Click);
@@ -2191,11 +2191,11 @@
             // 
             this.panel56.Controls.Add(this.label14);
             this.panel56.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel56.Location = new System.Drawing.Point(353, 1);
+            this.panel56.Location = new System.Drawing.Point(351, 1);
             this.panel56.Margin = new System.Windows.Forms.Padding(1);
             this.panel56.Name = "panel56";
             this.panel56.Padding = new System.Windows.Forms.Padding(2);
-            this.panel56.Size = new System.Drawing.Size(64, 38);
+            this.panel56.Size = new System.Drawing.Size(63, 38);
             this.panel56.TabIndex = 5;
             // 
             // label14
@@ -2203,7 +2203,7 @@
             this.label14.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label14.Location = new System.Drawing.Point(2, 2);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(60, 34);
+            this.label14.Size = new System.Drawing.Size(59, 34);
             this.label14.TabIndex = 5;
             this.label14.Text = "F/Ultima\r\nAct/Costo";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2212,11 +2212,11 @@
             // 
             this.panel55.Controls.Add(this.label13);
             this.panel55.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel55.Location = new System.Drawing.Point(262, 1);
+            this.panel55.Location = new System.Drawing.Point(261, 1);
             this.panel55.Margin = new System.Windows.Forms.Padding(1);
             this.panel55.Name = "panel55";
             this.panel55.Padding = new System.Windows.Forms.Padding(2);
-            this.panel55.Size = new System.Drawing.Size(89, 38);
+            this.panel55.Size = new System.Drawing.Size(88, 38);
             this.panel55.TabIndex = 4;
             // 
             // label13
@@ -2224,7 +2224,7 @@
             this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label13.Location = new System.Drawing.Point(2, 2);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(85, 34);
+            this.label13.Size = new System.Drawing.Size(84, 34);
             this.label13.TabIndex = 4;
             this.label13.Text = "Costo\r\nUndidad";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -2237,7 +2237,7 @@
             this.panel54.Margin = new System.Windows.Forms.Padding(1);
             this.panel54.Name = "panel54";
             this.panel54.Padding = new System.Windows.Forms.Padding(2);
-            this.panel54.Size = new System.Drawing.Size(55, 38);
+            this.panel54.Size = new System.Drawing.Size(54, 38);
             this.panel54.TabIndex = 3;
             // 
             // label12
@@ -2245,7 +2245,7 @@
             this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label12.Location = new System.Drawing.Point(2, 2);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(51, 34);
+            this.label12.Size = new System.Drawing.Size(50, 34);
             this.label12.TabIndex = 3;
             this.label12.Text = "Tasa \r\nIva";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

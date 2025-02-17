@@ -41,7 +41,7 @@ namespace ModInventario.Buscar
             DGV.AllowUserToResizeColumns = false;
             DGV.AllowUserToOrderColumns = false;
             DGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DGV.MultiSelect = false;
+            DGV.MultiSelect = true;
             DGV.ReadOnly = true;
 
             var c1 = new DataGridViewTextBoxColumn();
@@ -122,6 +122,11 @@ namespace ModInventario.Buscar
             c6b.DefaultCellStyle.Format = "n2";
             c6b.ToolTipText = "COSTO POR UNIDAD";
 
+            var c7 = new DataGridViewTextBoxColumn();
+            c7 .DataPropertyName = "AutoId";
+            c7.Name = "AutoId";
+            c7.Visible = false;
+
             DGV.Columns.Add(c2);
             DGV.Columns.Add(c1);
             DGV.Columns.Add(c5);
@@ -130,6 +135,8 @@ namespace ModInventario.Buscar
             DGV.Columns.Add(c6b);
             DGV.Columns.Add(c3);
             DGV.Columns.Add(c4);
+            DGV.Columns.Add(c7);
+
         }
         private void DGV_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
@@ -270,8 +277,18 @@ namespace ModInventario.Buscar
         }
         private void EditarPrecio()
         {
+            if (DGV.SelectedRows.Count > 0)
+            {
+                foreach (DataGridViewRow row in DGV.SelectedRows)
+                {
+                    string idSel = row.Cells["AutoId"].Value.ToString();
+                    _controlador.ActivarFilaSeleccionada(idSel);
+                }
+            }
             _controlador.EditarPrecio();
             TB_CADENA.Focus();
+            DGV.ClearSelection();
+            _controlador.LimpiarFilasSeleccionada();
         }
         private void HistoricoPrecio()
         {

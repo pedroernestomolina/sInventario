@@ -476,7 +476,8 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoBasico
                 Guardar();
             }
         }
-
+        public void setListaProductosSeleccionadosCambiaPrecio(object productosSeleccionados)
+        {
+        }
     }
-
 }

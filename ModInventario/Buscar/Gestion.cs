@@ -82,11 +82,14 @@ namespace ModInventario.Buscar
             //
             _compBusqProducto = new Utils.FiltrosPara.BusqProducto.Busqueda.ImpComp();
             _compBusqProducto.setFiltros(new FiltrosActivar());
+            //
+            _productosSeleccionados = new List<string>();
         }
 
 
         public void Inicializa() 
         {
+            _productosSeleccionados = new List<string>();
             _gTipoBusq.Inicializa();
             _compBusqProducto.Inicializa();
         }
@@ -421,9 +424,18 @@ namespace ModInventario.Buscar
                     }
                     if (_gAccesoSistema.Verificar(r00.Entidad))
                     {
+                        if (_productosSeleccionados.Count > 1) 
+                        {
+                            var _seg= Helpers.Msg.ProcesarGuardar("Estas seguro de cambiar precios a todos estos Productos ?");
+                            if (!_seg)
+                            {
+                                return;
+                            }
+                        }
                         var idAuto = Item.AutoId;
                         _gEditarCambiarPrecio.Inicializa();
                         _gEditarCambiarPrecio.setIdItemEditar(idAuto);
+                        _gEditarCambiarPrecio.setListaProductosSeleccionadosCambiaPrecio(_productosSeleccionados);
                         _gEditarCambiarPrecio.Inicia();
                         if (_gEditarCambiarPrecio.EditarPrecioIsOk)
                         {
@@ -566,6 +578,16 @@ namespace ModInventario.Buscar
             {
                 Helpers.Msg.Error(e.Message);
             }
+        }
+
+        private List<string> _productosSeleccionados;
+        public void ActivarFilaSeleccionada(string idSel)
+        {
+            _productosSeleccionados.Add(idSel);
+        }
+        public void LimpiarFilasSeleccionada()
+        {
+            _productosSeleccionados.Clear();
         }
     }
 }

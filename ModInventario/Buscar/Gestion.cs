@@ -183,6 +183,9 @@ namespace ModInventario.Buscar
             }
         }
 
+
+        //OJO NUEVO
+        //private _CostoProducto.ActualizarCosto.interfaces.IPrincipal _editarCosto;
         public void EditarCosto()
         {
             if (Item != null)
@@ -212,6 +215,14 @@ namespace ModInventario.Buscar
                             filtros.autoProducto = Item.identidad.auto;
                             ActualizarItemLista(filtros);
                         }
+
+                        //if (_editarCosto == null) 
+                        //{
+                        //    _editarCosto= new _CostoProducto.ActualizarCosto.Implementacion.impEditarCosto();
+                        //}
+                        //_editarCosto.Inicializa();
+                        //_editarCosto.setIdFichaEditar(Item.identidad.auto);
+                        //_editarCosto.Inicia();
                     }
                     _gestionLista.ListaPosicion(idAuto);
                 }

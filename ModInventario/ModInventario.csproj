@@ -1264,6 +1264,27 @@
     <Compile Include="Visor\Precio\PrecioFrm.Designer.cs">
       <DependentUpon>PrecioFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="_CostoProducto\ActualizarCosto\Implementacion\impEditarCosto.cs" />
+    <Compile Include="_CostoProducto\ActualizarCosto\Implementacion\UsesCase\ImplUseCase.cs" />
+    <Compile Include="_CostoProducto\ActualizarCosto\Interfaces\IPrincipal.cs" />
+    <Compile Include="_CostoProducto\ActualizarCosto\Interfaces\UsesCase\IUseCase.cs" />
+    <Compile Include="_CostoProducto\ActualizarCosto\Modelo\MiModelo.cs" />
+    <Compile Include="_CostoProducto\ActualizarCosto\Modelo\Producto.cs" />
+    <Compile Include="_CostoProducto\ActualizarCosto\Presentacion\vistas\FrmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="_CostoProducto\ActualizarCosto\Presentacion\vistas\FrmPrincipal.Designer.cs">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="_\interfaces\Boton\IBtAbandonar.cs" />
+    <Compile Include="_\impl\Boton\ImpBtAbandonar.cs" />
+    <Compile Include="_\impl\Boton\baseImp.cs" />
+    <Compile Include="_\interfaces\IBoton.cs" />
+    <Compile Include="_\impl\Boton\ImpBtProcesar.cs" />
+    <Compile Include="_\interfaces\Boton\IBtProcesar.cs" />
+    <Compile Include="_\impl\Boton\ImpBtSalir.cs" />
+    <Compile Include="_\interfaces\Boton\IBtSalir.cs" />
+    <Compile Include="_\interfaces\IGestion.cs" />
     <EmbeddedResource Include="AdmMovPend\AdmMovPendFrm.resx">
       <DependentUpon>AdmMovPendFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1636,6 +1657,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Visor\Precio\PrecioFrm.resx">
       <DependentUpon>PrecioFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="_CostoProducto\ActualizarCosto\Presentacion\vistas\FrmPrincipal.resx">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

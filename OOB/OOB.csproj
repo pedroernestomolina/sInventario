@@ -240,6 +240,7 @@
     <Compile Include="LibInventario\Producto\Estatus\Actual\Ficha.cs" />
     <Compile Include="LibInventario\Producto\Estatus\Lista\Ficha.cs" />
     <Compile Include="LibInventario\Producto\Filtro.cs" />
+    <Compile Include="LibInventario\Producto\GestionCosto\CapturarDataPrdEditarCosto\Ficha.cs" />
     <Compile Include="LibInventario\Producto\HistoricoPrecio\Filtro.cs" />
     <Compile Include="LibInventario\Producto\HistoricoPrecio\ModoAdm\Data.cs" />
     <Compile Include="LibInventario\Producto\HistoricoPrecio\ModoAdm\Ficha.cs" />

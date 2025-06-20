@@ -88,13 +88,17 @@ namespace ModInventario.Producto.Costo.Ver
             {
                 tasaIva = s.tasaIva.ToString("n2").Trim().PadLeft(5, '0') + "%";
             }
-            if (s.admDivisa == OOB.LibInventario.Producto.Enumerados.EnumAdministradorPorDivisa.Si)
+            // MANEJA EL PRODUCTO COMO SI FUESE POR DIVISA
+            //if (s.admDivisa == OOB.LibInventario.Producto.Enumerados.EnumAdministradorPorDivisa.Si)
+            //{
+            //    isAdmDivisa = true;
+            //    costoUnit = s.costoDivisaUnd.ToString("N2");
+            //}
+            if (true)
             {
                 isAdmDivisa = true;
                 costoUnit = s.costoDivisaUnd.ToString("N2");
             }
         }
-
     }
-
 }

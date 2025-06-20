@@ -11,6 +11,9 @@ namespace ModInventario.Producto.Costo.Editar
 
     public class Gestion
     {
+        //
+        private string _displayAdmDivisa;
+        //
 
         public string _autoPrd;
         private costo _costoProv;
@@ -46,7 +49,8 @@ namespace ModInventario.Producto.Costo.Editar
         public bool IsProductoAdmDivisa { get { return _isAdmDivisa; } }
         public string Producto { get { return producto; } }
         public string CostoUnitario { get { return costoUnit; } }
-        public string AdmDivisa { get { return admDivisa; } }
+        //public string AdmDivisa { get { return admDivisa; } }
+        public string AdmDivisa { get { return _displayAdmDivisa; } }
         public string TasaIva { get { return tasaIva; } }
         public string EmpaqueContenido { get { return empaqueContenido; } }
         public string TasaCambioActual { get { return tasaCambioActual.ToString("n2"); } }
@@ -57,6 +61,9 @@ namespace ModInventario.Producto.Costo.Editar
 
         public Gestion()
         {
+            //
+            _displayAdmDivisa = "";
+            //
             _isCerrarHabilitado = true;
             _costoProv = new costo();
             _costoImp = new costo();
@@ -76,6 +83,10 @@ namespace ModInventario.Producto.Costo.Editar
 
         private void Limpiar()
         {
+            //
+            _displayAdmDivisa = "";
+            //
+
             producto="";
             costoUnit="";
             admDivisa="";
@@ -195,6 +206,7 @@ namespace ModInventario.Producto.Costo.Editar
             producto = r01.Entidad.codigo + Environment.NewLine + r01.Entidad.descripcion;
             empaqueContenido = r01.Entidad.empaqueCompra.Trim() + "/" + r01.Entidad.contEmpaqueCompra.ToString();
             admDivisa = r01.Entidad.admDivisa.ToString();
+            _displayAdmDivisa = r01.Entidad.admDivisa.ToString();
             tasaIva = "EXENTO";
             fechaUltActCosto = r01.Entidad.fechaUltCambio;
             costoUnit = r01.Entidad.costoUnd.ToString("N2");
@@ -203,10 +215,6 @@ namespace ModInventario.Producto.Costo.Editar
             {
                 tasaIva = r01.Entidad.tasaIva.ToString("n2").Trim().PadLeft(5, '0') + "%";
             }
-            if (r01.Entidad.admDivisa == OOB.LibInventario.Producto.Enumerados.EnumAdministradorPorDivisa.Si)
-            {
-                costoUnit = r01.Entidad.costoDivisaUnd.ToString("N2");
-            }
 
             _costoProv.setFicha(r01.Entidad.costoProveedorUnd, r01.Entidad.tasaIva, r01.Entidad.contEmpaqueCompra);
             _costoImp.setFicha(r01.Entidad.costoImportacionUnd, r01.Entidad.tasaIva, r01.Entidad.contEmpaqueCompra);
@@ -214,7 +222,16 @@ namespace ModInventario.Producto.Costo.Editar
             _costoDivisa.setFicha(r01.Entidad.costoDivisaUnd, r01.Entidad.tasaIva, r01.Entidad.contEmpaqueCompra,r02.Entidad);
             _costoFinal.setFicha(r01.Entidad.costoUnd, r01.Entidad.tasaIva, r01.Entidad.contEmpaqueCompra);
             _costoPromedio.setFicha(r01.Entidad.costoPromedioUnd, r01.Entidad.tasaIva, r01.Entidad.contEmpaqueCompra);
-            _isAdmDivisa = r01.Entidad.admDivisa == OOB.LibInventario.Producto.Enumerados.EnumAdministradorPorDivisa.Si ? true : false;
+
+            // PARA SIEMPRE MANEJARLO COMO DIVISA
+            //_isAdmDivisa = r01.Entidad.admDivisa == OOB.LibInventario.Producto.Enumerados.EnumAdministradorPorDivisa.Si ? true : false;
+            _isAdmDivisa = true ;
+
+            if (_isAdmDivisa)
+            {
+                costoUnit = r01.Entidad.costoDivisaUnd.ToString("N2");
+            }
+
             return rt;
         }
 
@@ -339,7 +356,5 @@ namespace ModInventario.Producto.Costo.Editar
         {
             _isCerrarHabilitado = true;
         }
-
     }
-
 }

@@ -237,25 +237,49 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 var pneto_D2 = prd.pNeto_D2;
                 var pneto_D3 = prd.pNeto_D3;
                 var pneto_D4 = prd.pNeto_D4;
+
+
+                //if (prd.EsAdmDivisa)
+                //{
+                //    admDivisa = "SI";
+                //    costo = prd.costoMonedaDivisa;
+                //    pneto_1 = CalculaNeto(prd.pfd_1, prd.tasaIva);
+                //    pneto_2 = CalculaNeto(prd.pfd_2, prd.tasaIva);
+                //    pneto_3 = CalculaNeto(prd.pfd_3, prd.tasaIva);
+                //    pneto_4 = CalculaNeto(prd.pfd_4, prd.tasaIva);
+                //    pneto_5 = CalculaNeto(prd.pfd_5, prd.tasaIva);
+                //    pneto_M1 = CalculaNeto(prd.pfd_M1, prd.tasaIva);
+                //    pneto_M2 = CalculaNeto(prd.pfd_M2, prd.tasaIva);
+                //    pneto_M3 = CalculaNeto(prd.pfd_M3, prd.tasaIva);
+                //    pneto_M4 = CalculaNeto(prd.pfd_M4, prd.tasaIva);
+                //    //
+                //    pneto_D1 = CalculaNeto(prd.pfd_D1, prd.tasaIva);
+                //    pneto_D2 = CalculaNeto(prd.pfd_D2, prd.tasaIva);
+                //    pneto_D3 = CalculaNeto(prd.pfd_D3, prd.tasaIva);
+                //    pneto_D4 = CalculaNeto(prd.pfd_D4, prd.tasaIva);
+                //}
+
                 if (prd.EsAdmDivisa)
                 {
                     admDivisa = "SI";
-                    costo = prd.costoMonedaDivisa;
-                    pneto_1 = CalculaNeto(prd.pfd_1, prd.tasaIva);
-                    pneto_2 = CalculaNeto(prd.pfd_2, prd.tasaIva);
-                    pneto_3 = CalculaNeto(prd.pfd_3, prd.tasaIva);
-                    pneto_4 = CalculaNeto(prd.pfd_4, prd.tasaIva);
-                    pneto_5 = CalculaNeto(prd.pfd_5, prd.tasaIva);
-                    pneto_M1 = CalculaNeto(prd.pfd_M1, prd.tasaIva);
-                    pneto_M2 = CalculaNeto(prd.pfd_M2, prd.tasaIva);
-                    pneto_M3 = CalculaNeto(prd.pfd_M3, prd.tasaIva);
-                    pneto_M4 = CalculaNeto(prd.pfd_M4, prd.tasaIva);
-                    //
-                    pneto_D1 = CalculaNeto(prd.pfd_D1, prd.tasaIva);
-                    pneto_D2 = CalculaNeto(prd.pfd_D2, prd.tasaIva);
-                    pneto_D3 = CalculaNeto(prd.pfd_D3, prd.tasaIva);
-                    pneto_D4 = CalculaNeto(prd.pfd_D4, prd.tasaIva);
                 }
+                admDivisa = "SI";
+                costo = prd.costoMonedaDivisa;
+                pneto_1 = CalculaNeto(prd.pfd_1, prd.tasaIva);
+                pneto_2 = CalculaNeto(prd.pfd_2, prd.tasaIva);
+                pneto_3 = CalculaNeto(prd.pfd_3, prd.tasaIva);
+                pneto_4 = CalculaNeto(prd.pfd_4, prd.tasaIva);
+                pneto_5 = CalculaNeto(prd.pfd_5, prd.tasaIva);
+                pneto_M1 = CalculaNeto(prd.pfd_M1, prd.tasaIva);
+                pneto_M2 = CalculaNeto(prd.pfd_M2, prd.tasaIva);
+                pneto_M3 = CalculaNeto(prd.pfd_M3, prd.tasaIva);
+                pneto_M4 = CalculaNeto(prd.pfd_M4, prd.tasaIva);
+                //
+                pneto_D1 = CalculaNeto(prd.pfd_D1, prd.tasaIva);
+                pneto_D2 = CalculaNeto(prd.pfd_D2, prd.tasaIva);
+                pneto_D3 = CalculaNeto(prd.pfd_D3, prd.tasaIva);
+                pneto_D4 = CalculaNeto(prd.pfd_D4, prd.tasaIva);
+
 
                 _dataPrd.setCodigo(prd.codigo);
                 _dataPrd.setDescripcion(prd.descripcion);
@@ -301,11 +325,12 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 _gEmpTipo_3.setData(lst);
                 //
 
+                var esAdmDivisa = admDivisa.Trim().ToUpper() == "SI";
                 _precio1.setContenido(prd.cont_1);
                 _precio1.setUtilidadActual(prd.utilidad_1);
                 _precio1.setCostoEmpCompra(costo);
                 _precio1.setContEmpCompra(prd.contEmpCompra);
-                _precio1.setAdmDivisa(prd.EsAdmDivisa);
+                _precio1.setAdmDivisa(esAdmDivisa);
                 _precio1.setTasaCambio(_tasaCambio);
                 _precio1.setTasaIva(prd.tasaIva);
                 _precio1.setMetodoCalculoUtilidad(_metodoCalculo);
@@ -316,7 +341,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 _precio2.setUtilidadActual(prd.utilidad_2);
                 _precio2.setCostoEmpCompra(costo);
                 _precio2.setContEmpCompra(prd.contEmpCompra);
-                _precio2.setAdmDivisa(prd.EsAdmDivisa);
+                _precio2.setAdmDivisa(esAdmDivisa);
                 _precio2.setTasaCambio(_tasaCambio);
                 _precio2.setTasaIva(prd.tasaIva);
                 _precio2.setMetodoCalculoUtilidad(_metodoCalculo);
@@ -327,7 +352,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 _precio3.setUtilidadActual(prd.utilidad_3);
                 _precio3.setCostoEmpCompra(costo);
                 _precio3.setContEmpCompra(prd.contEmpCompra);
-                _precio3.setAdmDivisa(prd.EsAdmDivisa);
+                _precio3.setAdmDivisa(esAdmDivisa);
                 _precio3.setTasaCambio(_tasaCambio);
                 _precio3.setTasaIva(prd.tasaIva);
                 _precio3.setMetodoCalculoUtilidad(_metodoCalculo);
@@ -338,7 +363,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 _precio4.setUtilidadActual(prd.utilidad_4);
                 _precio4.setCostoEmpCompra(costo);
                 _precio4.setContEmpCompra(prd.contEmpCompra);
-                _precio4.setAdmDivisa(prd.EsAdmDivisa);
+                _precio4.setAdmDivisa(esAdmDivisa);
                 _precio4.setTasaCambio(_tasaCambio);
                 _precio4.setTasaIva(prd.tasaIva);
                 _precio4.setMetodoCalculoUtilidad(_metodoCalculo);
@@ -349,7 +374,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 _precio5.setUtilidadActual(prd.utilidad_5);
                 _precio5.setCostoEmpCompra(costo);
                 _precio5.setContEmpCompra(prd.contEmpCompra);
-                _precio5.setAdmDivisa(prd.EsAdmDivisa);
+                _precio5.setAdmDivisa(esAdmDivisa);
                 _precio5.setTasaCambio(_tasaCambio);
                 _precio5.setTasaIva(prd.tasaIva);
                 _precio5.setMetodoCalculoUtilidad(_metodoCalculo);
@@ -361,7 +386,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 _precioM1.setUtilidadActual(prd.utilidad_M1);
                 _precioM1.setCostoEmpCompra(costo);
                 _precioM1.setContEmpCompra(prd.contEmpCompra);
-                _precioM1.setAdmDivisa(prd.EsAdmDivisa);
+                _precioM1.setAdmDivisa(esAdmDivisa);
                 _precioM1.setTasaCambio(_tasaCambio);
                 _precioM1.setTasaIva(prd.tasaIva);
                 _precioM1.setMetodoCalculoUtilidad(_metodoCalculo);
@@ -372,7 +397,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 _precioM2.setUtilidadActual(prd.utilidad_M2);
                 _precioM2.setCostoEmpCompra(costo);
                 _precioM2.setContEmpCompra(prd.contEmpCompra);
-                _precioM2.setAdmDivisa(prd.EsAdmDivisa);
+                _precioM2.setAdmDivisa(esAdmDivisa);
                 _precioM2.setTasaCambio(_tasaCambio);
                 _precioM2.setTasaIva(prd.tasaIva);
                 _precioM2.setMetodoCalculoUtilidad(_metodoCalculo);
@@ -383,7 +408,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 _precioM3.setUtilidadActual(prd.utilidad_M3);
                 _precioM3.setCostoEmpCompra(costo);
                 _precioM3.setContEmpCompra(prd.contEmpCompra);
-                _precioM3.setAdmDivisa(prd.EsAdmDivisa);
+                _precioM3.setAdmDivisa(esAdmDivisa);
                 _precioM3.setTasaCambio(_tasaCambio);
                 _precioM3.setTasaIva(prd.tasaIva);
                 _precioM3.setMetodoCalculoUtilidad(_metodoCalculo);
@@ -394,7 +419,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 _precioM4.setUtilidadActual(prd.utilidad_M4);
                 _precioM4.setCostoEmpCompra(costo);
                 _precioM4.setContEmpCompra(prd.contEmpCompra);
-                _precioM4.setAdmDivisa(prd.EsAdmDivisa);
+                _precioM4.setAdmDivisa(esAdmDivisa);
                 _precioM4.setTasaCambio(_tasaCambio);
                 _precioM4.setTasaIva(prd.tasaIva);
                 _precioM4.setMetodoCalculoUtilidad(_metodoCalculo);
@@ -406,7 +431,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 _precioD1.setUtilidadActual(prd.utilidad_D1);
                 _precioD1.setCostoEmpCompra(costo);
                 _precioD1.setContEmpCompra(prd.contEmpCompra);
-                _precioD1.setAdmDivisa(prd.EsAdmDivisa);
+                _precioD1.setAdmDivisa(esAdmDivisa);
                 _precioD1.setTasaCambio(_tasaCambio);
                 _precioD1.setTasaIva(prd.tasaIva);
                 _precioD1.setMetodoCalculoUtilidad(_metodoCalculo);
@@ -417,7 +442,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 _precioD2.setUtilidadActual(prd.utilidad_D2);
                 _precioD2.setCostoEmpCompra(costo);
                 _precioD2.setContEmpCompra(prd.contEmpCompra);
-                _precioD2.setAdmDivisa(prd.EsAdmDivisa);
+                _precioD2.setAdmDivisa(esAdmDivisa);
                 _precioD2.setTasaCambio(_tasaCambio);
                 _precioD2.setTasaIva(prd.tasaIva);
                 _precioD2.setMetodoCalculoUtilidad(_metodoCalculo);
@@ -428,7 +453,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 _precioD3.setUtilidadActual(prd.utilidad_D3);
                 _precioD3.setCostoEmpCompra(costo);
                 _precioD3.setContEmpCompra(prd.contEmpCompra);
-                _precioD3.setAdmDivisa(prd.EsAdmDivisa);
+                _precioD3.setAdmDivisa(esAdmDivisa);
                 _precioD3.setTasaCambio(_tasaCambio);
                 _precioD3.setTasaIva(prd.tasaIva);
                 _precioD3.setMetodoCalculoUtilidad(_metodoCalculo);
@@ -439,7 +464,7 @@ namespace ModInventario.Producto.Precio.EditarCambiar.ModoSucursal
                 _precioD4.setUtilidadActual(prd.utilidad_D4);
                 _precioD4.setCostoEmpCompra(costo);
                 _precioD4.setContEmpCompra(prd.contEmpCompra);
-                _precioD4.setAdmDivisa(prd.EsAdmDivisa);
+                _precioD4.setAdmDivisa(esAdmDivisa);
                 _precioD4.setTasaCambio(_tasaCambio);
                 _precioD4.setTasaIva(prd.tasaIva);
                 _precioD4.setMetodoCalculoUtilidad(_metodoCalculo);

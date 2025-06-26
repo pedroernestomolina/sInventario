@@ -76,6 +76,10 @@ namespace OOB.LibInventario.Producto.Data
                 rt = CostoUnidad;
                 if (identidad.AdmPorDivisa == Enumerados.EnumAdministradorPorDivisa.Si)
                     rt = CostoDivisaUnd;
+
+                // ZUFU: SIEMPRE MANEJA LOS PRECIOS/COSTO EN DIVISA, SIN IMPORTAR COMO ESTE 
+                // DEFINIDO EL PRODUCTO
+                rt = CostoDivisaUnd;
                 return rt;
             } 
         }
@@ -88,6 +92,10 @@ namespace OOB.LibInventario.Producto.Data
                 rt = Costo;
                 if (identidad.AdmPorDivisa == Enumerados.EnumAdministradorPorDivisa.Si)
                     rt = CostoDivisa;
+
+                // ZUFU: SIEMPRE MANEJA LOS PRECIOS/COSTO EN DIVISA, SIN IMPORTAR COMO ESTE 
+                // DEFINIDO EL PRODUCTO
+                rt = CostoDivisa;
                 return rt;
             }
         }

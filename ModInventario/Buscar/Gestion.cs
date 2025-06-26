@@ -208,6 +208,8 @@ namespace ModInventario.Buscar
                             var r01 = Sistema.MyData.Configuracion_PermitirCambiarPrecioAlModificarCosto();
                             if (r01.Entidad)
                             {
+                                _productosSeleccionados.Clear();
+                                _productosSeleccionados.Add(idAuto);
                                 EditarPrecio();
                             }
 

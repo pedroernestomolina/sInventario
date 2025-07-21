@@ -44,5 +44,34 @@ namespace ModInventario.src.MovInventario
                 return r; 
             } 
         }
+        //
+        //DEPOSITO DESTINO
+        public string codigoDepDestino { get; set; }
+        public string descDepDestino { get; set; }
+        public decimal exFisicaActualDepDestino { get; set; }
+        public decimal CntExFisicaActualDepDestino 
+        { 
+            get 
+            {
+                var rt = 0m;
+                if (contEmp>0m)
+                {
+                    rt = exFisicaActualDepDestino / contEmp;
+                }
+                return rt;
+            } 
+        }
+        public decimal CntExFisicaActualDepOrigen 
+        {
+            get 
+            {
+                var rt = 0m;
+                if (contEmp>0m)
+                {
+                    rt = exFisica / contEmp;
+                }
+                return rt;
+            } 
+        }
     }
 }

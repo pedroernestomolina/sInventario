@@ -17,6 +17,8 @@ namespace ModInventario.src.MovInventario
         string InfProductoTasaIva { get; }
         string InfProductoFechaUltActCosto { get; }
         decimal InfExistenciaActual { get; }
+        string InfExDepDestinoActual { get; }
+        string InfExDepOrigenActual { get; }
         bool InfProductoEsDivisa { get; }
         //
         string PrdAuto { get;  }

@@ -157,6 +157,7 @@ namespace ModInventario.src.MovInventario.Traslado
                         throw new Exception("Producto No Posee Existencia Disponible Para [ DESCARGO ]");
                     }
                     var r = r01.Entidad.data;
+                    var rDestino = r01.Entidad.dataDepDestino;
                     var dat = new data()
                     {
                         autoDepart = r.autoDepart,
@@ -182,6 +183,10 @@ namespace ModInventario.src.MovInventario.Traslado
                         nombreEmpInv = r.nombreEmpInv,
                         autoDepOrigen = _depOrigen.GetId,
                         autoDepDestino = _depDestino.GetId,
+                        //
+                        codigoDepDestino = rDestino.codigoDep,
+                        descDepDestino = rDestino.descDep,
+                        exFisicaActualDepDestino = rDestino.exFisica,
                     };
                     _capturaMov.ItemCapturado += _capturaMov_ItemCapturado;
                     _capturaMov.Inicializa();

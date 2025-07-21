@@ -128,6 +128,31 @@ namespace ModInventario.src.MovInventario
         }
 
 
+        public string InfExDepOrigenActual
+        {
+            get 
+            {
+                var rt = "";
+                if (_data != null)
+                {
+                    rt = _data.CntExFisicaActualDepOrigen.ToString("n0").Trim() + " " + _data.nombreEmp.Trim();
+                }
+                return rt;
+            } 
+        }
+        public string InfExDepDestinoActual
+        {
+            get 
+            {
+                var rt = "";
+                if (_data != null)
+                {
+                    rt = _data.CntExFisicaActualDepDestino.ToString("n0").Trim()+" "+_data.nombreEmp.Trim();
+                }
+                return rt;
+            } 
+        }
+
         public ImpDataPrd()
         {
             _data = null;

@@ -1350,63 +1350,94 @@ namespace DataProvInventario.Data
             return rt;
         }
         //
+
         public OOB.ResultadoEntidad<OOB.LibInventario.Movimiento.Traslado.CapturaMov.Ficha> 
             Producto_Movimiento_Traslado_CaptureMov(OOB.LibInventario.Movimiento.Traslado.CapturaMov.Filtro filtro)
         {
             var rt = new OOB.ResultadoEntidad<OOB.LibInventario.Movimiento.Traslado.CapturaMov.Ficha>();
-
+            //
             var filtroDto = new DtoLibInventario.Movimiento.Traslado.CapturaMov.Filtro()
             {
                 idDepOrigen = filtro.idDeposito,
                 idDepDestino = filtro.IdDepDestino,
                 idProducto = filtro.idProducto,
             };
-            var r01 = MyData.Producto_Movimiento_Traslado_Capture(filtroDto);
-            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            try
             {
-                rt.Mensaje = r01.Mensaje;
+                var r01 = MyData.Producto_Movimiento_Traslado_Capture(filtroDto);
+                if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+                {
+                    throw new Exception(r01.Mensaje);
+                }
+                //VERIFICO
+                if (r01.Entidad == null) 
+                {
+                    throw new Exception("ENTIDAD NO CARGADA");
+                }
+                if (r01.Entidad.data == null)
+                {
+                    throw new Exception("ENTIDAD ORIGEN NO CARGADA");
+                }
+                if (r01.Entidad.dataDepDestino == null)
+                {
+                    throw new Exception("ENTIDAD DESTINO NO CARGADA");
+                }
+                //MAPEO
+                var s = r01.Entidad.data;
+                var _fechaNula = new DateTime(2000, 01, 01);
+                var _fechaUltActCosto = "";
+                if (s.fechaUltActCosto != _fechaNula)
+                {
+                    _fechaUltActCosto = s.fechaUltActCosto.ToShortDateString();
+                }
+                var ent = new OOB.LibInventario.Movimiento.Traslado.CapturaMov.Data()
+                {
+                    autoDepart = s.autoDepart,
+                    autoGrupo = s.autoGrupo,
+                    autoPrd = s.autoPrd,
+                    catPrd = s.catPrd,
+                    codigoPrd = s.codigoPrd,
+                    contEmp = s.contEmp,
+                    costo = s.costo,
+                    costoUnd = s.costoUnd,
+                    decimales = s.decimales,
+                    exFisica = s.exFisica,
+                    nombreEmp = s.nombreEmp,
+                    nombrePrd = s.nombrePrd,
+                    autoTasa = s.autoTasa,
+                    costoDivisa = s.costoDivisa,
+                    descTasa = s.descTasa,
+                    estatusDivisa = s.estatusDivisa,
+                    valorTasa = s.valorTasa,
+                    fechaUltActualizacionCosto = _fechaUltActCosto,
+                    nombreEmpInv = s.nombreEmpInv,
+                    contEmpInv = s.contEmpInv,
+                };
+                var s2 = r01.Entidad.dataDepDestino;
+                var entDestino = new OOB.LibInventario.Movimiento.Traslado.CapturaMov.DataDepDestino()
+                {
+                    codigoDep = s2.codigoDep,
+                    codigoPrd = s2.codigoPrd,
+                    contEmpCompra = s2.contEmpCompra,
+                    descDep = s2.descDep,
+                    descEmpCompra = s2.descEmpCompra,
+                    descPrd = s2.descPrd,
+                    exFisica = s2.exFisica,
+                    idDep = s2.idDep,
+                    idPrd = s2.idPrd,
+                };
+                rt.Entidad = new OOB.LibInventario.Movimiento.Traslado.CapturaMov.Ficha()
+                {
+                    data = ent,
+                    dataDepDestino = entDestino,
+                };
+            }
+            catch (Exception e)
+            {
+                rt.Mensaje = e.Message ;
                 rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
             }
-            var s = r01.Entidad.data;
-            var _fechaNula = new DateTime(2000, 01, 01);
-            var _fechaUltActCosto = "";
-            if (s.fechaUltActCosto == _fechaNula)
-            {
-                _fechaUltActCosto = "";
-            }
-            else
-            {
-                _fechaUltActCosto = s.fechaUltActCosto.ToShortDateString();
-            }
-
-            var ent = new OOB.LibInventario.Movimiento.Traslado.CapturaMov.Data()
-            {
-                autoDepart = s.autoDepart,
-                autoGrupo = s.autoGrupo,
-                autoPrd = s.autoPrd,
-                catPrd = s.catPrd,
-                codigoPrd = s.codigoPrd,
-                contEmp = s.contEmp,
-                costo = s.costo,
-                costoUnd = s.costoUnd,
-                decimales = s.decimales,
-                exFisica = s.exFisica,
-                nombreEmp = s.nombreEmp,
-                nombrePrd = s.nombrePrd,
-                autoTasa = s.autoTasa,
-                costoDivisa = s.costoDivisa,
-                descTasa = s.descTasa,
-                estatusDivisa = s.estatusDivisa,
-                valorTasa = s.valorTasa,
-                fechaUltActualizacionCosto = _fechaUltActCosto,
-                nombreEmpInv = s.nombreEmpInv,
-                contEmpInv = s.contEmpInv,
-            };
-            rt.Entidad = new OOB.LibInventario.Movimiento.Traslado.CapturaMov.Ficha()
-            {
-                data = ent,
-            };
+            //
             return rt;
         }
 

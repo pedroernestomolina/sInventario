@@ -52,7 +52,9 @@ namespace ModInventario.src.MovInventario.Traslado.CapturaMov
             L_ADM_DIVISA.Text = _controlador.Captura.Ficha.InfProductoEsAdmDivisa;
             L_TASA_IVA.Text = _controlador.Captura.Ficha.InfProductoTasaIva;
             L_FECHA_ACT.Text = _controlador.Captura.Ficha.InfProductoFechaUltActCosto;
-            L_EXISTENCIA.Text = _controlador.Captura.Ficha.InfExistenciaActual.ToString("n2");
+            //L_EXISTENCIA.Text = _controlador.Captura.Ficha.InfExistenciaActual.ToString("n2");
+            L_EXISTENCIA.Text = _controlador.Captura.Ficha.InfExDepOrigenActual;
+            L_EXISTENCIA_DESTINO.Text = _controlador.Captura.Ficha.InfExDepDestinoActual;
             BT_CAMBIO_DIVISA.Visible = _controlador.Captura.Ficha.InfProductoEsDivisa;
             TB_CNT.Text = _controlador.Captura.Mov_GetCantidad.ToString();
             TB_COSTO.Text = _controlador.Captura.Mov_GetCosto.ToString();

@@ -153,6 +153,7 @@
     <Compile Include="LibInventario\Movimiento\Lista\Ficha.cs" />
     <Compile Include="LibInventario\Movimiento\Lista\Filtro.cs" />
     <Compile Include="LibInventario\Movimiento\Traslado\CapturaMov\Data.cs" />
+    <Compile Include="LibInventario\Movimiento\Traslado\CapturaMov\DataDepDestino.cs" />
     <Compile Include="LibInventario\Movimiento\Traslado\CapturaMov\Ficha.cs" />
     <Compile Include="LibInventario\Movimiento\Traslado\CapturaMov\Filtro.cs" />
     <Compile Include="LibInventario\Movimiento\Traslado\Capturar\ProductoPorDebajoNivelMinimo\Ficha.cs" />

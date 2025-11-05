@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace OOB.LibInventario.Movimiento.Traslado.Insertar
 {
-    
     public class FichaMov: Movimiento.Insertar.BaseFichaMov
     {
-
-
         public FichaMov()
         {
             autoConcepto = "";
@@ -19,7 +16,6 @@ namespace OOB.LibInventario.Movimiento.Traslado.Insertar
             autoDepositoOrigen = "";
             autoRemision = "";
             autoUsuario = "";
-
             nota = "";
             estatusAnulado = "";
             usuario = "";
@@ -43,7 +39,5 @@ namespace OOB.LibInventario.Movimiento.Traslado.Insertar
             factorCambio = 0m;
             montoDivisa = 0m;
         }
-
     }
-
 }

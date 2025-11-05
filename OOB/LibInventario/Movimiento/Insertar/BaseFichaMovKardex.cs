@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace OOB.LibInventario.Movimiento.Insertar
 {
-    
     abstract public class BaseFichaMovKardex
     {
-
-
         public string autoProducto { get; set; }
         public decimal total { get; set; }
         public string autoDeposito { get; set; }
@@ -34,7 +31,7 @@ namespace OOB.LibInventario.Movimiento.Insertar
         public string codigoDeposito { get; set; }
         public string nombreDeposito { get; set; }
         public decimal factorCambio { get; set; }
-
+        public string cierreFtp { get; set; }
+        public string nombreProducto { get; set; }
     }
-
 }

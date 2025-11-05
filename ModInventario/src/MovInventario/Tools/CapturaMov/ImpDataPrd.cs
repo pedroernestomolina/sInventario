@@ -135,7 +135,12 @@ namespace ModInventario.src.MovInventario
                 var rt = "";
                 if (_data != null)
                 {
-                    rt = _data.CntExFisicaActualDepOrigen.ToString("n0").Trim() + " " + _data.nombreEmp.Trim();
+                    if (_data.contEmp > 0m) 
+                    {
+                        var _t = (int)(_data.exFisica / _data.contEmp);
+                        var _t2 = _data.exFisica - (_t * _data.contEmp);
+                        rt = _t.ToString("n0").Trim() + _data.nombreEmp.Trim() + Environment.NewLine + _t2.ToString("n0") + " Und";
+                    }
                 }
                 return rt;
             } 
@@ -147,7 +152,12 @@ namespace ModInventario.src.MovInventario
                 var rt = "";
                 if (_data != null)
                 {
-                    rt = _data.CntExFisicaActualDepDestino.ToString("n0").Trim()+" "+_data.nombreEmp.Trim();
+                    if (_data.contEmp > 0m)
+                    {
+                        var _t = (int)(_data.exFisicaActualDepDestino  / _data.contEmp);
+                        var _t2 = _data.exFisicaActualDepDestino - (_t * _data.contEmp);
+                        rt = _t.ToString("n0").Trim() + _data.nombreEmp.Trim() + Environment.NewLine + _t2.ToString("n0") + " Und";
+                    }
                 }
                 return rt;
             } 

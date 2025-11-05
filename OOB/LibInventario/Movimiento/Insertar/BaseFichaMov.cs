@@ -7,17 +7,13 @@ using System.Threading.Tasks;
 
 namespace OOB.LibInventario.Movimiento.Insertar
 {
-    
     abstract public class BaseFichaMov
     {
-
-
         public string autoConcepto { get; set; }
         public string autoDepositoOrigen { get; set; }
         public string autoDepositoDestino { get; set; }
         public string autoRemision { get; set; }
         public string autoUsuario { get; set; }
-
         public string nota { get; set; }
         public string estatusAnulado { get; set; }
         public string usuario { get; set; }
@@ -40,7 +36,5 @@ namespace OOB.LibInventario.Movimiento.Insertar
         public string estatusCierreContable { get; set; }
         public decimal factorCambio { get; set; }
         public decimal montoDivisa { get; set; }
-
     }
-
 }

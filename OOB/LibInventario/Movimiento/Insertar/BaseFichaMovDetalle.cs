@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace OOB.LibInventario.Movimiento.Insertar
 {
-    
     abstract public class BaseFichaMovDetalle
     {
-
-
         public string autoProducto { get; set; }
         public string codigoProducto { get; set; }
         public string nombreProducto { get; set; }
@@ -31,7 +28,6 @@ namespace OOB.LibInventario.Movimiento.Insertar
         public int signo { get; set; }
         public string autoDepartamento { get; set; }
         public string autoGrupo { get; set; }
-
+        public string cierreFtp { get; set; }
     }
-
 }

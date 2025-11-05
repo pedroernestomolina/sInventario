@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace OOB.LibInventario.Movimiento.DesCargo.Insertar
 {
-    
     public class FichaMovDeposito: Movimiento.Insertar.BaseFichaMovDeposito
     {
-
-
         public FichaMovDeposito()
         {
             autoProducto = "";
@@ -19,8 +16,7 @@ namespace OOB.LibInventario.Movimiento.DesCargo.Insertar
             nombreProducto = "";
             nombreDeposito = "";
             cantidadUnd = 0m;
+            signoMov = 1;
         }
-
     }
-
 }

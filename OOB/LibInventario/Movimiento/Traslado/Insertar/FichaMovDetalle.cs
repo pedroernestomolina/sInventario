@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace OOB.LibInventario.Movimiento.Traslado.Insertar
 {
-    
     public class FichaMovDetalle: Movimiento.Insertar.BaseFichaMovDetalle
     {
-
-
         public FichaMovDetalle()
         {
             autoProducto = "";
@@ -33,8 +30,7 @@ namespace OOB.LibInventario.Movimiento.Traslado.Insertar
             signo = 1;
             autoDepartamento = "";
             autoGrupo = "";
+            cierreFtp = "";
         }
-
     }
-
 }

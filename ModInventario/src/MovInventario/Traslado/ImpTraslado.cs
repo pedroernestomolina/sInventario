@@ -422,7 +422,6 @@ namespace ModInventario.src.MovInventario.Traslado
                         nombreDeposito = depOrigen.desc,
                         depositoDestino = depDestino.desc,
                         cantidadUnd = s.cnt,
-                        signoMov = _docTipo.signo,
                     };
                     return rg;
                 }).ToList();
@@ -485,6 +484,8 @@ namespace ModInventario.src.MovInventario.Traslado
                         signoMov = 1,
                         total = s.ImporteMonedaLocal,
                         factorCambio = _tasaCambio,
+                        cierreFtp = "",
+                        nombreProducto = s.FichaPrd.nombrePrd,
                     };
                     return rg;
                 }).ToList();

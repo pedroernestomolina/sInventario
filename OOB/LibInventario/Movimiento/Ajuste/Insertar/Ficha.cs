@@ -7,17 +7,12 @@ using System.Threading.Tasks;
 
 namespace OOB.LibInventario.Movimiento.Ajuste.Insertar
 {
-    
     public class Ficha
     {
-
-
         public FichaMov mov { get; set; }
         public List<FichaMovDetalle> movDetalles { get; set; }
         public List<FichaMovDeposito> movDeposito { get; set; }
         public List<FichaMovKardex> movKardex { get; set; }
-
-
         public Ficha()
         {
             mov = new FichaMov();
@@ -25,7 +20,5 @@ namespace OOB.LibInventario.Movimiento.Ajuste.Insertar
             movDeposito = new List<FichaMovDeposito>();
             movKardex = new List<FichaMovKardex>();
         }
-
     }
-
 }

@@ -298,8 +298,7 @@ namespace ModInventario.src.MovInventario.Descargo
                         autoProducto = s.id,
                         nombreProducto = s.desc,
                         nombreDeposito = depOrigen.desc,
-                        cantidadUnd = s.cnt,
-                        signoMov = _docTipo.signo,
+                        cantidadUnd = s.cnt * _docTipo.signo,
                     };
                     return rg;
                 }).ToList();

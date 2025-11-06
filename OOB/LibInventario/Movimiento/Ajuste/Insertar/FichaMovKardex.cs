@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace OOB.LibInventario.Movimiento.Ajuste.Insertar
 {
-    
     public class FichaMovKardex: Movimiento.Insertar.BaseFichaMovKardex
     {
-
-
         public FichaMovKardex()
         {
             autoProducto = "";
@@ -36,8 +33,8 @@ namespace OOB.LibInventario.Movimiento.Ajuste.Insertar
             codigoDeposito = "";
             nombreDeposito = "";
             factorCambio = 0m;
+            cierreFtp = "";
+            nombreProducto = "";
         }
-
     }
-
 }

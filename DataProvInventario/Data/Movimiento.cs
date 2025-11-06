@@ -14,122 +14,247 @@ namespace DataProvInventario.Data
         public OOB.ResultadoAuto 
             Producto_Movimiento_Ajuste_Insertar(OOB.LibInventario.Movimiento.Ajuste.Insertar.Ficha data)
         {
+            //var rt = new OOB.ResultadoAuto();
+
+            //var mov= data.mov;
+            //var movDTO = new DtoLibInventario.Movimiento.Ajuste.Insertar.FichaMov()
+            //{
+            //    autoConcepto = mov.autoConcepto,
+            //    autoDepositoDestino = mov.autoDepositoDestino,
+            //    autoDepositoOrigen = mov.autoDepositoOrigen,
+            //    autoRemision = mov.autoRemision,
+            //    autorizado = mov.autorizado,
+            //    autoUsuario = mov.autoUsuario,
+            //    cierreFtp = mov.cierreFtp,
+            //    codConcepto = mov.codConcepto,
+            //    codDepositoDestino = mov.codDepositoDestino,
+            //    codDepositoOrigen = mov.codDepositoOrigen,
+            //    codigoSucursal = mov.codigoSucursal,
+            //    codUsuario = mov.codUsuario,
+            //    desConcepto = mov.desConcepto,
+            //    desDepositoDestino = mov.desDepositoDestino,
+            //    desDepositoOrigen = mov.desDepositoOrigen,
+            //    documentoNombre = mov.documentoNombre,
+            //    estacion = mov.estacion,
+            //    estatusAnulado = mov.estatusAnulado,
+            //    estatusCierreContable = mov.estatusCierreContable,
+            //    nota = mov.nota,
+            //    renglones = mov.renglones,
+            //    situacion = mov.situacion,
+            //    tipo = mov.tipo,
+            //    total = mov.total,
+            //    usuario = mov.usuario,
+            //    factorCambio = mov.factorCambio,
+            //    montoDivisa = mov.montoDivisa,
+            //};
+            //var movDetDTO = data.movDetalles.Select(s =>
+            //{
+            //    var dt = new DtoLibInventario.Movimiento.Ajuste.Insertar.FichaMovDetalle()
+            //    {
+            //        autoDepartamento = s.autoDepartamento,
+            //        autoGrupo = s.autoGrupo,
+            //        autoProducto = s.autoProducto,
+            //        cantidad = s.cantidad,
+            //        cantidadBono = s.cantidadBono,
+            //        cantidadUnd = s.cantidadUnd,
+            //        categoria = s.categoria,
+            //        codigoProducto = s.codigoProducto,
+            //        contEmpaque = s.contEmpaque,
+            //        costoCompra = s.costoCompra,
+            //        costoUnd = s.costoUnd,
+            //        decimales = s.decimales,
+            //        empaque = s.empaque,
+            //        estatusAnulado = s.estatusAnulado,
+            //        estatusUnidad = s.estatusUnidad,
+            //        nombreProducto = s.nombreProducto,
+            //        signo = s.signo,
+            //        tipo = s.tipo,
+            //        total = s.total,
+            //    };
+            //    return dt;
+            //}).ToList();
+            //var movKardexDTO = data.movKardex.Select(s =>
+            //{
+            //    var dt = new DtoLibInventario.Movimiento.Ajuste.Insertar.FichaMovKardex()
+            //    {
+            //        autoConcepto = s.autoConcepto,
+            //        autoDeposito = s.autoDeposito,
+            //        autoProducto = s.autoProducto,
+            //        cantidad = s.cantidad,
+            //        cantidadBono = s.cantidadBono,
+            //        cantidadUnd = s.cantidadUnd,
+            //        codigoMov = s.codigoMov,
+            //        codigoSucursal = s.codigoSucursal,
+            //        costoUnd = s.costoUnd,
+            //        entidad = s.entidad,
+            //        estatusAnulado = s.estatusAnulado,
+            //        modulo = s.modulo,
+            //        nota = s.nota,
+            //        precioUnd = s.precioUnd,
+            //        siglasMov = s.siglasMov,
+            //        signoMov = s.signoMov,
+            //        total = s.total,
+            //        codigoConcepto = s.codigoConcepto,
+            //        nombreConcepto = s.nombreConcepto,
+            //        codigoDeposito = s.codigoDeposito,
+            //        nombreDeposito = s.nombreDeposito,
+            //        factorCambio = s.factorCambio,
+            //    };
+            //    return dt;
+            //}).ToList();
+            //var movDepDTO = data.movDeposito.Select(s =>
+            //{
+            //    var dt = new DtoLibInventario.Movimiento.Ajuste.Insertar.FichaMovDeposito()
+            //    {
+            //        autoProducto = s.autoProducto,
+            //        autoDeposito = s.autoDeposito,
+            //        cantidadUnd = s.cantidadUnd,
+            //        nombreProducto = s.nombreProducto,
+            //        nombreDeposito = s.nombreDeposito,
+            //    };
+            //    return dt;
+            //}).ToList();
+            //var fichaDto = new DtoLibInventario.Movimiento.Ajuste.Insertar.Ficha()
+            //{
+            //    mov = movDTO,
+            //    movDeposito = movDepDTO,
+            //    movDetalles = movDetDTO,
+            //    movKardex = movKardexDTO,
+            //};
+            //var r01 = MyData.Producto_Movimiento_Ajuste_Insertar(fichaDto);
+            //if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            //{
+            //    rt.Mensaje = r01.Mensaje;
+            //    rt.Result = OOB.Enumerados.EnumResult.isError;
+            //    return rt;
+            //}
+            //rt.Auto = r01.Auto;
+
+            //return rt;
+
+            return InsertarMovAjusteNew(data);
+        }
+        private OOB.ResultadoAuto 
+            InsertarMovAjusteNew(OOB.LibInventario.Movimiento.Ajuste.Insertar.Ficha ficha)
+        {
             var rt = new OOB.ResultadoAuto();
-
-            var mov= data.mov;
-            var movDTO = new DtoLibInventario.Movimiento.Ajuste.Insertar.FichaMov()
+            //
+            try
             {
-                autoConcepto = mov.autoConcepto,
-                autoDepositoDestino = mov.autoDepositoDestino,
-                autoDepositoOrigen = mov.autoDepositoOrigen,
-                autoRemision = mov.autoRemision,
-                autorizado = mov.autorizado,
-                autoUsuario = mov.autoUsuario,
-                cierreFtp = mov.cierreFtp,
-                codConcepto = mov.codConcepto,
-                codDepositoDestino = mov.codDepositoDestino,
-                codDepositoOrigen = mov.codDepositoOrigen,
-                codigoSucursal = mov.codigoSucursal,
-                codUsuario = mov.codUsuario,
-                desConcepto = mov.desConcepto,
-                desDepositoDestino = mov.desDepositoDestino,
-                desDepositoOrigen = mov.desDepositoOrigen,
-                documentoNombre = mov.documentoNombre,
-                estacion = mov.estacion,
-                estatusAnulado = mov.estatusAnulado,
-                estatusCierreContable = mov.estatusCierreContable,
-                nota = mov.nota,
-                renglones = mov.renglones,
-                situacion = mov.situacion,
-                tipo = mov.tipo,
-                total = mov.total,
-                usuario = mov.usuario,
-                factorCambio = mov.factorCambio,
-                montoDivisa = mov.montoDivisa,
-            };
-            var movDetDTO = data.movDetalles.Select(s =>
-            {
-                var dt = new DtoLibInventario.Movimiento.Ajuste.Insertar.FichaMovDetalle()
+                var xficha = ficha.mov;
+                var mov = new DtoLibInventario.MovimientoInsertar.Ajuste.Ficha()
                 {
-                    autoDepartamento = s.autoDepartamento,
-                    autoGrupo = s.autoGrupo,
-                    autoProducto = s.autoProducto,
-                    cantidad = s.cantidad,
-                    cantidadBono = s.cantidadBono,
-                    cantidadUnd = s.cantidadUnd,
-                    categoria = s.categoria,
-                    codigoProducto = s.codigoProducto,
-                    contEmpaque = s.contEmpaque,
-                    costoCompra = s.costoCompra,
-                    costoUnd = s.costoUnd,
-                    decimales = s.decimales,
-                    empaque = s.empaque,
-                    estatusAnulado = s.estatusAnulado,
-                    estatusUnidad = s.estatusUnidad,
-                    nombreProducto = s.nombreProducto,
-                    signo = s.signo,
-                    tipo = s.tipo,
-                    total = s.total,
+                    movEncabezado = new DtoLibInventario.MovimientoInsertar.Encabezado()
+                    {
+                        autoConcepto = xficha.autoConcepto,
+                        autoDepositoDestino = xficha.autoDepositoDestino,
+                        autoDepositoOrigen = xficha.autoDepositoOrigen,
+                        autoRemision = xficha.autoRemision,
+                        autorizado = xficha.autorizado,
+                        autoUsuario = xficha.autoUsuario,
+                        cierreFtp = xficha.cierreFtp,
+                        codConcepto = xficha.codConcepto,
+                        codDepositoDestino = xficha.codDepositoDestino,
+                        codDepositoOrigen = xficha.codDepositoOrigen,
+                        codigoSucursal = xficha.codigoSucursal,
+                        codUsuario = xficha.codUsuario,
+                        desConcepto = xficha.desConcepto,
+                        desDepositoDestino = xficha.desDepositoDestino,
+                        desDepositoOrigen = xficha.desDepositoOrigen,
+                        documentoNombre = xficha.documentoNombre,
+                        estacion = xficha.estacion,
+                        estatusAnulado = xficha.estatusAnulado,
+                        estatusCierreContable = xficha.estatusCierreContable,
+                        nota = xficha.nota,
+                        renglones = xficha.renglones,
+                        situacion = xficha.situacion,
+                        tipo = xficha.tipo,
+                        total = xficha.total,
+                        usuario = xficha.usuario,
+                        factorCambio = xficha.factorCambio,
+                        montoDivisa = xficha.montoDivisa,
+                    },
+                    movDetalles = ficha.movDetalles.Select(s =>
+                    {
+                        return new DtoLibInventario.MovimientoInsertar.Detalle()
+                        {
+                            autoDepartamento = s.autoDepartamento,
+                            autoGrupo = s.autoGrupo,
+                            autoProducto = s.autoProducto,
+                            cantidad = s.cantidad,
+                            cantidadBono = s.cantidadBono,
+                            cantidadUnd = s.cantidadUnd,
+                            categoria = s.categoria,
+                            codigoProducto = s.codigoProducto,
+                            contEmpaque = s.contEmpaque,
+                            costoCompra = s.costoCompra,
+                            costoUnd = s.costoUnd,
+                            decimales = s.decimales,
+                            empaque = s.empaque,
+                            estatusAnulado = s.estatusAnulado,
+                            estatusUnidad = s.estatusUnidad,
+                            nombreProducto = s.nombreProducto,
+                            signo = s.signo,
+                            tipo = s.tipo,
+                            total = s.total,
+                            cierreFtp = s.cierreFtp,
+                        };
+                    }).ToList(),
+                    movDeposito = ficha.movDeposito.Select(s =>
+                    {
+                        return new DtoLibInventario.MovimientoInsertar.Deposito()
+                        {
+                            autoProducto = s.autoProducto,
+                            nombreProducto = s.nombreProducto,
+                            autoDeposito = s.autoDeposito,
+                            cantidadUnd = s.cantidadUnd,
+                            nombreDeposito = s.nombreDeposito,
+                        };
+                    }).ToList(),
+                    movKardex = ficha.movKardex.Select(s =>
+                    {
+                        return new DtoLibInventario.MovimientoInsertar.Kardex()
+                        {
+                            autoConcepto = s.autoConcepto,
+                            autoDeposito = s.autoDeposito,
+                            autoProducto = s.autoProducto,
+                            cantidad = s.cantidad,
+                            cantidadBono = s.cantidadBono,
+                            cantidadUnd = s.cantidadUnd,
+                            codigoMov = s.codigoMov,
+                            codigoSucursal = s.codigoSucursal,
+                            costoUnd = s.costoUnd,
+                            entidad = s.entidad,
+                            estatusAnulado = s.estatusAnulado,
+                            modulo = s.modulo,
+                            nota = s.nota,
+                            precioUnd = s.precioUnd,
+                            siglasMov = s.siglasMov,
+                            signoMov = s.signoMov,
+                            total = s.total,
+                            codigoConcepto = s.codigoConcepto,
+                            nombreConcepto = s.nombreConcepto,
+                            codigoDeposito = s.codigoDeposito,
+                            nombreDeposito = s.nombreDeposito,
+                            factorCambio = s.factorCambio,
+                            cierreFtp = s.cierreFtp,
+                            nombreProducto = s.nombreProducto,
+                        };
+                    }).ToList(),
                 };
-                return dt;
-            }).ToList();
-            var movKardexDTO = data.movKardex.Select(s =>
-            {
-                var dt = new DtoLibInventario.Movimiento.Ajuste.Insertar.FichaMovKardex()
+                var rst = MyData.insertarMovAjuste(mov);
+                if (rst.Result == DtoLib.Enumerados.EnumResult.isError)
                 {
-                    autoConcepto = s.autoConcepto,
-                    autoDeposito = s.autoDeposito,
-                    autoProducto = s.autoProducto,
-                    cantidad = s.cantidad,
-                    cantidadBono = s.cantidadBono,
-                    cantidadUnd = s.cantidadUnd,
-                    codigoMov = s.codigoMov,
-                    codigoSucursal = s.codigoSucursal,
-                    costoUnd = s.costoUnd,
-                    entidad = s.entidad,
-                    estatusAnulado = s.estatusAnulado,
-                    modulo = s.modulo,
-                    nota = s.nota,
-                    precioUnd = s.precioUnd,
-                    siglasMov = s.siglasMov,
-                    signoMov = s.signoMov,
-                    total = s.total,
-                    codigoConcepto = s.codigoConcepto,
-                    nombreConcepto = s.nombreConcepto,
-                    codigoDeposito = s.codigoDeposito,
-                    nombreDeposito = s.nombreDeposito,
-                    factorCambio = s.factorCambio,
-                };
-                return dt;
-            }).ToList();
-            var movDepDTO = data.movDeposito.Select(s =>
-            {
-                var dt = new DtoLibInventario.Movimiento.Ajuste.Insertar.FichaMovDeposito()
-                {
-                    autoProducto = s.autoProducto,
-                    autoDeposito = s.autoDeposito,
-                    cantidadUnd = s.cantidadUnd,
-                    nombreProducto = s.nombreProducto,
-                    nombreDeposito = s.nombreDeposito,
-                };
-                return dt;
-            }).ToList();
-            var fichaDto = new DtoLibInventario.Movimiento.Ajuste.Insertar.Ficha()
-            {
-                mov = movDTO,
-                movDeposito = movDepDTO,
-                movDetalles = movDetDTO,
-                movKardex = movKardexDTO,
-            };
-            var r01 = MyData.Producto_Movimiento_Ajuste_Insertar(fichaDto);
-            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
-            {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                    throw new Exception(rst.Mensaje);
+                }
+                rt.Auto = rst.Entidad;
             }
-            rt.Auto = r01.Auto;
-
+            catch (Exception e)
+            {
+                rt.Mensaje = e.Message;
+                rt.Result = OOB.Enumerados.EnumResult.isError;
+            }
+            //
             return rt;
         }
 
@@ -391,133 +516,267 @@ namespace DataProvInventario.Data
             return rt;
         }
 
-
         public OOB.ResultadoAuto 
             Producto_Movimiento_Traslado_Devolucion_Insertar(OOB.LibInventario.Movimiento.Traslado.Insertar.Ficha ficha)
         {
+            //var rt = new OOB.ResultadoAuto();
+
+            //var xficha = ficha.mov;
+            //var movDTO = new DtoLibInventario.Movimiento.Traslado.Insertar.FichaMov()
+            //{
+            //    autoConcepto = xficha.autoConcepto,
+            //    autoDepositoDestino = xficha.autoDepositoDestino,
+            //    autoDepositoOrigen = xficha.autoDepositoOrigen,
+            //    autoRemision = xficha.autoRemision,
+            //    autorizado = xficha.autorizado,
+            //    autoUsuario = xficha.autoUsuario,
+            //    cierreFtp = xficha.cierreFtp,
+            //    codConcepto = xficha.codConcepto,
+            //    codDepositoDestino = xficha.codDepositoDestino,
+            //    codDepositoOrigen = xficha.codDepositoOrigen,
+            //    codigoSucursal = xficha.codigoSucursal,
+            //    codUsuario = xficha.codUsuario,
+            //    desConcepto = xficha.desConcepto,
+            //    desDepositoDestino = xficha.desDepositoDestino,
+            //    desDepositoOrigen = xficha.desDepositoOrigen,
+            //    documentoNombre = xficha.documentoNombre,
+            //    estacion = xficha.estacion,
+            //    estatusAnulado = xficha.estatusAnulado,
+            //    estatusCierreContable = xficha.estatusCierreContable,
+            //    nota = xficha.nota,
+            //    renglones = xficha.renglones,
+            //    situacion = xficha.situacion,
+            //    tipo = xficha.tipo,
+            //    total = xficha.total,
+            //    usuario = xficha.usuario,
+            //    factorCambio = xficha.factorCambio,
+            //    montoDivisa = xficha.montoDivisa,
+            //};
+            //var detDTO= ficha.movDetalles.Select(s =>
+            //{
+            //    var dt = new DtoLibInventario.Movimiento.Traslado.Insertar.FichaMovDetalle()
+            //    {
+            //        autoDepartamento = s.autoDepartamento,
+            //        autoGrupo = s.autoGrupo,
+            //        autoProducto = s.autoProducto,
+            //        cantidad = s.cantidad,
+            //        cantidadBono = s.cantidadBono,
+            //        cantidadUnd = s.cantidadUnd,
+            //        categoria = s.categoria,
+            //        codigoProducto = s.codigoProducto,
+            //        contEmpaque = s.contEmpaque,
+            //        costoCompra = s.costoCompra,
+            //        costoUnd = s.costoUnd,
+            //        decimales = s.decimales,
+            //        empaque = s.empaque,
+            //        estatusAnulado = s.estatusAnulado,
+            //        estatusUnidad = s.estatusUnidad,
+            //        nombreProducto = s.nombreProducto,
+            //        signo = s.signo,
+            //        tipo = s.tipo,
+            //        total = s.total,
+            //    };
+            //    return dt;
+            //}).ToList();
+            //var kardexDTO = ficha.movKardex.Select(s =>
+            //{
+            //    var dt = new DtoLibInventario.Movimiento.Traslado.Insertar.FichaMovKardex()
+            //    {
+            //        autoConcepto = s.autoConcepto,
+            //        autoDeposito = s.autoDeposito,
+            //        autoProducto = s.autoProducto,
+            //        cantidad = s.cantidad,
+            //        cantidadBono = s.cantidadBono,
+            //        cantidadUnd = s.cantidadUnd,
+            //        codigoMov = s.codigoMov,
+            //        codigoSucursal = s.codigoSucursal,
+            //        costoUnd = s.costoUnd,
+            //        entidad = s.entidad,
+            //        estatusAnulado = s.estatusAnulado,
+            //        modulo = s.modulo,
+            //        nota = s.nota,
+            //        precioUnd = s.precioUnd,
+            //        siglasMov = s.siglasMov,
+            //        signoMov = s.signoMov,
+            //        total = s.total,
+            //        codigoConcepto = s.codigoConcepto,
+            //        nombreConcepto = s.nombreConcepto,
+            //        codigoDeposito = s.codigoDeposito,
+            //        nombreDeposito = s.nombreDeposito,
+            //        factorCambio = s.factorCambio,
+            //    };
+            //    return dt;
+            //}).ToList();
+            //var depDTO = ficha.movDeposito.Select(s =>
+            //{
+            //    var dt = new DtoLibInventario.Movimiento.Traslado.Insertar.FichaMovDeposito()
+            //    {
+            //        autoProducto = s.autoProducto,
+            //        nombreProducto = s.nombreProducto,
+            //        autoDeposito = s.autoDeposito,
+            //        autoDepositoDestino = s.autoDepositoDestino,
+            //        depositoDestino = s.depositoDestino,
+            //        nombreDeposito = s.nombreDeposito,
+            //        cantidadUnd = s.cantidadUnd,
+            //    };
+            //    return dt;
+            //}).ToList();
+
+            //var fichaDTO = new DtoLibInventario.Movimiento.Traslado.Insertar.Ficha()
+            //{
+            //    mov = movDTO,
+            //    detalles = detDTO,
+            //    movKardex = kardexDTO,
+            //    prdDeposito = depDTO,
+            //};
+            //var r01 = MyData.Producto_Movimiento_Traslado_Devolucion_Insertar(fichaDTO);
+            //if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            //{
+            //    rt.Mensaje = r01.Mensaje;
+            //    rt.Result = OOB.Enumerados.EnumResult.isError;
+            //    return rt;
+            //}
+            //rt.Auto = r01.Auto;
+
+            //return rt;
+
+            return InsertarMovTrasladoPorDevolucionNew(ficha);
+        }
+        private OOB.ResultadoAuto
+            InsertarMovTrasladoPorDevolucionNew(OOB.LibInventario.Movimiento.Traslado.Insertar.Ficha ficha)
+        {
             var rt = new OOB.ResultadoAuto();
-
-            var xficha = ficha.mov;
-            var movDTO = new DtoLibInventario.Movimiento.Traslado.Insertar.FichaMov()
+            //
+            try
             {
-                autoConcepto = xficha.autoConcepto,
-                autoDepositoDestino = xficha.autoDepositoDestino,
-                autoDepositoOrigen = xficha.autoDepositoOrigen,
-                autoRemision = xficha.autoRemision,
-                autorizado = xficha.autorizado,
-                autoUsuario = xficha.autoUsuario,
-                cierreFtp = xficha.cierreFtp,
-                codConcepto = xficha.codConcepto,
-                codDepositoDestino = xficha.codDepositoDestino,
-                codDepositoOrigen = xficha.codDepositoOrigen,
-                codigoSucursal = xficha.codigoSucursal,
-                codUsuario = xficha.codUsuario,
-                desConcepto = xficha.desConcepto,
-                desDepositoDestino = xficha.desDepositoDestino,
-                desDepositoOrigen = xficha.desDepositoOrigen,
-                documentoNombre = xficha.documentoNombre,
-                estacion = xficha.estacion,
-                estatusAnulado = xficha.estatusAnulado,
-                estatusCierreContable = xficha.estatusCierreContable,
-                nota = xficha.nota,
-                renglones = xficha.renglones,
-                situacion = xficha.situacion,
-                tipo = xficha.tipo,
-                total = xficha.total,
-                usuario = xficha.usuario,
-                factorCambio = xficha.factorCambio,
-                montoDivisa = xficha.montoDivisa,
-            };
-            var detDTO= ficha.movDetalles.Select(s =>
-            {
-                var dt = new DtoLibInventario.Movimiento.Traslado.Insertar.FichaMovDetalle()
+                var xficha = ficha.mov;
+                var mov = new DtoLibInventario.MovimientoInsertar.Traslado.Ficha()
                 {
-                    autoDepartamento = s.autoDepartamento,
-                    autoGrupo = s.autoGrupo,
-                    autoProducto = s.autoProducto,
-                    cantidad = s.cantidad,
-                    cantidadBono = s.cantidadBono,
-                    cantidadUnd = s.cantidadUnd,
-                    categoria = s.categoria,
-                    codigoProducto = s.codigoProducto,
-                    contEmpaque = s.contEmpaque,
-                    costoCompra = s.costoCompra,
-                    costoUnd = s.costoUnd,
-                    decimales = s.decimales,
-                    empaque = s.empaque,
-                    estatusAnulado = s.estatusAnulado,
-                    estatusUnidad = s.estatusUnidad,
-                    nombreProducto = s.nombreProducto,
-                    signo = s.signo,
-                    tipo = s.tipo,
-                    total = s.total,
+                    movEncabezado = new DtoLibInventario.MovimientoInsertar.Encabezado()
+                    {
+                        autoConcepto = xficha.autoConcepto,
+                        autoDepositoDestino = xficha.autoDepositoDestino,
+                        autoDepositoOrigen = xficha.autoDepositoOrigen,
+                        autoRemision = xficha.autoRemision,
+                        autorizado = xficha.autorizado,
+                        autoUsuario = xficha.autoUsuario,
+                        cierreFtp = xficha.cierreFtp,
+                        codConcepto = xficha.codConcepto,
+                        codDepositoDestino = xficha.codDepositoDestino,
+                        codDepositoOrigen = xficha.codDepositoOrigen,
+                        codigoSucursal = xficha.codigoSucursal,
+                        codUsuario = xficha.codUsuario,
+                        desConcepto = xficha.desConcepto,
+                        desDepositoDestino = xficha.desDepositoDestino,
+                        desDepositoOrigen = xficha.desDepositoOrigen,
+                        documentoNombre = xficha.documentoNombre,
+                        estacion = xficha.estacion,
+                        estatusAnulado = xficha.estatusAnulado,
+                        estatusCierreContable = xficha.estatusCierreContable,
+                        nota = xficha.nota,
+                        renglones = xficha.renglones,
+                        situacion = xficha.situacion,
+                        tipo = xficha.tipo,
+                        total = xficha.total,
+                        usuario = xficha.usuario,
+                        factorCambio = xficha.factorCambio,
+                        montoDivisa = xficha.montoDivisa,
+                    },
+                    movDetalles = ficha.movDetalles.Select(s =>
+                    {
+                        return new DtoLibInventario.MovimientoInsertar.Detalle()
+                        {
+                            autoDepartamento = s.autoDepartamento,
+                            autoGrupo = s.autoGrupo,
+                            autoProducto = s.autoProducto,
+                            cantidad = s.cantidad,
+                            cantidadBono = s.cantidadBono,
+                            cantidadUnd = s.cantidadUnd,
+                            categoria = s.categoria,
+                            codigoProducto = s.codigoProducto,
+                            contEmpaque = s.contEmpaque,
+                            costoCompra = s.costoCompra,
+                            costoUnd = s.costoUnd,
+                            decimales = s.decimales,
+                            empaque = s.empaque,
+                            estatusAnulado = s.estatusAnulado,
+                            estatusUnidad = s.estatusUnidad,
+                            nombreProducto = s.nombreProducto,
+                            signo = s.signo,
+                            tipo = s.tipo,
+                            total = s.total,
+                            cierreFtp = s.cierreFtp,
+                        };
+                    }).ToList(),
+                    movDepositoOrigen = ficha.movDeposito.Select(s =>
+                    {
+                        return new DtoLibInventario.MovimientoInsertar.Deposito()
+                        {
+                            autoProducto = s.autoProducto,
+                            nombreProducto = s.nombreProducto,
+                            autoDeposito = s.autoDeposito,
+                            cantidadUnd = s.cantidadUnd * (-1),
+                            nombreDeposito = s.nombreDeposito,
+                        };
+                    }).ToList(),
+                    movDepositoDestino = ficha.movDeposito.Select(s =>
+                    {
+                        return new DtoLibInventario.MovimientoInsertar.Deposito()
+                        {
+                            autoProducto = s.autoProducto,
+                            nombreProducto = s.nombreProducto,
+                            autoDeposito = s.autoDepositoDestino,
+                            cantidadUnd = s.cantidadUnd,
+                            nombreDeposito = s.depositoDestino,
+                        };
+                    }).ToList(),
+                    movKardex = ficha.movKardex.Select(s =>
+                    {
+                        return new DtoLibInventario.MovimientoInsertar.Kardex()
+                        {
+                            autoConcepto = s.autoConcepto,
+                            autoDeposito = s.autoDeposito,
+                            autoProducto = s.autoProducto,
+                            cantidad = s.cantidad,
+                            cantidadBono = s.cantidadBono,
+                            cantidadUnd = s.cantidadUnd,
+                            codigoMov = s.codigoMov,
+                            codigoSucursal = s.codigoSucursal,
+                            costoUnd = s.costoUnd,
+                            entidad = s.entidad,
+                            estatusAnulado = s.estatusAnulado,
+                            modulo = s.modulo,
+                            nota = s.nota,
+                            precioUnd = s.precioUnd,
+                            siglasMov = s.siglasMov,
+                            signoMov = s.signoMov,
+                            total = s.total,
+                            codigoConcepto = s.codigoConcepto,
+                            nombreConcepto = s.nombreConcepto,
+                            codigoDeposito = s.codigoDeposito,
+                            nombreDeposito = s.nombreDeposito,
+                            factorCambio = s.factorCambio,
+                            cierreFtp = s.cierreFtp,
+                            nombreProducto = s.nombreProducto,
+                        };
+                    }).ToList(),
                 };
-                return dt;
-            }).ToList();
-            var kardexDTO = ficha.movKardex.Select(s =>
-            {
-                var dt = new DtoLibInventario.Movimiento.Traslado.Insertar.FichaMovKardex()
+                var rst = MyData.insertarMovTrasladoPorDevolucion(mov);
+                if (rst.Result == DtoLib.Enumerados.EnumResult.isError)
                 {
-                    autoConcepto = s.autoConcepto,
-                    autoDeposito = s.autoDeposito,
-                    autoProducto = s.autoProducto,
-                    cantidad = s.cantidad,
-                    cantidadBono = s.cantidadBono,
-                    cantidadUnd = s.cantidadUnd,
-                    codigoMov = s.codigoMov,
-                    codigoSucursal = s.codigoSucursal,
-                    costoUnd = s.costoUnd,
-                    entidad = s.entidad,
-                    estatusAnulado = s.estatusAnulado,
-                    modulo = s.modulo,
-                    nota = s.nota,
-                    precioUnd = s.precioUnd,
-                    siglasMov = s.siglasMov,
-                    signoMov = s.signoMov,
-                    total = s.total,
-                    codigoConcepto = s.codigoConcepto,
-                    nombreConcepto = s.nombreConcepto,
-                    codigoDeposito = s.codigoDeposito,
-                    nombreDeposito = s.nombreDeposito,
-                    factorCambio = s.factorCambio,
-                };
-                return dt;
-            }).ToList();
-            var depDTO = ficha.movDeposito.Select(s =>
-            {
-                var dt = new DtoLibInventario.Movimiento.Traslado.Insertar.FichaMovDeposito()
-                {
-                    autoProducto = s.autoProducto,
-                    nombreProducto = s.nombreProducto,
-                    autoDeposito = s.autoDeposito,
-                    autoDepositoDestino = s.autoDepositoDestino,
-                    depositoDestino = s.depositoDestino,
-                    nombreDeposito = s.nombreDeposito,
-                    cantidadUnd = s.cantidadUnd,
-                };
-                return dt;
-            }).ToList();
-
-            var fichaDTO = new DtoLibInventario.Movimiento.Traslado.Insertar.Ficha()
-            {
-                mov = movDTO,
-                detalles = detDTO,
-                movKardex = kardexDTO,
-                prdDeposito = depDTO,
-            };
-            var r01 = MyData.Producto_Movimiento_Traslado_Devolucion_Insertar(fichaDTO);
-            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
-            {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                    throw new Exception(rst.Mensaje);
+                }
+                rt.Auto = rst.Entidad;
             }
-            rt.Auto = r01.Auto;
-
+            catch (Exception e)
+            {
+                rt.Mensaje = e.Message;
+                rt.Result = OOB.Enumerados.EnumResult.isError;
+            }
+            //
             return rt;
         }
-
-        
+                
         public OOB.ResultadoAuto 
             Producto_Movimiento_DesCargo_Insertar(OOB.LibInventario.Movimiento.DesCargo.Insertar.Ficha ficha)
         {
@@ -715,7 +974,7 @@ namespace DataProvInventario.Data
                             autoProducto = s.autoProducto,
                             nombreProducto = s.nombreProducto,
                             autoDeposito = s.autoDeposito,
-                            cantidadUnd = s.cantidadUnd * s.signoMov,
+                            cantidadUnd = s.cantidadUnd,
                             nombreDeposito = s.nombreDeposito,
                         };
                     }).ToList(),
@@ -765,8 +1024,6 @@ namespace DataProvInventario.Data
             //
             return rt;
         }
-
-
 
         public OOB.ResultadoAuto 
             Producto_Movimiento_Cargo_Insertar(OOB.LibInventario.Movimiento.Cargo.Insertar.Ficha ficha)
@@ -1081,7 +1338,7 @@ namespace DataProvInventario.Data
                             autoProducto = s.autoProducto,
                             nombreProducto = s.nombreProducto,
                             autoDeposito = s.autoDeposito,
-                            cantidadUnd = s.cantidadUnd * s.signoMov,
+                            cantidadUnd = s.cantidadUnd,
                             nombreDeposito = s.nombreDeposito,
                         };
                     }).ToList(),
@@ -1133,128 +1390,254 @@ namespace DataProvInventario.Data
         }
 
 
-
         public OOB.ResultadoAuto 
             Producto_Movimiento_AjusteInventarioCero_Insertar(OOB.LibInventario.Movimiento.AjusteInvCero.Insertar.Ficha data)
         {
+            //var rt = new OOB.ResultadoAuto();
+
+            //var mov = data.mov;
+            //var movDTO = new DtoLibInventario.Movimiento.AjusteInvCero.Insertar.FichaMov()
+            //{
+            //    autoConcepto = mov.autoConcepto,
+            //    autoDepositoDestino = mov.autoDepositoDestino,
+            //    autoDepositoOrigen = mov.autoDepositoOrigen,
+            //    autoRemision = mov.autoRemision,
+            //    autorizado = mov.autorizado,
+            //    autoUsuario = mov.autoUsuario,
+            //    cierreFtp = mov.cierreFtp,
+            //    codConcepto = mov.codConcepto,
+            //    codDepositoDestino = mov.codDepositoDestino,
+            //    codDepositoOrigen = mov.codDepositoOrigen,
+            //    codigoSucursal = mov.codigoSucursal,
+            //    codUsuario = mov.codUsuario,
+            //    desConcepto = mov.desConcepto,
+            //    desDepositoDestino = mov.desDepositoDestino,
+            //    desDepositoOrigen = mov.desDepositoOrigen,
+            //    documentoNombre = mov.documentoNombre,
+            //    estacion = mov.estacion,
+            //    estatusAnulado = mov.estatusAnulado,
+            //    estatusCierreContable = mov.estatusCierreContable,
+            //    nota = mov.nota,
+            //    renglones = mov.renglones,
+            //    situacion = mov.situacion,
+            //    tipo = mov.tipo,
+            //    total = mov.total,
+            //    usuario = mov.usuario,
+            //    factorCambio = mov.factorCambio,
+            //    montoDivisa = mov.montoDivisa,
+            //};
+            //var movDetDTO = data.movDetalles.Select(s =>
+            //{
+            //    var dt = new DtoLibInventario.Movimiento.AjusteInvCero.Insertar.FichaMovDetalle()
+            //    {
+            //        autoDepartamento = s.autoDepartamento,
+            //        autoGrupo = s.autoGrupo,
+            //        autoProducto = s.autoProducto,
+            //        cantidad = s.cantidad,
+            //        cantidadBono = s.cantidadBono,
+            //        cantidadUnd = s.cantidadUnd,
+            //        categoria = s.categoria,
+            //        codigoProducto = s.codigoProducto,
+            //        contEmpaque = s.contEmpaque,
+            //        costoCompra = s.costoCompra,
+            //        costoUnd = s.costoUnd,
+            //        decimales = s.decimales,
+            //        empaque = s.empaque,
+            //        estatusAnulado = s.estatusAnulado,
+            //        estatusUnidad = s.estatusUnidad,
+            //        nombreProducto = s.nombreProducto,
+            //        signo = s.signo,
+            //        tipo = s.tipo,
+            //        total = s.total,
+            //    };
+            //    return dt;
+            //}).ToList();
+            //var movKardexDTO = data.movKardex.Select(s =>
+            //{
+            //    var dt = new DtoLibInventario.Movimiento.AjusteInvCero.Insertar.FichaMovKardex()
+            //    {
+            //        autoConcepto = s.autoConcepto,
+            //        autoDeposito = s.autoDeposito,
+            //        autoProducto = s.autoProducto,
+            //        cantidad = s.cantidad,
+            //        cantidadBono = s.cantidadBono,
+            //        cantidadUnd = s.cantidadUnd,
+            //        codigoMov = s.codigoMov,
+            //        codigoSucursal = s.codigoSucursal,
+            //        costoUnd = s.costoUnd,
+            //        entidad = s.entidad,
+            //        estatusAnulado = s.estatusAnulado,
+            //        modulo = s.modulo,
+            //        nota = s.nota,
+            //        precioUnd = s.precioUnd,
+            //        siglasMov = s.siglasMov,
+            //        signoMov = s.signoMov,
+            //        total = s.total,
+            //        codigoConcepto = s.codigoConcepto,
+            //        nombreConcepto = s.nombreConcepto,
+            //        codigoDeposito = s.codigoDeposito,
+            //        nombreDeposito = s.nombreDeposito,
+            //        factorCambio = s.factorCambio,
+            //    };
+            //    return dt;
+            //}).ToList();
+            //var movDepDTO = data.movDeposito.Select(s =>
+            //{
+            //    var dt = new DtoLibInventario.Movimiento.AjusteInvCero.Insertar.FichaMovDeposito()
+            //    {
+            //        autoProducto = s.autoProducto,
+            //        autoDeposito = s.autoDeposito,
+            //        cantidadUnd = s.cantidadUnd,
+            //        nombreProducto = s.nombreProducto,
+            //        nombreDeposito = s.nombreDeposito,
+            //    };
+            //    return dt;
+            //}).ToList();
+            //var fichaDto = new DtoLibInventario.Movimiento.AjusteInvCero.Insertar.Ficha()
+            //{
+            //    mov = movDTO,
+            //    movDeposito = movDepDTO,
+            //    movDetalles = movDetDTO,
+            //    movKardex = movKardexDTO,
+            //};
+            //var r01 = MyData.Producto_Movimiento_AjusteInvCero_Insertar(fichaDto);
+            //if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            //{
+            //    rt.Mensaje = r01.Mensaje;
+            //    rt.Result = OOB.Enumerados.EnumResult.isError;
+            //    return rt;
+            //}
+            //rt.Auto = r01.Auto;
+
+            //return rt;
+
+            return InsertarMovAjustePorInventarioEnCeroNew(data);
+        }
+        private OOB.ResultadoAuto
+            InsertarMovAjustePorInventarioEnCeroNew(OOB.LibInventario.Movimiento.AjusteInvCero.Insertar.Ficha ficha)
+        {
             var rt = new OOB.ResultadoAuto();
-
-            var mov = data.mov;
-            var movDTO = new DtoLibInventario.Movimiento.AjusteInvCero.Insertar.FichaMov()
+            //
+            try
             {
-                autoConcepto = mov.autoConcepto,
-                autoDepositoDestino = mov.autoDepositoDestino,
-                autoDepositoOrigen = mov.autoDepositoOrigen,
-                autoRemision = mov.autoRemision,
-                autorizado = mov.autorizado,
-                autoUsuario = mov.autoUsuario,
-                cierreFtp = mov.cierreFtp,
-                codConcepto = mov.codConcepto,
-                codDepositoDestino = mov.codDepositoDestino,
-                codDepositoOrigen = mov.codDepositoOrigen,
-                codigoSucursal = mov.codigoSucursal,
-                codUsuario = mov.codUsuario,
-                desConcepto = mov.desConcepto,
-                desDepositoDestino = mov.desDepositoDestino,
-                desDepositoOrigen = mov.desDepositoOrigen,
-                documentoNombre = mov.documentoNombre,
-                estacion = mov.estacion,
-                estatusAnulado = mov.estatusAnulado,
-                estatusCierreContable = mov.estatusCierreContable,
-                nota = mov.nota,
-                renglones = mov.renglones,
-                situacion = mov.situacion,
-                tipo = mov.tipo,
-                total = mov.total,
-                usuario = mov.usuario,
-                factorCambio = mov.factorCambio,
-                montoDivisa = mov.montoDivisa,
-            };
-            var movDetDTO = data.movDetalles.Select(s =>
-            {
-                var dt = new DtoLibInventario.Movimiento.AjusteInvCero.Insertar.FichaMovDetalle()
+                var xficha = ficha.mov;
+                var mov = new DtoLibInventario.MovimientoInsertar.AjustePorInventarioEnCero.Ficha()
                 {
-                    autoDepartamento = s.autoDepartamento,
-                    autoGrupo = s.autoGrupo,
-                    autoProducto = s.autoProducto,
-                    cantidad = s.cantidad,
-                    cantidadBono = s.cantidadBono,
-                    cantidadUnd = s.cantidadUnd,
-                    categoria = s.categoria,
-                    codigoProducto = s.codigoProducto,
-                    contEmpaque = s.contEmpaque,
-                    costoCompra = s.costoCompra,
-                    costoUnd = s.costoUnd,
-                    decimales = s.decimales,
-                    empaque = s.empaque,
-                    estatusAnulado = s.estatusAnulado,
-                    estatusUnidad = s.estatusUnidad,
-                    nombreProducto = s.nombreProducto,
-                    signo = s.signo,
-                    tipo = s.tipo,
-                    total = s.total,
+                    idDepositoVerificar = ficha.mov.autoDepositoOrigen,
+                    movEncabezado = new DtoLibInventario.MovimientoInsertar.Encabezado()
+                    {
+                        autoConcepto = xficha.autoConcepto,
+                        autoDepositoDestino = xficha.autoDepositoDestino,
+                        autoDepositoOrigen = xficha.autoDepositoOrigen,
+                        autoRemision = xficha.autoRemision,
+                        autorizado = xficha.autorizado,
+                        autoUsuario = xficha.autoUsuario,
+                        cierreFtp = xficha.cierreFtp,
+                        codConcepto = xficha.codConcepto,
+                        codDepositoDestino = xficha.codDepositoDestino,
+                        codDepositoOrigen = xficha.codDepositoOrigen,
+                        codigoSucursal = xficha.codigoSucursal,
+                        codUsuario = xficha.codUsuario,
+                        desConcepto = xficha.desConcepto,
+                        desDepositoDestino = xficha.desDepositoDestino,
+                        desDepositoOrigen = xficha.desDepositoOrigen,
+                        documentoNombre = xficha.documentoNombre,
+                        estacion = xficha.estacion,
+                        estatusAnulado = xficha.estatusAnulado,
+                        estatusCierreContable = xficha.estatusCierreContable,
+                        nota = xficha.nota,
+                        renglones = xficha.renglones,
+                        situacion = xficha.situacion,
+                        tipo = xficha.tipo,
+                        total = xficha.total,
+                        usuario = xficha.usuario,
+                        factorCambio = xficha.factorCambio,
+                        montoDivisa = xficha.montoDivisa,
+                    },
+                    movDetalles = ficha.movDetalles.Select(s =>
+                    {
+                        return new DtoLibInventario.MovimientoInsertar.Detalle()
+                        {
+                            autoDepartamento = s.autoDepartamento,
+                            autoGrupo = s.autoGrupo,
+                            autoProducto = s.autoProducto,
+                            cantidad = s.cantidad,
+                            cantidadBono = s.cantidadBono,
+                            cantidadUnd = s.cantidadUnd,
+                            categoria = s.categoria,
+                            codigoProducto = s.codigoProducto,
+                            contEmpaque = s.contEmpaque,
+                            costoCompra = s.costoCompra,
+                            costoUnd = s.costoUnd,
+                            decimales = s.decimales,
+                            empaque = s.empaque,
+                            estatusAnulado = s.estatusAnulado,
+                            estatusUnidad = s.estatusUnidad,
+                            nombreProducto = s.nombreProducto,
+                            signo = s.signo,
+                            tipo = s.tipo,
+                            total = s.total,
+                            cierreFtp = s.cierreFtp,
+                        };
+                    }).ToList(),
+                    movDeposito = ficha.movDeposito.Select(s =>
+                    {
+                        return new DtoLibInventario.MovimientoInsertar.Deposito()
+                        {
+                            autoProducto = s.autoProducto,
+                            nombreProducto = s.nombreProducto,
+                            autoDeposito = s.autoDeposito,
+                            cantidadUnd = s.cantidadUnd,
+                            nombreDeposito = s.nombreDeposito,
+                        };
+                    }).ToList(),
+                    movKardex = ficha.movKardex.Select(s =>
+                    {
+                        return new DtoLibInventario.MovimientoInsertar.Kardex()
+                        {
+                            autoConcepto = s.autoConcepto,
+                            autoDeposito = s.autoDeposito,
+                            autoProducto = s.autoProducto,
+                            cantidad = s.cantidad,
+                            cantidadBono = s.cantidadBono,
+                            cantidadUnd = s.cantidadUnd,
+                            codigoMov = s.codigoMov,
+                            codigoSucursal = s.codigoSucursal,
+                            costoUnd = s.costoUnd,
+                            entidad = s.entidad,
+                            estatusAnulado = s.estatusAnulado,
+                            modulo = s.modulo,
+                            nota = s.nota,
+                            precioUnd = s.precioUnd,
+                            siglasMov = s.siglasMov,
+                            signoMov = s.signoMov,
+                            total = s.total,
+                            codigoConcepto = s.codigoConcepto,
+                            nombreConcepto = s.nombreConcepto,
+                            codigoDeposito = s.codigoDeposito,
+                            nombreDeposito = s.nombreDeposito,
+                            factorCambio = s.factorCambio,
+                            cierreFtp = s.cierreFtp,
+                            nombreProducto = s.nombreProducto,
+                        };
+                    }).ToList(),
                 };
-                return dt;
-            }).ToList();
-            var movKardexDTO = data.movKardex.Select(s =>
-            {
-                var dt = new DtoLibInventario.Movimiento.AjusteInvCero.Insertar.FichaMovKardex()
+                var rst = MyData.insertarMovAjustePorInventarioEnCero(mov);
+                if (rst.Result == DtoLib.Enumerados.EnumResult.isError)
                 {
-                    autoConcepto = s.autoConcepto,
-                    autoDeposito = s.autoDeposito,
-                    autoProducto = s.autoProducto,
-                    cantidad = s.cantidad,
-                    cantidadBono = s.cantidadBono,
-                    cantidadUnd = s.cantidadUnd,
-                    codigoMov = s.codigoMov,
-                    codigoSucursal = s.codigoSucursal,
-                    costoUnd = s.costoUnd,
-                    entidad = s.entidad,
-                    estatusAnulado = s.estatusAnulado,
-                    modulo = s.modulo,
-                    nota = s.nota,
-                    precioUnd = s.precioUnd,
-                    siglasMov = s.siglasMov,
-                    signoMov = s.signoMov,
-                    total = s.total,
-                    codigoConcepto = s.codigoConcepto,
-                    nombreConcepto = s.nombreConcepto,
-                    codigoDeposito = s.codigoDeposito,
-                    nombreDeposito = s.nombreDeposito,
-                    factorCambio = s.factorCambio,
-                };
-                return dt;
-            }).ToList();
-            var movDepDTO = data.movDeposito.Select(s =>
-            {
-                var dt = new DtoLibInventario.Movimiento.AjusteInvCero.Insertar.FichaMovDeposito()
-                {
-                    autoProducto = s.autoProducto,
-                    autoDeposito = s.autoDeposito,
-                    cantidadUnd = s.cantidadUnd,
-                    nombreProducto = s.nombreProducto,
-                    nombreDeposito = s.nombreDeposito,
-                };
-                return dt;
-            }).ToList();
-            var fichaDto = new DtoLibInventario.Movimiento.AjusteInvCero.Insertar.Ficha()
-            {
-                mov = movDTO,
-                movDeposito = movDepDTO,
-                movDetalles = movDetDTO,
-                movKardex = movKardexDTO,
-            };
-            var r01 = MyData.Producto_Movimiento_AjusteInvCero_Insertar(fichaDto);
-            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
-            {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
+                    throw new Exception(rst.Mensaje);
+                }
+                rt.Auto = rst.Entidad;
             }
-            rt.Auto = r01.Auto;
-
+            catch (Exception e)
+            {
+                rt.Mensaje = e.Message;
+                rt.Result = OOB.Enumerados.EnumResult.isError;
+            }
+            //
             return rt;
         }
+        
         //GET
         public OOB.ResultadoEntidad<OOB.LibInventario.Movimiento.Ver.Ficha>
             Producto_Movimiento_GetFicha(string autoDoc)

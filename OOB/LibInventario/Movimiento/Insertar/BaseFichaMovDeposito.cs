@@ -14,6 +14,5 @@ namespace OOB.LibInventario.Movimiento.Insertar
         public string nombreProducto { get; set; }
         public string nombreDeposito { get; set; }
         public decimal cantidadUnd { get; set; }
-        public int signoMov { get; set; }
     }
 }

@@ -16,7 +16,6 @@ namespace OOB.LibInventario.Movimiento.Cargo.Insertar
             nombreProducto = "";
             nombreDeposito = "";
             cantidadUnd = 0m;
-            signoMov = 1;
         }
     }
 }

@@ -123,7 +123,7 @@ namespace ModInventario.src.MovInventario.Ajuste.InvCero
             var _docTipo = r00.Entidad;
             var _mDivisa = _listaMov.GetImporte_MonedaOtra;
 
-            var movOOB = new OOB.LibInventario.Movimiento.Ajuste.Insertar.FichaMov()
+            var movOOB = new OOB.LibInventario.Movimiento.AjusteInvCero.Insertar.FichaMov()
             {
                 autoConcepto = concepto.id,
                 autoDepositoDestino = depOrigen.id,
@@ -157,7 +157,7 @@ namespace ModInventario.src.MovInventario.Ajuste.InvCero
             var detOOB = _items.Select(s =>
             {
                 var it = s;
-                var rg = new OOB.LibInventario.Movimiento.Ajuste.Insertar.FichaMovDetalle()
+                var rg = new OOB.LibInventario.Movimiento.AjusteInvCero.Insertar.FichaMovDetalle()
                 {
                     autoDepartamento = it.FichaPrd.autoDepart,
                     autoGrupo = it.FichaPrd.autoGrupo,
@@ -178,6 +178,7 @@ namespace ModInventario.src.MovInventario.Ajuste.InvCero
                     total = Math.Abs(it.ImporteMonedaLocal),
                     contEmpaque = it.ContEmpaqueSel,
                     empaque = it.DescEmpaqueSel,
+                    cierreFtp = "",
                 };
                 return rg;
             }).ToList();
@@ -187,7 +188,7 @@ namespace ModInventario.src.MovInventario.Ajuste.InvCero
                 ToList();
             var depOOB = gr3.Select(s =>
             {
-                var rg = new OOB.LibInventario.Movimiento.Ajuste.Insertar.FichaMovDeposito()
+                var rg = new OOB.LibInventario.Movimiento.AjusteInvCero.Insertar.FichaMovDeposito()
                 {
                     autoDeposito = depOrigen.id,
                     autoProducto = s.id,
@@ -199,7 +200,7 @@ namespace ModInventario.src.MovInventario.Ajuste.InvCero
             }).ToList();
             var KardexOOB = _items.Select(s =>
             {
-                var rg = new OOB.LibInventario.Movimiento.Ajuste.Insertar.FichaMovKardex()
+                var rg = new OOB.LibInventario.Movimiento.AjusteInvCero.Insertar.FichaMovKardex()
                 {
                     autoConcepto = concepto.id,
                     autoDeposito = depOrigen.id,
@@ -223,10 +224,12 @@ namespace ModInventario.src.MovInventario.Ajuste.InvCero
                     signoMov = s.Signo,
                     total = Math.Abs(s.ImporteMonedaLocal),
                     factorCambio = _tasaCambio,
+                    cierreFtp = "",
+                    nombreProducto = s.FichaPrd.nombrePrd,
                 };
                 return rg;
             }).ToList();
-            var ficha = new OOB.LibInventario.Movimiento.Ajuste.Insertar.Ficha()
+            var ficha = new OOB.LibInventario.Movimiento.AjusteInvCero.Insertar.Ficha()
             {
                 mov = movOOB,
                 movDeposito = depOOB,
@@ -234,7 +237,7 @@ namespace ModInventario.src.MovInventario.Ajuste.InvCero
                 movKardex = KardexOOB,
             };
             this.NotificarDocGenerado += VisualizarDocGenerado;
-            var r01 = Sistema.MyData.Producto_Movimiento_Ajuste_Insertar(ficha);
+            var r01 = Sistema.MyData.Producto_Movimiento_AjusteInventarioCero_Insertar(ficha);
             if (r01.Result == OOB.Enumerados.EnumResult.isError)
             {
                 this.NotificarDocGenerado -= VisualizarDocGenerado;

@@ -301,7 +301,6 @@ namespace ModInventario.src.MovInventario.Cargo
                         nombreProducto = s.desc,
                         nombreDeposito = depOrigen.desc,
                         cantidadUnd = s.cnt,
-                        signoMov = _docTipo.signo,
                     };
                     return rg;
                 }).ToList();

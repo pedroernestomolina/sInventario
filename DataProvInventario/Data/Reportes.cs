@@ -375,6 +375,7 @@ namespace DataProvInventario.Data
                             moduloMov = s.moduloMov,
                             siglasMov = s.siglasMov,
                             signoMov = s.signoMov,
+                            estatusAnulado = s.EstatusAnulado.Trim().ToUpper() == "1",
                         };
                     }).ToList();
                 }

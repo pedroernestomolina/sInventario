@@ -6,45 +6,48 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.37476cm</Width>
+              <Width>2.15889cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.48918cm</Width>
+              <Width>1.45273cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.98197cm</Width>
+              <Width>0.94552cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.82864cm</Width>
+              <Width>1.79219cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.86051cm</Width>
+              <Width>0.9767cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.25197cm</Width>
+              <Width>2.82406cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.66989cm</Width>
+              <Width>2.21552cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.09322cm</Width>
+              <Width>1.31006cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.77572cm</Width>
+              <Width>2.05677cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.80218cm</Width>
+              <Width>1.73927cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.7228cm</Width>
+              <Width>1.76573cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.82864cm</Width>
+              <Width>1.68635cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1.79219cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.6cm</Height>
+              <Height>0.96103cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -55,7 +58,21 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>FECHA/HORA</Value>
+                              <Value>FECHA</Value>
+                              <Style>
+                                <FontSize>7pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>HORA</Value>
                               <Style>
                                 <FontSize>7pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -196,6 +213,43 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="Textbox1">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style>
+                                <FontSize>7pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>LightGrey</BackgroundColor>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="Textbox26">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -277,7 +331,21 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>CNT/UND</Value>
+                              <Value>CNT</Value>
+                              <Style>
+                                <FontSize>7pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>UND</Value>
                               <Style>
                                 <FontSize>7pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -351,7 +419,21 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>SALDO/ IN</Value>
+                              <Value>SALDO</Value>
+                              <Style>
+                                <FontSize>7pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value> INICIAL</Value>
                               <Style>
                                 <FontSize>7pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
@@ -539,11 +621,13 @@
                             <TextRun>
                               <Value>=Fields!modulo.Value</Value>
                               <Style>
-                                <FontSize>6pt</FontSize>
+                                <FontSize>5pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>modulo1</rd:DefaultName>
@@ -572,11 +656,13 @@
                             <TextRun>
                               <Value>=Fields!siglas.Value</Value>
                               <Style>
-                                <FontSize>6pt</FontSize>
+                                <FontSize>5pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
-                          <Style />
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>siglas1</rd:DefaultName>
@@ -605,7 +691,7 @@
                             <TextRun>
                               <Value>=Fields!documento.Value</Value>
                               <Style>
-                                <FontSize>6pt</FontSize>
+                                <FontSize>5pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -629,6 +715,42 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="estatusDoc">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!estatusDoc.Value</Value>
+                              <Style>
+                                <FontSize>4pt</FontSize>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>estatusDoc</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                    <rd:Selected>true</rd:Selected>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="entidadMov1">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -638,7 +760,7 @@
                             <TextRun>
                               <Value>=Fields!entidadMov.Value</Value>
                               <Style>
-                                <FontSize>6pt</FontSize>
+                                <FontSize>5pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -671,7 +793,7 @@
                             <TextRun>
                               <Value>=Fields!concepto.Value</Value>
                               <Style>
-                                <FontSize>6pt</FontSize>
+                                <FontSize>5pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -738,7 +860,7 @@
                             <TextRun>
                               <Value>=Fields!deposito.Value</Value>
                               <Style>
-                                <FontSize>6pt</FontSize>
+                                <FontSize>4pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -758,6 +880,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -914,13 +1037,14 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
           <TablixMembers>
             <TablixMember>
               <TablixHeader>
-                <Size>3.71665cm</Size>
+                <Size>3.6802cm</Size>
                 <CellContents>
                   <Textbox Name="Textbox56">
                     <CanGrow>true</CanGrow>
@@ -974,7 +1098,7 @@
                 </SortExpression>
               </SortExpressions>
               <TablixHeader>
-                <Size>3.71665cm</Size>
+                <Size>3.6802cm</Size>
                 <CellContents>
                   <Textbox Name="nombre2">
                     <CanGrow>true</CanGrow>
@@ -1017,7 +1141,7 @@
         </TablixRowHierarchy>
         <DataSetName>Kardex</DataSetName>
         <Left>0.17254cm</Left>
-        <Height>1.2cm</Height>
+        <Height>1.56103cm</Height>
         <Width>26.39613cm</Width>
         <Style>
           <Border>
@@ -1029,7 +1153,7 @@
     <Height>0.61458in</Height>
     <Style />
   </Body>
-  <Width>10.52769in</Width>
+  <Width>10.57977in</Width>
   <Page>
     <PageHeader>
       <Height>3.14855cm</Height>
@@ -1417,7 +1541,7 @@
         </Field>
         <Field Name="cantidadUnd">
           <DataField>cantidadUnd</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="entidadMov">
           <DataField>entidadMov</DataField>
@@ -1439,10 +1563,14 @@
           <DataField>saldoIni</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
+        <Field Name="estatusDoc">
+          <DataField>estatusDoc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DS</rd:DataSetName>
-        <rd:SchemaPath>D:\Proyectos FoxSystem\CompraVentaFront\ModInventario\Reportes\Filtros\DS.xsd</rd:SchemaPath>
+        <rd:SchemaPath>D:\vFox\Inventario\sInventario\ModInventario\Reportes\Filtros\DS.xsd</rd:SchemaPath>
         <rd:TableName>Kardex</rd:TableName>
         <rd:TableAdapterFillMethod />
         <rd:TableAdapterGetDataMethod />

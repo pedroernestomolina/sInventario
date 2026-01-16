@@ -9,24 +9,19 @@ using System.Threading.Tasks;
 
 namespace ModInventario.Reportes.Documentos
 {
-
     public class Movimiento
     {
-
         private data _ficha;
-    
-
+        //
         public Movimiento(data ficha)
         {
             _ficha = ficha;
         }
-
-
         public void Generar() 
         {
             var pt = AppDomain.CurrentDomain.BaseDirectory + @"Reportes\Documentos\MovTraslado.rdlc";
             var ds = new dsDocumento();
-
+            //
             DataRow rt = ds.Tables["Movimiento"].NewRow();
             rt["documentoNro"] = _ficha.documentoNro;
             rt["fecha"] = _ficha.fecha;
@@ -41,7 +36,6 @@ namespace ModInventario.Reportes.Documentos
             rt["equipo"] = _ficha.estacion ;
             rt["estatusActivo"] = _ficha.estatusActivo;
             ds.Tables["Movimiento"].Rows.Add(rt);
-
             foreach (var it in _ficha.detalles.ToList())
             {
                 var empaque = "UNIDAD/(1)";
@@ -60,7 +54,7 @@ namespace ModInventario.Reportes.Documentos
                 r["importe"] = it.importe*it.signo;
                 ds.Tables["MovimientoDetalle"].Rows.Add(r);
             }
-
+            //
             var Rds = new List<ReportDataSource>();
             var pmt = new List<ReportParameter>();
             pmt.Add(new ReportParameter("EMPRESA_RIF", Sistema.Negocio.CiRif));
@@ -68,14 +62,12 @@ namespace ModInventario.Reportes.Documentos
             pmt.Add(new ReportParameter("EMPRESA_DIRECCION", Sistema.Negocio.DireccionFiscal));
             Rds.Add(new ReportDataSource("Movimiento", ds.Tables["Movimiento"]));
             Rds.Add(new ReportDataSource("MovimientoDetalle", ds.Tables["MovimientoDetalle"]));
-
+            //
             var frp = new ReporteFrm();
             frp.rds = Rds;
             frp.prmts = pmt;
             frp.Path = pt;
             frp.ShowDialog();
         }
-
     }
-
 }

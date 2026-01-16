@@ -65,123 +65,14 @@ namespace ModInventario.src.AdmDocumentos
         }
 
 
+        VisualizarMovimiento.vm.IVisualizar _visualizarDoc;
         public void CargarVisualizarDocumento(string idMov)
         {
-            var doc = CargarDocumento(idMov);
-            if (doc != null)
+            if (_visualizarDoc == null)
             {
-                switch (doc.docTipo)
-                {
-                    case OOB.LibInventario.Movimiento.enumerados.EnumTipoDocumento.Cargo:
-                    case OOB.LibInventario.Movimiento.enumerados.EnumTipoDocumento.Descargo:
-                    case OOB.LibInventario.Movimiento.enumerados.EnumTipoDocumento.Traslado:
-                        Visualizar(doc);
-                        break;
-                    case OOB.LibInventario.Movimiento.enumerados.EnumTipoDocumento.Ajuste:
-                        VisualizarAjuste(doc);
-                        break;
-                }
+                _visualizarDoc = new VisualizarMovimiento.vm.VisualizarImpl();
             }
-        }
-        private OOB.LibInventario.Movimiento.Ver.Ficha CargarDocumento(string idMov)
-        {
-            try
-            {
-                var rt1 = Sistema.MyData.Producto_Movimiento_GetFicha(idMov);
-                return rt1.Entidad;
-            }
-            catch (Exception e)
-            {
-                Helpers.Msg.Error(e.Message);
-                return null;
-            }
-        }
-        private void Visualizar(OOB.LibInventario.Movimiento.Ver.Ficha xficha)
-        {
-            var ficha = new Reportes.Documentos.data();
-            ficha.documentoNro = xficha.documentoNro;
-            ficha.fecha = xficha.fecha;
-            ficha.notas = xficha.notas;
-            ficha.autorizadoPor = xficha.autorizadoPor;
-            ficha.depositoOrigen = xficha.depositoOrigen;
-            ficha.codigoDepositoOrigen = xficha.codigoDepositoOrigen;
-            ficha.depositoDestino = xficha.depositoDestino;
-            ficha.codigoDepositoDestino = xficha.codigoDepositoDestino;
-            ficha.tipoDocumento = xficha.tipoDocumento;
-            ficha.nombreDocumento = xficha.nombreDocumento;
-            ficha.codigoConcepto = xficha.codigoConcepto;
-            ficha.concepto = xficha.concepto;
-            ficha.estacion = xficha.estacion;
-            ficha.usuario = xficha.usuario;
-            ficha.usuarioCodigo = xficha.usuarioCodigo;
-            ficha.estatusActivo = xficha.estatusActivo;
-
-            var det = new List<Reportes.Documentos.dataDetalle>();
-            foreach (var it in xficha.detalles)
-            {
-                var nr = new Reportes.Documentos.dataDetalle()
-                {
-                    cantidad = it.cantidad,
-                    codigo = it.codigo,
-                    costoUnd = it.costoUnd,
-                    descripcion = it.descripcion,
-                    importe = it.importe,
-                    signo = 1,
-                    cantidadUnd = it.cantidadUnd,
-                    contenido = it.contenido,
-                    empaque = it.empaque,
-                    esUnidad = it.esUnidad,
-                };
-                det.Add(nr);
-            };
-            ficha.detalles = det;
-
-            var rp1 = new Reportes.Documentos.Movimiento(ficha);
-            rp1.Generar();
-        }
-        private void VisualizarAjuste(OOB.LibInventario.Movimiento.Ver.Ficha xficha)
-        {
-            var ficha = new Reportes.Documentos.data();
-            ficha.documentoNro = xficha.documentoNro;
-            ficha.fecha = xficha.fecha;
-            ficha.notas = xficha.notas;
-            ficha.autorizadoPor = xficha.autorizadoPor;
-            ficha.depositoOrigen = xficha.depositoOrigen;
-            ficha.codigoDepositoOrigen = xficha.codigoDepositoOrigen;
-            ficha.depositoDestino = xficha.depositoDestino;
-            ficha.codigoDepositoDestino = xficha.codigoDepositoDestino;
-            ficha.tipoDocumento = xficha.tipoDocumento;
-            ficha.nombreDocumento = xficha.nombreDocumento;
-            ficha.codigoConcepto = xficha.codigoConcepto;
-            ficha.concepto = xficha.concepto;
-            ficha.estacion = xficha.estacion;
-            ficha.usuario = xficha.usuario;
-            ficha.usuarioCodigo = xficha.usuarioCodigo;
-            ficha.estatusActivo = xficha.estatusActivo;
-
-            var det = new List<Reportes.Documentos.dataDetalle>();
-            foreach (var it in xficha.detalles)
-            {
-                var nr = new Reportes.Documentos.dataDetalle()
-                {
-                    cantidad = it.cantidad,
-                    codigo = it.codigo,
-                    costoUnd = it.costoUnd,
-                    descripcion = it.descripcion,
-                    importe = it.importe,
-                    signo = it.signo,
-                    cantidadUnd = it.cantidadUnd,
-                    contenido = it.contenido,
-                    empaque = it.empaque,
-                    esUnidad = it.esUnidad,
-                    decimales = it.decimales,
-                };
-                det.Add(nr);
-            };
-            ficha.detalles = det;
-
-            var rp1 = new Reportes.Documentos.Movimiento(ficha);
-            rp1.Generar();
+            _visualizarDoc.VerDocumento(idMov);
         }
         public void AnularCargo(string idDoc, string motivo)
         {

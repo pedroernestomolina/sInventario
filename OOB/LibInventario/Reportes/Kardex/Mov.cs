@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace OOB.LibInventario.Reportes.Kardex
 {
-    
     public class Mov
     {
-
         public string autoPrd { get; set; }
         public string codigoPrd { get; set; } 
         public string nombrePrd { get; set; } 
@@ -28,6 +26,7 @@ namespace OOB.LibInventario.Reportes.Kardex
         public int signoMov { get; set; } 
         public string entidadMov { get; set; } 
         public decimal existenciaInicial { get; set; }
+        public bool estatusAnulado { get; set; }
         public int ordenPrioridad 
         {
             get 
@@ -48,8 +47,6 @@ namespace OOB.LibInventario.Reportes.Kardex
                 return xr;
             }
         }
-
-
         public Mov() 
         {
             autoPrd = "";
@@ -70,7 +67,5 @@ namespace OOB.LibInventario.Reportes.Kardex
             entidadMov = "";
             existenciaInicial = 0m;
         }
-
     }
-
 }

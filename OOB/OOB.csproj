@@ -96,6 +96,9 @@
     <Compile Include="LibInventario\Marca\Agregar.cs" />
     <Compile Include="LibInventario\Marca\Editar.cs" />
     <Compile Include="LibInventario\Marca\Ficha.cs" />
+    <Compile Include="LibInventario\MovimientoRecuperar\Entidad\Detalle.cs" />
+    <Compile Include="LibInventario\MovimientoRecuperar\Entidad\Encabezado.cs" />
+    <Compile Include="LibInventario\MovimientoRecuperar\Entidad\Ficha.cs" />
     <Compile Include="LibInventario\Movimiento\AjusteInvCero\Capture\Data.cs" />
     <Compile Include="LibInventario\Movimiento\AjusteInvCero\Capture\Ficha.cs" />
     <Compile Include="LibInventario\Movimiento\AjusteInvCero\Capture\Filtro.cs" />

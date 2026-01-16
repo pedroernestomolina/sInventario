@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+/*
 namespace ModInventario.Helpers
 {
-
     public static class VisualizarDocumento
     {
-
         public static void CargarVisualizarDocumento(string idMov)
         {
             var rt1 = Sistema.MyData.Producto_Movimiento_GetFicha(idMov);
@@ -119,7 +119,6 @@ namespace ModInventario.Helpers
             var rp1 = new Reportes.Documentos.Movimiento(ficha);
             rp1.Generar();
         }
-
     }
-
 }
+*/

@@ -281,9 +281,24 @@ namespace ModInventario.src.MovInventario
                 hnd.Invoke(this, id);
             }
         }
+        VisualizarMovimiento.vm.IVisualizar _visualizarDoc;
         protected void VisualizarDocGenerado(object sender, string idDoc)
         {
-            Helpers.VisualizarDocumento.CargarVisualizarDocumento(idDoc);
+            try
+            {
+                if (_visualizarDoc == null)
+                {
+                    _visualizarDoc = new VisualizarMovimiento.vm.VisualizarImpl();
+                }
+                _visualizarDoc.VerDocumento(idDoc);
+                /*
+                Helpers.VisualizarDocumento.CargarVisualizarDocumento(idDoc);
+                 */
+            }
+            catch (Exception e)
+            {
+                Helpers.Msg.Error(e.Message);
+            }
         }
     }
 }

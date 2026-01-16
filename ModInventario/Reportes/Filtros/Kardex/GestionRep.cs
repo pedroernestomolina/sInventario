@@ -87,20 +87,39 @@ namespace ModInventario.Reportes.Filtros.Kardex
                     rt["cantidadUnd"] = it.cantidadUnd;
                     rt["entidadMov"] = it.entidadMov;
                     rt["saldoIni"] = saldo;
+                    rt["estatusDoc"] = it.estatusAnulado ? "ANULADO" : "";
 
                     if (it.signoMov == -1)
                     {
-                        saldo -= it.cantidadUnd;
-                        rt["entrada"] = 0.0m;
-                        rt["salida"] = it.cantidadUnd;
-                        rt["saldo"] = saldo;
+                        if (it.estatusAnulado)
+                        {
+                            rt["entrada"] = 0.0m;
+                            rt["salida"] = 0.0m;
+                            rt["saldo"] = saldo;
+                        }
+                        else
+                        {
+                            saldo -= it.cantidadUnd;
+                            rt["entrada"] = 0.0m;
+                            rt["salida"] = it.cantidadUnd;
+                            rt["saldo"] = saldo;
+                        }
                     }
                     else 
                     {
-                        saldo += it.cantidadUnd;
-                        rt["entrada"] = it.cantidadUnd ;
-                        rt["salida"] = 0.0m;
-                        rt["saldo"] = saldo;
+                        if (it.estatusAnulado)
+                        {
+                            rt["entrada"] = 0.0m;
+                            rt["salida"] = 0.0m;
+                            rt["saldo"] = saldo;
+                        }
+                        else 
+                        {
+                            saldo += it.cantidadUnd;
+                            rt["entrada"] = it.cantidadUnd;
+                            rt["salida"] = 0.0m;
+                            rt["saldo"] = saldo;
+                        }
                     }
                     ds.Tables["Kardex"].Rows.Add(rt);
                 }

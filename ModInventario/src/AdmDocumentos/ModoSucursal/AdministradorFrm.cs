@@ -35,7 +35,10 @@ namespace ModInventario.src.AdmDocumentos.ModoSucursal
         {
             var f = new Font("Serif", 8, FontStyle.Bold);
             var f1 = new Font("Serif", 8, FontStyle.Regular);
-
+            var f2 = new Font("Serif", 7, FontStyle.Regular);
+            var f3 = new Font("Serif", 6, FontStyle.Regular);
+            //
+            DGV.RowHeadersVisible = false;
             DGV.AllowUserToAddRows = false;
             DGV.AllowUserToDeleteRows = false;
             DGV.AutoGenerateColumns = false;
@@ -45,75 +48,81 @@ namespace ModInventario.src.AdmDocumentos.ModoSucursal
             DGV.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             DGV.MultiSelect = false;
             DGV.ReadOnly = true;
-
+            //
             var c1 = new DataGridViewTextBoxColumn();
             c1.DataPropertyName = "FechaHora";
             c1.HeaderText = "Fecha/Hora";
             c1.Visible = true;
             c1.Width = 110;
             c1.HeaderCell.Style.Font = f;
-            c1.DefaultCellStyle.Font = f1;
-
+            c1.DefaultCellStyle.Font = f2;
+            c1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //
             var c2 = new DataGridViewTextBoxColumn();
             c2.DataPropertyName = "STipoDoc";
             c2.HeaderText = "Tipo";
             c2.Visible = true;
             c2.Width = 80;
             c2.HeaderCell.Style.Font = f;
-            c2.DefaultCellStyle.Font = f1;
-
+            c2.DefaultCellStyle.Font = f2;
+            c2.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //
             var c3 = new DataGridViewTextBoxColumn();
             c3.DataPropertyName = "DocumentoNro";
             c3.HeaderText = "Documento";
             c3.Visible = true;
             c3.Width = 80;
             c3.HeaderCell.Style.Font = f;
-            c3.DefaultCellStyle.Font = f1;
-
+            c3.DefaultCellStyle.Font = f2;
+            c3.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //
             var c4 = new DataGridViewTextBoxColumn();
             c4.DataPropertyName = "Sucursal";
-            c4.HeaderText = "Sucursal";
+            c4.HeaderText = "COD/SUC";
             c4.Visible = true;
             c4.HeaderCell.Style.Font = f;
-            c4.DefaultCellStyle.Font = f1;
-            c4.Width = 80;
-
+            c4.DefaultCellStyle.Font = f2;
+            c4.Width = 60;
+            c4.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //
             var c5 = new DataGridViewTextBoxColumn();
             c5.DataPropertyName = "SRenglones";
             c5.HeaderText = "Reng";
             c5.Visible = true;
             c5.Width = 40;
             c5.HeaderCell.Style.Font = f;
-            c5.DefaultCellStyle.Font = f1;
+            c5.DefaultCellStyle.Font = f2;
             c5.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
+            //
             var c5A = new DataGridViewTextBoxColumn();
             c5A.DataPropertyName = "Concepto";
             c5A.HeaderText = "Concepto";
             c5A.Visible = true;
             c5A.MinimumWidth = 120;
             c5A.HeaderCell.Style.Font = f;
-            c5A.DefaultCellStyle.Font = f1;
+            c5A.DefaultCellStyle.Font = f3;
             c5A.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
+            c5A.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            //
             var c5B = new DataGridViewTextBoxColumn();
             c5B.DataPropertyName = "UsuarioEstacion";
             c5B.HeaderText = "Usuario";
             c5B.Visible = true;
             c5B.MinimumWidth = 120;
             c5B.HeaderCell.Style.Font = f;
-            c5B.DefaultCellStyle.Font = f1;
+            c5B.DefaultCellStyle.Font = f3;
             c5B.AutoSizeMode= DataGridViewAutoSizeColumnMode.Fill;
-
+            c5B.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //
             var c6 = new DataGridViewTextBoxColumn();
             c6.DataPropertyName = "SMonto";
-            c6.HeaderText = "Importe";
+            c6.HeaderText = "Importe $";
             c6.Visible = true;
             c6.Width = 100;
             c6.HeaderCell.Style.Font = f;
-            c6.DefaultCellStyle.Font = f1;
+            c6.DefaultCellStyle.Font = f2;
             c6.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-
+            //
             var c7 = new DataGridViewTextBoxColumn();
             c7.DataPropertyName = "Situacion";
             c7.Name = "Situacion";
@@ -121,42 +130,43 @@ namespace ModInventario.src.AdmDocumentos.ModoSucursal
             c7.Visible = true;
             c7.Width = 80;
             c7.HeaderCell.Style.Font = f;
-            c7.DefaultCellStyle.Font = f1;
+            c7.DefaultCellStyle.Font = f2;
             c7.DefaultCellStyle.Alignment= DataGridViewContentAlignment.MiddleCenter;
-
+            //
             var c8 = new DataGridViewTextBoxColumn();
             c8.DataPropertyName = "IsAnulado";
             c8.Name= "IsAnulado";
             c8.Visible = false;
             c8.Width = 0;
             c8.HeaderCell.Style.Font = f;
-            c8.DefaultCellStyle.Font = f1;
-
+            c8.DefaultCellStyle.Font = f2;
+            //
             var c8A = new DataGridViewTextBoxColumn();
             c8A.HeaderText = "Estatus";
             c8A.Name = "Anulado";
             c8A.Visible = true;
             c8A.Width = 60;
             c8A.HeaderCell.Style.Font = f;
-            c8A.DefaultCellStyle.Font = f1;
-
+            c8A.DefaultCellStyle.Font = f2;
+            //
             var c9 = new DataGridViewTextBoxColumn();
             c9.DataPropertyName = "DepOrigen";
             c9.HeaderText = "Origen";
             c9.Visible = true;
             c9.Width = 120;
             c9.HeaderCell.Style.Font = f;
-            c9.DefaultCellStyle.Font = f1;
-
+            c9.DefaultCellStyle.Font = f3;
+            c9.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //
             var cA = new DataGridViewTextBoxColumn();
             cA.DataPropertyName = "DepDestino";
             cA.HeaderText = "Destino";
             cA.Visible = true;
             cA.Width = 120;
             cA.HeaderCell.Style.Font = f;
-            cA.DefaultCellStyle.Font = f1;
-
-
+            cA.DefaultCellStyle.Font = f3;
+            cA.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            //
             DGV.Columns.Add(c1);
             DGV.Columns.Add(c2);
             DGV.Columns.Add(c3);

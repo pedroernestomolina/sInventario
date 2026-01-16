@@ -2413,6 +2413,8 @@ namespace ModInventario.Reportes.Filtros {
             
             private global::System.Data.DataColumn columnsaldoIni;
             
+            private global::System.Data.DataColumn columnestatusDoc;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public KardexDataTable() {
@@ -2552,6 +2554,14 @@ namespace ModInventario.Reportes.Filtros {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn estatusDocColumn {
+                get {
+                    return this.columnestatusDoc;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2587,7 +2597,7 @@ namespace ModInventario.Reportes.Filtros {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public KardexRow AddKardexRow(string nombre, string fechaHora, string modulo, string siglas, string documento, string deposito, string concepto, decimal cantidadUnd, string entidadMov, decimal entrada, decimal salida, decimal saldo, decimal saldoIni) {
+            public KardexRow AddKardexRow(string nombre, string fechaHora, string modulo, string siglas, string documento, string deposito, string concepto, decimal cantidadUnd, string entidadMov, decimal entrada, decimal salida, decimal saldo, decimal saldoIni, string estatusDoc) {
                 KardexRow rowKardexRow = ((KardexRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         nombre,
@@ -2602,7 +2612,8 @@ namespace ModInventario.Reportes.Filtros {
                         entrada,
                         salida,
                         saldo,
-                        saldoIni};
+                        saldoIni,
+                        estatusDoc};
                 rowKardexRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowKardexRow);
                 return rowKardexRow;
@@ -2638,6 +2649,7 @@ namespace ModInventario.Reportes.Filtros {
                 this.columnsalida = base.Columns["salida"];
                 this.columnsaldo = base.Columns["saldo"];
                 this.columnsaldoIni = base.Columns["saldoIni"];
+                this.columnestatusDoc = base.Columns["estatusDoc"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2669,6 +2681,8 @@ namespace ModInventario.Reportes.Filtros {
                 base.Columns.Add(this.columnsaldo);
                 this.columnsaldoIni = new global::System.Data.DataColumn("saldoIni", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnsaldoIni);
+                this.columnestatusDoc = new global::System.Data.DataColumn("estatusDoc", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnestatusDoc);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8103,6 +8117,22 @@ namespace ModInventario.Reportes.Filtros {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string estatusDoc {
+                get {
+                    try {
+                        return ((string)(this[this.tableKardex.estatusDocColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'estatusDoc\' in table \'Kardex\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableKardex.estatusDocColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsnombreNull() {
                 return this.IsNull(this.tableKardex.nombreColumn);
             }
@@ -8255,6 +8285,18 @@ namespace ModInventario.Reportes.Filtros {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetsaldoIniNull() {
                 this[this.tableKardex.saldoIniColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsestatusDocNull() {
+                return this.IsNull(this.tableKardex.estatusDocColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetestatusDocNull() {
+                this[this.tableKardex.estatusDocColumn] = global::System.Convert.DBNull;
             }
         }
         

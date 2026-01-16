@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace ModInventario.Reportes.Documentos
 {
-
     public class dataDetalle
     {
-
         public string codigo { get; set; }
         public string descripcion { get; set; }
         public decimal cantidad { get; set; }
@@ -22,7 +20,5 @@ namespace ModInventario.Reportes.Documentos
         public decimal costoUnd { get; set; }
         public decimal importe { get; set; }
         public string decimales { get; set; }
-
     }
-
 }

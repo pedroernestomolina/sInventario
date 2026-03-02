@@ -9,30 +9,27 @@ using System.Windows.Forms;
 
 namespace ModInventario.Tool.AjusteNivelMinimoMaximoProducto
 {
-
     public class GestionLista
     {
-
         private GestionAjuste _gestionAjuste;
         private List<data> _ldata;
         private BindingList<data> _bldata;
         private BindingSource _bs;
-
-
+        private bool _modoEmpaqueMostrarIsCompra;
+        //
         public BindingSource Source { get { return _bs; } }
         public List<data> Lista { get { return _ldata; } }
-
-
+        //
         public GestionLista()
         {
+            _modoEmpaqueMostrarIsCompra = false;
             _gestionAjuste = new GestionAjuste();
             _ldata = new List<data>();
             _bldata=new BindingList<data>(_ldata);
             _bs = new BindingSource();
             _bs.DataSource = _bldata;
         }
-
-
+        //
         public void setLista(List<OOB.LibInventario.Tool.AjusteNivelMinimoMaximoProducto.Capturar.Ficha> list)
         {
             var lst = _ldata.Where(f => f.IsEditado).ToList();
@@ -40,13 +37,13 @@ namespace ModInventario.Tool.AjusteNivelMinimoMaximoProducto
             _bldata.Clear();
             foreach (var it in lst.OrderBy(o => o.NombrePrd).ToList())
             {
-                var nr = new data(it);
+                var nr = new data(it,_modoEmpaqueMostrarIsCompra);
                 _bldata.Add(nr);
             }
 
             foreach (var it in list.OrderBy(o=>o.nombreProducto).ToList()) 
             {
-                var nr = new data(it);
+                var nr = new data(it, _modoEmpaqueMostrarIsCompra);
                 _bldata.Add(nr);
             }
         }
@@ -66,8 +63,13 @@ namespace ModInventario.Tool.AjusteNivelMinimoMaximoProducto
                 _gestionAjuste.Inicia();
                 if (_gestionAjuste.ProcesarIsOk)
                 {
-                    it.setMinimo(_gestionAjuste.GetMinimo);
-                    it.setMaximo(_gestionAjuste.GetMaximo);
+                    var _contenido = 1m;
+                    if (_modoEmpaqueMostrarIsCompra)
+                    {
+                        _contenido = it.Ficha.contEmpqCompra;
+                    }
+                    it.setMinimo(_gestionAjuste.GetMinimo*_contenido);
+                    it.setMaximo(_gestionAjuste.GetMaximo*_contenido);
                 }
 
 
@@ -96,7 +98,16 @@ namespace ModInventario.Tool.AjusteNivelMinimoMaximoProducto
                 //}
             }
         }
+        //
+        public void setModoEmpaqueMostrarIsCompra(bool modo)
+        {
+            _modoEmpaqueMostrarIsCompra = modo;
+            foreach (var it in _bldata.ToList())
+            {
+                it.setModoEmpaqueMostrarIsCompra(modo);
+            }
 
+            _bs.CurrencyManager.Refresh();
+        }
     }
-
 }

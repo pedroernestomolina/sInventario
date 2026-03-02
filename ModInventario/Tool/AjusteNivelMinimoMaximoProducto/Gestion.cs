@@ -8,10 +8,8 @@ using System.Windows.Forms;
 
 namespace ModInventario.Tool.AjusteNivelMinimoMaximoProducto
 {
-    
     public class Gestion
     {
-
         private GestionLista _gestionLista;
         private BindingSource bs_Deposito;
         private BindingSource bs_Departamento;
@@ -19,8 +17,8 @@ namespace ModInventario.Tool.AjusteNivelMinimoMaximoProducto
         private List<OOB.LibInventario.Departamento.Ficha> lDepartamento;
         private OOB.LibInventario.Deposito.Ficha _deposito;
         private string _cadenaBusqueda;
-
-
+        private bool _modoEmpaqueIsCompra;
+        //
         public bool IsLimpiarOk { get; set; }
         public bool IsBuscarHabilitado { get; set; }
         public bool ProcesoIsOk { get; set; }
@@ -50,6 +48,7 @@ namespace ModInventario.Tool.AjusteNivelMinimoMaximoProducto
 
         public Gestion()
         {
+            _modoEmpaqueIsCompra = false;
             _gestionLista = new GestionLista();
             AutoDeposito = "";
             AutoDepartamento = "";
@@ -75,6 +74,7 @@ namespace ModInventario.Tool.AjusteNivelMinimoMaximoProducto
             AutoDeposito = "";
             AutoDepartamento = "";
             _cadenaBusqueda = "";
+            _modoEmpaqueIsCompra = false;
 
             if (CargarData()) 
             {
@@ -123,8 +123,9 @@ namespace ModInventario.Tool.AjusteNivelMinimoMaximoProducto
                 Helpers.Msg.Error(r01.Mensaje);
                 return;
             }
+            _gestionLista.setModoEmpaqueMostrarIsCompra(_modoEmpaqueIsCompra);
             _gestionLista.setLista(r01.Lista);
-
+            //
             var r02 = Sistema.MyData.Deposito_GetFicha(AutoDeposito);
             if (r02.Result == OOB.Enumerados.EnumResult.isError)
             {
@@ -179,12 +180,17 @@ namespace ModInventario.Tool.AjusteNivelMinimoMaximoProducto
                 var list = new List<OOB.LibInventario.Tool.AjusteNivelMinimoMaximoProducto.Ajustar.Ficha>();
                 foreach (var it in _gestionLista.Lista.Where(w=>w.IsEditado).ToList()) 
                 {
+                    var _contenido = 1M;
+                    if (_modoEmpaqueIsCompra) 
+                    {
+                        _contenido = it.Ficha.contEmpqCompra;
+                    }
                     var nr = new OOB.LibInventario.Tool.AjusteNivelMinimoMaximoProducto.Ajustar.Ficha()
                     {
                         autoDeposito = _deposito.auto,
                         autoProducto = it.Ficha.autoProducto,
-                        nivelMinimo = it.Minimo,
-                        nivelOptimo = it.Maximo,
+                        nivelMinimo = it.Minimo*_contenido,
+                        nivelOptimo = it.Maximo*_contenido,
                     };
                     list.Add(nr);
                 }
@@ -233,7 +239,10 @@ namespace ModInventario.Tool.AjusteNivelMinimoMaximoProducto
             _deposito.Limpiar();
             _gestionLista.Limpiar();
         }
-
+        public void ModoEmpaqueIsCompra(bool modoEmpaque)
+        {
+            _modoEmpaqueIsCompra = modoEmpaque;
+            _gestionLista.setModoEmpaqueMostrarIsCompra(_modoEmpaqueIsCompra);
+        }
     }
-
 }

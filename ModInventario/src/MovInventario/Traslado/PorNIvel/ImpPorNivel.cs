@@ -238,9 +238,14 @@ namespace ModInventario.src.MovInventario.Traslado.PorNIvel
         protected override void limpiarTodo()
         {
             base.limpiarTodo();
-            _depDestino.Inicializa();
-            SucDestino.Inicializa();
-            Departamento.Inicializa();
+
+            _depDestino.setId("");
+            _sucDestino.setId("");
+            _departamento.setId("");
+            _sucOrigen.setId("");
+
+            //SucDestino.Inicializa();
+            //Departamento.Inicializa();
             if (_activarDepDestinoPredeterminado)
             {
                 _depDestino.setId(_idDepPredeterminadoParaDev);
@@ -382,14 +387,14 @@ namespace ModInventario.src.MovInventario.Traslado.PorNIvel
                         decimales = r.decimales,
                         descTasa = r.tasaIvaNombre,
                         esAdmDivisa = admDivisa,
-                        exFisica = r.exFisicaOrigen,
+                        exFisica = calculaEmpCompra(r.exFisicaOrigen,r.empCompraCont),
                         nombreEmp = r.empCompra,
                         nombrePrd = r.nombrePrd,
                         valorTasa = r.tasaIva,
                         fechaUltimaActCosto = fechaUltActCosto,
-                        nivelMinimoDepDestino = r.nivelMinimo,
-                        nivelOptimoDepDestino = r.nivelOptimo,
-                        exFisicaDepDestino = r.exFisica,
+                        nivelMinimoDepDestino = calculaEmpCompra(r.nivelMinimo,r.empCompraCont),
+                        nivelOptimoDepDestino = calculaEmpCompra(r.nivelOptimo,r.empCompraCont),
+                        exFisicaDepDestino = calculaEmpCompra(r.exFisica,r.empCompraCont),
                         contEmpInv = r.contEmpInv,
                         nombreEmpInv = r.nombreEmpInv,
                     };
@@ -415,7 +420,7 @@ namespace ModInventario.src.MovInventario.Traslado.PorNIvel
                     _dataCapture.setFicha(dat);
                     _dataCapture.setCantidad(cnt);
                     _dataCapture.setCosto(r.costo);
-                    _dataCapture.setEmpaque("2");
+                    _dataCapture.setEmpaque("1");
                     _dataCapture.setTasaCambio(_tasaCambio);
                     _listaMov.AgregarItem(_dataCapture);
                 }
@@ -424,6 +429,16 @@ namespace ModInventario.src.MovInventario.Traslado.PorNIvel
             {
                 Helpers.Msg.Error(e.Message);
             }
+        }
+        private decimal calculaEmpCompra(decimal cnt, decimal contEmp)
+        {
+            var rt = 0m;
+            if (contEmp > 0m) 
+            {
+                rt = cnt / contEmp;
+                rt = Math.Truncate(rt);
+            }
+            return rt;
         }
         private void Registrar()
         {

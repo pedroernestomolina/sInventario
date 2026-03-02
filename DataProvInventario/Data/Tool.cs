@@ -16,30 +16,31 @@ namespace DataProvInventario.Data
             Tools_AjusteNivelMinimoMaximo_GetLista(OOB.LibInventario.Tool.AjusteNivelMinimoMaximoProducto.Capturar.Filtro filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Tool.AjusteNivelMinimoMaximoProducto.Capturar.Ficha>();
-
-            var filtroDTO = new DtoLibInventario.Tool.AjusteNivelMinimoMaximo.Capturar.Filtro();
-            filtroDTO.autoDeposito = filtro.autoDeposito;
-            filtroDTO.autoDepartamento = filtro.autoDepartamento;
-            filtroDTO.cadena = filtro.cadena;
-
-            var r01 = MyData.Tools_AjusteNivelMinimoMaximo_GetLista(filtroDTO);
-            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+            //
+            try
             {
-                rt.Mensaje = r01.Mensaje;
-                rt.Result = OOB.Enumerados.EnumResult.isError;
-                return rt;
-            }
-
-            var list = new List<OOB.LibInventario.Tool.AjusteNivelMinimoMaximoProducto.Capturar.Ficha>();
-            if (r01.Lista != null)
-            {
+                var filtroDTO = new DtoLibInventario.Tool.AjusteNivelMinimoMaximo.Capturar.Filtro()
+                {
+                    autoDepartamento = filtro.autoDepartamento,
+                    autoDeposito = filtro.autoDeposito,
+                    cadena = filtro.cadena,
+                };
+                var r01 = MyData.Tools_AjusteNivelMinimoMaximo_GetLista(filtroDTO);
+                if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+                {
+                    throw new Exception(r01.Mensaje);
+                }
+                if (r01.Lista == null) 
+                {
+                    throw new Exception("DATA NO CARGADA");
+                }
+                var list = new List<OOB.LibInventario.Tool.AjusteNivelMinimoMaximoProducto.Capturar.Ficha>();
                 if (r01.Lista.Count > 0)
                 {
                     list = r01.Lista.Select(s =>
                     {
-                        var _estatus="Activo" ;
+                        var _estatus = "Activo";
                         if (s.esSuspendido == "1") { _estatus = "Suspendido"; }
-
                         return new OOB.LibInventario.Tool.AjusteNivelMinimoMaximoProducto.Capturar.Ficha()
                         {
                             autoProducto = s.autoProducto,
@@ -50,14 +51,22 @@ namespace DataProvInventario.Data
                             nivelOptimo = s.nivelOptimo,
                             nombreProducto = s.nombreProducto,
                             referenciaProducto = s.referenciaProducto,
-                            esPesado=s.esPesado=="S"?true:false,
-                            Estatus=_estatus,
+                            esPesado = s.estatusPesado.Trim().ToUpper()=="1" ? true : false,
+                            Estatus = _estatus,
+                            descEmpqCompra=s.descEmpqCompra,
+                            contEmpqCompra=s.contEmpqCompra,
+                            isActivo = _estatus.Trim().ToUpper()=="ACTIVO",
                         };
                     }).ToList();
                 }
+                rt.Lista = list;
             }
-            rt.Lista = list;
-
+            catch (Exception e)
+            {
+                rt.Mensaje = e.Message ;
+                rt.Result = OOB.Enumerados.EnumResult.isError;
+            }
+            //
             return rt;
         }
         public OOB.Resultado 

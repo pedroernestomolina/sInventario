@@ -50,7 +50,9 @@ namespace ModInventario.Tool.AjusteNivelMinimoMaximoProducto
         {
             var f = new Font("Serif", 8, FontStyle.Bold);
             var f1 = new Font("Serif", 10, FontStyle.Regular);
+            var f2 = new Font("Serif", 7, FontStyle.Regular);
 
+            DGV.RowHeadersVisible = false;
             DGV.AllowUserToAddRows = false;
             DGV.AllowUserToDeleteRows = false;
             DGV.AutoGenerateColumns = false;
@@ -67,7 +69,7 @@ namespace ModInventario.Tool.AjusteNivelMinimoMaximoProducto
             c1.Visible = true;
             c1.Width = 120;
             c1.HeaderCell.Style.Font = f;
-            c1.DefaultCellStyle.Font = f1;
+            c1.DefaultCellStyle.Font = f2;
 
             var c2 = new DataGridViewTextBoxColumn();
             c2.DataPropertyName = "NombrePrd";
@@ -76,7 +78,7 @@ namespace ModInventario.Tool.AjusteNivelMinimoMaximoProducto
             c2.MinimumWidth = 160;
             c2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             c2.HeaderCell.Style.Font = f;
-            c2.DefaultCellStyle.Font = f1;
+            c2.DefaultCellStyle.Font = f2;
 
             var c3 = new DataGridViewTextBoxColumn();
             c3.DataPropertyName = "ExFisica";
@@ -86,6 +88,15 @@ namespace ModInventario.Tool.AjusteNivelMinimoMaximoProducto
             c3.HeaderCell.Style.Font = f;
             c3.DefaultCellStyle.Font = f1;
             c3.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            var c3A = new DataGridViewTextBoxColumn();
+            c3A.DataPropertyName = "Empaque";
+            c3A.HeaderText = "Empq";
+            c3A.Visible = true;
+            c3A.Width = 80;
+            c3A.HeaderCell.Style.Font = f;
+            c3A.DefaultCellStyle.Font = f2;
+            c3A.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             var c4 = new DataGridViewTextBoxColumn();
             c4.DataPropertyName = "Minimo";
@@ -133,6 +144,7 @@ namespace ModInventario.Tool.AjusteNivelMinimoMaximoProducto
             DGV.Columns.Add(c1);
             DGV.Columns.Add(c2);
             DGV.Columns.Add(c6);
+            DGV.Columns.Add(c3A);
             DGV.Columns.Add(c3);
             DGV.Columns.Add(c4);
             DGV.Columns.Add(c5);
@@ -161,6 +173,7 @@ namespace ModInventario.Tool.AjusteNivelMinimoMaximoProducto
             CB_DEPOSITO.Enabled = _controlador.IsBuscarHabilitado;
             TB_CADENA.Text = "";
             DGV.Focus();
+            DGV.Refresh();
         }
 
         private void CB_DEPOSITO_SelectedIndexChanged(object sender, EventArgs e)
@@ -334,7 +347,10 @@ namespace ModInventario.Tool.AjusteNivelMinimoMaximoProducto
                 this.SelectNextControl((Control)sender, true, true, true, true);
             }
         }
-
+        private void CHB_MODOEMPAQUE_CheckedChanged(object sender, EventArgs e)
+        {
+            _controlador.ModoEmpaqueIsCompra(CHB_MODOEMPAQUE.Checked);
+            DGV.Refresh();
+        }
     }
-
 }

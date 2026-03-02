@@ -87,9 +87,15 @@ namespace ModInventario.Tool.AjusteNivelMinimoMaximoProducto
         public bool RestaurarValoresOriginalesIsOk { get { return _restaurarValoresOriginalesIsOk; } }
         public void RestaurarValoresOriginales()
         {
+            var _contenido = 1M;
+            if (_ficha.ModoEmpaqueMostrarIsCompra) 
+            {
+                _contenido= _ficha.Ficha.contEmpqCompra;
+            }
+
             _restaurarValoresOriginalesIsOk = false;
-            _minimo = _ficha.Ficha.nivelMinimo;
-            _maximo= _ficha.Ficha.nivelOptimo;
+            _minimo = Math.Truncate(_ficha.Ficha.nivelMinimo/_contenido);
+            _maximo= Math.Truncate(_ficha.Ficha.nivelOptimo/_contenido);
             _restaurarValoresOriginalesIsOk = true;
         }
 

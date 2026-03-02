@@ -1904,22 +1904,27 @@ namespace DataProvInventario.Data
             Capturar_ProductosPorDebajoNivelMinimo(OOB.LibInventario.Movimiento.Traslado.Capturar.ProductoPorDebajoNivelMinimo.Filtro filtro)
         {
             var rt = new OOB.ResultadoLista<OOB.LibInventario.Movimiento.Traslado.Capturar.ProductoPorDebajoNivelMinimo.Ficha>();
-            var filtroDto = new DtoLibInventario.Movimiento.Traslado.Capturar.ProductoPorDebajoNivelMinimo.Filtro()
+            //
+            try
             {
-                autoDepositoVerificarNivel = filtro.autoDepositoVerificarNivel,
-                autoDepositoOrigen = filtro.autoDepositoOrigen,
-                autoDepartamento = filtro.autoDepartamento,
-                autoProducto = filtro.autoProducto,
-                verificarNivel = filtro.verificarExistencia, 
-            };
-            var r01 = MyData.Capturar_ProductosPorDebajoNivelMinimo(filtroDto);
-            if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
-            {
-                throw new Exception(r01.Mensaje);
-            }
-            var list = new List<OOB.LibInventario.Movimiento.Traslado.Capturar.ProductoPorDebajoNivelMinimo.Ficha>();
-            if (r01.Lista != null)
-            {
+                var filtroDto = new DtoLibInventario.Movimiento.Traslado.Capturar.ProductoPorDebajoNivelMinimo.Filtro()
+                {
+                    autoDepositoVerificarNivel = filtro.autoDepositoVerificarNivel,
+                    autoDepositoOrigen = filtro.autoDepositoOrigen,
+                    autoDepartamento = filtro.autoDepartamento,
+                    autoProducto = filtro.autoProducto,
+                    verificarNivel = filtro.verificarExistencia,
+                };
+                var r01 = MyData.Capturar_ProductosPorDebajoNivelMinimo(filtroDto);
+                if (r01.Result == DtoLib.Enumerados.EnumResult.isError)
+                {
+                    throw new Exception(r01.Mensaje);
+                }
+                if (r01.Lista == null) 
+                {
+                    throw new Exception("PROBELAM AL CARGAR DATA");
+                }
+                var list = new List<OOB.LibInventario.Movimiento.Traslado.Capturar.ProductoPorDebajoNivelMinimo.Ficha>();
                 if (r01.Lista.Count > 0)
                 {
                     list = r01.Lista.Select(s =>
@@ -1966,8 +1971,13 @@ namespace DataProvInventario.Data
                         };
                     }).ToList();
                 }
+                rt.Lista = list;
             }
-            rt.Lista = list;
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            //
             return rt;
         }
         public OOB.ResultadoLista<OOB.LibInventario.Movimiento.Traslado.Consultar.ProductoPorDebajoNivelMinimo>

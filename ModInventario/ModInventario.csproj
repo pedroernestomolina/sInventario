@@ -48,7 +48,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="LibUtilitis">
-      <HintPath>..\..\..\LibUtilitis\LibUtilitis\bin\Debug\LibUtilitis.dll</HintPath>
+      <HintPath>..\..\LibUtilitis\LibUtilitis\bin\Debug\LibUtilitis.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />

@@ -32,15 +32,15 @@
   <ItemGroup>
     <Reference Include="DtoLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\BackEnd\bInventario\ServiceInventario\bin\Debug\DtoLib.dll</HintPath>
+      <HintPath>..\..\bInventario\DtoLib\bin\Debug\DtoLib.dll</HintPath>
     </Reference>
     <Reference Include="DtoLibInventario, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\BackEnd\bInventario\ServiceInventario\bin\Debug\DtoLibInventario.dll</HintPath>
+      <HintPath>..\..\bInventario\DtoLibInventario\bin\Debug\DtoLibInventario.dll</HintPath>
     </Reference>
     <Reference Include="ServiceInventario, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\BackEnd\bInventario\ServiceInventario\bin\Debug\ServiceInventario.dll</HintPath>
+      <HintPath>..\..\bInventario\ServiceInventario\bin\Debug\ServiceInventario.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

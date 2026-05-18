@@ -30,6 +30,7 @@ namespace ModInventario.Producto.Deposito.AsignacionMasiva
             var f = new Font("Serif", 8, FontStyle.Bold);
             var f1 = new Font("Serif", 10, FontStyle.Regular);
 
+            DGV.RowHeadersVisible = false;
             DGV.AllowUserToAddRows = false;
             DGV.AllowUserToDeleteRows = false;
             DGV.AutoGenerateColumns = false;

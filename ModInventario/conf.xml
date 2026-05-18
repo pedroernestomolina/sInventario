@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Configuracion>
   <Servidor>
-    <Instancia>192.168.9.50</Instancia>
-    <Catalogo>zufu26</Catalogo>
+    <Instancia>192.168.0.25</Instancia>
+    <Catalogo>00000001</Catalogo>
     <Usuario></Usuario>
     <Gestor>mysql</Gestor><!--MySql, SqlServer-->
   </Servidor>
